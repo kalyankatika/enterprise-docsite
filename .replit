@@ -27,6 +27,10 @@ args = "create_asset_dirs"
 task = "workflow.run"
 args = "create_navigation_dir"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "create_accordion_dirs"
+
 [[workflows.workflow]]
 name = "11ty Development Server"
 author = "agent"
@@ -83,6 +87,20 @@ task = "packager.installForAll"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "mkdir -p src/navigation src/navigation/by-channel src/navigation/by-type src/navigation/by-owner"
+
+[[workflows.workflow]]
+name = "create_accordion_dirs"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "mkdir -p src/components/layout/accordion src/assets/images/"
 
 [deployment]
 run = ["sh", "-c", "npx @11ty/eleventy --serve --port=5000"]

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .label { font-family: sans-serif; font-size: 12px; fill: #666; }
+    .dimension { stroke: #368727; stroke-width: 1; stroke-dasharray: 4 2; }
+    .arrow { stroke: #368727; stroke-width: 1; fill: none; marker-end: url(#arrowhead); }
+    .component { fill: #fff; stroke: #ddd; stroke-width: 1; }
+    .header { fill: #f9f9f9; }
+    .content { fill: #fff; }
+    .header-text { font-family: sans-serif; font-size: 14px; fill: #333; font-weight: 500; }
+    .content-text { font-family: sans-serif; font-size: 13px; fill: #666; }
+    .icon { fill: none; stroke: #666; stroke-width: 2; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#368727" />
+    </marker>
+  </defs>
+  
+  <!-- Accordion component -->
+  <rect class="component" x="50" y="40" width="300" height="128" rx="4" />
+  <rect class="header" x="50" y="40" width="300" height="48" rx="4 4 0 0" />
+  <rect class="content" x="50" y="88" width="300" height="80" />
+  
+  <!-- Header text -->
+  <text class="header-text" x="70" y="68">Accordion heading</text>
+  
+  <!-- Rotated Chevron icon -->
+  <path class="icon" d="M320 74 L330 64 L320 54" />
+  
+  <!-- Content text -->
+  <text class="content-text" x="70" y="115">
+    <tspan x="70" y="115">Accordion content goes here. This area can contain</tspan>
+    <tspan x="70" y="135">text, images, and other components.</tspan>
+  </text>
+  
+  <!-- Dimensions -->
+  <!-- Total Height -->
+  <line class="dimension" x1="30" y1="40" x2="30" y2="168" />
+  <path class="arrow" d="M30 45 L30 163" />
+  <text class="label" x="15" y="104">128px</text>
+  
+  <!-- Header Height -->
+  <line class="dimension" x1="20" y1="40" x2="20" y2="88" />
+  <path class="arrow" d="M20 45 L20 83" />
+  <text class="label" x="5" y="64">48px</text>
+  
+  <!-- Content Height -->
+  <line class="dimension" x1="10" y1="88" x2="10" y2="168" />
+  <path class="arrow" d="M10 93 L10 163" />
+  <text class="label" x="-5" y="128">80px</text>
+  
+  <!-- Width -->
+  <line class="dimension" x1="50" y1="180" x2="350" y2="180" />
+  <path class="arrow" d="M55 180 L345 180" />
+  <text class="label" x="190" y="195">300px</text>
+  
+  <!-- Content Padding -->
+  <line class="dimension" x1="50" y1="100" x2="70" y2="100" />
+  <path class="arrow" d="M55 100 L65 100" />
+  <text class="label" x="53" y="95">16px</text>
+</svg>

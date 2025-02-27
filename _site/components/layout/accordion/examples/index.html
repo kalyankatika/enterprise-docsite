@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Card | Enterprise Design System</title>
-  <meta name="description" content="Cards organize content and actions about a single subject">
+  <title>Accordion | Enterprise Design System</title>
+  <meta name="description" content="Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -197,7 +197,7 @@
               </a>
               
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-                <li><a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">Card</a></li>
+                <li><a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Card</a></li>
                 <li><a href="/components/layout/accordion/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Accordion</a></li>
                 <li><a href="/components/layout/modal/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Modal</a></li>
                 <li><a href="/components/layout/grid/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Grid</a></li>
@@ -249,7 +249,14 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-              <span class="font-medium">Card</span>
+              <a href="/components/layout/" class="hover:text-[var(--color-primary)] transition-colors capitalize">layout</a>
+            </li>
+            
+            <li class="flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="font-medium">Accordion</span>
             </li>
           </ol>
         </nav>
@@ -257,15 +264,15 @@
         <!-- Component header -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 class="text-3xl font-bold mb-2">Card</h1>
-            <p class="text-[var(--color-text-muted)]">Cards organize content and actions about a single subject</p>
+            <h1 class="text-3xl font-bold mb-2">Accordion</h1>
+            <p class="text-[var(--color-text-muted)]">Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.</p>
           </div>
           <div class="flex items-center space-x-3">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
               v1.0.0
             </span>
             
-            <a href="https://github.com/enterprise-design-system/components/tree/main/src/card" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+            <a href="https://github.com/enterprise-design-system/components/tree/main/src/accordion" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
               </svg>
@@ -287,47 +294,298 @@
       
       <!-- Tab content -->
       <div class="tab-content space-y-10" id="design">
-        <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
-<p>The Card component is a flexible container for displaying related content and actions about a single subject.</p>
-<h2 id="when-to-use" tabindex="-1">When to use <a class="anchor" href="#when-to-use" aria-hidden="true">#</a></h2>
-<p>Use cards to:</p>
-<ul>
-<li>Display content and actions related to a single topic or object</li>
-<li>Group related information in a visually distinct container</li>
-<li>Create a consistent layout for multiple similar items</li>
-<li>Emphasize sections of content on a page</li>
-</ul>
-<h2 id="variants" tabindex="-1">Variants <a class="anchor" href="#variants" aria-hidden="true">#</a></h2>
-<h3 id="basic-card" tabindex="-1">Basic Card <a class="anchor" href="#basic-card" aria-hidden="true">#</a></h3>
-<p>The basic card provides a simple container for content with minimal styling.</p>
-<h3 id="media-card" tabindex="-1">Media Card <a class="anchor" href="#media-card" aria-hidden="true">#</a></h3>
-<p>The media card includes an image or other media at the top of the card.</p>
-<h3 id="action-card" tabindex="-1">Action Card <a class="anchor" href="#action-card" aria-hidden="true">#</a></h3>
-<p>The action card includes a clear call-to-action button or link.</p>
-<h3 id="interactive-card" tabindex="-1">Interactive Card <a class="anchor" href="#interactive-card" aria-hidden="true">#</a></h3>
-<p>The interactive card is fully clickable and acts as a navigation element.</p>
-<h2 id="accessibility" tabindex="-1">Accessibility <a class="anchor" href="#accessibility" aria-hidden="true">#</a></h2>
-<ul>
-<li>Ensure sufficient color contrast between card background and content</li>
-<li>Use appropriate heading hierarchy within cards</li>
-<li>Make interactive cards fully keyboard accessible</li>
-<li>Ensure card content is properly structured for screen readers</li>
-</ul>
-<h2 id="code-guidelines" tabindex="-1">Code Guidelines <a class="anchor" href="#code-guidelines" aria-hidden="true">#</a></h2>
-<ul>
-<li>Use the <code>eds-card</code> class for the container</li>
-<li>Include appropriate semantic HTML within cards</li>
-<li>Use modifier classes for different variants (e.g., <code>eds-card--media</code>, <code>eds-card--action</code>)</li>
-<li>Maintain proper spacing and alignment of card content</li>
-</ul>
-<h2 id="design-guidelines" tabindex="-1">Design Guidelines <a class="anchor" href="#design-guidelines" aria-hidden="true">#</a></h2>
-<ul>
-<li>Keep card content concise and focused on a single topic</li>
-<li>Maintain consistent spacing and alignment across multiple cards</li>
-<li>Use clear visual hierarchy within cards</li>
-<li>Ensure card actions are clearly distinguishable and user-friendly</li>
-</ul>
-
+        <section class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Examples</h2>
+  <div class="space-y-12">
+    <!-- Basic Accordion -->
+    <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+      <h3 class="text-xl font-bold mb-4">Basic Accordion</h3>
+      <p class="mb-6">A standard accordion with default styling.</p>
+<p><div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden"><br>
+<div class="eds-accordion"><br>
+<div class="bg-white"><br>
+<button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<span>Section 1: Introduction</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+<div class="p-4 border-t border-[var(--color-border)]"><br>
+<p>This is the content for section 1. It can include any type of content including text, images, and other components.</p><br>
+</div><br>
+</div></p>
+<p><div class="border-t border-[var(--color-border)] bg-white"><br>
+<button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<span>Section 2: Features</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+</div></p>
+<p><div class="border-t border-[var(--color-border)] bg-white"><br>
+<button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<span>Section 3: Specifications</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+</div><br>
+</div><br>
+</div></p>
+<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><br>
+<pre><code class="language-html">&lt;div class=&quot;eds-accordion&quot;&gt;<br>
+&lt;div&gt;<br>
+&lt;button class=&quot;w-full p-4 flex items-center justify-between text-left font-medium&quot;&gt;<br>
+&lt;span&gt;Section 1: Introduction&lt;/span&gt;<br>
+&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot;&gt;<br>
+&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
+&lt;/svg&gt;<br>
+&lt;/button&gt;<br>
+&lt;div class=&quot;p-4 border-t&quot;&gt;<br>
+&lt;p&gt;This is the content for section 1.&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;</p>
+<p>&lt;div class=&quot;border-t&quot;&gt;<br>
+&lt;button class=&quot;w-full p-4 flex items-center justify-between text-left font-medium&quot;&gt;<br>
+&lt;span&gt;Section 2: Features&lt;/span&gt;<br>
+&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot;&gt;<br>
+&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
+&lt;/svg&gt;<br>
+&lt;/button&gt;<br>
+&lt;/div&gt;</p>
+<p>&lt;div class=&quot;border-t&quot;&gt;<br>
+&lt;button class=&quot;w-full p-4 flex items-center justify-between text-left font-medium&quot;&gt;<br>
+&lt;span&gt;Section 3: Specifications&lt;/span&gt;<br>
+&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot;&gt;<br>
+&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
+&lt;/svg&gt;<br>
+&lt;/button&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;</code></pre><br>
+</div><br>
+</div></p>
+<p><!-- Icon Left Accordion --><br>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
+<h3 class="text-xl font-bold mb-4">Icon Left Accordion</h3><br>
+<p class="mb-6">An accordion with the expand/collapse icon positioned on the left.</p></p>
+<p><div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden"><br>
+<div class="eds-accordion"><br>
+<div class="bg-white"><br>
+<button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+<span>Payment Methods</span><br>
+</button><br>
+<div class="p-4 pl-11 border-t border-[var(--color-border)]"><br>
+<p>Configure your payment methods and preferences.</p><br>
+</div><br>
+</div></p>
+<p><div class="border-t border-[var(--color-border)] bg-white"><br>
+<button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+<span>Shipping Address</span><br>
+</button><br>
+</div></p>
+<p><div class="border-t border-[var(--color-border)] bg-white"><br>
+<button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+<span>Order History</span><br>
+</button><br>
+</div><br>
+</div><br>
+</div><br>
+</div></p>
+<p><!-- FAQ Accordion --><br>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
+<h3 class="text-xl font-bold mb-4">FAQ Accordion</h3><br>
+<p class="mb-6">A common implementation pattern for FAQs with multiple sections that can be open simultaneously.</p></p>
+<p><div class="mb-8 space-y-3"><br>
+<div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white"><br>
+<button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<span>How do I reset my password?</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+<div class="p-4"><br>
+<p>To reset your password, click on the &quot;Forgot Password&quot; link on the login page. You'll receive an email with instructions to create a new password.</p><br>
+</div><br>
+</div></p>
+<p><div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white"><br>
+<button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<span>How do I update my account information?</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+</div></p>
+<p><div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white"><br>
+<button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
+<span>Can I change my subscription plan?</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+</div><br>
+</div><br>
+</div></p>
+<p><!-- Accessible Accordion --><br>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
+<h3 class="text-xl font-bold mb-4">Fully Accessible Accordion</h3><br>
+<p class="mb-6">An example with all required accessibility attributes for screen reader support.</p></p>
+<p><div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden"><br>
+<div class="eds-accordion"><br>
+<h3><br>
+<button 
+              id="acc-panel1-header" 
+              class="w-full p-4 flex items-center justify-between text-left font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"
+              aria-expanded="true"
+              aria-controls="acc-panel1-content"><br>
+<span>Getting Started</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+</h3><br>
+<div 
+            id="acc-panel1-content" 
+            role="region" 
+            aria-labelledby="acc-panel1-header"
+            class="p-4 border-t border-[var(--color-border)] bg-white"><br>
+<p>This panel includes all the necessary ARIA attributes for accessible accordions. Notice how the expanded state is clearly indicated both visually and programmatically.</p><br>
+</div></p>
+<p><h3><br>
+<button 
+              id="acc-panel2-header" 
+              class="w-full p-4 flex items-center justify-between text-left font-medium bg-white border-t border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"
+              aria-expanded="false"
+              aria-controls="acc-panel2-content"><br>
+<span>Advanced Configuration</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+</h3><br>
+<div 
+            id="acc-panel2-content" 
+            role="region" 
+            aria-labelledby="acc-panel2-header"
+            class="hidden p-4 border-t border-[var(--color-border)] bg-white"><br>
+<p>This content is hidden by default.</p><br>
+</div><br>
+</div><br>
+</div></p>
+<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><br>
+<pre><code class="language-html">&lt;div class=&quot;eds-accordion&quot;&gt;<br>
+&lt;h3&gt;<br>
+&lt;button<br>
+id=&quot;acc-panel1-header&quot;<br>
+class=&quot;w-full p-4 flex items-center justify-between text-left font-medium&quot;<br>
+aria-expanded=&quot;true&quot;<br>
+aria-controls=&quot;acc-panel1-content&quot;&gt;<br>
+&lt;span&gt;Getting Started&lt;/span&gt;<br>
+&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5 transform rotate-180&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;<br>
+&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
+&lt;/svg&gt;<br>
+&lt;/button&gt;<br>
+&lt;/h3&gt;<br>
+&lt;div<br>
+id=&quot;acc-panel1-content&quot;<br>
+role=&quot;region&quot;<br>
+aria-labelledby=&quot;acc-panel1-header&quot;<br>
+class=&quot;p-4 border-t&quot;&gt;<br>
+&lt;p&gt;Panel content with accessibility features.&lt;/p&gt;<br>
+&lt;/div&gt;</p>
+<p>&lt;h3&gt;<br>
+&lt;button<br>
+id=&quot;acc-panel2-header&quot;<br>
+class=&quot;w-full p-4 flex items-center justify-between text-left font-medium border-t&quot;<br>
+aria-expanded=&quot;false&quot;<br>
+aria-controls=&quot;acc-panel2-content&quot;&gt;<br>
+&lt;span&gt;Advanced Configuration&lt;/span&gt;<br>
+&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;<br>
+&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
+&lt;/svg&gt;<br>
+&lt;/button&gt;<br>
+&lt;/h3&gt;<br>
+&lt;div<br>
+id=&quot;acc-panel2-content&quot;<br>
+role=&quot;region&quot;<br>
+aria-labelledby=&quot;acc-panel2-header&quot;<br>
+class=&quot;hidden p-4 border-t&quot;&gt;<br>
+&lt;p&gt;This content is hidden by default.&lt;/p&gt;<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;</code></pre><br>
+</div><br>
+</div></p>
+<p><!-- Custom Styled Accordion --><br>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
+<h3 class="text-xl font-bold mb-4">Custom Styled Accordion</h3><br>
+<p class="mb-6">An example with custom styling applied to demonstrate flexibility.</p></p>
+<p><div class="mb-8 space-y-4"><br>
+<div class="rounded-md overflow-hidden bg-[var(--color-primary-light)]"><br>
+<button class="w-full p-4 flex items-center justify-between text-left font-medium text-[var(--color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset rounded-t-md"><br>
+<span class="flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /><br>
+</svg><br>
+Performance Optimization<br>
+</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+<div class="p-4 bg-white border border-[var(--color-primary-light)] border-t-0 rounded-b-md"><br>
+<p>This accordion uses custom colors and icons to match a specific visual style. You can adapt the styling to fit your application's design system.</p><br>
+</div><br>
+</div></p>
+<p><div class="rounded-md overflow-hidden bg-[var(--color-primary-light)]"><br>
+<button class="w-full p-4 flex items-center justify-between text-left font-medium text-[var(--color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset rounded-t-md"><br>
+<span class="flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /><br>
+</svg><br>
+Security Best Practices<br>
+</span><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</button><br>
+</div><br>
+</div><br>
+</div></p>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Simple accordion functionality for the examples
+    const accordionButtons = document.querySelectorAll('.eds-accordion button');
+    
+    accordionButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        const controlsId = button.getAttribute('aria-controls');
+        const content = controlsId ? document.getElementById(controlsId) : button.nextElementSibling;
+        const icon = button.querySelector('svg');
+        
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          if (content) content.classList.add('hidden');
+          if (icon) icon.classList.remove('rotate-180');
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          if (content) content.classList.remove('hidden');
+          if (icon) icon.classList.add('rotate-180');
+        }
+      });
+    });
+  });
+</script>
       </div>
       
       <div class="tab-content hidden space-y-10" id="code">
@@ -344,7 +602,7 @@
       
       <div class="tab-content hidden space-y-10" id="examples">
         
-          <p>Examples are coming soon.</p>
+          true
         
       </div>
       

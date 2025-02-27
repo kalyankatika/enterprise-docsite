@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Card | Enterprise Design System</title>
-  <meta name="description" content="Cards organize content and actions about a single subject">
+  <title>Accordion | Enterprise Design System</title>
+  <meta name="description" content="Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -197,7 +197,7 @@
               </a>
               
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-                <li><a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">Card</a></li>
+                <li><a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Card</a></li>
                 <li><a href="/components/layout/accordion/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Accordion</a></li>
                 <li><a href="/components/layout/modal/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Modal</a></li>
                 <li><a href="/components/layout/grid/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Grid</a></li>
@@ -249,7 +249,14 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-              <span class="font-medium">Card</span>
+              <a href="/components/layout/" class="hover:text-[var(--color-primary)] transition-colors capitalize">layout</a>
+            </li>
+            
+            <li class="flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="font-medium">Accordion</span>
             </li>
           </ol>
         </nav>
@@ -257,15 +264,15 @@
         <!-- Component header -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
           <div>
-            <h1 class="text-3xl font-bold mb-2">Card</h1>
-            <p class="text-[var(--color-text-muted)]">Cards organize content and actions about a single subject</p>
+            <h1 class="text-3xl font-bold mb-2">Accordion</h1>
+            <p class="text-[var(--color-text-muted)]">Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.</p>
           </div>
           <div class="flex items-center space-x-3">
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
               v1.0.0
             </span>
             
-            <a href="https://github.com/enterprise-design-system/components/tree/main/src/card" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+            <a href="https://github.com/enterprise-design-system/components/tree/main/src/accordion" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
               </svg>
@@ -287,47 +294,197 @@
       
       <!-- Tab content -->
       <div class="tab-content space-y-10" id="design">
-        <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
-<p>The Card component is a flexible container for displaying related content and actions about a single subject.</p>
-<h2 id="when-to-use" tabindex="-1">When to use <a class="anchor" href="#when-to-use" aria-hidden="true">#</a></h2>
-<p>Use cards to:</p>
-<ul>
-<li>Display content and actions related to a single topic or object</li>
-<li>Group related information in a visually distinct container</li>
-<li>Create a consistent layout for multiple similar items</li>
-<li>Emphasize sections of content on a page</li>
-</ul>
-<h2 id="variants" tabindex="-1">Variants <a class="anchor" href="#variants" aria-hidden="true">#</a></h2>
-<h3 id="basic-card" tabindex="-1">Basic Card <a class="anchor" href="#basic-card" aria-hidden="true">#</a></h3>
-<p>The basic card provides a simple container for content with minimal styling.</p>
-<h3 id="media-card" tabindex="-1">Media Card <a class="anchor" href="#media-card" aria-hidden="true">#</a></h3>
-<p>The media card includes an image or other media at the top of the card.</p>
-<h3 id="action-card" tabindex="-1">Action Card <a class="anchor" href="#action-card" aria-hidden="true">#</a></h3>
-<p>The action card includes a clear call-to-action button or link.</p>
-<h3 id="interactive-card" tabindex="-1">Interactive Card <a class="anchor" href="#interactive-card" aria-hidden="true">#</a></h3>
-<p>The interactive card is fully clickable and acts as a navigation element.</p>
-<h2 id="accessibility" tabindex="-1">Accessibility <a class="anchor" href="#accessibility" aria-hidden="true">#</a></h2>
-<ul>
-<li>Ensure sufficient color contrast between card background and content</li>
-<li>Use appropriate heading hierarchy within cards</li>
-<li>Make interactive cards fully keyboard accessible</li>
-<li>Ensure card content is properly structured for screen readers</li>
-</ul>
-<h2 id="code-guidelines" tabindex="-1">Code Guidelines <a class="anchor" href="#code-guidelines" aria-hidden="true">#</a></h2>
-<ul>
-<li>Use the <code>eds-card</code> class for the container</li>
-<li>Include appropriate semantic HTML within cards</li>
-<li>Use modifier classes for different variants (e.g., <code>eds-card--media</code>, <code>eds-card--action</code>)</li>
-<li>Maintain proper spacing and alignment of card content</li>
-</ul>
-<h2 id="design-guidelines" tabindex="-1">Design Guidelines <a class="anchor" href="#design-guidelines" aria-hidden="true">#</a></h2>
-<ul>
-<li>Keep card content concise and focused on a single topic</li>
-<li>Maintain consistent spacing and alignment across multiple cards</li>
-<li>Use clear visual hierarchy within cards</li>
-<li>Ensure card actions are clearly distinguishable and user-friendly</li>
-</ul>
-
+        <section class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Accessibility</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <p class="mb-6">Accordions should be accessible to all users, including those using assistive technologies such as screen readers. Follow these guidelines to ensure your accordions meet accessibility standards.</p>
+<p><h3 class="text-lg font-bold mb-4">ARIA Roles and Attributes</h3><br>
+<ul class="space-y-3 list-disc pl-5 mb-6"><br>
+<li>Use <code>aria-expanded</code> on the header button to indicate the expanded/collapsed state</li><br>
+<li>Include <code>aria-controls</code> on the header button that points to the ID of the content panel</li><br>
+<li>Apply <code>role=&quot;region&quot;</code> to the content panel with <code>aria-labelledby</code> pointing to the header ID</li><br>
+<li>Ensure all interactive elements have appropriate ARIA roles and states</li><br>
+<li>Use <code>aria-disabled=&quot;true&quot;</code> when an accordion is disabled but still visible</li><br>
+</ul></p>
+<p><h3 class="text-lg font-bold mb-4">Keyboard Navigation</h3><br>
+<table class="w-full text-left border-collapse mb-6"><br>
+<thead><br>
+<tr class="bg-[var(--color-bg)]"><br>
+<th class="py-2 px-4 border border-[var(--color-border)]">Key</th><br>
+<th class="py-2 px-4 border border-[var(--color-border)]">Function</th><br>
+</tr><br>
+</thead><br>
+<tbody><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Tab</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Moves focus to the accordion header</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Enter or Space</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Toggles the accordion panel between expanded and collapsed states</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Arrow Down</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the next accordion header</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Arrow Up</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the previous accordion header</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Home</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the first accordion header</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">End</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the last accordion header</td><br>
+</tr><br>
+</tbody><br>
+</table></p>
+<p><h3 class="text-lg font-bold mb-4">Implementation</h3><br>
+<p class="mb-4">Here's how to correctly implement an accessible accordion:</p></p>
+<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-6"><br>
+<pre><code class="language-html">&lt;div class=&quot;eds-accordion&quot;&gt;<br>
+&lt;h3&gt;<br>
+&lt;button<br>
+id=&quot;accordion-header-1&quot;<br>
+class=&quot;eds-accordion__header&quot;<br>
+aria-expanded=&quot;false&quot;<br>
+aria-controls=&quot;accordion-panel-1&quot;&gt;<br>
+Accordion Heading<br>
+&lt;span class=&quot;eds-accordion__icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;<br>
+&lt;/button&gt;<br>
+&lt;/h3&gt;<br>
+&lt;div<br>
+id=&quot;accordion-panel-1&quot;<br>
+class=&quot;eds-accordion__content&quot;<br>
+role=&quot;region&quot;<br>
+aria-labelledby=&quot;accordion-header-1&quot;<br>
+hidden&gt;<br>
+Accordion content goes here.<br>
+&lt;/div&gt;<br>
+&lt;/div&gt;</code></pre><br>
+</div></p>
+<p><div class="bg-[var(--color-warning-light)] p-4 rounded-md mb-6"><br>
+<div class="flex items-start"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-warning)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /><br>
+</svg><br>
+<p class="text-[var(--color-text-muted)]">Don't use role=&quot;button&quot; on elements that aren't naturally focused in the tab order. Instead, use a semantic button element to ensure proper keyboard interaction.</p><br>
+</div><br>
+</div></p>
+<p><h3 class="text-lg font-bold mb-4">Testing Criteria</h3><br>
+<p class="mb-4">Ensure your accordion passes these accessibility checks:</p></p>
+<p><ul class="space-y-2 list-disc pl-5"><br>
+<li>Accordion headers must be focusable and operable with a keyboard</li><br>
+<li>State changes must be programmatically announced to screen readers</li><br>
+<li>Focus must remain on the header after expanding/collapsing</li><br>
+<li>Content must be properly associated with its header</li><br>
+<li>Color contrast must meet WCAG AA standards (4.5:1 for normal text)</li><br>
+<li>Icons must have sufficient contrast and not rely solely on color</li><br>
+<li>Animations must respect user preferences via the prefers-reduced-motion media query</li><br>
+</ul></p>
+  </div>
+</section>
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">WAI-ARIA Compliance</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <p class="mb-6">The accordion component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/" class="text-[var(--color-primary)] underline">WAI-ARIA Accordion Pattern</a>. This ensures consistency with established accessibility standards and patterns.</p>
+<p><h3 class="text-lg font-bold mb-4">Required ARIA Attributes</h3><br>
+<table class="w-full text-left border-collapse mb-6"><br>
+<thead><br>
+<tr class="bg-[var(--color-bg)]"><br>
+<th class="py-2 px-4 border border-[var(--color-border)]">Attribute</th><br>
+<th class="py-2 px-4 border border-[var(--color-border)]">Applied to</th><br>
+<th class="py-2 px-4 border border-[var(--color-border)]">Purpose</th><br>
+</tr><br>
+</thead><br>
+<tbody><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-expanded</code></td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Accordion header button</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Indicates whether the accordion panel is expanded or collapsed</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-controls</code></td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Accordion header button</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">References the ID of the controlled panel</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-labelledby</code></td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Accordion panel</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">References the ID of the header for labeling</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]"><code>role=&quot;region&quot;</code></td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Accordion panel</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Identifies the element as a region when expanded</td><br>
+</tr><br>
+</tbody><br>
+</table></p>
+<p><div class="bg-[var(--color-info-light)] p-4 rounded-md"><br>
+<div class="flex items-start"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-info)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><br>
+</svg><br>
+<p class="text-[var(--color-text-muted)]">When using <code>role=&quot;region&quot;</code>, it's important to ensure the region has an accessible name using <code>aria-labelledby</code> to avoid ARIA validation errors.</p><br>
+</div><br>
+</div></p>
+  </div>
+</section>
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Responsive Considerations</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <p class="mb-4">For users on mobile or touch devices:</p>
+<p><ul class="space-y-3 list-disc pl-5"><br>
+<li>Ensure touch targets (accordion headers) are at least 44×44 pixels</li><br>
+<li>Provide sufficient spacing between adjacent accordion headers to prevent accidental taps</li><br>
+<li>Consider starting with all accordions collapsed on mobile to minimize initial scrolling</li><br>
+<li>Ensure text remains readable at smaller viewport sizes</li><br>
+<li>Adapt padding and margins for comfortable viewing on small screens</li><br>
+</ul></p>
+  </div>
+</section>
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Screen Reader Announcements</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <p class="mb-6">When implemented correctly, screen readers should announce the following when interacting with an accordion:</p>
+<p><table class="w-full text-left border-collapse"><br>
+<thead><br>
+<tr class="bg-[var(--color-bg)]"><br>
+<th class="py-2 px-4 border border-[var(--color-border)]">Action</th><br>
+<th class="py-2 px-4 border border-[var(--color-border)]">Announcement</th><br>
+</tr><br>
+</thead><br>
+<tbody><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Focus on collapsed header</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">&quot;Accordion Heading, collapsed, button&quot;</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Expand accordion</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">&quot;Accordion Heading, expanded, button&quot;</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Collapse accordion</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">&quot;Accordion Heading, collapsed, button&quot;</td><br>
+</tr><br>
+<tr><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">Focus on disabled header</td><br>
+<td class="py-2 px-4 border border-[var(--color-border)]">&quot;Accordion Heading, button, disabled&quot;</td><br>
+</tr><br>
+</tbody><br>
+</table></p>
+  </div>
+  <div class="bg-[var(--color-success-light)] p-4 rounded-md">
+    <div class="flex items-start">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-success)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <p class="text-[var(--color-text-muted)]">Test your accordions with real screen readers like NVDA, JAWS, and VoiceOver to ensure they work as expected.</p>
+    </div>
+  </div>
+</section>
       </div>
       
       <div class="tab-content hidden space-y-10" id="code">
@@ -338,7 +495,7 @@
       
       <div class="tab-content hidden space-y-10" id="accessibility">
         
-          <p>Accessibility documentation is coming soon.</p>
+          true
         
       </div>
       

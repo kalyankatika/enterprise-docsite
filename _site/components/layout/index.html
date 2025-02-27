@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Layout Components | Enterprise Design System</title>
-  <meta name="description" content="Layout components help structure content and define the visual hierarchy of pages">
+  <meta name="description" content="Components that help with page structure and content organization.">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -187,82 +187,43 @@
       <div class="prose max-w-none">
         <h1>Layout Components</h1>
         
-          <p class="text-xl text-[var(--color-text-muted)] mb-8">Layout components help structure content and define the visual hierarchy of pages</p>
+          <p class="text-xl text-[var(--color-text-muted)] mb-8">Components that help with page structure and content organization.</p>
         
         
         <h1 id="layout-components" tabindex="-1">Layout Components <a class="anchor" href="#layout-components" aria-hidden="true">#</a></h1>
-<p>Layout components help structure content and define the visual hierarchy of pages. They provide consistent spacing, alignment, and organization of UI elements.</p>
-<h2 id="available-components" tabindex="-1">Available Components <a class="anchor" href="#available-components" aria-hidden="true">#</a></h2>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-  <a href="/components/layout/container/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Container</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Containers center content horizontally and add responsive padding</p>
-    <div class="w-full h-24 border border-dashed border-[var(--color-border)] flex items-center justify-center bg-[var(--color-background-alt)]">
-      <div class="w-3/4 h-16 border border-solid border-[var(--color-primary)] bg-[var(--color-primary-light)] flex items-center justify-center">
-        <span class="text-sm">Container</span>
-      </div>
-    </div>
+<p>Layout components help structure and organize content on the page, providing consistent containers and spatial arrangements.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+  <a href="/components/layout/accordion/" class="block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+    <h2 class="text-xl font-bold mb-2">Accordion</h2>
+    <p class="text-[var(--color-text-muted)] mb-4">Expandable panels that show and hide content to conserve space.</p>
+    <div class="mt-4 text-[var(--color-primary)]">View component →</div>
   </a>
-  <a href="/components/layout/grid/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Grid</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Grids create flexible, responsive layouts with rows and columns</p>
-    <div class="w-full grid grid-cols-3 gap-2 h-24">
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] flex items-center justify-center">1</div>
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] flex items-center justify-center">2</div>
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] flex items-center justify-center">3</div>
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] flex items-center justify-center">4</div>
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] flex items-center justify-center">5</div>
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] flex items-center justify-center">6</div>
-    </div>
+  <a href="/components/layout/card/" class="block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+    <h2 class="text-xl font-bold mb-2">Card</h2>
+    <p class="text-[var(--color-text-muted)] mb-4">Versatile containers for displaying related content and actions.</p>
+    <div class="mt-4 text-[var(--color-primary)]">View component →</div>
   </a>
-  <a href="/components/layout/box/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Box</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Boxes provide padding, borders, and background colors for content</p>
-    <div class="p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-background-alt)]">
-      <p class="text-sm">Box content</p>
-    </div>
+  <a href="/components/layout/grid/" class="block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+    <h2 class="text-xl font-bold mb-2">Grid</h2>
+    <p class="text-[var(--color-text-muted)] mb-4">Flexible layout system for organizing content in rows and columns.</p>
+    <div class="mt-4 text-[var(--color-primary)]">View component →</div>
   </a>
-  <a href="/components/layout/divider/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Divider</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Dividers create visual separation between content sections</p>
-    <div class="space-y-4">
-      <p class="text-sm">Section above</p>
-      <hr class="border-t border-[var(--color-border)]">
-      <p class="text-sm">Section below</p>
-    </div>
+  <a href="/components/layout/modal/" class="block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+    <h2 class="text-xl font-bold mb-2">Modal</h2>
+    <p class="text-[var(--color-text-muted)] mb-4">Dialog boxes that appear in front of the main content.</p>
+    <div class="mt-4 text-[var(--color-primary)]">View component →</div>
   </a>
-  <a href="/components/layout/stack/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Stack</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Stacks add consistent spacing between items vertically or horizontally</p>
-    <div class="flex flex-col space-y-2">
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] h-6 w-full"></div>
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] h-6 w-full"></div>
-      <div class="bg-[var(--color-primary-light)] border border-[var(--color-primary)] h-6 w-full"></div>
-    </div>
+  <a href="/components/layout/tabs/" class="block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+    <h2 class="text-xl font-bold mb-2">Tabs</h2>
+    <p class="text-[var(--color-text-muted)] mb-4">Organizes content into separate views within the same context.</p>
+    <div class="mt-4 text-[var(--color-primary)]">View component →</div>
   </a>
-  <a href="/components/layout/card/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Card</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Cards group related content and actions in a container with visual prominence</p>
-    <div class="rounded-lg border border-[var(--color-border)] overflow-hidden">
-      <div class="h-20 bg-[var(--color-primary-light)] border-b border-[var(--color-border)]"></div>
-      <div class="p-3 space-y-2">
-        <h3 class="text-sm font-medium">Card Title</h3>
-        <p class="text-xs text-[var(--color-text-muted)]">Card description text</p>
-      </div>
-    </div>
+  <a href="/components/layout/divider/" class="block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+    <h2 class="text-xl font-bold mb-2">Divider</h2>
+    <p class="text-[var(--color-text-muted)] mb-4">Visual separators for distinguishing content sections.</p>
+    <div class="mt-4 text-[var(--color-primary)]">View component →</div>
   </a>
 </div>
-<h2 id="usage-guidelines" tabindex="-1">Usage Guidelines <a class="anchor" href="#usage-guidelines" aria-hidden="true">#</a></h2>
-<p>When working with layout components, consider the following best practices:</p>
-<ul>
-<li>Use consistent spacing and alignment throughout your application</li>
-<li>Choose the appropriate layout component based on the content type and hierarchy</li>
-<li>Ensure layouts are responsive and adapt well to different screen sizes</li>
-<li>Use nested layout components to create complex page structures</li>
-<li>Pay attention to the visual hierarchy and reading flow</li>
-</ul>
-<p>For component-specific guidelines, refer to the individual component documentation pages.</p>
-
       </div>
     </div>
     

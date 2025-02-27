@@ -177,67 +177,117 @@
 
   <main class="flex-1">
     
-<div class="eds-container">
-  <div class="eds-component">
-    <header class="eds-component__header">
-      <div class="eds-component__meta">
-        <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        <div class="eds-component__version">Since v1.0.0</div>
-        <div class="eds-component__updated">Updated: Wed Feb 12 2025 00:00:00 GMT+0000 (Coordinated Universal Time)</div>
-      </div>
-      
-      <h1 class="eds-component__title">Breadcrumb</h1>
-      <p class="eds-component__description">Breadcrumbs show the navigational path within a site hierarchy</p>
-      
-      
-      <a href="https://github.com/enterprise/design-system/tree/main/components/breadcrumb" class="eds-component__github" target="_blank" rel="noopener">View on GitHub</a>
-      
-    </header>
-
-    <div class="eds-component__tabs" x-data="{ activeTab: 'documentation' }">
-      <div class="eds-tabs">
-        <div class="eds-tabs__list" role="tablist">
-          <button class="eds-tabs__tab" 
-                  :class="{ 'eds-tabs__tab--active': activeTab === 'documentation' }" 
-                  @click="activeTab = 'documentation'" 
-                  role="tab" 
-                  aria-selected="activeTab === 'documentation'" 
-                  aria-controls="documentation">
-            Documentation
-          </button>
-          <button class="eds-tabs__tab" 
-                  :class="{ 'eds-tabs__tab--active': activeTab === 'examples' }" 
-                  @click="activeTab = 'examples'" 
-                  role="tab" 
-                  aria-selected="activeTab === 'examples'" 
-                  aria-controls="examples">
-            Examples
-          </button>
-          <button class="eds-tabs__tab" 
-                  :class="{ 'eds-tabs__tab--active': activeTab === 'code' }" 
-                  @click="activeTab = 'code'" 
-                  role="tab" 
-                  aria-selected="activeTab === 'code'" 
-                  aria-controls="code">
-            Code
-          </button>
-          <button class="eds-tabs__tab" 
-                  :class="{ 'eds-tabs__tab--active': activeTab === 'usage' }" 
-                  @click="activeTab = 'usage'" 
-                  role="tab" 
-                  aria-selected="activeTab === 'usage'" 
-                  aria-controls="usage">
-            Usage
-          </button>
+<div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col lg:flex-row gap-10">
+    <!-- Left sidebar navigation -->
+    <aside class="lg:w-64 shrink-0">
+      <nav class="sticky top-24 space-y-6">
+        <div class="space-y-2">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Input Components
+              </a>
+              
+            </li>
+            <li>
+              <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Layout Components
+              </a>
+              
+            </li>
+            <li>
+              <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
+                Navigation Components
+              </a>
+              
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+                <li><a href="/components/navigation/breadcrumb/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">Breadcrumb</a></li>
+                <li><a href="/components/navigation/tabs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Tabs</a></li>
+                <li><a href="/components/navigation/pagination/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Pagination</a></li>
+                <li><a href="/components/navigation/menu/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Menu</a></li>
+              </ul>
+              
+            </li>
+            <li>
+              <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Feedback Components
+              </a>
+              
+            </li>
+          </ul>
         </div>
         
-        <div class="eds-tabs__panels">
-          <div class="eds-tabs__panel" 
-               :class="{ 'eds-tabs__panel--active': activeTab === 'documentation' }" 
-               role="tabpanel" 
-               id="documentation">
-            <div class="eds-component__content">
-              <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
+        <div class="space-y-2">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Colors</a></li>
+            <li><a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Typography</a></li>
+            <li><a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Spacing</a></li>
+            <li><a href="/design-system/foundations/icons/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Icons</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    
+    <!-- Main content -->
+    <main class="flex-1">
+      <div class="mb-10">
+        <!-- Breadcrumb -->
+        <nav class="text-sm text-[var(--color-text-muted)] mb-4" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2">
+            <li><a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a></li>
+            <li class="flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/components/" class="hover:text-[var(--color-primary)] transition-colors">Components</a>
+            </li>
+            
+            <li class="flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="font-medium">Breadcrumb</span>
+            </li>
+          </ol>
+        </nav>
+        
+        <!-- Component header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <h1 class="text-3xl font-bold mb-2">Breadcrumb</h1>
+            <p class="text-[var(--color-text-muted)]">Breadcrumbs show the navigational path within a site hierarchy</p>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
+              v1.0.0
+            </span>
+            
+            <a href="https://github.com/enterprise-design-system/components/tree/main/src/breadcrumb" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Component content tabs -->
+      <div class="mb-8 border-b border-[var(--color-border)]">
+        <div class="flex space-x-6">
+          <a href="#design" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="design">Design</a>
+          <a href="#code" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="code">Code</a>
+          <a href="#accessibility" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="accessibility">Accessibility</a>
+          <a href="#examples" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="examples">Examples</a>
+        </div>
+      </div>
+      
+      <!-- Tab content -->
+      <div class="tab-content space-y-10" id="design">
+        <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
 <p>The Breadcrumb component displays a navigational path showing the user their current location within the site's hierarchy.</p>
 <h2 id="when-to-use" tabindex="-1">When to use <a class="anchor" href="#when-to-use" aria-hidden="true">#</a></h2>
 <p>Use breadcrumbs when:</p>
@@ -276,53 +326,96 @@
 <li>Current page should be visually distinct but not a clickable link</li>
 </ul>
 
-            </div>
-
-            
-            <div class="eds-component__contributors">
-              <h3 class="eds-component__contributors-title">Contributors</h3>
-              <ul class="eds-component__contributors-list">
-                
-                <li class="eds-component__contributor">Jane Smith</li>
-                
-                <li class="eds-component__contributor">Michael Brown</li>
-                
-              </ul>
-            </div>
-            
-          </div>
-          
-          <div class="eds-tabs__panel" 
-               :class="{ 'eds-tabs__panel--active': activeTab === 'examples' }" 
-               role="tabpanel" 
-               id="examples">
-            <div class="eds-component__examples">
-              <p>Component examples coming soon...</p>
-            </div>
-          </div>
-          
-          <div class="eds-tabs__panel" 
-               :class="{ 'eds-tabs__panel--active': activeTab === 'code' }" 
-               role="tabpanel" 
-               id="code">
-            <div class="eds-component__code">
-              <p>Component code examples coming soon...</p>
-            </div>
-          </div>
-          
-          <div class="eds-tabs__panel" 
-               :class="{ 'eds-tabs__panel--active': activeTab === 'usage' }" 
-               role="tabpanel" 
-               id="usage">
-            <div class="eds-component__usage">
-              <p>Component usage statistics coming soon...</p>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+      
+      <div class="tab-content hidden space-y-10" id="code">
+        
+          <p>Code documentation is coming soon.</p>
+        
+      </div>
+      
+      <div class="tab-content hidden space-y-10" id="accessibility">
+        
+          <p>Accessibility documentation is coming soon.</p>
+        
+      </div>
+      
+      <div class="tab-content hidden space-y-10" id="examples">
+        
+          <p>Examples are coming soon.</p>
+        
+      </div>
+      
+      <!-- Right sidebar: On this page -->
+      <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
+        <h2 class="text-xl font-bold mb-4">On this page</h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#anatomy" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Anatomy</a></li>
+          <li><a href="#considerations" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Considerations</a></li>
+          <li><a href="#usage" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Usage</a></li>
+          <li><a href="#behavior" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Behavior</a></li>
+          <li><a href="#best-practices" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Best Practices</a></li>
+          <li><a href="#specifications" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Specifications</a></li>
+        </ul>
+      </div>
+    </main>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize tabs
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    // Check if there's a hash in the URL
+    const hash = window.location.hash;
+    if (hash) {
+      // Remove # from hash
+      const tabId = hash.substring(1);
+      showTab(tabId);
+    } else {
+      // Set default active tab
+      tabLinks[0].classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
+      tabContents[0].classList.remove('hidden');
+    }
+    
+    tabLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabId = link.getAttribute('data-tab');
+        
+        // Update URL with hash
+        history.pushState(null, null, `#${tabId}`);
+        
+        showTab(tabId);
+      });
+    });
+    
+    function showTab(tabId) {
+      // Hide all tabs and remove active classes
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+      
+      tabLinks.forEach(link => {
+        link.classList.remove('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
+      });
+      
+      // Show the selected tab
+      const selectedTab = document.getElementById(tabId);
+      if (selectedTab) {
+        selectedTab.classList.remove('hidden');
+      }
+      
+      // Add active class to the clicked tab link
+      const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
+      if (activeLink) {
+        activeLink.classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
+      }
+    }
+  });
+</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
