@@ -3,9 +3,9 @@
 /* CSS Variables for theme */
 :root {
   /* Light theme (default) */
-  --color-primary: #0066cc;
-  --color-primary-light: #e6f0ff;
-  --color-primary-dark: #004c99;
+  --color-primary: #368727;
+  --color-primary-light: #eaf5e7;
+  --color-primary-dark: #27641c;
   --color-secondary: #6c757d;
   --color-success: #28a745;
   --color-danger: #dc3545;
@@ -24,9 +24,9 @@
 
 /* Dark theme */
 .eds-theme-dark {
-  --color-primary: #4d9fff;
-  --color-primary-light: #0d2d4a;
-  --color-primary-dark: #9cc7ff;
+  --color-primary: #5eb84d;
+  --color-primary-light: #1a3a13;
+  --color-primary-dark: #8dd180;
   
   --color-text: #f8f9fa;
   --color-text-muted: #adb5bd;
@@ -122,16 +122,25 @@ html, body {
 }
 
 /* Dark Mode / Light Mode specific elements */
-.dark\:block {
+.eds-theme-dark\:block {
   display: none;
 }
 
-.eds-theme-dark .dark\:block {
+.eds-theme-dark .eds-theme-dark\:block {
   display: block;
 }
 
-.eds-theme-dark .dark\:hidden {
+.eds-theme-dark .eds-theme-dark\:hidden {
   display: none;
+}
+
+/* For elements with class="hidden eds-theme-dark:block" */
+.hidden.eds-theme-dark\:block {
+  display: none;
+}
+
+.eds-theme-dark .hidden.eds-theme-dark\:block {
+  display: block;
 }
 
 /* Tailwind-like utility classes */
