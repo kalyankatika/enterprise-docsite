@@ -1,5 +1,5 @@
 ---
-layout: layouts/home.njk
+layout: layouts/animated-home.njk
 title: Enterprise Design System
 description: A comprehensive design system for building consistent, accessible, and beautiful enterprise applications
 cta:

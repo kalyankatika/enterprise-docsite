@@ -1,0 +1,168 @@
+/**
+ * Animation styles for the EDS
+ * Provides CSS transitions to simulate Framer Motion animations
+ */
+
+/* Base styles for animations */
+[data-motion] {
+  opacity: 0;
+}
+
+[data-motion].animated {
+  opacity: 1;
+}
+
+/* Fade in animation */
+.motion-fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade in up animation */
+.motion-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in animation */
+.motion-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide in right animation */
+.motion-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stagger container */
+.motion-stagger {
+  opacity: 1;
+}
+
+.motion-stagger > * {
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
+}
+
+.motion-stagger.animated > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero section specific animations */
+.hero-title {
+  transform: translateY(-10px);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out;
+}
+
+.hero-title.animated {
+  transform: translateY(0);
+}
+
+.hero-image {
+  transform: scale(0.95);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease-out;
+}
+
+.hero-image.animated {
+  transform: scale(1);
+}
+
+/* Card hover animations */
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Icon animations */
+.animated-icon {
+  transition: transform 0.3s ease;
+}
+
+.animated-card:hover .animated-icon {
+  transform: translateX(5px);
+}
+
+/* Button animations */
+.animated-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.animated-button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}

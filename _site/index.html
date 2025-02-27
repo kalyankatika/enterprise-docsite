@@ -15,6 +15,7 @@
   <!-- Scripts -->
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/framer-motion-wrapper.js" defer></script>
   
   <!-- Fix for SVG icon sizing -->
   <style>
@@ -167,17 +168,23 @@
 
   <main class="flex-1">
     
+<!-- Hero section with subtle animations -->
 <div class="bg-[var(--color-bg)] py-20 md:py-24 border-b border-[var(--color-border)]">
   <div class="container mx-auto px-4 md:px-6 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">Grow and evolve while<br>staying true to who we are.</h1>
-    <p class="text-xl max-w-3xl mx-auto mb-10 text-[var(--color-text-muted)]">Enterprise Design System are the guidelines and resources that ensure consistency and continuity across our brand and design system.</p>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6 hero-title" data-motion="fade-in">
+      Grow and evolve while<br>staying true to who we are.
+    </h1>
+    
+    <p class="text-xl max-w-3xl mx-auto mb-10 text-[var(--color-text-muted)]" data-motion="fade-in-up">
+      Enterprise Design System are the guidelines and resources that ensure consistency and continuity across our brand and design system.
+    </p>
     
     
-    <div class="flex flex-col md:flex-row gap-4 justify-center">
-      <a href="/getting-started/" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+    <div class="flex flex-col md:flex-row gap-4 justify-center" data-motion="fade-in-up">
+      <a href="/getting-started/" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
         Get Started
       </a>
-      <a href="/components/" class="inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">
+      <a href="/components/" class="animated-button inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">
         Browse Components
       </a>
     </div>
@@ -188,11 +195,11 @@
 <div class="container mx-auto px-4 md:px-6 py-16">
   <!-- Categories Section -->
   <section class="mb-20">
-    <h2 class="text-3xl font-bold mb-10 text-center">Documentation Categories</h2>
+    <h2 class="text-3xl font-bold mb-10 text-center" data-motion="fade-in">Documentation Categories</h2>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion="stagger-children">
       
-      <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
         <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
         </div>
@@ -200,13 +207,13 @@
         <p class="text-[var(--color-text-muted)] mb-4">Explore our library of reusable components that follow our design guidelines and best practices.</p>
         <a href="/components/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
           Browse Components
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
       </div>
       
-      <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
         <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
         </div>
@@ -214,13 +221,13 @@
         <p class="text-[var(--color-text-muted)] mb-4">Learn about the core design elements like colors, typography, spacing, and layout principles.</p>
         <a href="/design-system/foundations/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
           Browse Foundations
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
       </div>
       
-      <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
         <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
         </div>
@@ -228,7 +235,7 @@
         <p class="text-[var(--color-text-muted)] mb-4">Discover our guidelines for creating accessible, consistent, and user-friendly experiences.</p>
         <a href="/design-system/guidelines/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
           Browse Guidelines
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
@@ -239,12 +246,14 @@
   
   <!-- Browse Perspectives Section -->
   <section class="mb-20">
-    <h2 class="text-3xl font-bold mb-10 text-center">Browse Components</h2>
-    <p class="text-xl max-w-3xl mx-auto mb-10 text-center text-[var(--color-text-muted)]">Discover components through multiple navigation perspectives to find exactly what you need.</p>
+    <h2 class="text-3xl font-bold mb-5 text-center" data-motion="fade-in">Browse Components</h2>
+    <p class="text-xl max-w-3xl mx-auto mb-10 text-center text-[var(--color-text-muted)]" data-motion="fade-in-up">
+      Discover components through multiple navigation perspectives to find exactly what you need.
+    </p>
     
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-8" data-motion="stagger-children">
       <!-- By Channel -->
-      <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
         <h3 class="text-xl font-bold mb-3 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
@@ -259,14 +268,14 @@
         </ul>
         <a href="/navigation/by-channel/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
           Browse by Channel
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
       </div>
       
       <!-- By Type -->
-      <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
         <h3 class="text-xl font-bold mb-3 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -282,14 +291,14 @@
         </ul>
         <a href="/navigation/by-type/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
           Browse by Type
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
       </div>
       
       <!-- By Owner -->
-      <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
         <h3 class="text-xl font-bold mb-3 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -305,33 +314,33 @@
         </ul>
         <a href="/navigation/by-owner/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
           Browse by Owner
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </a>
       </div>
     </div>
     
-    <div class="mt-8 text-center">
-      <a href="/navigation/" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+    <div class="mt-10 text-center" data-motion="fade-in-up">
+      <a href="/navigation/" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
         View Navigation Hub
       </a>
     </div>
   </section>
   
-  <!-- Featured Components -->
+  <!-- Featured Components with scale-in animation -->
   <section class="mb-20">
-    <h2 class="text-3xl font-bold mb-10 text-center">Featured Components</h2>
+    <h2 class="text-3xl font-bold mb-10 text-center" data-motion="fade-in">Featured Components</h2>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion="stagger-children">
       
       <a href="/components/layout/accordion/" class="block group">
-        <div class="bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
+        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
           <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Accordion</h3>
           <p class="text-[var(--color-text-muted)] mb-4">Expandable content sections that help organize and declutter interfaces.</p>
           <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
             View Component
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </span>
@@ -339,12 +348,12 @@
       </a>
       
       <a href="/components/inputs/button/" class="block group">
-        <div class="bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
+        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
           <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Buttons</h3>
           <p class="text-[var(--color-text-muted)] mb-4">Primary, secondary, and tertiary button styles with various states and sizes.</p>
           <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
             View Component
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </span>
@@ -352,12 +361,12 @@
       </a>
       
       <a href="/components/layout/card/" class="block group">
-        <div class="bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
+        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
           <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Card</h3>
           <p class="text-[var(--color-text-muted)] mb-4">Versatile container for displaying related content and actions.</p>
           <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
             View Component
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </span>
@@ -367,8 +376,8 @@
     </div>
   </section>
   
-  <!-- Quick Search -->
-  <section class="mb-20">
+  <!-- Quick Search with slide-in animation -->
+  <section class="mb-20" data-motion="scale-in">
     <div class="bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-lg p-8">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-2xl font-bold mb-4">Quick Search</h2>
@@ -387,7 +396,7 @@
   </section>
   
   <!-- Main Content -->
-  <section>
+  <section class="prose max-w-none" data-motion="fade-in">
     <h2 id="welcome-to-the-enterprise-design-system" tabindex="-1">Welcome to the Enterprise Design System <a class="anchor" href="#welcome-to-the-enterprise-design-system" aria-hidden="true">#</a></h2>
 <p>The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products.</p>
 <h3 id="recent-updates" tabindex="-1">Recent Updates <a class="anchor" href="#recent-updates" aria-hidden="true">#</a></h3>
