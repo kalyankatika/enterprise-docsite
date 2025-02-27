@@ -2120,57 +2120,6 @@
   
     
       {
-        "title": "Enterprise Design System",
-        "url": "/",
-        "content": "&amp;lt;h2 id=&amp;quot;welcome-to-the-enterprise-design-system&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Welcome to the Enterprise Design System &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#welcome-to-the-enterprise-design-system&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;
-&amp;lt;p&amp;gt;Our design system provides a comprehensive set of guidelines, components, and patterns for building cohesive and accessible enterprise applications. By consolidating our documentation in one place, we aim to improve consistency, accelerate development, and enhance the user experience across all our products.&amp;lt;/p&amp;gt;
-&amp;lt;h3 id=&amp;quot;key-benefits&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Key Benefits &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#key-benefits&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
-&amp;lt;ul&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Consistency&amp;lt;/strong&amp;gt; - Build applications with a unified look and feel&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Efficiency&amp;lt;/strong&amp;gt; - Accelerate development with pre-built components&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Accessibility&amp;lt;/strong&amp;gt; - Ensure all users can access and use our applications&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Flexibility&amp;lt;/strong&amp;gt; - Customize components to meet specific requirements&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Documentation&amp;lt;/strong&amp;gt; - Access comprehensive guidelines and examples&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
-&amp;lt;h3 id=&amp;quot;built-on-modern-standards&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Built On Modern Standards &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#built-on-modern-standards&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
-&amp;lt;p&amp;gt;The Enterprise Design System is built on modern web standards and best practices, with a focus on performance, accessibility, and user experience. Our components are designed to work seamlessly across devices and browsers, and can be easily integrated into your existing projects.&amp;lt;/p&amp;gt;
-&amp;lt;div class=&amp;quot;mt-12 grid grid-cols-1 md:grid-cols-3 gap-8&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;flex flex-col items-center text-center&amp;quot;&amp;gt;
-    &amp;lt;div class=&amp;quot;text-[var(--color-primary)] bg-[var(--color-primary-light)] dark:bg-[var(--color-primary-light)] rounded-full p-4 mb-4&amp;quot;&amp;gt;
-      &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;h-8 w-8&amp;quot; fill=&amp;quot;none&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; stroke=&amp;quot;currentColor&amp;quot;&amp;gt;
-        &amp;lt;path stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;2&amp;quot; d=&amp;quot;M13 10V3L4 14h7v7l9-11h-7z&amp;quot; /&amp;gt;
-      &amp;lt;/svg&amp;gt;
-    &amp;lt;/div&amp;gt;
-    &amp;lt;h3 class=&amp;quot;text-lg font-semibold text-[var(--color-text)] mb-2&amp;quot;&amp;gt;Performance First&amp;lt;/h3&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-secondary)]&amp;quot;&amp;gt;Optimized for speed and efficiency, with a focus on minimizing bundle size and maximizing rendering performance.&amp;lt;/p&amp;gt;
-  &amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;flex flex-col items-center text-center&amp;quot;&amp;gt;
-    &amp;lt;div class=&amp;quot;text-[var(--color-primary)] bg-[var(--color-primary-light)] dark:bg-[var(--color-primary-light)] rounded-full p-4 mb-4&amp;quot;&amp;gt;
-      &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;h-8 w-8&amp;quot; fill=&amp;quot;none&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; stroke=&amp;quot;currentColor&amp;quot;&amp;gt;
-        &amp;lt;path stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;2&amp;quot; d=&amp;quot;M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z&amp;quot; /&amp;gt;
-      &amp;lt;/svg&amp;gt;
-    &amp;lt;/div&amp;gt;
-    &amp;lt;h3 class=&amp;quot;text-lg font-semibold text-[var(--color-text)] mb-2&amp;quot;&amp;gt;Accessible By Default&amp;lt;/h3&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-secondary)]&amp;quot;&amp;gt;Designed with accessibility in mind, ensuring all components meet WCAG 2.1 AA standards.&amp;lt;/p&amp;gt;
-  &amp;lt;/div&amp;gt;
-  &amp;lt;div class=&amp;quot;flex flex-col items-center text-center&amp;quot;&amp;gt;
-    &amp;lt;div class=&amp;quot;text-[var(--color-primary)] bg-[var(--color-primary-light)] dark:bg-[var(--color-primary-light)] rounded-full p-4 mb-4&amp;quot;&amp;gt;
-      &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;h-8 w-8&amp;quot; fill=&amp;quot;none&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; stroke=&amp;quot;currentColor&amp;quot;&amp;gt;
-        &amp;lt;path stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;2&amp;quot; d=&amp;quot;M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z&amp;quot; /&amp;gt;
-      &amp;lt;/svg&amp;gt;
-    &amp;lt;/div&amp;gt;
-    &amp;lt;h3 class=&amp;quot;text-lg font-semibold text-[var(--color-text)] mb-2&amp;quot;&amp;gt;Responsive Design&amp;lt;/h3&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-secondary)]&amp;quot;&amp;gt;All components are designed to work seamlessly across devices, from mobile to desktop.&amp;lt;/p&amp;gt;
-  &amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;",
-        "description": "A unified design system for building cohesive enterprise applications and documentation",
-        "type": "Page",
-        "date": "2025-02-27"
-      },
-    
-  
-    
-      {
         "title": "Components",
         "url": "/components/",
         "content": "&amp;lt;h1 id=&amp;quot;components&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Components &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#components&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
@@ -3408,6 +3357,35 @@ font-size: var(--eds-font-size-lg);&amp;lt;br&amp;gt;
 
 &amp;lt;script src=&amp;quot;/assets/js/search.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;",
         "description": "Search the Enterprise Design System Documentation",
+        "type": "Page",
+        "date": "2025-02-27"
+      },
+    
+  
+    
+      {
+        "title": "Enterprise Design System",
+        "url": "/",
+        "content": "&amp;lt;h2 id=&amp;quot;welcome-to-the-enterprise-design-system&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Welcome to the Enterprise Design System &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#welcome-to-the-enterprise-design-system&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;
+&amp;lt;p&amp;gt;The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products.&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;quot;recent-updates&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Recent Updates &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#recent-updates&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Version 2.0 Released&amp;lt;/strong&amp;gt;: Our latest version includes improved accessibility, new components, and enhanced documentation. &amp;lt;a href=&amp;quot;/updates/2025-02-15-version-2-release/&amp;quot;&amp;gt;Learn more&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Dark Mode Support&amp;lt;/strong&amp;gt;: All components now support dark mode out of the box, with seamless theme switching.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Expanded Component Library&amp;lt;/strong&amp;gt;: We&amp;#039;ve added 15 new components based on user feedback and real-world use cases.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;h3 id=&amp;quot;about-the-design-system&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;About the Design System &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#about-the-design-system&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
+&amp;lt;p&amp;gt;The Enterprise Design System is built on the following principles:&amp;lt;/p&amp;gt;
+&amp;lt;ol&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Consistency&amp;lt;/strong&amp;gt;: Creating a unified experience across all enterprise applications.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Accessibility&amp;lt;/strong&amp;gt;: Ensuring all components meet WCAG 2.1 AA standards.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Flexibility&amp;lt;/strong&amp;gt;: Providing components that can be customized to meet various needs.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Performance&amp;lt;/strong&amp;gt;: Optimizing components for fast load times and smooth interactions.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Maintainability&amp;lt;/strong&amp;gt;: Creating a system that is easy to update and extend.&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+&amp;lt;p&amp;gt;Visit our &amp;lt;a href=&amp;quot;/getting-started/&amp;quot;&amp;gt;getting started guide&amp;lt;/a&amp;gt; to learn how to integrate the design system into your projects.&amp;lt;/p&amp;gt;
+",
+        "description": "A comprehensive design system for building consistent, accessible, and beautiful enterprise applications",
         "type": "Page",
         "date": "2025-02-27"
       }
