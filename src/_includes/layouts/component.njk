@@ -1,5 +1,414 @@
 ---
-layout: base.njk
+layout: layouts/page.njk
+sidebarType: components
 ---
+
+{% set componentKey = page.fileSlug %}
+{% set componentData = components[componentCategory][componentKey] if componentCategory and componentKey in components[componentCategory] else null %}
+
+<div class="mb-8">
+  <h1 class="text-3xl font-bold mb-4">{{ title }}</h1>
+  <p class="text-lg text-[var(--color-text-muted)]">{{ description }}</p>
+  
+  {% if componentData %}
+  <div class="flex flex-wrap gap-3 mt-4">
+    <div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {% if componentData.status == 'stable' %}bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-300{% elif componentData.status == 'beta' %}bg-blue-100 text-blue-800 dark:bg-blue-800/20 dark:text-blue-300{% else %}bg-amber-100 text-amber-800 dark:bg-amber-800/20 dark:text-amber-300{% endif %}">
+      {{ componentData.status | capitalize }}
+    </div>
+    
+    <div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-bg-alt)] text-[var(--color-text-muted)]">
+      v{{ componentData.version }}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<div class="eds-component-content" x-data="{ activeTab: 'usage' }">
+  <nav class="border-b border-[var(--color-border)] mb-8">
+    <div class="flex -mb-px overflow-x-auto scrollbar-hide">
+      <button @click="activeTab = 'usage'" :class="{ 'border-[var(--color-primary)] text-[var(--color-primary)]': activeTab === 'usage', 'border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]': activeTab !== 'usage' }" class="py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap mr-8">
+        Usage
+      </button>
+      <button @click="activeTab = 'api'" :class="{ 'border-[var(--color-primary)] text-[var(--color-primary)]': activeTab === 'api', 'border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]': activeTab !== 'api' }" class="py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap mr-8">
+        API Reference
+      </button>
+      <button @click="activeTab = 'code'" :class="{ 'border-[var(--color-primary)] text-[var(--color-primary)]': activeTab === 'code', 'border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]': activeTab !== 'code' }" class="py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap mr-8">
+        Code Examples
+      </button>
+      <button @click="activeTab = 'accessibility'" :class="{ 'border-[var(--color-primary)] text-[var(--color-primary)]': activeTab === 'accessibility', 'border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]': activeTab !== 'accessibility' }" class="py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap">
+        Accessibility
+      </button>
+    </div>
+  </nav>
+  
+  <div x-show="activeTab === 'usage'" class="space-y-8">
+    <section>
+      <h2 class="text-xl font-bold mb-4">Overview</h2>
+      <div class="prose dark:prose-invert">
+        {{ usage | safe if usage else content | safe }}
+      </div>
+    </section>
+    
+    <section class="py-4">
+      <h2 class="text-xl font-bold mb-4">Examples</h2>
+      <div class="bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-lg overflow-hidden">
+        <div class="p-6 flex items-center justify-center min-h-[200px]">
+          <div class="text-center text-[var(--color-text-muted)]">
+            <p class="mb-2">Component preview will appear here</p>
+            <p class="text-sm">Implementation examples are loaded at runtime</p>
+          </div>
+        </div>
+        <div class="bg-[var(--color-code-bg)] border-t border-[var(--color-border)] p-4 overflow-x-auto">
+          <pre class="text-sm text-[var(--color-code-text)]"><code>{{ exampleCode | safe if exampleCode else '// Example code will appear here' }}</code></pre>
+        </div>
+      </div>
+    </section>
+    
+    <section class="py-4">
+      <h2 class="text-xl font-bold mb-4">Best Practices</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-green-600 dark:text-green-400">Do</h3>
+          <ul class="space-y-3">
+            {% if bestPracticesDo %}
+              {% for item in bestPracticesDo %}
+                <li class="flex">
+                  <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{{ item }}</span>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li class="flex">
+                <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Use clear, concise labels that describe the action</span>
+              </li>
+              <li class="flex">
+                <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Provide visual feedback for interactive states</span>
+              </li>
+              <li class="flex">
+                <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Follow the established design patterns for consistency</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-3 text-red-600 dark:text-red-400">Don't</h3>
+          <ul class="space-y-3">
+            {% if bestPracticesDont %}
+              {% for item in bestPracticesDont %}
+                <li class="flex">
+                  <svg class="h-6 w-6 text-red-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  <span>{{ item }}</span>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li class="flex">
+                <svg class="h-6 w-6 text-red-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>Use generic or vague labels that may confuse users</span>
+              </li>
+              <li class="flex">
+                <svg class="h-6 w-6 text-red-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>Overload the component with too many features or options</span>
+              </li>
+              <li class="flex">
+                <svg class="h-6 w-6 text-red-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>Modify the core functionality in ways that make it inconsistent with other components</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <div x-show="activeTab === 'api'" class="space-y-8" style="display: none;">
+    <section>
+      <h2 class="text-xl font-bold mb-4">Properties</h2>
+      
+      {% if componentData and componentData.props %}
+      <div class="overflow-hidden border border-[var(--color-border)] rounded-lg">
+        <table class="min-w-full divide-y divide-[var(--color-border)]">
+          <thead class="bg-[var(--color-bg-alt)]">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Name</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Type</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Default</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Description</th>
+            </tr>
+          </thead>
+          <tbody class="bg-[var(--color-bg)] divide-y divide-[var(--color-border)]">
+            {% for prop in componentData.props %}
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--color-text)]">
+                {{ prop.name }}
+                {% if prop.required %}
+                <span class="ml-1 text-red-500">*</span>
+                {% endif %}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text-muted)]">
+                <code class="bg-[var(--color-code-bg)] px-1.5 py-0.5 rounded text-xs font-mono">{{ prop.type }}</code>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text-muted)]">
+                {% if prop.default %}
+                <code class="bg-[var(--color-code-bg)] px-1.5 py-0.5 rounded text-xs font-mono">{{ prop.default }}</code>
+                {% else %}
+                <span class="text-[var(--color-text-muted)] italic">—</span>
+                {% endif %}
+              </td>
+              <td class="px-6 py-4 text-sm text-[var(--color-text-muted)]">
+                {{ prop.description }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p class="text-[var(--color-text-muted)]">No properties documented for this component.</p>
+      {% endif %}
+    </section>
+    
+    {% if componentData and componentData.events %}
+    <section class="py-4">
+      <h2 class="text-xl font-bold mb-4">Events</h2>
+      <div class="overflow-hidden border border-[var(--color-border)] rounded-lg">
+        <table class="min-w-full divide-y divide-[var(--color-border)]">
+          <thead class="bg-[var(--color-bg-alt)]">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Event</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Type</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Description</th>
+            </tr>
+          </thead>
+          <tbody class="bg-[var(--color-bg)] divide-y divide-[var(--color-border)]">
+            {% for event in componentData.events %}
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--color-text)]">
+                {{ event.name }}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text-muted)]">
+                <code class="bg-[var(--color-code-bg)] px-1.5 py-0.5 rounded text-xs font-mono">{{ event.type }}</code>
+              </td>
+              <td class="px-6 py-4 text-sm text-[var(--color-text-muted)]">
+                {{ event.description }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+    
+    {% if componentData and componentData.slots %}
+    <section class="py-4">
+      <h2 class="text-xl font-bold mb-4">Slots</h2>
+      <div class="overflow-hidden border border-[var(--color-border)] rounded-lg">
+        <table class="min-w-full divide-y divide-[var(--color-border)]">
+          <thead class="bg-[var(--color-bg-alt)]">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Name</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Description</th>
+            </tr>
+          </thead>
+          <tbody class="bg-[var(--color-bg)] divide-y divide-[var(--color-border)]">
+            {% for slot in componentData.slots %}
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--color-text)]">
+                {{ slot.name }}
+              </td>
+              <td class="px-6 py-4 text-sm text-[var(--color-text-muted)]">
+                {{ slot.description }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+    
+    {% if componentData and componentData.cssCustomProperties %}
+    <section class="py-4">
+      <h2 class="text-xl font-bold mb-4">CSS Custom Properties</h2>
+      <div class="overflow-hidden border border-[var(--color-border)] rounded-lg">
+        <table class="min-w-full divide-y divide-[var(--color-border)]">
+          <thead class="bg-[var(--color-bg-alt)]">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Property</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Default Value</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Description</th>
+            </tr>
+          </thead>
+          <tbody class="bg-[var(--color-bg)] divide-y divide-[var(--color-border)]">
+            {% for prop in componentData.cssCustomProperties %}
+            <tr>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--color-text)]">
+                <code class="bg-[var(--color-code-bg)] px-1.5 py-0.5 rounded text-xs font-mono">{{ prop.name }}</code>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text-muted)]">
+                <code class="bg-[var(--color-code-bg)] px-1.5 py-0.5 rounded text-xs font-mono">{{ prop.default }}</code>
+              </td>
+              <td class="px-6 py-4 text-sm text-[var(--color-text-muted)]">
+                {{ prop.description }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    {% endif %}
+    
+    <section class="py-4">
+      {{ apiReference | safe if apiReference }}
+    </section>
+  </div>
+  
+  <div x-show="activeTab === 'code'" class="space-y-8" style="display: none;">
+    <section>
+      <h2 class="text-xl font-bold mb-4">Installation</h2>
+      <div class="bg-[var(--color-code-bg)] rounded-lg p-4 overflow-x-auto">
+        <pre class="text-sm text-[var(--color-code-text)]"><code>npm install @enterprise/design-system</code></pre>
+      </div>
+    </section>
+    
+    <section class="py-4">
+      <h2 class="text-xl font-bold mb-4">Basic Usage</h2>
+      <div class="bg-[var(--color-code-bg)] rounded-lg p-4 overflow-x-auto">
+        <pre class="text-sm text-[var(--color-code-text)]"><code>{{ basicCodeExample | safe if basicCodeExample else "// Example code coming soon" }}</code></pre>
+      </div>
+    </section>
+    
+    <section class="py-4">
+      <h2 class="text-xl font-bold mb-4">Advanced Examples</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Customization</h3>
+          <div class="bg-[var(--color-code-bg)] rounded-lg p-4 overflow-x-auto">
+            <pre class="text-sm text-[var(--color-code-text)]"><code>{{ customizationCodeExample | safe if customizationCodeExample else "// Customization example coming soon" }}</code></pre>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-2">Integration</h3>
+          <div class="bg-[var(--color-code-bg)] rounded-lg p-4 overflow-x-auto">
+            <pre class="text-sm text-[var(--color-code-text)]"><code>{{ integrationCodeExample | safe if integrationCodeExample else "// Integration example coming soon" }}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    {{ codeExamples | safe if codeExamples }}
+  </div>
+  
+  <div x-show="activeTab === 'accessibility'" class="space-y-8" style="display: none;">
+    <section>
+      <h2 class="text-xl font-bold mb-4">Accessibility Considerations</h2>
+      <div class="prose dark:prose-invert">
+        {{ accessibility | safe if accessibility else "<p>This component follows WAI-ARIA guidelines for accessibility. Key considerations include:</p>
+        <ul>
+          <li>Proper keyboard navigation support</li>
+          <li>ARIA labels for screen readers</li>
+          <li>Sufficient color contrast in all themes</li>
+          <li>Focus states for interactive elements</li>
+        </ul>
+        <p>When implementing this component, ensure that you maintain these accessibility features and test with assistive technologies.</p>" }}
+      </div>
+    </section>
+    
+    <section class="py-4">
+      <h2 class="text-xl font-bold mb-4">WCAG Compliance</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Perceivable</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <p class="font-medium">Text Alternatives</p>
+                <p class="text-sm text-[var(--color-text-muted)]">Non-text content has text alternatives</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <p class="font-medium">Adaptable</p>
+                <p class="text-sm text-[var(--color-text-muted)]">Content can be presented in different ways</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <p class="font-medium">Distinguishable</p>
+                <p class="text-sm text-[var(--color-text-muted)]">Content is easy to see and hear</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-3">Operable</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <p class="font-medium">Keyboard Accessible</p>
+                <p class="text-sm text-[var(--color-text-muted)]">All functionality is available from keyboard</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <p class="font-medium">Enough Time</p>
+                <p class="text-sm text-[var(--color-text-muted)]">Users have enough time to read and use content</p>
+              </div>
+            </li>
+            <li class="flex items-start">
+              <svg class="h-6 w-6 text-green-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <p class="font-medium">Navigable</p>
+                <p class="text-sm text-[var(--color-text-muted)]">Users can navigate and find content</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    
+    {{ accessibilityGuidelines | safe if accessibilityGuidelines }}
+  </div>
+</div>
 
 {{ content | safe }}

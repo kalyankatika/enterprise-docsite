@@ -1,5 +1,5 @@
 ---
-layout: layouts/home.njk
+layout: base.njk
 title: Enterprise Design System
 description: A comprehensive design system for creating consistent, accessible, and beautiful enterprise applications
 ---

@@ -102,6 +102,11 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(value, null, 2);
   });
   
+  // Add json filter
+  eleventyConfig.addFilter('json', function(value) {
+    return JSON.stringify(value);
+  });
+  
   // Create a search-index.json file
   eleventyConfig.addGlobalData('eleventyComputed.permalink', function() {
     return (data) => {
