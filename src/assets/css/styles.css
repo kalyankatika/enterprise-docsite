@@ -1,323 +1,220 @@
+/**
+ * Enterprise Design System Styles
+ */
+
+/* TailwindCSS Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/**
- * Custom styles for EDS Documentation
- */
-
-/* Base styles for design system elements */
-@layer base {
-  :root {
-    --color-primary: #368727;
-    --color-primary-light: #4ca33e;
-    --color-primary-dark: #276d1b;
-    
-    --color-secondary: #2b6cb0;
-    --color-secondary-light: #4299e1;
-    --color-secondary-dark: #2c5282;
-    
-    --color-success: #38a169;
-    --color-warning: #dd6b20;
-    --color-error: #e53e3e;
-    --color-info: #4299e1;
-    
-    --spacing-unit: 0.25rem;
-    
-    --font-family-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
-  }
-  
-  body {
-    font-family: var(--font-family-sans);
-    line-height: 1.5;
-    color: theme('colors.gray.900');
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    scroll-margin-top: 5rem;
-  }
-  
-  /* Fix for Alpine.js [x-cloak] issue */
-  [x-cloak] {
-    display: none !important;
-  }
-}
-
-/* Component styles */
+/* Custom Components */
 @layer components {
-  /* Button styles */
-  .eds-button-primary {
-    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors;
+  /* Button Component */
+  .eds-button {
+    @apply inline-flex items-center justify-center px-4 py-2 border rounded-md shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500;
+    transition: all 0.2s ease-in-out;
   }
   
-  .eds-button-secondary {
-    @apply inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors;
+  .eds-button--primary {
+    @apply bg-primary-600 text-white border-transparent hover:bg-primary-700;
   }
   
-  /* Status badge styles */
+  .eds-button--secondary {
+    @apply bg-white text-primary-700 border-primary-300 hover:bg-primary-50;
+  }
+  
+  .eds-button--tertiary {
+    @apply bg-transparent text-primary-700 border-transparent hover:bg-primary-50;
+  }
+  
+  .eds-button--danger {
+    @apply bg-red-600 text-white border-transparent hover:bg-red-700;
+  }
+  
+  .eds-button--link {
+    @apply bg-transparent text-primary-600 border-transparent shadow-none hover:underline p-0;
+  }
+  
+  .eds-button--icon {
+    @apply p-2;
+  }
+  
+  /* Card Component */
+  .eds-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow border border-gray-200 dark:border-gray-700 overflow-hidden;
+  }
+  
+  /* Link Component */
+  .eds-link {
+    @apply text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium;
+  }
+  
+  /* Status Badge Component */
   .eds-status-badge {
     @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
   }
   
-  .eds-status-stable {
-    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+  .eds-status-badge--stable {
+    @apply bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100;
   }
   
-  .eds-status-beta {
-    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+  .eds-status-badge--beta {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100;
   }
   
-  .eds-status-alpha {
-    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
+  .eds-status-badge--alpha {
+    @apply bg-purple-100 text-purple-800 dark:bg-purple-800 dark:text-purple-100;
   }
   
-  .eds-status-deprecated {
-    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+  .eds-status-badge--deprecated {
+    @apply bg-red-100 text-red-800 dark:bg-red-800 dark:text-red-100;
   }
   
-  /* Link styles */
-  .eds-link {
-    @apply text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors;
+  /* Tabs Component */
+  .eds-tabs__button {
+    @apply px-4 py-2 text-sm font-medium border-b-2 focus:outline-none;
   }
   
-  .eds-link-button {
-    @apply inline-flex items-center px-3 py-1.5 border border-gray-300 dark:border-gray-600 shadow-sm text-sm font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors;
+  .eds-tabs__button[aria-selected="true"] {
+    @apply border-primary-500 text-primary-600 dark:text-primary-400;
   }
   
-  /* Card styles */
-  .eds-card {
-    @apply bg-white dark:bg-gray-800 shadow overflow-hidden rounded-lg transition-shadow hover:shadow-md;
+  .eds-tabs__button[aria-selected="false"] {
+    @apply border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300;
   }
   
-  .eds-card-header {
-    @apply px-4 py-5 border-b border-gray-200 dark:border-gray-700;
-  }
-  
-  .eds-card-body {
-    @apply px-4 py-5 sm:p-6;
-  }
-  
-  .eds-card-footer {
-    @apply px-4 py-4 border-t border-gray-200 dark:border-gray-700;
-  }
-  
-  /* Component card */
-  .eds-component-card {
-    @apply block rounded-lg border border-gray-200 dark:border-gray-700 p-5 hover:border-green-500 dark:hover:border-green-500 transition-colors;
-  }
-  
-  /* Table styles */
+  /* Table Component */
   .eds-table {
     @apply min-w-full divide-y divide-gray-200 dark:divide-gray-700;
   }
   
-  .eds-table th {
-    @apply px-6 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider;
-  }
-  
-  .eds-table td {
-    @apply px-6 py-4 text-sm text-gray-900 dark:text-gray-100;
-  }
-  
-  .eds-table tbody {
-    @apply bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700;
-  }
-  
-  .eds-table tr:hover {
+  .eds-table thead {
     @apply bg-gray-50 dark:bg-gray-800;
   }
   
-  /* WCAG status badges */
-  .eds-wcag-status {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  .eds-table th {
+    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider;
   }
   
-  .eds-wcag-pass {
-    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+  .eds-table tbody {
+    @apply bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800;
   }
   
-  .eds-wcag-partial {
-    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
-  }
-  
-  .eds-wcag-fail {
-    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
-  }
-  
-  /* Do's and Don'ts */
-  .eds-do-dont {
-    @apply border rounded-lg overflow-hidden;
-  }
-  
-  .eds-do {
-    @apply border-green-200 dark:border-green-900;
-  }
-  
-  .eds-dont {
-    @apply border-red-200 dark:border-red-900;
-  }
-  
-  .eds-do-dont-header {
-    @apply px-4 py-2.5;
-  }
-  
-  .eds-do .eds-do-dont-header {
-    @apply bg-green-50 dark:bg-green-900/30;
-  }
-  
-  .eds-dont .eds-do-dont-header {
-    @apply bg-red-50 dark:bg-red-900/30;
-  }
-  
-  .eds-do .eds-do-dont-label {
-    @apply font-semibold text-green-700 dark:text-green-400;
-  }
-  
-  .eds-dont .eds-do-dont-label {
-    @apply font-semibold text-red-700 dark:text-red-400;
-  }
-  
-  .eds-do-dont-content {
-    @apply px-4 py-4 bg-white dark:bg-gray-800;
-  }
-  
-  .eds-do-dont-example {
-    @apply bg-gray-50 dark:bg-gray-700 p-4 rounded-md overflow-hidden;
-  }
-  
-  /* Required Badge */
-  .eds-required-badge {
-    @apply ml-1 px-1.5 py-0.5 text-xs rounded bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
-  }
-  
-  /* Example Code */
-  .eds-example-code {
-    @apply relative mt-4;
-  }
-  
-  /* Update Card */
-  .eds-update-card {
-    @apply p-5 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-green-500 dark:hover:border-green-500 transition-colors;
+  .eds-table td {
+    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-200;
   }
 }
 
-/* Utility styles */
-@layer utilities {
-  .eds-prose {
-    @apply prose dark:prose-invert prose-a:text-green-600 dark:prose-a:text-green-400 prose-headings:scroll-mt-20;
-  }
-  
-  /* Only show scrollbar on hover */
-  .eds-scrollbar-hover {
-    scrollbar-width: thin;
-  }
-  
-  .eds-scrollbar-hover::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  
-  .eds-scrollbar-hover::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-  
-  .eds-scrollbar-hover::-webkit-scrollbar-thumb {
-    @apply bg-transparent rounded;
-  }
-  
-  .eds-scrollbar-hover:hover::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-600;
-  }
+/* AlpineJS utility classes */
+[x-cloak] {
+  display: none !important;
 }
 
-/* Syntax highlighting styles */
-pre[class*="language-"] {
-  @apply text-sm rounded-md overflow-x-auto;
+/* Code syntax highlighting */
+pre {
+  @apply bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-x-auto text-sm my-4;
 }
 
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  @apply text-gray-500 dark:text-gray-400;
+code {
+  @apply font-mono text-sm;
 }
 
-.token.punctuation {
-  @apply text-gray-600 dark:text-gray-300;
+p code, li code {
+  @apply bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm;
 }
 
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-  @apply text-orange-500 dark:text-orange-300;
+/* Anchor links on headings */
+.anchor {
+  @apply text-gray-400 dark:text-gray-600 hover:text-primary-500 dark:hover:text-primary-400 ml-2 text-lg no-underline;
 }
 
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-  @apply text-green-600 dark:text-green-300;
+/* Component documentation page */
+.eds-component-page h2 {
+  @apply text-2xl font-bold mt-10 mb-4;
 }
 
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-  @apply text-yellow-500 dark:text-yellow-300;
+.eds-component-page h3 {
+  @apply text-xl font-semibold mt-8 mb-3;
 }
 
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-  @apply text-blue-500 dark:text-blue-300;
+.eds-component-page p {
+  @apply mb-4;
 }
 
-.token.function,
-.token.class-name {
-  @apply text-purple-500 dark:text-purple-300;
+.eds-component-page ul,
+.eds-component-page ol {
+  @apply mb-4 ml-6;
 }
 
-.token.regex,
-.token.important,
-.token.variable {
-  @apply text-red-500 dark:text-red-300;
+.eds-component-page ul {
+  @apply list-disc;
 }
 
-/* Dark mode overrides */
-.dark {
-  color-scheme: dark;
+.eds-component-page ol {
+  @apply list-decimal;
 }
 
-/* Print styles */
-@media print {
-  .eds-sidebar,
-  .eds-header,
-  .eds-footer,
-  .eds-toc-sidebar {
-    display: none !important;
-  }
-  
-  .eds-content-wrapper {
-    padding: 0 !important;
-    width: 100% !important;
-  }
-  
-  /* Ensure proper rendering of code blocks when printing */
-  pre[class*="language-"] {
-    white-space: pre-wrap !important;
-    word-break: break-word !important;
-  }
+.eds-component-page li {
+  @apply mb-2;
+}
+
+.eds-component-page table {
+  @apply min-w-full divide-y divide-gray-200 dark:divide-gray-700 mb-6;
+}
+
+.eds-component-page thead {
+  @apply bg-gray-50 dark:bg-gray-800;
+}
+
+.eds-component-page th {
+  @apply px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider;
+}
+
+.eds-component-page tbody {
+  @apply divide-y divide-gray-200 dark:divide-gray-800;
+}
+
+.eds-component-page td {
+  @apply px-6 py-4 text-sm text-gray-900 dark:text-gray-200;
+}
+
+/* Design token displays */
+.token-color-preview {
+  @apply h-10 w-full rounded-md mb-2;
+}
+
+.token-item {
+  @apply bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700;
+}
+
+/* Hero section animation */
+.eds-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.eds-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(var(--color-primary-100-rgb), 0.3) 0%, rgba(var(--color-primary-500-rgb), 0) 50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Custom CSS variables for theme colors */
+:root {
+  --color-primary-50-rgb: 239, 246, 255;
+  --color-primary-100-rgb: 219, 234, 254;
+  --color-primary-200-rgb: 191, 219, 254;
+  --color-primary-300-rgb: 147, 197, 253;
+  --color-primary-400-rgb: 96, 165, 250;
+  --color-primary-500-rgb: 59, 130, 246;
+  --color-primary-600-rgb: 37, 99, 235;
+  --color-primary-700-rgb: 29, 78, 216;
+  --color-primary-800-rgb: 30, 64, 175;
+  --color-primary-900-rgb: 30, 58, 138;
 }

@@ -1,92 +1,51 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,njk,md,js}"],
-  darkMode: ['class', '[data-theme="dark"]'],
+  content: ["./src/**/*.{html,js,njk,md}"],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#368727',
-          50: '#EBF5E9',
-          100: '#D7EBD3',
-          200: '#B0D7A7',
-          300: '#88C37B',
-          400: '#61AF4F',
-          500: '#368727',
-          600: '#2E7321',
-          700: '#265F1B',
-          800: '#1E4B15',
-          900: '#163710',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
-        secondary: {
-          DEFAULT: '#4F46E5',
-          50: '#EBEAFD',
-          100: '#D7D5FB',
-          200: '#B0ABF8',
-          300: '#8980F4',
-          400: '#6156F0',
-          500: '#4F46E5',
-          600: '#2217E0',
-          700: '#1B12B0',
-          800: '#140D7F',
-          900: '#0D094F',
-        }
       },
-      fontFamily: {
-        'eds-sans': ['Inter', 'system-ui', 'sans-serif'],
-        'eds-mono': ['IBM Plex Mono', 'monospace'],
-      },
-      typography: (theme) => ({
+      typography: {
         DEFAULT: {
           css: {
-            color: 'var(--color-text)',
+            maxWidth: '100%',
+            color: 'inherit',
             a: {
-              color: 'var(--color-primary)',
+              color: 'var(--tw-prose-links)',
               '&:hover': {
-                color: 'var(--color-primary-dark)',
+                color: 'var(--tw-prose-links-hover)',
               },
-            },
-            h1: {
-              color: 'var(--color-text)',
-            },
-            h2: {
-              color: 'var(--color-text)',
-            },
-            h3: {
-              color: 'var(--color-text)',
-            },
-            h4: {
-              color: 'var(--color-text)',
-            },
-            h5: {
-              color: 'var(--color-text)',
-            },
-            h6: {
-              color: 'var(--color-text)',
-            },
-            pre: {
-              backgroundColor: 'var(--color-bg-alt)',
+              textDecoration: 'none',
             },
             code: {
-              color: 'var(--color-text)',
-              backgroundColor: 'var(--color-bg-alt)',
+              color: 'var(--tw-prose-code)',
+              backgroundColor: 'var(--tw-prose-code-bg)',
+              padding: '0.25rem 0.375rem',
               borderRadius: '0.25rem',
-              paddingLeft: '0.25rem',
-              paddingRight: '0.25rem',
-              fontWeight: '400',
+              fontWeight: '500',
             },
-            thead: {
-              borderBottomColor: 'var(--color-border)',
+            'code::before': {
+              content: '""',
             },
-            'tbody tr': {
-              borderBottomColor: 'var(--color-border)',
-            },
-            strong: {
-              color: 'var(--color-text)',
+            'code::after': {
+              content: '""',
             },
           },
         },
-      }),
+      },
     },
   },
   plugins: [

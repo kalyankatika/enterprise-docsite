@@ -1,7 +1,7 @@
 /**
  * Custom Eleventy filters
  */
-const cheerio = require('cheerio');
+const { DateTime } = require('luxon');
 
 /**
  * Extract headings from content for table of contents
@@ -10,28 +10,22 @@ const cheerio = require('cheerio');
  * @returns {Array} - List of headings with id and text properties
  */
 function getHeadings(collection, url) {
-  // Find the page content
-  const page = collection.find(item => item.url === url);
-  if (!page || !page.templateContent) return [];
-  
-  // Load content into cheerio for DOM manipulation
-  const $ = cheerio.load(page.templateContent);
   const headings = [];
+  const page = collection.find(item => item.url === url);
   
-  // Find all h2 and h3 headings that have an id
-  $('h2[id], h3[id]').each((i, el) => {
-    const $el = $(el);
-    const id = $el.attr('id');
-    const text = $el.text();
+  if (page && page.templateContent) {
+    const content = page.templateContent;
+    const headingRegex = /<h([2-3])\s+id="([^"]+)"[^>]*>([^<]+)<\/h\1>/g;
+    let match;
     
-    if (id && text) {
+    while ((match = headingRegex.exec(content)) !== null) {
       headings.push({
-        id,
-        text,
-        level: el.name === 'h2' ? 2 : 3
+        level: match[1],
+        id: match[2],
+        text: match[3]
       });
     }
-  });
+  }
   
   return headings;
 }
@@ -39,22 +33,21 @@ function getHeadings(collection, url) {
 /**
  * Format a date as ISO string (YYYY-MM-DD)
  */
-function dateToISO(date) {
-  if (!date) return '';
-  return date.toISOString().split('T')[0];
+function dateToISO(dateObj) {
+  return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toISODate();
+}
+
+/**
+ * Format a date as a year (YYYY)
+ */
+function dateToYear(dateObj) {
+  return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy');
 }
 
 /**
  * Check if a URL starts with a given path
  */
 function isActiveLink(currentUrl, navUrl) {
-  if (!currentUrl || !navUrl) return false;
-  
-  // Special case for home page
-  if (navUrl === '/' && currentUrl === '/') return true;
-  if (navUrl === '/' && currentUrl !== '/') return false;
-  
-  // Check if currentUrl starts with navUrl and is not the same string
   return currentUrl.startsWith(navUrl);
 }
 
@@ -62,7 +55,7 @@ function isActiveLink(currentUrl, navUrl) {
  * Escape HTML characters
  */
 function escape(str) {
-  return String(str)
+  return str
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -73,6 +66,7 @@ function escape(str) {
 module.exports = {
   getHeadings,
   dateToISO,
+  dateToYear,
   isActiveLink,
   escape
 };
