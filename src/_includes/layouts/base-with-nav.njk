@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="{% if meta.dark %}dark{% endif %}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/left-navigation.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
+  
+  <!-- Alpine.js -->
+  <script defer src="/assets/js/alpine.min.js"></script>
+  
+  <!-- Framer Motion wrapper -->
+  <script defer src="/assets/js/framer-motion-wrapper.js"></script>
+  
+  <!-- Main JS -->
+  <script defer src="/assets/js/main.js"></script>
+  
+  <!-- Theme initialization - prevent flash of wrong theme -->
+  <script>
+    // Set the theme based on user preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+</head>
+<body class="bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
+  <div class="flex h-screen overflow-hidden">
+    <!-- Left Navigation -->
+    {% include "partials/left-navigation.njk" %}
+    
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto p-6">
+      <!-- Mobile Menu Toggle -->
+      <div class="lg:hidden mb-4">
+        <button 
+          id="mobile-menu-toggle"
+          class="p-2 rounded border border-[var(--color-border)]"
+          aria-label="Toggle mobile menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Content -->
+      <div class="max-w-5xl mx-auto">
+        {% block content %}
+          {{ content | safe }}
+        {% endblock %}
+      </div>
+      
+      <!-- Footer -->
+      <footer class="mt-12 pt-6 border-t border-[var(--color-border)] text-sm text-[var(--color-text-muted)]">
+        <div class="max-w-5xl mx-auto">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+              &copy; {{ page.date.getFullYear() }} Enterprise Documentation System. All rights reserved.
+            </div>
+            <div class="flex space-x-4">
+              <a href="/support/contact/" class="hover:text-[var(--color-primary)]">Contact</a>
+              <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
+              <a href="/support/" class="hover:text-[var(--color-primary)]">Support</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Script for mobile menu toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const leftNav = document.querySelector('.eds-left-nav');
+      
+      if (mobileMenuToggle && leftNav) {
+        mobileMenuToggle.addEventListener('click', function() {
+          leftNav.classList.toggle('active');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

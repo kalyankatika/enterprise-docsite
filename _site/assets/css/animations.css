@@ -1,22 +1,8 @@
 /**
- * Animation styles for the EDS
- * Provides CSS transitions to simulate Framer Motion animations
+ * Animation Styles for the Enterprise Documentation System
  */
 
-/* Base styles for animations */
-[data-motion] {
-  opacity: 0;
-}
-
-[data-motion].animated {
-  opacity: 1;
-}
-
 /* Fade in animation */
-.motion-fade-in {
-  animation: fadeIn 0.6s ease-in-out forwards;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -26,12 +12,12 @@
   }
 }
 
-/* Fade in up animation */
-.motion-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-@keyframes fadeInUp {
+/* Slide in from bottom animation */
+@keyframes slideInBottom {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -42,31 +28,80 @@
   }
 }
 
-/* Scale in animation */
-.motion-scale-in {
-  animation: scaleIn 0.5s ease-out forwards;
+.slide-in-bottom {
+  animation: slideInBottom 0.5s ease-out;
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
+/* Animated cards with staggered delay */
+.animated-card {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: slideInBottom 0.6s ease-out forwards;
+}
+
+.animated-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.animated-card:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.animated-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.animated-card:nth-child(4) {
+  animation-delay: 0.55s;
+}
+
+/* Scale up on hover animation */
+.scale-up-hover {
+  transition: transform 0.2s ease;
+}
+
+.scale-up-hover:hover {
+  transform: scale(1.03);
+}
+
+/* Subtle pulse animation for attention */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
   }
-  to {
-    opacity: 1;
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
     transform: scale(1);
   }
 }
 
-/* Slide in right animation */
-.motion-slide-in-right {
-  animation: slideInRight 0.5s ease-out forwards;
+.pulse {
+  animation: pulse 2s infinite;
 }
 
-@keyframes slideInRight {
+/* Fade in from top animation */
+@keyframes fadeInTop {
   from {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-top {
+  animation: fadeInTop 0.5s ease-out;
+}
+
+/* Fade in from left animation */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
@@ -74,95 +109,99 @@
   }
 }
 
-/* Stagger container */
-.motion-stagger {
-  opacity: 1;
+.fade-in-left {
+  animation: fadeInLeft 0.5s ease-out;
 }
 
-.motion-stagger > * {
+/* Fade in from right animation */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.5s ease-out;
+}
+
+/* Rotation animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: rotate 2s linear infinite;
+}
+
+/* Slow rotate animation */
+.rotate-slow {
+  animation: rotate 8s linear infinite;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce {
+  animation: bounce 2s ease infinite;
+}
+
+/* Framer Motion Animations - Classes for JS integration */
+.framer-fade {
   opacity: 0;
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.framer-slide-left {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.framer-slide-right {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.framer-slide-up {
+  opacity: 0;
   transform: translateY(20px);
 }
 
-.motion-stagger.animated > * {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hero section specific animations */
-.hero-title {
-  transform: translateY(-10px);
-  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out;
-}
-
-.hero-title.animated {
-  transform: translateY(0);
-}
-
-.hero-image {
-  transform: scale(0.95);
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease-out;
-}
-
-.hero-image.animated {
-  transform: scale(1);
-}
-
-/* Card hover animations */
-.animated-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.animated-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* Icon animations */
-.animated-icon {
-  transition: transform 0.3s ease;
-}
-
-.animated-card:hover .animated-icon {
-  transform: translateX(5px);
-}
-
-/* Button animations */
-.animated-button {
-  position: relative;
-  overflow: hidden;
-}
-
-.animated-button:after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.3);
+.framer-slide-down {
   opacity: 0;
-  border-radius: 100%;
-  transform: scale(1, 1) translate(-50%);
-  transform-origin: 50% 50%;
+  transform: translateY(-20px);
 }
 
-.animated-button:focus:not(:active)::after {
-  animation: ripple 1s ease-out;
-}
-
-@keyframes ripple {
+/* Custom EDS animations */
+@keyframes gradientBackground {
   0% {
-    transform: scale(0, 0);
-    opacity: 0.5;
+    background-position: 0% 50%;
   }
-  20% {
-    transform: scale(25, 25);
-    opacity: 0.3;
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    opacity: 0;
-    transform: scale(40, 40);
+    background-position: 0% 50%;
   }
+}
+
+.eds-gradient-animate {
+  background: linear-gradient(270deg, var(--color-primary-light), var(--color-primary), var(--color-primary-dark));
+  background-size: 200% 200%;
+  animation: gradientBackground 8s ease infinite;
 }

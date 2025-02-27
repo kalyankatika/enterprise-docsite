@@ -173,93 +173,261 @@
     <!-- Left sidebar - Standard navigation -->
     <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
       <div class="sticky top-32">
-        
+        <nav class="eds-left-nav bg-[var(--color-sidebar-bg)] text-[var(--color-sidebar-text)] border-r border-[var(--color-border)] h-full overflow-y-auto" x-data="{ 
+  activeSection: localStorage.getItem('eds-nav-section') || 'none',
+  toggleSection(section) {
+    if (this.activeSection === section) {
+      this.activeSection = 'none';
+      localStorage.setItem('eds-nav-section', 'none');
+    } else {
+      this.activeSection = section;
+      localStorage.setItem('eds-nav-section', section);
+    }
+  }
+}">
+  <div class="sticky top-0 z-10 bg-[var(--color-sidebar-bg)] border-b border-[var(--color-border)] mb-2">
+    <div class="p-3">
+      <a href="/" class="text-lg font-semibold flex items-center">
+        <svg class="w-6 h-6 mr-2 text-[var(--color-primary)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="9" y1="3" x2="9" y2="21"></line>
+          <path d="M13 8l4 0"></path>
+          <path d="M13 12l4 0"></path>
+          <path d="M13 16l4 0"></path>
+        </svg>
+        EDS Documentation
+      </a>
+    </div>
+    <div class="px-3 pb-2">
+      <div class="relative">
+        <input 
+          type="search"
+          placeholder="Search documentation"
+          class="w-full py-1.5 pl-8 pr-3 text-sm bg-[var(--color-input-bg)] border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent"
+          aria-label="Search documentation"
+        >
+        <svg class="absolute left-2.5 top-2 w-4 h-4 text-[var(--color-text-muted)]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
 
-<nav class="left-navigation">
-  <div class="space-y-6">
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            All Components
-          </a>
-        </li>
-        <li>
-          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Design Tokens
-          </a>
-        </li>
-        <li>
-          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Patterns
-          </a>
-        </li>
-        <li>
-          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Guidelines
-          </a>
-        </li>
-      </ul>
+  <div class="px-3 py-2">
+    <!-- Getting Started Section -->
+    <div class="mb-4">
+      <button class="flex justify-between items-center w-full text-left font-medium py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]"
+        @click="toggleSection('getting-started')"
+        :class="{ 'bg-[var(--color-sidebar-active)] text-[var(--color-sidebar-active-text)]': activeSection === 'getting-started' }">
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Getting Started
+        </span>
+        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{'rotate-180': activeSection === 'getting-started'}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div x-show="activeSection === 'getting-started'" x-collapse x-cloak class="pl-6 mt-2 space-y-1 text-sm">
+        <a href="/getting-started/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Introduction</a>
+        <a href="/getting-started/installation/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Installation</a>
+        <a href="/getting-started/usage/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Basic Usage</a>
+        <a href="/getting-started/contribution/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Contribution</a>
+      </div>
+    </div>
+
+    <!-- Design System Section -->
+    <div class="mb-4">
+      <button class="flex justify-between items-center w-full text-left font-medium py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]"
+        @click="toggleSection('design-system')"
+        :class="{ 'bg-[var(--color-sidebar-active)] text-[var(--color-sidebar-active-text)]': activeSection === 'design-system' }">
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+            <path d="M2 2l7.586 7.586"></path>
+            <circle cx="11" cy="11" r="2"></circle>
+          </svg>
+          Design System
+        </span>
+        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{'rotate-180': activeSection === 'design-system'}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div x-show="activeSection === 'design-system'" x-collapse x-cloak class="pl-6 mt-2 space-y-1 text-sm">
+        <a href="/design-system/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Overview</a>
+        <a href="/design-system/foundations/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Foundations</a>
+        <a href="/design-system/foundations/colors/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">- Colors</a>
+        <a href="/design-system/foundations/typography/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">- Typography</a>
+        <a href="/design-system/foundations/spacing/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">- Spacing</a>
+        <a href="/design-system/guidelines/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Guidelines</a>
+        <a href="/design-system/principles/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Principles</a>
+      </div>
+    </div>
+
+    <!-- Components Section -->
+    <div class="mb-4">
+      <button class="flex justify-between items-center w-full text-left font-medium py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]"
+        @click="toggleSection('components')"
+        :class="{ 'bg-[var(--color-sidebar-active)] text-[var(--color-sidebar-active-text)]': activeSection === 'components' }">
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="9" y1="21" x2="9" y2="9"></line>
+          </svg>
+          Components
+        </span>
+        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{'rotate-180': activeSection === 'components'}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div x-show="activeSection === 'components'" x-collapse x-cloak class="pl-6 mt-2 space-y-1 text-sm">
+        <a href="/components/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Overview</a>
+        
+        <!-- Layout Components -->
+        <div class="pt-2">
+          <div class="text-xs uppercase tracking-wider text-[var(--color-text-muted)] px-2 mb-1">Layout</div>
+          <a href="/components/layout/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Layout Overview</a>
+          <a href="/components/layout/accordion/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Accordion</a>
+          <a href="/components/layout/card/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Card</a>
+          <a href="/components/layout/container/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Container</a>
+          <a href="/components/layout/grid/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Grid</a>
+        </div>
+        
+        <!-- Navigation Components -->
+        <div class="pt-2">
+          <div class="text-xs uppercase tracking-wider text-[var(--color-text-muted)] px-2 mb-1">Navigation</div>
+          <a href="/components/navigation/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Navigation Overview</a>
+          <a href="/components/navigation/breadcrumb/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Breadcrumbs</a>
+          <a href="/components/navigation/menu/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Menu</a>
+          <a href="/components/navigation/tabs/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Tabs</a>
+          <a href="/components/navigation/pagination/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Pagination</a>
+        </div>
+        
+        <!-- Input Components -->
+        <div class="pt-2">
+          <div class="text-xs uppercase tracking-wider text-[var(--color-text-muted)] px-2 mb-1">Inputs</div>
+          <a href="/components/inputs/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Inputs Overview</a>
+          <a href="/components/inputs/button/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Button</a>
+          <a href="/components/inputs/checkbox/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Checkbox</a>
+          <a href="/components/inputs/radio/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Radio</a>
+          <a href="/components/inputs/select/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Select</a>
+          <a href="/components/inputs/text-field/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Text Field</a>
+        </div>
+        
+        <!-- Feedback Components -->
+        <div class="pt-2">
+          <div class="text-xs uppercase tracking-wider text-[var(--color-text-muted)] px-2 mb-1">Feedback</div>
+          <a href="/components/feedback/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Feedback Overview</a>
+          <a href="/components/feedback/alert/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Alert</a>
+          <a href="/components/feedback/progress/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Progress</a>
+          <a href="/components/feedback/spinner/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Spinner</a>
+          <a href="/components/feedback/tooltip/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Tooltip</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Section -->
+    <div class="mb-4">
+      <button class="flex justify-between items-center w-full text-left font-medium py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]"
+        @click="toggleSection('navigation')"
+        :class="{ 'bg-[var(--color-sidebar-active)] text-[var(--color-sidebar-active-text)]': activeSection === 'navigation' }">
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+          </svg>
+          Navigation
+        </span>
+        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{'rotate-180': activeSection === 'navigation'}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div x-show="activeSection === 'navigation'" x-collapse x-cloak class="pl-6 mt-2 space-y-1 text-sm">
+        <a href="/navigation/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Overview</a>
+        <a href="/navigation/by-type/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">By Type</a>
+        <a href="/navigation/by-channel/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">By Channel</a>
+        <a href="/navigation/by-owner/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">By Owner</a>
+        <a href="/navigation/legacy/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Legacy Documentation</a>
+      </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="mb-4">
+      <button class="flex justify-between items-center w-full text-left font-medium py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]"
+        @click="toggleSection('resources')"
+        :class="{ 'bg-[var(--color-sidebar-active)] text-[var(--color-sidebar-active-text)]': activeSection === 'resources' }">
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Resources
+        </span>
+        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{'rotate-180': activeSection === 'resources'}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div x-show="activeSection === 'resources'" x-collapse x-cloak class="pl-6 mt-2 space-y-1 text-sm">
+        <a href="/resources/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Overview</a>
+        <a href="/resources/migration-tools/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Migration Tools</a>
+        <a href="/resources/tutorials/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Tutorials</a>
+        <a href="/resources/templates/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Templates</a>
+        <a href="/resources/downloads/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Downloads</a>
+      </div>
+    </div>
+
+    <!-- Support Section -->
+    <div class="mb-4">
+      <button class="flex justify-between items-center w-full text-left font-medium py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]"
+        @click="toggleSection('support')"
+        :class="{ 'bg-[var(--color-sidebar-active)] text-[var(--color-sidebar-active-text)]': activeSection === 'support' }">
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          Support
+        </span>
+        <svg class="w-4 h-4 transform transition-transform duration-200" :class="{'rotate-180': activeSection === 'support'}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div x-show="activeSection === 'support'" x-collapse x-cloak class="pl-6 mt-2 space-y-1 text-sm">
+        <a href="/support/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Overview</a>
+        <a href="/support/faq/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">FAQ</a>
+        <a href="/support/contact/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Contact</a>
+        <a href="/support/report-bug/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Report Bug</a>
+        <a href="/support/request-feature/" class="block py-1 px-2 rounded hover:bg-[var(--color-sidebar-hover)]">Request Feature</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-auto border-t border-[var(--color-border)] p-3">
+    <div class="flex items-center justify-between text-sm mb-3">
+      <span>EDS v2.0.0</span>
+      <a href="/updates/2025-02-15-version-2-release/" class="text-[var(--color-primary)] hover:underline">Release Notes</a>
     </div>
     
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Layout
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Navigation
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Feedback
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Inputs
-          </a>
-          
-        </li>
-      </ul>
-    </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Colors
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Typography
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-            Spacing
-          </a>
-        </li>
-        <li>
-          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Migration Tools
-          </a>
-        </li>
-      </ul>
+    <!-- Theme Toggle -->
+    <div class="flex justify-between items-center text-sm p-2 bg-[var(--color-sidebar-hover)] rounded">
+      <span>Theme</span>
+      <button 
+        id="theme-toggle" 
+        class="p-1 rounded-md hover:bg-[var(--color-sidebar-active)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+        aria-label="Toggle dark mode">
+        <!-- Moon Icon (Dark Mode) -->
+        <svg id="moon-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+        <!-- Sun Icon (Light Mode) - Initially hidden -->
+        <svg id="sun-icon" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+      </button>
     </div>
   </div>
 </nav>
