@@ -79,6 +79,11 @@ module.exports = function(eleventyConfig) {
     return arr.slice(start, end);
   });
   
+  // Add a JSON stringify filter for search index
+  eleventyConfig.addFilter('json', function(obj) {
+    return JSON.stringify(obj);
+  });
+  
   // Simple text escape filter as a backup
   eleventyConfig.addFilter('escape', function(str) {
     if (!str) return '';

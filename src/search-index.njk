@@ -7,12 +7,12 @@ eleventyExcludeFromCollections: true
   {% for item in collections.all %}
     {% if not item.data.excludeFromSearch and item.url != "/search-index.json" %}
       {
-        "title": "{{ (item.data.title or '') | escape }}",
+        "title": "{{ item.data.title | escape }}",
         "url": "{{ item.url }}",
-        "content": "{{ (item.templateContent or '') | escape }}",
-        "description": "{{ (item.data.description or '') | escape }}",
-        "type": "{{ (item.data.contentType or 'Page') | escape }}",
-        "date": "{{ item.date | dateToISO or '' }}"
+        "content": "{{ item.templateContent | striptags | escape }}",
+        "description": "{{ item.data.description | escape }}",
+        "type": "{{ item.data.contentType or 'Page' }}",
+        "date": "{{ item.date | dateToISO }}"
       }{% if not loop.last %},{% endif %}
     {% endif %}
   {% endfor %}

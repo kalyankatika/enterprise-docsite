@@ -10,6 +10,7 @@ function initializeSearch() {
   const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
   const searchCount = document.getElementById('search-count');
+  const clearButton = document.querySelector('button[type="reset"]');
   
   if (!searchInput || !searchResults) return;
   
@@ -20,7 +21,15 @@ function initializeSearch() {
   fetch('/search-index.json')
     .then(response => response.json())
     .then(data => {
+      // Check if data is iterable
+      if (!Array.isArray(data) && data.length === undefined) {
+        console.error('Search index is not an array or iterable');
+        searchResults.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">Search index format error. Please contact the admin.</p>';
+        return;
+      }
+      
       searchIndex = data;
+      console.log(`Search index loaded with ${searchIndex.length} entries`);
       
       // Check if there's a query parameter
       const urlParams = new URLSearchParams(window.location.search);
@@ -33,6 +42,7 @@ function initializeSearch() {
     })
     .catch(error => {
       console.error('Error loading search index:', error);
+      searchResults.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">Error loading search data. Please try again later.</p>';
     });
 
   // Set up search input event
@@ -49,13 +59,26 @@ function initializeSearch() {
   }, 300);
 
   searchInput.addEventListener('input', debouncedSearch);
+  
+  // Set up clear button functionality
+  if (clearButton) {
+    clearButton.addEventListener('click', function() {
+      searchInput.value = '';
+      searchResults.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">Enter a search term above</p>';
+      if (searchCount) searchCount.textContent = '0';
+    });
+  }
 
   /**
    * Perform the search against the index
    */
   function performSearch(query, resultsContainer) {
-    if (isLoading || !searchIndex.length) {
-      resultsContainer.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">Loading...</p>';
+    if (isLoading) {
+      return;
+    }
+    
+    if (!searchIndex || !searchIndex.length) {
+      resultsContainer.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">Search data is still loading, please try again in a moment...</p>';
       return;
     }
     
@@ -64,40 +87,49 @@ function initializeSearch() {
     
     // Allow the UI to update before searching
     setTimeout(() => {
-      const results = searchIndex
-        .filter(item => {
-          const titleScore = scoreMatch(item.title, query);
-          const contentScore = scoreMatch(item.content, query);
-          const urlScore = scoreMatch(item.url, query);
-          
-          item.score = titleScore * 3 + contentScore + urlScore * 0.5;
-          return item.score > 0;
-        })
-        .sort((a, b) => b.score - a.score);
-      
-      if (results.length === 0) {
-        resultsContainer.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">No results found for "' + escapeRegExp(query) + '"</p>';
-        if (searchCount) searchCount.textContent = '0';
-      } else {
-        if (searchCount) searchCount.textContent = results.length.toString();
+      try {
+        const results = searchIndex
+          .filter(item => {
+            if (!item) return false;
+            
+            const titleScore = scoreMatch(item.title || '', query);
+            const contentScore = scoreMatch(item.content || '', query);
+            const descriptionScore = scoreMatch(item.description || '', query);
+            
+            // Calculate a weighted score
+            item.score = (titleScore * 3) + contentScore + (descriptionScore * 2);
+            return item.score > 0;
+          })
+          .sort((a, b) => b.score - a.score);
         
-        const resultItems = results.map(item => {
-          const snippet = getResultSnippet(item.content, query);
+        if (results.length === 0) {
+          resultsContainer.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">No results found for "' + escapeRegExp(query) + '"</p>';
+          if (searchCount) searchCount.textContent = '0';
+        } else {
+          if (searchCount) searchCount.textContent = results.length.toString();
           
-          return `
-            <li class="mb-6 pb-6 border-b border-[var(--color-border)] last:border-0">
-              <h3 class="text-xl font-medium mb-2">
-                <a href="${item.url}" class="text-[var(--color-primary)] hover:underline">
-                  ${highlightMatches(item.title, query)}
-                </a>
-              </h3>
-              <p class="text-sm text-[var(--color-text-muted)] mb-1">${item.url}</p>
-              <p class="text-[var(--color-text)]">${snippet}</p>
-            </li>
-          `;
-        }).join('');
-        
-        resultsContainer.innerHTML = `<ul class="divide-y divide-[var(--color-border)]">${resultItems}</ul>`;
+          const resultItems = results.map(item => {
+            const snippet = getResultSnippet(item.content || item.description || '', query);
+            const title = item.title || 'Untitled';
+            
+            return `
+              <li class="mb-6 pb-6 border-b border-[var(--color-border)] last:border-0">
+                <h3 class="text-xl font-medium mb-2">
+                  <a href="${item.url}" class="text-[var(--color-primary)] hover:underline">
+                    ${highlightMatches(title, query)}
+                  </a>
+                </h3>
+                <p class="text-sm text-[var(--color-text-muted)] mb-1">${item.url}</p>
+                <p class="text-[var(--color-text)]">${snippet}</p>
+              </li>
+            `;
+          }).join('');
+          
+          resultsContainer.innerHTML = `<ul class="divide-y divide-[var(--color-border)]">${resultItems}</ul>`;
+        }
+      } catch (error) {
+        console.error('Error during search:', error);
+        resultsContainer.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">An error occurred during search. Please try again.</p>';
       }
       
       isLoading = false;
