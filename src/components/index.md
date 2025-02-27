@@ -9,13 +9,21 @@ eleventyNavigation:
   order: 2
 ---
 
-# Components
+# Enterprise Design System Components
 
-The Enterprise Design System provides a comprehensive library of UI components that help you build consistent and accessible interfaces. Our components are built with accessibility, usability, and flexibility in mind.
+The Enterprise Design System (EDS) provides a comprehensive library of UI components that help build consistent and accessible interfaces. All components follow our core design principles and are built with accessibility, usability, and flexibility in mind.
+
+## Finding Components
+
+Our documentation offers multiple ways to find the components you need:
+
+- **Left Navigation**: Use the sidebar to browse components by category
+- **Category View**: Browse components organized by functional categories below
+- **Search**: Use the search function in the top navigation to quickly find a specific component
 
 ## Component Categories
 
-Our components are organized into the following categories:
+Our components are organized into the following functional categories:
 
 ### Input Components
 

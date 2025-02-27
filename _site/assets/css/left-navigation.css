@@ -1,0 +1,99 @@
+.left-navigation {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.left-navigation a {
+  color: var(--color-text);
+  text-decoration: none;
+  display: block;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.left-navigation a:hover {
+  color: var(--color-primary);
+  background-color: var(--color-bg-alt);
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+}
+
+.left-navigation a.active {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.left-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Expandable sections */
+.left-navigation details {
+  margin-bottom: 0.5rem;
+}
+
+.left-navigation summary {
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.left-navigation summary::-webkit-details-marker {
+  display: none;
+}
+
+.left-navigation summary::before {
+  content: "›";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+  width: 1rem;
+  text-align: center;
+}
+
+.left-navigation details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.left-navigation details ul {
+  padding-left: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* Category styling */
+.left-navigation h3 {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+/* Child list with border */
+.left-navigation .border-l {
+  border-color: var(--color-border);
+}
+
+/* Mobile adjustments */
+@media (max-width: 1024px) {
+  .left-navigation {
+    display: none;
+  }
+}
+
+/* Component cards in navigation */
+.left-navigation .component-card {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.left-navigation .component-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

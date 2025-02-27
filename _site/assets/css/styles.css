@@ -1,5 +1,8 @@
 /* Enterprise Design System (EDS) CSS */
 
+/* Import component-specific styles */
+@import url('left-navigation.css');
+
 :root {
   /* Primary color - Green #368727 */
   --color-primary: #368727;
