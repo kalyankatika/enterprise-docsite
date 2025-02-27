@@ -1,48 +1,202 @@
-@TITLE: Toggle Switch Component
-@AUTHOR: EDS Team
-@DATE: 2025-01-15
-@TAGS: component, ui, form, input
-
-The Toggle Switch component is an interactive control that allows users to turn something on or off.
+@DOCUMENT
+title: Dropdown Menu Component
+author: Design System Team
+created: 2023-06-12
+category: components
+version: 1.5.0
+@END_HEADER
 
 @SECTION: Overview
+The Dropdown Menu component provides a toggleable menu that displays a list of options or actions.
+Use dropdowns when you need to provide multiple options in a compact space.
+@END_SECTION
 
-Toggle switches are used to quickly switch between two possible states. They are commonly used for "on/off" states.
+@SECTION: Usage Guidelines
+Dropdown menus should:
+- Provide clear labels for the dropdown trigger
+- Group related options
+- Use consistent styling with other form controls
+- Open below the trigger element when possible
+- Close when clicking outside of the menu
 
-@SECTION: Appearance
+@NOTE
+Limit the number of options in a dropdown to maintain usability. For long lists, consider using a searchable dropdown or a different UI pattern.
+@END_NOTE
+@END_SECTION
 
-Toggle switches have two states:
-@ITEM On - Typically represented by the thumb positioned on the right
-@ITEM Off - Typically represented by the thumb positioned on the left
+@SECTION: Variants
+@SUBSECTION: Simple Dropdown
+A basic dropdown with a list of options.
 
-@SECTION: Code Example
+@CODE
+<div class="eds-dropdown">
+  <button class="eds-dropdown-toggle">Select an option</button>
+  <ul class="eds-dropdown-menu">
+    <li><a href="#">Option 1</a></li>
+    <li><a href="#">Option 2</a></li>
+    <li><a href="#">Option 3</a></li>
+  </ul>
+</div>
+@END_CODE
 
-@CODE_BEGIN(html)
-<label class="eds-toggle-switch">
-  <input type="checkbox" class="eds-toggle-switch__input" />
-  <span class="eds-toggle-switch__slider"></span>
-</label>
-@CODE_END
+@SUBSECTION: With Icons
+Dropdowns can include icons to provide visual cues.
+
+@CODE
+<div class="eds-dropdown">
+  <button class="eds-dropdown-toggle">
+    <span class="eds-icon">🔍</span>
+    Select an option
+  </button>
+  <ul class="eds-dropdown-menu">
+    <li><a href="#"><span class="eds-icon">📄</span> Document</a></li>
+    <li><a href="#"><span class="eds-icon">📁</span> Folder</a></li>
+    <li><a href="#"><span class="eds-icon">📊</span> Report</a></li>
+  </ul>
+</div>
+@END_CODE
+
+@SUBSECTION: With Dividers
+Use dividers to group related options.
+
+@CODE
+<div class="eds-dropdown">
+  <button class="eds-dropdown-toggle">Account</button>
+  <ul class="eds-dropdown-menu">
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+    <li class="eds-dropdown-divider"></li>
+    <li><a href="#">Logout</a></li>
+  </ul>
+</div>
+@END_CODE
+@END_SECTION
+
+@SECTION: States
+@SUBSECTION: Default
+The default state of the dropdown is closed.
+
+@SUBSECTION: Open
+When clicked, the dropdown displays its menu of options.
+
+@SUBSECTION: Disabled
+Dropdowns can be disabled to indicate that they are not currently interactive.
+
+@CODE
+<div class="eds-dropdown">
+  <button class="eds-dropdown-toggle" disabled>Select an option</button>
+</div>
+@END_CODE
+@END_SECTION
 
 @SECTION: Accessibility
+For accessible dropdown menus:
+- Use semantic HTML elements (<button> for triggers, <ul> and <li> for menu items)
+- Add appropriate ARIA attributes (aria-expanded, aria-haspopup)
+- Ensure keyboard navigation works (Tab, Enter, Space, Esc, Arrow keys)
+- Provide sufficient color contrast
+- Ensure focus states are visible
 
-@NOTE_BEGIN
-Toggle switches should be implemented as checkbox inputs with appropriate styling to ensure they are accessible to all users, including those using screen readers.
-@NOTE_END
+@CODE
+<div class="eds-dropdown">
+  <button class="eds-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+    Select an option
+  </button>
+  <ul class="eds-dropdown-menu" role="menu">
+    <li role="menuitem"><a href="#">Option 1</a></li>
+    <li role="menuitem"><a href="#">Option 2</a></li>
+    <li role="menuitem"><a href="#">Option 3</a></li>
+  </ul>
+</div>
+@END_CODE
+@END_SECTION
 
-@WARNING_BEGIN
-Avoid using toggle switches for actions that require confirmation. Use regular buttons for these actions instead.
-@WARNING_END
+@SECTION: Implementation
+@SUBSECTION: HTML Structure
+Dropdowns consist of a trigger button and a menu of options.
 
-@SECTION: Properties
+@SUBSECTION: CSS Classes
+@TABLE
+Class | Description
+------------------
+eds-dropdown | Container for the dropdown component
+eds-dropdown-toggle | Button that triggers the dropdown menu
+eds-dropdown-menu | Container for dropdown options
+eds-dropdown-divider | Horizontal divider between options
+eds-dropdown-header | Optional header text inside the dropdown menu
+eds-dropdown-item-disabled | Style for disabled dropdown items
+@END_TABLE
 
-@ITEM label - Text label associated with the toggle
-@ITEM checked - Current state of the toggle (on/off)
-@ITEM disabled - Whether the toggle is disabled
-@ITEM onChange - Function called when the toggle state changes
+@SUBSECTION: JavaScript
+Dropdowns require JavaScript for toggling visibility, handling keyboard interactions, and closing when clicking outside.
 
-@SECTION: Related Components
+@CODE
+// Simple dropdown implementation
+document.querySelectorAll('.eds-dropdown-toggle').forEach(button => {
+  button.addEventListener('click', function() {
+    const dropdown = this.closest('.eds-dropdown');
+    dropdown.classList.toggle('open');
+    this.setAttribute('aria-expanded', dropdown.classList.contains('open'));
+  });
+  
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.eds-dropdown')) {
+      document.querySelectorAll('.eds-dropdown.open').forEach(dropdown => {
+        dropdown.classList.remove('open');
+        dropdown.querySelector('.eds-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+});
+@END_CODE
+@END_SECTION
 
-@ITEM @LINK(../inputs/checkbox/,Checkbox) - For discrete selection options
-@ITEM @LINK(../inputs/radio/,Radio Button) - For selecting one option from many
-@ITEM @LINK(../inputs/button/,Button) - For triggering actions
+@SECTION: Examples
+@SUBSECTION: Language Selector
+Example of a dropdown used for language selection.
+
+@CODE
+<div class="eds-dropdown">
+  <button class="eds-dropdown-toggle">
+    <span class="eds-icon">🌐</span>
+    English
+  </button>
+  <ul class="eds-dropdown-menu">
+    <li><a href="#en">English</a></li>
+    <li><a href="#fr">Français</a></li>
+    <li><a href="#es">Español</a></li>
+    <li><a href="#de">Deutsch</a></li>
+  </ul>
+</div>
+@END_CODE
+
+@SUBSECTION: User Menu
+Example of a user account dropdown.
+
+@CODE
+<div class="eds-dropdown eds-dropdown-right">
+  <button class="eds-dropdown-toggle">
+    <img src="avatar.jpg" alt="User Avatar" class="eds-avatar">
+    Jane Doe
+  </button>
+  <ul class="eds-dropdown-menu">
+    <li class="eds-dropdown-header">jane.doe@example.com</li>
+    <li><a href="#profile">My Profile</a></li>
+    <li><a href="#settings">Account Settings</a></li>
+    <li class="eds-dropdown-divider"></li>
+    <li><a href="#help">Help Center</a></li>
+    <li><a href="#logout">Sign Out</a></li>
+  </ul>
+</div>
+@END_CODE
+@END_SECTION
+
+@SECTION: Best Practices
+- Position dropdowns so they don't get cut off by screen edges
+- Maintain consistent hover and focus states
+- Ensure dropdown items have sufficient hit areas
+- Use appropriate language for labels that clearly indicate the action
+- Avoid deeply nested dropdowns (dropdown within a dropdown)
+- Consider mobile usability with touch-friendly targets
+@END_SECTION
