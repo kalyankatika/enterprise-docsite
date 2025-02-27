@@ -32,17 +32,11 @@
   document.addEventListener('DOMContentLoaded', function() {
     // Find all theme toggle buttons
     const themeToggles = document.querySelectorAll('.eds-theme-toggle');
-    const themeToggleButton = document.getElementById('theme-toggle');
     
     // Add click event listener to all toggle buttons
     themeToggles.forEach(button => {
       button.addEventListener('click', toggleTheme);
     });
-    
-    // Add click event listener to the main theme toggle button
-    if (themeToggleButton) {
-      themeToggleButton.addEventListener('click', toggleTheme);
-    }
     
     // Handle system preference changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {

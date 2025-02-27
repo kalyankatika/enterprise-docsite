@@ -1,315 +1,99 @@
-/**
- * Enterprise Design System Left Navigation
- * 
- * This CSS file provides styles for the left navigation component
- * used throughout the Enterprise Documentation System.
- */
-
-/* Base navigation container */
-.eds-left-nav {
-  width: 280px;
-  height: 100%;
-  overflow-y: auto;
-  background-color: var(--eds-color-background-sidebar, #f8fafc);
-  border-right: 1px solid var(--eds-color-border, #e2e8f0);
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
+.left-navigation {
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
-/* Inner container for padding */
-.eds-left-nav-inner {
-  padding: 1rem;
+.left-navigation a {
+  color: var(--color-text);
+  text-decoration: none;
+  display: block;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
 }
 
-/* Main navigation list */
-.eds-left-nav-list {
+.left-navigation a:hover {
+  color: var(--color-primary);
+  background-color: var(--color-bg-alt);
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+}
+
+.left-navigation a.active {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.left-navigation ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Navigation item */
-.eds-left-nav-item {
+/* Expandable sections */
+.left-navigation details {
   margin-bottom: 0.5rem;
 }
 
-.eds-left-nav-item-active > .eds-left-nav-link,
-.eds-left-nav-item-active > .eds-left-nav-button {
-  color: var(--eds-color-primary, #3b82f6);
-  background-color: var(--eds-color-primary-light, #eff6ff);
+.left-navigation summary {
+  cursor: pointer;
   font-weight: 500;
-}
-
-/* Navigation link */
-.eds-left-nav-link,
-.eds-left-nav-button {
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
-  border-radius: 0.375rem;
-  color: var(--eds-color-text, #1e293b);
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  width: 100%;
-  text-align: left;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 0.875rem;
 }
 
-.eds-left-nav-link:hover,
-.eds-left-nav-button:hover {
-  background-color: var(--eds-color-hover, #f1f5f9);
+.left-navigation summary::-webkit-details-marker {
+  display: none;
 }
 
-.eds-left-nav-link:focus,
-.eds-left-nav-button:focus {
-  outline: 2px solid var(--eds-color-focus, #3b82f6);
-  outline-offset: -2px;
-}
-
-/* Icon in navigation */
-.eds-left-nav-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-right: 0.75rem;
-  flex-shrink: 0;
-}
-
-/* Chevron indicator for expandable items */
-.eds-left-nav-chevron {
+.left-navigation summary::before {
+  content: "›";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
   width: 1rem;
-  height: 1rem;
-  margin-left: auto;
-  transition: transform 0.2s ease;
+  text-align: center;
 }
 
-.eds-left-nav-button[aria-expanded="true"] > .eds-left-nav-chevron {
-  transform: rotate(180deg);
+.left-navigation details[open] summary::before {
+  transform: rotate(90deg);
 }
 
-/* Submenu styles */
-.eds-left-nav-submenu {
-  list-style: none;
-  padding: 0.25rem 0 0.25rem 2.5rem;
-  margin: 0;
+.left-navigation details ul {
+  padding-left: 1rem;
+  margin-top: 0.25rem;
 }
 
-.eds-left-nav-submenu-item {
-  margin-bottom: 0.25rem;
-}
-
-.eds-left-nav-submenu-item-active > .eds-left-nav-submenu-link,
-.eds-left-nav-submenu-item-active > .eds-left-nav-submenu-button {
-  color: var(--eds-color-primary, #3b82f6);
-  font-weight: 500;
-}
-
-.eds-left-nav-submenu-link,
-.eds-left-nav-submenu-button {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.25rem;
-  color: var(--eds-color-text, #1e293b);
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  font-size: 0.8125rem;
-  width: 100%;
-  text-align: left;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.eds-left-nav-submenu-link:hover,
-.eds-left-nav-submenu-button:hover {
-  background-color: var(--eds-color-hover, #f1f5f9);
-}
-
-.eds-left-nav-submenu-link:focus,
-.eds-left-nav-submenu-button:focus {
-  outline: 2px solid var(--eds-color-focus, #3b82f6);
-  outline-offset: -2px;
-}
-
-/* Chevron for submenu items */
-.eds-left-nav-submenu-chevron {
-  width: 0.875rem;
-  height: 0.875rem;
-  margin-left: auto;
-  transition: transform 0.2s ease;
-}
-
-.eds-left-nav-submenu-button[aria-expanded="true"] > .eds-left-nav-submenu-chevron {
-  transform: rotate(180deg);
-}
-
-/* Sub-submenu styles */
-.eds-left-nav-subsubmenu {
-  list-style: none;
-  padding: 0.25rem 0 0.25rem 1rem;
-  margin: 0;
-}
-
-.eds-left-nav-subsubmenu-item {
-  margin-bottom: 0.25rem;
-}
-
-.eds-left-nav-subsubmenu-item-active > .eds-left-nav-subsubmenu-link,
-.eds-left-nav-subsubmenu-item-active > .eds-left-nav-subsubmenu-button {
-  color: var(--eds-color-primary, #3b82f6);
-  font-weight: 500;
-}
-
-.eds-left-nav-subsubmenu-link,
-.eds-left-nav-subsubmenu-button {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.25rem;
-  color: var(--eds-color-text, #1e293b);
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
+/* Category styling */
+.left-navigation h3 {
   font-size: 0.75rem;
-  width: 100%;
-  text-align: left;
-  border: none;
-  background: none;
-  cursor: pointer;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
 }
 
-.eds-left-nav-subsubmenu-link:hover,
-.eds-left-nav-subsubmenu-button:hover {
-  background-color: var(--eds-color-hover, #f1f5f9);
+/* Child list with border */
+.left-navigation .border-l {
+  border-color: var(--color-border);
 }
 
-.eds-left-nav-subsubmenu-link:focus,
-.eds-left-nav-subsubmenu-button:focus {
-  outline: 2px solid var(--eds-color-focus, #3b82f6);
-  outline-offset: -2px;
+/* Mobile adjustments */
+@media (max-width: 1024px) {
+  .left-navigation {
+    display: none;
+  }
 }
 
-/* Chevron for sub-submenu items */
-.eds-left-nav-subsubmenu-chevron {
-  width: 0.75rem;
-  height: 0.75rem;
-  margin-left: auto;
-  transition: transform 0.2s ease;
-}
-
-.eds-left-nav-subsubmenu-button[aria-expanded="true"] > .eds-left-nav-subsubmenu-chevron {
-  transform: rotate(180deg);
-}
-
-/* Sub-sub-submenu styles for deep nesting (accordion component example) */
-.eds-left-nav-subsubsubmenu {
-  list-style: none;
-  padding: 0.25rem 0 0.25rem 1rem;
-  margin: 0;
-}
-
-.eds-left-nav-subsubsubmenu-item {
-  margin-bottom: 0.25rem;
-}
-
-.eds-left-nav-subsubsubmenu-item-active > .eds-left-nav-subsubsubmenu-link {
-  color: var(--eds-color-primary, #3b82f6);
-  font-weight: 500;
-}
-
-.eds-left-nav-subsubsubmenu-link {
-  display: block;
-  padding: 0.375rem 0.75rem;
+/* Component cards in navigation */
+.left-navigation .component-card {
+  padding: 0.5rem;
   border-radius: 0.25rem;
-  color: var(--eds-color-text, #1e293b);
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-  font-size: 0.75rem;
+  border: 1px solid var(--color-border);
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
 }
 
-.eds-left-nav-subsubsubmenu-link:hover {
-  background-color: var(--eds-color-hover, #f1f5f9);
-}
-
-.eds-left-nav-subsubsubmenu-link:focus {
-  outline: 2px solid var(--eds-color-focus, #3b82f6);
-  outline-offset: -2px;
-}
-
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  .eds-left-nav {
-    background-color: var(--eds-color-background-sidebar-dark, #1e293b);
-    border-right-color: var(--eds-color-border-dark, #334155);
-  }
-
-  .eds-left-nav-link,
-  .eds-left-nav-button,
-  .eds-left-nav-submenu-link,
-  .eds-left-nav-submenu-button,
-  .eds-left-nav-subsubmenu-link,
-  .eds-left-nav-subsubmenu-button,
-  .eds-left-nav-subsubsubmenu-link {
-    color: var(--eds-color-text-dark, #f1f5f9);
-  }
-
-  .eds-left-nav-item-active > .eds-left-nav-link,
-  .eds-left-nav-item-active > .eds-left-nav-button {
-    background-color: var(--eds-color-primary-dark, #1d4ed8);
-    color: var(--eds-color-text-dark, #f8fafc);
-  }
-
-  .eds-left-nav-submenu-item-active > .eds-left-nav-submenu-link,
-  .eds-left-nav-submenu-item-active > .eds-left-nav-submenu-button,
-  .eds-left-nav-subsubmenu-item-active > .eds-left-nav-subsubmenu-link,
-  .eds-left-nav-subsubmenu-item-active > .eds-left-nav-subsubmenu-button,
-  .eds-left-nav-subsubsubmenu-item-active > .eds-left-nav-subsubsubmenu-link {
-    color: var(--eds-color-primary-accent-dark, #93c5fd);
-  }
-
-  .eds-left-nav-link:hover,
-  .eds-left-nav-button:hover,
-  .eds-left-nav-submenu-link:hover,
-  .eds-left-nav-submenu-button:hover,
-  .eds-left-nav-subsubmenu-link:hover,
-  .eds-left-nav-subsubmenu-button:hover,
-  .eds-left-nav-subsubsubmenu-link:hover {
-    background-color: var(--eds-color-hover-dark, #334155);
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .eds-left-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 50;
-    transform: translateX(-100%);
-  }
-
-  .eds-left-nav.is-open {
-    transform: translateX(0);
-  }
-
-  .eds-left-nav-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    z-index: 40;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-
-  .eds-left-nav-backdrop.is-active {
-    opacity: 1;
-    visibility: visible;
-  }
+.left-navigation .component-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }

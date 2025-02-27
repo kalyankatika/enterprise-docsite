@@ -1,220 +1,168 @@
 /**
- * Enterprise Design System Animations
- * 
- * This CSS file provides animations and transitions for enhanced UI
- * using Framer Motion integration.
+ * Animation styles for the EDS
+ * Provides CSS transitions to simulate Framer Motion animations
  */
 
-/* Base animation classes */
-.eds-animate {
+/* Base styles for animations */
+[data-motion] {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.eds-animate.in-view {
+[data-motion].animated {
   opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered animation for lists */
-.eds-stagger-list > * {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.eds-stagger-list.in-view > * {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.eds-stagger-list.in-view > *:nth-child(1) {
-  transition-delay: 0.1s;
-}
-
-.eds-stagger-list.in-view > *:nth-child(2) {
-  transition-delay: 0.2s;
-}
-
-.eds-stagger-list.in-view > *:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-.eds-stagger-list.in-view > *:nth-child(4) {
-  transition-delay: 0.4s;
-}
-
-.eds-stagger-list.in-view > *:nth-child(5) {
-  transition-delay: 0.5s;
-}
-
-.eds-stagger-list.in-view > *:nth-child(n+6) {
-  transition-delay: 0.6s;
 }
 
 /* Fade in animation */
-.eds-fade-in {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+.motion-fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
 }
 
-.eds-fade-in.in-view {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade in up animation */
+.motion-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale in animation */
+.motion-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Slide in right animation */
+.motion-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stagger container */
+.motion-stagger {
   opacity: 1;
 }
 
-/* Scale animation */
-.eds-scale {
+.motion-stagger > * {
   opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
 }
 
-.eds-scale.in-view {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Slide-in animations for different directions */
-.eds-slide-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.eds-slide-up.in-view {
+.motion-stagger.animated > * {
   opacity: 1;
   transform: translateY(0);
-}
-
-.eds-slide-down {
-  opacity: 0;
-  transform: translateY(-40px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.eds-slide-down.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.eds-slide-left {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.eds-slide-left.in-view {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.eds-slide-right {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.eds-slide-right.in-view {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 /* Hero section specific animations */
-.eds-hero-title {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.hero-title {
+  transform: translateY(-10px);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out;
 }
 
-.eds-hero-title.in-view {
-  opacity: 1;
+.hero-title.animated {
   transform: translateY(0);
 }
 
-.eds-hero-description {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+.hero-image {
+  transform: scale(0.95);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease-out;
 }
 
-.eds-hero-description.in-view {
-  opacity: 1;
-  transform: translateY(0);
+.hero-image.animated {
+  transform: scale(1);
 }
 
-.eds-hero-cta {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s;
-}
-
-.eds-hero-cta.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Card hover effects */
-.eds-card {
+/* Card hover animations */
+.animated-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.eds-card:hover {
+.animated-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Pulse animation */
-@keyframes eds-pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.eds-pulse {
-  animation: eds-pulse 2s infinite;
-}
-
-/* Shimmer effect for loading states */
-@keyframes eds-shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-.eds-shimmer {
-  background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
-  background-size: 1000px 100%;
-  animation: eds-shimmer 2s infinite linear;
-}
-
-/* Animation for the accordion component */
-.eds-accordion-trigger[aria-expanded="true"] .eds-accordion-icon {
-  transform: rotate(180deg);
+/* Icon animations */
+.animated-icon {
   transition: transform 0.3s ease;
 }
 
-.eds-accordion-trigger .eds-accordion-icon {
-  transition: transform 0.3s ease;
+.animated-card:hover .animated-icon {
+  transform: translateX(5px);
 }
 
-.eds-accordion-content {
-  max-height: 0;
+/* Button animations */
+.animated-button {
+  position: relative;
   overflow: hidden;
-  transition: max-height 0.3s ease;
 }
 
-.eds-accordion-content:not([hidden]) {
-  max-height: 1000px; /* Arbitrary large value */
+.animated-button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
 }
 
-/* Intersection Observer JavaScript is now in framer-motion-wrapper.js */
+.animated-button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}

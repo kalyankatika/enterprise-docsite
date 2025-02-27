@@ -1,117 +1,171 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en" class="eds-theme-light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Layout Components | Enterprise Design System</title>
   <meta name="description" content="Components that help with page structure and content organization.">
   
-  <!-- CSS stylesheets -->
+  <!-- Load Tailwind CSS from CDN for reliable rendering -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- Custom styles -->
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <link rel="stylesheet" href="/assets/css/animations.css">
-  <link rel="stylesheet" href="/assets/css/tailwind.css">
   
-  <!-- Favicon -->
-  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
-  
-  <!-- JavaScript -->
-  <script src="/assets/js/alpine.min.js" defer></script>
-  <script src="/assets/js/framer-motion-wrapper.js" defer></script>
-  <script src="/assets/js/theme.js" defer></script>
-  <script src="/assets/js/search.js" defer></script>
+  <!-- Scripts -->
   <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/framer-motion-wrapper.js" defer></script>
+  
+  <!-- Fix for SVG icon sizing -->
+  <style>
+    /* Global icon sizing fix */
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+      height: 1em;
+      width: 1em;
+    }
+    
+    /* Ensure proper sizing for specific icons */
+    svg.h-5 {
+      height: 1.25rem !important;
+      width: 1.25rem !important;
+    }
+    
+    svg.h-6 {
+      height: 1.5rem !important;
+      width: 1.5rem !important;
+    }
+    
+    svg.h-8 {
+      height: 2rem !important;
+      width: 2rem !important;
+    }
+    
+    /* Typography improvements */
+    .prose {
+      color: var(--color-text) !important;
+    }
+    
+    .prose h1, .prose h2, .prose h3, .prose h4 {
+      color: var(--color-text) !important;
+    }
+    
+    .prose a {
+      color: var(--color-primary) !important;
+      text-decoration-color: var(--color-primary) !important;
+    }
+    
+    .prose code {
+      background-color: var(--color-bg-alt) !important;
+      color: var(--color-text) !important;
+    }
+  </style>
 </head>
-<body class="h-full flex flex-col">
-  <!-- Site Header -->
-  <header class="bg-[var(--color-bg-alt)] border-b border-[var(--color-border)] sticky top-0 z-50">
-    <div class="container mx-auto px-4 h-16">
-      <div class="flex justify-between items-center h-full">
+<body class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen">
+
+  <header class="bg-[var(--color-bg)] shadow-sm z-50 border-b border-[var(--color-border)]">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex items-center justify-between py-4">
         <!-- Logo and site title -->
-        <div class="flex items-center">
-          <a href="/" class="text-xl font-semibold flex items-center">
-            <span class="eds-logo">EDS</span>
-            <span class="ml-2 hidden sm:inline-block">Enterprise Design System</span>
-          </a>
-        </div>
+        <a href="/" class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="font-bold text-lg">Enterprise Design System</span>
+        </a>
         
-        <!-- Main navigation -->
+        <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center space-x-6">
+          <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Overview</a>
+          <a href="/design-system/foundations/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
+          <a href="/components/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/navigation/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Browse</a>
           
-        </nav>
-        
-        <!-- Right section - Search and Theme Toggle -->
-        <div class="flex items-center space-x-4">
-          <!-- Search button/input -->
-          <div class="relative" x-data="{ open: false }">
-            <button 
-              @click="open = !open" 
-              class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
-              aria-label="Search"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <!-- Search -->
+          <form action="/search/" method="get" role="search" class="relative ml-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-40 md:w-60">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-            </button>
-            
-            <div 
-              x-show="open" 
-              @click.away="open = false"
-              x-transition:enter="transition ease-out duration-200"
-              x-transition:enter-start="opacity-0 scale-95"
-              x-transition:enter-end="opacity-100 scale-100"
-              x-transition:leave="transition ease-in duration-100"
-              x-transition:leave-start="opacity-100 scale-100"
-              x-transition:leave-end="opacity-0 scale-95"
-              class="absolute right-0 mt-2 w-64 bg-[var(--color-bg)] rounded-md shadow-lg p-2 border border-[var(--color-border)]"
-            >
-              <input 
-                type="text" 
-                placeholder="Search..." 
-                class="w-full px-3 py-2 border border-[var(--color-border)] bg-[var(--color-bg-alt)] rounded-md text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
-                @keydown.enter="window.location.href = '/search/?q=' + $event.target.value"
-              >
             </div>
-          </div>
+          </form>
           
-          <!-- Theme toggle -->
-          <button 
-            id="theme-toggle" 
-            class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
-            aria-label="Toggle dark mode"
-          >
+          <!-- Theme Toggle Button -->
+          <button class="eds-theme-toggle p-2 rounded-md hover:bg-[var(--color-bg-alt)] ml-2" aria-label="Toggle theme">
+            <!-- Sun (light) icon - show in dark mode -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
+            <!-- Moon (dark) icon - show in light mode -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 eds-theme-dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
           </button>
+        </nav>
+        
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <form action="/search/" method="get" role="search" class="relative mr-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-32">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
           
-          <!-- Mobile menu button -->
-          <button 
-            id="mobile-menu-button" 
-            class="md:hidden text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors"
-            aria-label="Menu"
-          >
+          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </div>
-    </div>
-    
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--color-border)] bg-[var(--color-bg-alt)]">
-      <div class="container mx-auto px-4 py-4">
+      
+      <!-- No secondary navigation - using left sidebar instead -->
+      
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)]">
         <nav class="flex flex-col space-y-4">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
+          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Overview</a>
+          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
+          <a href="/components/" class="hover:text-[var(--color-primary)] text-[var(--color-primary)] font-medium">Components</a>
+          <a href="/navigation/" class="hover:text-[var(--color-primary)]">Browse</a>
           
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Browse Components</h3>
+          <a href="/navigation/by-channel/" class="hover:text-[var(--color-primary)]">By Channel</a>
+          <a href="/navigation/by-type/" class="hover:text-[var(--color-primary)]">By Type</a>
+          <a href="/navigation/by-owner/" class="hover:text-[var(--color-primary)]">By Owner</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
+          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
+          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
+          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
+          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
+          
+          <!-- Theme Toggle Button (Mobile) -->
+          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)] mt-4" aria-label="Toggle theme">
+            <!-- Sun (light) icon - show in dark mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon (dark) icon - show in light mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 eds-theme-dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <span class="hidden eds-theme-dark:block">Switch to Light Mode</span>
+            <span class="eds-theme-dark:hidden">Switch to Dark Mode</span>
+          </button>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- Main content -->
   <main class="flex-1">
     
 <div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
@@ -119,163 +173,111 @@
     <!-- Left sidebar - Standard navigation -->
     <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
       <div class="sticky top-32">
-        <nav class="eds-left-navigation">
-  <ul class="space-y-6">
-    <!-- Getting Started -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Getting Started
-      </div>
-      <ul class="space-y-1">
+        
+
+<nav class="left-navigation">
+  <div class="space-y-6">
+    
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
+      <ul class="space-y-2">
         <li>
-          <a href="/getting-started/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-            Introduction
+          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            All Components
           </a>
         </li>
         <li>
-          <a href="/getting-started/installation/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-            Installation
+          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Design Tokens
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Patterns
+          </a>
+        </li>
+        <li>
+          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Guidelines
           </a>
         </li>
       </ul>
-    </li>
+    </div>
     
-    <!-- Design System -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Design System
-      </div>
-      <ul class="space-y-1">
-        <li>
-          <a href="/design-system/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-            Overview
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-            Foundations
-          </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/design-system/foundations/colors/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-                Colors
-              </a>
-            </li>
-            <li>
-              <a href="/design-system/foundations/typography/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-                Typography
-              </a>
-            </li>
-            <li>
-              <a href="/design-system/foundations/spacing/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-                Spacing
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
     
-    <!-- Components -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Components
-      </div>
-      <ul class="space-y-1">
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
+      <ul class="space-y-2">
         <li>
-          <a href="/components/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-            Overview
-          </a>
-        </li>
-        <li>
-          <a href="/components/layout/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1 active-nav-link">
+          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
             Layout
           </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/components/layout/accordion/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-                Accordion
-              </a>
-            </li>
-            <li>
-              <a href="/components/layout/card/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-                Card
-              </a>
-            </li>
+          
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            
+              <li>
+                <a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                  Card
+                </a>
+              </li>
+            
+              <li>
+                <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
+                  Layout Components
+                </a>
+              </li>
+            
           </ul>
+          
         </li>
         <li>
-          <a href="/components/navigation/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
+          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
             Navigation
           </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/components/navigation/breadcrumb/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-                Breadcrumb
-              </a>
-            </li>
-          </ul>
+          
         </li>
         <li>
-          <a href="/components/inputs/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-            Inputs
-          </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/components/inputs/button/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-                Button
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="/components/feedback/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
+          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
             Feedback
           </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/components/feedback/alert/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-                Alert
-              </a>
-            </li>
-          </ul>
+          
+        </li>
+        <li>
+          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Inputs
+          </a>
+          
         </li>
       </ul>
-    </li>
+    </div>
     
-    <!-- Resources -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Resources
-      </div>
-      <ul class="space-y-1">
+    
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
+      <ul class="space-y-2">
         <li>
-          <a href="/resources/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-            Overview
+          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Colors
           </a>
         </li>
         <li>
-          <a href="/resources/migration-tools/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
+          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Typography
+          </a>
+        </li>
+        <li>
+          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Spacing
+          </a>
+        </li>
+        <li>
+          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
             Migration Tools
           </a>
         </li>
       </ul>
-    </li>
-    
-    <!-- Support -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Support
-      </div>
-      <ul class="space-y-1">
-        <li>
-          <a href="/support/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1">
-            Get Help
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+    </div>
+  </div>
 </nav>
       </div>
     </div>
@@ -429,43 +431,77 @@
 </script>
   </main>
 
-  <!-- Site Footer -->
-  <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] py-8">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Left - About -->
+  <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
+    <div class="container mx-auto px-4 md:px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
         <div>
-          <h3 class="text-lg font-semibold mb-4">Enterprise Design System</h3>
-          <p class="text-[var(--color-text-muted)]">A unified documentation platform that consolidates content from multiple legacy sites into a cohesive experience.</p>
+          <h3 class="font-bold mb-4">Enterprise Design System</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">A comprehensive design system for building consistent, accessible, and beautiful enterprise applications.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+          </div>
         </div>
         
-        <!-- Middle - Quick links -->
         <div>
-          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <h4 class="font-medium mb-4">Resources</h4>
           <ul class="space-y-2">
             <li><a href="/getting-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Getting Started</a></li>
-            <li><a href="/components/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Components</a></li>
-            <li><a href="/design-system/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Design System</a></li>
-            <li><a href="/support/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Support</a></li>
+            <li><a href="/resources/examples/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Examples</a></li>
+            <li><a href="/resources/templates/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Templates</a></li>
+            <li><a href="/resources/release-notes/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Release Notes</a></li>
           </ul>
         </div>
         
-        <!-- Right - Version & Resources -->
         <div>
-          <h3 class="text-lg font-semibold mb-4">Resources</h3>
+          <h4 class="font-medium mb-4">Navigation</h4>
           <ul class="space-y-2">
-            <li><a href="/resources/migration-tools/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Migration Tools</a></li>
-            <li><a href="https://github.com/enterprise-design-system" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">GitHub</a></li>
-            <li><span class="text-[var(--color-text-muted)]">Version: 2.0.0</span></li>
-            <li><span class="text-[var(--color-text-muted)]">Last updated: 2025-02-27</span></li>
+            <li><a href="/navigation/by-channel/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Channel</a></li>
+            <li><a href="/navigation/by-type/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Type</a></li>
+            <li><a href="/navigation/by-owner/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Owner</a></li>
+            <li><a href="/search/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Search</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Components</h4>
+          <ul class="space-y-2">
+            <li><a href="/components/inputs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Input Components</a></li>
+            <li><a href="/components/layout/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Layout Components</a></li>
+            <li><a href="/components/navigation/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Navigation Components</a></li>
+            <li><a href="/components/feedback/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Feedback Components</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Support</h4>
+          <ul class="space-y-2">
+            <li><a href="/support/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Help & Support</a></li>
+            <li><a href="/support/faq/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">FAQ</a></li>
+            <li><a href="/support/contribute/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Contribute</a></li>
+            <li><a href="/support/contact/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Contact Us</a></li>
           </ul>
         </div>
       </div>
       
-      <div class="mt-8 pt-6 border-t border-[var(--color-border)] text-center text-[var(--color-text-muted)]">
-        <p>&copy;  Enterprise Design System. All rights reserved.</p>
+      <div class="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center">
+        <p class="text-[var(--color-text-muted)] text-sm mb-4 md:mb-0">&copy; 2025 Enterprise Design System. All rights reserved.</p>
+        <div class="flex space-x-6 text-sm">
+          <a href="/privacy-policy/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Privacy Policy</a>
+          <a href="/terms-of-service/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Terms of Service</a>
+          <a href="/sitemap/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Sitemap</a>
+        </div>
       </div>
     </div>
   </footer>
+
 </body>
 </html>

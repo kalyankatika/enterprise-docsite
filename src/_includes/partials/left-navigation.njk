@@ -1,158 +1,130 @@
-<nav class="eds-left-navigation">
-  <ul class="space-y-6">
-    <!-- Getting Started -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Getting Started
-      </div>
-      <ul class="space-y-1">
+{% set currentUrl = page.url %}
+
+<nav class="left-navigation">
+  <div class="space-y-6">
+    {# Main navigation categories #}
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
+      <ul class="space-y-2">
         <li>
-          <a href="/getting-started/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/getting-started/' %} active-nav-link{% endif %}">
-            Introduction
+          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/components/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            All Components
           </a>
         </li>
         <li>
-          <a href="/getting-started/installation/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/getting-started/installation/' %} active-nav-link{% endif %}">
-            Installation
+          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-tokens/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Design Tokens
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/patterns/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Patterns
+          </a>
+        </li>
+        <li>
+          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/guidelines/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Guidelines
           </a>
         </li>
       </ul>
-    </li>
+    </div>
     
-    <!-- Design System -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Design System
-      </div>
-      <ul class="space-y-1">
+    {# Components by Category #}
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
+      <ul class="space-y-2">
         <li>
-          <a href="/design-system/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/design-system/' %} active-nav-link{% endif %}">
-            Overview
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/design-system/foundations/' %} active-nav-link{% endif %}">
-            Foundations
-          </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/design-system/foundations/colors/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/design-system/foundations/colors/' %} active-nav-link{% endif %}">
-                Colors
-              </a>
-            </li>
-            <li>
-              <a href="/design-system/foundations/typography/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/design-system/foundations/typography/' %} active-nav-link{% endif %}">
-                Typography
-              </a>
-            </li>
-            <li>
-              <a href="/design-system/foundations/spacing/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/design-system/foundations/spacing/' %} active-nav-link{% endif %}">
-                Spacing
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    
-    <!-- Components -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Components
-      </div>
-      <ul class="space-y-1">
-        <li>
-          <a href="/components/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/' %} active-nav-link{% endif %}">
-            Overview
-          </a>
-        </li>
-        <li>
-          <a href="/components/layout/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/layout/' or page.url.startsWith('/components/layout/') %} active-nav-link{% endif %}">
+          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') and currentUrl != '/components/layout/' %}text-[var(--color-primary)] font-medium{% endif %}">
             Layout
           </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/components/layout/accordion/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/layout/accordion/' or page.url.startsWith('/components/layout/accordion/') %} active-nav-link{% endif %}">
-                Accordion
-              </a>
-            </li>
-            <li>
-              <a href="/components/layout/card/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/layout/card/' %} active-nav-link{% endif %}">
-                Card
-              </a>
-            </li>
+          {% if currentUrl.includes('/components/layout/') or currentUrl == '/components/layout/' %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            {% for component in collections.layoutComponents %}
+              <li>
+                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {% endfor %}
           </ul>
+          {% endif %}
         </li>
         <li>
-          <a href="/components/navigation/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/navigation/' or page.url.startsWith('/components/navigation/') %} active-nav-link{% endif %}">
+          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') and currentUrl != '/components/navigation/' %}text-[var(--color-primary)] font-medium{% endif %}">
             Navigation
           </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/components/navigation/breadcrumb/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/navigation/breadcrumb/' %} active-nav-link{% endif %}">
-                Breadcrumb
-              </a>
-            </li>
+          {% if currentUrl.includes('/components/navigation/') or currentUrl == '/components/navigation/' %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            {% for component in collections.navigationComponents %}
+              <li>
+                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {% endfor %}
           </ul>
+          {% endif %}
         </li>
         <li>
-          <a href="/components/inputs/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/inputs/' or page.url.startsWith('/components/inputs/') %} active-nav-link{% endif %}">
-            Inputs
-          </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/components/inputs/button/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/inputs/button/' %} active-nav-link{% endif %}">
-                Button
-              </a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="/components/feedback/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/feedback/' or page.url.startsWith('/components/feedback/') %} active-nav-link{% endif %}">
+          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') and currentUrl != '/components/feedback/' %}text-[var(--color-primary)] font-medium{% endif %}">
             Feedback
           </a>
-          <ul class="pl-4 mt-1 space-y-1">
-            <li>
-              <a href="/components/feedback/alert/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/components/feedback/alert/' %} active-nav-link{% endif %}">
-                Alert
-              </a>
-            </li>
+          {% if currentUrl.includes('/components/feedback/') or currentUrl == '/components/feedback/' %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            {% for component in collections.feedbackComponents %}
+              <li>
+                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {% endfor %}
           </ul>
+          {% endif %}
+        </li>
+        <li>
+          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') and currentUrl != '/components/inputs/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Inputs
+          </a>
+          {% if currentUrl.includes('/components/inputs/') or currentUrl == '/components/inputs/' %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            {% for component in collections.inputComponents %}
+              <li>
+                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
         </li>
       </ul>
-    </li>
+    </div>
     
-    <!-- Resources -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Resources
-      </div>
-      <ul class="space-y-1">
+    {# Resources #}
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
+      <ul class="space-y-2">
         <li>
-          <a href="/resources/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/resources/' %} active-nav-link{% endif %}">
-            Overview
+          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/colors/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Colors
           </a>
         </li>
         <li>
-          <a href="/resources/migration-tools/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/resources/migration-tools/' %} active-nav-link{% endif %}">
+          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/typography/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Typography
+          </a>
+        </li>
+        <li>
+          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/spacing/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Spacing
+          </a>
+        </li>
+        <li>
+          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/resources/migration-tools/' %}text-[var(--color-primary)] font-medium{% endif %}">
             Migration Tools
           </a>
         </li>
       </ul>
-    </li>
-    
-    <!-- Support -->
-    <li>
-      <div class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">
-        Support
-      </div>
-      <ul class="space-y-1">
-        <li>
-          <a href="/support/" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors block py-1{% if page.url == '/support/' %} active-nav-link{% endif %}">
-            Get Help
-          </a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+    </div>
+  </div>
 </nav>
