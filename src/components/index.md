@@ -1,5 +1,5 @@
 ---
-layout: page.njk
+layout: layouts/page.njk
 title: Components
 description: Reusable UI elements that can be composed to create interfaces
 sidebarType: components

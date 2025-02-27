@@ -1,5 +1,5 @@
 ---
-layout: page.njk
+layout: layouts/page.njk
 title: Design System
 description: Comprehensive guidelines and principles for creating consistent enterprise applications
 sidebarType: design-system

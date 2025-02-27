@@ -1,5 +1,5 @@
 ---
-layout: page.njk
+layout: layouts/page.njk
 title: Spacing
 description: A consistent spacing system to create balanced layouts and establish rhythmic relationships between elements
 sidebarType: design-system

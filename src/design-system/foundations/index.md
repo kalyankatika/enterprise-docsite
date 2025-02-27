@@ -1,5 +1,5 @@
 ---
-layout: page.njk
+layout: layouts/page.njk
 title: Foundations
 description: The core design elements that form the building blocks of our design system
 sidebarType: design-system
