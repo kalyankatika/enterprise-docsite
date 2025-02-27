@@ -1,0 +1,216 @@
+<aside class="w-64 border-r border-[var(--color-border)] bg-[var(--color-background-alt)] flex-shrink-0 hidden md:block" x-data="{ 
+  navOpen: {},
+  toggleNav(section) {
+    this.navOpen[section] = !this.navOpen[section];
+  },
+  isOpen(section) {
+    return this.navOpen[section] !== undefined ? this.navOpen[section] : false;
+  }
+}">
+  <div class="h-full px-3 py-4 overflow-y-auto">
+    <ul class="space-y-2">
+      {% if sidebarType === 'components' %}
+        <li>
+          <div class="flex items-center justify-between p-2 text-sm font-semibold text-[var(--color-text)]">
+            <span>Components</span>
+          </div>
+          <ul class="py-2 space-y-2">
+            <li>
+              <button @click="toggleNav('inputs')" class="flex items-center w-full p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">
+                <span class="flex-1 text-left whitespace-nowrap">Input Components</span>
+                <svg :class="{ 'rotate-180': isOpen('inputs') }" class="w-3 h-3 transition-transform" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </button>
+              <ul x-show="isOpen('inputs')" class="py-2 space-y-2 pl-4">
+                <li>
+                  <a href="/components/inputs/button/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Button</a>
+                </li>
+                <li>
+                  <a href="/components/inputs/text-field/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Text Field</a>
+                </li>
+                <li>
+                  <a href="/components/inputs/checkbox/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Checkbox</a>
+                </li>
+                <li>
+                  <a href="/components/inputs/radio/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Radio</a>
+                </li>
+                <li>
+                  <a href="/components/inputs/select/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Select</a>
+                </li>
+                <li>
+                  <a href="/components/inputs/toggle/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Toggle</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <button @click="toggleNav('layout')" class="flex items-center w-full p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">
+                <span class="flex-1 text-left whitespace-nowrap">Layout Components</span>
+                <svg :class="{ 'rotate-180': isOpen('layout') }" class="w-3 h-3 transition-transform" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </button>
+              <ul x-show="isOpen('layout')" class="py-2 space-y-2 pl-4">
+                <li>
+                  <a href="/components/layout/container/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Container</a>
+                </li>
+                <li>
+                  <a href="/components/layout/grid/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Grid</a>
+                </li>
+                <li>
+                  <a href="/components/layout/box/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Box</a>
+                </li>
+                <li>
+                  <a href="/components/layout/divider/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Divider</a>
+                </li>
+                <li>
+                  <a href="/components/layout/stack/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Stack</a>
+                </li>
+                <li>
+                  <a href="/components/layout/card/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Card</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <button @click="toggleNav('navigation')" class="flex items-center w-full p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">
+                <span class="flex-1 text-left whitespace-nowrap">Navigation Components</span>
+                <svg :class="{ 'rotate-180': isOpen('navigation') }" class="w-3 h-3 transition-transform" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </button>
+              <ul x-show="isOpen('navigation')" class="py-2 space-y-2 pl-4">
+                <li>
+                  <a href="/components/navigation/navbar/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Navbar</a>
+                </li>
+                <li>
+                  <a href="/components/navigation/sidebar/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Sidebar</a>
+                </li>
+                <li>
+                  <a href="/components/navigation/tabs/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Tabs</a>
+                </li>
+                <li>
+                  <a href="/components/navigation/breadcrumbs/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Breadcrumbs</a>
+                </li>
+                <li>
+                  <a href="/components/navigation/pagination/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Pagination</a>
+                </li>
+                <li>
+                  <a href="/components/navigation/menu/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Menu</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <button @click="toggleNav('feedback')" class="flex items-center w-full p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">
+                <span class="flex-1 text-left whitespace-nowrap">Feedback Components</span>
+                <svg :class="{ 'rotate-180': isOpen('feedback') }" class="w-3 h-3 transition-transform" fill="none" viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                </svg>
+              </button>
+              <ul x-show="isOpen('feedback')" class="py-2 space-y-2 pl-4">
+                <li>
+                  <a href="/components/feedback/alert/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Alert</a>
+                </li>
+                <li>
+                  <a href="/components/feedback/toast/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Toast</a>
+                </li>
+                <li>
+                  <a href="/components/feedback/progress/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Progress</a>
+                </li>
+                <li>
+                  <a href="/components/feedback/skeleton/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Skeleton</a>
+                </li>
+                <li>
+                  <a href="/components/feedback/modal/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Modal</a>
+                </li>
+                <li>
+                  <a href="/components/feedback/tooltip/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Tooltip</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      {% endif %}
+
+      {% if sidebarType === 'tokens' %}
+        <li>
+          <div class="flex items-center justify-between p-2 text-sm font-semibold text-[var(--color-text)]">
+            <span>Design Tokens</span>
+          </div>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a href="/design-tokens/colors/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Colors</a>
+            </li>
+            <li>
+              <a href="/design-tokens/typography/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Typography</a>
+            </li>
+            <li>
+              <a href="/design-tokens/spacing/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Spacing</a>
+            </li>
+            <li>
+              <a href="/design-tokens/elevation/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Elevation</a>
+            </li>
+            <li>
+              <a href="/design-tokens/borders/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Borders</a>
+            </li>
+            <li>
+              <a href="/design-tokens/breakpoints/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Breakpoints</a>
+            </li>
+          </ul>
+        </li>
+      {% endif %}
+
+      {% if sidebarType === 'patterns' %}
+        <li>
+          <div class="flex items-center justify-between p-2 text-sm font-semibold text-[var(--color-text)]">
+            <span>Design Patterns</span>
+          </div>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a href="/patterns/forms/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Forms</a>
+            </li>
+            <li>
+              <a href="/patterns/data-tables/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Data Tables</a>
+            </li>
+            <li>
+              <a href="/patterns/authentication/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Authentication</a>
+            </li>
+            <li>
+              <a href="/patterns/pagination/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Pagination</a>
+            </li>
+            <li>
+              <a href="/patterns/filtering/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Filtering</a>
+            </li>
+            <li>
+              <a href="/patterns/empty-states/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Empty States</a>
+            </li>
+          </ul>
+        </li>
+      {% endif %}
+
+      {% if sidebarType === 'guidelines' %}
+        <li>
+          <div class="flex items-center justify-between p-2 text-sm font-semibold text-[var(--color-text)]">
+            <span>Guidelines</span>
+          </div>
+          <ul class="py-2 space-y-2">
+            <li>
+              <a href="/guidelines/accessibility/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Accessibility</a>
+            </li>
+            <li>
+              <a href="/guidelines/responsiveness/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Responsiveness</a>
+            </li>
+            <li>
+              <a href="/guidelines/internationalization/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Internationalization</a>
+            </li>
+            <li>
+              <a href="/guidelines/performance/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Performance</a>
+            </li>
+            <li>
+              <a href="/guidelines/voice-and-tone/" class="flex items-center p-2 text-sm font-normal text-[var(--color-text-muted)] hover:text-[var(--color-text)] rounded-lg hover:bg-[var(--color-background)]">Voice and Tone</a>
+            </li>
+          </ul>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</aside>

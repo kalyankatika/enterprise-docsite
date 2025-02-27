@@ -1,276 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title %}{{ title }} - {% endif %}Enterprise Design System</title>
-  <meta name="description" content="{% if description %}{{ description }}{% else %}Enterprise Design System Documentation{% endif %}">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
-  
-  <!-- Base styles from Tailwind CSS -->
+  <title>{{ title }} | Enterprise Design System</title>
+  <meta name="description" content="{{ description }}">
   <link rel="stylesheet" href="/assets/css/styles.css">
-  
-  <!-- Theme variables -->
-  <style>
-    :root {
-      /* Light theme colors */
-      --color-primary: #0056b3;
-      --color-primary-dark: #004494;
-      --color-primary-light: #3378c1;
-      --color-bg: #ffffff;
-      --color-bg-alt: #f8f9fa;
-      --color-text: #333333;
-      --color-text-muted: #6c757d;
-      --color-border: #e9ecef;
-      --color-code-bg: #f5f7f9;
-      --color-code-text: #333333;
-      --color-link: #0056b3;
-      --color-link-hover: #004494;
-      --color-success: #28a745;
-      --color-warning: #ffc107;
-      --color-error: #dc3545;
-      --color-info: #17a2b8;
-    }
-    
-    /* Dark theme */
-    html.dark {
-      --color-primary: #4f8eff;
-      --color-primary-dark: #277cf7;
-      --color-primary-light: #78a7ff;
-      --color-bg: #121212;
-      --color-bg-alt: #1e1e1e;
-      --color-text: #e0e0e0;
-      --color-text-muted: #a0a0a0;
-      --color-border: #383838;
-      --color-code-bg: #2a2a2a;
-      --color-code-text: #e0e0e0;
-      --color-link: #4f8eff;
-      --color-link-hover: #78a7ff;
-      --color-success: #5cb85c;
-      --color-warning: #f0ad4e;
-      --color-error: #d9534f;
-      --color-info: #5bc0de;
-    }
-    
-    body {
-      background-color: var(--color-bg);
-      color: var(--color-text);
-    }
-    
-    /* Alert component styles */
-    .eds-alert {
-      padding: 1rem;
-      border-radius: 0.375rem;
-      border-width: 1px;
-      margin-bottom: 1rem;
-    }
-    
-    .eds-alert-info {
-      background-color: rgba(23, 162, 184, 0.1);
-      border-color: rgba(23, 162, 184, 0.4);
-      color: var(--color-info);
-    }
-    
-    .eds-alert-success {
-      background-color: rgba(40, 167, 69, 0.1);
-      border-color: rgba(40, 167, 69, 0.4);
-      color: var(--color-success);
-    }
-    
-    .eds-alert-warning {
-      background-color: rgba(255, 193, 7, 0.1);
-      border-color: rgba(255, 193, 7, 0.4);
-      color: var(--color-warning);
-    }
-    
-    .eds-alert-error {
-      background-color: rgba(220, 53, 69, 0.1);
-      border-color: rgba(220, 53, 69, 0.4);
-      color: var(--color-error);
-    }
-    
-    .search-highlight {
-      background-color: rgba(255, 230, 0, 0.3);
-      padding: 0.1em 0.1em;
-      border-radius: 0.2em;
-      font-weight: bold;
-    }
-    
-    html.dark .search-highlight {
-      background-color: rgba(255, 230, 0, 0.2);
-    }
-  </style>
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
-  <header class="sticky top-0 z-50 bg-[var(--color-bg)] border-b border-[var(--color-border)]">
-    <div class="max-w-[1440px] mx-auto px-4 md:px-6">
-      <div class="flex items-center justify-between h-16">
-        <!-- Logo and main nav -->
-        <div class="flex items-center">
-          <a href="/" class="flex items-center text-xl font-bold text-[var(--color-primary)]">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 mr-2">
-              <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.2"/>
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2V9h2v8z" fill="currentColor"/>
-            </svg>
-            <span class="hidden md:inline">Enterprise Design System</span>
-            <span class="md:hidden">EDS</span>
-          </a>
-          
-          <nav class="hidden md:flex ml-8 space-x-6">
-            <a href="/get-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] px-1 py-2">Get Started</a>
-            <a href="/design-system/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] px-1 py-2">Design System</a>
-            <a href="/components/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] px-1 py-2">Components</a>
-            <a href="/resources/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] px-1 py-2">Resources</a>
-          </nav>
-        </div>
-        
-        <!-- Right side controls: search, theme toggle -->
-        <div class="flex items-center space-x-4">
-          <div class="relative hidden md:block">
-            <form action="/search/" method="get" role="search">
-              <input 
-                type="search" 
-                name="q" 
-                placeholder="Search..." 
-                class="w-48 lg:w-64 py-1.5 pl-9 pr-3 rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
-              >
-              <div class="absolute left-3 top-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </form>
-          </div>
-          
-          <a href="/search/" class="md:hidden text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </a>
-          
-          <button id="theme-toggle" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)]" aria-label="Toggle dark mode">
-            <!-- Sun icon (light mode) -->
-            <svg xmlns="http://www.w3.org/2000/svg" id="light-icon" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
-            </svg>
-            <!-- Moon icon (dark mode) -->
-            <svg xmlns="http://www.w3.org/2000/svg" id="dark-icon" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-            </svg>
-          </button>
-          
-          <button id="mobile-menu-toggle" class="md:hidden text-[var(--color-text-muted)] hover:text-[var(--color-text)]" aria-label="Toggle menu">
-            <svg xmlns="http://www.w3.org/2000/svg" id="menu-open-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" id="menu-close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
+<body class="h-full bg-[var(--color-background)] text-[var(--color-text)] font-sans antialiased" 
+      x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', menuOpen: false }"
+      :class="{ 'dark': darkMode }">
+
+  {% include "partials/header.njk" %}
+  
+  <div class="flex min-h-screen">
+    {% if sidebarType %}
+      {% include "partials/sidebar.njk" %}
+    {% endif %}
     
-    <!-- Mobile nav dropdown -->
-    <div id="mobile-menu" class="md:hidden hidden border-t border-[var(--color-border)] bg-[var(--color-bg)]">
-      <div class="px-4 py-2">
-        <form action="/search/" method="get" role="search" class="mb-4">
-          <div class="relative">
-            <input 
-              type="search" 
-              name="q" 
-              placeholder="Search documentation..." 
-              class="w-full py-2 pl-10 pr-4 rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
-            >
-            <div class="absolute left-3 top-2.5">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
-        </form>
-        
-        <nav class="space-y-1 pb-4">
-          <a href="/get-started/" class="block py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Get Started</a>
-          <a href="/design-system/" class="block py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Design System</a>
-          <a href="/components/" class="block py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Components</a>
-          <a href="/resources/" class="block py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Resources</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main class="flex-grow w-full max-w-[1440px] mx-auto px-4 md:px-6 pb-20">
-    {{ content | safe }}
-  </main>
-
-  <footer class="border-t border-[var(--color-border)] py-8 mt-auto">
-    <div class="max-w-[1440px] mx-auto px-4 md:px-6">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 mr-2 text-[var(--color-primary)]">
-            <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.2"/>
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2V9h2v8z" fill="currentColor"/>
-          </svg>
-          <span class="text-[var(--color-text-muted)]">Enterprise Design System</span>
-        </div>
-        
-        <div class="mt-4 md:mt-0 text-sm text-[var(--color-text-muted)]">
-          <span>&copy; 2025 Enterprise Company, Inc. All rights reserved.</span>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <main class="flex-1 px-4 py-8 md:px-8 lg:px-12 max-w-screen-xl mx-auto">
+      {{ content | safe }}
+    </main>
+  </div>
+  
+  {% include "partials/footer.njk" %}
 
   <script>
-    // Mobile menu toggle
+    // Initialize components after DOM is loaded
     document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const menuOpenIcon = document.getElementById('menu-open-icon');
-      const menuCloseIcon = document.getElementById('menu-close-icon');
-      
-      if (mobileMenuToggle && mobileMenu) {
-        mobileMenuToggle.addEventListener('click', function() {
-          mobileMenu.classList.toggle('hidden');
-          menuOpenIcon.classList.toggle('hidden');
-          menuCloseIcon.classList.toggle('hidden');
-        });
+      if (typeof initializeComponents === 'function') {
+        initializeComponents();
       }
       
-      // Theme toggle functionality
-      const themeToggle = document.getElementById('theme-toggle');
-      const lightIcon = document.getElementById('light-icon');
-      const darkIcon = document.getElementById('dark-icon');
-      const html = document.documentElement;
-      
-      // Check system preference and saved preference
-      const savedTheme = localStorage.getItem('theme');
-      
-      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        html.classList.add('dark');
-        darkIcon.classList.remove('hidden');
-      } else {
-        html.classList.remove('dark');
-        lightIcon.classList.remove('hidden');
+      if (typeof setupThemeToggle === 'function') {
+        setupThemeToggle();
       }
       
-      // Toggle theme
-      if (themeToggle) {
-        themeToggle.addEventListener('click', function() {
-          html.classList.toggle('dark');
-          
-          const isDark = html.classList.contains('dark');
-          
-          // Update icons
-          lightIcon.classList.toggle('hidden', isDark);
-          darkIcon.classList.toggle('hidden', !isDark);
-          
-          // Save preference
-          localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
+      if (typeof setupSearchFunctionality === 'function') {
+        setupSearchFunctionality();
       }
     });
   </script>

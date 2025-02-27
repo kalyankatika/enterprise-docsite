@@ -1,5 +1,5 @@
 ---
 permalink: /search-index.json
-excludeFromSearch: true
 ---
-{{ collections.searchIndex | json }}
+{% set searchData = collections.searchIndex %}
+{{ searchData | json | safe }}

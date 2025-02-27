@@ -1,285 +1,37 @@
 ---
-layout: base.njk
+layout: layouts/base.njk
 ---
 
-<div class="flex flex-col md:flex-row gap-8 mt-8">
-  {% if sidebarType %}
-  <!-- Sidebar -->
-  <div class="w-full md:w-64 lg:w-72 md:shrink-0">
-    <div class="sticky top-24">
-      <div class="pb-6 mb-6 border-b border-[var(--color-border)]">
-        <!-- Breadcrumb -->
-        <nav class="text-sm text-[var(--color-text-muted)]" aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2">
+<div class="max-w-4xl mx-auto">
+  <div class="mb-6">
+    <h1 class="text-3xl font-bold mb-4">{{ title }}</h1>
+    {% if description %}
+      <p class="text-lg text-[var(--color-text-muted)] mb-8">{{ description }}</p>
+    {% endif %}
+    
+    {% if breadcrumbs %}
+      <nav class="eds-breadcrumbs mb-6" aria-label="Breadcrumbs">
+        <ol class="flex items-center space-x-2 text-sm">
+          <li>
+            <a href="/" class="text-[var(--color-primary)] hover:underline">Home</a>
+            <span class="mx-2 text-[var(--color-text-muted)]">/</span>
+          </li>
+          {% for crumb in breadcrumbs %}
             <li>
-              <a href="/" class="hover:text-[var(--color-text)]">Home</a>
+              {% if not loop.last %}
+                <a href="{{ crumb.url }}" class="text-[var(--color-primary)] hover:underline">{{ crumb.label }}</a>
+                <span class="mx-2 text-[var(--color-text-muted)]">/</span>
+              {% else %}
+                <span class="text-[var(--color-text-muted)]">{{ crumb.label }}</span>
+              {% endif %}
             </li>
-            
-            {% if sidebarType == 'design-system' %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/design-system/" class="hover:text-[var(--color-text)]">Design System</a>
-            </li>
-            
-            {% if page.url.includes('/foundations/') %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/design-system/foundations/" class="hover:text-[var(--color-text)]">Foundations</a>
-            </li>
-            {% endif %}
-            
-            {% elif sidebarType == 'components' %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/" class="hover:text-[var(--color-text)]">Components</a>
-            </li>
-            
-            {% if page.url.includes('/inputs/') %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/inputs/" class="hover:text-[var(--color-text)]">Inputs</a>
-            </li>
-            {% elif page.url.includes('/navigation/') %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/navigation/" class="hover:text-[var(--color-text)]">Navigation</a>
-            </li>
-            {% elif page.url.includes('/feedback/') %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/feedback/" class="hover:text-[var(--color-text)]">Feedback</a>
-            </li>
-            {% elif page.url.includes('/layout/') %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/layout/" class="hover:text-[var(--color-text)]">Layout</a>
-            </li>
-            {% endif %}
-            
-            {% elif sidebarType == 'get-started' %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/get-started/" class="hover:text-[var(--color-text)]">Get Started</a>
-            </li>
-            
-            {% elif sidebarType == 'resources' %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/resources/" class="hover:text-[var(--color-text)]">Resources</a>
-            </li>
-            {% endif %}
-          </ol>
-        </nav>
-      </div>
-      
-      <!-- Sidebar Navigation -->
-      <nav aria-label="Sidebar Navigation">
-        {% if sidebarType == 'design-system' %}
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Foundations</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/design-system/foundations/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Overview</a></li>
-            <li><a href="/design-system/foundations/color/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Color</a></li>
-            <li><a href="/design-system/foundations/typography/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Typography</a></li>
-            <li><a href="/design-system/foundations/spacing/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1 {% if page.url == '/design-system/foundations/spacing/' %}font-medium text-[var(--color-text)]{% endif %}">Spacing</a></li>
-            <li><a href="/design-system/foundations/iconography/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Iconography</a></li>
-            <li><a href="/design-system/foundations/grid-system/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Grid System</a></li>
-          </ul>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Guidelines</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/design-system/guidelines/accessibility/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Accessibility</a></li>
-            <li><a href="/design-system/guidelines/responsive/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Responsive Design</a></li>
-            <li><a href="/design-system/guidelines/content/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Content Guidelines</a></li>
-          </ul>
-        </div>
-        
-        {% elif sidebarType == 'components' %}
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Layout</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/components/layout/container/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Container</a></li>
-            <li><a href="/components/layout/grid/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Grid</a></li>
-            <li><a href="/components/layout/card/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Card</a></li>
-            <li><a href="/components/layout/divider/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Divider</a></li>
-          </ul>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Inputs</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/components/inputs/button/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Button</a></li>
-            <li><a href="/components/inputs/text-field/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Text Field</a></li>
-            <li><a href="/components/inputs/checkbox/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Checkbox</a></li>
-            <li><a href="/components/inputs/radio/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Radio</a></li>
-            <li><a href="/components/inputs/select/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Select</a></li>
-            <li><a href="/components/inputs/toggle/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Toggle</a></li>
-          </ul>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Navigation</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/components/navigation/navbar/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Navbar</a></li>
-            <li><a href="/components/navigation/tabs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Tabs</a></li>
-            <li><a href="/components/navigation/breadcrumb/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Breadcrumb</a></li>
-            <li><a href="/components/navigation/pagination/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Pagination</a></li>
-          </ul>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Feedback</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/components/feedback/alert/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Alert</a></li>
-            <li><a href="/components/feedback/toast/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Toast</a></li>
-            <li><a href="/components/feedback/modal/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Modal</a></li>
-            <li><a href="/components/feedback/progress/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Progress</a></li>
-          </ul>
-        </div>
-        
-        {% elif sidebarType == 'get-started' %}
-        <div class="mb-6">
-          <ul class="space-y-2 text-sm">
-            <li><a href="/get-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Introduction</a></li>
-            <li><a href="/get-started/installation/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Installation</a></li>
-            <li><a href="/get-started/usage/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Usage</a></li>
-            <li><a href="/get-started/customization/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Customization</a></li>
-            <li><a href="/get-started/implementation/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Implementation</a></li>
-            <li><a href="/get-started/migration/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Migration Guide</a></li>
-          </ul>
-        </div>
-        
-        {% elif sidebarType == 'resources' %}
-        <div class="mb-6">
-          <ul class="space-y-2 text-sm">
-            <li><a href="/resources/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Overview</a></li>
-            <li><a href="/resources/design-tokens/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Design Tokens</a></li>
-            <li><a href="/resources/figma/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Figma Libraries</a></li>
-            <li><a href="/resources/release-notes/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Release Notes</a></li>
-            <li><a href="/resources/examples/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Examples</a></li>
-            <li><a href="/resources/faq/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">FAQ</a></li>
-          </ul>
-        </div>
-        {% endif %}
-        
-        <!-- Version selector -->
-        <div class="mt-8 py-4 border-t border-[var(--color-border)]">
-          <div class="flex items-center justify-between text-sm mb-2">
-            <span class="text-[var(--color-text-muted)]">Current Version</span>
-            <span class="bg-[var(--color-primary)] text-white px-2 py-0.5 rounded text-xs font-medium">v2.0.0</span>
-          </div>
-          <select class="w-full bg-[var(--color-bg)] border border-[var(--color-border)] rounded-md text-sm p-2">
-            <option value="v2.0.0">v2.0.0 (Latest)</option>
-            <option value="v1.5.0">v1.5.0</option>
-            <option value="v1.0.0">v1.0.0</option>
-          </select>
-        </div>
+          {% endfor %}
+        </ol>
       </nav>
-    </div>
+    {% endif %}
   </div>
-  {% endif %}
-  
-  <!-- Main Content -->
-  <div class="flex-1 min-w-0 {% if not sidebarType %}max-w-4xl mx-auto{% endif %}">
-    {% if not sidebarType %}
-      <div class="pb-6 mb-6">
-        <!-- Breadcrumb for pages without sidebar -->
-        <nav class="text-sm text-[var(--color-text-muted)]" aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2">
-            <li>
-              <a href="/" class="hover:text-[var(--color-text)]">Home</a>
-            </li>
-            
-            {% if title == 'Search' %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <span class="text-[var(--color-text)]">{{ title }}</span>
-            </li>
-            {% endif %}
-          </ol>
-        </nav>
-      </div>
-    {% endif %}
-    
-    <div class="prose dark:prose-invert max-w-none prose-headings:scroll-mt-20">
-      {{ content | safe }}
-    </div>
-    
-    <!-- Page navigation -->
-    {% if sidebarType %}
-    <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
-      <div class="flex justify-between">
-        <div>
-          {% if prevPage %}
-          <a href="{{ prevPage.url }}" class="flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            <span>{{ prevPage.title }}</span>
-          </a>
-          {% endif %}
-        </div>
-        
-        <div>
-          {% if nextPage %}
-          <a href="{{ nextPage.url }}" class="flex items-center text-[var(--color-primary)] hover:text-[var(--color-primary-dark)]">
-            <span>{{ nextPage.title }}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
-    {% endif %}
-    
-    <!-- Feedback section -->
-    <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
-      <h2 class="text-xl font-bold mb-4">Feedback</h2>
-      <p class="mb-4">Was this page helpful? Let us know how we can improve it.</p>
-      
-      <div class="flex flex-col sm:flex-row gap-4">
-        <button class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)]">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-          </svg>
-          Yes, it was helpful
-        </button>
-        
-        <button class="inline-flex items-center justify-center px-4 py-2 border border-[var(--color-border)] text-sm font-medium rounded-md bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M18 9.5a1.5 1.5 0 11-3 0v-6a1.5 1.5 0 013 0v6zM14 9.667v-5.43a2 2 0 00-1.105-1.79l-.05-.025A4 4 0 0011.055 2H5.64a2 2 0 00-1.962 1.608l-1.2 6A2 2 0 004.44 12H8v4a2 2 0 002 2 1 1 0 001-1v-.667a4 4 0 01.8-2.4l1.4-1.866a4 4 0 00.8-2.4z" />
-          </svg>
-          No, I need help
-        </button>
-      </div>
-      
-      <div class="mt-6 text-sm text-[var(--color-text-muted)]">
-        <p>Have a suggestion? <a href="https://github.com/enterprise/design-system/issues/new" class="text-[var(--color-primary)] hover:underline">Open an issue</a> or <a href="https://github.com/enterprise/design-system/edit/main/{{ page.inputPath }}" class="text-[var(--color-primary)] hover:underline">edit this page</a>.</p>
-      </div>
-    </div>
+
+  <div class="prose dark:prose-invert max-w-none">
+    {{ content | safe }}
   </div>
 </div>

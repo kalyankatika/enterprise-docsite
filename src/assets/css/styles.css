@@ -1,284 +1,272 @@
-/* EDS Design System Main Stylesheet */
-
-/* Import CSS variables */
 @import 'variables.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-/* Tailwind Directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
 
-/* Base Styles */
-@layer base {
-  html {
-    @apply antialiased;
-    font-family: var(--font-sans);
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    min-height: 100vh;
-    line-height: 1.5;
-  }
-  
-  /* Improved focus styles for accessibility */
-  :focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-  
-  /* Scrollbar customization */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  
-  /* EDS component prefixed classes */
-  .eds-card {
-    @apply bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg shadow-sm p-6 transition-all duration-200;
-  }
-  
-  .eds-input {
-    @apply w-full px-3 py-2 border border-[var(--color-border)] rounded-md 
-      bg-[var(--color-bg)] text-[var(--color-text)]
-      focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)]
-      disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-  
-  .eds-button {
-    @apply inline-flex items-center justify-center px-4 py-2 border text-sm font-medium rounded-md
-      shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors
-      disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-  
-  .eds-button-primary {
-    @apply eds-button border-transparent text-white bg-[var(--color-primary)] 
-      hover:bg-[var(--color-primary-dark)] focus:ring-[var(--color-primary)];
-  }
-  
-  .eds-button-secondary {
-    @apply eds-button border-[var(--color-border)] text-[var(--color-text)] bg-[var(--color-bg)]
-      hover:bg-[var(--color-bg-alt)] focus:ring-[var(--color-primary)];
-  }
-  
-  .eds-button-outline {
-    @apply eds-button border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent
-      hover:bg-[var(--color-primary-light)] focus:ring-[var(--color-primary)];
-  }
-  
-  .eds-tag {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
-  }
-  
-  .eds-tag-neutral {
-    @apply eds-tag bg-[var(--color-secondary-light)] text-[var(--color-secondary-dark)];
-  }
-  
-  .eds-tag-primary {
-    @apply eds-tag bg-[var(--color-primary-light)] text-[var(--color-primary-dark)];
-  }
-  
-  .eds-tag-success {
-    @apply eds-tag bg-[var(--color-success-light)] text-[var(--color-success-dark)];
-  }
-  
-  .eds-tag-warning {
-    @apply eds-tag bg-[var(--color-warning-light)] text-[var(--color-warning-dark)];
-  }
-  
-  .eds-tag-error {
-    @apply eds-tag bg-[var(--color-error-light)] text-[var(--color-error-dark)];
-  }
-  
-  .eds-tag-info {
-    @apply eds-tag bg-[var(--color-info-light)] text-[var(--color-info-dark)];
-  }
-  
-  /* Typography classes */
-  .eds-heading-1 {
-    @apply text-4xl font-bold tracking-tight;
-  }
-  
-  .eds-heading-2 {
-    @apply text-3xl font-bold tracking-tight;
-  }
-  
-  .eds-heading-3 {
-    @apply text-2xl font-bold;
-  }
-  
-  .eds-heading-4 {
-    @apply text-xl font-bold;
-  }
-  
-  .eds-heading-5 {
-    @apply text-lg font-medium;
-  }
-  
-  .eds-heading-6 {
-    @apply text-base font-medium;
-  }
-  
-  .eds-body-large {
-    @apply text-lg;
-  }
-  
-  .eds-body {
-    @apply text-base;
-  }
-  
-  .eds-body-small {
-    @apply text-sm;
-  }
-  
-  .eds-caption {
-    @apply text-xs text-[var(--color-text-muted)];
-  }
-  
-  /* Prose custom styling for markdown content */
-  .prose {
-    max-width: 65ch;
-    color: var(--color-text);
-  }
-  
-  .prose a {
-    color: var(--color-primary);
-    text-decoration: underline;
-    font-weight: 500;
-  }
-  
-  .prose a:hover {
-    color: var(--color-primary-dark);
-  }
-  
-  .prose strong {
-    color: var(--color-text);
-    font-weight: 600;
-  }
-  
-  .prose code {
-    background-color: var(--color-code-bg);
-    color: var(--color-code-text);
-    padding: 0.2em 0.4em;
-    border-radius: var(--radius);
-    font-family: var(--font-mono);
-    font-size: 0.875em;
-  }
-  
-  .prose pre {
-    background-color: var(--color-code-bg);
-    color: var(--color-code-text);
-    padding: 1em;
-    border-radius: var(--radius);
-    overflow-x: auto;
-  }
-  
-  .prose pre code {
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-  }
-  
-  .prose blockquote {
-    border-left: 4px solid var(--color-border);
-    padding-left: 1em;
-    color: var(--color-text-muted);
-  }
-  
-  .prose h1,
-  .prose h2,
-  .prose h3,
-  .prose h4,
-  .prose h5,
-  .prose h6 {
-    color: var(--color-text);
-    margin-top: 2em;
-    margin-bottom: 1em;
-  }
-  
+body {
+  font-family: var(--font-family-sans);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+::selection {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+/* EDS Component Styles */
+
+/* Card Component */
+.eds-card {
+  @apply p-6 bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg;
+}
+
+/* Button Components */
+.eds-button-primary {
+  @apply px-4 py-2 bg-[var(--color-primary)] text-white font-medium rounded-md hover:bg-[var(--color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 transition-colors duration-200;
+}
+
+.eds-button-secondary {
+  @apply px-4 py-2 bg-white text-[var(--color-text)] font-medium rounded-md border border-[var(--color-border)] hover:bg-[var(--color-secondary-light)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 transition-colors duration-200;
+}
+
+.eds-button-ghost {
+  @apply px-4 py-2 bg-transparent text-[var(--color-primary)] font-medium rounded-md hover:bg-[var(--color-primary-light)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 transition-colors duration-200;
+}
+
+/* Input Components */
+.eds-input {
+  @apply w-full px-3 py-2 bg-white dark:bg-[var(--color-background-alt)] border border-[var(--color-border)] rounded-md shadow-sm placeholder-[var(--color-text-muted)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] transition-colors duration-200;
+}
+
+/* Badge Components */
+.eds-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.eds-badge-stable {
+  @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300;
+}
+
+.eds-badge-beta {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300;
+}
+
+.eds-badge-experimental {
+  @apply bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300;
+}
+
+.eds-badge-deprecated {
+  @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300;
+}
+
+/* Empty State Component */
+.eds-empty-state {
+  @apply flex flex-col items-center justify-center p-12 text-center border border-dashed border-[var(--color-border)] rounded-lg bg-[var(--color-background-alt)];
+}
+
+.eds-empty-state h2 {
+  @apply text-xl font-semibold mb-2;
+}
+
+.eds-empty-state p {
+  @apply text-[var(--color-text-muted)];
+}
+
+/* Tables */
+.eds-table {
+  @apply min-w-full divide-y divide-[var(--color-border)];
+}
+
+.eds-table thead {
+  @apply bg-[var(--color-background-alt)];
+}
+
+.eds-table th {
+  @apply px-6 py-3 text-left text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider;
+}
+
+.eds-table tbody {
+  @apply bg-white dark:bg-[var(--color-background)] divide-y divide-[var(--color-border)];
+}
+
+.eds-table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-[var(--color-text)];
+}
+
+/* Code Blocks */
+pre {
+  @apply p-4 rounded-md bg-[var(--color-background-alt)] border border-[var(--color-border)] overflow-x-auto text-sm;
+}
+
+code {
+  @apply font-mono text-sm;
+}
+
+:not(pre) > code {
+  @apply px-1.5 py-0.5 rounded bg-[var(--color-background-alt)] text-[var(--color-text)] border border-[var(--color-border)];
+}
+
+/* Prose Overrides for Markdown Content */
+.prose {
+  @apply max-w-none;
+}
+
+.prose a {
+  @apply text-[var(--color-primary)] no-underline hover:underline font-normal;
+}
+
+.prose h1, 
+.prose h2, 
+.prose h3, 
+.prose h4, 
+.prose h5, 
+.prose h6 {
+  @apply text-[var(--color-text)] font-semibold scroll-mt-24;
+}
+
+.prose h1 {
+  @apply text-3xl mt-8 mb-6;
+}
+
+.prose h2 {
+  @apply text-2xl mt-12 mb-4 pb-2 border-b border-[var(--color-border)];
+}
+
+.prose h3 {
+  @apply text-xl mt-8 mb-3;
+}
+
+.prose h4 {
+  @apply text-lg mt-6 mb-2;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  @apply mb-6;
+}
+
+.prose table {
+  @apply eds-table;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-[var(--color-secondary-light)] pl-4 italic text-[var(--color-text-muted)];
+}
+
+.prose code {
+  @apply font-mono text-sm;
+}
+
+.prose pre {
+  @apply rounded-md bg-[var(--color-background-alt)] border border-[var(--color-border)] overflow-x-auto text-sm;
+}
+
+.prose img {
+  @apply rounded-md border border-[var(--color-border)] my-8;
+}
+
+.prose hr {
+  @apply border-[var(--color-border)] my-8;
+}
+
+/* Dark mode overrides */
+.dark .prose a {
+  @apply text-[var(--color-primary)];
+}
+
+.dark .prose h1, 
+.dark .prose h2, 
+.dark .prose h3, 
+.dark .prose h4, 
+.dark .prose h5, 
+.dark .prose h6 {
+  @apply text-[var(--color-text)];
+}
+
+.dark .prose blockquote {
+  @apply border-l-4 border-[var(--color-secondary-light)] text-[var(--color-text-muted)];
+}
+
+.dark .prose pre {
+  @apply bg-[var(--color-background-alt)] border-[var(--color-border)];
+}
+
+.dark .prose img {
+  @apply border-[var(--color-border)];
+}
+
+.dark .prose hr {
+  @apply border-[var(--color-border)];
+}
+
+/* Alpine.js Utility Classes */
+[x-cloak] {
+  display: none !important;
+}
+
+/* Search Results */
+.search-result {
+  @apply p-3 border-b border-[var(--color-border)] hover:bg-[var(--color-background-alt)] transition-colors cursor-pointer;
+}
+
+.search-result-title {
+  @apply font-medium text-[var(--color-text)];
+}
+
+.search-result-description {
+  @apply text-sm text-[var(--color-text-muted)] mt-1;
+}
+
+.search-result-path {
+  @apply text-xs text-[var(--color-primary)] mt-1;
+}
+
+.search-highlight {
+  @apply bg-yellow-100 dark:bg-yellow-900 px-1 rounded text-[var(--color-text)];
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
   .prose h1 {
-    font-size: 2.25em;
-    font-weight: 800;
+    @apply text-2xl;
   }
   
   .prose h2 {
-    font-size: 1.875em;
-    font-weight: 700;
+    @apply text-xl;
   }
   
   .prose h3 {
-    font-size: 1.5em;
-    font-weight: 600;
+    @apply text-lg;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
   }
   
-  .prose h4 {
-    font-size: 1.25em;
-    font-weight: 600;
+  body {
+    font-size: 12pt;
+    color: #000;
+    background-color: #fff;
   }
   
-  .prose img {
-    border-radius: var(--radius);
+  a {
+    text-decoration: underline;
+    color: #000;
   }
   
-  .prose table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2em 0;
-  }
-  
-  .prose table th {
-    background-color: var(--color-bg-alt);
-    padding: 0.75em;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .prose table td {
-    padding: 0.75em;
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .prose ul,
-  .prose ol {
-    margin-left: 2em;
-  }
-  
-  .prose hr {
-    border: 0;
-    border-top: 1px solid var(--color-border);
-    margin: 2em 0;
-  }
-  
-  /* Dark mode prose adjustments */
-  .dark .prose {
-    color: var(--color-text);
-  }
-  
-  .dark .prose code {
-    background-color: var(--color-code-bg);
-    color: var(--color-code-text);
-  }
-  
-  .dark .prose strong {
-    color: var(--color-text);
-  }
-  
-  .dark .prose blockquote {
-    border-left-color: var(--color-border);
-    color: var(--color-text-muted);
-  }
-  
-  .dark .prose h1,
-  .dark .prose h2,
-  .dark .prose h3,
-  .dark .prose h4,
-  .dark .prose h5,
-  .dark .prose h6 {
-    color: var(--color-text);
+  .prose pre, 
+  .prose code {
+    background-color: #f1f1f1 !important;
+    border: 1px solid #ddd !important;
   }
 }
