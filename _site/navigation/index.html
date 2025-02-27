@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Components Directory | Enterprise Design System</title>
-  <meta name="description" content="Browse the Enterprise Design System component library">
+  <title>Navigation | Enterprise Design System</title>
+  <meta name="description" content="Access the Enterprise Design System content from multiple perspectives.">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -177,200 +177,201 @@
 
   <main class="flex-1">
     
-<div class="eds-container">
-  <div class="eds-page-header">
-    <h1 class="eds-page-header__title">Components Directory</h1>
-    <p class="eds-page-header__description">Browse the Enterprise Design System component library for reusable UI elements to build your applications</p>
+<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
+  <div class="flex flex-col lg:flex-row">
+    <!-- Left sidebar - Optional component navigation -->
+    
+    
+    <!-- Main content -->
+    <div class="w-full">
+      <div class="prose max-w-none">
+        <h1>Navigation</h1>
+        
+          <p class="text-xl text-[var(--color-text-muted)] mb-8">Access the Enterprise Design System content from multiple perspectives.</p>
+        
+        
+        <h2 id="multiple-ways-to-navigate" tabindex="-1">Multiple Ways to Navigate <a class="anchor" href="#multiple-ways-to-navigate" aria-hidden="true">#</a></h2>
+<p>The Enterprise Design System documentation can be navigated from different perspectives to help you find exactly what you need based on your role and requirements.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-bold mb-3">By Consuming Channel</h3>
+    <p class="mb-4">Find components and resources organized by implementation platform or channel.</p>
+    <a href="/navigation/by-channel/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+      View Channels
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
   </div>
-  
-  <div class="eds-component-directory">
-    
-    <section class="eds-component-section" id="layout">
-      <h2 class="eds-component-section__title">Layout</h2>
-      
-      <div class="eds-component-list">
-        
-        <a href="/components/layout/card/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Card</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/layout/grid/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Grid</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/layout/container/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Container</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/layout/divider/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Divider</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-bold mb-3">By Widget Type</h3>
+    <p class="mb-4">Browse components organized by their functionality and purpose.</p>
+    <a href="/navigation/by-type/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+      View Types
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-bold mb-3">By Widget Owner</h3>
+    <p class="mb-4">Find components based on the team or department that maintains them.</p>
+    <a href="/navigation/by-owner/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+      View Owners
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</div>
+<h2 id="search-options" tabindex="-1">Search Options <a class="anchor" href="#search-options" aria-hidden="true">#</a></h2>
+<p>You can also search for specific components and resources:</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-bold mb-3">Search by Channel</h3>
+    <p class="mb-4">Find components specific to a platform or implementation channel.</p>
+    <form action="/search/" method="get" class="mt-4">
+      <input type="hidden" name="filter" value="channel">
+      <div class="flex">
+        <input type="search" name="q" placeholder="e.g., web" class="flex-1 py-2 px-4 rounded-l-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]">
+        <button type="submit" class="py-2 px-4 bg-[var(--color-primary)] text-white rounded-r-md hover:bg-[var(--color-primary-dark)] transition-colors">
+          Search
+        </button>
       </div>
-    </section>
-    
-    <section class="eds-component-section" id="navigation">
-      <h2 class="eds-component-section__title">Navigation</h2>
-      
-      <div class="eds-component-list">
-        
-        <a href="/components/navigation/breadcrumb/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Breadcrumb</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/navigation/menu/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Menu</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/navigation/tabs/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Tabs</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/navigation/pagination/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Pagination</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
+    </form>
+  </div>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-bold mb-3">Search by Type</h3>
+    <p class="mb-4">Search for components by their type or functionality.</p>
+    <form action="/search/" method="get" class="mt-4">
+      <input type="hidden" name="filter" value="type">
+      <div class="flex">
+        <input type="search" name="q" placeholder="e.g., button" class="flex-1 py-2 px-4 rounded-l-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]">
+        <button type="submit" class="py-2 px-4 bg-[var(--color-primary)] text-white rounded-r-md hover:bg-[var(--color-primary-dark)] transition-colors">
+          Search
+        </button>
       </div>
-    </section>
-    
-    <section class="eds-component-section" id="feedback">
-      <h2 class="eds-component-section__title">Feedback</h2>
-      
-      <div class="eds-component-list">
-        
-        <a href="/components/feedback/alert/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Alert</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/feedback/progress/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Progress</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/feedback/toast/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Toast</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/feedback/skeleton/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Skeleton</h3>
-          <div class="eds-status-badge eds-status-badge--experimental">experimental</div>
-        </a>
-        
+    </form>
+  </div>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-bold mb-3">Search by Owner</h3>
+    <p class="mb-4">Find components maintained by specific teams or departments.</p>
+    <form action="/search/" method="get" class="mt-4">
+      <input type="hidden" name="filter" value="owner">
+      <div class="flex">
+        <input type="search" name="q" placeholder="e.g., UX Team" class="flex-1 py-2 px-4 rounded-l-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)]">
+        <button type="submit" class="py-2 px-4 bg-[var(--color-primary)] text-white rounded-r-md hover:bg-[var(--color-primary-dark)] transition-colors">
+          Search
+        </button>
       </div>
-    </section>
-    
-    <section class="eds-component-section" id="forms">
-      <h2 class="eds-component-section__title">Forms</h2>
-      
-      <div class="eds-component-list">
-        
-        <a href="/components/forms/button/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Button</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/forms/input/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Input</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/forms/checkbox/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Checkbox</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/forms/radio/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Radio</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/forms/select/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Select</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
-        <a href="/components/forms/textarea/" class="eds-component-item">
-          <h3 class="eds-component-item__title">Textarea</h3>
-          <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        </a>
-        
+    </form>
+  </div>
+</div>
       </div>
-    </section>
+    </div>
     
+    <!-- Right sidebar - Table of Contents -->
+    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
+      <div class="sticky top-32">
+        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+        <nav class="toc js-toc">
+          <!-- Table of contents will be auto-generated here -->
+          <ul class="space-y-1">
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 </div>
 
-<style>
-.eds-page-header {
-  margin-bottom: var(--eds-spacing-8);
-}
-
-.eds-page-header__title {
-  font-size: var(--eds-font-size-4xl);
-  font-weight: var(--eds-font-weight-bold);
-  margin: 0 0 var(--eds-spacing-3);
-  color: var(--eds-color-neutral-900);
-}
-
-.eds-page-header__description {
-  font-size: var(--eds-font-size-lg);
-  color: var(--eds-color-neutral-700);
-  max-width: 800px;
-}
-
-.eds-component-section {
-  margin-bottom: var(--eds-spacing-12);
-}
-
-.eds-component-section__title {
-  font-size: var(--eds-font-size-2xl);
-  font-weight: var(--eds-font-weight-semibold);
-  margin: 0 0 var(--eds-spacing-6);
-  color: var(--eds-color-neutral-900);
-  padding-bottom: var(--eds-spacing-3);
-  border-bottom: var(--eds-border-width-thin) solid var(--eds-color-neutral-200);
-}
-
-.eds-component-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: var(--eds-spacing-4);
-}
-
-.eds-component-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--eds-spacing-4);
-  background-color: white;
-  border-radius: var(--eds-border-radius-md);
-  box-shadow: var(--eds-shadow-base);
-  text-decoration: none;
-  transition: transform var(--eds-transition-fast) ease-in-out, box-shadow var(--eds-transition-fast) ease-in-out;
-}
-
-.eds-component-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--eds-shadow-md);
-}
-
-.eds-component-item__title {
-  font-size: var(--eds-font-size-lg);
-  font-weight: var(--eds-font-weight-medium);
-  margin: 0;
-  color: var(--eds-color-neutral-900);
-}
-</style>
+<!-- Add table of contents JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // If no TOC elements exist, we'll generate them
+    if (!document.querySelector('.js-toc li')) {
+      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
+      const toc = document.querySelector('.js-toc');
+      
+      if (toc && headings.length > 0) {
+        const tocList = document.createElement('ul');
+        tocList.className = 'space-y-1';
+        
+        headings.forEach(heading => {
+          if (!heading.id) {
+            // Create an ID if none exists
+            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
+          }
+          
+          const level = parseInt(heading.tagName.charAt(1));
+          const listItem = document.createElement('li');
+          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
+          
+          const link = document.createElement('a');
+          link.href = `#${heading.id}`;
+          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
+          link.textContent = heading.textContent;
+          
+          listItem.appendChild(link);
+          tocList.appendChild(listItem);
+          
+          // Also add the anchor link to the heading
+          if (!heading.querySelector('.anchor')) {
+            const anchor = document.createElement('a');
+            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
+            anchor.href = `#${heading.id}`;
+            anchor.textContent = '#';
+            heading.appendChild(anchor);
+          }
+        });
+        
+        if (tocList.children.length > 0) {
+          toc.appendChild(tocList);
+        } else {
+          // If no headings found, hide the TOC container
+          const tocContainer = toc.closest('.sticky');
+          if (tocContainer) {
+            tocContainer.style.display = 'none';
+          }
+        }
+      }
+    }
+    
+    // Highlight the current section in the TOC as user scrolls
+    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
+    const tocLinks = document.querySelectorAll('.js-toc a');
+    
+    if (headings.length > 0 && tocLinks.length > 0) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            tocLinks.forEach(link => {
+              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
+            });
+            
+            // Add active class to corresponding link
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
+            }
+          }
+        });
+      }, observerOptions);
+      
+      headings.forEach(heading => {
+        observer.observe(heading);
+      });
+    }
+  });
+</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
