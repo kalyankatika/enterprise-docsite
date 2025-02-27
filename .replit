@@ -17,15 +17,11 @@ args = "11ty Development Server"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "bash_mkdir"
+args = "create_dirs"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "mkdir_structure"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "mkdir_11ty"
+args = "create_asset_dirs"
 
 [[workflows.workflow]]
 name = "11ty Development Server"
@@ -43,7 +39,7 @@ args = "npx @11ty/eleventy --serve --port=5000"
 waitForPort = 5000
 
 [[workflows.workflow]]
-name = "bash_mkdir"
+name = "create_dirs"
 author = "agent"
 
 [workflows.workflow.metadata]
@@ -54,10 +50,10 @@ task = "packager.installForAll"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "mkdir -p src/components/inputs src/components/layout src/components/navigation src/components/feedback"
+args = "mkdir -p src/updates src/design-tokens src/patterns src/resources src/guidelines src/components/{layout,navigation,feedback} src/_includes/layouts"
 
 [[workflows.workflow]]
-name = "mkdir_structure"
+name = "create_asset_dirs"
 author = "agent"
 
 [workflows.workflow.metadata]
@@ -68,21 +64,7 @@ task = "packager.installForAll"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "mkdir -p src/getting-started src/components/inputs src/components/layout src/components/navigation src/components/feedback src/design-tokens src/patterns src/resources src/guidelines"
-
-[[workflows.workflow]]
-name = "mkdir_11ty"
-author = "agent"
-
-[workflows.workflow.metadata]
-agentRequireRestartOnSave = false
-
-[[workflows.workflow.tasks]]
-task = "packager.installForAll"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "mkdir -p src/_11ty"
+args = "mkdir -p src/assets/images src/assets/fonts"
 
 [deployment]
 run = ["sh", "-c", "npx @11ty/eleventy --serve --port=5000"]

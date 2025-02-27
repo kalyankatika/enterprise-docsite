@@ -2,172 +2,230 @@
  * Search functionality for EDS Documentation
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-  initializeSearch();
-});
-
 function initializeSearch() {
-  const searchInput = document.getElementById('search-input');
-  const searchResults = document.getElementById('search-results');
+  const searchForm = document.querySelector('.eds-search-form');
+  const searchInput = document.querySelector('.eds-search-input');
+  const searchResults = document.querySelector('.eds-search-results');
+  const searchToggle = document.querySelector('.eds-search-toggle');
   
-  if (searchInput && searchResults) {
-    // Toggle search results visibility
-    searchInput.addEventListener('focus', () => {
-      searchResults.classList.remove('hidden');
-    });
-    
-    // Close search when clicking outside
-    document.addEventListener('click', (event) => {
-      if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
-        searchResults.classList.add('hidden');
+  if (!searchForm || !searchInput || !searchResults) return;
+  
+  // Toggle search form visibility
+  if (searchToggle) {
+    searchToggle.addEventListener('click', () => {
+      const isExpanded = searchToggle.getAttribute('aria-expanded') === 'true';
+      searchToggle.setAttribute('aria-expanded', !isExpanded);
+      
+      if (isExpanded) {
+        searchForm.classList.remove('eds-search-form--open');
+      } else {
+        searchForm.classList.add('eds-search-form--open');
+        searchInput.focus();
       }
     });
     
-    // Search functionality
-    let searchData = null;
-    
-    // Load search data
-    fetch('/search-index.json')
+    // Close search form on click outside
+    document.addEventListener('click', event => {
+      if (!searchForm.contains(event.target) && !searchToggle.contains(event.target)) {
+        searchForm.classList.remove('eds-search-form--open');
+        searchToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+  
+  // Get search data from the global window object or fetch it
+  let searchData = window.edsSearchData || [];
+  
+  // If search data is not available in the global object, fetch it
+  if (!searchData.length) {
+    fetch('/search-data.json')
       .then(response => response.json())
       .then(data => {
         searchData = data;
+        window.edsSearchData = data;
       })
       .catch(error => {
         console.error('Error loading search data:', error);
       });
+  }
+  
+  // Handle search input
+  searchInput.addEventListener('input', debounce(() => {
+    const query = searchInput.value.trim();
     
-    // Perform search when typing
-    searchInput.addEventListener('input', debounce(function() {
-      const query = searchInput.value.trim().toLowerCase();
-      
-      if (query.length < 2) {
-        searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">Please enter at least 2 characters to search</div>';
-        return;
-      }
-      
-      if (!searchData) {
-        searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">Search data is loading...</div>';
-        return;
-      }
-      
-      const results = performSearch(query, searchData);
-      
-      if (results.length === 0) {
-        searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">No results found</div>';
-      } else {
-        const resultsHTML = results.map(result => `
-          <a href="${result.url}" class="search-result">
-            <div class="search-result-title">${highlightMatches(result.title, query)}</div>
-            <div class="search-result-path">${result.url}</div>
-            <div class="search-result-snippet">${result.snippet}</div>
-          </a>
-        `).join('');
+    if (query.length < 2) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    performSearch(query, searchResults);
+  }, 300));
+  
+  // Handle search form submission
+  searchForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const query = searchInput.value.trim();
+    
+    if (query.length < 2) return;
+    
+    performSearch(query, searchResults);
+  });
+  
+  // Perform search on the data
+  function performSearch(query, resultsContainer) {
+    if (!searchData.length) {
+      resultsContainer.innerHTML = '<p>Search data is not available.</p>';
+      return;
+    }
+    
+    // Filter and score results
+    const results = searchData
+      .map(item => {
+        const titleScore = scoreMatch(item.title, query) * 3;
+        const contentScore = scoreMatch(item.content, query);
+        const tagsScore = item.tags ? scoreMatch(item.tags.join(' '), query) * 2 : 0;
         
-        searchResults.innerHTML = resultsHTML;
-      }
-    }, 300));
-  }
-  
-  function performSearch(input, resultsContainer) {
-    const results = [];
+        return {
+          ...item,
+          score: titleScore + contentScore + tagsScore
+        };
+      })
+      .filter(item => item.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 10);
     
-    for (const key in searchData) {
-      const item = searchData[key];
-      const titleScore = scoreMatch(item.title.toLowerCase(), input);
-      const contentScore = scoreMatch(item.content.toLowerCase(), input);
-      
-      const totalScore = titleScore * 2 + contentScore;
-      
-      if (totalScore > 0) {
-        results.push({
-          title: item.title,
-          url: item.url,
-          snippet: getResultSnippet(item.content, input),
-          score: totalScore
-        });
-      }
+    if (results.length === 0) {
+      resultsContainer.innerHTML = '<p class="eds-search-no-results">No results found. Try different keywords.</p>';
+      return;
     }
     
-    // Sort by score (highest first)
-    results.sort((a, b) => b.score - a.score);
+    // Render results
+    const resultsHtml = results.map(item => {
+      const snippet = getResultSnippet(item.content, query);
+      
+      return `
+        <a href="${item.url}" class="eds-search-result">
+          <h3 class="eds-search-result__title">${highlightMatches(item.title, query)}</h3>
+          <p class="eds-search-result__snippet">${snippet}</p>
+          ${item.tags && item.tags.length > 0 ? 
+            `<div class="eds-search-result__tags">
+              ${item.tags.map(tag => `<span class="eds-search-result__tag">${tag}</span>`).join('')}
+            </div>` : 
+            ''}
+        </a>
+      `;
+    }).join('');
     
-    // Return top results
-    return results.slice(0, 8);
+    resultsContainer.innerHTML = resultsHtml;
   }
   
+  // Score a match in text
   function scoreMatch(text, query) {
-    // Direct match
-    if (text.includes(query)) {
-      return 10;
+    if (!text) return 0;
+    
+    const normalizedText = text.toLowerCase();
+    const normalizedQuery = query.toLowerCase();
+    
+    // Exact match
+    if (normalizedText.includes(normalizedQuery)) {
+      return 2;
     }
     
-    // Partial word matches
-    const words = text.split(/\s+/);
-    for (const word of words) {
-      if (word.startsWith(query)) {
-        return 5;
-      }
-      if (word.includes(query)) {
-        return 3;
-      }
-    }
+    // Word match
+    const words = normalizedQuery.split(/\s+/);
+    let score = 0;
     
-    return 0;
+    words.forEach(word => {
+      if (word.length < 2) return;
+      if (normalizedText.includes(word)) {
+        score += 1;
+      }
+    });
+    
+    return score;
   }
   
+  // Get a snippet from content containing the query
   function getResultSnippet(content, query) {
-    const maxLength = 150;
-    const lowerContent = content.toLowerCase();
-    const index = lowerContent.indexOf(query);
+    if (!content) return '';
     
+    const normalizedContent = content.toLowerCase();
+    const normalizedQuery = query.toLowerCase();
+    const contentLength = content.length;
+    
+    const index = normalizedContent.indexOf(normalizedQuery);
     if (index === -1) {
-      // If query not found exactly, return beginning of content
-      return content.substring(0, maxLength) + '...';
+      // If exact query not found, try to find any of the words
+      const words = normalizedQuery.split(/\s+/);
+      for (const word of words) {
+        if (word.length < 3) continue;
+        const wordIndex = normalizedContent.indexOf(word);
+        if (wordIndex !== -1) {
+          // Found a word, extract snippet around it
+          const start = Math.max(0, wordIndex - 50);
+          const end = Math.min(contentLength, wordIndex + word.length + 50);
+          return highlightMatches(
+            (start > 0 ? '...' : '') + 
+            content.substring(start, end) + 
+            (end < contentLength ? '...' : ''), 
+            query
+          );
+        }
+      }
+      
+      // If still nothing found, return the beginning of the content
+      return content.substring(0, 100) + (contentLength > 100 ? '...' : '');
     }
     
-    // Calculate snippet start and end positions
-    let start = Math.max(0, index - 60);
-    let end = Math.min(content.length, index + query.length + 60);
+    // Extract snippet around the query
+    const start = Math.max(0, index - 50);
+    const end = Math.min(contentLength, index + normalizedQuery.length + 50);
     
-    // Adjust to not cut words
-    while (start > 0 && content[start] !== ' ') {
-      start--;
-    }
-    
-    while (end < content.length && content[end] !== ' ') {
-      end++;
-    }
-    
-    // Create snippet
-    let snippet = content.substring(start, end);
-    
-    // Add ellipsis if needed
-    if (start > 0) {
-      snippet = '...' + snippet;
-    }
-    
-    if (end < content.length) {
-      snippet = snippet + '...';
-    }
-    
-    return highlightMatches(snippet, query);
+    return highlightMatches(
+      (start > 0 ? '...' : '') + 
+      content.substring(start, end) + 
+      (end < contentLength ? '...' : ''), 
+      query
+    );
   }
   
+  // Highlight matches in text
   function highlightMatches(text, query) {
-    const regex = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
-    return text.replace(regex, '<span class="search-highlight">$1</span>');
+    if (!text || !query) return text;
+    
+    const normalizedQuery = query.toLowerCase();
+    const words = normalizedQuery
+      .split(/\s+/)
+      .filter(word => word.length > 1)
+      .map(escapeRegExp);
+    
+    if (words.length === 0) return text;
+    
+    const regex = new RegExp(`(${words.join('|')})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
   }
   
+  // Escape RegExp special characters
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
   
+  // Debounce function
   function debounce(func, wait) {
     let timeout;
-    return function(...args) {
-      const context = this;
+    
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      
       clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(context, args), wait);
+      timeout = setTimeout(later, wait);
     };
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  initializeSearch();
+});

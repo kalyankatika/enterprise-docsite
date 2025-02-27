@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search | Enterprise Design System</title>
+  <meta name="description" content="Search the Enterprise Design System documentation">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      
+<div class="eds-page">
+  
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Search</h1>
+      
+        <p class="text-xl text-gray-600 dark:text-gray-300">Search the Enterprise Design System documentation</p>
+      
+    </div>
+    <hr class="border-gray-200 dark:border-gray-700 mb-8">
+  
+
+  
+    
+<div class="max-w-3xl mx-auto">
+  <div class="mb-8">
+    <div class="relative mb-8">
+      <input type="text" id="search-page-input" placeholder="Search documentation..." class="w-full py-3 pl-12 pr-4 rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent text-lg">
+      <div class="absolute left-4 top-3.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+    </div>
+    
+    <div id="search-page-results" class="mt-4 space-y-2">
+      <!-- Search results will be populated here -->
+      <div class="text-center text-[var(--color-text-muted)]">
+        Enter a search term above to find content across the documentation.
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="text-xl font-bold mb-4">Popular Searches</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <a href="/design-system/foundations/color/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Color System</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Our color palette and usage guidelines</div>
+    </a>
+    
+    <a href="/components/inputs/button/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Button Component</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Variants, usage, and examples</div>
+    </a>
+    
+    <a href="/design-system/guidelines/accessibility/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Accessibility</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Best practices for inclusive design</div>
+    </a>
+    
+    <a href="/design-system/foundations/spacing/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Spacing System</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Spacing scale and usage guidelines</div>
+    </a>
+    
+    <a href="/components/navigation/tabs/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Tabs Component</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Implementation and best practices</div>
+    </a>
+    
+    <a href="/resources/design-tokens/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Design Tokens</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Available tokens and implementation</div>
+    </a>
+  </div>
+  
+  <h2 class="text-xl font-bold mb-4">Documentation Categories</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <a href="/get-started/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Getting Started</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Introduction, installation and usage</div>
+    </a>
+    
+    <a href="/design-system/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Design System</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Foundations, principles, and guidelines</div>
+    </a>
+    
+    <a href="/components/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Components</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">UI components with documentation and examples</div>
+    </a>
+    
+    <a href="/resources/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Resources</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Design tokens, Figma libraries, and more</div>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-page-input');
+    const searchResults = document.getElementById('search-page-results');
+    
+    if (searchInput && searchResults) {
+      // Get search term from URL if present
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchTerm = urlParams.get('q');
+      if (searchTerm) {
+        searchInput.value = searchTerm;
+        performPageSearch(searchTerm);
+      }
+      
+      // Perform search when typing
+      let debounceTimeout;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+          const query = searchInput.value.trim();
+          // Update URL with search term
+          const newUrl = query ? 
+            `${window.location.pathname}?q=${encodeURIComponent(query)}` : 
+            window.location.pathname;
+          window.history.replaceState({}, '', newUrl);
+          
+          if (query.length > 1) {
+            performPageSearch(query);
+          } else {
+            searchResults.innerHTML = `
+              <div class="text-center text-[var(--color-text-muted)]">
+                Enter a search term above to find content across the documentation.
+              </div>
+            `;
+          }
+        }, 300);
+      });
+      
+      function performPageSearch(query) {
+        // Show loading state
+        searchResults.innerHTML = `
+          <div class="text-center p-4">
+            <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[var(--color-primary)] border-r-transparent align-[-0.125em]" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <p class="mt-2 text-[var(--color-text-muted)]">Searching...</p>
+          </div>
+        `;
+        
+        // Fetch search data
+        fetch('/search-index.json')
+          .then(response => response.json())
+          .then(searchData => {
+            // Perform search
+            const results = [];
+            
+            for (const key in searchData) {
+              const item = searchData[key];
+              const titleScore = scoreMatch(item.title.toLowerCase(), query.toLowerCase());
+              const contentScore = scoreMatch(item.content.toLowerCase(), query.toLowerCase());
+              
+              const totalScore = titleScore * 2 + contentScore;
+              
+              if (totalScore > 0) {
+                results.push({
+                  title: item.title,
+                  url: item.url,
+                  snippet: getResultSnippet(item.content, query),
+                  score: totalScore
+                });
+              }
+            }
+            
+            // Sort results by score
+            results.sort((a, b) => b.score - a.score);
+            
+            // Display results
+            if (results.length === 0) {
+              searchResults.innerHTML = `
+                <div class="text-center p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)]">
+                  <p class="text-lg font-medium mb-2">No results found</p>
+                  <p class="text-[var(--color-text-muted)]">We couldn't find any matches for "${query}". Try different keywords or check for typos.</p>
+                </div>
+              `;
+            } else {
+              const resultsHTML = results.map(result => `
+                <a href="${result.url}" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-colors">
+                  <div class="font-medium text-lg">${highlightMatches(result.title, query)}</div>
+                  <div class="text-sm text-[var(--color-text-muted)] mb-2">${result.url}</div>
+                  <div>${result.snippet}</div>
+                </a>
+              `).join('');
+              
+              searchResults.innerHTML = `
+                <div class="mb-4">
+                  <p class="text-[var(--color-text-muted)]">Found ${results.length} ${results.length === 1 ? 'result' : 'results'} for "${query}"</p>
+                </div>
+                <div class="space-y-4">
+                  ${resultsHTML}
+                </div>
+              `;
+            }
+          })
+          .catch(error => {
+            console.error('Error loading search data:', error);
+            searchResults.innerHTML = `
+              <div class="text-center p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)]">
+                <p class="text-lg font-medium mb-2">Error performing search</p>
+                <p class="text-[var(--color-text-muted)]">There was a problem loading the search data. Please try again later.</p>
+              </div>
+            `;
+          });
+      }
+      
+      function scoreMatch(text, query) {
+        // Direct match
+        if (text.includes(query)) {
+          return 10;
+        }
+        
+        // Partial word matches
+        const words = text.split(/\s+/);
+        for (const word of words) {
+          if (word.startsWith(query)) {
+            return 5;
+          }
+          if (word.includes(query)) {
+            return 3;
+          }
+        }
+        
+        return 0;
+      }
+      
+      function getResultSnippet(content, query) {
+        const maxLength = 150;
+        const lowerContent = content.toLowerCase();
+        const lowerQuery = query.toLowerCase();
+        const index = lowerContent.indexOf(lowerQuery);
+        
+        if (index === -1) {
+          // If query not found exactly, return beginning of content
+          return content.substring(0, maxLength) + '...';
+        }
+        
+        // Calculate snippet start and end positions
+        let start = Math.max(0, index - 60);
+        let end = Math.min(content.length, index + query.length + 60);
+        
+        // Adjust to not cut words
+        while (start > 0 && content[start] !== ' ') {
+          start--;
+        }
+        
+        while (end < content.length && content[end] !== ' ') {
+          end++;
+        }
+        
+        // Create snippet
+        let snippet = content.substring(start, end);
+        
+        // Add ellipsis if needed
+        if (start > 0) {
+          snippet = '...' + snippet;
+        }
+        
+        if (end < content.length) {
+          snippet = snippet + '...';
+        }
+        
+        return highlightMatches(snippet, query);
+      }
+      
+      function highlightMatches(text, query) {
+        const regex = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
+        return text.replace(regex, '<span class="search-highlight">$1</span>');
+      }
+      
+      function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+    }
+  });
+</script>
+  
+
+  
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

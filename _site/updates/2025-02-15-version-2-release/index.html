@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Design System 2.0 Released | Enterprise Design System</title>
+  <meta name="description" content="Major update with new components, improved documentation, and better accessibility">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      <div class="eds-container">
+  <article class="eds-article">
+    <header class="eds-article__header">
+      <h1 class="eds-article__title">Enterprise Design System 2.0 Released</h1>
+      <p class="eds-article__meta">
+        <time datetime="2025-02-15">February 15, 2025</time>
+      </p>
+    </header>
+<p><div class="eds-article__content"><br>
+<p>We're excited to announce the release of Enterprise Design System 2.0! This major update includes new components, improved documentation, and better accessibility across the entire system.</p></p>
+<p><h2>What's New</h2></p>
+<p><h3>New Components</h3><br>
+<p>EDS 2.0 introduces several new components to enhance your enterprise applications:</p><br>
+<ul><br>
+<li><strong>Data Table</strong> - A powerful and flexible data table component with sorting, filtering, and pagination capabilities.</li><br>
+<li><strong>Accordion</strong> - An expandable/collapsible content container for displaying information in a limited space.</li><br>
+<li><strong>Slider</strong> - An interactive component for selecting a value or range from a predefined range.</li><br>
+<li><strong>Stepper</strong> - A step-by-step navigation component for guiding users through a multi-step process.</li><br>
+</ul></p>
+<p><h3>Improved Accessibility</h3><br>
+<p>All components have been audited and updated to meet WCAG 2.1 AA standards. Key improvements include:</p><br>
+<ul><br>
+<li>Enhanced keyboard navigation</li><br>
+<li>Improved screen reader support with ARIA attributes</li><br>
+<li>Better focus management</li><br>
+<li>Color contrast compliance</li><br>
+</ul></p>
+<p><h3>Redesigned Documentation</h3><br>
+<p>Our documentation site has been completely redesigned to provide a better developer experience:</p><br>
+<ul><br>
+<li>Consolidated content from multiple legacy documentation sites</li><br>
+<li>New interactive examples with live code editing</li><br>
+<li>Improved search functionality</li><br>
+<li>Dark mode support</li><br>
+<li>Responsive design for all screen sizes</li><br>
+</ul></p>
+<p><h3>Performance Improvements</h3><br>
+<p>We've significantly improved the performance of all components:</p><br>
+<ul><br>
+<li>Reduced bundle size by 30%</li><br>
+<li>Improved rendering performance</li><br>
+<li>Better lazy-loading techniques</li><br>
+<li>Optimized CSS with modern approaches</li><br>
+</ul></p>
+<p><h2>Migration Guide</h2><br>
+<p>Upgrading from EDS 1.x to 2.0 should be relatively straightforward for most applications. We've prepared a <a href="/getting-started/migration-guide/">detailed migration guide</a> to help you with the transition.</p></p>
+<p><h2>Community Feedback</h2><br>
+<p>This release incorporates feedback from over 50 developers and designers across the organization. Thank you to everyone who contributed ideas, bug reports, and feature requests!</p></p>
+<p><div class="eds-callout"><br>
+<h3 class="eds-callout__title">Get Started Today</h3><br>
+<p class="eds-callout__content">Ready to upgrade? Check out our <a href="/getting-started/">Getting Started guide</a> or dive straight into the <a href="/components/">Component library</a>.</p><br>
+</div><br>
+</div></p>
+  </article>
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

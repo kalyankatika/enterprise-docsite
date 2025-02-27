@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started | Enterprise Design System</title>
+  <meta name="description" content="Getting started with the Enterprise Design System">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      <div class="eds-container">
+  <header class="eds-page-header">
+    <h1 class="eds-page-header__title">Getting Started</h1>
+    <p class="eds-page-header__description">Learn how to use the Enterprise Design System (EDS) in your projects</p>
+  </header>
+  <div class="eds-content-layout">
+    <div class="eds-toc">
+      <div class="eds-toc__inner">
+        <h2 class="eds-toc__title">On this page</h2>
+        <ul class="eds-toc__list">
+          <li class="eds-toc__item">
+            <a href="#introduction" class="eds-toc__link">Introduction</a>
+          </li>
+          <li class="eds-toc__item">
+            <a href="#installation" class="eds-toc__link">Installation</a>
+          </li>
+          <li class="eds-toc__item">
+            <a href="#usage" class="eds-toc__link">Usage</a>
+          </li>
+          <li class="eds-toc__item">
+            <a href="#key-concepts" class="eds-toc__link">Key Concepts</a>
+          </li>
+          <li class="eds-toc__item">
+            <a href="#browser-support" class="eds-toc__link">Browser Support</a>
+          </li>
+          <li class="eds-toc__item">
+            <a href="#next-steps" class="eds-toc__link">Next Steps</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+<p><div class="eds-content"><br>
+<section id="introduction" class="eds-section"><br>
+<h2>Introduction</h2><br>
+<p>The Enterprise Design System (EDS) is a comprehensive set of design guidelines, components, and resources to help create consistent, accessible, and high-quality enterprise applications. This guide will help you get started with implementing EDS in your projects.</p></p>
+<p><div class="eds-info-box"><br>
+<h3 class="eds-info-box__title">Who is this for?</h3><br>
+<p>This guide is intended for developers and designers who are implementing the Enterprise Design System in their projects. Familiarity with HTML, CSS, and JavaScript is recommended.</p><br>
+</div><br>
+</section></p>
+<p><section id="installation" class="eds-section"><br>
+<h2>Installation</h2></p>
+<p><h3>Using npm</h3><br>
+<p>Install the EDS package from npm:</p></p>
+<p><pre><code class="language-bash">npm install @enterprise/design-system</code></pre></p>
+<p><h3>Using a CDN</h3><br>
+<p>You can also include EDS directly from a CDN:</p></p>
+<p><pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;<a href="https://cdn.enterprise.com/design-system/2.0.0/eds.min.css">https://cdn.enterprise.com/design-system/2.0.0/eds.min.css</a>&quot;&gt;<br>
+&lt;script src=&quot;<a href="https://cdn.enterprise.com/design-system/2.0.0/eds.min.js">https://cdn.enterprise.com/design-system/2.0.0/eds.min.js</a>&quot; defer&gt;&lt;/script&gt;</code></pre><br>
+</section></p>
+<p><section id="usage" class="eds-section"><br>
+<h2>Usage</h2></p>
+<p><h3>Basic Setup</h3><br>
+<p>Include the CSS and JavaScript files in your HTML:</p></p>
+<p><pre><code class="language-html">&lt;!DOCTYPE html&gt;<br>
+&lt;html lang=&quot;en&quot;&gt;<br>
+&lt;head&gt;<br>
+&lt;meta charset=&quot;UTF-8&quot;&gt;<br>
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>
+&lt;title&gt;My Enterprise App&lt;/title&gt;<br>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;path/to/eds.min.css&quot;&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;!-- Your content here --&gt;</p>
+<p>&lt;script src=&quot;path/to/eds.min.js&quot;&gt;&lt;/script&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</code></pre></p>
+<p><h3>Using Components</h3><br>
+<p>Once the EDS is set up, you can use components by following the HTML structure and CSS classes documented in the <a href="/components/">Components section</a>.</p></p>
+<p><p>Here's a simple example using a button component:</p></p>
+<p><pre><code class="language-html">&lt;button class=&quot;eds-button eds-button--primary&quot;&gt;Primary Button&lt;/button&gt;</code></pre><br>
+</section></p>
+<p><section id="key-concepts" class="eds-section"><br>
+<h2>Key Concepts</h2></p>
+<p><h3>BEM Methodology</h3><br>
+<p>The EDS uses the BEM (Block, Element, Modifier) naming convention with an 'eds-' prefix for all CSS classes. This helps to create a consistent and predictable class naming structure.</p></p>
+<p><ul><br>
+<li><strong>Block:</strong> A standalone entity that is meaningful on its own (e.g., <code>eds-button</code>)</li><br>
+<li><strong>Element:</strong> A part of a block that has no standalone meaning (e.g., <code>eds-card__title</code>)</li><br>
+<li><strong>Modifier:</strong> A flag on a block or element that changes appearance or behavior (e.g., <code>eds-button--primary</code>)</li><br>
+</ul></p>
+<p><h3>Design Tokens</h3><br>
+<p>Design tokens are the visual design atoms of the design system — specifically, they are named entities that store visual design attributes. The EDS uses design tokens for colors, typography, spacing, and more.</p></p>
+<p><p>You can access these tokens through CSS variables:</p></p>
+<p><pre><code class="language-css">.custom-element {<br>
+color: var(--eds-color-primary);<br>
+padding: var(--eds-spacing-md);<br>
+font-size: var(--eds-font-size-lg);<br>
+}</code></pre><br>
+</section></p>
+<p><section id="browser-support" class="eds-section"><br>
+<h2>Browser Support</h2><br>
+<p>The Enterprise Design System supports the following browsers:</p></p>
+<p><ul><br>
+<li>Chrome (latest 2 versions)</li><br>
+<li>Firefox (latest 2 versions)</li><br>
+<li>Safari (latest 2 versions)</li><br>
+<li>Edge (latest 2 versions)</li><br>
+<li>Internet Explorer 11 (with polyfills)</li><br>
+</ul><br>
+</section></p>
+<p><section id="next-steps" class="eds-section"><br>
+<h2>Next Steps</h2></p>
+<p><div class="eds-card-grid"><br>
+<div class="eds-card"><br>
+<h3 class="eds-card__title">Explore Components</h3><br>
+<p class="eds-card__description">Browse our library of UI components and learn how to use them in your project.</p><br>
+<a href="/components/" class="eds-card__link">View Components</a><br>
+</div></p>
+<p><div class="eds-card"><br>
+<h3 class="eds-card__title">Design Tokens</h3><br>
+<p class="eds-card__description">Learn about our design tokens and how to use them for consistent styling.</p><br>
+<a href="/design-tokens/" class="eds-card__link">View Design Tokens</a><br>
+</div></p>
+<p><div class="eds-card"><br>
+<h3 class="eds-card__title">Patterns</h3><br>
+<p class="eds-card__description">Explore common UI patterns and best practices for enterprise applications.</p><br>
+<a href="/patterns/" class="eds-card__link">View Patterns</a><br>
+</div><br>
+</div><br>
+</section><br>
+</div></p>
+  </div>
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

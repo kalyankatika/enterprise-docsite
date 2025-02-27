@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert | Enterprise Design System</title>
+  <meta name="description" content="Alerts provide contextual feedback messages for user actions and system states">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      
+<div class="eds-container">
+  <div class="eds-component">
+    <header class="eds-component__header">
+      <div class="eds-component__meta">
+        <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        <div class="eds-component__version">Since v1.0.0</div>
+        <div class="eds-component__updated">Updated: Sat Feb 15 2025 00:00:00 GMT+0000 (Coordinated Universal Time)</div>
+      </div>
+      
+      <h1 class="eds-component__title">Alert</h1>
+      <p class="eds-component__description">Alerts provide contextual feedback messages for user actions and system states</p>
+      
+      
+      <a href="https://github.com/enterprise/design-system/tree/main/components/alert" class="eds-component__github" target="_blank" rel="noopener">View on GitHub</a>
+      
+    </header>
+
+    <div class="eds-component__tabs" x-data="{ activeTab: 'documentation' }">
+      <div class="eds-tabs">
+        <div class="eds-tabs__list" role="tablist">
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'documentation' }" 
+                  @click="activeTab = 'documentation'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'documentation'" 
+                  aria-controls="documentation">
+            Documentation
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'examples' }" 
+                  @click="activeTab = 'examples'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'examples'" 
+                  aria-controls="examples">
+            Examples
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'code' }" 
+                  @click="activeTab = 'code'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'code'" 
+                  aria-controls="code">
+            Code
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'usage' }" 
+                  @click="activeTab = 'usage'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'usage'" 
+                  aria-controls="usage">
+            Usage
+          </button>
+        </div>
+        
+        <div class="eds-tabs__panels">
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'documentation' }" 
+               role="tabpanel" 
+               id="documentation">
+            <div class="eds-component__content">
+              <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
+<p>The Alert component provides contextual feedback messages for user actions and system states. Alerts are used to communicate important information, warnings, errors, or success messages to users.</p>
+<h2 id="when-to-use" tabindex="-1">When to use <a class="anchor" href="#when-to-use" aria-hidden="true">#</a></h2>
+<p>Use alerts when:</p>
+<ul>
+<li>Providing feedback about a user action (success, error, etc.)</li>
+<li>Communicating important system status information</li>
+<li>Warning users about potential issues</li>
+<li>Highlighting important information that requires attention</li>
+</ul>
+<h2 id="variants" tabindex="-1">Variants <a class="anchor" href="#variants" aria-hidden="true">#</a></h2>
+<h3 id="information-alert" tabindex="-1">Information Alert <a class="anchor" href="#information-alert" aria-hidden="true">#</a></h3>
+<p>Used for general information and neutral messages that don't require immediate action.</p>
+<h3 id="success-alert" tabindex="-1">Success Alert <a class="anchor" href="#success-alert" aria-hidden="true">#</a></h3>
+<p>Used to confirm successful completion of an action or process.</p>
+<h3 id="warning-alert" tabindex="-1">Warning Alert <a class="anchor" href="#warning-alert" aria-hidden="true">#</a></h3>
+<p>Used to warn users about potential issues that may require attention.</p>
+<h3 id="error-alert" tabindex="-1">Error Alert <a class="anchor" href="#error-alert" aria-hidden="true">#</a></h3>
+<p>Used to communicate critical errors or problems that need immediate attention.</p>
+<h3 id="toast-alert" tabindex="-1">Toast Alert <a class="anchor" href="#toast-alert" aria-hidden="true">#</a></h3>
+<p>Temporary, auto-dismissing alerts that appear briefly to provide feedback.</p>
+<h2 id="accessibility" tabindex="-1">Accessibility <a class="anchor" href="#accessibility" aria-hidden="true">#</a></h2>
+<ul>
+<li>Use appropriate ARIA roles and attributes</li>
+<li>Include proper focus management for dismissible alerts</li>
+<li>Ensure proper color contrast for all alert variants</li>
+<li>Use clear, concise language in alert messages</li>
+<li>Provide programmatic ways to dismiss alerts</li>
+</ul>
+<h2 id="code-guidelines" tabindex="-1">Code Guidelines <a class="anchor" href="#code-guidelines" aria-hidden="true">#</a></h2>
+<ul>
+<li>Use the <code>eds-alert</code> class for the container</li>
+<li>Add variant modifiers like <code>eds-alert--info</code>, <code>eds-alert--success</code>, etc.</li>
+<li>Include appropriate icons to reinforce the alert type</li>
+<li>Use semantic HTML within alert content</li>
+<li>Implement proper focus management for interactive alerts</li>
+</ul>
+<h2 id="design-guidelines" tabindex="-1">Design Guidelines <a class="anchor" href="#design-guidelines" aria-hidden="true">#</a></h2>
+<ul>
+<li>Use consistent color coding for different alert types</li>
+<li>Include appropriate icons to reinforce the alert message</li>
+<li>Keep alert messages clear, concise, and actionable</li>
+<li>Position alerts in a consistent location within the interface</li>
+<li>Provide clear dismissal options when appropriate</li>
+</ul>
+
+            </div>
+
+            
+            <div class="eds-component__contributors">
+              <h3 class="eds-component__contributors-title">Contributors</h3>
+              <ul class="eds-component__contributors-list">
+                
+                <li class="eds-component__contributor">Sarah Johnson</li>
+                
+                <li class="eds-component__contributor">David Chen</li>
+                
+              </ul>
+            </div>
+            
+          </div>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'examples' }" 
+               role="tabpanel" 
+               id="examples">
+            <div class="eds-component__examples">
+              <p>Component examples coming soon...</p>
+            </div>
+          </div>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'code' }" 
+               role="tabpanel" 
+               id="code">
+            <div class="eds-component__code">
+              <p>Component code examples coming soon...</p>
+            </div>
+          </div>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'usage' }" 
+               role="tabpanel" 
+               id="usage">
+            <div class="eds-component__usage">
+              <p>Component usage statistics coming soon...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -2,105 +2,108 @@
 layout: layouts/base.njk
 ---
 
-<div class="eds-component-page">
-  <div class="mb-8">
-    <div class="flex flex-wrap items-center justify-between mb-2">
-      <h1 class="text-3xl md:text-4xl font-bold mr-4">{{ title }}</h1>
-      {% if status %}
-        <span class="eds-status-badge eds-status-badge--{{ status | lower }} px-3 py-1 text-sm font-medium rounded-full">{{ status }}</span>
-      {% endif %}
-    </div>
-    {% if description %}
-      <p class="text-xl text-gray-600 dark:text-gray-300">{{ description }}</p>
-    {% endif %}
-    
-    <div class="flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400 mt-4 space-x-6">
-      {% if version %}
-        <div class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-          </svg>
-          <span>Version {{ version }}</span>
-        </div>
-      {% endif %}
-      
-      {% if lastUpdated %}
-        <div class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          <span>Updated {{ lastUpdated }}</span>
-        </div>
-      {% endif %}
-    </div>
-  </div>
-  
-  <hr class="border-gray-200 dark:border-gray-700 mb-8">
-  
-  <div class="eds-component-content" x-data="{ activeTab: '{{ tabs[0].name }}' }">
-    {% if tabs %}
-      <div class="eds-tabs mb-8">
-        <div class="flex border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
-          {% for tab in tabs %}
-            <button 
-              class="px-4 py-2 text-sm font-medium -mb-px border-b-2 whitespace-nowrap"
-              :class="activeTab === '{{ tab.name }}' ? 'border-primary-500 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'"
-              @click="activeTab = '{{ tab.name }}'"
-              role="tab"
-              aria-selected="activeTab === '{{ tab.name }}'"
-              id="{{ tab.name }}-tab"
-              aria-controls="{{ tab.name }}-panel"
-            >
-              {{ tab.label }}
-            </button>
-          {% endfor %}
-        </div>
+<div class="eds-container">
+  <div class="eds-component">
+    <header class="eds-component__header">
+      <div class="eds-component__meta">
+        <div class="eds-status-badge eds-status-badge--{{ status | lower }}">{{ status }}</div>
+        <div class="eds-component__version">Since v{{ since }}</div>
+        <div class="eds-component__updated">Updated: {{ lastUpdated }}</div>
       </div>
       
-      <div class="eds-tab-panels">
-        {% for tab in tabs %}
-          <div 
-            x-show="activeTab === '{{ tab.name }}'"
-            id="{{ tab.name }}-panel"
-            role="tabpanel"
-            aria-labelledby="{{ tab.name }}-tab"
-            x-cloak
-          >
-            {% if tab.name === 'usage' %}
-              {{ usageContent | safe }}
-            {% elif tab.name === 'code' %}
-              {{ codeContent | safe }}
-            {% elif tab.name === 'accessibility' %}
-              {{ accessibilityContent | safe }}
-            {% elif tab.name === 'specs' %}
-              {{ specsContent | safe }}
+      <h1 class="eds-component__title">{{ title }}</h1>
+      <p class="eds-component__description">{{ description }}</p>
+      
+      {% if githubUrl %}
+      <a href="{{ githubUrl }}" class="eds-component__github" target="_blank" rel="noopener">View on GitHub</a>
+      {% endif %}
+    </header>
+
+    <div class="eds-component__tabs" x-data="{ activeTab: 'documentation' }">
+      <div class="eds-tabs">
+        <div class="eds-tabs__list" role="tablist">
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'documentation' }" 
+                  @click="activeTab = 'documentation'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'documentation'" 
+                  aria-controls="documentation">
+            Documentation
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'examples' }" 
+                  @click="activeTab = 'examples'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'examples'" 
+                  aria-controls="examples">
+            Examples
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'code' }" 
+                  @click="activeTab = 'code'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'code'" 
+                  aria-controls="code">
+            Code
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'usage' }" 
+                  @click="activeTab = 'usage'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'usage'" 
+                  aria-controls="usage">
+            Usage
+          </button>
+        </div>
+        
+        <div class="eds-tabs__panels">
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'documentation' }" 
+               role="tabpanel" 
+               id="documentation">
+            <div class="eds-component__content">
+              {{ content | safe }}
+            </div>
+
+            {% if contributors %}
+            <div class="eds-component__contributors">
+              <h3 class="eds-component__contributors-title">Contributors</h3>
+              <ul class="eds-component__contributors-list">
+                {% for contributor in contributors %}
+                <li class="eds-component__contributor">{{ contributor }}</li>
+                {% endfor %}
+              </ul>
+            </div>
             {% endif %}
           </div>
-        {% endfor %}
-      </div>
-    {% else %}
-      {{ content | safe }}
-    {% endif %}
-  </div>
-  
-  <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
-    <div class="flex flex-wrap items-center justify-between">
-      <div class="w-full sm:w-auto mb-4 sm:mb-0">
-        <a href="https://github.com/enterprise/design-system/tree/main/packages/components/src/{{ title | lower }}" class="eds-link flex items-center text-sm" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-          View Source on GitHub
-        </a>
-      </div>
-      
-      <div class="w-full sm:w-auto">
-        <a href="https://github.com/enterprise/design-system/issues/new?title=Component: {{ title }}" class="eds-link flex items-center text-sm" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-          Report an Issue
-        </a>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'examples' }" 
+               role="tabpanel" 
+               id="examples">
+            <div class="eds-component__examples">
+              <p>Component examples coming soon...</p>
+            </div>
+          </div>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'code' }" 
+               role="tabpanel" 
+               id="code">
+            <div class="eds-component__code">
+              <p>Component code examples coming soon...</p>
+            </div>
+          </div>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'usage' }" 
+               role="tabpanel" 
+               id="usage">
+            <div class="eds-component__usage">
+              <p>Component usage statistics coming soon...</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breadcrumb | Enterprise Design System</title>
+  <meta name="description" content="Breadcrumbs show the navigational path within a site hierarchy">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      
+<div class="eds-container">
+  <div class="eds-component">
+    <header class="eds-component__header">
+      <div class="eds-component__meta">
+        <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        <div class="eds-component__version">Since v1.0.0</div>
+        <div class="eds-component__updated">Updated: Wed Feb 12 2025 00:00:00 GMT+0000 (Coordinated Universal Time)</div>
+      </div>
+      
+      <h1 class="eds-component__title">Breadcrumb</h1>
+      <p class="eds-component__description">Breadcrumbs show the navigational path within a site hierarchy</p>
+      
+      
+      <a href="https://github.com/enterprise/design-system/tree/main/components/breadcrumb" class="eds-component__github" target="_blank" rel="noopener">View on GitHub</a>
+      
+    </header>
+
+    <div class="eds-component__tabs" x-data="{ activeTab: 'documentation' }">
+      <div class="eds-tabs">
+        <div class="eds-tabs__list" role="tablist">
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'documentation' }" 
+                  @click="activeTab = 'documentation'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'documentation'" 
+                  aria-controls="documentation">
+            Documentation
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'examples' }" 
+                  @click="activeTab = 'examples'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'examples'" 
+                  aria-controls="examples">
+            Examples
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'code' }" 
+                  @click="activeTab = 'code'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'code'" 
+                  aria-controls="code">
+            Code
+          </button>
+          <button class="eds-tabs__tab" 
+                  :class="{ 'eds-tabs__tab--active': activeTab === 'usage' }" 
+                  @click="activeTab = 'usage'" 
+                  role="tab" 
+                  aria-selected="activeTab === 'usage'" 
+                  aria-controls="usage">
+            Usage
+          </button>
+        </div>
+        
+        <div class="eds-tabs__panels">
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'documentation' }" 
+               role="tabpanel" 
+               id="documentation">
+            <div class="eds-component__content">
+              <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
+<p>The Breadcrumb component displays a navigational path showing the user their current location within the site's hierarchy.</p>
+<h2 id="when-to-use" tabindex="-1">When to use <a class="anchor" href="#when-to-use" aria-hidden="true">#</a></h2>
+<p>Use breadcrumbs when:</p>
+<ul>
+<li>The application has multiple hierarchical levels of navigation</li>
+<li>Users need to understand their current location within the site structure</li>
+<li>You want to provide a way for users to navigate up to parent pages</li>
+<li>The content is organized in a clear hierarchy</li>
+</ul>
+<h2 id="variants" tabindex="-1">Variants <a class="anchor" href="#variants" aria-hidden="true">#</a></h2>
+<h3 id="standard-breadcrumb" tabindex="-1">Standard Breadcrumb <a class="anchor" href="#standard-breadcrumb" aria-hidden="true">#</a></h3>
+<p>The standard breadcrumb shows the full path from the home page to the current page.</p>
+<h3 id="collapsed-breadcrumb" tabindex="-1">Collapsed Breadcrumb <a class="anchor" href="#collapsed-breadcrumb" aria-hidden="true">#</a></h3>
+<p>The collapsed breadcrumb shows the first and last few items in the path, with intermediate items collapsed to prevent excessive breadcrumb length.</p>
+<h3 id="interactive-breadcrumb" tabindex="-1">Interactive Breadcrumb <a class="anchor" href="#interactive-breadcrumb" aria-hidden="true">#</a></h3>
+<p>Interactive breadcrumbs include dropdown menus for each level, allowing users to navigate to sibling pages at each level.</p>
+<h2 id="accessibility" tabindex="-1">Accessibility <a class="anchor" href="#accessibility" aria-hidden="true">#</a></h2>
+<ul>
+<li>Use proper HTML structure with ordered list (<code>&lt;ol&gt;</code>) elements</li>
+<li>Include proper ARIA attributes to identify the breadcrumb as a navigation landmark</li>
+<li>Ensure proper color contrast for breadcrumb text and separators</li>
+<li>Make breadcrumb links keyboard accessible and properly focusable</li>
+</ul>
+<h2 id="code-guidelines" tabindex="-1">Code Guidelines <a class="anchor" href="#code-guidelines" aria-hidden="true">#</a></h2>
+<ul>
+<li>Use the <code>eds-breadcrumb</code> class for the container</li>
+<li>Use <code>&lt;ol&gt;</code> and <code>&lt;li&gt;</code> elements for the breadcrumb structure</li>
+<li>Include appropriate ARIA roles and attributes</li>
+<li>Use clear, concise text for each breadcrumb item</li>
+</ul>
+<h2 id="design-guidelines" tabindex="-1">Design Guidelines <a class="anchor" href="#design-guidelines" aria-hidden="true">#</a></h2>
+<ul>
+<li>Keep breadcrumb labels short and descriptive</li>
+<li>Use consistent visual separators between items</li>
+<li>Ensure breadcrumbs are appropriately sized for mobile devices</li>
+<li>Current page should be visually distinct but not a clickable link</li>
+</ul>
+
+            </div>
+
+            
+            <div class="eds-component__contributors">
+              <h3 class="eds-component__contributors-title">Contributors</h3>
+              <ul class="eds-component__contributors-list">
+                
+                <li class="eds-component__contributor">Jane Smith</li>
+                
+                <li class="eds-component__contributor">Michael Brown</li>
+                
+              </ul>
+            </div>
+            
+          </div>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'examples' }" 
+               role="tabpanel" 
+               id="examples">
+            <div class="eds-component__examples">
+              <p>Component examples coming soon...</p>
+            </div>
+          </div>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'code' }" 
+               role="tabpanel" 
+               id="code">
+            <div class="eds-component__code">
+              <p>Component code examples coming soon...</p>
+            </div>
+          </div>
+          
+          <div class="eds-tabs__panel" 
+               :class="{ 'eds-tabs__panel--active': activeTab === 'usage' }" 
+               role="tabpanel" 
+               id="usage">
+            <div class="eds-component__usage">
+              <p>Component usage statistics coming soon...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

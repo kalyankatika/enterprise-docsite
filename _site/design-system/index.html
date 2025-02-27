@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System | Enterprise Design System</title>
+  <meta name="description" content="Comprehensive guidelines and principles for creating consistent enterprise applications">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      
+<div class="eds-page">
+  
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Design System</h1>
+      
+        <p class="text-xl text-gray-600 dark:text-gray-300">Comprehensive guidelines and principles for creating consistent enterprise applications</p>
+      
+    </div>
+    <hr class="border-gray-200 dark:border-gray-700 mb-8">
+  
+
+  
+    <h1 id="enterprise-design-system" tabindex="-1">Enterprise Design System <a class="anchor" href="#enterprise-design-system" aria-hidden="true">#</a></h1>
+<p>The Enterprise Design System (EDS) provides a comprehensive set of guidelines, components, and resources to help teams create cohesive, accessible, and visually consistent enterprise applications.</p>
+<h2 id="core-principles" tabindex="-1">Core Principles <a class="anchor" href="#core-principles" aria-hidden="true">#</a></h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+  <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)]">
+    <div class="w-12 h-12 bg-[var(--color-primary)] bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold mb-2">Consistency</h3>
+    <p>Create seamless user experiences through consistent patterns, behaviors, and visual elements across all enterprise applications.</p>
+  </div>
+  <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)]">
+    <div class="w-12 h-12 bg-[var(--color-primary)] bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold mb-2">Modularity</h3>
+    <p>Use modular components that can be combined in different ways to create flexible and adaptable user interfaces.</p>
+  </div>
+  <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)]">
+    <div class="w-12 h-12 bg-[var(--color-primary)] bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold mb-2">Efficiency</h3>
+    <p>Optimize workflows and reduce cognitive load through intuitive interfaces and consistent interaction patterns.</p>
+  </div>
+  <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)]">
+    <div class="w-12 h-12 bg-[var(--color-primary)] bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    </div>
+    <h3 class="text-xl font-semibold mb-2">Inclusivity</h3>
+    <p>Design for all users with strong accessibility standards and support for diverse user needs and preferences.</p>
+  </div>
+</div>
+<h2 id="design-system-structure" tabindex="-1">Design System Structure <a class="anchor" href="#design-system-structure" aria-hidden="true">#</a></h2>
+<p>The Enterprise Design System is organized into several key sections:</p>
+<div class="mt-8 space-y-6">
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-semibold mb-2">Foundations</h3>
+    <p class="mb-4">Core design elements that form the building blocks of our interface.</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="/design-system/foundations/color/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Color</div>
+      </a>
+      <a href="/design-system/foundations/typography/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Typography</div>
+      </a>
+      <a href="/design-system/foundations/spacing/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Spacing</div>
+      </a>
+      <a href="/design-system/foundations/grid-system/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Grid System</div>
+      </a>
+    </div>
+  </div>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-semibold mb-2">Components</h3>
+    <p class="mb-4">Reusable UI elements that can be composed to create interfaces.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="/components/layout/container/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Layout Components</div>
+      </a>
+      <a href="/components/inputs/button/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Input Components</div>
+      </a>
+      <a href="/components/navigation/navbar/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Navigation Components</div>
+      </a>
+    </div>
+  </div>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-semibold mb-2">Guidelines</h3>
+    <p class="mb-4">Best practices and standards for creating effective interfaces.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <a href="/design-system/guidelines/accessibility/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Accessibility</div>
+      </a>
+      <a href="/design-system/guidelines/content/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Content</div>
+      </a>
+    </div>
+  </div>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-xl font-semibold mb-2">Resources</h3>
+    <p class="mb-4">Tools and assets to help implement the design system.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="/resources/design-tokens/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Design Tokens</div>
+      </a>
+      <a href="/resources/templates/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Templates</div>
+      </a>
+      <a href="/resources/downloads/" class="block p-3 bg-[var(--color-bg)] rounded border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+        <div class="font-medium">Downloads</div>
+      </a>
+    </div>
+  </div>
+</div>
+<h2 id="getting-started" tabindex="-1">Getting Started <a class="anchor" href="#getting-started" aria-hidden="true">#</a></h2>
+<p>If you're new to the Enterprise Design System, we recommend starting with the following resources:</p>
+<ol>
+<li><a href="/get-started/">Introduction to the Design System</a> - Learn about the core concepts and principles.</li>
+<li><a href="/design-system/foundations/">Design Foundations</a> - Explore the fundamental elements that make up our visual language.</li>
+<li><a href="/components/">Component Library</a> - Browse our collection of UI components and learn how to use them.</li>
+<li><a href="/resources/design-tokens/">Design Tokens</a> - Understand how to implement the design system in your projects.</li>
+</ol>
+
+  
+
+  
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacing | Enterprise Design System</title>
+  <meta name="description" content="A consistent spacing system to create balanced layouts and establish rhythmic relationships between elements">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      
+<div class="eds-page">
+  
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Spacing</h1>
+      
+        <p class="text-xl text-gray-600 dark:text-gray-300">A consistent spacing system to create balanced layouts and establish rhythmic relationships between elements</p>
+      
+    </div>
+    <hr class="border-gray-200 dark:border-gray-700 mb-8">
+  
+
+  
+    <h1 id="spacing" tabindex="-1">Spacing <a class="anchor" href="#spacing" aria-hidden="true">#</a></h1>
+<p>A consistent spacing system helps create balanced layouts and establish rhythmic relationships between elements. Our spacing scale is based on a 4px grid, providing predictable and harmonious spacing throughout interfaces.</p>
+<h2 id="spacing-scale" tabindex="-1">Spacing Scale <a class="anchor" href="#spacing-scale" aria-hidden="true">#</a></h2>
+<p>Our spacing scale follows a geometric progression to provide a natural and harmonious spacing rhythm:</p>
+<div class="overflow-x-auto">
+  <table class="w-full mt-6 mb-8">
+    <thead>
+      <tr class="bg-[var(--color-bg-alt)] border-y border-[var(--color-border)]">
+        <th class="p-3 text-left">Token</th>
+        <th class="p-3 text-left">Value</th>
+        <th class="p-3 text-left">Pixels</th>
+        <th class="p-3 text-left">Rem</th>
+        <th class="p-3 text-left">Visual</th>
+        <th class="p-3 text-left">Example Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-0</td>
+        <td class="p-3">0</td>
+        <td class="p-3">0px</td>
+        <td class="p-3">0rem</td>
+        <td class="p-3"></td>
+        <td class="p-3 text-sm">No spacing</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-1</td>
+        <td class="p-3">0.25</td>
+        <td class="p-3">4px</td>
+        <td class="p-3">0.25rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-1"></div>
+        </td>
+        <td class="p-3 text-sm">Very tight spacing between related elements</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-2</td>
+        <td class="p-3">0.5</td>
+        <td class="p-3">8px</td>
+        <td class="p-3">0.5rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-2"></div>
+        </td>
+        <td class="p-3 text-sm">Tight spacing between closely related elements</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-3</td>
+        <td class="p-3">0.75</td>
+        <td class="p-3">12px</td>
+        <td class="p-3">0.75rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-3"></div>
+        </td>
+        <td class="p-3 text-sm">Spacing between related elements</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-4</td>
+        <td class="p-3">1</td>
+        <td class="p-3">16px</td>
+        <td class="p-3">1rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-4"></div>
+        </td>
+        <td class="p-3 text-sm">Standard spacing between elements (base unit)</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-6</td>
+        <td class="p-3">1.5</td>
+        <td class="p-3">24px</td>
+        <td class="p-3">1.5rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-6"></div>
+        </td>
+        <td class="p-3 text-sm">Medium spacing between distinct elements</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-8</td>
+        <td class="p-3">2</td>
+        <td class="p-3">32px</td>
+        <td class="p-3">2rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-8"></div>
+        </td>
+        <td class="p-3 text-sm">Standard section spacing</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-12</td>
+        <td class="p-3">3</td>
+        <td class="p-3">48px</td>
+        <td class="p-3">3rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-12"></div>
+        </td>
+        <td class="p-3 text-sm">Large section spacing</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-16</td>
+        <td class="p-3">4</td>
+        <td class="p-3">64px</td>
+        <td class="p-3">4rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-16"></div>
+        </td>
+        <td class="p-3 text-sm">Spacing between major sections</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-20</td>
+        <td class="p-3">5</td>
+        <td class="p-3">80px</td>
+        <td class="p-3">5rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-20"></div>
+        </td>
+        <td class="p-3 text-sm">Extra large section spacing</td>
+      </tr>
+      <tr class="border-b border-[var(--color-border)]">
+        <td class="p-3 font-mono text-sm font-medium">space-24</td>
+        <td class="p-3">6</td>
+        <td class="p-3">96px</td>
+        <td class="p-3">6rem</td>
+        <td class="p-3">
+          <div class="bg-[var(--color-primary)] h-4 w-24"></div>
+        </td>
+        <td class="p-3 text-sm">Very large section spacing</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 id="spacing-usage-guidelines" tabindex="-1">Spacing Usage Guidelines <a class="anchor" href="#spacing-usage-guidelines" aria-hidden="true">#</a></h2>
+<p>To create consistent and harmonious layouts, follow these guidelines when applying spacing:</p>
+<h3 id="1-use-the-spacing-scale-consistently" tabindex="-1">1. Use the spacing scale consistently <a class="anchor" href="#1-use-the-spacing-scale-consistently" aria-hidden="true">#</a></h3>
+<p>Always use the predefined spacing values instead of arbitrary values. This ensures consistency across all interfaces and maintains the design system's rhythm.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+  <div>
+    <div class="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg mb-2">
+      <div class="flex items-center mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <div class="font-medium text-green-800 dark:text-green-300">Do</div>
+      </div>
+<p><div class="p-4 bg-white dark:bg-gray-800 rounded border border-[var(--color-border)]"><br>
+<div class="mb-4 bg-gray-100 dark:bg-gray-700 rounded p-4">Header</div><br>
+<div class="mb-4 bg-gray-100 dark:bg-gray-700 rounded p-4">Content</div><br>
+<div class="bg-gray-100 dark:bg-gray-700 rounded p-4">Footer</div><br>
+</div></p>
+<p><div class="mt-2 text-sm text-green-800 dark:text-green-300">Use consistent spacing (space-4 or 16px) between sections</div><br>
+</div></p>
+  </div>
+  <div>
+    <div class="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg mb-2">
+      <div class="flex items-center mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+        </svg>
+        <div class="font-medium text-red-800 dark:text-red-300">Don't</div>
+      </div>
+<p><div class="p-4 bg-white dark:bg-gray-800 rounded border border-[var(--color-border)]"><br>
+<div class="mb-3 bg-gray-100 dark:bg-gray-700 rounded p-4">Header</div><br>
+<div class="mb-5 bg-gray-100 dark:bg-gray-700 rounded p-4">Content</div><br>
+<div class="bg-gray-100 dark:bg-gray-700 rounded p-4">Footer</div><br>
+</div></p>
+<p><div class="mt-2 text-sm text-red-800 dark:text-red-300">Use inconsistent or arbitrary spacing values (12px, 20px)</div><br>
+</div></p>
+  </div>
+</div>
+<h3 id="2-apply-spacing-hierarchically" tabindex="-1">2. Apply spacing hierarchically <a class="anchor" href="#2-apply-spacing-hierarchically" aria-hidden="true">#</a></h3>
+<p>Use smaller spacing values for related elements and larger values to separate distinct sections. This creates visual grouping that helps users understand the relationship between elements.</p>
+<div class="p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] mt-6">
+  <div class="mb-8">
+    <h3 class="text-lg font-medium mb-4">Card Component</h3>
+    <div class="bg-[var(--color-bg)] p-4 rounded-lg border border-[var(--color-border)]">
+      <div class="mb-4">
+        <h4 class="font-medium mb-2">Card Title</h4>
+        <p class="text-sm text-[var(--color-text-muted)]">This is an example card with proper spacing hierarchy.</p>
+      </div>
+      <div class="space-y-2">
+        <div class="flex items-center space-x-2">
+          <div class="w-4 h-4 bg-[var(--color-primary)] rounded-full"></div>
+          <span class="text-sm">Item 1</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <div class="w-4 h-4 bg-[var(--color-primary)] rounded-full"></div>
+          <span class="text-sm">Item 2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-sm">
+    <ul class="list-disc pl-5 space-y-1">
+      <li><strong>space-2 (8px):</strong> Between icon and text (closely related elements)</li>
+      <li><strong>space-4 (16px):</strong> Between card content sections</li>
+      <li><strong>space-8 (32px):</strong> Between cards (distinct elements)</li>
+    </ul>
+  </div>
+</div>
+<h3 id="3-consider-component-density" tabindex="-1">3. Consider component density <a class="anchor" href="#3-consider-component-density" aria-hidden="true">#</a></h3>
+<p>Adjust spacing based on the desired density of your interface. High-density UIs (like dashboards or data tables) should use smaller spacing values, while marketing pages or content-focused pages can use larger spacing for readability.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+  <div>
+    <div class="p-4 rounded-lg border border-[var(--color-border)] mb-2">
+      <h4 class="font-medium mb-2">High Density UI</h4>
+      <div class="space-y-1">
+        <div class="flex justify-between p-2 bg-[var(--color-bg-alt)] rounded text-sm">
+          <span>Item 1</span>
+          <span>Value</span>
+        </div>
+        <div class="flex justify-between p-2 bg-[var(--color-bg-alt)] rounded text-sm">
+          <span>Item 2</span>
+          <span>Value</span>
+        </div>
+        <div class="flex justify-between p-2 bg-[var(--color-bg-alt)] rounded text-sm">
+          <span>Item 3</span>
+          <span>Value</span>
+        </div>
+      </div>
+      <div class="mt-2 text-xs text-[var(--color-text-muted)]">Uses smaller spacing values (space-1, space-2)</div>
+    </div>
+  </div>
+  <div>
+    <div class="p-4 rounded-lg border border-[var(--color-border)] mb-2">
+      <h4 class="font-medium mb-3">Content UI</h4>
+      <div class="space-y-4">
+        <p class="text-sm">This is an example of content-focused UI with more generous spacing.</p>
+        <p class="text-sm">The additional whitespace improves readability and reduces cognitive load.</p>
+      </div>
+      <div class="mt-2 text-xs text-[var(--color-text-muted)]">Uses larger spacing values (space-3, space-4)</div>
+    </div>
+  </div>
+</div>
+<h3 id="4-be-responsive" tabindex="-1">4. Be responsive <a class="anchor" href="#4-be-responsive" aria-hidden="true">#</a></h3>
+<p>Adjust spacing based on screen size. Consider using smaller spacing values on mobile devices and larger values on desktop to optimize for different viewport sizes.</p>
+<div class="eds-alert eds-alert-info mt-6">
+  <div class="flex">
+    <div class="flex-shrink-0">
+      <svg class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+      </svg>
+    </div>
+    <div>
+      <p class="font-medium">Responsive Spacing</p>
+      <p class="mt-1">Our design system utilizes Tailwind CSS utility classes for responsive spacing. For example, <code>class="mt-4 md:mt-6 lg:mt-8"</code> applies different spacing at different breakpoints.</p>
+    </div>
+  </div>
+</div>
+<h2 id="implementation" tabindex="-1">Implementation <a class="anchor" href="#implementation" aria-hidden="true">#</a></h2>
+<h3 id="css-variables" tabindex="-1">CSS Variables <a class="anchor" href="#css-variables" aria-hidden="true">#</a></h3>
+<p>Our spacing scale is implemented using CSS variables:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">:root</span> <span class="token punctuation">{</span>
+  <span class="token property">--space-0</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">--space-1</span><span class="token punctuation">:</span> 0.25rem<span class="token punctuation">;</span> <span class="token comment">/* 4px */</span>
+  <span class="token property">--space-2</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span>  <span class="token comment">/* 8px */</span>
+  <span class="token property">--space-3</span><span class="token punctuation">:</span> 0.75rem<span class="token punctuation">;</span> <span class="token comment">/* 12px */</span>
+  <span class="token property">--space-4</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>    <span class="token comment">/* 16px */</span>
+  <span class="token property">--space-6</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>  <span class="token comment">/* 24px */</span>
+  <span class="token property">--space-8</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>    <span class="token comment">/* 32px */</span>
+  <span class="token property">--space-12</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span>   <span class="token comment">/* 48px */</span>
+  <span class="token property">--space-16</span><span class="token punctuation">:</span> 4rem<span class="token punctuation">;</span>   <span class="token comment">/* 64px */</span>
+  <span class="token property">--space-20</span><span class="token punctuation">:</span> 5rem<span class="token punctuation">;</span>   <span class="token comment">/* 80px */</span>
+  <span class="token property">--space-24</span><span class="token punctuation">:</span> 6rem<span class="token punctuation">;</span>   <span class="token comment">/* 96px */</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="using-spacing-in-components" tabindex="-1">Using Spacing in Components <a class="anchor" href="#using-spacing-in-components" aria-hidden="true">#</a></h3>
+<p>When building components, use the spacing variables to ensure consistency:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.card</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--space-4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--space-6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.card-content</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--space-4<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.card-item</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--space-2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="utility-classes" tabindex="-1">Utility Classes <a class="anchor" href="#utility-classes" aria-hidden="true">#</a></h3>
+<p>You can also use our utility classes for margin and padding, which follow the same spacing scale:</p>
+<ul>
+<li><code>m-{size}</code> - Margin on all sides</li>
+<li><code>mx-{size}</code> - Horizontal margin (left and right)</li>
+<li><code>my-{size}</code> - Vertical margin (top and bottom)</li>
+<li><code>mt-{size}</code>, <code>mr-{size}</code>, <code>mb-{size}</code>, <code>ml-{size}</code> - Margin top, right, bottom, left</li>
+<li><code>p-{size}</code> - Padding on all sides</li>
+<li><code>px-{size}</code> - Horizontal padding (left and right)</li>
+<li><code>py-{size}</code> - Vertical padding (top and bottom)</li>
+<li><code>pt-{size}</code>, <code>pr-{size}</code>, <code>pb-{size}</code>, <code>pl-{size}</code> - Padding top, right, bottom, left</li>
+</ul>
+<p>Where <code>{size}</code> corresponds to the spacing scale values (0, 1, 2, 3, 4, 6, 8, 12, 16, 20, 24).</p>
+<h2 id="related-resources" tabindex="-1">Related Resources <a class="anchor" href="#related-resources" aria-hidden="true">#</a></h2>
+<p>For more information on how to use spacing effectively in your designs:</p>
+<ul>
+<li><a href="/design-system/foundations/grid-system/">Grid System</a> - Learn how spacing relates to our grid system</li>
+<li><a href="/components/layout/">Layout Components</a> - Components that help with layout and spacing</li>
+<li><a href="/resources/design-tokens/">Design Tokens</a> - View all available design tokens, including spacing</li>
+</ul>
+
+  
+
+  
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

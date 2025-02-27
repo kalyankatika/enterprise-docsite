@@ -2,73 +2,173 @@
  * Navigation structure for EDS Documentation
  */
 module.exports = {
-  // Main navigation items shown in header
+  // Main navigation in the header
   main: [
     {
-      label: "Getting Started",
-      url: "/getting-started/"
+      title: "Home",
+      url: "/"
     },
     {
-      label: "Components",
+      title: "Components",
       url: "/components/"
     },
     {
-      label: "Design Tokens",
+      title: "Design Tokens",
       url: "/design-tokens/"
     },
     {
-      label: "Guidelines",
+      title: "Patterns",
+      url: "/patterns/"
+    },
+    {
+      title: "Guidelines",
       url: "/guidelines/"
     },
     {
-      label: "Resources",
+      title: "Resources",
       url: "/resources/"
+    },
+    {
+      title: "Updates",
+      url: "/updates/"
     }
   ],
   
-  // Footer navigation columns
-  footer: {
-    resources: [
-      {
-        label: "Getting Started",
-        url: "/getting-started/"
-      },
-      {
-        label: "Components",
-        url: "/components/"
-      },
-      {
-        label: "Design Tokens",
-        url: "/design-tokens/"
-      },
-      {
-        label: "Guidelines",
-        url: "/guidelines/"
-      }
-    ],
-    support: [
-      {
-        label: "FAQ",
-        url: "/resources/faq/"
-      },
-      {
-        label: "Changelog",
-        url: "/resources/changelog/"
-      },
-      {
-        label: "Report Issue",
-        url: "https://github.com/enterprise/design-system/issues/new"
-      }
-    ],
-    legal: [
-      {
-        label: "Privacy Policy",
-        url: "/privacy-policy/"
-      },
-      {
-        label: "Terms of Service",
-        url: "/terms-of-service/"
-      }
-    ]
-  }
+  // Footer navigation
+  footer: [
+    {
+      title: "GitHub",
+      url: "https://github.com/enterprise/design-system"
+    },
+    {
+      title: "Privacy",
+      url: "/privacy-policy/"
+    },
+    {
+      title: "Terms",
+      url: "/terms-of-service/"
+    },
+    {
+      title: "Accessibility",
+      url: "/accessibility/"
+    },
+    {
+      title: "Contact",
+      url: "/contact/"
+    }
+  ],
+  
+  // Component categories in the sidebar
+  components: [
+    {
+      title: "Layout",
+      items: [
+        {
+          title: "Card",
+          url: "/components/layout/card/",
+          status: "stable"
+        },
+        {
+          title: "Grid",
+          url: "/components/layout/grid/",
+          status: "stable"
+        },
+        {
+          title: "Container",
+          url: "/components/layout/container/",
+          status: "stable"
+        },
+        {
+          title: "Divider",
+          url: "/components/layout/divider/",
+          status: "stable"
+        }
+      ]
+    },
+    {
+      title: "Navigation",
+      items: [
+        {
+          title: "Breadcrumb",
+          url: "/components/navigation/breadcrumb/",
+          status: "stable"
+        },
+        {
+          title: "Menu",
+          url: "/components/navigation/menu/",
+          status: "stable"
+        },
+        {
+          title: "Tabs",
+          url: "/components/navigation/tabs/",
+          status: "stable"
+        },
+        {
+          title: "Pagination",
+          url: "/components/navigation/pagination/",
+          status: "stable"
+        }
+      ]
+    },
+    {
+      title: "Feedback",
+      items: [
+        {
+          title: "Alert",
+          url: "/components/feedback/alert/",
+          status: "stable"
+        },
+        {
+          title: "Progress",
+          url: "/components/feedback/progress/",
+          status: "stable"
+        },
+        {
+          title: "Toast",
+          url: "/components/feedback/toast/",
+          status: "stable"
+        },
+        {
+          title: "Skeleton",
+          url: "/components/feedback/skeleton/",
+          status: "experimental"
+        }
+      ]
+    },
+    {
+      title: "Forms",
+      items: [
+        {
+          title: "Button",
+          url: "/components/forms/button/",
+          status: "stable"
+        },
+        {
+          title: "Input",
+          url: "/components/forms/input/",
+          status: "stable"
+        },
+        {
+          title: "Checkbox",
+          url: "/components/forms/checkbox/",
+          status: "stable"
+        },
+        {
+          title: "Radio",
+          url: "/components/forms/radio/",
+          status: "stable"
+        },
+        {
+          title: "Select",
+          url: "/components/forms/select/",
+          status: "stable"
+        },
+        {
+          title: "Textarea",
+          url: "/components/forms/textarea/",
+          status: "stable"
+        }
+      ]
+    }
+  ]
 };

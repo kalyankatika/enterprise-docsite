@@ -4,21 +4,35 @@
 const { DateTime } = require('luxon');
 const navigationPlugin = require('@11ty/eleventy-navigation');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
+const filters = require('./src/_11ty/filters.js');
 
 module.exports = function(eleventyConfig) {
   // Plugins
   eleventyConfig.addPlugin(navigationPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(rssPlugin);
   
   // Passthrough file copy
-  eleventyConfig.addPassthroughCopy('src/assets');
-  eleventyConfig.addPassthroughCopy('src/favicon.ico');
+  eleventyConfig.addPassthroughCopy({
+    'src/assets/css': 'assets/css',
+    'src/assets/js': 'assets/js',
+    'src/assets/images': 'assets/images',
+    'src/assets/fonts': 'assets/fonts'
+  });
+
+  // Create asset shortcode
+  eleventyConfig.addShortcode("asset", function(path) {
+    return `/assets/${path}`;
+  });
   
   // Watch targets
   eleventyConfig.addWatchTarget('src/assets/css/');
   eleventyConfig.addWatchTarget('src/assets/js/');
+  eleventyConfig.addWatchTarget('tailwind.config.js');
+  eleventyConfig.addWatchTarget('postcss.config.js');
   
   // Custom collections
   eleventyConfig.addCollection('inputComponents', function(collectionApi) {
@@ -37,48 +51,53 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob('src/components/feedback/*.md');
   });
   
-  // Custom filters
-  eleventyConfig.addFilter('dateToISO', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toISODate();
+  // Add updates collection for latest updates
+  eleventyConfig.addCollection('updates', function(collectionApi) {
+    return collectionApi.getFilteredByGlob('src/updates/*.md')
+      .sort((a, b) => b.date - a.date);
+  });
+
+  // Add components collection for all components
+  eleventyConfig.addCollection('allComponents', function(collectionApi) {
+    return collectionApi.getFilteredByGlob('src/components/**/*.md');
   });
   
-  eleventyConfig.addFilter('dateToYear', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy');
+  // Add custom filters
+  Object.keys(filters).forEach(filterName => {
+    eleventyConfig.addFilter(filterName, filters[filterName]);
   });
   
-  eleventyConfig.addFilter('isActiveLink', (currentUrl, navUrl) => {
-    return currentUrl.startsWith(navUrl);
+  // Add limit filter for limiting collection items
+  eleventyConfig.addFilter('limit', function(arr, limit) {
+    if (!Array.isArray(arr)) return arr;
+    return arr.slice(0, limit);
+  });
+
+  // Add a slice filter
+  eleventyConfig.addFilter('slice', function(arr, start, end) {
+    if (!Array.isArray(arr)) return arr;
+    return arr.slice(start, end);
   });
   
-  eleventyConfig.addFilter('escape', (str) => {
-    return str
+  // Simple text escape filter as a backup
+  eleventyConfig.addFilter('escape', function(str) {
+    if (!str) return '';
+    return String(str)
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
   });
-  
-  // Get headings from content for table of contents
-  eleventyConfig.addFilter('getHeadings', (collection, url) => {
-    const headings = [];
-    const page = collection.find(item => item.url === url);
-    
-    if (page && page.templateContent) {
-      const content = page.templateContent;
-      const headingRegex = /<h([2-3])\s+id="([^"]+)"[^>]*>([^<]+)<\/h\1>/g;
-      let match;
-      
-      while ((match = headingRegex.exec(content)) !== null) {
-        headings.push({
-          level: match[1],
-          id: match[2],
-          text: match[3]
-        });
-      }
-    }
-    
-    return headings;
+
+  // Format date filter
+  eleventyConfig.addFilter('formatDate', function(date) {
+    return DateTime.fromJSDate(date).toFormat('LLLL d, yyyy');
+  });
+
+  // Format ISO date filter
+  eleventyConfig.addFilter('formatISODate', function(date) {
+    return DateTime.fromJSDate(date).toISO();
   });
   
   // Custom Markdown setup
@@ -97,6 +116,17 @@ module.exports = function(eleventyConfig) {
   });
   
   eleventyConfig.setLibrary('md', markdownLibrary);
+
+  // BrowserSync configuration
+  eleventyConfig.setBrowserSyncConfig({
+    server: {
+      baseDir: './_site'
+    },
+    port: 5000,
+    ui: false,
+    ghostMode: false,
+    open: true
+  });
   
   return {
     dir: {

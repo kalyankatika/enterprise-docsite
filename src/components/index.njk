@@ -1,0 +1,96 @@
+---
+layout: layouts/base.njk
+title: Components Directory
+description: Browse the Enterprise Design System component library
+permalink: /components/directory/
+eleventyNavigation:
+  key: Components Directory
+  parent: Components
+  order: 1
+---
+
+<div class="eds-container">
+  <div class="eds-page-header">
+    <h1 class="eds-page-header__title">Components Directory</h1>
+    <p class="eds-page-header__description">Browse the Enterprise Design System component library for reusable UI elements to build your applications</p>
+  </div>
+  
+  <div class="eds-component-directory">
+    {% for category in navigation.components %}
+    <section class="eds-component-section" id="{{ category.title | slug }}">
+      <h2 class="eds-component-section__title">{{ category.title }}</h2>
+      
+      <div class="eds-component-list">
+        {% for component in category.items %}
+        <a href="{{ component.url }}" class="eds-component-item">
+          <h3 class="eds-component-item__title">{{ component.title }}</h3>
+          <div class="eds-status-badge eds-status-badge--{{ component.status }}">{{ component.status }}</div>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.eds-page-header {
+  margin-bottom: var(--eds-spacing-8);
+}
+
+.eds-page-header__title {
+  font-size: var(--eds-font-size-4xl);
+  font-weight: var(--eds-font-weight-bold);
+  margin: 0 0 var(--eds-spacing-3);
+  color: var(--eds-color-neutral-900);
+}
+
+.eds-page-header__description {
+  font-size: var(--eds-font-size-lg);
+  color: var(--eds-color-neutral-700);
+  max-width: 800px;
+}
+
+.eds-component-section {
+  margin-bottom: var(--eds-spacing-12);
+}
+
+.eds-component-section__title {
+  font-size: var(--eds-font-size-2xl);
+  font-weight: var(--eds-font-weight-semibold);
+  margin: 0 0 var(--eds-spacing-6);
+  color: var(--eds-color-neutral-900);
+  padding-bottom: var(--eds-spacing-3);
+  border-bottom: var(--eds-border-width-thin) solid var(--eds-color-neutral-200);
+}
+
+.eds-component-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--eds-spacing-4);
+}
+
+.eds-component-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--eds-spacing-4);
+  background-color: white;
+  border-radius: var(--eds-border-radius-md);
+  box-shadow: var(--eds-shadow-base);
+  text-decoration: none;
+  transition: transform var(--eds-transition-fast) ease-in-out, box-shadow var(--eds-transition-fast) ease-in-out;
+}
+
+.eds-component-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--eds-shadow-md);
+}
+
+.eds-component-item__title {
+  font-size: var(--eds-font-size-lg);
+  font-weight: var(--eds-font-weight-medium);
+  margin: 0;
+  color: var(--eds-color-neutral-900);
+}
+</style>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Components | Enterprise Design System</title>
+  <meta name="description" content="Components that enable users to input or manipulate data">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      
+<div class="eds-page">
+  
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Input Components</h1>
+      
+        <p class="text-xl text-gray-600 dark:text-gray-300">Components that enable users to input or manipulate data</p>
+      
+    </div>
+    <hr class="border-gray-200 dark:border-gray-700 mb-8">
+  
+
+  
+    <h1 id="input-components" tabindex="-1">Input Components <a class="anchor" href="#input-components" aria-hidden="true">#</a></h1>
+<p>Input components are UI elements that allow users to enter data, make selections, or trigger actions. They are essential building blocks for forms and interactive interfaces.</p>
+<h2 id="available-input-components" tabindex="-1">Available Input Components <a class="anchor" href="#available-input-components" aria-hidden="true">#</a></h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+<p><a href="/components/inputs/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Input Components</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Components that enable users to input or manipulate data</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+<p><a href="/components/inputs/button/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Button</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Buttons communicate actions that users can take</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+</div>
+<h2 id="accessibility-considerations" tabindex="-1">Accessibility Considerations <a class="anchor" href="#accessibility-considerations" aria-hidden="true">#</a></h2>
+<p>When using input components, keep these accessibility considerations in mind:</p>
+<ul>
+<li>All form controls should have associated labels</li>
+<li>Form elements should be keyboard accessible</li>
+<li>Error messages should be clearly associated with their respective inputs</li>
+<li>Required fields should be clearly indicated</li>
+<li>Focus states should be visible for keyboard users</li>
+</ul>
+<h2 id="best-practices" tabindex="-1">Best Practices <a class="anchor" href="#best-practices" aria-hidden="true">#</a></h2>
+<h3 id="use-clear-and-concise-labels" tabindex="-1">Use clear and concise labels <a class="anchor" href="#use-clear-and-concise-labels" aria-hidden="true">#</a></h3>
+<p>Labels should clearly describe the purpose of the input. Avoid using vague or technical terms that might confuse users.</p>
+<h3 id="provide-helpful-validation" tabindex="-1">Provide helpful validation <a class="anchor" href="#provide-helpful-validation" aria-hidden="true">#</a></h3>
+<p>Validate user input and provide clear error messages when the input doesn't meet the requirements. Use inline validation where appropriate.</p>
+<h3 id="group-related-inputs" tabindex="-1">Group related inputs <a class="anchor" href="#group-related-inputs" aria-hidden="true">#</a></h3>
+<p>Group related inputs together using fieldsets and legends to provide context and improve understanding.</p>
+<h3 id="use-appropriate-input-types" tabindex="-1">Use appropriate input types <a class="anchor" href="#use-appropriate-input-types" aria-hidden="true">#</a></h3>
+<p>Use the appropriate input type for the data being collected (e.g., email, number, date) to provide the best user experience and enable browser-specific features.</p>
+<h3 id="maintain-consistency" tabindex="-1">Maintain consistency <a class="anchor" href="#maintain-consistency" aria-hidden="true">#</a></h3>
+<p>Use input components consistently throughout your application to create a cohesive user experience.</p>
+<h2 id="form-layout-guidelines" tabindex="-1">Form Layout Guidelines <a class="anchor" href="#form-layout-guidelines" aria-hidden="true">#</a></h2>
+<ul>
+<li>Align labels and inputs consistently</li>
+<li>Use a single-column layout for most forms</li>
+<li>Place related fields in close proximity</li>
+<li>Use appropriate spacing between form elements</li>
+<li>Position form actions (buttons) at the bottom of the form</li>
+</ul>
+<p>For more detailed guidance on forms, please refer to the <a href="/patterns/forms/">Form Patterns</a> documentation.</p>
+
+  
+
+  
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

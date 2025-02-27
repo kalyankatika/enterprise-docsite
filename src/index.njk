@@ -1,50 +1,156 @@
 ---
-layout: layouts/home.njk
+layout: layouts/base.njk
 title: Enterprise Design System
-description: The unified design system for building consistent enterprise applications
-excludeFromSearch: false
-contentType: Home
-hero:
-  title: Enterprise Design System
-  description: The unified component library and design guidelines for building consistent, accessible, and user-friendly enterprise applications.
-  primaryLink: /getting-started/
-  secondaryLink: /components/
-homepageCards:
-  - title: Getting Started
-    description: Learn how to install and use the Enterprise Design System in your projects.
-    link: /getting-started/
-    linkText: Start Here
-  - title: Components
-    description: Browse our library of ready-to-use UI components with examples and documentation.
-    link: /components/
-    linkText: View Components
-  - title: Design Tokens
-    description: Explore the foundational design elements like colors, typography, and spacing.
-    link: /design-tokens/
-    linkText: See Design Tokens
-  - title: Guidelines
-    description: Follow our best practices for creating consistent and accessible interfaces.
-    link: /guidelines/
-    linkText: Read Guidelines
-  - title: Patterns
-    description: Discover common UI patterns and solutions for complex design problems.
-    link: /patterns/
-    linkText: Explore Patterns
-  - title: Resources
-    description: Access tools, templates, and other resources to help you work efficiently.
-    link: /resources/
-    linkText: Find Resources
-latestUpdates:
-  - title: Version 1.0.0 Released
-    date: 2023-12-01
-    excerpt: The first stable release of the Enterprise Design System is now available with 23+ components and comprehensive documentation.
-    link: /resources/changelog/#v1.0.0
-  - title: New Component - Tooltip
-    date: 2023-11-15
-    excerpt: We've added a new Tooltip component to help provide additional context for UI elements.
-    link: /components/feedback/tooltip/
-  - title: Dark Mode Support
-    date: 2023-10-30
-    excerpt: All components now support dark mode for improved accessibility and user preference.
-    link: /guidelines/theming/
+description: A unified documentation platform for the Enterprise Design System
+permalink: /alternative-home/
 ---
+
+<div class="eds-hero">
+  <div class="eds-container">
+    <div class="eds-hero__inner">
+      <h1 class="eds-hero__title">Enterprise Design System</h1>
+      <p class="eds-hero__description">A unified platform for building consistent, accessible, and high-quality enterprise applications</p>
+      
+      <div class="eds-hero__actions">
+        <a href="/getting-started/" class="eds-button eds-button--primary">Get Started</a>
+        <a href="/components/" class="eds-button eds-button--secondary">View Components</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="eds-container">
+  <div class="eds-section">
+    <h2 class="eds-section__title">What's New</h2>
+    <div class="eds-card-grid">
+      <div class="eds-card">
+        <div class="eds-card__header">
+          <h3 class="eds-card__title">Version 2.0 Released</h3>
+          <p class="eds-card__meta">February 15, 2025</p>
+        </div>
+        <div class="eds-card__content">
+          <p>We've released version 2.0 of the Enterprise Design System with new components, improved documentation, and better accessibility.</p>
+        </div>
+        <div class="eds-card__footer">
+          <a href="/updates/2025-02-15-version-2-release/" class="eds-link">Read more</a>
+        </div>
+      </div>
+      
+      <div class="eds-card">
+        <div class="eds-card__header">
+          <h3 class="eds-card__title">New Data Table Component</h3>
+          <p class="eds-card__meta">February 10, 2025</p>
+        </div>
+        <div class="eds-card__content">
+          <p>The new Data Table component provides a powerful way to display and interact with structured data in your applications.</p>
+        </div>
+        <div class="eds-card__footer">
+          <a href="/components/data/table/" class="eds-link">View component</a>
+        </div>
+      </div>
+      
+      <div class="eds-card">
+        <div class="eds-card__header">
+          <h3 class="eds-card__title">Improved Accessibility</h3>
+          <p class="eds-card__meta">February 5, 2025</p>
+        </div>
+        <div class="eds-card__content">
+          <p>All components have been audited and updated to ensure compliance with WCAG 2.1 AA accessibility standards.</p>
+        </div>
+        <div class="eds-card__footer">
+          <a href="/guidelines/accessibility/" class="eds-link">Read guidelines</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="eds-section">
+    <h2 class="eds-section__title">Component Categories</h2>
+    <div class="eds-component-grid">
+      {% for category in navigation.components %}
+      <div class="eds-component-category">
+        <h3 class="eds-component-category__title">{{ category.title }}</h3>
+        <ul class="eds-component-category__list">
+          {% for component in category.items | slice(0, 4) %}
+          <li class="eds-component-category__item">
+            <a href="{{ component.url }}" class="eds-component-category__link">
+              <span class="eds-component-category__name">{{ component.title }}</span>
+              <span class="eds-status-badge eds-status-badge--{{ component.status }}">{{ component.status }}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        <a href="/components/#{{ category.title | slug }}" class="eds-component-category__more">View all {{ category.title }} components</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  <div class="eds-section">
+    <h2 class="eds-section__title">Get Started</h2>
+    <div class="eds-feature-grid">
+      <div class="eds-feature">
+        <div class="eds-feature__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+            <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+            <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <h3 class="eds-feature__title">Design Tokens</h3>
+        <p class="eds-feature__description">Learn how to use our design tokens to maintain consistent styling across your applications.</p>
+        <a href="/design-tokens/" class="eds-link">Explore design tokens</a>
+      </div>
+      
+      <div class="eds-feature">
+        <div class="eds-feature__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+          </svg>
+        </div>
+        <h3 class="eds-feature__title">Guidelines</h3>
+        <p class="eds-feature__description">Discover our design and development guidelines to ensure consistency across your projects.</p>
+        <a href="/guidelines/" class="eds-link">Review guidelines</a>
+      </div>
+      
+      <div class="eds-feature">
+        <div class="eds-feature__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="eds-feature__title">Patterns</h3>
+        <p class="eds-feature__description">Explore common UI patterns and learn how to solve common design challenges in your applications.</p>
+        <a href="/patterns/" class="eds-link">Explore patterns</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="eds-section">
+    <h2 class="eds-section__title">Resources</h2>
+    <div class="eds-resource-grid">
+      <a href="/resources/figma-library/" class="eds-resource">
+        <h3 class="eds-resource__title">Figma Library</h3>
+        <p class="eds-resource__description">Access our Figma component library to kickstart your design process.</p>
+      </a>
+      
+      <a href="/resources/sketch-library/" class="eds-resource">
+        <h3 class="eds-resource__title">Sketch Library</h3>
+        <p class="eds-resource__description">Download our Sketch component library for designing with the Enterprise Design System.</p>
+      </a>
+      
+      <a href="/resources/icon-library/" class="eds-resource">
+        <h3 class="eds-resource__title">Icon Library</h3>
+        <p class="eds-resource__description">Browse and download our comprehensive collection of UI icons.</p>
+      </a>
+      
+      <a href="/resources/starter-templates/" class="eds-resource">
+        <h3 class="eds-resource__title">Starter Templates</h3>
+        <p class="eds-resource__description">Get a head start with our application templates and boilerplates.</p>
+      </a>
+    </div>
+  </div>
+</div>

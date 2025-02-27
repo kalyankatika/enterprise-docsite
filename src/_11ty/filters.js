@@ -2,6 +2,7 @@
  * Custom Eleventy filters
  */
 const { DateTime } = require('luxon');
+const cheerio = require('cheerio');
 
 /**
  * Extract headings from content for table of contents
@@ -10,22 +11,26 @@ const { DateTime } = require('luxon');
  * @returns {Array} - List of headings with id and text properties
  */
 function getHeadings(collection, url) {
-  const headings = [];
-  const page = collection.find(item => item.url === url);
+  if (!collection || !url) return [];
   
-  if (page && page.templateContent) {
-    const content = page.templateContent;
-    const headingRegex = /<h([2-3])\s+id="([^"]+)"[^>]*>([^<]+)<\/h\1>/g;
-    let match;
+  const page = collection.find(item => item.url === url);
+  if (!page || !page.templateContent) return [];
+  
+  const $ = cheerio.load(page.templateContent);
+  const headings = [];
+  
+  $('h2, h3').each((index, element) => {
+    const $heading = $(element);
+    const id = $heading.attr('id');
     
-    while ((match = headingRegex.exec(content)) !== null) {
+    if (id) {
       headings.push({
-        level: match[1],
-        id: match[2],
-        text: match[3]
+        id,
+        text: $heading.text().trim(),
+        level: element.name === 'h2' ? 2 : 3
       });
     }
-  }
+  });
   
   return headings;
 }
@@ -34,20 +39,23 @@ function getHeadings(collection, url) {
  * Format a date as ISO string (YYYY-MM-DD)
  */
 function dateToISO(dateObj) {
-  return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toISODate();
+  return DateTime.fromJSDate(dateObj).toISODate();
 }
 
 /**
  * Format a date as a year (YYYY)
  */
 function dateToYear(dateObj) {
-  return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy');
+  return DateTime.fromJSDate(dateObj).toFormat('yyyy');
 }
 
 /**
  * Check if a URL starts with a given path
  */
 function isActiveLink(currentUrl, navUrl) {
+  if (!currentUrl || !navUrl) return false;
+  if (navUrl === '/' && currentUrl === '/') return true;
+  if (navUrl === '/') return false;
   return currentUrl.startsWith(navUrl);
 }
 
@@ -55,7 +63,8 @@ function isActiveLink(currentUrl, navUrl) {
  * Escape HTML characters
  */
 function escape(str) {
-  return str
+  if (!str) return '';
+  return String(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -63,10 +72,55 @@ function escape(str) {
     .replace(/'/g, '&#039;');
 }
 
+/**
+ * Converts a string to a slug
+ */
+function slug(str) {
+  if (!str) return '';
+  return str.toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-');
+}
+
+/**
+ * Format a date in a readable format
+ */
+function readableDate(dateObj) {
+  return DateTime.fromJSDate(dateObj).toFormat('LLLL d, yyyy');
+}
+
+/**
+ * Get a slice of an array with given start and end
+ */
+function slice(array, start, end) {
+  if (!Array.isArray(array)) return [];
+  return array.slice(start, end);
+}
+
+/**
+ * Group items by a property
+ */
+function groupBy(array, key) {
+  if (!Array.isArray(array) || !key) return {};
+  
+  return array.reduce((result, item) => {
+    const value = item[key];
+    if (!result[value]) {
+      result[value] = [];
+    }
+    result[value].push(item);
+    return result;
+  }, {});
+}
+
 module.exports = {
   getHeadings,
   dateToISO,
   dateToYear,
   isActiveLink,
-  escape
+  escape,
+  slug,
+  readableDate,
+  slice,
+  groupBy
 };

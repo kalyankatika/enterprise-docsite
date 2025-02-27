@@ -1,16 +1,18 @@
 ---
 permalink: /search-index.json
+excludeFromSearch: true
+eleventyExcludeFromCollections: true
 ---
 [
   {% for item in collections.all %}
-    {% if not item.data.excludeFromSearch %}
+    {% if not item.data.excludeFromSearch and item.url != "/search-index.json" %}
       {
-        "title": "{{ item.data.title | escape }}",
+        "title": "{{ (item.data.title or '') | escape }}",
         "url": "{{ item.url }}",
         "content": "{{ (item.templateContent or '') | escape }}",
-        "description": "{{ item.data.description | escape }}",
-        "type": "{{ item.data.contentType or 'Page' }}",
-        "date": "{{ item.date | dateToISO }}"
+        "description": "{{ (item.data.description or '') | escape }}",
+        "type": "{{ (item.data.contentType or 'Page') | escape }}",
+        "date": "{{ item.date | dateToISO or '' }}"
       }{% if not loop.last %},{% endif %}
     {% endif %}
   {% endfor %}

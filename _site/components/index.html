@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components | Enterprise Design System</title>
+  <meta name="description" content="A comprehensive library of reusable UI components for building enterprise applications">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item eds-nav__item--active">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      
+<div class="eds-page">
+  
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Components</h1>
+      
+        <p class="text-xl text-gray-600 dark:text-gray-300">A comprehensive library of reusable UI components for building enterprise applications</p>
+      
+    </div>
+    <hr class="border-gray-200 dark:border-gray-700 mb-8">
+  
+
+  
+    <h1 id="components" tabindex="-1">Components <a class="anchor" href="#components" aria-hidden="true">#</a></h1>
+<p>The Enterprise Design System provides a comprehensive library of UI components that help you build consistent and accessible interfaces. Our components are built with accessibility, usability, and flexibility in mind.</p>
+<h2 id="component-categories" tabindex="-1">Component Categories <a class="anchor" href="#component-categories" aria-hidden="true">#</a></h2>
+<p>Our components are organized into the following categories:</p>
+<h3 id="input-components" tabindex="-1">Input Components <a class="anchor" href="#input-components" aria-hidden="true">#</a></h3>
+<p>Components that enable users to input or manipulate data.</p>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+<p><a href="/components/inputs/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Input Components</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Components that enable users to input or manipulate data</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+<p><a href="/components/inputs/button/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Button</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Buttons communicate actions that users can take</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+</div>
+<h3 id="layout-components" tabindex="-1">Layout Components <a class="anchor" href="#layout-components" aria-hidden="true">#</a></h3>
+<p>Components that help structure content and UI elements on the page.</p>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+<p><a href="/components/layout/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Layout Components</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Layout components help structure content and define the visual hierarchy of pages</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+<p><a href="/components/layout/card/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Card</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Cards organize content and actions about a single subject</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+</div>
+<h3 id="navigation-components" tabindex="-1">Navigation Components <a class="anchor" href="#navigation-components" aria-hidden="true">#</a></h3>
+<p>Components that help users navigate within the application.</p>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+<p><a href="/components/navigation/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Navigation Components</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Navigation components help users move through and find content in your application</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+<p><a href="/components/navigation/breadcrumb/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Breadcrumb</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Breadcrumbs show the navigational path within a site hierarchy</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+</div>
+<h3 id="feedback-components" tabindex="-1">Feedback Components <a class="anchor" href="#feedback-components" aria-hidden="true">#</a></h3>
+<p>Components that provide feedback or display notifications to users.</p>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+<p><a href="/components/feedback/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Feedback Components</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Feedback components communicate system status and provide information to users</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+<p><a href="/components/feedback/alert/" class="eds-component-card"><br>
+<h3 class="text-xl font-medium mb-2">Alert</h3><br>
+<p class="text-gray-600 dark:text-gray-300 mb-4">Alerts provide contextual feedback messages for user actions and system states</p><br>
+<span class="eds-link">View Component →</span><br>
+</a></p>
+</div>
+<h2 id="component-structure" tabindex="-1">Component Structure <a class="anchor" href="#component-structure" aria-hidden="true">#</a></h2>
+<p>Each component in our design system follows a consistent structure in its documentation:</p>
+<ol>
+<li><strong>Overview</strong>: A description of the component and its use cases</li>
+<li><strong>Usage</strong>: Guidelines on how and when to use the component</li>
+<li><strong>Code</strong>: Implementation details including props, methods, and events</li>
+<li><strong>Accessibility</strong>: Information on how the component meets accessibility standards</li>
+</ol>
+<h2 id="design-principles" tabindex="-1">Design Principles <a class="anchor" href="#design-principles" aria-hidden="true">#</a></h2>
+<p>All components in the Enterprise Design System follow these core principles:</p>
+<h3 id="consistent" tabindex="-1">Consistent <a class="anchor" href="#consistent" aria-hidden="true">#</a></h3>
+<p>Components maintain visual and behavioral consistency across the interface. They use the same design tokens for spacing, colors, and typography.</p>
+<h3 id="accessible" tabindex="-1">Accessible <a class="anchor" href="#accessible" aria-hidden="true">#</a></h3>
+<p>Components meet WCAG 2.1 AA standards, ensuring that applications built with our design system are usable by people with disabilities.</p>
+<h3 id="responsive" tabindex="-1">Responsive <a class="anchor" href="#responsive" aria-hidden="true">#</a></h3>
+<p>Components are designed to work across various screen sizes, from desktop to mobile, providing a good user experience regardless of device.</p>
+<h3 id="customizable" tabindex="-1">Customizable <a class="anchor" href="#customizable" aria-hidden="true">#</a></h3>
+<p>While maintaining consistency, components can be customized to meet specific design needs and brand guidelines.</p>
+<h2 id="implementation" tabindex="-1">Implementation <a class="anchor" href="#implementation" aria-hidden="true">#</a></h2>
+<p>Components are implemented using clean, semantic HTML and CSS, with JavaScript used only when necessary for enhanced functionality. They are framework-agnostic but offer specific implementations for React and Vue.js.</p>
+<p>For installation and basic usage, please refer to our <a href="/getting-started/">Getting Started</a> guide.</p>
+
+  
+
+  
+</div>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

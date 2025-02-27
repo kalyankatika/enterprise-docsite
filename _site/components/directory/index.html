@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components Directory | Enterprise Design System</title>
+  <meta name="description" content="Browse the Enterprise Design System component library">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="/assets/js/alpine.min.js" defer></script>
+  <script src="/assets/js/main.js" defer></script>
+</head>
+<body class="eds-body">
+  <div class="eds-page">
+    <header class="eds-header">
+      <div class="eds-container">
+        <div class="eds-header__inner">
+          <a href="/" class="eds-header__logo">
+            <span class="eds-logo">Enterprise Design System</span>
+          </a>
+          
+          <nav class="eds-nav" aria-label="Main navigation">
+            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
+              <span class="eds-nav__toggle-icon"></span>
+              <span class="eds-sr-only">Menu</span>
+            </button>
+            
+            <ul id="main-menu" class="eds-nav__menu">
+              
+              <li class="eds-nav__item">
+                <a href="/" class="eds-nav__link">Home</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/components/" class="eds-nav__link">Components</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/patterns/" class="eds-nav__link">Patterns</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/resources/" class="eds-nav__link">Resources</a>
+              </li>
+              
+              <li class="eds-nav__item">
+                <a href="/updates/" class="eds-nav__link">Updates</a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+          <div class="eds-header__actions">
+            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
+              <span class="eds-theme-toggle__icon"></span>
+            </button>
+            
+            <div class="eds-search" x-data="{ searchOpen: false }">
+              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
+                <span class="eds-search__toggle-icon"></span>
+                <span class="eds-sr-only">Search</span>
+              </button>
+              
+              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
+                <label for="search-input" class="eds-sr-only">Search</label>
+                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
+                <button type="submit" class="eds-search__submit">
+                  <span class="eds-sr-only">Submit search</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="eds-main">
+      
+<div class="eds-container">
+  <div class="eds-page-header">
+    <h1 class="eds-page-header__title">Components Directory</h1>
+    <p class="eds-page-header__description">Browse the Enterprise Design System component library for reusable UI elements to build your applications</p>
+  </div>
+  
+  <div class="eds-component-directory">
+    
+    <section class="eds-component-section" id="layout">
+      <h2 class="eds-component-section__title">Layout</h2>
+      
+      <div class="eds-component-list">
+        
+        <a href="/components/layout/card/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Card</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/layout/grid/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Grid</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/layout/container/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Container</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/layout/divider/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Divider</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="eds-component-section" id="navigation">
+      <h2 class="eds-component-section__title">Navigation</h2>
+      
+      <div class="eds-component-list">
+        
+        <a href="/components/navigation/breadcrumb/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Breadcrumb</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/navigation/menu/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Menu</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/navigation/tabs/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Tabs</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/navigation/pagination/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Pagination</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="eds-component-section" id="feedback">
+      <h2 class="eds-component-section__title">Feedback</h2>
+      
+      <div class="eds-component-list">
+        
+        <a href="/components/feedback/alert/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Alert</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/feedback/progress/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Progress</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/feedback/toast/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Toast</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/feedback/skeleton/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Skeleton</h3>
+          <div class="eds-status-badge eds-status-badge--experimental">experimental</div>
+        </a>
+        
+      </div>
+    </section>
+    
+    <section class="eds-component-section" id="forms">
+      <h2 class="eds-component-section__title">Forms</h2>
+      
+      <div class="eds-component-list">
+        
+        <a href="/components/forms/button/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Button</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/forms/input/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Input</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/forms/checkbox/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Checkbox</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/forms/radio/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Radio</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/forms/select/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Select</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+        <a href="/components/forms/textarea/" class="eds-component-item">
+          <h3 class="eds-component-item__title">Textarea</h3>
+          <div class="eds-status-badge eds-status-badge--stable">stable</div>
+        </a>
+        
+      </div>
+    </section>
+    
+  </div>
+</div>
+
+<style>
+.eds-page-header {
+  margin-bottom: var(--eds-spacing-8);
+}
+
+.eds-page-header__title {
+  font-size: var(--eds-font-size-4xl);
+  font-weight: var(--eds-font-weight-bold);
+  margin: 0 0 var(--eds-spacing-3);
+  color: var(--eds-color-neutral-900);
+}
+
+.eds-page-header__description {
+  font-size: var(--eds-font-size-lg);
+  color: var(--eds-color-neutral-700);
+  max-width: 800px;
+}
+
+.eds-component-section {
+  margin-bottom: var(--eds-spacing-12);
+}
+
+.eds-component-section__title {
+  font-size: var(--eds-font-size-2xl);
+  font-weight: var(--eds-font-weight-semibold);
+  margin: 0 0 var(--eds-spacing-6);
+  color: var(--eds-color-neutral-900);
+  padding-bottom: var(--eds-spacing-3);
+  border-bottom: var(--eds-border-width-thin) solid var(--eds-color-neutral-200);
+}
+
+.eds-component-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--eds-spacing-4);
+}
+
+.eds-component-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--eds-spacing-4);
+  background-color: white;
+  border-radius: var(--eds-border-radius-md);
+  box-shadow: var(--eds-shadow-base);
+  text-decoration: none;
+  transition: transform var(--eds-transition-fast) ease-in-out, box-shadow var(--eds-transition-fast) ease-in-out;
+}
+
+.eds-component-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--eds-shadow-md);
+}
+
+.eds-component-item__title {
+  font-size: var(--eds-font-size-lg);
+  font-weight: var(--eds-font-weight-medium);
+  margin: 0;
+  color: var(--eds-color-neutral-900);
+}
+</style>
+    </main>
+
+    <footer class="eds-footer">
+      <div class="eds-container">
+        <div class="eds-footer__inner">
+          <div class="eds-footer__info">
+            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+          </div>
+          
+          <nav class="eds-footer__nav" aria-label="Footer navigation">
+            <ul class="eds-footer__menu">
+              
+              <li class="eds-footer__item">
+                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
+              </li>
+              
+              <li class="eds-footer__item">
+                <a href="/contact/" class="eds-footer__link">Contact</a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
