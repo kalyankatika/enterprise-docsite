@@ -42,14 +42,32 @@ module.exports = function(eleventyConfig) {
   });
   
   // Create search-index.json
-  eleventyConfig.addCollection('searchIndex', function(collection) {
-    return collection.getAll().map(item => {
+  eleventyConfig.addCollection('searchIndex', async function(collection) {
+    const contentPromises = collection.getAll().map(async (item) => {
+      let content = '';
+      
+      // Only process markdown and njk files that aren't component examples
+      const isExampleFile = item.inputPath && item.inputPath.includes('/example.');
+      if (!isExampleFile) {
+        try {
+          // Try to get content safely
+          if (item.template && typeof item.template.read === 'function') {
+            const processed = await item.template.read();
+            content = processed.content || '';
+          }
+        } catch (e) {
+          console.log(`Error processing ${item.inputPath || 'unknown file'}: ${e.message}`);
+        }
+      }
+      
       return {
         url: item.url,
         title: item.data.title || '',
-        content: item.template?.frontMatter?.content || item.templateContent || ''
+        content: content
       };
     });
+    
+    return Promise.all(contentPromises);
   });
   
   // Configure Markdown library
@@ -112,7 +130,7 @@ module.exports = function(eleventyConfig) {
       input: 'src',
       output: '_site',
       includes: '_includes',
-      layouts: '_includes/layouts',
+      layouts: '_includes',
       data: '_data'
     },
     templateFormats: ['md', 'njk', 'html'],
