@@ -1,141 +1,93 @@
 ---
 layout: page
-title: Foundations
-description: The basic building blocks of our design system including color, typography, spacing, and grid.
-eleventyNavigation:
-  key: Foundations
-  parent: Design System
-  order: 1
+title: Design System Foundations
+description: Core elements that form the building blocks of our design system
 ---
 
-# Design Foundations
+# Design System Foundations
 
-Design foundations form the fundamental building blocks of our design system. They ensure visual consistency and accessibility across all products and platforms while providing the flexibility needed for a range of applications.
+Our design system foundations are the core elements that serve as the building blocks for all components and patterns in the Enterprise Design System. These foundations ensure consistency and coherence across all our products.
 
-## Foundation Elements
+## Available Foundations
 
-<div class="foundation-grid">
-  <a href="/design-system/foundations/colors/" class="foundation-card">
-    <div class="foundation-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet">
-        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-      </svg>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+  <a href="/design-system/foundations/colors/" class="eds-card group hover:shadow-md transition-shadow duration-200">
+    <div class="flex items-center mb-4">
+      <div class="flex-shrink-0 bg-[var(--color-bg-alt)] rounded-full p-3 mr-4">
+        <svg class="h-6 w-6 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+        </svg>
+      </div>
+      <h2 class="text-xl font-medium group-hover:text-[var(--color-primary)]">Colors</h2>
     </div>
-    <h3>Colors</h3>
-    <p>Our color palette, including primary, secondary, and semantic colors, along with usage guidelines.</p>
+    <p class="text-[var(--color-text-muted)]">Our color system provides a unified palette for creating consistent and accessible interfaces.</p>
   </a>
   
-  <a href="/design-system/foundations/typography/" class="foundation-card">
-    <div class="foundation-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-type">
-        <polyline points="4 7 4 4 20 4 20 7"></polyline>
-        <line x1="9" y1="20" x2="15" y2="20"></line>
-        <line x1="12" y1="4" x2="12" y2="20"></line>
-      </svg>
+  <a href="/design-system/foundations/typography/" class="eds-card group hover:shadow-md transition-shadow duration-200">
+    <div class="flex items-center mb-4">
+      <div class="flex-shrink-0 bg-[var(--color-bg-alt)] rounded-full p-3 mr-4">
+        <svg class="h-6 w-6 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+        </svg>
+      </div>
+      <h2 class="text-xl font-medium group-hover:text-[var(--color-primary)]">Typography</h2>
     </div>
-    <h3>Typography</h3>
-    <p>Font families, sizes, weights, and styles used across our products.</p>
+    <p class="text-[var(--color-text-muted)]">Our typography system defines font families, sizes, and styles that enhance readability and hierarchy.</p>
   </a>
   
-  <a href="/design-system/foundations/spacing/" class="foundation-card">
-    <div class="foundation-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize-2">
-        <polyline points="15 3 21 3 21 9"></polyline>
-        <polyline points="9 21 3 21 3 15"></polyline>
-        <line x1="21" y1="3" x2="14" y2="10"></line>
-        <line x1="3" y1="21" x2="10" y2="14"></line>
-      </svg>
+  <a href="/design-system/foundations/spacing/" class="eds-card group hover:shadow-md transition-shadow duration-200">
+    <div class="flex items-center mb-4">
+      <div class="flex-shrink-0 bg-[var(--color-bg-alt)] rounded-full p-3 mr-4">
+        <svg class="h-6 w-6 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+        </svg>
+      </div>
+      <h2 class="text-xl font-medium group-hover:text-[var(--color-primary)]">Spacing</h2>
     </div>
-    <h3>Spacing</h3>
-    <p>Standard spacing values used for margins, padding, and layout.</p>
+    <p class="text-[var(--color-text-muted)]">Our spacing scale defines consistent spacing values to create balanced and harmonious layouts.</p>
   </a>
   
-  <a href="/design-system/foundations/grid/" class="foundation-card">
-    <div class="foundation-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid">
-        <rect x="3" y="3" width="7" height="7"></rect>
-        <rect x="14" y="3" width="7" height="7"></rect>
-        <rect x="14" y="14" width="7" height="7"></rect>
-        <rect x="3" y="14" width="7" height="7"></rect>
-      </svg>
+  <a href="/design-system/foundations/iconography/" class="eds-card group hover:shadow-md transition-shadow duration-200">
+    <div class="flex items-center mb-4">
+      <div class="flex-shrink-0 bg-[var(--color-bg-alt)] rounded-full p-3 mr-4">
+        <svg class="h-6 w-6 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path>
+        </svg>
+      </div>
+      <h2 class="text-xl font-medium group-hover:text-[var(--color-primary)]">Iconography</h2>
     </div>
-    <h3>Grid</h3>
-    <p>Grid system and layout guidelines for responsive designs.</p>
+    <p class="text-[var(--color-text-muted)]">Our icon system provides consistent visual elements to improve usability and communication.</p>
   </a>
   
-  <a href="/design-system/foundations/elevation/" class="foundation-card">
-    <div class="foundation-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-        <polyline points="2 17 12 22 22 17"></polyline>
-        <polyline points="2 12 12 17 22 12"></polyline>
-      </svg>
+  <a href="/design-system/foundations/grid-system/" class="eds-card group hover:shadow-md transition-shadow duration-200">
+    <div class="flex items-center mb-4">
+      <div class="flex-shrink-0 bg-[var(--color-bg-alt)] rounded-full p-3 mr-4">
+        <svg class="h-6 w-6 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
+        </svg>
+      </div>
+      <h2 class="text-xl font-medium group-hover:text-[var(--color-primary)]">Grid System</h2>
     </div>
-    <h3>Elevation</h3>
-    <p>Shadow and depth guidelines to create hierarchy and focus.</p>
+    <p class="text-[var(--color-text-muted)]">Our grid system provides a flexible foundation for creating consistent layouts across different screen sizes.</p>
   </a>
   
-  <a href="/design-system/foundations/iconography/" class="foundation-card">
-    <div class="foundation-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-      </svg>
+  <a href="/design-system/principles/" class="eds-card group hover:shadow-md transition-shadow duration-200">
+    <div class="flex items-center mb-4">
+      <div class="flex-shrink-0 bg-[var(--color-bg-alt)] rounded-full p-3 mr-4">
+        <svg class="h-6 w-6 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+        </svg>
+      </div>
+      <h2 class="text-xl font-medium group-hover:text-[var(--color-primary)]">Principles</h2>
     </div>
-    <h3>Iconography</h3>
-    <p>Standard icons and icon usage guidelines for consistent visual communication.</p>
+    <p class="text-[var(--color-text-muted)]">The guiding principles that inform all aspects of our design system.</p>
   </a>
 </div>
 
-## Applying Design Foundations
+## Using Foundations
 
-Our design foundations serve as the basis for all our components, templates, and patterns. Consistently applying these foundations ensures a unified and recognizable experience across all touchpoints.
+These foundational elements serve as the basis for our component library and should be used consistently across all products. When creating new components or patterns, always refer to these foundations to ensure alignment with our design system.
 
-When working on a new design or implementation:
+## Design Tokens
 
-1. **Start with foundations**: Before diving into components, ensure you're familiar with the core foundations.
-2. **Maintain consistency**: Use the established foundations rather than creating custom values.
-3. **Consider accessibility**: Our foundations are designed with accessibility in mind. Deviating from them may impact accessibility.
-4. **Cross-platform adaptation**: Understand how foundations translate across different platforms while maintaining a consistent experience.
-
-For more detailed guidance on implementing these foundations, check out our [Implementation Guidelines](/design-system/implementation-guidelines/).
-
-<style>
-  .foundation-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin: 2rem 0;
-  }
-  
-  .foundation-card {
-    padding: 1.5rem;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    display: block;
-    color: var(--color-text);
-  }
-  
-  .foundation-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-  }
-  
-  .foundation-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background-color: var(--color-primary);
-    color: white;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-  
-  .foundation-card h3 {
-    margin-top: 0;
-    color: var(--color-primary);
-  }
-</style>
+Our foundations are implemented as design tokens that can be used across different platforms and technologies. For technical details on how to access and use these design tokens, visit our [Design Tokens](/resources/design-tokens/) documentation.

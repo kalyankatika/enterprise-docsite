@@ -1,95 +1,95 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,js,njk,md}",
-  ],
+  content: ["./src/**/*.{html,njk,md,js}"],
+  darkMode: ['class', '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
-        'eds-primary': {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-          950: '#082f49',
+        primary: {
+          DEFAULT: '#368727',
+          50: '#EBF5E9',
+          100: '#D7EBD3',
+          200: '#B0D7A7',
+          300: '#88C37B',
+          400: '#61AF4F',
+          500: '#368727',
+          600: '#2E7321',
+          700: '#265F1B',
+          800: '#1E4B15',
+          900: '#163710',
         },
-        'eds-secondary': {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065',
-        },
-        'eds-neutral': {
-          50: '#fafafa',
-          100: '#f5f5f5',
-          200: '#e5e5e5',
-          300: '#d4d4d4',
-          400: '#a3a3a3',
-          500: '#737373',
-          600: '#525252',
-          700: '#404040',
-          800: '#262626',
-          900: '#171717',
-          950: '#0a0a0a',
+        secondary: {
+          DEFAULT: '#4F46E5',
+          50: '#EBEAFD',
+          100: '#D7D5FB',
+          200: '#B0ABF8',
+          300: '#8980F4',
+          400: '#6156F0',
+          500: '#4F46E5',
+          600: '#2217E0',
+          700: '#1B12B0',
+          800: '#140D7F',
+          900: '#0D094F',
         }
       },
       fontFamily: {
-        'eds-sans': ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
-        'eds-mono': ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+        'eds-sans': ['Inter', 'system-ui', 'sans-serif'],
+        'eds-mono': ['IBM Plex Mono', 'monospace'],
       },
-      spacing: {
-        'eds-1': '0.25rem',
-        'eds-2': '0.5rem',
-        'eds-3': '0.75rem',
-        'eds-4': '1rem',
-        'eds-5': '1.25rem',
-        'eds-6': '1.5rem',
-        'eds-8': '2rem',
-        'eds-10': '2.5rem',
-        'eds-12': '3rem',
-        'eds-16': '4rem',
-      },
-      boxShadow: {
-        'eds-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-        'eds-DEFAULT': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-        'eds-md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-        'eds-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-        'eds-xl': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-        'eds-2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-        'eds-inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-      },
-      borderRadius: {
-        'eds-sm': '0.125rem',
-        'eds-DEFAULT': '0.25rem',
-        'eds-md': '0.375rem',
-        'eds-lg': '0.5rem',
-        'eds-xl': '0.75rem',
-        'eds-2xl': '1rem',
-        'eds-3xl': '1.5rem',
-      }
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: 'var(--color-text)',
+            a: {
+              color: 'var(--color-primary)',
+              '&:hover': {
+                color: 'var(--color-primary-dark)',
+              },
+            },
+            h1: {
+              color: 'var(--color-text)',
+            },
+            h2: {
+              color: 'var(--color-text)',
+            },
+            h3: {
+              color: 'var(--color-text)',
+            },
+            h4: {
+              color: 'var(--color-text)',
+            },
+            h5: {
+              color: 'var(--color-text)',
+            },
+            h6: {
+              color: 'var(--color-text)',
+            },
+            pre: {
+              backgroundColor: 'var(--color-bg-alt)',
+            },
+            code: {
+              color: 'var(--color-text)',
+              backgroundColor: 'var(--color-bg-alt)',
+              borderRadius: '0.25rem',
+              paddingLeft: '0.25rem',
+              paddingRight: '0.25rem',
+              fontWeight: '400',
+            },
+            thead: {
+              borderBottomColor: 'var(--color-border)',
+            },
+            'tbody tr': {
+              borderBottomColor: 'var(--color-border)',
+            },
+            strong: {
+              color: 'var(--color-text)',
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
-  safelist: [
-    // Add classes that should always be included in the CSS output
-    'eds-container',
-    'eds-header',
-    'eds-footer',
-    'eds-sidebar',
-    'eds-main',
-    'eds-content'
+  plugins: [
+    require('@tailwindcss/typography'),
   ],
-}
+};
