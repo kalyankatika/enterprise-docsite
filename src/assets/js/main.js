@@ -3,244 +3,196 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize components on page load
   initializeComponents();
+  
+  // Setup search functionality
   setupSearchFunctionality();
+  
+  // Setup theme toggle
   setupThemeToggle();
 });
 
 function initializeComponents() {
-  // Initialize tabs
-  const tabGroups = document.querySelectorAll('.eds-tabs');
-  tabGroups.forEach(group => {
-    const tabButtons = group.querySelectorAll('.eds-tab');
-    const tabPanels = document.querySelectorAll('.eds-tab-panel[data-tab-group="' + group.dataset.tabGroup + '"]');
+  // Handle tabs component
+  const tabsElements = document.querySelectorAll('[data-tabs]');
+  
+  tabsElements.forEach(tabs => {
+    const buttons = tabs.querySelectorAll('[data-tab-button]');
+    const panels = tabs.querySelectorAll('[data-tab-panel]');
     
-    tabButtons.forEach(button => {
+    // Set initial active tab
+    const initialActiveTabId = tabs.getAttribute('data-active-tab') || buttons[0]?.getAttribute('data-tab-button');
+    setActiveTab(buttons, panels, initialActiveTabId);
+    
+    // Add click event listeners to tab buttons
+    buttons.forEach(button => {
       button.addEventListener('click', () => {
-        const tabId = button.dataset.tabId;
-        setActiveTab(tabButtons, tabPanels, tabId);
+        const tabId = button.getAttribute('data-tab-button');
+        setActiveTab(buttons, panels, tabId);
       });
-    });
-    
-    // Set first tab as active by default if none is active
-    if (!Array.from(tabButtons).some(button => button.classList.contains('active'))) {
-      const firstTabId = tabButtons[0]?.dataset.tabId;
-      if (firstTabId) {
-        setActiveTab(tabButtons, tabPanels, firstTabId);
-      }
-    }
-  });
-  
-  // Initialize mobile menu
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  if (mobileMenuToggle && mobileMenu) {
-    mobileMenuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    
-    const closeMenu = document.getElementById('close-mobile-menu');
-    if (closeMenu) {
-      closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    }
-  }
-  
-  // Initialize copy code buttons
-  const copyButtons = document.querySelectorAll('.copy-code-button');
-  copyButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const codeBlock = button.closest('.component-preview').querySelector('pre code');
-      if (codeBlock) {
-        navigator.clipboard.writeText(codeBlock.textContent)
-          .then(() => {
-            button.textContent = 'Copied!';
-            setTimeout(() => {
-              button.textContent = 'Copy';
-            }, 2000);
-          })
-          .catch(err => {
-            console.error('Could not copy text: ', err);
-          });
-      }
     });
   });
 }
 
 function setActiveTab(buttons, panels, activeTabId) {
+  // Deactivate all buttons and panels
   buttons.forEach(button => {
-    if (button.dataset.tabId === activeTabId) {
-      button.classList.add('active');
+    const tabId = button.getAttribute('data-tab-button');
+    if (tabId === activeTabId) {
+      button.setAttribute('aria-selected', 'true');
+      button.classList.add('border-[var(--color-primary)]', 'text-[var(--color-primary)]');
+      button.classList.remove('border-transparent', 'text-[var(--color-text-muted)]');
     } else {
-      button.classList.remove('active');
+      button.setAttribute('aria-selected', 'false');
+      button.classList.remove('border-[var(--color-primary)]', 'text-[var(--color-primary)]');
+      button.classList.add('border-transparent', 'text-[var(--color-text-muted)]');
     }
   });
   
+  // Show active panel and hide others
   panels.forEach(panel => {
-    if (panel.dataset.tabId === activeTabId) {
-      panel.classList.add('active');
+    const panelId = panel.getAttribute('data-tab-panel');
+    if (panelId === activeTabId) {
+      panel.classList.remove('hidden');
     } else {
-      panel.classList.remove('active');
+      panel.classList.add('hidden');
     }
   });
 }
 
 function setupSearchFunctionality() {
-  const searchInput = document.getElementById('search-input');
-  const searchResults = document.getElementById('search-results');
+  const searchInput = document.querySelector('[data-search-input]');
+  const searchResults = document.querySelector('[data-search-results]');
   
-  if (searchInput && searchResults) {
-    searchInput.addEventListener('focus', () => {
-      searchResults.classList.remove('hidden');
-    });
-    
-    // Close search when clicking outside
-    document.addEventListener('click', (event) => {
-      if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
-        searchResults.classList.add('hidden');
-      }
-    });
-    
-    // Search functionality
-    let searchData = null;
-    
-    // Load search data
-    fetch('/search-index.json')
-      .then(response => response.json())
-      .then(data => {
-        searchData = data;
-      })
-      .catch(error => {
-        console.error('Error loading search data:', error);
-      });
-    
-    // Perform search when typing
-    let debounceTimeout;
-    searchInput.addEventListener('input', () => {
-      clearTimeout(debounceTimeout);
-      debounceTimeout = setTimeout(() => {
-        const query = searchInput.value.trim().toLowerCase();
+  if (!searchInput || !searchResults) return;
+  
+  let searchData = [];
+  
+  // Fetch search index
+  fetch('/search-index.json')
+    .then(response => response.json())
+    .then(data => {
+      searchData = data;
+      
+      // Add event listener for search input
+      searchInput.addEventListener('input', event => {
+        const query = event.target.value.trim().toLowerCase();
         
         if (query.length < 2) {
-          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">Please enter at least 2 characters to search</div>';
+          searchResults.innerHTML = '';
           return;
         }
         
-        if (!searchData) {
-          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">Search data is loading...</div>';
-          return;
-        }
-        
-        const results = performSearch(query, searchData);
-        
-        if (results.length === 0) {
-          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">No results found</div>';
-        } else {
-          const resultsHTML = results.map(result => `
-            <a href="${result.url}" class="search-result">
-              <div class="search-result-title">${highlightMatches(result.title, query)}</div>
-              <div class="search-result-path">${result.url}</div>
-              <div class="search-result-snippet">${result.snippet}</div>
-            </a>
-          `).join('');
-          
-          searchResults.innerHTML = resultsHTML;
-        }
-      }, 300);
+        performSearch(query, searchData);
+      });
+    })
+    .catch(error => {
+      console.error('Error loading search index:', error);
     });
-  }
 }
 
 function performSearch(query, searchData) {
-  const results = [];
+  const searchResults = document.querySelector('[data-search-results]');
   
-  for (const key in searchData) {
-    const item = searchData[key];
-    const titleScore = scoreMatch(item.title.toLowerCase(), query);
-    const contentScore = scoreMatch(item.content.toLowerCase(), query);
-    
-    const totalScore = titleScore * 2 + contentScore;
-    
-    if (totalScore > 0) {
-      results.push({
-        title: item.title,
-        url: item.url,
-        snippet: getResultSnippet(item.content, query),
-        score: totalScore
-      });
-    }
+  if (!searchResults) return;
+  
+  // Filter search data by query
+  const results = searchData
+    .filter(item => {
+      const titleScore = scoreMatch(item.title, query);
+      const contentScore = scoreMatch(item.content, query);
+      item.score = titleScore * 2 + contentScore;
+      return item.score > 0;
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 10);
+  
+  if (results.length === 0) {
+    searchResults.innerHTML = `<p class="text-center py-4 text-[var(--color-text-muted)]">No results found for "${query}"</p>`;
+    return;
   }
   
-  // Sort by score (highest first)
-  results.sort((a, b) => b.score - a.score);
-  
-  // Return top results
-  return results.slice(0, 8);
+  searchResults.innerHTML = results
+    .map(item => {
+      const snippet = getResultSnippet(item.content, query);
+      
+      return `
+        <a href="${item.url}" class="block p-4 hover:bg-[var(--color-bg-alt)]">
+          <h3 class="text-lg font-medium">${highlightMatches(item.title, query)}</h3>
+          ${snippet ? `<p class="mt-1 text-sm text-[var(--color-text-muted)]">${snippet}</p>` : ''}
+        </a>
+      `;
+    })
+    .join('<div class="border-b border-[var(--color-border)]"></div>');
 }
 
 function scoreMatch(text, query) {
-  // Direct match
+  if (!text) return 0;
+  
+  text = text.toLowerCase();
+  
+  // Exact match gives highest score
   if (text.includes(query)) {
     return 10;
   }
   
-  // Partial word matches
-  const words = text.split(/\s+/);
+  // Check for partial matches
+  const words = query.split(' ');
+  let score = 0;
+  
   for (const word of words) {
-    if (word.startsWith(query)) {
-      return 5;
-    }
-    if (word.includes(query)) {
-      return 3;
+    if (word.length > 1 && text.includes(word)) {
+      score += 5;
     }
   }
   
-  return 0;
+  return score;
 }
 
 function getResultSnippet(content, query) {
-  const maxLength = 150;
+  if (!content) return '';
+  
   const lowerContent = content.toLowerCase();
-  const index = lowerContent.indexOf(query);
+  const lowerQuery = query.toLowerCase();
   
-  if (index === -1) {
-    // If query not found exactly, return beginning of content
-    return content.substring(0, maxLength) + '...';
+  // Find the position of the query in the content
+  const position = lowerContent.indexOf(lowerQuery);
+  
+  if (position === -1) {
+    // Try to find any word from the query
+    const words = query.split(' ');
+    for (const word of words) {
+      if (word.length > 1) {
+        const wordPosition = lowerContent.indexOf(word.toLowerCase());
+        if (wordPosition !== -1) {
+          // Extract a snippet around the found word
+          const start = Math.max(0, wordPosition - 40);
+          const end = Math.min(content.length, wordPosition + word.length + 40);
+          return '...' + highlightMatches(content.substring(start, end), query) + '...';
+        }
+      }
+    }
+    
+    // If no match is found, return the beginning of the content
+    return content.substring(0, 100) + '...';
   }
   
-  // Calculate snippet start and end positions
-  let start = Math.max(0, index - 60);
-  let end = Math.min(content.length, index + query.length + 60);
-  
-  // Adjust to not cut words
-  while (start > 0 && content[start] !== ' ') {
-    start--;
-  }
-  
-  while (end < content.length && content[end] !== ' ') {
-    end++;
-  }
-  
-  // Create snippet
-  let snippet = content.substring(start, end);
-  
-  // Add ellipsis if needed
-  if (start > 0) {
-    snippet = '...' + snippet;
-  }
-  
-  if (end < content.length) {
-    snippet = snippet + '...';
-  }
-  
-  return highlightMatches(snippet, query);
+  // Extract a snippet around the query
+  const start = Math.max(0, position - 40);
+  const end = Math.min(content.length, position + query.length + 40);
+  return '...' + highlightMatches(content.substring(start, end), query) + '...';
 }
 
 function highlightMatches(text, query) {
-  const regex = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
-  return text.replace(regex, '<span class="search-highlight">$1</span>');
+  if (!query) return text;
+  
+  const words = query.split(' ').filter(word => word.length > 1).map(escapeRegExp);
+  
+  if (words.length === 0) return text;
+  
+  const regex = new RegExp(`(${words.join('|')})`, 'gi');
+  return text.replace(regex, '<mark class="bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] px-1 rounded">$1</mark>');
 }
 
 function escapeRegExp(string) {
@@ -249,28 +201,11 @@ function escapeRegExp(string) {
 
 function setupThemeToggle() {
   const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
   
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      
-      // Save preference to localStorage
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
-    });
-    
-    // Set initial theme based on localStorage or system preference
-    const savedPreference = localStorage.getItem('darkMode');
-    
-    if (savedPreference === 'true') {
-      document.documentElement.classList.add('dark');
-    } else if (savedPreference === 'false') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      // Check system preference
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.add('dark');
-      }
-    }
-  }
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle('light', !isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
 }
