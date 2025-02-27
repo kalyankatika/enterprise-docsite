@@ -1,185 +1,182 @@
-<!DOCTYPE html>
-<html lang="en" class="{% if meta.dark %}dark{% endif %}">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }} | {{ site.title }}</title>
-  <meta name="description" content="{{ description or site.description }}">
-  
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <link rel="stylesheet" href="/assets/css/left-navigation.css">
-  <link rel="stylesheet" href="/assets/css/animations.css">
-  
-  <!-- Alpine.js -->
-  <script defer src="/assets/js/alpine.min.js"></script>
-  
-  <!-- Framer Motion wrapper -->
-  <script defer src="/assets/js/framer-motion-wrapper.js"></script>
-  
-  <!-- Main JS -->
-  <script defer src="/assets/js/main.js"></script>
-  
-  <!-- Theme initialization - prevent flash of wrong theme -->
-  <script>
-    // Set the theme based on user preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  </script>
-</head>
-<body class="bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
-  <div class="flex h-screen overflow-hidden">
-    <!-- Left Navigation -->
-    {% include "partials/left-navigation.njk" %}
+---
+layout: layouts/base.njk
+---
+
+<!-- Hero section with subtle animations -->
+<div class="bg-[var(--color-bg)] py-20 md:py-24 border-b border-[var(--color-border)]">
+  <div class="container mx-auto px-4 md:px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6 hero-title" data-motion="fade-in">
+      Grow and evolve while<br>staying true to who we are.
+    </h1>
     
-    <!-- Main Content -->
-    <main class="flex-1 overflow-y-auto">
-      <!-- Mobile Menu Toggle -->
-      <div class="lg:hidden p-4">
-        <button 
-          id="mobile-menu-toggle"
-          class="p-2 rounded border border-[var(--color-border)]"
-          aria-label="Toggle mobile menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    <p class="text-xl max-w-3xl mx-auto mb-10 text-[var(--color-text-muted)]" data-motion="fade-in-up">
+      {{ title }} are the guidelines and resources that ensure consistency and continuity across our brand and design system.
+    </p>
+    
+    {% if cta %}
+    <div class="flex flex-col md:flex-row gap-4 justify-center" data-motion="fade-in-up">
+      <a href="{{ cta.url }}" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+        {{ cta.text }}
+      </a>
+      <a href="/components/" class="animated-button inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">
+        Browse Components
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="container mx-auto px-4 md:px-6 py-16">
+  <!-- Categories Section -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold mb-10 text-center" data-motion="fade-in">Documentation Categories</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion="stagger-children">
+      {% for category in categories %}
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
+          {{ category.icon | safe }}
+        </div>
+        <h3 class="text-xl font-bold mb-2">{{ category.title }}</h3>
+        <p class="text-[var(--color-text-muted)] mb-4">{{ category.description }}</p>
+        <a href="{{ category.url }}" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse {{ category.title }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
-        </button>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  
+  <!-- Browse Perspectives Section -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold mb-5 text-center" data-motion="fade-in">Browse Components</h2>
+    <p class="text-xl max-w-3xl mx-auto mb-10 text-center text-[var(--color-text-muted)]" data-motion="fade-in-up">
+      Discover components through multiple navigation perspectives to find exactly what you need.
+    </p>
+    
+    <div class="grid md:grid-cols-3 gap-8" data-motion="stagger-children">
+      <!-- By Channel -->
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          By Channel
+        </h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Find components organized by the channels or environments they're designed for.</p>
+        <ul class="space-y-1 mb-6">
+          <li class="text-[var(--color-text-muted)]">• Web Components</li>
+          <li class="text-[var(--color-text-muted)]">• Mobile Components</li>
+          <li class="text-[var(--color-text-muted)]">• Desktop Components</li>
+        </ul>
+        <a href="/navigation/by-channel/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse by Channel
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
       </div>
       
-      <!-- Hero Section -->
-      <section class="bg-gradient-to-r from-[var(--color-primary-dark)] to-[var(--color-primary)] text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 fade-in-top">{{ title }}</h1>
-            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 opacity-90 fade-in">{{ description }}</p>
-            <a href="{{ cta.url }}" class="inline-block bg-white text-[var(--color-primary)] font-medium px-6 py-3 rounded-lg shadow-md hover:shadow-lg transform transition hover:-translate-y-1 active:translate-y-0 scale-up-hover">
-              {{ cta.text }}
-            </a>
+      <!-- By Type -->
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          By Type
+        </h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Explore components categorized by their functional types and purposes.</p>
+        <ul class="space-y-1 mb-6">
+          <li class="text-[var(--color-text-muted)]">• Input Components</li>
+          <li class="text-[var(--color-text-muted)]">• Layout Components</li>
+          <li class="text-[var(--color-text-muted)]">• Navigation Components</li>
+          <li class="text-[var(--color-text-muted)]">• Feedback Components</li>
+        </ul>
+        <a href="/navigation/by-type/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse by Type
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- By Owner -->
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          By Owner
+        </h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Find components based on the teams responsible for their development and maintenance.</p>
+        <ul class="space-y-1 mb-6">
+          <li class="text-[var(--color-text-muted)]">• UI Core Team</li>
+          <li class="text-[var(--color-text-muted)]">• Frontend Platform Team</li>
+          <li class="text-[var(--color-text-muted)]">• Mobile Experience Team</li>
+          <li class="text-[var(--color-text-muted)]">• Design Systems Team</li>
+        </ul>
+        <a href="/navigation/by-owner/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse by Owner
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <div class="mt-10 text-center" data-motion="fade-in-up">
+      <a href="/navigation/" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+        View Navigation Hub
+      </a>
+    </div>
+  </section>
+  
+  <!-- Featured Components with scale-in animation -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold mb-10 text-center" data-motion="fade-in">Featured Components</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion="stagger-children">
+      {% for component in featuredComponents %}
+      <a href="{{ component.url }}" class="block group">
+        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">{{ component.title }}</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">{{ component.description }}</p>
+          <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
+            View Component
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  
+  <!-- Quick Search with slide-in animation -->
+  <section class="mb-20" data-motion="scale-in">
+    <div class="bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-lg p-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-4">Quick Search</h2>
+        <p class="text-[var(--color-text-muted)] mb-6">Looking for something specific? Search our documentation.</p>
+        
+        <form action="/search/" method="get" role="search" class="relative max-w-2xl mx-auto">
+          <input type="search" name="q" placeholder="Search documentation..." class="w-full py-3 pl-12 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-lg">
+          <div class="absolute left-4 top-3.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
           </div>
-        </div>
-      </section>
-      
-      <!-- Categories Grid -->
-      <section class="py-16 px-4 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {% for category in categories %}
-            <div class="animated-card bg-[var(--color-card-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
-              <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
-                {{ category.icon | safe }}
-              </div>
-              <h3 class="text-xl font-bold mb-2">{{ category.title }}</h3>
-              <p class="text-[var(--color-text-muted)] mb-4">{{ category.description }}</p>
-              <a href="{{ category.url }}" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
-                Explore {{ category.title }}
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-          {% endfor %}
-        </div>
-      </section>
-      
-      <!-- Content Section -->
-      <section class="py-12 px-4 max-w-5xl mx-auto">
-        <div class="prose prose-lg dark:prose-invert max-w-none fade-in">
-          {{ content | safe }}
-        </div>
-      </section>
-      
-      <!-- Featured Components -->
-      <section class="py-12 px-4 bg-[var(--color-bg-alt)]">
-        <div class="max-w-7xl mx-auto">
-          <h2 class="text-3xl font-bold mb-8 text-center framer-slide-up">Featured Components</h2>
-          <div class="grid md:grid-cols-3 gap-6">
-            {% for component in featuredComponents %}
-              <div data-stagger class="bg-[var(--color-card-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
-                <h3 class="text-xl font-bold mb-2">{{ component.title }}</h3>
-                <p class="text-[var(--color-text-muted)] mb-4">{{ component.description }}</p>
-                <a href="{{ component.url }}" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
-                  View Component
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      </section>
-      
-      <!-- CTA Section -->
-      <section class="py-16 px-4 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white">
-        <div class="max-w-5xl mx-auto text-center">
-          <h2 class="text-3xl font-bold mb-4">Ready to get started?</h2>
-          <p class="text-xl mb-8 opacity-90 max-w-3xl mx-auto">Integrate the Enterprise Design System into your project and start building beautiful, consistent, and accessible enterprise applications today.</p>
-          <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="/getting-started/" class="inline-block bg-white text-[var(--color-primary)] font-medium px-6 py-3 rounded-lg shadow-md hover:shadow-lg transform transition hover:-translate-y-1 active:translate-y-0">
-              Get Started
-            </a>
-            <a href="/components/" class="inline-block bg-transparent text-white border border-white font-medium px-6 py-3 rounded-lg hover:bg-white/10 transform transition hover:-translate-y-1 active:translate-y-0">
-              View Components
-            </a>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Footer -->
-      <footer class="py-12 px-4 border-t border-[var(--color-border)] text-[var(--color-text-muted)]">
-        <div class="max-w-7xl mx-auto">
-          <div class="grid md:grid-cols-4 gap-8">
-            <div>
-              <h3 class="font-bold text-[var(--color-text)] mb-4">Enterprise Design System</h3>
-              <p class="mb-4">A comprehensive design system for building consistent, accessible, and beautiful enterprise applications.</p>
-              <p>&copy; {{ page.date.getFullYear() }} All rights reserved.</p>
-            </div>
-            <div>
-              <h4 class="font-bold text-[var(--color-text)] mb-4">Resources</h4>
-              <ul class="space-y-2">
-                <li><a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a></li>
-                <li><a href="/design-system/" class="hover:text-[var(--color-primary)]">Design System</a></li>
-                <li><a href="/components/" class="hover:text-[var(--color-primary)]">Components</a></li>
-                <li><a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-bold text-[var(--color-text)] mb-4">Support</h4>
-              <ul class="space-y-2">
-                <li><a href="/support/faq/" class="hover:text-[var(--color-primary)]">FAQ</a></li>
-                <li><a href="/support/contact/" class="hover:text-[var(--color-primary)]">Contact</a></li>
-                <li><a href="/support/report-bug/" class="hover:text-[var(--color-primary)]">Report Bug</a></li>
-                <li><a href="/support/request-feature/" class="hover:text-[var(--color-primary)]">Request Feature</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 class="font-bold text-[var(--color-text)] mb-4">Stay Updated</h4>
-              <p class="mb-4">Subscribe to our newsletter to get the latest updates.</p>
-              <form class="flex">
-                <input type="email" placeholder="Your email" class="flex-1 px-3 py-2 bg-[var(--color-input-bg)] border border-[var(--color-border)] rounded-l-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]">
-                <button type="submit" class="bg-[var(--color-primary)] text-white px-4 py-2 rounded-r-md hover:bg-[var(--color-primary-dark)]">Subscribe</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </main>
-  </div>
-
-  <!-- Script for mobile menu toggle -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-      const leftNav = document.querySelector('.eds-left-nav');
-      
-      if (mobileMenuToggle && leftNav) {
-        mobileMenuToggle.addEventListener('click', function() {
-          leftNav.classList.toggle('active');
-        });
-      }
-    });
-  </script>
-</body>
-</html>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <section class="prose max-w-none" data-motion="fade-in">
+    {{ content | safe }}
+  </section>
+</div>
