@@ -1,0 +1,64 @@
+# 11ty Enterprise Documentation Consolidation Project
+
+## Project Overview
+Build a unified documentation platform using 11ty that consolidates content from 3 legacy docsites and our current 11ty-based documentation. The platform should support both Markdown (.md) and Nunjucks (.njk) files with conversion capabilities between formats as needed.The doc site is the for the latest of the enterprise design system. We are consolidating the content from multiple legacy doc sites, building on top of the current 11ty based design system doc site.
+
+## Technical Requirements
+
+### Core Framework
+- Use 11ty (Eleventy) as the primary static site generator
+- Support for both Markdown (.md) and Nunjucks (.njk) template files
+- Implement a .njk to .md conversion utility for content migration
+
+### Site Architecture
+- Implement standard 11ty configuration for core navigation
+- Create a component directory structure to organize reusable components
+- Design the build process to automatically include component documentation in site navigation
+- Support content consolidation from multiple sources into unified documentation pages
+
+### Navigation & Layout
+- Top navigation for main pages
+- Left sidebar navigation for subsections (except on home page)
+- Right sidebar for in-page section navigation
+- Responsive design supporting desktop and mobile viewing
+
+### Features
+- Global search functionality across all documentation
+- Syntax highlighting for code examples
+- Versioning support for documentation
+- Content organization by product/component categories
+
+### Design
+- Implement baseline theming with primary color #368727
+- Support for light/dark mode switching
+- Consistent typography and spacing
+- Responsive layouts
+- Please use 'taildwindcss' for styling as needed for the doc site.
+- Use 'framer motion' library for adding delight to the home page.
+- For styling class selectors and as and where appropriate - use the BEM rule 'eds-' to begin with.
+
+### Content Migration
+- Support importing content from legacy sites
+- Preserve existing content structure where appropriate
+- Consolidate duplicate/overlapping content from different sources
+- Maintain URL structure or implement redirects for SEO purposes
+
+## Development Workflow
+1. Set up 11ty project structure with basic configuration
+2. Implement base templates and layouts
+3. Create the component organization system
+4. Build the navigation structure
+5. Implement search functionality
+6. Develop content migration utilities
+7. Style the site according to design guidelines
+8. Add advanced features (versioning, etc.)
+
+## Deliverables
+- Fully functional 11ty-based documentation site
+- Documentation on how to add/update content
+- Component directory structure with examples
+- Content migration utilities
+- Search implementation
+- Responsive design implementation
+
+Please provide a working repository with the above implementation, focusing first on core functionality (project structure, navigation, content organization) before moving to advanced features.
