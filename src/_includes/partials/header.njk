@@ -1,256 +1,109 @@
-<header class="eds-header bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
-      <div class="flex">
-        <!-- Logo -->
-        <div class="flex-shrink-0 flex items-center">
-          <a href="/" class="flex items-center">
-            <span class="text-xl font-bold text-green-700 dark:text-green-500">{{ site.name }}</span>
-          </a>
-        </div>
+<header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <a href="/" class="text-primary-700 dark:text-primary-400 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+          </svg>
+          <span class="ml-2 text-xl font-semibold text-gray-900 dark:text-white">{{ site.name }}</span>
+        </a>
         
-        <!-- Main Navigation -->
-        <nav class="hidden md:ml-10 md:flex md:space-x-8" aria-label="Main">
+        <nav class="hidden md:flex ml-10 space-x-6">
           {% for item in navigation.main %}
-            <a 
-              href="{{ item.url }}" 
-              class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium
-              {% if page.url | isActive(item.url) %}
-                border-green-600 text-green-600 dark:border-green-400 dark:text-green-400
-              {% else %}
-                border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600
-              {% endif %}"
-            >
-              {{ item.title }}
-            </a>
+            <a href="{{ item.url }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">{{ item.label }}</a>
           {% endfor %}
         </nav>
       </div>
       
       <div class="flex items-center">
-        <!-- Search -->
-        <div class="relative mx-3">
-          <button 
-            type="button" 
-            class="p-1 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-            aria-label="Open search"
-            @click="$store.search.open = true"
+        <div class="relative mr-4" x-data="{ isOpen: false }">
+          <button
+            @click="isOpen = !isOpen"
+            class="p-1 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+            id="search-button"
+            aria-expanded="false"
+            aria-controls="search-modal"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <span class="sr-only">Search</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
+          
+          <div
+            x-show="isOpen"
+            @click.away="isOpen = false"
+            x-transition:enter="transition ease-out duration-100"
+            x-transition:enter-start="transform opacity-0 scale-95"
+            x-transition:enter-end="transform opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-75"
+            x-transition:leave-start="transform opacity-100 scale-100"
+            x-transition:leave-end="transform opacity-0 scale-95"
+            class="absolute right-0 mt-2 w-72 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 z-10"
+            id="search-modal"
+            role="dialog"
+            aria-modal="true"
+            x-cloak
+          >
+            <div class="p-4">
+              <div class="relative">
+                <input
+                  type="text"
+                  class="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md py-2 pl-10 pr-3 text-sm text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  placeholder="Search documentation"
+                  id="search-input"
+                  @keyup="searchDocs()"
+                  @keyup.esc="isOpen = false"
+                >
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+              </div>
+              
+              <div class="mt-4 max-h-60 overflow-y-auto" id="search-results">
+                <!-- Search results will be inserted here -->
+              </div>
+            </div>
+          </div>
         </div>
         
-        <!-- Theme toggle -->
         <button 
-          type="button" 
-          class="p-1 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" 
-          x-data="{ darkMode: document.documentElement.classList.contains('dark') }"
-          @click="darkMode = !darkMode; if (darkMode) { document.documentElement.classList.add('dark'); localStorage.theme = 'dark'; } else { document.documentElement.classList.remove('dark'); localStorage.theme = 'light'; }"
+          class="p-1 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+          id="dark-mode-toggle"
           aria-label="Toggle dark mode"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
         </button>
         
-        <!-- Mobile menu button -->
-        <div class="flex items-center md:hidden">
-          <button 
-            type="button" 
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" 
-            aria-expanded="false"
-            x-data="{ open: false }"
-            @click="open = !open"
-            :aria-expanded="open"
-          >
-            <span class="sr-only">Open main menu</span>
-            <!-- Heroicon name: menu -->
-            <svg 
-              class="h-6 w-6" 
-              :class="{ 'hidden': open, 'block': !open }"
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor" 
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <!-- Heroicon name: x -->
-            <svg 
-              class="h-6 w-6" 
-              :class="{ 'block': open, 'hidden': !open }"
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor" 
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+        <button
+          class="ml-4 p-1 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 md:hidden"
+          id="mobile-menu-button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="sr-only">Open menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
     </div>
   </div>
-
-  <!-- Mobile menu, show/hide based on menu state -->
-  <div 
-    class="md:hidden" 
-    x-data="{ open: false }" 
-    x-show="open" 
-    x-transition:enter="transition ease-out duration-200"
-    x-transition:enter-start="opacity-0 transform -translate-y-2"
-    x-transition:enter-end="opacity-100 transform translate-y-0"
-    x-transition:leave="transition ease-in duration-150"
-    x-transition:leave-start="opacity-100 transform translate-y-0"
-    x-transition:leave-end="opacity-0 transform -translate-y-2"
-    x-cloak
-  >
-    <div class="pt-2 pb-3 space-y-1">
+  
+  <!-- Mobile menu -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-2 pt-2 pb-3 space-y-1">
       {% for item in navigation.main %}
-        <a 
-          href="{{ item.url }}" 
-          class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium
-          {% if page.url | isActive(item.url) %}
-            border-green-600 text-green-600 dark:border-green-400 dark:text-green-400 bg-green-50 dark:bg-green-900
-          {% else %}
-            border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600
-          {% endif %}"
-        >
-          {{ item.title }}
-        </a>
+        <a href="{{ item.url }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">{{ item.label }}</a>
       {% endfor %}
     </div>
   </div>
 </header>
-
-<!-- Search modal -->
-<div 
-  x-data="{ open: false }" 
-  x-show="open" 
-  @keydown.escape.window="open = false"
-  x-on:search-open.window="open = true"
-  x-init="$store.search = { open: false, query: '' }; $watch('$store.search.open', value => { open = value; if (value) { $nextTick(() => { $refs.searchInput.focus() }) } })"
-  class="fixed z-10 inset-0 overflow-y-auto" 
-  x-cloak
->
-  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-    <div 
-      x-show="open" 
-      x-transition:enter="ease-out duration-300"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave="ease-in duration-200"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-      class="fixed inset-0 transition-opacity" 
-      aria-hidden="true"
-      @click="open = false"
-    >
-      <div class="absolute inset-0 bg-gray-500 dark:bg-gray-900 opacity-75"></div>
-    </div>
-
-    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-    
-    <div 
-      x-show="open" 
-      x-transition:enter="ease-out duration-300"
-      x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-      x-transition:leave="ease-in duration-200"
-      x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
-      x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-      class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full sm:p-6"
-      role="dialog" 
-      aria-modal="true" 
-      aria-labelledby="search-modal-title"
-      @click.away="open = false"
-    >
-      <div>
-        <div class="mt-3 sm:mt-0">
-          <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100" id="search-modal-title">
-            Search Documentation
-          </h3>
-          <div class="mt-4">
-            <div class="relative">
-              <input
-                type="text"
-                class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md leading-5 bg-white dark:bg-gray-700 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-900 dark:text-gray-100 sm:text-sm"
-                placeholder="Search for components, guidelines, patterns..."
-                x-model="$store.search.query"
-                x-ref="searchInput"
-              >
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-5 w-5 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <button 
-                x-show="$store.search.query" 
-                @click="$store.search.query = ''" 
-                type="button" 
-                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
-              >
-                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-          </div>
-          
-          <!-- Search results -->
-          <div id="search-results" class="mt-6 max-h-96 overflow-y-auto">
-            <!-- Loading indicator -->
-            <div x-show="$store.search.query && !$store.search.results" class="flex justify-center py-8">
-              <svg class="animate-spin h-8 w-8 text-green-600 dark:text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            </div>
-            
-            <!-- No results message -->
-            <div x-show="$store.search.query && $store.search.results && $store.search.results.length === 0" class="text-center py-8 text-gray-500 dark:text-gray-400">
-              No results found for "<span x-text="$store.search.query"></span>"
-            </div>
-            
-            <!-- Results list -->
-            <ul x-show="$store.search.query && $store.search.results && $store.search.results.length > 0" class="divide-y divide-gray-200 dark:divide-gray-700">
-              <template x-for="result in $store.search.results" :key="result.url">
-                <li class="py-4">
-                  <a :href="result.url" class="block hover:bg-gray-50 dark:hover:bg-gray-700 -m-2 p-2 rounded-md" @click="$store.search.open = false">
-                    <div class="flex justify-between">
-                      <h4 class="text-sm font-semibold text-green-600 dark:text-green-400" x-text="result.title"></h4>
-                      <span class="text-xs text-gray-500 dark:text-gray-400" x-text="result.type"></span>
-                    </div>
-                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-300 line-clamp-2" x-html="result.snippet"></p>
-                  </a>
-                </li>
-              </template>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <div class="mt-5 sm:mt-6">
-        <div class="flex justify-between">
-          <div class="text-xs text-gray-500 dark:text-gray-400">
-            Press <kbd class="px-1 py-0.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-xs">ESC</kbd> to close
-          </div>
-          <button 
-            type="button" 
-            class="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-            @click="open = false"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

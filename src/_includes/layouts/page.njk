@@ -1,104 +1,70 @@
-{% extends "layouts/base.njk" %}
+---
+layout: layouts/base.njk
+---
 
-{% block content %}
-<div class="eds-page-layout flex flex-col md:flex-row">
-  <!-- Sidebar navigation -->
-  <aside class="eds-sidebar w-full md:w-64 flex-shrink-0 bg-gray-50 dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700">
-    {% include "partials/sidebar.njk" %}
-  </aside>
+<div class="eds-page">
+  {% if title %}
+    <div class="mb-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">{{ title }}</h1>
+      {% if description %}
+        <p class="text-xl text-gray-600 dark:text-gray-300">{{ description }}</p>
+      {% endif %}
+    </div>
+    <hr class="border-gray-200 dark:border-gray-700 mb-8">
+  {% endif %}
 
-  <!-- Main content -->
-  <div class="eds-content-wrapper flex-grow p-6 md:p-8">
-    <div class="eds-content max-w-4xl">
-      <header class="mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold mb-2">{{ title }}</h1>
-        {% if description %}
-          <p class="text-xl text-gray-600 dark:text-gray-300">{{ description }}</p>
-        {% endif %}
-      </header>
-
-      <div class="eds-content-body prose dark:prose-invert max-w-none">
+  {% if showTableOfContents %}
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div class="lg:col-span-3">
         {{ content | safe }}
       </div>
-
-      {% if collections.all %}
-        <!-- Related pages (if any) -->
-        {% if related %}
-        <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <h2 class="text-xl font-bold mb-4">Related Pages</h2>
-          <ul class="grid md:grid-cols-2 gap-4">
-            {% for relatedUrl in related %}
-              {% for item in collections.all %}
-                {% if item.url == relatedUrl %}
+      <div class="order-first lg:order-last">
+        <div class="sticky top-24">
+          <h2 class="text-lg font-semibold mb-4">On this page</h2>
+          <nav class="eds-table-of-contents">
+            {% set headings = collections.all | getHeadings(page.url) %}
+            <ul class="space-y-2 text-sm">
+              {% for heading in headings %}
                 <li>
-                  <a href="{{ item.url }}" class="eds-related-link">
-                    {{ item.data.title }}
+                  <a href="#{{ heading.id }}" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400">
+                    {{ heading.text }}
                   </a>
                 </li>
-                {% endif %}
               {% endfor %}
-            {% endfor %}
-          </ul>
+            </ul>
+          </nav>
         </div>
-        {% endif %}
-      {% endif %}
+      </div>
     </div>
-  </div>
+  {% else %}
+    {{ content | safe }}
+  {% endif %}
 
-  <!-- Optional right sidebar for table of contents -->
-  {% if content and collections.all and showToc != false %}
-  <aside class="eds-toc-sidebar hidden lg:block w-64 flex-shrink-0 p-6 border-l border-gray-200 dark:border-gray-700">
-    <div class="sticky top-20">
-      <h2 class="text-sm font-semibold mb-4 uppercase tracking-wider text-gray-500 dark:text-gray-400">On This Page</h2>
-      {% set headings = collections.all | getHeadings(page.url) %}
-      {% if headings.length %}
-        <nav class="eds-toc">
-          <ul class="space-y-2 text-sm">
-            {% for heading in headings %}
-              <li class="{% if heading.level == 3 %}ml-4{% endif %}">
-                <a href="#{{ heading.id }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
-                  {{ heading.text }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        </nav>
-      {% endif %}
+  {% if showPagination %}
+    <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+      <div class="flex flex-col sm:flex-row items-center justify-between">
+        {% if pagination.previous %}
+          <a href="{{ pagination.previous.url }}" class="eds-link flex items-center mb-4 sm:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            {{ pagination.previous.title }}
+          </a>
+        {% else %}
+          <div></div>
+        {% endif %}
+
+        {% if pagination.next %}
+          <a href="{{ pagination.next.url }}" class="eds-link flex items-center">
+            {{ pagination.next.title }}
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        {% else %}
+          <div></div>
+        {% endif %}
+      </div>
     </div>
-  </aside>
   {% endif %}
 </div>
-{% endblock %}
-
-{% block extraScripts %}
-<script>
-  // Highlight current section in table of contents when scrolling
-  document.addEventListener('DOMContentLoaded', () => {
-    const headings = document.querySelectorAll('h2[id], h3[id]');
-    const tocLinks = document.querySelectorAll('.eds-toc a');
-    
-    if (headings.length && tocLinks.length) {
-      const observerOptions = {
-        rootMargin: '-80px 0px -40% 0px',
-        threshold: 0
-      };
-      
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          const id = entry.target.getAttribute('id');
-          const tocLink = document.querySelector(`.eds-toc a[href="#${id}"]`);
-          
-          if (tocLink) {
-            if (entry.isIntersecting) {
-              tocLinks.forEach(link => link.classList.remove('font-medium', 'text-green-600', 'dark:text-green-400'));
-              tocLink.classList.add('font-medium', 'text-green-600', 'dark:text-green-400');
-            }
-          }
-        });
-      }, observerOptions);
-      
-      headings.forEach(heading => observer.observe(heading));
-    }
-  });
-</script>
-{% endblock %}
