@@ -1,173 +1,157 @@
 /**
  * Main JavaScript file for EDS Documentation
  */
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize components
   initializeComponents();
-  setupSearchFunctionality();
+  
+  // Setup theme toggle
   setupThemeToggle();
+  
+  // Setup search functionality
+  setupSearchFunctionality();
+  
+  // Setup mobile menu toggle
+  setupMobileMenu();
 });
 
+/**
+ * Initialize interactive components on the page
+ */
 function initializeComponents() {
-  // Initialize tabs
-  const tabGroups = document.querySelectorAll('.eds-tabs');
-  tabGroups.forEach(group => {
-    const tabButtons = group.querySelectorAll('.eds-tab');
-    const tabPanels = document.querySelectorAll('.eds-tab-panel[data-tab-group="' + group.dataset.tabGroup + '"]');
+  // Handle tab components (for non-Alpine.js fallback)
+  const tabContainers = document.querySelectorAll('.eds-tabs');
+  tabContainers.forEach(container => {
+    const buttons = container.querySelectorAll('.eds-tabs__button');
+    const panels = container.querySelectorAll('.eds-tabs__panel');
     
-    tabButtons.forEach(button => {
+    // Set initial active tab
+    const activeTabId = container.getAttribute('data-active-tab') || buttons[0]?.id;
+    setActiveTab(buttons, panels, activeTabId);
+    
+    // Add click event listeners
+    buttons.forEach(button => {
       button.addEventListener('click', () => {
-        const tabId = button.dataset.tabId;
-        setActiveTab(tabButtons, tabPanels, tabId);
+        setActiveTab(buttons, panels, button.id);
       });
-    });
-    
-    // Set first tab as active by default if none is active
-    if (!Array.from(tabButtons).some(button => button.classList.contains('active'))) {
-      const firstTabId = tabButtons[0]?.dataset.tabId;
-      if (firstTabId) {
-        setActiveTab(tabButtons, tabPanels, firstTabId);
-      }
-    }
-  });
-  
-  // Initialize mobile menu
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  
-  if (mobileMenuToggle && mobileMenu) {
-    mobileMenuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    
-    const closeMenu = document.getElementById('close-mobile-menu');
-    if (closeMenu) {
-      closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    }
-  }
-  
-  // Initialize copy code buttons
-  const copyButtons = document.querySelectorAll('.copy-code-button');
-  copyButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const codeBlock = button.closest('.component-preview').querySelector('pre code');
-      if (codeBlock) {
-        navigator.clipboard.writeText(codeBlock.textContent)
-          .then(() => {
-            button.textContent = 'Copied!';
-            setTimeout(() => {
-              button.textContent = 'Copy';
-            }, 2000);
-          })
-          .catch(err => {
-            console.error('Could not copy text: ', err);
-          });
-      }
     });
   });
 }
 
+/**
+ * Set the active tab in a tab component
+ */
 function setActiveTab(buttons, panels, activeTabId) {
   buttons.forEach(button => {
-    if (button.dataset.tabId === activeTabId) {
-      button.classList.add('active');
-    } else {
-      button.classList.remove('active');
-    }
+    const isActive = button.id === activeTabId;
+    button.setAttribute('aria-selected', isActive);
+    button.classList.toggle('eds-tabs__button--active', isActive);
   });
   
   panels.forEach(panel => {
-    if (panel.dataset.tabId === activeTabId) {
-      panel.classList.add('active');
-    } else {
-      panel.classList.remove('active');
-    }
+    const isActive = panel.getAttribute('aria-labelledby') === activeTabId;
+    panel.classList.toggle('hidden', !isActive);
   });
 }
 
+/**
+ * Setup dark mode toggle functionality
+ */
+function setupThemeToggle() {
+  const themeToggle = document.getElementById('dark-mode-toggle');
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark', !isDarkMode);
+      localStorage.setItem('darkMode', !isDarkMode);
+    });
+  }
+}
+
+/**
+ * Setup mobile menu toggle
+ */
+function setupMobileMenu() {
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('hidden', isExpanded);
+    });
+  }
+}
+
+/**
+ * Setup search functionality
+ */
 function setupSearchFunctionality() {
   const searchInput = document.getElementById('search-input');
   const searchResults = document.getElementById('search-results');
   
   if (searchInput && searchResults) {
-    searchInput.addEventListener('focus', () => {
-      searchResults.classList.remove('hidden');
-    });
-    
-    // Close search when clicking outside
-    document.addEventListener('click', (event) => {
-      if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
-        searchResults.classList.add('hidden');
-      }
-    });
-    
-    // Search functionality
-    let searchData = null;
-    
-    // Load search data
+    // Load search index
     fetch('/search-index.json')
       .then(response => response.json())
-      .then(data => {
-        searchData = data;
+      .then(searchData => {
+        // Setup debounced search
+        const debouncedSearch = debounce(() => {
+          const query = searchInput.value.trim();
+          
+          if (query.length < 2) {
+            searchResults.innerHTML = '<p class="text-gray-500 dark:text-gray-400 text-sm">Enter at least 2 characters to search</p>';
+            return;
+          }
+          
+          const results = performSearch(query, searchData);
+          
+          if (results.length === 0) {
+            searchResults.innerHTML = '<p class="text-gray-500 dark:text-gray-400 text-sm">No results found</p>';
+          } else {
+            searchResults.innerHTML = results.map(result => `
+              <a href="${result.url}" class="block p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded">
+                <h4 class="text-sm font-medium text-gray-900 dark:text-white">${result.title}</h4>
+                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">${result.snippet}</p>
+              </a>
+            `).join('');
+          }
+        }, 300);
+        
+        searchInput.addEventListener('input', debouncedSearch);
       })
       .catch(error => {
-        console.error('Error loading search data:', error);
+        console.error('Error loading search index:', error);
+        searchResults.innerHTML = '<p class="text-red-500 dark:text-red-400 text-sm">Error loading search index</p>';
       });
-    
-    // Perform search when typing
-    let debounceTimeout;
-    searchInput.addEventListener('input', () => {
-      clearTimeout(debounceTimeout);
-      debounceTimeout = setTimeout(() => {
-        const query = searchInput.value.trim().toLowerCase();
-        
-        if (query.length < 2) {
-          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">Please enter at least 2 characters to search</div>';
-          return;
-        }
-        
-        if (!searchData) {
-          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">Search data is loading...</div>';
-          return;
-        }
-        
-        const results = performSearch(query, searchData);
-        
-        if (results.length === 0) {
-          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">No results found</div>';
-        } else {
-          const resultsHTML = results.map(result => `
-            <a href="${result.url}" class="search-result">
-              <div class="search-result-title">${highlightMatches(result.title, query)}</div>
-              <div class="search-result-path">${result.url}</div>
-              <div class="search-result-snippet">${result.snippet}</div>
-            </a>
-          `).join('');
-          
-          searchResults.innerHTML = resultsHTML;
-        }
-      }, 300);
-    });
   }
 }
 
+/**
+ * Perform search on the data
+ */
 function performSearch(query, searchData) {
   const results = [];
+  const lowerQuery = query.toLowerCase();
   
-  for (const key in searchData) {
-    const item = searchData[key];
-    const titleScore = scoreMatch(item.title.toLowerCase(), query);
-    const contentScore = scoreMatch(item.content.toLowerCase(), query);
+  for (const item of searchData) {
+    // Search in title, content, and description
+    const titleScore = scoreMatch(item.title, lowerQuery);
+    const contentScore = scoreMatch(item.content, lowerQuery);
+    const descriptionScore = scoreMatch(item.description, lowerQuery);
     
-    const totalScore = titleScore * 2 + contentScore;
+    const totalScore = titleScore * 3 + contentScore + descriptionScore * 2;
     
     if (totalScore > 0) {
+      // Get a snippet from the content
+      const snippet = getResultSnippet(item.content, lowerQuery) || item.description;
+      
       results.push({
-        title: item.title,
+        title: highlightMatches(item.title, lowerQuery),
         url: item.url,
-        snippet: getResultSnippet(item.content, query),
+        snippet: highlightMatches(snippet, lowerQuery),
         score: totalScore
       });
     }
@@ -176,101 +160,91 @@ function performSearch(query, searchData) {
   // Sort by score (highest first)
   results.sort((a, b) => b.score - a.score);
   
-  // Return top results
-  return results.slice(0, 8);
+  // Return top 5 results
+  return results.slice(0, 5);
 }
 
+/**
+ * Score a match in text
+ */
 function scoreMatch(text, query) {
-  // Direct match
-  if (text.includes(query)) {
+  if (!text) return 0;
+  
+  const lowerText = text.toLowerCase();
+  
+  // Exact match
+  if (lowerText.includes(query)) {
     return 10;
   }
   
-  // Partial word matches
-  const words = text.split(/\s+/);
+  // Word match
+  const words = query.split(' ');
+  let wordMatches = 0;
+  
   for (const word of words) {
-    if (word.startsWith(query)) {
-      return 5;
-    }
-    if (word.includes(query)) {
-      return 3;
+    if (word.length > 2 && lowerText.includes(word)) {
+      wordMatches++;
     }
   }
   
-  return 0;
+  return wordMatches;
 }
 
+/**
+ * Get a snippet from content containing the query
+ */
 function getResultSnippet(content, query) {
-  const maxLength = 150;
+  if (!content) return '';
+  
   const lowerContent = content.toLowerCase();
   const index = lowerContent.indexOf(query);
   
-  if (index === -1) {
-    // If query not found exactly, return beginning of content
-    return content.substring(0, maxLength) + '...';
-  }
+  if (index === -1) return '';
   
-  // Calculate snippet start and end positions
-  let start = Math.max(0, index - 60);
-  let end = Math.min(content.length, index + query.length + 60);
-  
-  // Adjust to not cut words
-  while (start > 0 && content[start] !== ' ') {
-    start--;
-  }
-  
-  while (end < content.length && content[end] !== ' ') {
-    end++;
-  }
-  
-  // Create snippet
+  // Get a snippet around the match
+  const start = Math.max(0, index - 40);
+  const end = Math.min(content.length, index + query.length + 40);
   let snippet = content.substring(start, end);
   
-  // Add ellipsis if needed
-  if (start > 0) {
-    snippet = '...' + snippet;
-  }
+  // Add ellipsis if we're not at the start/end
+  if (start > 0) snippet = '...' + snippet;
+  if (end < content.length) snippet = snippet + '...';
   
-  if (end < content.length) {
-    snippet = snippet + '...';
-  }
-  
-  return highlightMatches(snippet, query);
+  return snippet;
 }
 
+/**
+ * Highlight matches in text
+ */
 function highlightMatches(text, query) {
-  const regex = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
-  return text.replace(regex, '<span class="search-highlight">$1</span>');
+  if (!text) return '';
+  
+  const escapedQuery = escapeRegExp(query);
+  const regex = new RegExp(escapedQuery, 'gi');
+  
+  return text.replace(regex, match => `<mark class="bg-yellow-200 dark:bg-yellow-900">${match}</mark>`);
 }
 
+/**
+ * Escape RegExp special characters
+ */
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function setupThemeToggle() {
-  const themeToggle = document.getElementById('theme-toggle');
+/**
+ * Debounce function
+ */
+function debounce(func, wait) {
+  let timeout;
   
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      
-      // Save preference to localStorage
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
-    });
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
     
-    // Set initial theme based on localStorage or system preference
-    const savedPreference = localStorage.getItem('darkMode');
-    
-    if (savedPreference === 'true') {
-      document.documentElement.classList.add('dark');
-    } else if (savedPreference === 'false') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      // Check system preference
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.add('dark');
-      }
-    }
-  }
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
 }
