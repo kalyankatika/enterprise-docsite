@@ -1,1 +1,50 @@
-@import 'tailwind.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Base colors */
+  --color-primary: #368727;
+  --color-primary-dark: #2E7321;
+  --color-secondary: #4F46E5;
+  --color-secondary-dark: #3730a3;
+  
+  /* Light theme (default) */
+  --color-text: #212121;
+  --color-text-muted: #6B7280;
+  --color-bg: #ffffff;
+  --color-bg-alt: #F3F4F6;
+  --color-border: #E5E7EB;
+}
+
+[data-theme="dark"] {
+  --color-text: #F3F4F6;
+  --color-text-muted: #9CA3AF;
+  --color-bg: #1F2937;
+  --color-bg-alt: #374151;
+  --color-border: #4B5563;
+}
+
+body {
+  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+@layer components {
+  .eds-card {
+    @apply p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)];
+  }
+  
+  .eds-alert {
+    @apply p-4 rounded-lg border;
+  }
+  
+  .eds-alert-info {
+    @apply border-blue-200 bg-blue-50 text-blue-800;
+  }
+  
+  [data-theme="dark"] .eds-alert-info {
+    @apply border-blue-800 bg-blue-900 bg-opacity-40 text-blue-100;
+  }
+}

@@ -1,68 +1,48 @@
 /**
  * Theme toggle functionality for EDS Documentation
  */
-document.addEventListener('DOMContentLoaded', () => {
-  const themeToggles = document.querySelectorAll('#theme-toggle, #theme-toggle-header');
-  const htmlElement = document.documentElement;
+document.addEventListener('DOMContentLoaded', function() {
+  const themeToggle = document.getElementById('themeToggle');
+  const sunIcon = document.getElementById('sunIcon');
+  const moonIcon = document.getElementById('moonIcon');
   
-  // Check for saved theme preference or use system preference
-  const savedTheme = localStorage.getItem('eds-theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // Check for saved theme preference or respect OS preference
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   
-  // Set initial theme
-  if (savedTheme) {
-    htmlElement.setAttribute('data-theme', savedTheme);
-  } else if (prefersDark) {
-    htmlElement.setAttribute('data-theme', 'dark');
+  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    sunIcon.classList.add('hidden');
+    moonIcon.classList.remove('hidden');
   }
   
-  // Toggle theme function
-  const toggleTheme = () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('eds-theme', newTheme);
-  };
-  
-  // Add click event to theme toggles
-  themeToggles.forEach(toggle => {
-    toggle.addEventListener('click', toggleTheme);
+  // Toggle theme on click
+  themeToggle.addEventListener('click', function() {
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      moonIcon.classList.add('hidden');
+      sunIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+    }
   });
   
-  // Handle mobile menu toggle
-  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-  const mobileMenuClose = document.querySelector('.mobile-menu-close');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const mobileMenuContent = mobileMenu?.querySelector('div');
-  
-  if (mobileMenuToggle && mobileMenu && mobileMenuContent) {
-    mobileMenuToggle.addEventListener('click', () => {
-      mobileMenu.classList.remove('hidden');
-      // Animate menu in
-      setTimeout(() => {
-        mobileMenuContent.style.transform = 'translateX(0)';
-      }, 10);
-    });
-    
-    if (mobileMenuClose) {
-      mobileMenuClose.addEventListener('click', () => {
-        // Animate menu out
-        mobileMenuContent.style.transform = 'translateX(-100%)';
-        setTimeout(() => {
-          mobileMenu.classList.add('hidden');
-        }, 300);
-      });
-    }
-    
-    // Close menu when clicking outside
-    mobileMenu.addEventListener('click', (e) => {
-      if (e.target === mobileMenu) {
-        mobileMenuContent.style.transform = 'translateX(-100%)';
-        setTimeout(() => {
-          mobileMenu.classList.add('hidden');
-        }, 300);
+  // Handle system preference changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) {
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        moonIcon.classList.add('hidden');
+        sunIcon.classList.remove('hidden');
       }
-    });
-  }
+    }
+  });
 });

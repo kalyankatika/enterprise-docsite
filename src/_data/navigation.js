@@ -1,143 +1,253 @@
+/**
+ * Navigation structure for EDS Documentation
+ */
 module.exports = {
-  sections: [
+  // Main navigation shown in the header
+  main: [
     {
-      label: "Getting Started",
+      title: "Get Started",
+      url: "/get-started/"
+    },
+    {
+      title: "Design System",
+      url: "/design-system/"
+    },
+    {
+      title: "Components",
+      url: "/components/"
+    },
+    {
+      title: "Resources",
+      url: "/resources/"
+    },
+    {
+      title: "Support",
+      url: "/support/"
+    }
+  ],
+  
+  // Design System subnavigation
+  designSystem: [
+    {
+      title: "Foundations",
       items: [
         {
-          label: "Introduction", 
-          url: "/"
+          title: "Color",
+          url: "/design-system/foundations/color/"
         },
         {
-          label: "Installation",
-          url: "/getting-started/installation/"
+          title: "Typography",
+          url: "/design-system/foundations/typography/"
         },
         {
-          label: "Migration Guide",
-          url: "/getting-started/migration-guide/"
+          title: "Spacing",
+          url: "/design-system/foundations/spacing/"
         },
         {
-          label: "Contribution Guidelines",
-          url: "/getting-started/contribution-guidelines/"
+          title: "Grid System",
+          url: "/design-system/foundations/grid-system/"
+        },
+        {
+          title: "Iconography",
+          url: "/design-system/foundations/iconography/"
         }
       ]
     },
     {
-      label: "Design System",
+      title: "Guidelines",
       items: [
         {
-          label: "Foundations",
-          url: "/design-system/foundations/",
-          children: [
-            {
-              label: "Colors",
-              url: "/design-system/foundations/colors/"
-            },
-            {
-              label: "Typography",
-              url: "/design-system/foundations/typography/"
-            },
-            {
-              label: "Spacing",
-              url: "/design-system/foundations/spacing/"
-            },
-            {
-              label: "Iconography",
-              url: "/design-system/foundations/iconography/"
-            },
-            {
-              label: "Grid System",
-              url: "/design-system/foundations/grid-system/"
-            }
-          ]
+          title: "Accessibility",
+          url: "/design-system/guidelines/accessibility/"
         },
         {
-          label: "Principles",
-          url: "/design-system/principles/"
+          title: "Content",
+          url: "/design-system/guidelines/content/"
         },
         {
-          label: "Accessibility",
-          url: "/design-system/accessibility/"
+          title: "Responsiveness",
+          url: "/design-system/guidelines/responsiveness/"
         },
         {
-          label: "Versioning",
-          url: "/design-system/versioning/"
-        }
-      ]
-    },
-    {
-      label: "Components",
-      items: [
-        {
-          label: "Overview",
-          url: "/components/"
-        },
-        {
-          label: "Base Components",
-          url: "/components/base/"
-        },
-        {
-          label: "Data Display",
-          url: "/components/data-display/"
-        },
-        {
-          label: "Forms",
-          url: "/components/forms/"
-        },
-        {
-          label: "Navigation",
-          url: "/components/navigation/"
-        },
-        {
-          label: "Feedback",
-          url: "/components/feedback/"
-        },
-        {
-          label: "Layout",
-          url: "/components/layout/"
-        }
-      ]
-    },
-    {
-      label: "Resources",
-      items: [
-        {
-          label: "Design Tokens",
-          url: "/resources/design-tokens/"
-        },
-        {
-          label: "UI Kit",
-          url: "/resources/ui-kit/"
-        },
-        {
-          label: "Code Snippets",
-          url: "/resources/code-snippets/"
-        },
-        {
-          label: "Integration Guides",
-          url: "/resources/integration-guides/"
-        }
-      ]
-    },
-    {
-      label: "Support",
-      items: [
-        {
-          label: "FAQs",
-          url: "/support/faqs/"
-        },
-        {
-          label: "Known Issues",
-          url: "/support/known-issues/"
-        },
-        {
-          label: "Release Notes",
-          url: "/support/release-notes/"
-        },
-        {
-          label: "Contact Us",
-          url: "/support/contact-us/"
+          title: "Internationalization",
+          url: "/design-system/guidelines/internationalization/"
         }
       ]
     }
-  ]
+  ],
+  
+  // Component categories
+  components: [
+    {
+      title: "Layout",
+      items: [
+        {
+          title: "Container",
+          url: "/components/layout/container/"
+        },
+        {
+          title: "Grid",
+          url: "/components/layout/grid/"
+        },
+        {
+          title: "Stack",
+          url: "/components/layout/stack/"
+        },
+        {
+          title: "Divider",
+          url: "/components/layout/divider/"
+        }
+      ]
+    },
+    {
+      title: "Navigation",
+      items: [
+        {
+          title: "Navbar",
+          url: "/components/navigation/navbar/"
+        },
+        {
+          title: "Sidebar",
+          url: "/components/navigation/sidebar/"
+        },
+        {
+          title: "Tabs",
+          url: "/components/navigation/tabs/"
+        },
+        {
+          title: "Breadcrumbs",
+          url: "/components/navigation/breadcrumbs/"
+        }
+      ]
+    },
+    {
+      title: "Inputs",
+      items: [
+        {
+          title: "Button",
+          url: "/components/inputs/button/"
+        },
+        {
+          title: "Text Input",
+          url: "/components/inputs/text-input/"
+        },
+        {
+          title: "Checkbox",
+          url: "/components/inputs/checkbox/"
+        },
+        {
+          title: "Radio Button",
+          url: "/components/inputs/radio-button/"
+        },
+        {
+          title: "Select",
+          url: "/components/inputs/select/"
+        },
+        {
+          title: "Date Picker",
+          url: "/components/inputs/date-picker/"
+        }
+      ]
+    },
+    {
+      title: "Data Display",
+      items: [
+        {
+          title: "Table",
+          url: "/components/data-display/table/"
+        },
+        {
+          title: "Card",
+          url: "/components/data-display/card/"
+        },
+        {
+          title: "List",
+          url: "/components/data-display/list/"
+        },
+        {
+          title: "Badge",
+          url: "/components/data-display/badge/"
+        }
+      ]
+    },
+    {
+      title: "Feedback",
+      items: [
+        {
+          title: "Alert",
+          url: "/components/feedback/alert/"
+        },
+        {
+          title: "Toast",
+          url: "/components/feedback/toast/"
+        },
+        {
+          title: "Progress",
+          url: "/components/feedback/progress/"
+        },
+        {
+          title: "Spinner",
+          url: "/components/feedback/spinner/"
+        }
+      ]
+    }
+  ],
+  
+  // Footer navigation
+  footer: {
+    docs: [
+      {
+        title: "Getting Started",
+        url: "/get-started/"
+      },
+      {
+        title: "Design Foundations",
+        url: "/design-system/foundations/"
+      },
+      {
+        title: "Component Library",
+        url: "/components/"
+      },
+      {
+        title: "Guidelines",
+        url: "/design-system/guidelines/"
+      }
+    ],
+    resources: [
+      {
+        title: "Design Tokens",
+        url: "/resources/design-tokens/"
+      },
+      {
+        title: "Templates",
+        url: "/resources/templates/"
+      },
+      {
+        title: "Downloads",
+        url: "/resources/downloads/"
+      },
+      {
+        title: "Release Notes",
+        url: "/resources/release-notes/"
+      }
+    ],
+    community: [
+      {
+        title: "Slack Channel",
+        url: "https://slack.example.com/channel/design-system"
+      },
+      {
+        title: "GitHub",
+        url: "https://github.com/example/eds"
+      },
+      {
+        title: "Report an Issue",
+        url: "/support/report-issue/"
+      },
+      {
+        title: "Request a Feature",
+        url: "/support/feature-request/"
+      }
+    ]
+  }
 };

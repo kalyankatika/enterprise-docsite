@@ -1,26 +1,17 @@
+/**
+ * Site-wide configuration values
+ */
 module.exports = {
   name: "Enterprise Design System",
   shortName: "EDS",
-  description: "A unified documentation platform for enterprise design system components and guidelines",
-  url: "https://design-system.example.com",
-  github: "https://github.com/enterprise/design-system",
-  copyright: "Enterprise Inc.",
-  footerLinks: [
-    {
-      label: "Privacy Policy",
-      url: "/privacy-policy/"
-    },
-    {
-      label: "Terms of Service",
-      url: "/terms-of-service/"
-    },
-    {
-      label: "Accessibility",
-      url: "/accessibility/"
-    },
-    {
-      label: "Contact Support",
-      url: "/support/"
-    }
-  ]
+  description: "Comprehensive documentation for the Enterprise Design System",
+  url: "https://eds.example.com",
+  buildYear: new Date().getFullYear(),
+  copyright: "Enterprise Co.",
+  author: {
+    name: "Enterprise Design Team",
+    email: "design@example.com"
+  },
+  environment: process.env.ELEVENTY_ENV || "development",
+  version: "1.0.0" 
 };

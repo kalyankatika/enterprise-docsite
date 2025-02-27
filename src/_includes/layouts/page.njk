@@ -1,40 +1,62 @@
 ---
-layout: base
+layout: layouts/base.njk
 ---
 
-<div class="page-header mb-8">
-  <h1>{{ title }}</h1>
-  {% if description %}
-    <p class="text-[var(--color-text-muted)] text-lg mt-2">{{ description }}</p>
-  {% endif %}
-  
-  {% if breadcrumbs %}
-    <nav class="breadcrumbs mt-4 text-sm text-[var(--color-text-muted)]" aria-label="Breadcrumbs">
-      <ol class="flex flex-wrap items-center">
-        <li><a href="/" class="hover:text-[var(--color-primary)]">Home</a></li>
-        {% for crumb in breadcrumbs %}
-          <li class="flex items-center">
-            <svg class="h-4 w-4 mx-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-            {% if loop.last or not crumb.url %}
-              <span>{{ crumb.label }}</span>
-            {% else %}
-              <a href="{{ crumb.url }}" class="hover:text-[var(--color-primary)]">{{ crumb.label }}</a>
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ol>
-    </nav>
-  {% endif %}
-  
-  {% if tags and tags.length > 0 %}
-    <div class="mt-4 flex flex-wrap gap-2">
-      {% for tag in tags %}
-        <span class="eds-tag">{{ tag }}</span>
-      {% endfor %}
+<div class="container mx-auto px-4 py-8">
+  <div class="flex flex-col md:flex-row">
+    {% if sidebarType === "design-system" %}
+      <aside class="w-full md:w-64 lg:w-72 shrink-0 mb-8 md:mb-0 md:mr-8">
+        <div class="sticky top-24">
+          <nav class="space-y-6">
+            {% for section in navigation.designSystem %}
+              <div>
+                <h4 class="text-lg font-semibold mb-3">{{ section.title }}</h4>
+                <ul class="space-y-2">
+                  {% for item in section.items %}
+                    <li>
+                      <a href="{{ item.url }}" class="{% if page.url === item.url %}text-[var(--color-primary)] font-medium{% else %}text-[var(--color-text-muted)] hover:text-[var(--color-text)]{% endif %} transition-colors duration-200">
+                        {{ item.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
+          </nav>
+        </div>
+      </aside>
+    {% elif sidebarType === "components" %}
+      <aside class="w-full md:w-64 lg:w-72 shrink-0 mb-8 md:mb-0 md:mr-8">
+        <div class="sticky top-24">
+          <nav class="space-y-6">
+            {% for section in navigation.components %}
+              <div>
+                <h4 class="text-lg font-semibold mb-3">{{ section.title }}</h4>
+                <ul class="space-y-2">
+                  {% for item in section.items %}
+                    <li>
+                      <a href="{{ item.url }}" class="{% if page.url === item.url %}text-[var(--color-primary)] font-medium{% else %}text-[var(--color-text-muted)] hover:text-[var(--color-text)]{% endif %} transition-colors duration-200">
+                        {{ item.title }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endfor %}
+          </nav>
+        </div>
+      </aside>
+    {% endif %}
+    <div class="flex-1">
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold mb-4">{{ title }}</h1>
+        {% if description %}
+          <p class="text-lg text-[var(--color-text-muted)]">{{ description }}</p>
+        {% endif %}
+      </header>
+      <div class="prose prose-lg max-w-none">
+        {{ content | safe }}
+      </div>
     </div>
-  {% endif %}
+  </div>
 </div>
-
-{{ content | safe }}

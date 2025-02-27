@@ -1,0 +1,12 @@
+{
+  "index": {
+    "title": "Enterprise Design System",
+    "content": "A comprehensive design system for creating consistent, accessible, and beautiful enterprise applications.",
+    "url": "/"
+  },
+  "spacing": {
+    "title": "Spacing",
+    "content": "Spacing guidelines and scale for the Enterprise Design System. Consistent spacing is essential for creating balanced, harmonious interfaces.",
+    "url": "/design-system/foundations/spacing/"
+  }
+}

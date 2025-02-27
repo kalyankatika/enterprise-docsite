@@ -1,172 +1,108 @@
 /**
  * Main JavaScript file for EDS Documentation
  */
-document.addEventListener('DOMContentLoaded', () => {
-  // Copy code button functionality
-  const codeBlocks = document.querySelectorAll('pre code');
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize mobile menu toggle
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
   
-  if (codeBlocks.length > 0) {
-    codeBlocks.forEach(block => {
-      const pre = block.parentNode;
-      const copyButton = document.createElement('button');
-      copyButton.className = 'copy-code-button absolute top-3 right-3 p-2 rounded bg-[var(--color-bg)] text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors duration-200 opacity-0 group-hover:opacity-100';
-      copyButton.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-        </svg>
-      `;
-      
-      copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(block.textContent.trim())
-          .then(() => {
-            // Show success state
-            copyButton.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-success)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            `;
-            
-            // Reset after 2 seconds
-            setTimeout(() => {
-              copyButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                </svg>
-              `;
-            }, 2000);
-          })
-          .catch(err => {
-            console.error('Failed to copy code: ', err);
-            // Show error state
-            copyButton.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-error)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            `;
-            
-            // Reset after 2 seconds
-            setTimeout(() => {
-              copyButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                </svg>
-              `;
-            }, 2000);
-          });
-      });
-      
-      // Add positioning context to pre element
-      pre.classList.add('relative', 'group');
-      pre.appendChild(copyButton);
+  if (mobileMenuToggle && mobileMenu) {
+    mobileMenuToggle.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
     });
   }
   
-  // Handle version selector change
-  const versionSelector = document.getElementById('version-selector');
-  if (versionSelector) {
-    versionSelector.addEventListener('change', (e) => {
-      const version = e.target.value;
-      // Redirect to the selected version
-      if (version) {
-        window.location.href = `/versions/${version}/`;
-      }
-    });
-  }
-  
-  // Initialize components with dynamic behavior
+  // Initialize components
   initializeComponents();
-  
-  // Handle smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      
-      // Skip if it's an empty anchor or has a non-id href
-      if (targetId === '#' || targetId.startsWith('#/')) return;
-      
-      const targetElement = document.querySelector(targetId);
-      
-      if (targetElement) {
-        e.preventDefault();
-        targetElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-        
-        // Update URL
-        history.pushState(null, null, targetId);
-      }
-    });
-  });
 });
 
-// Initialize interactive components
 function initializeComponents() {
-  // Tabs component
-  document.querySelectorAll('[data-tabs]').forEach(tabsContainer => {
-    const tabButtons = tabsContainer.querySelectorAll('[data-tab-button]');
-    const tabPanels = tabsContainer.querySelectorAll('[data-tab-panel]');
+  // Code sample copy functionality
+  const codeBlocks = document.querySelectorAll('pre code');
+  
+  codeBlocks.forEach(block => {
+    // Create copy button
+    const copyButton = document.createElement('button');
+    copyButton.className = 'absolute top-2 right-2 p-1 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-alt)] transition-colors';
+    copyButton.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+    `;
+    copyButton.setAttribute('aria-label', 'Copy code to clipboard');
     
-    // Set initial active tab
-    const initialTab = tabsContainer.dataset.initialTab || tabButtons[0]?.dataset.tabButton;
-    
-    setActiveTab(tabButtons, tabPanels, initialTab);
-    
-    // Add click event to tab buttons
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const tabId = button.dataset.tabButton;
-        setActiveTab(tabButtons, tabPanels, tabId);
+    // Style the code block container for button positioning
+    const preBlock = block.parentElement;
+    if (preBlock) {
+      preBlock.style.position = 'relative';
+      preBlock.appendChild(copyButton);
+      
+      // Add copy functionality
+      copyButton.addEventListener('click', () => {
+        navigator.clipboard.writeText(block.textContent).then(() => {
+          // Visual feedback on copy
+          copyButton.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          `;
+          setTimeout(() => {
+            copyButton.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+            `;
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy code: ', err);
+        });
       });
-    });
+    }
   });
   
-  // Accordion component
-  document.querySelectorAll('[data-accordion]').forEach(accordion => {
-    const headers = accordion.querySelectorAll('[data-accordion-header]');
-    
-    headers.forEach(header => {
-      header.addEventListener('click', () => {
-        const section = header.closest('[data-accordion-section]');
-        const content = section.querySelector('[data-accordion-content]');
-        const isExpanded = section.classList.contains('expanded');
-        
-        // Toggle current section
-        section.classList.toggle('expanded');
-        content.style.maxHeight = isExpanded ? '0' : `${content.scrollHeight}px`;
-        header.setAttribute('aria-expanded', !isExpanded);
-        
-        // If it's a single-expand accordion, collapse others
-        if (accordion.dataset.accordion === 'single') {
-          accordion.querySelectorAll('[data-accordion-section]').forEach(otherSection => {
-            if (otherSection !== section && otherSection.classList.contains('expanded')) {
-              otherSection.classList.remove('expanded');
-              otherSection.querySelector('[data-accordion-content]').style.maxHeight = '0';
-              otherSection.querySelector('[data-accordion-header]').setAttribute('aria-expanded', false);
-            }
-          });
-        }
+  // Initialize any tab components that aren't using custom JavaScript
+  const tabGroups = document.querySelectorAll('[data-tabs]');
+  tabGroups.forEach(tabGroup => {
+    if (!tabGroup.hasAttribute('data-custom-tabs')) {
+      const tabButtons = tabGroup.querySelectorAll('[data-tab-button]');
+      const tabPanels = tabGroup.querySelectorAll('[data-tab-panel]');
+      
+      // Set up initial state
+      const initialTabId = tabButtons.length > 0 ? tabButtons[0].getAttribute('data-tab-button') : null;
+      if (initialTabId) {
+        setActiveTab(tabButtons, tabPanels, initialTabId);
+      }
+      
+      // Set up click handlers
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const tabId = button.getAttribute('data-tab-button');
+          setActiveTab(tabButtons, tabPanels, tabId);
+        });
       });
-    });
+    }
   });
 }
 
-// Helper function to set active tab
 function setActiveTab(buttons, panels, activeTabId) {
-  // Update button states
+  // Deactivate all tabs
   buttons.forEach(button => {
-    if (button.dataset.tabButton === activeTabId) {
-      button.classList.add('active');
+    const buttonTabId = button.getAttribute('data-tab-button');
+    if (buttonTabId === activeTabId) {
+      button.classList.add('active', 'border-[var(--color-primary)]', 'text-[var(--color-primary)]');
+      button.classList.remove('border-transparent', 'text-[var(--color-text-muted)]');
       button.setAttribute('aria-selected', 'true');
     } else {
-      button.classList.remove('active');
+      button.classList.remove('active', 'border-[var(--color-primary)]', 'text-[var(--color-primary)]');
+      button.classList.add('border-transparent', 'text-[var(--color-text-muted)]');
       button.setAttribute('aria-selected', 'false');
     }
   });
   
-  // Update panel visibility
+  // Show/hide panels
   panels.forEach(panel => {
-    if (panel.dataset.tabPanel === activeTabId) {
+    const panelTabId = panel.getAttribute('data-tab-panel');
+    if (panelTabId === activeTabId) {
       panel.classList.remove('hidden');
     } else {
       panel.classList.add('hidden');
