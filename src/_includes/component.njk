@@ -1,0 +1,417 @@
+---
+layout: page.njk
+sidebarType: components
+---
+
+<div class="component-documentation">
+  <div class="mb-8">
+    <div class="flex flex-wrap items-center gap-3 mb-4">
+      <h1 class="text-3xl font-bold mb-0">{{ title }}</h1>
+      
+      {% if status %}
+      <span class="eds-status {% if status == 'stable' %}eds-status-stable{% elif status == 'beta' %}eds-status-beta{% elif status == 'experimental' %}eds-status-experimental{% elif status == 'deprecated' %}eds-status-deprecated{% endif %}">
+        {{ status | capitalize }}
+      </span>
+      {% endif %}
+    </div>
+    
+    {% if description %}
+    <p class="text-xl text-[var(--color-text-muted)] mt-2">{{ description }}</p>
+    {% endif %}
+  </div>
+  
+  <div class="mt-12">
+    <!-- Tab navigation -->
+    <div class="border-b border-[var(--color-border)] mb-8">
+      <div class="flex flex-wrap -mb-px" role="tablist" aria-orientation="horizontal">
+        <button class="py-2 px-4 text-sm font-medium border-b-2 border-[var(--color-primary)] text-[var(--color-primary)]" role="tab" aria-selected="true" id="tab-usage" aria-controls="panel-usage">
+          Usage
+        </button>
+        <button class="py-2 px-4 text-sm font-medium border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]" role="tab" aria-selected="false" id="tab-code" aria-controls="panel-code">
+          Code
+        </button>
+        <button class="py-2 px-4 text-sm font-medium border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]" role="tab" aria-selected="false" id="tab-props" aria-controls="panel-props">
+          Props
+        </button>
+        <button class="py-2 px-4 text-sm font-medium border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]" role="tab" aria-selected="false" id="tab-accessibility" aria-controls="panel-accessibility">
+          Accessibility
+        </button>
+      </div>
+    </div>
+    
+    <!-- Tab panels -->
+    <div>
+      <!-- Usage panel -->
+      <div id="panel-usage" role="tabpanel" aria-labelledby="tab-usage">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Overview</h2>
+          {{ content | safe }}
+        </div>
+        
+        {% if examples %}
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Examples</h2>
+          <div class="grid grid-cols-1 gap-8">
+            {% for example in examples %}
+            <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg">
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">{{ example.title }}</h3>
+                {% if example.description %}
+                <p class="text-[var(--color-text-muted)]">{{ example.description }}</p>
+                {% endif %}
+              </div>
+              
+              <div class="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)] p-6 mb-4">
+                {{ example.html | safe }}
+              </div>
+              
+              {% if example.code %}
+              <div class="bg-[var(--color-code-bg)] rounded-lg overflow-hidden">
+                <pre class="language-html m-0 p-4 text-sm overflow-x-auto"><code>{{ example.code }}</code></pre>
+              </div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+        
+        {% if bestPractices %}
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Best Practices</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {% if bestPractices.do %}
+            <div>
+              <h3 class="text-lg font-semibold mb-4 flex items-center text-green-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                Do
+              </h3>
+              
+              <ul class="space-y-4">
+                {% for item in bestPractices.do %}
+                <li class="flex">
+                  <div class="mr-3 text-green-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p>{{ item }}</p>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            
+            {% if bestPractices.dont %}
+            <div>
+              <h3 class="text-lg font-semibold mb-4 flex items-center text-red-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+                Don't
+              </h3>
+              
+              <ul class="space-y-4">
+                {% for item in bestPractices.dont %}
+                <li class="flex">
+                  <div class="mr-3 text-red-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p>{{ item }}</p>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      
+      <!-- Code panel -->
+      <div id="panel-code" role="tabpanel" aria-labelledby="tab-code" class="hidden">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Implementation</h2>
+          
+          {% if component.implementation %}
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-3">HTML</h3>
+            <div class="bg-[var(--color-code-bg)] rounded-lg overflow-hidden">
+              <pre class="language-html m-0 p-4 text-sm overflow-x-auto"><code>{{ component.implementation.html }}</code></pre>
+            </div>
+          </div>
+          
+          {% if component.implementation.css %}
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-3">CSS</h3>
+            <div class="bg-[var(--color-code-bg)] rounded-lg overflow-hidden">
+              <pre class="language-css m-0 p-4 text-sm overflow-x-auto"><code>{{ component.implementation.css }}</code></pre>
+            </div>
+          </div>
+          {% endif %}
+          
+          {% if component.implementation.js %}
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-3">JavaScript</h3>
+            <div class="bg-[var(--color-code-bg)] rounded-lg overflow-hidden">
+              <pre class="language-javascript m-0 p-4 text-sm overflow-x-auto"><code>{{ component.implementation.js }}</code></pre>
+            </div>
+          </div>
+          {% endif %}
+          
+          {% else %}
+          <p class="text-[var(--color-text-muted)]">Implementation details coming soon.</p>
+          {% endif %}
+        </div>
+        
+        {% if component.integration %}
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Framework Integration</h2>
+          
+          <div class="space-y-6">
+            {% if component.integration.react %}
+            <div>
+              <h3 class="text-lg font-semibold mb-3">React</h3>
+              <div class="bg-[var(--color-code-bg)] rounded-lg overflow-hidden">
+                <pre class="language-jsx m-0 p-4 text-sm overflow-x-auto"><code>{{ component.integration.react }}</code></pre>
+              </div>
+            </div>
+            {% endif %}
+            
+            {% if component.integration.vue %}
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Vue</h3>
+              <div class="bg-[var(--color-code-bg)] rounded-lg overflow-hidden">
+                <pre class="language-html m-0 p-4 text-sm overflow-x-auto"><code>{{ component.integration.vue }}</code></pre>
+              </div>
+            </div>
+            {% endif %}
+            
+            {% if component.integration.angular %}
+            <div>
+              <h3 class="text-lg font-semibold mb-3">Angular</h3>
+              <div class="bg-[var(--color-code-bg)] rounded-lg overflow-hidden">
+                <pre class="language-typescript m-0 p-4 text-sm overflow-x-auto"><code>{{ component.integration.angular }}</code></pre>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      
+      <!-- Props panel -->
+      <div id="panel-props" role="tabpanel" aria-labelledby="tab-props" class="hidden">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Properties & Attributes</h2>
+          
+          {% if component.props %}
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse mb-0">
+              <thead>
+                <tr>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Name</th>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Type</th>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Default</th>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for prop in component.props %}
+                <tr>
+                  <td class="border border-[var(--color-border)] px-4 py-2">
+                    <code>{{ prop.name }}</code>
+                    {% if prop.required %}
+                    <span class="ml-2 text-red-600 text-xs font-medium">Required</span>
+                    {% endif %}
+                  </td>
+                  <td class="border border-[var(--color-border)] px-4 py-2"><code>{{ prop.type }}</code></td>
+                  <td class="border border-[var(--color-border)] px-4 py-2">
+                    {% if prop.default %}
+                    <code>{{ prop.default }}</code>
+                    {% else %}
+                    <span class="text-[var(--color-text-muted)]">—</span>
+                    {% endif %}
+                  </td>
+                  <td class="border border-[var(--color-border)] px-4 py-2">{{ prop.description }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% else %}
+          <p class="text-[var(--color-text-muted)]">No properties available for this component.</p>
+          {% endif %}
+        </div>
+        
+        {% if component.events %}
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Events</h2>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse mb-0">
+              <thead>
+                <tr>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Event Name</th>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Detail Type</th>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for event in component.events %}
+                <tr>
+                  <td class="border border-[var(--color-border)] px-4 py-2"><code>{{ event.name }}</code></td>
+                  <td class="border border-[var(--color-border)] px-4 py-2">
+                    {% if event.detailType %}
+                    <code>{{ event.detailType }}</code>
+                    {% else %}
+                    <span class="text-[var(--color-text-muted)]">—</span>
+                    {% endif %}
+                  </td>
+                  <td class="border border-[var(--color-border)] px-4 py-2">{{ event.description }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+        
+        {% if component.cssVariables %}
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">CSS Variables</h2>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse mb-0">
+              <thead>
+                <tr>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Variable</th>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Default Value</th>
+                  <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for variable in component.cssVariables %}
+                <tr>
+                  <td class="border border-[var(--color-border)] px-4 py-2"><code>{{ variable.name }}</code></td>
+                  <td class="border border-[var(--color-border)] px-4 py-2"><code>{{ variable.default }}</code></td>
+                  <td class="border border-[var(--color-border)] px-4 py-2">{{ variable.description }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      
+      <!-- Accessibility panel -->
+      <div id="panel-accessibility" role="tabpanel" aria-labelledby="tab-accessibility" class="hidden">
+        <div class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
+          
+          {% if component.accessibility %}
+          <div class="prose dark:prose-invert max-w-none">
+            {{ component.accessibility | safe }}
+          </div>
+          
+          {% if component.a11yChecklist %}
+          <div class="mt-8">
+            <h3 class="text-xl font-bold mb-4">Accessibility Checklist</h3>
+            
+            <ul class="space-y-4">
+              {% for item in component.a11yChecklist %}
+              <li class="flex">
+                <div class="mr-3 text-green-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p>{{ item }}</p>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+          
+          {% else %}
+          <p class="text-[var(--color-text-muted)]">Accessibility information coming soon.</p>
+          {% endif %}
+          
+          {% if component.ariaRoles %}
+          <div class="mt-8">
+            <h3 class="text-xl font-bold mb-4">ARIA Roles and Attributes</h3>
+            
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse mb-0">
+                <thead>
+                  <tr>
+                    <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Element</th>
+                    <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">ARIA Attributes</th>
+                    <th class="border border-[var(--color-border)] bg-[var(--color-bg-alt)] px-4 py-2 text-left">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for role in component.ariaRoles %}
+                  <tr>
+                    <td class="border border-[var(--color-border)] px-4 py-2"><code>{{ role.element }}</code></td>
+                    <td class="border border-[var(--color-border)] px-4 py-2">
+                      {% for attr in role.attributes %}
+                      <code>{{ attr }}</code>{% if not loop.last %}<br>{% endif %}
+                      {% endfor %}
+                    </td>
+                    <td class="border border-[var(--color-border)] px-4 py-2">{{ role.description }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = Array.from(document.querySelectorAll('[role="tab"]'));
+      const tabPanels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+      
+      // Handle tab clicks
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const targetPanelId = button.getAttribute('aria-controls');
+          
+          // Update tab button states
+          tabButtons.forEach(btn => {
+            const isActive = btn === button;
+            btn.setAttribute('aria-selected', isActive.toString());
+            btn.classList.toggle('border-[var(--color-primary)]', isActive);
+            btn.classList.toggle('text-[var(--color-primary)]', isActive);
+            btn.classList.toggle('border-transparent', !isActive);
+            btn.classList.toggle('text-[var(--color-text-muted)]', !isActive);
+          });
+          
+          // Show the selected panel and hide others
+          tabPanels.forEach(panel => {
+            panel.classList.toggle('hidden', panel.id !== targetPanelId);
+          });
+        });
+      });
+    });
+  </script>
+</div>
+
+{{ content | safe }}
