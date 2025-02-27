@@ -23,22 +23,23 @@
         </a>
         
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-6">
-          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
-          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
-          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
-          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
-          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
+        <nav class="hidden md:flex items-center space-x-4">
+          <a href="/design-system/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Design System</a>
+          <a href="/resources/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Resources</a>
+          <a href="/support/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Support</a>
           
-          <!-- Search Link -->
-          <a href="/search/" class="hover:text-[var(--color-primary)]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </a>
+          <!-- Search -->
+          <form action="/search/" method="get" role="search" class="relative ml-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-40 md:w-60">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
           
           <!-- Theme Toggle Button -->
-          <button class="eds-theme-toggle p-1 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle theme">
+          <button class="eds-theme-toggle p-2 rounded-md hover:bg-[var(--color-bg-alt)] ml-2" aria-label="Toggle theme">
             <!-- Sun (light) icon - show in dark mode -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -51,25 +52,58 @@
         </nav>
         
         <!-- Mobile menu button -->
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <div class="flex items-center md:hidden">
+          <form action="/search/" method="get" role="search" class="relative mr-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-32">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
+          
+          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Secondary navigation (Desktop) -->
+      <div class="hidden md:block border-t border-[var(--color-border)] py-2">
+        <nav class="flex items-center space-x-8">
+          <a href="/whats-new/" class="py-1 hover:text-[var(--color-primary)] transition-colors">What's New</a>
+          <a href="/getting-started/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Getting Started</a>
+          <a href="/foundations/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
+          <a href="/components/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/templates/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Templates</a>
+          <a href="/patterns/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Patterns</a>
+          <a href="/tokens/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Tokens</a>
+          <a href="/contribution/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Contribution</a>
+        </nav>
       </div>
       
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)]">
         <nav class="flex flex-col space-y-4">
-          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
-          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
-          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
-          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
+          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Design System</a>
           <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
-          <a href="/search/" class="hover:text-[var(--color-primary)]">Search</a>
+          <a href="/support/" class="hover:text-[var(--color-primary)]">Support</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Design System</h3>
+          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
+          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
+          <a href="/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
+          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
+          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/patterns/" class="hover:text-[var(--color-primary)]">Patterns</a>
+          <a href="/tokens/" class="hover:text-[var(--color-primary)]">Tokens</a>
+          <a href="/contribution/" class="hover:text-[var(--color-primary)]">Contribution</a>
           
           <!-- Theme Toggle Button (Mobile) -->
-          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)]" aria-label="Toggle theme">
+          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)] mt-4" aria-label="Toggle theme">
             <!-- Sun (light) icon - show in dark mode -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />

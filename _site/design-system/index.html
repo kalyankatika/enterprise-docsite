@@ -23,22 +23,23 @@
         </a>
         
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-6">
-          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
-          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
-          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
-          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
-          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
+        <nav class="hidden md:flex items-center space-x-4">
+          <a href="/design-system/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Design System</a>
+          <a href="/resources/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Resources</a>
+          <a href="/support/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Support</a>
           
-          <!-- Search Link -->
-          <a href="/search/" class="hover:text-[var(--color-primary)]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </a>
+          <!-- Search -->
+          <form action="/search/" method="get" role="search" class="relative ml-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-40 md:w-60">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
           
           <!-- Theme Toggle Button -->
-          <button class="eds-theme-toggle p-1 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle theme">
+          <button class="eds-theme-toggle p-2 rounded-md hover:bg-[var(--color-bg-alt)] ml-2" aria-label="Toggle theme">
             <!-- Sun (light) icon - show in dark mode -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -51,25 +52,58 @@
         </nav>
         
         <!-- Mobile menu button -->
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <div class="flex items-center md:hidden">
+          <form action="/search/" method="get" role="search" class="relative mr-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-32">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
+          
+          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Secondary navigation (Desktop) -->
+      <div class="hidden md:block border-t border-[var(--color-border)] py-2">
+        <nav class="flex items-center space-x-8">
+          <a href="/whats-new/" class="py-1 hover:text-[var(--color-primary)] transition-colors">What's New</a>
+          <a href="/getting-started/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Getting Started</a>
+          <a href="/foundations/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
+          <a href="/components/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/templates/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Templates</a>
+          <a href="/patterns/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Patterns</a>
+          <a href="/tokens/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Tokens</a>
+          <a href="/contribution/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Contribution</a>
+        </nav>
       </div>
       
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)]">
         <nav class="flex flex-col space-y-4">
-          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
-          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
-          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
-          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
+          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Design System</a>
           <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
-          <a href="/search/" class="hover:text-[var(--color-primary)]">Search</a>
+          <a href="/support/" class="hover:text-[var(--color-primary)]">Support</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Design System</h3>
+          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
+          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
+          <a href="/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
+          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
+          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/patterns/" class="hover:text-[var(--color-primary)]">Patterns</a>
+          <a href="/tokens/" class="hover:text-[var(--color-primary)]">Tokens</a>
+          <a href="/contribution/" class="hover:text-[var(--color-primary)]">Contribution</a>
           
           <!-- Theme Toggle Button (Mobile) -->
-          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)]" aria-label="Toggle theme">
+          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)] mt-4" aria-label="Toggle theme">
             <!-- Sun (light) icon - show in dark mode -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -88,37 +122,20 @@
 
   <main class="flex-1">
     
-<div class="container mx-auto px-4 md:px-6 pt-8 pb-16">
+<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
   <div class="flex flex-col lg:flex-row">
-    <!-- Sidebar -->
-    <aside class="w-full lg:w-64 pr-0 lg:pr-8 mb-8 lg:mb-0 lg:border-r border-[var(--color-border)]">
-      
-        <div class="space-y-8">
-  <div>
-    <h3 class="font-medium mb-3">Documentation</h3>
-    <ul class="space-y-2 text-sm">
-      <li><a href="/getting-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Getting Started</a></li>
-      <li><a href="/design-system/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Design System</a></li>
-      <li><a href="/components/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Components</a></li>
-      <li><a href="/resources/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Resources</a></li>
-      <li><a href="/support/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Support</a></li>
-    </ul>
-  </div>
-</div>
-      
-    </aside>
+    <!-- Left sidebar - Optional component navigation -->
+    
     
     <!-- Main content -->
-    <main class="w-full lg:flex-1 lg:pl-8">
-      <div class="mb-8">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4">Design System</h1>
+    <div class="w-full">
+      <div class="prose max-w-none">
+        <h1>Design System</h1>
         
-          <p class="text-xl text-gray-600 dark:text-gray-300">Comprehensive guidelines and principles for creating consistent enterprise applications</p>
+          <p class="text-xl text-[var(--color-text-muted)] mb-8">Comprehensive guidelines and principles for creating consistent enterprise applications</p>
         
-      </div>
-      <hr class="border-gray-200 dark:border-gray-700 mb-8">
-      
-      <h1 id="enterprise-design-system" tabindex="-1">Enterprise Design System <a class="anchor" href="#enterprise-design-system" aria-hidden="true">#</a></h1>
+        
+        <h1 id="enterprise-design-system" tabindex="-1">Enterprise Design System <a class="anchor" href="#enterprise-design-system" aria-hidden="true">#</a></h1>
 <p>The Enterprise Design System (EDS) provides a comprehensive set of guidelines, components, and resources to help teams create cohesive, accessible, and visually consistent enterprise applications.</p>
 <h2 id="core-principles" tabindex="-1">Core Principles <a class="anchor" href="#core-principles" aria-hidden="true">#</a></h2>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
@@ -232,9 +249,111 @@
 <li><a href="/resources/design-tokens/">Design Tokens</a> - Understand how to implement the design system in your projects.</li>
 </ol>
 
-    </main>
+      </div>
+    </div>
+    
+    <!-- Right sidebar - Table of Contents -->
+    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
+      <div class="sticky top-32">
+        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+        <nav class="toc js-toc">
+          <!-- Table of contents will be auto-generated here -->
+          <ul class="space-y-1">
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- Add table of contents JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // If no TOC elements exist, we'll generate them
+    if (!document.querySelector('.js-toc li')) {
+      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
+      const toc = document.querySelector('.js-toc');
+      
+      if (toc && headings.length > 0) {
+        const tocList = document.createElement('ul');
+        tocList.className = 'space-y-1';
+        
+        headings.forEach(heading => {
+          if (!heading.id) {
+            // Create an ID if none exists
+            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
+          }
+          
+          const level = parseInt(heading.tagName.charAt(1));
+          const listItem = document.createElement('li');
+          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
+          
+          const link = document.createElement('a');
+          link.href = `#${heading.id}`;
+          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
+          link.textContent = heading.textContent;
+          
+          listItem.appendChild(link);
+          tocList.appendChild(listItem);
+          
+          // Also add the anchor link to the heading
+          if (!heading.querySelector('.anchor')) {
+            const anchor = document.createElement('a');
+            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
+            anchor.href = `#${heading.id}`;
+            anchor.textContent = '#';
+            heading.appendChild(anchor);
+          }
+        });
+        
+        if (tocList.children.length > 0) {
+          toc.appendChild(tocList);
+        } else {
+          // If no headings found, hide the TOC container
+          const tocContainer = toc.closest('.sticky');
+          if (tocContainer) {
+            tocContainer.style.display = 'none';
+          }
+        }
+      }
+    }
+    
+    // Highlight the current section in the TOC as user scrolls
+    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
+    const tocLinks = document.querySelectorAll('.js-toc a');
+    
+    if (headings.length > 0 && tocLinks.length > 0) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            tocLinks.forEach(link => {
+              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
+            });
+            
+            // Add active class to corresponding link
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
+            }
+          }
+        });
+      }, observerOptions);
+      
+      headings.forEach(heading => {
+        observer.observe(heading);
+      });
+    }
+  });
+</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">

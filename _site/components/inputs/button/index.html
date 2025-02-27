@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Button | Enterprise Design System</title>
-  <meta name="description" content="Buttons communicate actions that users can take">
+  <title>Button Component | Enterprise Design System</title>
+  <meta name="description" content="A versatile button component supporting various styles, states, and sizes.">
   <link rel="stylesheet" href="/assets/css/styles.css">
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/theme.js" defer></script>
@@ -23,22 +23,23 @@
         </a>
         
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-6">
-          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
-          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
-          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
-          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
-          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
+        <nav class="hidden md:flex items-center space-x-4">
+          <a href="/design-system/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Design System</a>
+          <a href="/resources/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Resources</a>
+          <a href="/support/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Support</a>
           
-          <!-- Search Link -->
-          <a href="/search/" class="hover:text-[var(--color-primary)]">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </a>
+          <!-- Search -->
+          <form action="/search/" method="get" role="search" class="relative ml-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-40 md:w-60">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
           
           <!-- Theme Toggle Button -->
-          <button class="eds-theme-toggle p-1 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle theme">
+          <button class="eds-theme-toggle p-2 rounded-md hover:bg-[var(--color-bg-alt)] ml-2" aria-label="Toggle theme">
             <!-- Sun (light) icon - show in dark mode -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -51,25 +52,58 @@
         </nav>
         
         <!-- Mobile menu button -->
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <div class="flex items-center md:hidden">
+          <form action="/search/" method="get" role="search" class="relative mr-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-32">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
+          
+          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Secondary navigation (Desktop) -->
+      <div class="hidden md:block border-t border-[var(--color-border)] py-2">
+        <nav class="flex items-center space-x-8">
+          <a href="/whats-new/" class="py-1 hover:text-[var(--color-primary)] transition-colors">What's New</a>
+          <a href="/getting-started/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Getting Started</a>
+          <a href="/foundations/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
+          <a href="/components/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/templates/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Templates</a>
+          <a href="/patterns/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Patterns</a>
+          <a href="/tokens/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Tokens</a>
+          <a href="/contribution/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Contribution</a>
+        </nav>
       </div>
       
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)]">
         <nav class="flex flex-col space-y-4">
-          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
-          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
-          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
-          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
+          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Design System</a>
           <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
-          <a href="/search/" class="hover:text-[var(--color-primary)]">Search</a>
+          <a href="/support/" class="hover:text-[var(--color-primary)]">Support</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Design System</h3>
+          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
+          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
+          <a href="/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
+          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
+          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/patterns/" class="hover:text-[var(--color-primary)]">Patterns</a>
+          <a href="/tokens/" class="hover:text-[var(--color-primary)]">Tokens</a>
+          <a href="/contribution/" class="hover:text-[var(--color-primary)]">Contribution</a>
           
           <!-- Theme Toggle Button (Mobile) -->
-          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)]" aria-label="Toggle theme">
+          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)] mt-4" aria-label="Toggle theme">
             <!-- Sun (light) icon - show in dark mode -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -88,155 +122,452 @@
 
   <main class="flex-1">
     
-<div class="eds-container">
-  <div class="eds-component">
-    <header class="eds-component__header">
-      <div class="eds-component__meta">
-        <div class="eds-status-badge eds-status-badge--stable">stable</div>
-        <div class="eds-component__version">Since v1.0.0</div>
-        <div class="eds-component__updated">Updated: Sat Feb 15 2025 00:00:00 GMT+0000 (Coordinated Universal Time)</div>
-      </div>
-      
-      <h1 class="eds-component__title">Button</h1>
-      <p class="eds-component__description">Buttons communicate actions that users can take</p>
-      
-      
-      <a href="https://github.com/enterprise/design-system/tree/main/components/button" class="eds-component__github" target="_blank" rel="noopener">View on GitHub</a>
-      
-    </header>
-
-    <div class="eds-component__tabs" x-data="{ activeTab: 'documentation' }">
-      <div class="eds-tabs">
-        <div class="eds-tabs__list" role="tablist">
-          <button class="eds-tabs__tab" 
-                  :class="{ 'eds-tabs__tab--active': activeTab === 'documentation' }" 
-                  @click="activeTab = 'documentation'" 
-                  role="tab" 
-                  aria-selected="activeTab === 'documentation'" 
-                  aria-controls="documentation">
-            Documentation
-          </button>
-          <button class="eds-tabs__tab" 
-                  :class="{ 'eds-tabs__tab--active': activeTab === 'examples' }" 
-                  @click="activeTab = 'examples'" 
-                  role="tab" 
-                  aria-selected="activeTab === 'examples'" 
-                  aria-controls="examples">
-            Examples
-          </button>
-          <button class="eds-tabs__tab" 
-                  :class="{ 'eds-tabs__tab--active': activeTab === 'code' }" 
-                  @click="activeTab = 'code'" 
-                  role="tab" 
-                  aria-selected="activeTab === 'code'" 
-                  aria-controls="code">
-            Code
-          </button>
-          <button class="eds-tabs__tab" 
-                  :class="{ 'eds-tabs__tab--active': activeTab === 'usage' }" 
-                  @click="activeTab = 'usage'" 
-                  role="tab" 
-                  aria-selected="activeTab === 'usage'" 
-                  aria-controls="usage">
-            Usage
-          </button>
-        </div>
-        
-        <div class="eds-tabs__panels">
-          <div class="eds-tabs__panel" 
-               :class="{ 'eds-tabs__panel--active': activeTab === 'documentation' }" 
-               role="tabpanel" 
-               id="documentation">
-            <div class="eds-component__content">
-              <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
-<p>The Button component allows users to take actions with a single click. Buttons communicate what action will occur when users click or tap them.</p>
-<h2 id="when-to-use" tabindex="-1">When to use <a class="anchor" href="#when-to-use" aria-hidden="true">#</a></h2>
-<p>Use buttons to enable users to perform actions such as:</p>
-<ul>
-<li>Submitting a form</li>
-<li>Starting a new task</li>
-<li>Triggering a specific function</li>
-<li>Moving to the next step in a multi-step process</li>
-</ul>
-<h2 id="variants" tabindex="-1">Variants <a class="anchor" href="#variants" aria-hidden="true">#</a></h2>
-<h3 id="primary-button" tabindex="-1">Primary Button <a class="anchor" href="#primary-button" aria-hidden="true">#</a></h3>
-<p>The primary button is used for the main action in a container or form. In most cases, there should only be one primary button per screen.</p>
-<h3 id="secondary-button" tabindex="-1">Secondary Button <a class="anchor" href="#secondary-button" aria-hidden="true">#</a></h3>
-<p>The secondary button is used for actions that are important but not the primary action on the page.</p>
-<h3 id="text-button" tabindex="-1">Text Button <a class="anchor" href="#text-button" aria-hidden="true">#</a></h3>
-<p>Text buttons have less visual prominence and are typically used for less important actions or in areas where space is limited.</p>
-<h3 id="icon-button" tabindex="-1">Icon Button <a class="anchor" href="#icon-button" aria-hidden="true">#</a></h3>
-<p>Icon buttons use symbols instead of text to communicate the action they perform. They're useful in interfaces with limited space.</p>
-<h2 id="accessibility" tabindex="-1">Accessibility <a class="anchor" href="#accessibility" aria-hidden="true">#</a></h2>
-<ul>
-<li>Ensure buttons have meaningful text that clearly describes the action they perform</li>
-<li>Use the <code>aria-label</code> attribute when a button contains only an icon</li>
-<li>Maintain a minimum touch target size of 44x44 pixels for touch devices</li>
-<li>Ensure buttons have sufficient color contrast (at least 4.5:1)</li>
-<li>Use the appropriate HTML element (<code>&lt;button&gt;</code> for actions, <code>&lt;a&gt;</code> for navigation)</li>
-</ul>
-<h2 id="code-guidelines" tabindex="-1">Code Guidelines <a class="anchor" href="#code-guidelines" aria-hidden="true">#</a></h2>
-<ul>
-<li>Use the <code>eds-button</code> class for basic styling</li>
-<li>Add modifier classes for different variants (e.g., <code>eds-button--primary</code>, <code>eds-button--secondary</code>)</li>
-<li>Avoid using <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> elements as buttons</li>
-<li>Include hover, focus, and active states for all buttons</li>
-</ul>
-<h2 id="design-guidelines" tabindex="-1">Design Guidelines <a class="anchor" href="#design-guidelines" aria-hidden="true">#</a></h2>
-<ul>
-<li>Place primary buttons where users expect to find them (typically aligned with the content they affect)</li>
-<li>Maintain consistent button ordering across the interface</li>
-<li>Use color to differentiate between button types</li>
-<li>Size buttons appropriately for their importance and usage context</li>
-</ul>
-
-            </div>
-
-            
-            <div class="eds-component__contributors">
-              <h3 class="eds-component__contributors-title">Contributors</h3>
-              <ul class="eds-component__contributors-list">
+<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
+  <div class="flex flex-col lg:flex-row">
+    <!-- Left sidebar - Optional component navigation -->
+    
+    <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
+      <div class="sticky top-32">
+        <h3 class="text-lg font-bold mb-4">Input Components</h3>
+        <nav class="space-y-1">
+          
+            <div class="mb-4">
+              
+                <h4 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">Components</h4>
+              
+              <ul class="space-y-1">
                 
-                <li class="eds-component__contributor">John Doe</li>
+                  <li>
+                    <a href="/components/inputs/button/" class="block py-1 text-[var(--color-primary)] font-medium transition-colors">
+                      Button
+                    </a>
+                  </li>
                 
-                <li class="eds-component__contributor">Jane Smith</li>
+                  <li>
+                    <a href="/components/inputs/input-field/" class="block py-1 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors">
+                      Input Field
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/components/inputs/checkbox/" class="block py-1 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors">
+                      Checkbox
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/components/inputs/radio/" class="block py-1 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors">
+                      Radio Button
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/components/inputs/select/" class="block py-1 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors">
+                      Select
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href="/components/inputs/toggle-switch/" class="block py-1 text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors">
+                      Toggle Switch
+                    </a>
+                  </li>
                 
               </ul>
             </div>
+          
+        </nav>
+      </div>
+    </div>
+    
+    
+    <!-- Main content -->
+    <div class="lg:flex-1">
+      <div class="prose max-w-none">
+        <h1>Button Component</h1>
+        
+          <p class="text-xl text-[var(--color-text-muted)] mb-8">A versatile button component supporting various styles, states, and sizes.</p>
+        
+        
+        <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
+<p>Buttons are used to trigger actions or events, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.</p>
+<h2 id="variants" tabindex="-1">Variants <a class="anchor" href="#variants" aria-hidden="true">#</a></h2>
+<p>The Enterprise Design System provides several button variants to convey different levels of emphasis:</p>
+<h3 id="primary-button" tabindex="-1">Primary Button <a class="anchor" href="#primary-button" aria-hidden="true">#</a></h3>
+<p>Use primary buttons for the main action in a section or page.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Primary Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">Primary Button</button>
+</div>
+<h3 id="secondary-button" tabindex="-1">Secondary Button <a class="anchor" href="#secondary-button" aria-hidden="true">#</a></h3>
+<p>Secondary buttons are for alternative actions that aren't as important as the primary action.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--secondary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Secondary Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-2 px-4 bg-[var(--color-bg)] text-[var(--color-text)] border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">Secondary Button</button>
+</div>
+<h3 id="tertiary-button" tabindex="-1">Tertiary Button <a class="anchor" href="#tertiary-button" aria-hidden="true">#</a></h3>
+<p>Tertiary buttons are for less important actions or used within content for inline actions.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--tertiary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Tertiary Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-2 px-4 text-[var(--color-primary)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">Tertiary Button</button>
+</div>
+<h3 id="destructive-button" tabindex="-1">Destructive Button <a class="anchor" href="#destructive-button" aria-hidden="true">#</a></h3>
+<p>Use destructive buttons for actions that might result in data loss or other significant consequences.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--danger<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Delete<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-2 px-4 bg-[var(--color-danger)] text-white rounded-md hover:opacity-90 transition-colors">Delete</button>
+</div>
+<h2 id="sizes" tabindex="-1">Sizes <a class="anchor" href="#sizes" aria-hidden="true">#</a></h2>
+<p>Buttons come in three standard sizes:</p>
+<h3 id="small" tabindex="-1">Small <a class="anchor" href="#small" aria-hidden="true">#</a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--primary eds-button--sm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Small Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-1 px-3 text-sm bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">Small Button</button>
+</div>
+<h3 id="medium-default" tabindex="-1">Medium (Default) <a class="anchor" href="#medium-default" aria-hidden="true">#</a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Medium Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">Medium Button</button>
+</div>
+<h3 id="large" tabindex="-1">Large <a class="anchor" href="#large" aria-hidden="true">#</a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--primary eds-button--lg<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Large Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-3 px-6 text-lg bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">Large Button</button>
+</div>
+<h2 id="states" tabindex="-1">States <a class="anchor" href="#states" aria-hidden="true">#</a></h2>
+<p>Buttons can appear in several different states:</p>
+<h3 id="default" tabindex="-1">Default <a class="anchor" href="#default" aria-hidden="true">#</a></h3>
+<p>The normal state of a button.</p>
+<h3 id="hover" tabindex="-1">Hover <a class="anchor" href="#hover" aria-hidden="true">#</a></h3>
+<p>How a button appears when a user hovers over it.</p>
+<h3 id="focus" tabindex="-1">Focus <a class="anchor" href="#focus" aria-hidden="true">#</a></h3>
+<p>How a button appears when it receives keyboard focus.</p>
+<h3 id="active" tabindex="-1">Active <a class="anchor" href="#active" aria-hidden="true">#</a></h3>
+<p>How a button appears when it's being clicked or activated.</p>
+<h3 id="disabled" tabindex="-1">Disabled <a class="anchor" href="#disabled" aria-hidden="true">#</a></h3>
+<p>Use disabled buttons to indicate that an action is not currently available.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--primary<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">></span></span>Disabled Button<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button disabled class="py-2 px-4 bg-gray-400 text-white rounded-md cursor-not-allowed opacity-60">Disabled Button</button>
+</div>
+<h2 id="with-icon" tabindex="-1">With Icon <a class="anchor" href="#with-icon" aria-hidden="true">#</a></h2>
+<p>Buttons can include icons to provide additional visual cues about the action.</p>
+<h3 id="icon-before-text" tabindex="-1">Icon Before Text <a class="anchor" href="#icon-before-text" aria-hidden="true">#</a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-icon<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>16<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>16<span class="token punctuation">"</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M12 2L2 7l10 5 10-5z<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Button with Icon<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors inline-flex items-center space-x-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+    </svg>
+    <span>Button with Icon</span>
+  </button>
+</div>
+<h3 id="icon-after-text" tabindex="-1">Icon After Text <a class="anchor" href="#icon-after-text" aria-hidden="true">#</a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Button with Icon<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-icon<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>16<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>16<span class="token punctuation">"</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M5 12h14M12 5l7 7-7 7<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors inline-flex items-center space-x-2">
+    <span>Button with Icon</span>
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+  </button>
+</div>
+<h3 id="icon-only-button" tabindex="-1">Icon Only Button <a class="anchor" href="#icon-only-button" aria-hidden="true">#</a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--icon eds-button--primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-icon<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>16<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>16<span class="token punctuation">"</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M5 12h14M12 5l7 7-7 7<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-sr-only<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Next<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <button class="p-2 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors inline-flex items-center justify-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
+<h2 id="button-groups" tabindex="-1">Button Groups <a class="anchor" href="#button-groups" aria-hidden="true">#</a></h2>
+<p>Button groups allow you to display a set of related actions.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button-group<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--secondary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Cancel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-button eds-button--primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Submit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg my-4">
+  <div class="inline-flex space-x-3">
+    <button class="py-2 px-4 bg-[var(--color-bg)] text-[var(--color-text)] border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">Cancel</button>
+    <button class="py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">Submit</button>
+  </div>
+</div>
+<h2 id="usage-guidelines" tabindex="-1">Usage Guidelines <a class="anchor" href="#usage-guidelines" aria-hidden="true">#</a></h2>
+<ul>
+<li>Use primary buttons for the main action on a page or in a section</li>
+<li>Limit the number of primary buttons on a page to avoid confusion</li>
+<li>Use secondary buttons for alternative actions that aren't as important</li>
+<li>Use tertiary buttons for less important actions</li>
+<li>Use destructive buttons for actions that might result in data loss</li>
+<li>Always provide a text label for buttons, even those with icons</li>
+<li>Use sentence case for button labels (e.g., &quot;Save changes&quot; not &quot;Save Changes&quot;)</li>
+<li>Keep button labels short and clear — use verbs that describe the action</li>
+</ul>
+<h2 id="accessibility" tabindex="-1">Accessibility <a class="anchor" href="#accessibility" aria-hidden="true">#</a></h2>
+<ul>
+<li>Always include text labels for buttons, even for icon-only buttons (use visually hidden text)</li>
+<li>Ensure buttons have sufficient contrast against their background</li>
+<li>Make sure the button's purpose is clear from its label</li>
+<li>Use the correct HTML element: <code>&lt;button&gt;</code> for actions and <code>&lt;a&gt;</code> for navigation</li>
+<li>Ensure buttons are keyboard accessible and have visible focus states</li>
+</ul>
+<h2 id="code-examples" tabindex="-1">Code Examples <a class="anchor" href="#code-examples" aria-hidden="true">#</a></h2>
+<h3 id="react" tabindex="-1">React <a class="anchor" href="#react" aria-hidden="true">#</a></h3>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Button <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@enterprise-design-system/react'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">Example</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Clicked!'</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        Primary Button
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>secondary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        Secondary Button
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tertiary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        Tertiary Button
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>danger<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        Delete
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        Small Button
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token punctuation">></span></span><span class="token plain-text">
+        Disabled Button
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>primary<span class="token punctuation">"</span></span> <span class="token attr-name">startIcon</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AddIcon</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        Button with Icon
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="vue" tabindex="-1">Vue <a class="anchor" href="#vue" aria-hidden="true">#</a></h3>
+<pre class="language-vue"><code class="language-vue"><template>
+  <div>
+    <eds-button variant="primary" @click="handleClick">
+      Primary Button
+    </eds-button>
+    
+    <eds-button variant="secondary">
+      Secondary Button
+    </eds-button>
+    
+    <eds-button variant="tertiary">
+      Tertiary Button
+    </eds-button>
+    
+    <eds-button variant="danger">
+      Delete
+    </eds-button>
+    
+    <eds-button variant="primary" size="sm">
+      Small Button
+    </eds-button>
+    
+    <eds-button variant="primary" disabled>
+      Disabled Button
+    </eds-button>
+    
+    <eds-button variant="primary" :start-icon="AddIcon">
+      Button with Icon
+    </eds-button>
+  </div>
+</template>
+
+<script>
+import { EdsButton } from '@enterprise-design-system/vue';
+import { AddIcon } from '@enterprise-design-system/icons';
+
+export default {
+  components: {
+    EdsButton
+  },
+  data() {
+    return {
+      AddIcon
+    }
+  },
+  methods: {
+    handleClick() {
+      console.log('Clicked!');
+    }
+  }
+}
+</script></code></pre>
+<h2 id="design-tokens" tabindex="-1">Design Tokens <a class="anchor" href="#design-tokens" aria-hidden="true">#</a></h2>
+<p>The button component uses the following design tokens:</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--eds-button-primary-bg</code></td>
+<td><code>var(--color-primary)</code></td>
+<td>Primary button background color</td>
+</tr>
+<tr>
+<td><code>--eds-button-primary-text</code></td>
+<td><code>white</code></td>
+<td>Primary button text color</td>
+</tr>
+<tr>
+<td><code>--eds-button-primary-hover-bg</code></td>
+<td><code>var(--color-primary-dark)</code></td>
+<td>Primary button hover background color</td>
+</tr>
+<tr>
+<td><code>--eds-button-border-radius</code></td>
+<td><code>4px</code></td>
+<td>Button border radius</td>
+</tr>
+<tr>
+<td><code>--eds-button-font-weight</code></td>
+<td><code>500</code></td>
+<td>Button font weight</td>
+</tr>
+<tr>
+<td><code>--eds-button-disabled-opacity</code></td>
+<td><code>0.6</code></td>
+<td>Opacity for disabled buttons</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+    </div>
+    
+    <!-- Right sidebar - Table of Contents -->
+    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
+      <div class="sticky top-32">
+        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+        <nav class="toc js-toc">
+          <!-- Table of contents will be auto-generated here -->
+          <ul class="space-y-1">
             
-          </div>
-          
-          <div class="eds-tabs__panel" 
-               :class="{ 'eds-tabs__panel--active': activeTab === 'examples' }" 
-               role="tabpanel" 
-               id="examples">
-            <div class="eds-component__examples">
-              <p>Component examples coming soon...</p>
-            </div>
-          </div>
-          
-          <div class="eds-tabs__panel" 
-               :class="{ 'eds-tabs__panel--active': activeTab === 'code' }" 
-               role="tabpanel" 
-               id="code">
-            <div class="eds-component__code">
-              <p>Component code examples coming soon...</p>
-            </div>
-          </div>
-          
-          <div class="eds-tabs__panel" 
-               :class="{ 'eds-tabs__panel--active': activeTab === 'usage' }" 
-               role="tabpanel" 
-               id="usage">
-            <div class="eds-component__usage">
-              <p>Component usage statistics coming soon...</p>
-            </div>
-          </div>
-        </div>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Add table of contents JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // If no TOC elements exist, we'll generate them
+    if (!document.querySelector('.js-toc li')) {
+      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
+      const toc = document.querySelector('.js-toc');
+      
+      if (toc && headings.length > 0) {
+        const tocList = document.createElement('ul');
+        tocList.className = 'space-y-1';
+        
+        headings.forEach(heading => {
+          if (!heading.id) {
+            // Create an ID if none exists
+            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
+          }
+          
+          const level = parseInt(heading.tagName.charAt(1));
+          const listItem = document.createElement('li');
+          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
+          
+          const link = document.createElement('a');
+          link.href = `#${heading.id}`;
+          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
+          link.textContent = heading.textContent;
+          
+          listItem.appendChild(link);
+          tocList.appendChild(listItem);
+          
+          // Also add the anchor link to the heading
+          if (!heading.querySelector('.anchor')) {
+            const anchor = document.createElement('a');
+            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
+            anchor.href = `#${heading.id}`;
+            anchor.textContent = '#';
+            heading.appendChild(anchor);
+          }
+        });
+        
+        if (tocList.children.length > 0) {
+          toc.appendChild(tocList);
+        } else {
+          // If no headings found, hide the TOC container
+          const tocContainer = toc.closest('.sticky');
+          if (tocContainer) {
+            tocContainer.style.display = 'none';
+          }
+        }
+      }
+    }
+    
+    // Highlight the current section in the TOC as user scrolls
+    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
+    const tocLinks = document.querySelectorAll('.js-toc a');
+    
+    if (headings.length > 0 && tocLinks.length > 0) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            tocLinks.forEach(link => {
+              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
+            });
+            
+            // Add active class to corresponding link
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
+            }
+          }
+        });
+      }, observerOptions);
+      
+      headings.forEach(heading => {
+        observer.observe(heading);
+      });
+    }
+  });
+</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
