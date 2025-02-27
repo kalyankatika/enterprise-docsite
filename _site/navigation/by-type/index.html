@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navigate by Widget Type | Enterprise Design System</title>
-  <meta name="description" content="Find components based on their functionality and purpose.">
+  <title>Navigate by Type | Enterprise Design System</title>
+  <meta name="description" content="Browse components organized by their functional types and categories">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -78,9 +78,9 @@
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center space-x-6">
           <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Overview</a>
-          <a href="/design-system/foundations/" class="py-2 px-1 border-b-2 border-[var(--color-primary)] text-[var(--color-primary)]">Foundations</a>
+          <a href="/design-system/foundations/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
           <a href="/components/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
-          <a href="/patterns/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Patterns</a>
+          <a href="/navigation/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Browse</a>
           
           <!-- Search -->
           <form action="/search/" method="get" role="search" class="relative ml-2">
@@ -145,14 +145,18 @@
           <a href="/design-system/" class="hover:text-[var(--color-primary)]">Overview</a>
           <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
           <a href="/components/" class="hover:text-[var(--color-primary)] ">Components</a>
-          <a href="/patterns/" class="hover:text-[var(--color-primary)]">Patterns</a>
+          <a href="/navigation/" class="hover:text-[var(--color-primary)]">Browse</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Browse Components</h3>
+          <a href="/navigation/by-channel/" class="hover:text-[var(--color-primary)]">By Channel</a>
+          <a href="/navigation/by-type/" class="hover:text-[var(--color-primary)]">By Type</a>
+          <a href="/navigation/by-owner/" class="hover:text-[var(--color-primary)]">By Owner</a>
           
           <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
           <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
           <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
           <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
           <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
-          <a href="/tokens/" class="hover:text-[var(--color-primary)]">Tokens</a>
           <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
           
           <!-- Theme Toggle Button (Mobile) -->
@@ -174,324 +178,137 @@
   </header>
 
   <main class="flex-1">
-    
-<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
-  <div class="flex flex-col lg:flex-row">
-    <!-- Left sidebar - Optional component navigation -->
-    
-    
-    <!-- Main content -->
-    <div class="w-full">
-      <div class="prose max-w-none">
-        <h1>Navigate by Widget Type</h1>
-        
-          <p class="text-xl text-[var(--color-text-muted)] mb-8">Find components based on their functionality and purpose.</p>
-        
-        
-        <h2 id="components-by-widget-type" tabindex="-1">Components by Widget Type <a class="anchor" href="#components-by-widget-type" aria-hidden="true">#</a></h2>
-<p>Browse components organized by their functional category and purpose.</p>
-<div class="space-y-12 mt-8">
-  <!-- Input Types -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-      </svg>
-      <h3 class="text-xl font-bold">Input Components</h3>
-    </div>
-    <p class="mb-6">Components that allow users to input data and interact with the system.</p>
-<p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><br>
-<div><br>
-<h4 class="font-medium mb-2">Form Controls</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/inputs/button/" class="text-[var(--color-primary)]">Button</a></li><br>
-<li><a href="/components/inputs/checkbox/" class="text-[var(--color-primary)]">Checkbox</a></li><br>
-<li><a href="/components/inputs/radio/" class="text-[var(--color-primary)]">Radio Button</a></li><br>
-<li><a href="/components/inputs/input-field/" class="text-[var(--color-primary)]">Input Field</a></li><br>
-<li><a href="/components/inputs/select/" class="text-[var(--color-primary)]">Select</a></li><br>
-<li><a href="/components/inputs/toggle-switch/" class="text-[var(--color-primary)]">Toggle Switch</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2">Advanced Inputs</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/inputs/date-picker/" class="text-[var(--color-primary)]">Date Picker</a></li><br>
-<li><a href="/components/inputs/slider/" class="text-[var(--color-primary)]">Slider</a></li><br>
-<li><a href="/components/inputs/file-upload/" class="text-[var(--color-primary)]">File Upload</a></li><br>
-<li><a href="/components/inputs/color-picker/" class="text-[var(--color-primary)]">Color Picker</a></li><br>
-<li><a href="/components/inputs/autocomplete/" class="text-[var(--color-primary)]">Autocomplete</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2">Form Patterns</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/inputs/form-group/" class="text-[var(--color-primary)]">Form Group</a></li><br>
-<li><a href="/components/inputs/validation/" class="text-[var(--color-primary)]">Validation</a></li><br>
-<li><a href="/components/inputs/multi-step-form/" class="text-[var(--color-primary)]">Multi-step Form</a></li><br>
-<li><a href="/components/inputs/inline-edit/" class="text-[var(--color-primary)]">Inline Edit</a></li><br>
-</ul><br>
-</div><br>
-</div></p>
-<p><div class="mt-6"><br>
-<a href="/components/inputs/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View All Input Components<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a><br>
-</div></p>
-  </div>
-  <!-- Navigation Types -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-      </svg>
-      <h3 class="text-xl font-bold">Navigation Components</h3>
-    </div>
-    <p class="mb-6">Components that help users navigate through the application interface.</p>
-<p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><br>
-<div><br>
-<h4 class="font-medium mb-2">Primary Navigation</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/navigation/header/" class="text-[var(--color-primary)]">Header</a></li><br>
-<li><a href="/components/navigation/sidebar/" class="text-[var(--color-primary)]">Sidebar</a></li><br>
-<li><a href="/components/navigation/tab-bar/" class="text-[var(--color-primary)]">Tab Bar</a></li><br>
-<li><a href="/components/navigation/menu/" class="text-[var(--color-primary)]">Menu</a></li><br>
-<li><a href="/components/navigation/drawer/" class="text-[var(--color-primary)]">Drawer</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2">Secondary Navigation</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/navigation/breadcrumb/" class="text-[var(--color-primary)]">Breadcrumb</a></li><br>
-<li><a href="/components/navigation/tabs/" class="text-[var(--color-primary)]">Tabs</a></li><br>
-<li><a href="/components/navigation/pagination/" class="text-[var(--color-primary)]">Pagination</a></li><br>
-<li><a href="/components/navigation/stepper/" class="text-[var(--color-primary)]">Stepper</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2">Search &amp; Filtering</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/navigation/search/" class="text-[var(--color-primary)]">Search</a></li><br>
-<li><a href="/components/navigation/filter/" class="text-[var(--color-primary)]">Filter</a></li><br>
-<li><a href="/components/navigation/sort/" class="text-[var(--color-primary)]">Sort</a></li><br>
-<li><a href="/components/navigation/tag/" class="text-[var(--color-primary)]">Tag</a></li><br>
-</ul><br>
-</div><br>
-</div></p>
-<p><div class="mt-6"><br>
-<a href="/components/navigation/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View All Navigation Components<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a><br>
-</div></p>
-  </div>
-  <!-- Layout Types -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-      </svg>
-      <h3 class="text-xl font-bold">Layout Components</h3>
-    </div>
-    <p class="mb-6">Components that help structure and organize content on the page.</p>
-<p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><br>
-<div><br>
-<h4 class="font-medium mb-2">Containers</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/layout/card/" class="text-[var(--color-primary)]">Card</a></li><br>
-<li><a href="/components/layout/accordion/" class="text-[var(--color-primary)]">Accordion</a></li><br>
-<li><a href="/components/layout/panel/" class="text-[var(--color-primary)]">Panel</a></li><br>
-<li><a href="/components/layout/modal/" class="text-[var(--color-primary)]">Modal</a></li><br>
-<li><a href="/components/layout/drawer/" class="text-[var(--color-primary)]">Drawer</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2">Structure</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/layout/grid/" class="text-[var(--color-primary)]">Grid</a></li><br>
-<li><a href="/components/layout/split-view/" class="text-[var(--color-primary)]">Split View</a></li><br>
-<li><a href="/components/layout/stack/" class="text-[var(--color-primary)]">Stack</a></li><br>
-<li><a href="/components/layout/divider/" class="text-[var(--color-primary)]">Divider</a></li><br>
-<li><a href="/components/layout/spacer/" class="text-[var(--color-primary)]">Spacer</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2">Page Layouts</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/layout/page-template/" class="text-[var(--color-primary)]">Page Template</a></li><br>
-<li><a href="/components/layout/sidebar-layout/" class="text-[var(--color-primary)]">Sidebar Layout</a></li><br>
-<li><a href="/components/layout/dashboard/" class="text-[var(--color-primary)]">Dashboard</a></li><br>
-<li><a href="/components/layout/form-layout/" class="text-[var(--color-primary)]">Form Layout</a></li><br>
-</ul><br>
-</div><br>
-</div></p>
-<p><div class="mt-6"><br>
-<a href="/components/layout/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View All Layout Components<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a><br>
-</div></p>
-  </div>
-  <!-- Feedback Types -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      <h3 class="text-xl font-bold">Feedback Components</h3>
-    </div>
-    <p class="mb-6">Components that provide feedback and information to users.</p>
-<p><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><br>
-<div><br>
-<h4 class="font-medium mb-2">Alerts &amp; Notifications</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/feedback/alert/" class="text-[var(--color-primary)]">Alert</a></li><br>
-<li><a href="/components/feedback/toast/" class="text-[var(--color-primary)]">Toast</a></li><br>
-<li><a href="/components/feedback/banner/" class="text-[var(--color-primary)]">Banner</a></li><br>
-<li><a href="/components/feedback/notification/" class="text-[var(--color-primary)]">Notification</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2">Status Indicators</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/feedback/progress-bar/" class="text-[var(--color-primary)]">Progress Bar</a></li><br>
-<li><a href="/components/feedback/spinner/" class="text-[var(--color-primary)]">Spinner</a></li><br>
-<li><a href="/components/feedback/skeleton/" class="text-[var(--color-primary)]">Skeleton</a></li><br>
-<li><a href="/components/feedback/badge/" class="text-[var(--color-primary)]">Badge</a></li><br>
-<li><a href="/components/feedback/status-indicator/" class="text-[var(--color-primary)]">Status Indicator</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2">Dialogs</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/feedback/dialog/" class="text-[var(--color-primary)]">Dialog</a></li><br>
-<li><a href="/components/feedback/confirmation/" class="text-[var(--color-primary)]">Confirmation</a></li><br>
-<li><a href="/components/feedback/tooltip/" class="text-[var(--color-primary)]">Tooltip</a></li><br>
-<li><a href="/components/feedback/popover/" class="text-[var(--color-primary)]">Popover</a></li><br>
-</ul><br>
-</div><br>
-</div></p>
-<p><div class="mt-6"><br>
-<a href="/components/feedback/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View All Feedback Components<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a><br>
-</div></p>
-  </div>
-</div>
-      </div>
-    </div>
-    
-    <!-- Right sidebar - Table of Contents -->
-    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
-      <div class="sticky top-32">
-        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
-        <nav class="toc js-toc">
-          <!-- Table of contents will be auto-generated here -->
-          <ul class="space-y-1">
-            
+    <div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col lg:flex-row gap-10">
+    <!-- Left sidebar navigation -->
+    <aside class="lg:w-64 shrink-0">
+      <nav class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
+          <ul class="space-y-2">
+            <li><a href="/navigation/by-channel/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Channel</a></li>
+            <li><a href="/navigation/by-type/" class="block py-1 text-[var(--color-primary)] font-medium">Type</a></li>
+            <li><a href="/navigation/by-owner/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Owner</a></li>
           </ul>
-        </nav>
-      </div>
-    </div>
+        </div>
+      </nav>
+    </aside>
+<p><!-- Main content --><br>
+<main class="flex-1"><br>
+<div class="mb-10"><br>
+<h1 class="text-3xl font-bold mb-4">Browse by Type</h1><br>
+<p class="text-lg text-[var(--color-text-muted)] mb-8">Components organized by their functional categories and types.</p></p>
+<p><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><br>
+<!-- Input Types --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<h2 class="text-xl font-bold mb-4 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /><br>
+</svg><br>
+Input Components<br>
+</h2><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/inputs/button/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Button</a></li><br>
+<li><a href="/components/inputs/checkbox/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Checkbox</a></li><br>
+<li><a href="/components/inputs/radio/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Radio</a></li><br>
+<li><a href="/components/inputs/select/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Select</a></li><br>
+</ul><br>
+<a href="/components/inputs/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all input components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Layout Types --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<h2 class="text-xl font-bold mb-4 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /><br>
+</svg><br>
+Layout Components<br>
+</h2><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/layout/card/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Card</a></li><br>
+<li><a href="/components/layout/accordion/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Accordion</a></li><br>
+<li><a href="/components/layout/modal/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Modal</a></li><br>
+<li><a href="/components/layout/grid/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Grid</a></li><br>
+</ul><br>
+<a href="/components/layout/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all layout components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Navigation Types --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<h2 class="text-xl font-bold mb-4 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+Navigation Components<br>
+</h2><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/navigation/breadcrumb/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Breadcrumb</a></li><br>
+<li><a href="/components/navigation/tabs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Tabs</a></li><br>
+<li><a href="/components/navigation/pagination/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Pagination</a></li><br>
+<li><a href="/components/navigation/menu/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Menu</a></li><br>
+</ul><br>
+<a href="/components/navigation/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all navigation components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Feedback Types --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<h2 class="text-xl font-bold mb-4 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><br>
+</svg><br>
+Feedback Components<br>
+</h2><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/feedback/alert/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Alert</a></li><br>
+<li><a href="/components/feedback/toast/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Toast</a></li><br>
+<li><a href="/components/feedback/progress/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Progress</a></li><br>
+<li><a href="/components/feedback/spinner/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Spinner</a></li><br>
+</ul><br>
+<a href="/components/feedback/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all feedback components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Data Display Types --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<h2 class="text-xl font-bold mb-4 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /><br>
+</svg><br>
+Data Display Components<br>
+</h2><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/data-display/table/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Table</a></li><br>
+<li><a href="/components/data-display/list/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">List</a></li><br>
+<li><a href="/components/data-display/badge/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Badge</a></li><br>
+<li><a href="/components/data-display/tag/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Tag</a></li><br>
+</ul><br>
+<a href="/components/data-display/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all data display components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div><br>
+</div><br>
+</div><br>
+</main></p>
   </div>
 </div>
-
-<!-- Add table of contents JavaScript -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // If no TOC elements exist, we'll generate them
-    if (!document.querySelector('.js-toc li')) {
-      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
-      const toc = document.querySelector('.js-toc');
-      
-      if (toc && headings.length > 0) {
-        const tocList = document.createElement('ul');
-        tocList.className = 'space-y-1';
-        
-        headings.forEach(heading => {
-          if (!heading.id) {
-            // Create an ID if none exists
-            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
-          }
-          
-          const level = parseInt(heading.tagName.charAt(1));
-          const listItem = document.createElement('li');
-          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
-          
-          const link = document.createElement('a');
-          link.href = `#${heading.id}`;
-          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
-          link.textContent = heading.textContent;
-          
-          listItem.appendChild(link);
-          tocList.appendChild(listItem);
-          
-          // Also add the anchor link to the heading
-          if (!heading.querySelector('.anchor')) {
-            const anchor = document.createElement('a');
-            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
-            anchor.href = `#${heading.id}`;
-            anchor.textContent = '#';
-            heading.appendChild(anchor);
-          }
-        });
-        
-        if (tocList.children.length > 0) {
-          toc.appendChild(tocList);
-        } else {
-          // If no headings found, hide the TOC container
-          const tocContainer = toc.closest('.sticky');
-          if (tocContainer) {
-            tocContainer.style.display = 'none';
-          }
-        }
-      }
-    }
-    
-    // Highlight the current section in the TOC as user scrolls
-    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
-    const tocLinks = document.querySelectorAll('.js-toc a');
-    
-    if (headings.length > 0 && tocLinks.length > 0) {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -80% 0px',
-        threshold: 0
-      };
-      
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Remove active class from all links
-            tocLinks.forEach(link => {
-              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
-            });
-            
-            // Add active class to corresponding link
-            const id = entry.target.id;
-            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
-            if (activeLink) {
-              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
-            }
-          }
-        });
-      }, observerOptions);
-      
-      headings.forEach(heading => {
-        observer.observe(heading);
-      });
-    }
-  });
-</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">

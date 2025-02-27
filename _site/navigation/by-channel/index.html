@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navigate by Consuming Channel | Enterprise Design System</title>
-  <meta name="description" content="Find components organized by implementation channel or platform.">
+  <title>Navigate by Channel | Enterprise Design System</title>
+  <meta name="description" content="Browse components organized by their target channels or environments">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -78,9 +78,9 @@
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center space-x-6">
           <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Overview</a>
-          <a href="/design-system/foundations/" class="py-2 px-1 border-b-2 border-[var(--color-primary)] text-[var(--color-primary)]">Foundations</a>
+          <a href="/design-system/foundations/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
           <a href="/components/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
-          <a href="/patterns/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Patterns</a>
+          <a href="/navigation/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Browse</a>
           
           <!-- Search -->
           <form action="/search/" method="get" role="search" class="relative ml-2">
@@ -145,14 +145,18 @@
           <a href="/design-system/" class="hover:text-[var(--color-primary)]">Overview</a>
           <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
           <a href="/components/" class="hover:text-[var(--color-primary)] ">Components</a>
-          <a href="/patterns/" class="hover:text-[var(--color-primary)]">Patterns</a>
+          <a href="/navigation/" class="hover:text-[var(--color-primary)]">Browse</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Browse Components</h3>
+          <a href="/navigation/by-channel/" class="hover:text-[var(--color-primary)]">By Channel</a>
+          <a href="/navigation/by-type/" class="hover:text-[var(--color-primary)]">By Type</a>
+          <a href="/navigation/by-owner/" class="hover:text-[var(--color-primary)]">By Owner</a>
           
           <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
           <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
           <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
           <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
           <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
-          <a href="/tokens/" class="hover:text-[var(--color-primary)]">Tokens</a>
           <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
           
           <!-- Theme Toggle Button (Mobile) -->
@@ -174,238 +178,95 @@
   </header>
 
   <main class="flex-1">
-    
-<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
-  <div class="flex flex-col lg:flex-row">
-    <!-- Left sidebar - Optional component navigation -->
-    
-    
-    <!-- Main content -->
-    <div class="w-full">
-      <div class="prose max-w-none">
-        <h1>Navigate by Consuming Channel</h1>
-        
-          <p class="text-xl text-[var(--color-text-muted)] mb-8">Find components organized by implementation channel or platform.</p>
-        
-        
-        <h2 id="components-by-consuming-channel" tabindex="-1">Components by Consuming Channel <a class="anchor" href="#components-by-consuming-channel" aria-hidden="true">#</a></h2>
-<p>Browse components based on the platform or channel where they are implemented.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-  <!-- Web Channel -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-      </svg>
-      <h3 class="text-xl font-bold">Web Components</h3>
-    </div>
-    <p class="mb-4">Components built for web applications with HTML, CSS, and JavaScript.</p>
-<p><h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Available Components:</h4><br>
-<ul class="space-y-1 mb-5"><br>
-<li><a href="/components/inputs/button/" class="text-[var(--color-primary)]">Button</a></li><br>
-<li><a href="/components/inputs/checkbox/" class="text-[var(--color-primary)]">Checkbox</a></li><br>
-<li><a href="/components/layout/card/" class="text-[var(--color-primary)]">Card</a></li><br>
-<li><a href="/components/navigation/breadcrumb/" class="text-[var(--color-primary)]">Breadcrumb</a></li><br>
-<li><a href="/components/feedback/alert/" class="text-[var(--color-primary)]">Alert</a></li><br>
-</ul></p>
-<p><a href="/components/web/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View All Web Components<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a></p>
-  </div>
-  <!-- Mobile Channel -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      </svg>
-      <h3 class="text-xl font-bold">Mobile Components</h3>
-    </div>
-    <p class="mb-4">Components designed for iOS and Android mobile applications.</p>
-<p><h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Available Components:</h4><br>
-<ul class="space-y-1 mb-5"><br>
-<li><a href="/components/inputs/button/" class="text-[var(--color-primary)]">Button</a></li><br>
-<li><a href="/components/inputs/toggle-switch/" class="text-[var(--color-primary)]">Toggle Switch</a></li><br>
-<li><a href="/components/layout/card/" class="text-[var(--color-primary)]">Card</a></li><br>
-<li><a href="/components/navigation/tab-bar/" class="text-[var(--color-primary)]">Tab Bar</a></li><br>
-<li><a href="/components/feedback/toast/" class="text-[var(--color-primary)]">Toast</a></li><br>
-</ul></p>
-<p><a href="/components/mobile/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View All Mobile Components<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a></p>
-  </div>
-  <!-- Email Channel -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-      <h3 class="text-xl font-bold">Email Components</h3>
-    </div>
-    <p class="mb-4">Components designed for email templates and communications.</p>
-<p><h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Available Components:</h4><br>
-<ul class="space-y-1 mb-5"><br>
-<li><a href="/components/inputs/button/" class="text-[var(--color-primary)]">Button</a></li><br>
-<li><a href="/components/layout/section/" class="text-[var(--color-primary)]">Section</a></li><br>
-<li><a href="/components/layout/spacer/" class="text-[var(--color-primary)]">Spacer</a></li><br>
-<li><a href="/components/content/heading/" class="text-[var(--color-primary)]">Heading</a></li><br>
-<li><a href="/components/content/divider/" class="text-[var(--color-primary)]">Divider</a></li><br>
-</ul></p>
-<p><a href="/components/email/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View All Email Components<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a></p>
-  </div>
-  <!-- Print Channel -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-      </svg>
-      <h3 class="text-xl font-bold">Print Components</h3>
-    </div>
-    <p class="mb-4">Components designed for print materials and documents.</p>
-<p><h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Available Components:</h4><br>
-<ul class="space-y-1 mb-5"><br>
-<li><a href="/components/layout/grid/" class="text-[var(--color-primary)]">Grid</a></li><br>
-<li><a href="/components/content/typography/" class="text-[var(--color-primary)]">Typography</a></li><br>
-<li><a href="/components/content/table/" class="text-[var(--color-primary)]">Table</a></li><br>
-<li><a href="/components/content/image/" class="text-[var(--color-primary)]">Image</a></li><br>
-<li><a href="/components/content/footer/" class="text-[var(--color-primary)]">Footer</a></li><br>
-</ul></p>
-<p><a href="/components/print/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View All Print Components<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a></p>
-  </div>
-</div>
-<h2 id="implementing-across-channels" tabindex="-1">Implementing Across Channels <a class="anchor" href="#implementing-across-channels" aria-hidden="true">#</a></h2>
-<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mt-8">
-  <h3 class="text-xl font-bold mb-4">Cross-Channel Components</h3>
-  <p>Some components are designed to work across multiple channels with adaptations for each context. Our design system provides guidelines for maintaining consistency across implementations.</p>
-  <div class="mt-6">
-    <a href="/design-system/cross-channel/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
-      Learn About Cross-Channel Design
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </a>
-  </div>
-</div>
-      </div>
-    </div>
-    
-    <!-- Right sidebar - Table of Contents -->
-    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
-      <div class="sticky top-32">
-        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
-        <nav class="toc js-toc">
-          <!-- Table of contents will be auto-generated here -->
-          <ul class="space-y-1">
-            
+    <div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col lg:flex-row gap-10">
+    <!-- Left sidebar navigation -->
+    <aside class="lg:w-64 shrink-0">
+      <nav class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
+          <ul class="space-y-2">
+            <li><a href="/navigation/by-channel/" class="block py-1 text-[var(--color-primary)] font-medium">Channel</a></li>
+            <li><a href="/navigation/by-type/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Type</a></li>
+            <li><a href="/navigation/by-owner/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Owner</a></li>
           </ul>
-        </nav>
-      </div>
-    </div>
+        </div>
+      </nav>
+    </aside>
+<p><!-- Main content --><br>
+<main class="flex-1"><br>
+<div class="mb-10"><br>
+<h1 class="text-3xl font-bold mb-4">Browse by Channel</h1><br>
+<p class="text-lg text-[var(--color-text-muted)] mb-8">Components organized by their target channels or environments.</p></p>
+<p><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><br>
+<!-- Web Channel --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<h2 class="text-xl font-bold mb-4 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /><br>
+</svg><br>
+Web<br>
+</h2><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/layout/card/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Card</a></li><br>
+<li><a href="/components/layout/accordion/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Accordion</a></li><br>
+<li><a href="/components/inputs/button/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Button</a></li><br>
+<li><a href="/components/navigation/breadcrumb/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Breadcrumb</a></li><br>
+</ul><br>
+<a href="/navigation/by-channel/web/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all web components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Mobile Channel --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<h2 class="text-xl font-bold mb-4 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /><br>
+</svg><br>
+Mobile<br>
+</h2><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/layout/card/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Card</a></li><br>
+<li><a href="/components/inputs/button/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Button</a></li><br>
+<li><a href="/components/feedback/toast/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Toast</a></li><br>
+<li><a href="/components/inputs/toggle/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Toggle</a></li><br>
+</ul><br>
+<a href="/navigation/by-channel/mobile/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all mobile components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Desktop Channel --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<h2 class="text-xl font-bold mb-4 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /><br>
+</svg><br>
+Desktop<br>
+</h2><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/layout/modal/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Modal</a></li><br>
+<li><a href="/components/layout/grid/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Grid</a></li><br>
+<li><a href="/components/navigation/tabs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Tabs</a></li><br>
+<li><a href="/components/feedback/spinner/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Spinner</a></li><br>
+</ul><br>
+<a href="/navigation/by-channel/desktop/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all desktop components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div><br>
+</div><br>
+</div><br>
+</main></p>
   </div>
 </div>
-
-<!-- Add table of contents JavaScript -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // If no TOC elements exist, we'll generate them
-    if (!document.querySelector('.js-toc li')) {
-      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
-      const toc = document.querySelector('.js-toc');
-      
-      if (toc && headings.length > 0) {
-        const tocList = document.createElement('ul');
-        tocList.className = 'space-y-1';
-        
-        headings.forEach(heading => {
-          if (!heading.id) {
-            // Create an ID if none exists
-            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
-          }
-          
-          const level = parseInt(heading.tagName.charAt(1));
-          const listItem = document.createElement('li');
-          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
-          
-          const link = document.createElement('a');
-          link.href = `#${heading.id}`;
-          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
-          link.textContent = heading.textContent;
-          
-          listItem.appendChild(link);
-          tocList.appendChild(listItem);
-          
-          // Also add the anchor link to the heading
-          if (!heading.querySelector('.anchor')) {
-            const anchor = document.createElement('a');
-            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
-            anchor.href = `#${heading.id}`;
-            anchor.textContent = '#';
-            heading.appendChild(anchor);
-          }
-        });
-        
-        if (tocList.children.length > 0) {
-          toc.appendChild(tocList);
-        } else {
-          // If no headings found, hide the TOC container
-          const tocContainer = toc.closest('.sticky');
-          if (tocContainer) {
-            tocContainer.style.display = 'none';
-          }
-        }
-      }
-    }
-    
-    // Highlight the current section in the TOC as user scrolls
-    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
-    const tocLinks = document.querySelectorAll('.js-toc a');
-    
-    if (headings.length > 0 && tocLinks.length > 0) {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -80% 0px',
-        threshold: 0
-      };
-      
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Remove active class from all links
-            tocLinks.forEach(link => {
-              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
-            });
-            
-            // Add active class to corresponding link
-            const id = entry.target.id;
-            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
-            if (activeLink) {
-              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
-            }
-          }
-        });
-      }, observerOptions);
-      
-      headings.forEach(heading => {
-        observer.observe(heading);
-      });
-    }
-  });
-</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">

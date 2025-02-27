@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navigate by Widget Owner | Enterprise Design System</title>
-  <meta name="description" content="Find components based on the teams that maintain them.">
+  <title>Navigate by Owner | Enterprise Design System</title>
+  <meta name="description" content="Browse components organized by their owners and teams responsible for maintenance">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -78,9 +78,9 @@
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center space-x-6">
           <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Overview</a>
-          <a href="/design-system/foundations/" class="py-2 px-1 border-b-2 border-[var(--color-primary)] text-[var(--color-primary)]">Foundations</a>
+          <a href="/design-system/foundations/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
           <a href="/components/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
-          <a href="/patterns/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Patterns</a>
+          <a href="/navigation/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Browse</a>
           
           <!-- Search -->
           <form action="/search/" method="get" role="search" class="relative ml-2">
@@ -145,14 +145,18 @@
           <a href="/design-system/" class="hover:text-[var(--color-primary)]">Overview</a>
           <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
           <a href="/components/" class="hover:text-[var(--color-primary)] ">Components</a>
-          <a href="/patterns/" class="hover:text-[var(--color-primary)]">Patterns</a>
+          <a href="/navigation/" class="hover:text-[var(--color-primary)]">Browse</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Browse Components</h3>
+          <a href="/navigation/by-channel/" class="hover:text-[var(--color-primary)]">By Channel</a>
+          <a href="/navigation/by-type/" class="hover:text-[var(--color-primary)]">By Type</a>
+          <a href="/navigation/by-owner/" class="hover:text-[var(--color-primary)]">By Owner</a>
           
           <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
           <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
           <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
           <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
           <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
-          <a href="/tokens/" class="hover:text-[var(--color-primary)]">Tokens</a>
           <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
           
           <!-- Theme Toggle Button (Mobile) -->
@@ -174,372 +178,142 @@
   </header>
 
   <main class="flex-1">
-    
-<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
-  <div class="flex flex-col lg:flex-row">
-    <!-- Left sidebar - Optional component navigation -->
-    
-    
-    <!-- Main content -->
-    <div class="w-full">
-      <div class="prose max-w-none">
-        <h1>Navigate by Widget Owner</h1>
-        
-          <p class="text-xl text-[var(--color-text-muted)] mb-8">Find components based on the teams that maintain them.</p>
-        
-        
-        <h2 id="components-by-owner" tabindex="-1">Components by Owner <a class="anchor" href="#components-by-owner" aria-hidden="true">#</a></h2>
-<p>Browse components based on the team or department responsible for maintaining them.</p>
-<div class="space-y-12 mt-8">
-  <!-- UX Team Components -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-      <h3 class="text-xl font-bold">UX Design Team</h3>
-    </div>
-<p><div class="flex flex-col md:flex-row md:items-start mb-6"><br>
-<div class="mb-4 md:mb-0 md:mr-8 md:flex-shrink-0"><br>
-<div class="bg-[var(--color-primary)] text-white rounded-md py-2 px-4 inline-block"><br>
-<span class="font-medium">Primary Contact:</span> Sarah Johnson<br>
-</div><br>
-</div><br>
-<div><br>
-<p class="mb-2">The UX Design team is responsible for creating and maintaining components that enhance user experience and interface design.</p><br>
-<p>These components follow core usability principles and accessibility guidelines to ensure a consistent user experience across products.</p><br>
-</div><br>
-</div></p>
-<p><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><br>
-<div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Core UI Components</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/inputs/button/" class="text-[var(--color-primary)]">Button</a></li><br>
-<li><a href="/components/inputs/input-field/" class="text-[var(--color-primary)]">Input Field</a></li><br>
-<li><a href="/components/inputs/checkbox/" class="text-[var(--color-primary)]">Checkbox</a></li><br>
-<li><a href="/components/inputs/radio/" class="text-[var(--color-primary)]">Radio Button</a></li><br>
-<li><a href="/components/inputs/select/" class="text-[var(--color-primary)]">Select</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Layout Components</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/layout/card/" class="text-[var(--color-primary)]">Card</a></li><br>
-<li><a href="/components/layout/modal/" class="text-[var(--color-primary)]">Modal</a></li><br>
-<li><a href="/components/layout/grid/" class="text-[var(--color-primary)]">Grid</a></li><br>
-<li><a href="/components/layout/divider/" class="text-[var(--color-primary)]">Divider</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Navigation Elements</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/navigation/tabs/" class="text-[var(--color-primary)]">Tabs</a></li><br>
-<li><a href="/components/navigation/pagination/" class="text-[var(--color-primary)]">Pagination</a></li><br>
-<li><a href="/components/navigation/breadcrumb/" class="text-[var(--color-primary)]">Breadcrumb</a></li><br>
-<li><a href="/components/navigation/menu/" class="text-[var(--color-primary)]">Menu</a></li><br>
-</ul><br>
-</div><br>
-</div></p>
-<p><div class="mt-6"><br>
-<a href="/teams/ux-design/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View UX Design Team Resources<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a><br>
-</div></p>
-  </div>
-  <!-- Frontend Team Components -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-      <h3 class="text-xl font-bold">Frontend Engineering Team</h3>
-    </div>
-<p><div class="flex flex-col md:flex-row md:items-start mb-6"><br>
-<div class="mb-4 md:mb-0 md:mr-8 md:flex-shrink-0"><br>
-<div class="bg-[var(--color-primary)] text-white rounded-md py-2 px-4 inline-block"><br>
-<span class="font-medium">Primary Contact:</span> Michael Chen<br>
-</div><br>
-</div><br>
-<div><br>
-<p class="mb-2">The Frontend Engineering team develops and maintains components that require complex interactions and state management.</p><br>
-<p>These components are built with a focus on performance, accessibility, and cross-browser compatibility.</p><br>
-</div><br>
-</div></p>
-<p><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><br>
-<div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Interactive Components</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/feedback/dialog/" class="text-[var(--color-primary)]">Dialog</a></li><br>
-<li><a href="/components/feedback/alert/" class="text-[var(--color-primary)]">Alert</a></li><br>
-<li><a href="/components/inputs/date-picker/" class="text-[var(--color-primary)]">Date Picker</a></li><br>
-<li><a href="/components/inputs/autocomplete/" class="text-[var(--color-primary)]">Autocomplete</a></li><br>
-<li><a href="/components/inputs/slider/" class="text-[var(--color-primary)]">Slider</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Data Visualization</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/data/chart/" class="text-[var(--color-primary)]">Chart</a></li><br>
-<li><a href="/components/data/table/" class="text-[var(--color-primary)]">Table</a></li><br>
-<li><a href="/components/data/progress/" class="text-[var(--color-primary)]">Progress Indicator</a></li><br>
-<li><a href="/components/data/metric/" class="text-[var(--color-primary)]">Metric</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Advanced Patterns</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/patterns/drag-drop/" class="text-[var(--color-primary)]">Drag and Drop</a></li><br>
-<li><a href="/components/patterns/infinite-scroll/" class="text-[var(--color-primary)]">Infinite Scroll</a></li><br>
-<li><a href="/components/patterns/virtualized-list/" class="text-[var(--color-primary)]">Virtualized List</a></li><br>
-<li><a href="/components/patterns/form-validation/" class="text-[var(--color-primary)]">Form Validation</a></li><br>
-</ul><br>
-</div><br>
-</div></p>
-<p><div class="mt-6"><br>
-<a href="/teams/frontend-engineering/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View Frontend Engineering Resources<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a><br>
-</div></p>
-  </div>
-  <!-- Accessibility Team Components -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-      </svg>
-      <h3 class="text-xl font-bold">Accessibility Team</h3>
-    </div>
-<p><div class="flex flex-col md:flex-row md:items-start mb-6"><br>
-<div class="mb-4 md:mb-0 md:mr-8 md:flex-shrink-0"><br>
-<div class="bg-[var(--color-primary)] text-white rounded-md py-2 px-4 inline-block"><br>
-<span class="font-medium">Primary Contact:</span> Alex Rivera<br>
-</div><br>
-</div><br>
-<div><br>
-<p class="mb-2">The Accessibility team ensures all components meet WCAG standards and provides specialized accessible components.</p><br>
-<p>These components are designed with inclusivity in mind, supporting screen readers, keyboard navigation, and other assistive technologies.</p><br>
-</div><br>
-</div></p>
-<p><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><br>
-<div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Specialized Components</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/accessibility/skip-link/" class="text-[var(--color-primary)]">Skip Link</a></li><br>
-<li><a href="/components/accessibility/focus-indicator/" class="text-[var(--color-primary)]">Focus Indicator</a></li><br>
-<li><a href="/components/accessibility/screen-reader-text/" class="text-[var(--color-primary)]">Screen Reader Text</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Enhanced Components</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/accessibility/accessible-table/" class="text-[var(--color-primary)]">Accessible Table</a></li><br>
-<li><a href="/components/accessibility/accessible-form/" class="text-[var(--color-primary)]">Accessible Form</a></li><br>
-<li><a href="/components/accessibility/accessible-modal/" class="text-[var(--color-primary)]">Accessible Modal</a></li><br>
-<li><a href="/components/accessibility/accessible-tabs/" class="text-[var(--color-primary)]">Accessible Tabs</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Resources</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/accessibility/guidelines/" class="text-[var(--color-primary)]">Accessibility Guidelines</a></li><br>
-<li><a href="/accessibility/testing/" class="text-[var(--color-primary)]">Testing Procedures</a></li><br>
-<li><a href="/accessibility/checklist/" class="text-[var(--color-primary)]">Accessibility Checklist</a></li><br>
-<li><a href="/accessibility/tools/" class="text-[var(--color-primary)]">Tools &amp; Resources</a></li><br>
-</ul><br>
-</div><br>
-</div></p>
-<p><div class="mt-6"><br>
-<a href="/teams/accessibility/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View Accessibility Team Resources<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a><br>
-</div></p>
-  </div>
-  <!-- Mobile Team Components -->
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-    <div class="flex items-center mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)] mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      </svg>
-      <h3 class="text-xl font-bold">Mobile Development Team</h3>
-    </div>
-<p><div class="flex flex-col md:flex-row md:items-start mb-6"><br>
-<div class="mb-4 md:mb-0 md:mr-8 md:flex-shrink-0"><br>
-<div class="bg-[var(--color-primary)] text-white rounded-md py-2 px-4 inline-block"><br>
-<span class="font-medium">Primary Contact:</span> Priya Mehta<br>
-</div><br>
-</div><br>
-<div><br>
-<p class="mb-2">The Mobile Development team creates and maintains components optimized for mobile experiences.</p><br>
-<p>These components follow platform-specific guidelines while maintaining the core design system principles.</p><br>
-</div><br>
-</div></p>
-<p><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><br>
-<div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">iOS Components</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/mobile/ios/action-sheet/" class="text-[var(--color-primary)]">Action Sheet</a></li><br>
-<li><a href="/components/mobile/ios/navigation-bar/" class="text-[var(--color-primary)]">Navigation Bar</a></li><br>
-<li><a href="/components/mobile/ios/tab-bar/" class="text-[var(--color-primary)]">Tab Bar</a></li><br>
-<li><a href="/components/mobile/ios/list-item/" class="text-[var(--color-primary)]">List Item</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Android Components</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/mobile/android/app-bar/" class="text-[var(--color-primary)]">App Bar</a></li><br>
-<li><a href="/components/mobile/android/bottom-navigation/" class="text-[var(--color-primary)]">Bottom Navigation</a></li><br>
-<li><a href="/components/mobile/android/card/" class="text-[var(--color-primary)]">Card</a></li><br>
-<li><a href="/components/mobile/android/fab/" class="text-[var(--color-primary)]">Floating Action Button</a></li><br>
-</ul><br>
-</div></p>
-<p><div><br>
-<h4 class="font-medium mb-2 text-[var(--color-text-muted)]">Cross-Platform Components</h4><br>
-<ul class="space-y-1"><br>
-<li><a href="/components/mobile/cross-platform/button/" class="text-[var(--color-primary)]">Button</a></li><br>
-<li><a href="/components/mobile/cross-platform/form-field/" class="text-[var(--color-primary)]">Form Field</a></li><br>
-<li><a href="/components/mobile/cross-platform/alert/" class="text-[var(--color-primary)]">Alert</a></li><br>
-<li><a href="/components/mobile/cross-platform/toast/" class="text-[var(--color-primary)]">Toast</a></li><br>
-</ul><br>
-</div><br>
-</div></p>
-<p><div class="mt-6"><br>
-<a href="/teams/mobile-development/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors"><br>
-View Mobile Development Resources<br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
-</svg><br>
-</a><br>
-</div></p>
-  </div>
-</div>
-<h2 id="cross-team-collaboration" tabindex="-1">Cross-team Collaboration <a class="anchor" href="#cross-team-collaboration" aria-hidden="true">#</a></h2>
-<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mt-8">
-  <h3 class="text-xl font-bold mb-4">Component Governance</h3>
-  <p class="mb-4">Many components are developed and maintained through cross-team collaboration. Our governance model ensures consistent quality and experience across all components.</p>
-  <div class="mt-6">
-    <a href="/governance/" class="inline-flex items-center py-2 px-4 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
-      Learn About Our Governance Model
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </a>
-  </div>
-</div>
-      </div>
-    </div>
-    
-    <!-- Right sidebar - Table of Contents -->
-    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
-      <div class="sticky top-32">
-        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
-        <nav class="toc js-toc">
-          <!-- Table of contents will be auto-generated here -->
-          <ul class="space-y-1">
-            
+    <div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col lg:flex-row gap-10">
+    <!-- Left sidebar navigation -->
+    <aside class="lg:w-64 shrink-0">
+      <nav class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
+          <ul class="space-y-2">
+            <li><a href="/navigation/by-channel/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Channel</a></li>
+            <li><a href="/navigation/by-type/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Type</a></li>
+            <li><a href="/navigation/by-owner/" class="block py-1 text-[var(--color-primary)] font-medium">Owner</a></li>
           </ul>
-        </nav>
-      </div>
-    </div>
+        </div>
+      </nav>
+    </aside>
+<p><!-- Main content --><br>
+<main class="flex-1"><br>
+<div class="mb-10"><br>
+<h1 class="text-3xl font-bold mb-4">Browse by Owner</h1><br>
+<p class="text-lg text-[var(--color-text-muted)] mb-8">Components organized by the teams responsible for their development and maintenance.</p></p>
+<p><div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><br>
+<!-- UI Core Team --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<div class="flex items-center mb-6"><br>
+<div class="w-12 h-12 rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary)] flex items-center justify-center text-xl font-bold">UI</div><br>
+<div class="ml-4"><br>
+<h2 class="text-xl font-bold">UI Core Team</h2><br>
+<p class="text-sm text-[var(--color-text-muted)]">Core component library maintainers</p><br>
+</div><br>
+</div><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/layout/card/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Card</a></li><br>
+<li><a href="/components/layout/accordion/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Accordion</a></li><br>
+<li><a href="/components/inputs/button/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Button</a></li><br>
+<li><a href="/components/navigation/breadcrumb/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Breadcrumb</a></li><br>
+</ul><br>
+<a href="/teams/ui-core/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all UI Core components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Frontend Platform Team --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<div class="flex items-center mb-6"><br>
+<div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl font-bold">FP</div><br>
+<div class="ml-4"><br>
+<h2 class="text-xl font-bold">Frontend Platform</h2><br>
+<p class="text-sm text-[var(--color-text-muted)]">Advanced components and tools</p><br>
+</div><br>
+</div><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/data-display/table/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Table</a></li><br>
+<li><a href="/components/data-display/chart/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Chart</a></li><br>
+<li><a href="/components/data-display/tree/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Tree</a></li><br>
+<li><a href="/components/data-display/visualization/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Visualization</a></li><br>
+</ul><br>
+<a href="/teams/frontend-platform/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all Frontend Platform components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Mobile Experience Team --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<div class="flex items-center mb-6"><br>
+<div class="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xl font-bold">ME</div><br>
+<div class="ml-4"><br>
+<h2 class="text-xl font-bold">Mobile Experience</h2><br>
+<p class="text-sm text-[var(--color-text-muted)]">Mobile-specific components</p><br>
+</div><br>
+</div><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/mobile/swipe-actions/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Swipe Actions</a></li><br>
+<li><a href="/components/mobile/pull-to-refresh/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Pull to Refresh</a></li><br>
+<li><a href="/components/mobile/bottom-sheet/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Bottom Sheet</a></li><br>
+<li><a href="/components/mobile/gesture-handler/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Gesture Handler</a></li><br>
+</ul><br>
+<a href="/teams/mobile-experience/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all Mobile Experience components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Design Systems Team --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<div class="flex items-center mb-6"><br>
+<div class="w-12 h-12 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xl font-bold">DS</div><br>
+<div class="ml-4"><br>
+<h2 class="text-xl font-bold">Design Systems</h2><br>
+<p class="text-sm text-[var(--color-text-muted)]">Design tokens and foundations</p><br>
+</div><br>
+</div><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/design-system/foundations/colors/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Colors</a></li><br>
+<li><a href="/design-system/foundations/typography/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Typography</a></li><br>
+<li><a href="/design-system/foundations/spacing/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Spacing</a></li><br>
+<li><a href="/design-system/foundations/icons/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Icons</a></li><br>
+</ul><br>
+<a href="/teams/design-systems/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all Design Systems resources<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div></p>
+<p><!-- Accessibility Team --><br>
+<div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm"><br>
+<div class="flex items-center mb-6"><br>
+<div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xl font-bold">A11y</div><br>
+<div class="ml-4"><br>
+<h2 class="text-xl font-bold">Accessibility</h2><br>
+<p class="text-sm text-[var(--color-text-muted)]">Specialized accessible components</p><br>
+</div><br>
+</div><br>
+<ul class="space-y-2 mb-4"><br>
+<li><a href="/components/a11y/screen-reader/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Screen Reader</a></li><br>
+<li><a href="/components/a11y/focus-trap/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Focus Trap</a></li><br>
+<li><a href="/components/a11y/skip-link/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Skip Link</a></li><br>
+<li><a href="/components/a11y/aria-live/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">ARIA Live</a></li><br>
+</ul><br>
+<a href="/teams/accessibility/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline"><br>
+View all Accessibility components<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</a><br>
+</div><br>
+</div><br>
+</div><br>
+</main></p>
   </div>
 </div>
-
-<!-- Add table of contents JavaScript -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // If no TOC elements exist, we'll generate them
-    if (!document.querySelector('.js-toc li')) {
-      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
-      const toc = document.querySelector('.js-toc');
-      
-      if (toc && headings.length > 0) {
-        const tocList = document.createElement('ul');
-        tocList.className = 'space-y-1';
-        
-        headings.forEach(heading => {
-          if (!heading.id) {
-            // Create an ID if none exists
-            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
-          }
-          
-          const level = parseInt(heading.tagName.charAt(1));
-          const listItem = document.createElement('li');
-          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
-          
-          const link = document.createElement('a');
-          link.href = `#${heading.id}`;
-          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
-          link.textContent = heading.textContent;
-          
-          listItem.appendChild(link);
-          tocList.appendChild(listItem);
-          
-          // Also add the anchor link to the heading
-          if (!heading.querySelector('.anchor')) {
-            const anchor = document.createElement('a');
-            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
-            anchor.href = `#${heading.id}`;
-            anchor.textContent = '#';
-            heading.appendChild(anchor);
-          }
-        });
-        
-        if (tocList.children.length > 0) {
-          toc.appendChild(tocList);
-        } else {
-          // If no headings found, hide the TOC container
-          const tocContainer = toc.closest('.sticky');
-          if (tocContainer) {
-            tocContainer.style.display = 'none';
-          }
-        }
-      }
-    }
-    
-    // Highlight the current section in the TOC as user scrolls
-    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
-    const tocLinks = document.querySelectorAll('.js-toc a');
-    
-    if (headings.length > 0 && tocLinks.length > 0) {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -80% 0px',
-        threshold: 0
-      };
-      
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Remove active class from all links
-            tocLinks.forEach(link => {
-              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
-            });
-            
-            // Add active class to corresponding link
-            const id = entry.target.id;
-            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
-            if (activeLink) {
-              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
-            }
-          }
-        });
-      }, observerOptions);
-      
-      headings.forEach(heading => {
-        observer.observe(heading);
-      });
-    }
-  });
-</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
