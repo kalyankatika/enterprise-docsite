@@ -68,3 +68,7 @@ args = "mkdir -p src/assets/images src/assets/fonts"
 
 [deployment]
 run = ["sh", "-c", "npx @11ty/eleventy --serve --port=5000"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
