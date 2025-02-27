@@ -4,32 +4,12 @@ layout: layouts/base.njk
 
 <div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
   <div class="flex flex-col lg:flex-row">
-    <!-- Left sidebar - Optional component navigation -->
-    {% if showSidebar %}
+    <!-- Left sidebar - Standard navigation -->
     <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
       <div class="sticky top-32">
-        <h3 class="text-lg font-bold mb-4">{{ sidebar.title }}</h3>
-        <nav class="space-y-1">
-          {% for section in sidebar.sections %}
-            <div class="mb-4">
-              {% if section.title %}
-                <h4 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-2">{{ section.title }}</h4>
-              {% endif %}
-              <ul class="space-y-1">
-                {% for item in section.items %}
-                  <li>
-                    <a href="{{ item.url }}" class="block py-1 {% if page.url == item.url %}text-[var(--color-primary)] font-medium{% else %}text-[var(--color-text)] hover:text-[var(--color-primary)]{% endif %} transition-colors">
-                      {{ item.text }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        </nav>
+        {% include "partials/left-navigation.njk" %}
       </div>
     </div>
-    {% endif %}
     
     <!-- Main content -->
     <div class="{% if showSidebar %}lg:flex-1{% else %}w-full{% endif %}">
