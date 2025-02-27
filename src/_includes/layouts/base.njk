@@ -64,20 +64,23 @@
 </head>
 <body class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen">
 
-  <header class="sticky top-0 bg-[var(--color-bg)] shadow-sm z-50 border-b border-[var(--color-border)]">
+  <header class="bg-[var(--color-bg)] shadow-sm z-50 border-b border-[var(--color-border)]">
     <div class="container mx-auto px-4 md:px-6">
       <div class="flex items-center justify-between py-4">
         <!-- Logo and site title -->
-        <a href="/" class="flex items-center">
-          <span class="font-bold text-lg">Standards</span>
+        <a href="/" class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="font-bold text-lg">Enterprise Design System</span>
         </a>
         
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-8">
-          <a href="/design-system/brand-strategy/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Brand Strategy</a>
+        <nav class="hidden md:flex items-center space-x-6">
+          <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Overview</a>
           <a href="/design-system/foundations/" class="py-2 px-1 border-b-2 border-[var(--color-primary)] text-[var(--color-primary)]">Foundations</a>
-          <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Design System</a>
-          <a href="/resources/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Resources</a>
+          <a href="/components/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/patterns/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Patterns</a>
           
           <!-- Search -->
           <form action="/search/" method="get" role="search" class="relative ml-2">
@@ -124,14 +127,14 @@
       <!-- Secondary navigation (Desktop) -->
       <div class="hidden md:block border-t border-[var(--color-border)] py-2">
         <nav class="flex items-center space-x-8">
-          <a href="/whats-new/" class="py-1 hover:text-[var(--color-primary)] transition-colors">What's New</a>
           <a href="/getting-started/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Getting Started</a>
-          <a href="/foundations/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
-          <a href="/components/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
-          <a href="/templates/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Templates</a>
+          <a href="/design-system/guidelines/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Guidelines</a>
+          <a href="/components/" class="py-1 hover:text-[var(--color-primary)] transition-colors {% if page.url.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}">Components</a>
           <a href="/patterns/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Patterns</a>
+          <a href="/templates/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Templates</a>
+          <a href="/resources/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Resources</a>
           <a href="/tokens/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Tokens</a>
-          <a href="/contribution/" class="py-1 hover:text-[var(--color-primary)] transition-colors">Contribution</a>
+          <a href="/whats-new/" class="py-1 hover:text-[var(--color-primary)] transition-colors">What's New</a>
         </nav>
       </div>
       
@@ -139,20 +142,18 @@
       <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)]">
         <nav class="flex flex-col space-y-4">
           <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
-          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Design System</a>
-          <a href="/navigation/" class="hover:text-[var(--color-primary)]">Navigation</a>
-          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
-          <a href="/support/" class="hover:text-[var(--color-primary)]">Support</a>
-          
-          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Design System</h3>
-          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
-          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
-          <a href="/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
-          <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
-          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Overview</a>
+          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
+          <a href="/components/" class="hover:text-[var(--color-primary)] {% if page.url.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}">Components</a>
           <a href="/patterns/" class="hover:text-[var(--color-primary)]">Patterns</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
+          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
+          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
+          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
           <a href="/tokens/" class="hover:text-[var(--color-primary)]">Tokens</a>
-          <a href="/contribution/" class="hover:text-[var(--color-primary)]">Contribution</a>
+          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
           
           <!-- Theme Toggle Button (Mobile) -->
           <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)] mt-4" aria-label="Toggle theme">

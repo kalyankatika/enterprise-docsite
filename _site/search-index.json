@@ -1805,50 +1805,6 @@
   
     
       {
-        "title": "Layout Components",
-        "url": "/components/layout/",
-        "content": "&amp;lt;h1 id=&amp;quot;layout-components&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Layout Components &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#layout-components&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
-&amp;lt;p&amp;gt;Layout components help structure and organize content on the page, providing consistent containers and spatial arrangements.&amp;lt;/p&amp;gt;
-&amp;lt;div class=&amp;quot;grid grid-cols-1 md:grid-cols-3 gap-6 mt-8&amp;quot;&amp;gt;
-  &amp;lt;a href=&amp;quot;/components/layout/accordion/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Accordion&amp;lt;/h2&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Expandable panels that show and hide content to conserve space.&amp;lt;/p&amp;gt;
-    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
-  &amp;lt;/a&amp;gt;
-  &amp;lt;a href=&amp;quot;/components/layout/card/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Card&amp;lt;/h2&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Versatile containers for displaying related content and actions.&amp;lt;/p&amp;gt;
-    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
-  &amp;lt;/a&amp;gt;
-  &amp;lt;a href=&amp;quot;/components/layout/grid/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Grid&amp;lt;/h2&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Flexible layout system for organizing content in rows and columns.&amp;lt;/p&amp;gt;
-    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
-  &amp;lt;/a&amp;gt;
-  &amp;lt;a href=&amp;quot;/components/layout/modal/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Modal&amp;lt;/h2&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Dialog boxes that appear in front of the main content.&amp;lt;/p&amp;gt;
-    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
-  &amp;lt;/a&amp;gt;
-  &amp;lt;a href=&amp;quot;/components/layout/tabs/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Tabs&amp;lt;/h2&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Organizes content into separate views within the same context.&amp;lt;/p&amp;gt;
-    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
-  &amp;lt;/a&amp;gt;
-  &amp;lt;a href=&amp;quot;/components/layout/divider/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Divider&amp;lt;/h2&amp;gt;
-    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Visual separators for distinguishing content sections.&amp;lt;/p&amp;gt;
-    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
-  &amp;lt;/a&amp;gt;
-&amp;lt;/div&amp;gt;",
-        "description": "Components that help with page structure and content organization.",
-        "type": "Page",
-        "date": "2025-02-27"
-      },
-    
-  
-    
-      {
         "title": "Navigation Components",
         "url": "/components/navigation/",
         "content": "&amp;lt;h1 id=&amp;quot;navigation-components&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Navigation Components &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#navigation-components&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
@@ -2104,14 +2060,14 @@
 &amp;lt;h3 id=&amp;quot;layout-components&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Layout Components &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#layout-components&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
 &amp;lt;p&amp;gt;Components that help structure content and UI elements on the page.&amp;lt;/p&amp;gt;
 &amp;lt;div class=&amp;quot;grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8&amp;quot;&amp;gt;
-&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;/components/layout/&amp;quot; class=&amp;quot;eds-component-card&amp;quot;&amp;gt;&amp;lt;br&amp;gt;
-&amp;lt;h3 class=&amp;quot;text-xl font-medium mb-2&amp;quot;&amp;gt;Layout Components&amp;lt;/h3&amp;gt;&amp;lt;br&amp;gt;
-&amp;lt;p class=&amp;quot;text-gray-600 dark:text-gray-300 mb-4&amp;quot;&amp;gt;Components that help with page structure and content organization.&amp;lt;/p&amp;gt;&amp;lt;br&amp;gt;
-&amp;lt;span class=&amp;quot;eds-link&amp;quot;&amp;gt;View Component →&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;
-&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
 &amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;/components/layout/card/&amp;quot; class=&amp;quot;eds-component-card&amp;quot;&amp;gt;&amp;lt;br&amp;gt;
 &amp;lt;h3 class=&amp;quot;text-xl font-medium mb-2&amp;quot;&amp;gt;Card&amp;lt;/h3&amp;gt;&amp;lt;br&amp;gt;
 &amp;lt;p class=&amp;quot;text-gray-600 dark:text-gray-300 mb-4&amp;quot;&amp;gt;Cards organize content and actions about a single subject&amp;lt;/p&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;span class=&amp;quot;eds-link&amp;quot;&amp;gt;View Component →&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;a href=&amp;quot;/components/layout/&amp;quot; class=&amp;quot;eds-component-card&amp;quot;&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;h3 class=&amp;quot;text-xl font-medium mb-2&amp;quot;&amp;gt;Layout Components&amp;lt;/h3&amp;gt;&amp;lt;br&amp;gt;
+&amp;lt;p class=&amp;quot;text-gray-600 dark:text-gray-300 mb-4&amp;quot;&amp;gt;Components that help with page structure and content organization.&amp;lt;/p&amp;gt;&amp;lt;br&amp;gt;
 &amp;lt;span class=&amp;quot;eds-link&amp;quot;&amp;gt;View Component →&amp;lt;/span&amp;gt;&amp;lt;br&amp;gt;
 &amp;lt;/a&amp;gt;&amp;lt;/p&amp;gt;
 &amp;lt;/div&amp;gt;
@@ -3273,35 +3229,6 @@ font-size: var(--eds-font-size-lg);&amp;lt;br&amp;gt;
   
     
       {
-        "title": "Enterprise Design System",
-        "url": "/",
-        "content": "&amp;lt;h2 id=&amp;quot;welcome-to-the-enterprise-design-system&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Welcome to the Enterprise Design System &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#welcome-to-the-enterprise-design-system&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;
-&amp;lt;p&amp;gt;The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products.&amp;lt;/p&amp;gt;
-&amp;lt;h3 id=&amp;quot;recent-updates&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Recent Updates &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#recent-updates&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
-&amp;lt;ul&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Version 2.0 Released&amp;lt;/strong&amp;gt;: Our latest version includes improved accessibility, new components, and enhanced documentation. &amp;lt;a href=&amp;quot;/updates/2025-02-15-version-2-release/&amp;quot;&amp;gt;Learn more&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Dark Mode Support&amp;lt;/strong&amp;gt;: All components now support dark mode out of the box, with seamless theme switching.&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Expanded Component Library&amp;lt;/strong&amp;gt;: We&amp;#039;ve added 15 new components based on user feedback and real-world use cases.&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
-&amp;lt;h3 id=&amp;quot;about-the-design-system&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;About the Design System &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#about-the-design-system&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
-&amp;lt;p&amp;gt;The Enterprise Design System is built on the following principles:&amp;lt;/p&amp;gt;
-&amp;lt;ol&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Consistency&amp;lt;/strong&amp;gt;: Creating a unified experience across all enterprise applications.&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Accessibility&amp;lt;/strong&amp;gt;: Ensuring all components meet WCAG 2.1 AA standards.&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Flexibility&amp;lt;/strong&amp;gt;: Providing components that can be customized to meet various needs.&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Performance&amp;lt;/strong&amp;gt;: Optimizing components for fast load times and smooth interactions.&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Maintainability&amp;lt;/strong&amp;gt;: Creating a system that is easy to update and extend.&amp;lt;/li&amp;gt;
-&amp;lt;/ol&amp;gt;
-&amp;lt;p&amp;gt;Visit our &amp;lt;a href=&amp;quot;/getting-started/&amp;quot;&amp;gt;getting started guide&amp;lt;/a&amp;gt; to learn how to integrate the design system into your projects.&amp;lt;/p&amp;gt;
-",
-        "description": "A comprehensive design system for building consistent, accessible, and beautiful enterprise applications",
-        "type": "Page",
-        "date": "2025-02-27"
-      },
-    
-  
-    
-      {
         "title": "Button Component",
         "url": "/components/inputs/button/",
         "content": "&amp;lt;h2 id=&amp;quot;overview&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Overview &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#overview&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;
@@ -4255,6 +4182,50 @@ View Mobile Development Resources&amp;lt;br&amp;gt;
   &amp;lt;/div&amp;gt;
 &amp;lt;/div&amp;gt;",
         "description": "Find components based on the teams that maintain them.",
+        "type": "Page",
+        "date": "2025-02-27"
+      },
+    
+  
+    
+      {
+        "title": "Layout Components",
+        "url": "/components/layout/",
+        "content": "&amp;lt;h1 id=&amp;quot;layout-components&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Layout Components &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#layout-components&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h1&amp;gt;
+&amp;lt;p&amp;gt;Layout components help structure and organize content on the page, providing consistent containers and spatial arrangements.&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;grid grid-cols-1 md:grid-cols-3 gap-6 mt-8&amp;quot;&amp;gt;
+  &amp;lt;a href=&amp;quot;/components/layout/accordion/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
+    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Accordion&amp;lt;/h2&amp;gt;
+    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Expandable panels that show and hide content to conserve space.&amp;lt;/p&amp;gt;
+    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
+  &amp;lt;/a&amp;gt;
+  &amp;lt;a href=&amp;quot;/components/layout/card/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
+    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Card&amp;lt;/h2&amp;gt;
+    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Versatile containers for displaying related content and actions.&amp;lt;/p&amp;gt;
+    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
+  &amp;lt;/a&amp;gt;
+  &amp;lt;a href=&amp;quot;/components/layout/grid/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
+    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Grid&amp;lt;/h2&amp;gt;
+    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Flexible layout system for organizing content in rows and columns.&amp;lt;/p&amp;gt;
+    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
+  &amp;lt;/a&amp;gt;
+  &amp;lt;a href=&amp;quot;/components/layout/modal/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
+    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Modal&amp;lt;/h2&amp;gt;
+    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Dialog boxes that appear in front of the main content.&amp;lt;/p&amp;gt;
+    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
+  &amp;lt;/a&amp;gt;
+  &amp;lt;a href=&amp;quot;/components/layout/tabs/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
+    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Tabs&amp;lt;/h2&amp;gt;
+    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Organizes content into separate views within the same context.&amp;lt;/p&amp;gt;
+    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
+  &amp;lt;/a&amp;gt;
+  &amp;lt;a href=&amp;quot;/components/layout/divider/&amp;quot; class=&amp;quot;block p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
+    &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-2&amp;quot;&amp;gt;Divider&amp;lt;/h2&amp;gt;
+    &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)] mb-4&amp;quot;&amp;gt;Visual separators for distinguishing content sections.&amp;lt;/p&amp;gt;
+    &amp;lt;div class=&amp;quot;mt-4 text-[var(--color-primary)]&amp;quot;&amp;gt;View component →&amp;lt;/div&amp;gt;
+  &amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;",
+        "description": "Components that help with page structure and content organization.",
         "type": "Page",
         "date": "2025-02-27"
       },
@@ -5375,6 +5346,35 @@ Security Best Practices&amp;lt;br&amp;gt;
   });
 &amp;lt;/script&amp;gt;",
         "description": "Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.",
+        "type": "Page",
+        "date": "2025-02-27"
+      },
+    
+  
+    
+      {
+        "title": "Enterprise Design System",
+        "url": "/",
+        "content": "&amp;lt;h2 id=&amp;quot;welcome-to-the-enterprise-design-system&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Welcome to the Enterprise Design System &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#welcome-to-the-enterprise-design-system&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h2&amp;gt;
+&amp;lt;p&amp;gt;The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products.&amp;lt;/p&amp;gt;
+&amp;lt;h3 id=&amp;quot;recent-updates&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;Recent Updates &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#recent-updates&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Version 2.0 Released&amp;lt;/strong&amp;gt;: Our latest version includes improved accessibility, new components, and enhanced documentation. &amp;lt;a href=&amp;quot;/updates/2025-02-15-version-2-release/&amp;quot;&amp;gt;Learn more&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Dark Mode Support&amp;lt;/strong&amp;gt;: All components now support dark mode out of the box, with seamless theme switching.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Expanded Component Library&amp;lt;/strong&amp;gt;: We&amp;#039;ve added 15 new components based on user feedback and real-world use cases.&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;h3 id=&amp;quot;about-the-design-system&amp;quot; tabindex=&amp;quot;-1&amp;quot;&amp;gt;About the Design System &amp;lt;a class=&amp;quot;anchor&amp;quot; href=&amp;quot;#about-the-design-system&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;#&amp;lt;/a&amp;gt;&amp;lt;/h3&amp;gt;
+&amp;lt;p&amp;gt;The Enterprise Design System is built on the following principles:&amp;lt;/p&amp;gt;
+&amp;lt;ol&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Consistency&amp;lt;/strong&amp;gt;: Creating a unified experience across all enterprise applications.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Accessibility&amp;lt;/strong&amp;gt;: Ensuring all components meet WCAG 2.1 AA standards.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Flexibility&amp;lt;/strong&amp;gt;: Providing components that can be customized to meet various needs.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Performance&amp;lt;/strong&amp;gt;: Optimizing components for fast load times and smooth interactions.&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;strong&amp;gt;Maintainability&amp;lt;/strong&amp;gt;: Creating a system that is easy to update and extend.&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+&amp;lt;p&amp;gt;Visit our &amp;lt;a href=&amp;quot;/getting-started/&amp;quot;&amp;gt;getting started guide&amp;lt;/a&amp;gt; to learn how to integrate the design system into your projects.&amp;lt;/p&amp;gt;
+",
+        "description": "A comprehensive design system for building consistent, accessible, and beautiful enterprise applications",
         "type": "Page",
         "date": "2025-02-27"
       }
