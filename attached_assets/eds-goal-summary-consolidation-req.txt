@@ -1,0 +1,45 @@
+EDS Goal summary – Redesign and re-build design.firm.com to optimize the user experience and scale our support of enterprise and product-specific materials.
+Designers and developers must be able to easily find and apply EDS-approved materials and guidelines to the products they're working on, in ways that align with EDS standards. 
+Contributions from approved EDS partners must be integrated in ways that make it easy for the user to find these materials to their experiences, while making clear the proper channels for support and maintenance
+Internal EDS team members and EDS Partners must be able to edit basic site content without having coding knowledge. Markdown is OK.
+ 
+Design and build process
+I'd like to see a full design process for this complex project
+Collaborative design, content, & dev
+Produce multiple options for review and evaluation
+Perform quick-hit reviews with users
+Let's get a rough roadmap together to keep ourselves on track and able to communicate milestones to stakeholders
+ 
+Site content - Site should include all the materials that are required to design and build EDS-compliant, front-end experiences, including (but not limited to)
+
+Design language foundations
+Onboarding materials for devs and designers
+Guidance for designers and devs for assembling experiences using the materials provided (how does it all fit together, what are the types of assets we provide and what is the role of each)
+Inventories of design system assets (let's confirm terminology we're using; and to clarify, the IA doesn't have to be organized this way)
+Components
+Compound components
+Templates
+Design patterns
+
+For the design system assets:
+design.firm.com should become the access point for all design system assets, including assets currently on legacy docsite1, legacy docsite2, and legacy docsite3
+There should be ways to see only assets that apply to the product I'm working on
+There should be asset-specific guidance and documentation for devs and designers
+There should be ways to get clarity on who created, owns, and supports any given asset
+Access to support and comms channels
+Access to related and external resources
+_______________________
+
+DOCSITE Consolidation requirements:
+If we take the structure that exists across all three docsites, we’ll have the following:
+
+EDS / Legacy docsite1 / Legacy docsite2 Component Pages Combined
+Summary at the top
+Categorized tabs
+Static or interactive examples on page
+Component specifications: Behavior, variations, Design spec, accessibility, content
+Code snippets included on page
+On-page navigational element (currently right-hand)
+Help resources (report bug, request feature, get help)
+Consistent page structure
+Version of component
