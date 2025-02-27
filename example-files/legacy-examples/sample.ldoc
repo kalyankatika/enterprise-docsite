@@ -1,0 +1,48 @@
+@TITLE: Toggle Switch Component
+@AUTHOR: EDS Team
+@DATE: 2025-01-15
+@TAGS: component, ui, form, input
+
+The Toggle Switch component is an interactive control that allows users to turn something on or off.
+
+@SECTION: Overview
+
+Toggle switches are used to quickly switch between two possible states. They are commonly used for "on/off" states.
+
+@SECTION: Appearance
+
+Toggle switches have two states:
+@ITEM On - Typically represented by the thumb positioned on the right
+@ITEM Off - Typically represented by the thumb positioned on the left
+
+@SECTION: Code Example
+
+@CODE_BEGIN(html)
+<label class="eds-toggle-switch">
+  <input type="checkbox" class="eds-toggle-switch__input" />
+  <span class="eds-toggle-switch__slider"></span>
+</label>
+@CODE_END
+
+@SECTION: Accessibility
+
+@NOTE_BEGIN
+Toggle switches should be implemented as checkbox inputs with appropriate styling to ensure they are accessible to all users, including those using screen readers.
+@NOTE_END
+
+@WARNING_BEGIN
+Avoid using toggle switches for actions that require confirmation. Use regular buttons for these actions instead.
+@WARNING_END
+
+@SECTION: Properties
+
+@ITEM label - Text label associated with the toggle
+@ITEM checked - Current state of the toggle (on/off)
+@ITEM disabled - Whether the toggle is disabled
+@ITEM onChange - Function called when the toggle state changes
+
+@SECTION: Related Components
+
+@ITEM @LINK(../inputs/checkbox/,Checkbox) - For discrete selection options
+@ITEM @LINK(../inputs/radio/,Radio Button) - For selecting one option from many
+@ITEM @LINK(../inputs/button/,Button) - For triggering actions

@@ -35,6 +35,10 @@ args = "11ty Development Server"
 task = "workflow.run"
 args = "create_migration_dirs"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "create_example_dirs"
+
 [[workflows.workflow]]
 name = "create_dirs"
 author = "agent"
@@ -119,6 +123,20 @@ task = "packager.installForAll"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "mkdir -p src/utils/migration scripts/migration"
+
+[[workflows.workflow]]
+name = "create_example_dirs"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "mkdir -p example-files/legacy-examples example-files/migrated"
 
 [deployment]
 run = ["sh", "-c", "npx @11ty/eleventy --serve"]

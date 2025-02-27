@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example Documentation Component</title>
+    <meta name="author" content="Documentation Team">
+    <meta name="description" content="Example component documentation for migration testing">
+</head>
+<body>
+    <h1>Button Component</h1>
+    
+    <p>The Button component is a versatile UI element used across our enterprise applications.</p>
+    
+    <h2>Design Guidelines</h2>
+    
+    <p>Our button design follows these principles:</p>
+    
+    <ul>
+        <li>Clear visual hierarchy through size and color</li>
+        <li>Distinct states (default, hover, active, disabled)</li>
+        <li>Consistent padding and spacing</li>
+        <li>Accessible color contrast ratios</li>
+    </ul>
+    
+    <h2>Code Example</h2>
+    
+    <pre><code class="language-html">
+&lt;button class="eds-button eds-button--primary"&gt;
+    &lt;span class="eds-button__text"&gt;Click Me&lt;/span&gt;
+&lt;/button&gt;
+    </code></pre>
+    
+    <h2>Accessibility</h2>
+    
+    <p>Ensure buttons are accessible by following these guidelines:</p>
+    
+    <ol>
+        <li>Use appropriate contrast ratios</li>
+        <li>Maintain minimum touch target size of 44×44px</li>
+        <li>Include clear focus states</li>
+        <li>Use semantic HTML elements</li>
+    </ol>
+    
+    <div class="note">
+        <strong>Note:</strong> Always test button components with screen readers to ensure they are properly announced.
+    </div>
+    
+    <h2>Properties</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>variant</td>
+                <td>string</td>
+                <td>'primary'</td>
+                <td>Visual style of the button (primary, secondary, tertiary)</td>
+            </tr>
+            <tr>
+                <td>size</td>
+                <td>string</td>
+                <td>'medium'</td>
+                <td>Size of the button (small, medium, large)</td>
+            </tr>
+            <tr>
+                <td>disabled</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Whether the button is disabled</td>
+            </tr>
+            <tr>
+                <td>onClick</td>
+                <td>function</td>
+                <td>undefined</td>
+                <td>Function called when the button is clicked</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
