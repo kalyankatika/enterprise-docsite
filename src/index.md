@@ -19,12 +19,12 @@ categories:
     url: /design-system/guidelines/
     icon: <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
 featuredComponents:
+  - title: Accordion
+    description: Expandable content sections that help organize and declutter interfaces.
+    url: /components/layout/accordion/
   - title: Buttons
     description: Primary, secondary, and tertiary button styles with various states and sizes.
     url: /components/inputs/button/
-  - title: Alert
-    description: Display important messages, warnings, or status information to users.
-    url: /components/feedback/alert/
   - title: Card
     description: Versatile container for displaying related content and actions.
     url: /components/layout/card/

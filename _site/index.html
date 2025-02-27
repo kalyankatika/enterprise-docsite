@@ -68,19 +68,16 @@
     <div class="container mx-auto px-4 md:px-6">
       <div class="flex items-center justify-between py-4">
         <!-- Logo and site title -->
-        <a href="/" class="flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-          <span class="font-bold text-lg">Enterprise Design System</span>
+        <a href="/" class="flex items-center">
+          <span class="font-bold text-lg">Standards</span>
         </a>
         
         <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center space-x-4">
-          <a href="/design-system/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Design System</a>
-          <a href="/navigation/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Navigation</a>
-          <a href="/resources/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Resources</a>
-          <a href="/support/" class="py-2 px-3 hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-alt)] rounded-md transition-colors">Support</a>
+        <nav class="hidden md:flex items-center space-x-8">
+          <a href="/design-system/brand-strategy/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Brand Strategy</a>
+          <a href="/design-system/foundations/" class="py-2 px-1 border-b-2 border-[var(--color-primary)] text-[var(--color-primary)]">Foundations</a>
+          <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Design System</a>
+          <a href="/resources/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Resources</a>
           
           <!-- Search -->
           <form action="/search/" method="get" role="search" class="relative ml-2">
@@ -177,18 +174,20 @@
 
   <main class="flex-1">
     
-<div class="bg-[var(--color-primary)] text-white py-16 md:py-24">
+<div class="bg-[var(--color-bg)] py-20 md:py-24 border-b border-[var(--color-border)]">
   <div class="container mx-auto px-4 md:px-6 text-center">
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Enterprise Design System</h1>
-    <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10 opacity-90">A comprehensive design system for building consistent, accessible, and beautiful enterprise applications</p>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Grow and evolve while<br>staying true to who we are.</h1>
+    <p class="text-xl max-w-3xl mx-auto mb-10 text-[var(--color-text-muted)]">Enterprise Design System are the guidelines and resources that ensure consistency and continuity across our brand and design system.</p>
     
     
-    <a href="/getting-started/" class="inline-flex items-center justify-center px-6 py-3 bg-white text-[var(--color-primary)] font-medium rounded-md hover:bg-gray-100 transition-colors">
-      Get Started
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-      </svg>
-    </a>
+    <div class="flex flex-col md:flex-row gap-4 justify-center">
+      <a href="/getting-started/" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+        Get Started
+      </a>
+      <a href="/components/" class="inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">
+        Browse Components
+      </a>
+    </div>
     
   </div>
 </div>
@@ -251,10 +250,10 @@
     
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       
-      <a href="/components/inputs/button/" class="block group">
+      <a href="/components/layout/accordion/" class="block group">
         <div class="bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Buttons</h3>
-          <p class="text-[var(--color-text-muted)] mb-4">Primary, secondary, and tertiary button styles with various states and sizes.</p>
+          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Accordion</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">Expandable content sections that help organize and declutter interfaces.</p>
           <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
             View Component
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -264,10 +263,10 @@
         </div>
       </a>
       
-      <a href="/components/feedback/alert/" class="block group">
+      <a href="/components/inputs/button/" class="block group">
         <div class="bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Alert</h3>
-          <p class="text-[var(--color-text-muted)] mb-4">Display important messages, warnings, or status information to users.</p>
+          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Buttons</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">Primary, secondary, and tertiary button styles with various states and sizes.</p>
           <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
             View Component
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
