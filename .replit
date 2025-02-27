@@ -31,6 +31,10 @@ args = "create_accordion_dirs"
 task = "workflow.run"
 args = "11ty Development Server"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "create_migration_dirs"
+
 [[workflows.workflow]]
 name = "create_dirs"
 author = "agent"
@@ -101,6 +105,20 @@ task = "packager.installForAll"
 task = "shell.exec"
 args = "npx @11ty/eleventy --port=5000 --serve"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "create_migration_dirs"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "mkdir -p src/utils/migration scripts/migration"
 
 [deployment]
 run = ["sh", "-c", "npx @11ty/eleventy --serve"]
