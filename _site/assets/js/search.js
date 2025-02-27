@@ -2,230 +2,227 @@
  * Search functionality for EDS Documentation
  */
 
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSearch();
+});
+
 function initializeSearch() {
-  const searchForm = document.querySelector('.eds-search-form');
-  const searchInput = document.querySelector('.eds-search-input');
-  const searchResults = document.querySelector('.eds-search-results');
-  const searchToggle = document.querySelector('.eds-search-toggle');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  const searchCount = document.getElementById('search-count');
   
-  if (!searchForm || !searchInput || !searchResults) return;
+  if (!searchInput || !searchResults) return;
   
-  // Toggle search form visibility
-  if (searchToggle) {
-    searchToggle.addEventListener('click', () => {
-      const isExpanded = searchToggle.getAttribute('aria-expanded') === 'true';
-      searchToggle.setAttribute('aria-expanded', !isExpanded);
+  let searchIndex = [];
+  let isLoading = false;
+
+  // Fetch the search index
+  fetch('/search-index.json')
+    .then(response => response.json())
+    .then(data => {
+      searchIndex = data;
       
-      if (isExpanded) {
-        searchForm.classList.remove('eds-search-form--open');
-      } else {
-        searchForm.classList.add('eds-search-form--open');
-        searchInput.focus();
+      // Check if there's a query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      
+      if (query) {
+        searchInput.value = query;
+        performSearch(query, searchResults);
       }
+    })
+    .catch(error => {
+      console.error('Error loading search index:', error);
     });
-    
-    // Close search form on click outside
-    document.addEventListener('click', event => {
-      if (!searchForm.contains(event.target) && !searchToggle.contains(event.target)) {
-        searchForm.classList.remove('eds-search-form--open');
-        searchToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-  
-  // Get search data from the global window object or fetch it
-  let searchData = window.edsSearchData || [];
-  
-  // If search data is not available in the global object, fetch it
-  if (!searchData.length) {
-    fetch('/search-data.json')
-      .then(response => response.json())
-      .then(data => {
-        searchData = data;
-        window.edsSearchData = data;
-      })
-      .catch(error => {
-        console.error('Error loading search data:', error);
-      });
-  }
-  
-  // Handle search input
-  searchInput.addEventListener('input', debounce(() => {
-    const query = searchInput.value.trim();
+
+  // Set up search input event
+  const debouncedSearch = debounce(function(event) {
+    const query = event.target.value.trim();
     
     if (query.length < 2) {
-      searchResults.innerHTML = '';
+      searchResults.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">Please enter at least 2 characters to search</p>';
+      if (searchCount) searchCount.textContent = '0';
       return;
     }
     
     performSearch(query, searchResults);
-  }, 300));
-  
-  // Handle search form submission
-  searchForm.addEventListener('submit', event => {
-    event.preventDefault();
-    const query = searchInput.value.trim();
-    
-    if (query.length < 2) return;
-    
-    performSearch(query, searchResults);
-  });
-  
-  // Perform search on the data
+  }, 300);
+
+  searchInput.addEventListener('input', debouncedSearch);
+
+  /**
+   * Perform the search against the index
+   */
   function performSearch(query, resultsContainer) {
-    if (!searchData.length) {
-      resultsContainer.innerHTML = '<p>Search data is not available.</p>';
+    if (isLoading || !searchIndex.length) {
+      resultsContainer.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">Loading...</p>';
       return;
     }
     
-    // Filter and score results
-    const results = searchData
-      .map(item => {
-        const titleScore = scoreMatch(item.title, query) * 3;
-        const contentScore = scoreMatch(item.content, query);
-        const tagsScore = item.tags ? scoreMatch(item.tags.join(' '), query) * 2 : 0;
-        
-        return {
-          ...item,
-          score: titleScore + contentScore + tagsScore
-        };
-      })
-      .filter(item => item.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 10);
+    isLoading = true;
+    resultsContainer.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">Searching...</p>';
     
-    if (results.length === 0) {
-      resultsContainer.innerHTML = '<p class="eds-search-no-results">No results found. Try different keywords.</p>';
-      return;
-    }
-    
-    // Render results
-    const resultsHtml = results.map(item => {
-      const snippet = getResultSnippet(item.content, query);
+    // Allow the UI to update before searching
+    setTimeout(() => {
+      const results = searchIndex
+        .filter(item => {
+          const titleScore = scoreMatch(item.title, query);
+          const contentScore = scoreMatch(item.content, query);
+          const urlScore = scoreMatch(item.url, query);
+          
+          item.score = titleScore * 3 + contentScore + urlScore * 0.5;
+          return item.score > 0;
+        })
+        .sort((a, b) => b.score - a.score);
       
-      return `
-        <a href="${item.url}" class="eds-search-result">
-          <h3 class="eds-search-result__title">${highlightMatches(item.title, query)}</h3>
-          <p class="eds-search-result__snippet">${snippet}</p>
-          ${item.tags && item.tags.length > 0 ? 
-            `<div class="eds-search-result__tags">
-              ${item.tags.map(tag => `<span class="eds-search-result__tag">${tag}</span>`).join('')}
-            </div>` : 
-            ''}
-        </a>
-      `;
-    }).join('');
-    
-    resultsContainer.innerHTML = resultsHtml;
+      if (results.length === 0) {
+        resultsContainer.innerHTML = '<p class="py-4 text-center text-[var(--color-text-muted)]">No results found for "' + escapeRegExp(query) + '"</p>';
+        if (searchCount) searchCount.textContent = '0';
+      } else {
+        if (searchCount) searchCount.textContent = results.length.toString();
+        
+        const resultItems = results.map(item => {
+          const snippet = getResultSnippet(item.content, query);
+          
+          return `
+            <li class="mb-6 pb-6 border-b border-[var(--color-border)] last:border-0">
+              <h3 class="text-xl font-medium mb-2">
+                <a href="${item.url}" class="text-[var(--color-primary)] hover:underline">
+                  ${highlightMatches(item.title, query)}
+                </a>
+              </h3>
+              <p class="text-sm text-[var(--color-text-muted)] mb-1">${item.url}</p>
+              <p class="text-[var(--color-text)]">${snippet}</p>
+            </li>
+          `;
+        }).join('');
+        
+        resultsContainer.innerHTML = `<ul class="divide-y divide-[var(--color-border)]">${resultItems}</ul>`;
+      }
+      
+      isLoading = false;
+    }, 10);
   }
-  
-  // Score a match in text
+
+  /**
+   * Score a text match with the query
+   */
   function scoreMatch(text, query) {
     if (!text) return 0;
     
-    const normalizedText = text.toLowerCase();
-    const normalizedQuery = query.toLowerCase();
+    text = text.toLowerCase();
+    query = query.toLowerCase();
     
-    // Exact match
-    if (normalizedText.includes(normalizedQuery)) {
-      return 2;
+    // Exact match is highest score
+    if (text.includes(query)) {
+      return 10;
     }
     
-    // Word match
-    const words = normalizedQuery.split(/\s+/);
-    let score = 0;
+    // Check if all words in query are in the text
+    const queryWords = query.split(/\s+/);
+    const allWordsMatch = queryWords.every(word => text.includes(word));
     
-    words.forEach(word => {
-      if (word.length < 2) return;
-      if (normalizedText.includes(word)) {
+    if (allWordsMatch) {
+      return 5;
+    }
+    
+    // Check individual words
+    let score = 0;
+    queryWords.forEach(word => {
+      if (word.length > 1 && text.includes(word)) {
         score += 1;
       }
     });
     
     return score;
   }
-  
-  // Get a snippet from content containing the query
+
+  /**
+   * Get a relevant snippet from the content that includes the query
+   */
   function getResultSnippet(content, query) {
     if (!content) return '';
     
-    const normalizedContent = content.toLowerCase();
-    const normalizedQuery = query.toLowerCase();
-    const contentLength = content.length;
+    // Remove HTML tags for snippet
+    content = content.replace(/<[^>]*>/g, '');
     
-    const index = normalizedContent.indexOf(normalizedQuery);
-    if (index === -1) {
-      // If exact query not found, try to find any of the words
-      const words = normalizedQuery.split(/\s+/);
+    const queryLower = query.toLowerCase();
+    const contentLower = content.toLowerCase();
+    const snippetLength = 160;
+    
+    let startIndex = contentLower.indexOf(queryLower);
+    
+    // If direct match not found, look for individual words
+    if (startIndex === -1) {
+      const words = query.toLowerCase().split(/\s+/);
       for (const word of words) {
-        if (word.length < 3) continue;
-        const wordIndex = normalizedContent.indexOf(word);
-        if (wordIndex !== -1) {
-          // Found a word, extract snippet around it
-          const start = Math.max(0, wordIndex - 50);
-          const end = Math.min(contentLength, wordIndex + word.length + 50);
-          return highlightMatches(
-            (start > 0 ? '...' : '') + 
-            content.substring(start, end) + 
-            (end < contentLength ? '...' : ''), 
-            query
-          );
+        if (word.length > 1) {
+          startIndex = contentLower.indexOf(word);
+          if (startIndex !== -1) break;
         }
       }
-      
-      // If still nothing found, return the beginning of the content
-      return content.substring(0, 100) + (contentLength > 100 ? '...' : '');
     }
     
-    // Extract snippet around the query
-    const start = Math.max(0, index - 50);
-    const end = Math.min(contentLength, index + normalizedQuery.length + 50);
+    // If still no match, just use the beginning
+    if (startIndex === -1) startIndex = 0;
     
-    return highlightMatches(
-      (start > 0 ? '...' : '') + 
-      content.substring(start, end) + 
-      (end < contentLength ? '...' : ''), 
-      query
-    );
+    // Adjust start index to include some context before the match
+    startIndex = Math.max(0, startIndex - 40);
+    
+    // Find a word boundary to start from if possible
+    const precedingSpace = content.lastIndexOf(' ', startIndex);
+    if (precedingSpace !== -1 && startIndex - precedingSpace < 20) {
+      startIndex = precedingSpace + 1;
+    }
+    
+    let snippet = content.substring(startIndex, startIndex + snippetLength);
+    
+    // Add ellipsis if we're not starting from the beginning
+    if (startIndex > 0) {
+      snippet = '...' + snippet;
+    }
+    
+    // Add ellipsis if the snippet is cut off
+    if (startIndex + snippetLength < content.length) {
+      snippet = snippet + '...';
+    }
+    
+    return highlightMatches(snippet, query);
   }
-  
-  // Highlight matches in text
+
+  /**
+   * Highlight matched text in results
+   */
   function highlightMatches(text, query) {
-    if (!text || !query) return text;
+    if (!text) return '';
     
-    const normalizedQuery = query.toLowerCase();
-    const words = normalizedQuery
-      .split(/\s+/)
+    const words = query.split(/\s+/)
       .filter(word => word.length > 1)
-      .map(escapeRegExp);
+      .map(word => escapeRegExp(word))
+      .sort((a, b) => b.length - a.length); // Longer words first
     
     if (words.length === 0) return text;
     
     const regex = new RegExp(`(${words.join('|')})`, 'gi');
-    return text.replace(regex, '<mark>$1</mark>');
+    return text.replace(regex, '<mark class="bg-yellow-200 dark:bg-yellow-800 px-1 rounded">$1</mark>');
   }
-  
-  // Escape RegExp special characters
+
+  /**
+   * Escape special regex characters
+   */
   function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
-  
-  // Debounce function
+
+  /**
+   * Debounce function to limit execution frequency
+   */
   function debounce(func, wait) {
     let timeout;
-    
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      
+    return function(...args) {
+      const context = this;
       clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+      timeout = setTimeout(() => func.apply(context, args), wait);
     };
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  initializeSearch();
-});

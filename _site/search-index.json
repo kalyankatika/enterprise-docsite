@@ -1165,277 +1165,6 @@
   
     
       {
-        "title": "Search",
-        "url": "/search/",
-        "content": "
-&amp;lt;div class=&amp;quot;max-w-3xl mx-auto&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;mb-8&amp;quot;&amp;gt;
-    &amp;lt;div class=&amp;quot;relative mb-8&amp;quot;&amp;gt;
-      &amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;search-page-input&amp;quot; placeholder=&amp;quot;Search documentation...&amp;quot; class=&amp;quot;w-full py-3 pl-12 pr-4 rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent text-lg&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;absolute left-4 top-3.5&amp;quot;&amp;gt;
-        &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;h-6 w-6 text-[var(--color-text-muted)]&amp;quot; fill=&amp;quot;none&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; stroke=&amp;quot;currentColor&amp;quot;&amp;gt;
-          &amp;lt;path stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;2&amp;quot; d=&amp;quot;M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z&amp;quot; /&amp;gt;
-        &amp;lt;/svg&amp;gt;
-      &amp;lt;/div&amp;gt;
-    &amp;lt;/div&amp;gt;
-    
-    &amp;lt;div id=&amp;quot;search-page-results&amp;quot; class=&amp;quot;mt-4 space-y-2&amp;quot;&amp;gt;
-      &amp;lt;!-- Search results will be populated here --&amp;gt;
-      &amp;lt;div class=&amp;quot;text-center text-[var(--color-text-muted)]&amp;quot;&amp;gt;
-        Enter a search term above to find content across the documentation.
-      &amp;lt;/div&amp;gt;
-    &amp;lt;/div&amp;gt;
-  &amp;lt;/div&amp;gt;
-  
-  &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-4&amp;quot;&amp;gt;Popular Searches&amp;lt;/h2&amp;gt;
-  &amp;lt;div class=&amp;quot;grid grid-cols-1 md:grid-cols-3 gap-4 mb-8&amp;quot;&amp;gt;
-    &amp;lt;a href=&amp;quot;/design-system/foundations/color/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Color System&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Our color palette and usage guidelines&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-    
-    &amp;lt;a href=&amp;quot;/components/inputs/button/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Button Component&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Variants, usage, and examples&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-    
-    &amp;lt;a href=&amp;quot;/design-system/guidelines/accessibility/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Accessibility&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Best practices for inclusive design&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-    
-    &amp;lt;a href=&amp;quot;/design-system/foundations/spacing/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Spacing System&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Spacing scale and usage guidelines&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-    
-    &amp;lt;a href=&amp;quot;/components/navigation/tabs/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Tabs Component&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Implementation and best practices&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-    
-    &amp;lt;a href=&amp;quot;/resources/design-tokens/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Design Tokens&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Available tokens and implementation&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-  &amp;lt;/div&amp;gt;
-  
-  &amp;lt;h2 class=&amp;quot;text-xl font-bold mb-4&amp;quot;&amp;gt;Documentation Categories&amp;lt;/h2&amp;gt;
-  &amp;lt;div class=&amp;quot;grid grid-cols-1 md:grid-cols-2 gap-4&amp;quot;&amp;gt;
-    &amp;lt;a href=&amp;quot;/get-started/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Getting Started&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Introduction, installation and usage&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-    
-    &amp;lt;a href=&amp;quot;/design-system/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Design System&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Foundations, principles, and guidelines&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-    
-    &amp;lt;a href=&amp;quot;/components/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Components&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;UI components with documentation and examples&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-    
-    &amp;lt;a href=&amp;quot;/resources/&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors&amp;quot;&amp;gt;
-      &amp;lt;div class=&amp;quot;font-medium&amp;quot;&amp;gt;Resources&amp;lt;/div&amp;gt;
-      &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mt-1&amp;quot;&amp;gt;Design tokens, Figma libraries, and more&amp;lt;/div&amp;gt;
-    &amp;lt;/a&amp;gt;
-  &amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
-
-&amp;lt;script&amp;gt;
-  document.addEventListener(&amp;#039;DOMContentLoaded&amp;#039;, function() {
-    const searchInput = document.getElementById(&amp;#039;search-page-input&amp;#039;);
-    const searchResults = document.getElementById(&amp;#039;search-page-results&amp;#039;);
-    
-    if (searchInput &amp;amp;&amp;amp; searchResults) {
-      // Get search term from URL if present
-      const urlParams = new URLSearchParams(window.location.search);
-      const searchTerm = urlParams.get(&amp;#039;q&amp;#039;);
-      if (searchTerm) {
-        searchInput.value = searchTerm;
-        performPageSearch(searchTerm);
-      }
-      
-      // Perform search when typing
-      let debounceTimeout;
-      searchInput.addEventListener(&amp;#039;input&amp;#039;, () =&amp;gt; {
-        clearTimeout(debounceTimeout);
-        debounceTimeout = setTimeout(() =&amp;gt; {
-          const query = searchInput.value.trim();
-          // Update URL with search term
-          const newUrl = query ? 
-            `${window.location.pathname}?q=${encodeURIComponent(query)}` : 
-            window.location.pathname;
-          window.history.replaceState({}, &amp;#039;&amp;#039;, newUrl);
-          
-          if (query.length &amp;gt; 1) {
-            performPageSearch(query);
-          } else {
-            searchResults.innerHTML = `
-              &amp;lt;div class=&amp;quot;text-center text-[var(--color-text-muted)]&amp;quot;&amp;gt;
-                Enter a search term above to find content across the documentation.
-              &amp;lt;/div&amp;gt;
-            `;
-          }
-        }, 300);
-      });
-      
-      function performPageSearch(query) {
-        // Show loading state
-        searchResults.innerHTML = `
-          &amp;lt;div class=&amp;quot;text-center p-4&amp;quot;&amp;gt;
-            &amp;lt;div class=&amp;quot;inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[var(--color-primary)] border-r-transparent align-[-0.125em]&amp;quot; role=&amp;quot;status&amp;quot;&amp;gt;
-              &amp;lt;span class=&amp;quot;sr-only&amp;quot;&amp;gt;Loading...&amp;lt;/span&amp;gt;
-            &amp;lt;/div&amp;gt;
-            &amp;lt;p class=&amp;quot;mt-2 text-[var(--color-text-muted)]&amp;quot;&amp;gt;Searching...&amp;lt;/p&amp;gt;
-          &amp;lt;/div&amp;gt;
-        `;
-        
-        // Fetch search data
-        fetch(&amp;#039;/search-index.json&amp;#039;)
-          .then(response =&amp;gt; response.json())
-          .then(searchData =&amp;gt; {
-            // Perform search
-            const results = [];
-            
-            for (const key in searchData) {
-              const item = searchData[key];
-              const titleScore = scoreMatch(item.title.toLowerCase(), query.toLowerCase());
-              const contentScore = scoreMatch(item.content.toLowerCase(), query.toLowerCase());
-              
-              const totalScore = titleScore * 2 + contentScore;
-              
-              if (totalScore &amp;gt; 0) {
-                results.push({
-                  title: item.title,
-                  url: item.url,
-                  snippet: getResultSnippet(item.content, query),
-                  score: totalScore
-                });
-              }
-            }
-            
-            // Sort results by score
-            results.sort((a, b) =&amp;gt; b.score - a.score);
-            
-            // Display results
-            if (results.length === 0) {
-              searchResults.innerHTML = `
-                &amp;lt;div class=&amp;quot;text-center p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)]&amp;quot;&amp;gt;
-                  &amp;lt;p class=&amp;quot;text-lg font-medium mb-2&amp;quot;&amp;gt;No results found&amp;lt;/p&amp;gt;
-                  &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)]&amp;quot;&amp;gt;We couldn&amp;#039;t find any matches for &amp;quot;${query}&amp;quot;. Try different keywords or check for typos.&amp;lt;/p&amp;gt;
-                &amp;lt;/div&amp;gt;
-              `;
-            } else {
-              const resultsHTML = results.map(result =&amp;gt; `
-                &amp;lt;a href=&amp;quot;${result.url}&amp;quot; class=&amp;quot;block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-colors&amp;quot;&amp;gt;
-                  &amp;lt;div class=&amp;quot;font-medium text-lg&amp;quot;&amp;gt;${highlightMatches(result.title, query)}&amp;lt;/div&amp;gt;
-                  &amp;lt;div class=&amp;quot;text-sm text-[var(--color-text-muted)] mb-2&amp;quot;&amp;gt;${result.url}&amp;lt;/div&amp;gt;
-                  &amp;lt;div&amp;gt;${result.snippet}&amp;lt;/div&amp;gt;
-                &amp;lt;/a&amp;gt;
-              `).join(&amp;#039;&amp;#039;);
-              
-              searchResults.innerHTML = `
-                &amp;lt;div class=&amp;quot;mb-4&amp;quot;&amp;gt;
-                  &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)]&amp;quot;&amp;gt;Found ${results.length} ${results.length === 1 ? &amp;#039;result&amp;#039; : &amp;#039;results&amp;#039;} for &amp;quot;${query}&amp;quot;&amp;lt;/p&amp;gt;
-                &amp;lt;/div&amp;gt;
-                &amp;lt;div class=&amp;quot;space-y-4&amp;quot;&amp;gt;
-                  ${resultsHTML}
-                &amp;lt;/div&amp;gt;
-              `;
-            }
-          })
-          .catch(error =&amp;gt; {
-            console.error(&amp;#039;Error loading search data:&amp;#039;, error);
-            searchResults.innerHTML = `
-              &amp;lt;div class=&amp;quot;text-center p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)]&amp;quot;&amp;gt;
-                &amp;lt;p class=&amp;quot;text-lg font-medium mb-2&amp;quot;&amp;gt;Error performing search&amp;lt;/p&amp;gt;
-                &amp;lt;p class=&amp;quot;text-[var(--color-text-muted)]&amp;quot;&amp;gt;There was a problem loading the search data. Please try again later.&amp;lt;/p&amp;gt;
-              &amp;lt;/div&amp;gt;
-            `;
-          });
-      }
-      
-      function scoreMatch(text, query) {
-        // Direct match
-        if (text.includes(query)) {
-          return 10;
-        }
-        
-        // Partial word matches
-        const words = text.split(/&#92;s+/);
-        for (const word of words) {
-          if (word.startsWith(query)) {
-            return 5;
-          }
-          if (word.includes(query)) {
-            return 3;
-          }
-        }
-        
-        return 0;
-      }
-      
-      function getResultSnippet(content, query) {
-        const maxLength = 150;
-        const lowerContent = content.toLowerCase();
-        const lowerQuery = query.toLowerCase();
-        const index = lowerContent.indexOf(lowerQuery);
-        
-        if (index === -1) {
-          // If query not found exactly, return beginning of content
-          return content.substring(0, maxLength) + &amp;#039;...&amp;#039;;
-        }
-        
-        // Calculate snippet start and end positions
-        let start = Math.max(0, index - 60);
-        let end = Math.min(content.length, index + query.length + 60);
-        
-        // Adjust to not cut words
-        while (start &amp;gt; 0 &amp;amp;&amp;amp; content[start] !== &amp;#039; &amp;#039;) {
-          start--;
-        }
-        
-        while (end &amp;lt; content.length &amp;amp;&amp;amp; content[end] !== &amp;#039; &amp;#039;) {
-          end++;
-        }
-        
-        // Create snippet
-        let snippet = content.substring(start, end);
-        
-        // Add ellipsis if needed
-        if (start &amp;gt; 0) {
-          snippet = &amp;#039;...&amp;#039; + snippet;
-        }
-        
-        if (end &amp;lt; content.length) {
-          snippet = snippet + &amp;#039;...&amp;#039;;
-        }
-        
-        return highlightMatches(snippet, query);
-      }
-      
-      function highlightMatches(text, query) {
-        const regex = new RegExp(&amp;#039;(&amp;#039; + escapeRegExp(query) + &amp;#039;)&amp;#039;, &amp;#039;gi&amp;#039;);
-        return text.replace(regex, &amp;#039;&amp;lt;span class=&amp;quot;search-highlight&amp;quot;&amp;gt;$1&amp;lt;/span&amp;gt;&amp;#039;);
-      }
-      
-      function escapeRegExp(string) {
-        return string.replace(/[.*+?^${}()|[&#92;]&#92;&#92;]/g, &amp;#039;&#92;&#92;$&amp;amp;&amp;#039;);
-      }
-    }
-  });
-&amp;lt;/script&amp;gt;",
-        "description": "Search the Enterprise Design System documentation",
-        "type": "Page",
-        "date": "2025-02-27"
-      },
-    
-  
-    
-      {
         "title": "404 - Page Not Found",
         "url": "/404.html",
         "content": "&amp;lt;div class=&amp;quot;flex flex-col items-center justify-center py-16 text-center&amp;quot;&amp;gt;
@@ -3629,6 +3358,56 @@ font-size: var(--eds-font-size-lg);&amp;lt;br&amp;gt;
   &amp;lt;/div&amp;gt;
 &amp;lt;/div&amp;gt;",
         "description": "The Enterprise Design System Documentation",
+        "type": "Page",
+        "date": "2025-02-27"
+      },
+    
+  
+    
+      {
+        "title": "Search",
+        "url": "/search/",
+        "content": "
+&amp;lt;div class=&amp;quot;container mx-auto px-4 md:px-6 py-8&amp;quot;&amp;gt;
+  &amp;lt;h1 class=&amp;quot;text-3xl md:text-4xl font-bold mb-8&amp;quot;&amp;gt;Search&amp;lt;/h1&amp;gt;
+  
+  &amp;lt;div class=&amp;quot;max-w-2xl mx-auto mb-8&amp;quot;&amp;gt;
+    &amp;lt;form action=&amp;quot;/search/&amp;quot; method=&amp;quot;get&amp;quot; role=&amp;quot;search&amp;quot; class=&amp;quot;relative&amp;quot;&amp;gt;
+      &amp;lt;input 
+        type=&amp;quot;search&amp;quot; 
+        name=&amp;quot;q&amp;quot; 
+        id=&amp;quot;search-input&amp;quot;
+        placeholder=&amp;quot;Search documentation...&amp;quot; 
+        class=&amp;quot;w-full py-3 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-lg&amp;quot;
+        autofocus
+      &amp;gt;
+      &amp;lt;div class=&amp;quot;absolute left-3 top-3.5&amp;quot;&amp;gt;
+        &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;h-6 w-6 text-[var(--color-text-muted)]&amp;quot; fill=&amp;quot;none&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; stroke=&amp;quot;currentColor&amp;quot;&amp;gt;
+          &amp;lt;path stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;2&amp;quot; d=&amp;quot;M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z&amp;quot; /&amp;gt;
+        &amp;lt;/svg&amp;gt;
+      &amp;lt;/div&amp;gt;
+      &amp;lt;button type=&amp;quot;reset&amp;quot; class=&amp;quot;absolute right-10 top-3.5 text-[var(--color-text-muted)] hover:text-[var(--color-text)]&amp;quot;&amp;gt;
+        &amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; class=&amp;quot;h-6 w-6&amp;quot; fill=&amp;quot;none&amp;quot; viewBox=&amp;quot;0 0 24 24&amp;quot; stroke=&amp;quot;currentColor&amp;quot;&amp;gt;
+          &amp;lt;path stroke-linecap=&amp;quot;round&amp;quot; stroke-linejoin=&amp;quot;round&amp;quot; stroke-width=&amp;quot;2&amp;quot; d=&amp;quot;M6 18L18 6M6 6l12 12&amp;quot; /&amp;gt;
+        &amp;lt;/svg&amp;gt;
+        &amp;lt;span class=&amp;quot;sr-only&amp;quot;&amp;gt;Clear search&amp;lt;/span&amp;gt;
+      &amp;lt;/button&amp;gt;
+    &amp;lt;/form&amp;gt;
+  &amp;lt;/div&amp;gt;
+  
+  &amp;lt;div class=&amp;quot;max-w-3xl mx-auto&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;mb-4 text-[var(--color-text-muted)]&amp;quot;&amp;gt;
+      &amp;lt;span id=&amp;quot;search-count&amp;quot;&amp;gt;0&amp;lt;/span&amp;gt; results found
+    &amp;lt;/div&amp;gt;
+    
+    &amp;lt;div id=&amp;quot;search-results&amp;quot; class=&amp;quot;border-t border-[var(--color-border)] pt-4&amp;quot;&amp;gt;
+      &amp;lt;p class=&amp;quot;py-4 text-center text-[var(--color-text-muted)]&amp;quot;&amp;gt;Enter a search term above&amp;lt;/p&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&amp;lt;script src=&amp;quot;/assets/js/search.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;",
+        "description": "Search the Enterprise Design System Documentation",
         "type": "Page",
         "date": "2025-02-27"
       }
