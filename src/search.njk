@@ -1,378 +1,267 @@
 ---
-layout: page
-title: Search Results
-description: Search across the Enterprise Design System documentation.
+layout: layouts/page.njk
+title: Search
+description: Search the Enterprise Design System documentation
 permalink: /search/
 ---
 
-<div class="search-page">
-  <h1>Search</h1>
-  
-  <div class="search-container">
-    {% include "partials/search.njk" %}
-  </div>
-  
-  <div class="search-results-container">
-    <div class="search-loading" x-data="{ isSearching: false }" x-show="isSearching">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader spin">
-        <line x1="12" y1="2" x2="12" y2="6"></line>
-        <line x1="12" y1="18" x2="12" y2="22"></line>
-        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
-        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
-        <line x1="2" y1="12" x2="6" y2="12"></line>
-        <line x1="18" y1="12" x2="22" y2="12"></line>
-        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
-        <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
-      </svg>
-      <span>Searching...</span>
-    </div>
-    
-    <div class="search-no-results" x-data="{ query: '', showNoResults: false }" x-show="showNoResults">
-      <p>No results found for "<span x-text="query"></span>"</p>
-      <div class="search-suggestions">
-        <h3>Suggestions:</h3>
-        <ul>
-          <li>Check your spelling</li>
-          <li>Try more general keywords</li>
-          <li>Try different keywords</li>
-          <li>Browse the <a href="/design-system/">Design System</a> or <a href="/components/">Components</a> sections</li>
-        </ul>
+<div class="max-w-3xl mx-auto">
+  <div class="mb-8">
+    <div class="relative mb-8">
+      <input type="text" id="search-page-input" placeholder="Search documentation..." class="w-full py-3 pl-12 pr-4 rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent text-lg">
+      <div class="absolute left-4 top-3.5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
       </div>
     </div>
     
-    <div class="search-results-display" id="search-results-display"></div>
+    <div id="search-page-results" class="mt-4 space-y-2">
+      <!-- Search results will be populated here -->
+      <div class="text-center text-[var(--color-text-muted)]">
+        Enter a search term above to find content across the documentation.
+      </div>
+    </div>
   </div>
   
-  <div class="search-help">
-    <h2>Search Tips</h2>
-    <ul>
-      <li>Use specific keywords for more targeted results</li>
-      <li>Search for component names to find component documentation</li>
-      <li>Use quotation marks for exact phrase matching (e.g., "color palette")</li>
-      <li>Try searching for categories like "foundations", "components", or "patterns"</li>
-    </ul>
+  <h2 class="text-xl font-bold mb-4">Popular Searches</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <a href="/design-system/foundations/color/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Color System</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Our color palette and usage guidelines</div>
+    </a>
+    
+    <a href="/components/inputs/button/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Button Component</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Variants, usage, and examples</div>
+    </a>
+    
+    <a href="/design-system/guidelines/accessibility/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Accessibility</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Best practices for inclusive design</div>
+    </a>
+    
+    <a href="/design-system/foundations/spacing/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Spacing System</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Spacing scale and usage guidelines</div>
+    </a>
+    
+    <a href="/components/navigation/tabs/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Tabs Component</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Implementation and best practices</div>
+    </a>
+    
+    <a href="/resources/design-tokens/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Design Tokens</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Available tokens and implementation</div>
+    </a>
+  </div>
+  
+  <h2 class="text-xl font-bold mb-4">Documentation Categories</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <a href="/get-started/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Getting Started</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Introduction, installation and usage</div>
+    </a>
+    
+    <a href="/design-system/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Design System</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Foundations, principles, and guidelines</div>
+    </a>
+    
+    <a href="/components/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Components</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">UI components with documentation and examples</div>
+    </a>
+    
+    <a href="/resources/" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors">
+      <div class="font-medium">Resources</div>
+      <div class="text-sm text-[var(--color-text-muted)] mt-1">Design tokens, Figma libraries, and more</div>
+    </a>
   </div>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const searchResultsDisplay = document.getElementById('search-results-display');
-    const searchLoadingEl = document.querySelector('.search-loading');
-    const searchNoResultsEl = document.querySelector('.search-no-results');
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('q');
+    const searchInput = document.getElementById('search-page-input');
+    const searchResults = document.getElementById('search-page-results');
     
-    // Set up Alpine.js data for loading and no results states
-    if (typeof Alpine !== 'undefined') {
-      const loadingEl = searchLoadingEl.__x;
-      const noResultsEl = searchNoResultsEl.__x;
-      
-      if (loadingEl) {
-        loadingEl.$data.isSearching = true;
+    if (searchInput && searchResults) {
+      // Get search term from URL if present
+      const urlParams = new URLSearchParams(window.location.search);
+      const searchTerm = urlParams.get('q');
+      if (searchTerm) {
+        searchInput.value = searchTerm;
+        performPageSearch(searchTerm);
       }
       
-      if (noResultsEl && query) {
-        noResultsEl.$data.query = query;
-      }
-    }
-    
-    // Fill the search input with the query from URL if it exists
-    const searchInput = document.querySelector('.search-input');
-    if (searchInput && query) {
-      searchInput.value = query;
-    }
-    
-    // Function to perform the search
-    const performSearch = async () => {
-      if (!query || query.length < 2) {
-        if (typeof Alpine !== 'undefined' && searchLoadingEl.__x) {
-          searchLoadingEl.__x.$data.isSearching = false;
-        }
-        return;
-      }
-      
-      try {
-        const response = await fetch('/search.json');
-        if (!response.ok) {
-          throw new Error('Failed to fetch search index');
-        }
-        
-        const searchIndex = await response.json();
-        const queryLower = query.toLowerCase();
-        
-        // Filter results based on query
-        const results = searchIndex.filter(item => {
-          const titleMatch = item.title.toLowerCase().includes(queryLower);
-          const contentMatch = item.content.toLowerCase().includes(queryLower);
-          const tagsMatch = item.tags && item.tags.some(tag => tag.toLowerCase().includes(queryLower));
-          return titleMatch || contentMatch || tagsMatch;
-        });
-        
-        // Hide loading state
-        if (typeof Alpine !== 'undefined' && searchLoadingEl.__x) {
-          searchLoadingEl.__x.$data.isSearching = false;
-        }
-        
-        // Show no results state if needed
-        if (results.length === 0) {
-          if (typeof Alpine !== 'undefined' && searchNoResultsEl.__x) {
-            searchNoResultsEl.__x.$data.showNoResults = true;
+      // Perform search when typing
+      let debounceTimeout;
+      searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+          const query = searchInput.value.trim();
+          // Update URL with search term
+          const newUrl = query ? 
+            `${window.location.pathname}?q=${encodeURIComponent(query)}` : 
+            window.location.pathname;
+          window.history.replaceState({}, '', newUrl);
+          
+          if (query.length > 1) {
+            performPageSearch(query);
           } else {
-            searchNoResultsEl.style.display = 'block';
+            searchResults.innerHTML = `
+              <div class="text-center text-[var(--color-text-muted)]">
+                Enter a search term above to find content across the documentation.
+              </div>
+            `;
           }
-          return;
-        }
-        
-        // Hide no results state if we have results
-        if (typeof Alpine !== 'undefined' && searchNoResultsEl.__x) {
-          searchNoResultsEl.__x.$data.showNoResults = false;
-        } else {
-          searchNoResultsEl.style.display = 'none';
-        }
-        
-        // Clear previous results
-        searchResultsDisplay.innerHTML = '';
-        
-        // Group results by section
-        const sectionGroups = {};
-        results.forEach(result => {
-          const section = result.section || 'Other';
-          if (!sectionGroups[section]) {
-            sectionGroups[section] = [];
-          }
-          sectionGroups[section].push(result);
-        });
-        
-        // Create results HTML
-        const resultCount = document.createElement('div');
-        resultCount.className = 'result-count';
-        resultCount.textContent = `Found ${results.length} result${results.length === 1 ? '' : 's'} for "${query}"`;
-        searchResultsDisplay.appendChild(resultCount);
-        
-        // Create results by section
-        Object.keys(sectionGroups).sort().forEach(section => {
-          const sectionResults = sectionGroups[section];
-          
-          const sectionEl = document.createElement('div');
-          sectionEl.className = 'result-section';
-          
-          const sectionTitle = document.createElement('h2');
-          sectionTitle.className = 'section-title';
-          sectionTitle.textContent = section;
-          sectionEl.appendChild(sectionTitle);
-          
-          const resultsList = document.createElement('ul');
-          resultsList.className = 'results-list';
-          
-          sectionResults.forEach(result => {
-            const resultItem = document.createElement('li');
-            resultItem.className = 'result-item';
-            
-            const resultLink = document.createElement('a');
-            resultLink.className = 'result-link';
-            resultLink.href = result.url;
-            
-            const resultTitle = document.createElement('h3');
-            resultTitle.className = 'result-title';
-            resultTitle.textContent = result.title;
-            
-            const resultExcerpt = document.createElement('p');
-            resultExcerpt.className = 'result-excerpt';
-            
-            // Create highlighted excerpt with the query highlighted
-            let excerpt = result.excerpt || result.content.substring(0, 160) + '...';
-            excerpt = excerpt.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`);
-            resultExcerpt.innerHTML = excerpt;
-            
-            const resultMeta = document.createElement('div');
-            resultMeta.className = 'result-meta';
-            
-            if (result.breadcrumb) {
-              const breadcrumb = document.createElement('span');
-              breadcrumb.className = 'result-breadcrumb';
-              breadcrumb.textContent = result.breadcrumb;
-              resultMeta.appendChild(breadcrumb);
-            }
-            
-            if (result.tags && result.tags.length > 0) {
-              const tags = document.createElement('span');
-              tags.className = 'result-tags';
-              tags.textContent = result.tags.join(', ');
-              resultMeta.appendChild(tags);
-            }
-            
-            resultLink.appendChild(resultTitle);
-            resultLink.appendChild(resultExcerpt);
-            resultLink.appendChild(resultMeta);
-            resultItem.appendChild(resultLink);
-            resultsList.appendChild(resultItem);
-          });
-          
-          sectionEl.appendChild(resultsList);
-          searchResultsDisplay.appendChild(sectionEl);
-        });
-      } catch (error) {
-        console.error('Error performing search:', error);
-        
-        // Hide loading state
-        if (typeof Alpine !== 'undefined' && searchLoadingEl.__x) {
-          searchLoadingEl.__x.$data.isSearching = false;
-        }
-        
-        // Show error message
-        searchResultsDisplay.innerHTML = `
-          <div class="search-error">
-            <p>An error occurred while searching. Please try again later.</p>
+        }, 300);
+      });
+      
+      function performPageSearch(query) {
+        // Show loading state
+        searchResults.innerHTML = `
+          <div class="text-center p-4">
+            <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[var(--color-primary)] border-r-transparent align-[-0.125em]" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <p class="mt-2 text-[var(--color-text-muted)]">Searching...</p>
           </div>
         `;
+        
+        // Fetch search data
+        fetch('/search-index.json')
+          .then(response => response.json())
+          .then(searchData => {
+            // Perform search
+            const results = [];
+            
+            for (const key in searchData) {
+              const item = searchData[key];
+              const titleScore = scoreMatch(item.title.toLowerCase(), query.toLowerCase());
+              const contentScore = scoreMatch(item.content.toLowerCase(), query.toLowerCase());
+              
+              const totalScore = titleScore * 2 + contentScore;
+              
+              if (totalScore > 0) {
+                results.push({
+                  title: item.title,
+                  url: item.url,
+                  snippet: getResultSnippet(item.content, query),
+                  score: totalScore
+                });
+              }
+            }
+            
+            // Sort results by score
+            results.sort((a, b) => b.score - a.score);
+            
+            // Display results
+            if (results.length === 0) {
+              searchResults.innerHTML = `
+                <div class="text-center p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)]">
+                  <p class="text-lg font-medium mb-2">No results found</p>
+                  <p class="text-[var(--color-text-muted)]">We couldn't find any matches for "${query}". Try different keywords or check for typos.</p>
+                </div>
+              `;
+            } else {
+              const resultsHTML = results.map(result => `
+                <a href="${result.url}" class="block p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-colors">
+                  <div class="font-medium text-lg">${highlightMatches(result.title, query)}</div>
+                  <div class="text-sm text-[var(--color-text-muted)] mb-2">${result.url}</div>
+                  <div>${result.snippet}</div>
+                </a>
+              `).join('');
+              
+              searchResults.innerHTML = `
+                <div class="mb-4">
+                  <p class="text-[var(--color-text-muted)]">Found ${results.length} ${results.length === 1 ? 'result' : 'results'} for "${query}"</p>
+                </div>
+                <div class="space-y-4">
+                  ${resultsHTML}
+                </div>
+              `;
+            }
+          })
+          .catch(error => {
+            console.error('Error loading search data:', error);
+            searchResults.innerHTML = `
+              <div class="text-center p-6 bg-[var(--color-bg-alt)] rounded-lg border border-[var(--color-border)]">
+                <p class="text-lg font-medium mb-2">Error performing search</p>
+                <p class="text-[var(--color-text-muted)]">There was a problem loading the search data. Please try again later.</p>
+              </div>
+            `;
+          });
       }
-    };
-    
-    // Perform search if we have a query
-    if (query) {
-      performSearch();
+      
+      function scoreMatch(text, query) {
+        // Direct match
+        if (text.includes(query)) {
+          return 10;
+        }
+        
+        // Partial word matches
+        const words = text.split(/\s+/);
+        for (const word of words) {
+          if (word.startsWith(query)) {
+            return 5;
+          }
+          if (word.includes(query)) {
+            return 3;
+          }
+        }
+        
+        return 0;
+      }
+      
+      function getResultSnippet(content, query) {
+        const maxLength = 150;
+        const lowerContent = content.toLowerCase();
+        const lowerQuery = query.toLowerCase();
+        const index = lowerContent.indexOf(lowerQuery);
+        
+        if (index === -1) {
+          // If query not found exactly, return beginning of content
+          return content.substring(0, maxLength) + '...';
+        }
+        
+        // Calculate snippet start and end positions
+        let start = Math.max(0, index - 60);
+        let end = Math.min(content.length, index + query.length + 60);
+        
+        // Adjust to not cut words
+        while (start > 0 && content[start] !== ' ') {
+          start--;
+        }
+        
+        while (end < content.length && content[end] !== ' ') {
+          end++;
+        }
+        
+        // Create snippet
+        let snippet = content.substring(start, end);
+        
+        // Add ellipsis if needed
+        if (start > 0) {
+          snippet = '...' + snippet;
+        }
+        
+        if (end < content.length) {
+          snippet = snippet + '...';
+        }
+        
+        return highlightMatches(snippet, query);
+      }
+      
+      function highlightMatches(text, query) {
+        const regex = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
+        return text.replace(regex, '<span class="search-highlight">$1</span>');
+      }
+      
+      function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
     }
   });
 </script>
-
-<style>
-  .search-page {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .search-container {
-    margin-bottom: 2rem;
-  }
-  
-  .search-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 0;
-    color: var(--color-text-muted);
-  }
-  
-  .search-loading svg {
-    margin-right: 0.75rem;
-  }
-  
-  .spin {
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  .search-no-results {
-    padding: 2rem;
-    text-align: center;
-    background-color: var(--color-bg-alt);
-    border-radius: 8px;
-    margin-bottom: 2rem;
-  }
-  
-  .search-suggestions {
-    text-align: left;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .search-suggestions h3 {
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .result-count {
-    font-size: 1.125rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .result-section {
-    margin-bottom: 2rem;
-  }
-  
-  .section-title {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    color: var(--color-text-muted);
-  }
-  
-  .results-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .result-item {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-  
-  .result-item:last-child {
-    border-bottom: none;
-  }
-  
-  .result-link {
-    display: block;
-    color: var(--color-text);
-  }
-  
-  .result-link:hover {
-    text-decoration: none;
-  }
-  
-  .result-link:hover .result-title {
-    color: var(--color-primary-dark);
-  }
-  
-  .result-title {
-    margin: 0 0 0.5rem;
-    color: var(--color-primary);
-    transition: color 0.2s ease;
-  }
-  
-  .result-excerpt {
-    margin: 0 0 0.75rem;
-    font-size: 0.9375rem;
-    color: var(--color-text-muted);
-  }
-  
-  .result-excerpt mark {
-    background-color: rgba(54, 135, 39, 0.2);
-    color: inherit;
-    padding: 0.125rem 0.25rem;
-    border-radius: 2px;
-  }
-  
-  .result-meta {
-    font-size: 0.75rem;
-    color: var(--color-text-light);
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .search-help {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--color-border);
-  }
-  
-  .search-help h2 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
-  
-  .search-error {
-    padding: 2rem;
-    text-align: center;
-    background-color: rgba(229, 62, 62, 0.1);
-    border-radius: 8px;
-    color: var(--color-error);
-  }
-</style>

@@ -1,115 +1,278 @@
 <!DOCTYPE html>
-<html lang="en" {% if theme %}data-theme="{{ theme }}"{% endif %}>
+<html lang="en" class="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title %}{{ title }} - {% endif %}{{ site.name }}</title>
-  <meta name="description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}">
+  <title>{% if title %}{{ title }} - {% endif %}Enterprise Design System</title>
+  <meta name="description" content="{% if description %}{{ description }}{% else %}Enterprise Design System Documentation{% endif %}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  
+  <!-- Base styles from Tailwind CSS -->
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  {% block head %}{% endblock %}
+  
+  <!-- Theme variables -->
+  <style>
+    :root {
+      /* Light theme colors */
+      --color-primary: #0056b3;
+      --color-primary-dark: #004494;
+      --color-primary-light: #3378c1;
+      --color-bg: #ffffff;
+      --color-bg-alt: #f8f9fa;
+      --color-text: #333333;
+      --color-text-muted: #6c757d;
+      --color-border: #e9ecef;
+      --color-code-bg: #f5f7f9;
+      --color-code-text: #333333;
+      --color-link: #0056b3;
+      --color-link-hover: #004494;
+      --color-success: #28a745;
+      --color-warning: #ffc107;
+      --color-error: #dc3545;
+      --color-info: #17a2b8;
+    }
+    
+    /* Dark theme */
+    html.dark {
+      --color-primary: #4f8eff;
+      --color-primary-dark: #277cf7;
+      --color-primary-light: #78a7ff;
+      --color-bg: #121212;
+      --color-bg-alt: #1e1e1e;
+      --color-text: #e0e0e0;
+      --color-text-muted: #a0a0a0;
+      --color-border: #383838;
+      --color-code-bg: #2a2a2a;
+      --color-code-text: #e0e0e0;
+      --color-link: #4f8eff;
+      --color-link-hover: #78a7ff;
+      --color-success: #5cb85c;
+      --color-warning: #f0ad4e;
+      --color-error: #d9534f;
+      --color-info: #5bc0de;
+    }
+    
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+    }
+    
+    /* Alert component styles */
+    .eds-alert {
+      padding: 1rem;
+      border-radius: 0.375rem;
+      border-width: 1px;
+      margin-bottom: 1rem;
+    }
+    
+    .eds-alert-info {
+      background-color: rgba(23, 162, 184, 0.1);
+      border-color: rgba(23, 162, 184, 0.4);
+      color: var(--color-info);
+    }
+    
+    .eds-alert-success {
+      background-color: rgba(40, 167, 69, 0.1);
+      border-color: rgba(40, 167, 69, 0.4);
+      color: var(--color-success);
+    }
+    
+    .eds-alert-warning {
+      background-color: rgba(255, 193, 7, 0.1);
+      border-color: rgba(255, 193, 7, 0.4);
+      color: var(--color-warning);
+    }
+    
+    .eds-alert-error {
+      background-color: rgba(220, 53, 69, 0.1);
+      border-color: rgba(220, 53, 69, 0.4);
+      color: var(--color-error);
+    }
+    
+    .search-highlight {
+      background-color: rgba(255, 230, 0, 0.3);
+      padding: 0.1em 0.1em;
+      border-radius: 0.2em;
+      font-weight: bold;
+    }
+    
+    html.dark .search-highlight {
+      background-color: rgba(255, 230, 0, 0.2);
+    }
+  </style>
 </head>
-<body>
-  <header class="bg-[var(--color-bg)] border-b border-[var(--color-border)] sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/" class="flex items-center">
-        <span class="text-2xl font-bold text-[var(--color-primary)]">EDS</span>
-        <span class="text-xl ml-2 font-medium text-[var(--color-text)]">Docs</span>
-      </a>
-      <div class="flex items-center space-x-6">
-        <nav class="hidden md:flex space-x-6">
-          {% for item in navigation.main %}
-            <a href="{{ item.url }}" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors duration-200">{{ item.title }}</a>
-          {% endfor %}
-        </nav>
-        <div class="flex items-center space-x-4">
-          <button id="themeToggle" class="p-2 rounded-full hover:bg-[var(--color-bg-alt)] transition-colors duration-200" aria-label="Toggle dark mode">
-            <svg id="sunIcon" class="w-5 h-5 text-[var(--color-text-muted)]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+<body class="antialiased min-h-screen flex flex-col">
+  <header class="sticky top-0 z-50 bg-[var(--color-bg)] border-b border-[var(--color-border)]">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-6">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo and main nav -->
+        <div class="flex items-center">
+          <a href="/" class="flex items-center text-xl font-bold text-[var(--color-primary)]">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8 mr-2">
+              <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.2"/>
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2V9h2v8z" fill="currentColor"/>
             </svg>
-            <svg id="moonIcon" class="w-5 h-5 text-[var(--color-text-muted)] hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            <span class="hidden md:inline">Enterprise Design System</span>
+            <span class="md:hidden">EDS</span>
+          </a>
+          
+          <nav class="hidden md:flex ml-8 space-x-6">
+            <a href="/get-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] px-1 py-2">Get Started</a>
+            <a href="/design-system/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] px-1 py-2">Design System</a>
+            <a href="/components/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] px-1 py-2">Components</a>
+            <a href="/resources/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] px-1 py-2">Resources</a>
+          </nav>
+        </div>
+        
+        <!-- Right side controls: search, theme toggle -->
+        <div class="flex items-center space-x-4">
+          <div class="relative hidden md:block">
+            <form action="/search/" method="get" role="search">
+              <input 
+                type="search" 
+                name="q" 
+                placeholder="Search..." 
+                class="w-48 lg:w-64 py-1.5 pl-9 pr-3 rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+              >
+              <div class="absolute left-3 top-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </form>
+          </div>
+          
+          <a href="/search/" class="md:hidden text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </a>
+          
+          <button id="theme-toggle" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)]" aria-label="Toggle dark mode">
+            <!-- Sun icon (light mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" id="light-icon" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+            </svg>
+            <!-- Moon icon (dark mode) -->
+            <svg xmlns="http://www.w3.org/2000/svg" id="dark-icon" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
             </svg>
           </button>
-          <div class="relative">
-            <button id="searchToggle" class="p-2 rounded-full hover:bg-[var(--color-bg-alt)] transition-colors duration-200" aria-label="Search documentation">
-              <svg class="w-5 h-5 text-[var(--color-text-muted)]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-              </svg>
-            </button>
-            <div id="searchPanel" class="absolute right-0 mt-2 w-72 bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg shadow-lg p-4 hidden">
-              <div class="relative">
-                <input type="text" id="searchInput" placeholder="Search documentation..." class="w-full px-4 py-2 rounded-md border border-[var(--color-border)] bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent">
-                <div id="searchResults" class="mt-2 max-h-60 overflow-y-auto"></div>
-              </div>
-            </div>
-          </div>
-          <button id="mobileMenuToggle" class="md:hidden p-2 rounded-full hover:bg-[var(--color-bg-alt)] transition-colors duration-200" aria-label="Toggle mobile menu">
-            <svg class="w-5 h-5 text-[var(--color-text-muted)]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+          
+          <button id="mobile-menu-toggle" class="md:hidden text-[var(--color-text-muted)] hover:text-[var(--color-text)]" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" id="menu-open-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" id="menu-close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
       </div>
     </div>
-    <div id="mobileMenu" class="container mx-auto px-4 py-4 border-t border-[var(--color-border)] hidden md:hidden">
-      <nav class="flex flex-col space-y-4">
-        {% for item in navigation.main %}
-          <a href="{{ item.url }}" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors duration-200">{{ item.title }}</a>
-        {% endfor %}
-      </nav>
+    
+    <!-- Mobile nav dropdown -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+      <div class="px-4 py-2">
+        <form action="/search/" method="get" role="search" class="mb-4">
+          <div class="relative">
+            <input 
+              type="search" 
+              name="q" 
+              placeholder="Search documentation..." 
+              class="w-full py-2 pl-10 pr-4 rounded-md border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]"
+            >
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+        </form>
+        
+        <nav class="space-y-1 pb-4">
+          <a href="/get-started/" class="block py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Get Started</a>
+          <a href="/design-system/" class="block py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Design System</a>
+          <a href="/components/" class="block py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Components</a>
+          <a href="/resources/" class="block py-2 text-[var(--color-text-muted)] hover:text-[var(--color-text)]">Resources</a>
+        </nav>
+      </div>
     </div>
   </header>
 
-  <main>
-    {% block content %}{{ content | safe }}{% endblock %}
+  <main class="flex-grow w-full max-w-[1440px] mx-auto px-4 md:px-6 pb-20">
+    {{ content | safe }}
   </main>
 
-  <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)]">
-    <div class="container mx-auto px-4 py-8">
+  <footer class="border-t border-[var(--color-border)] py-8 mt-auto">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="flex items-center">
-          <span class="text-xl font-bold text-[var(--color-primary)]">EDS</span>
-          <span class="text-lg ml-2 font-medium text-[var(--color-text)]">Docs</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 mr-2 text-[var(--color-primary)]">
+            <circle cx="12" cy="12" r="10" fill="currentColor" opacity="0.2"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2V9h2v8z" fill="currentColor"/>
+          </svg>
+          <span class="text-[var(--color-text-muted)]">Enterprise Design System</span>
         </div>
-        <div class="mt-4 md:mt-0">
-          <p class="text-[var(--color-text-muted)]">&copy; {{ site.copyright }} {{ site.buildYear }}</p>
-        </div>
-      </div>
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <h3 class="text-lg font-medium mb-4">Documentation</h3>
-          <ul class="space-y-2">
-            {% for item in navigation.footer.docs %}
-              <li><a href="{{ item.url }}" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors duration-200">{{ item.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-lg font-medium mb-4">Resources</h3>
-          <ul class="space-y-2">
-            {% for item in navigation.footer.resources %}
-              <li><a href="{{ item.url }}" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors duration-200">{{ item.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-lg font-medium mb-4">Community</h3>
-          <ul class="space-y-2">
-            {% for item in navigation.footer.community %}
-              <li><a href="{{ item.url }}" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors duration-200">{{ item.title }}</a></li>
-            {% endfor %}
-          </ul>
+        
+        <div class="mt-4 md:mt-0 text-sm text-[var(--color-text-muted)]">
+          <span>&copy; 2025 Enterprise Company, Inc. All rights reserved.</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="/assets/js/theme.js"></script>
-  <script src="/assets/js/search.js"></script>
-  <script src="/assets/js/main.js"></script>
-  {% block scripts %}{% endblock %}
+  <script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuOpenIcon = document.getElementById('menu-open-icon');
+      const menuCloseIcon = document.getElementById('menu-close-icon');
+      
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+          menuOpenIcon.classList.toggle('hidden');
+          menuCloseIcon.classList.toggle('hidden');
+        });
+      }
+      
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('theme-toggle');
+      const lightIcon = document.getElementById('light-icon');
+      const darkIcon = document.getElementById('dark-icon');
+      const html = document.documentElement;
+      
+      // Check system preference and saved preference
+      const savedTheme = localStorage.getItem('theme');
+      
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+        darkIcon.classList.remove('hidden');
+      } else {
+        html.classList.remove('dark');
+        lightIcon.classList.remove('hidden');
+      }
+      
+      // Toggle theme
+      if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+          html.classList.toggle('dark');
+          
+          const isDark = html.classList.contains('dark');
+          
+          // Update icons
+          lightIcon.classList.toggle('hidden', isDark);
+          darkIcon.classList.toggle('hidden', !isDark);
+          
+          // Save preference
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+      }
+    });
+  </script>
 </body>
 </html>

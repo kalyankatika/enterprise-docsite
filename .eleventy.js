@@ -1,112 +1,124 @@
-const { DateTime } = require("luxon");
-const markdownIt = require("markdown-it");
-const markdownItAnchor = require("markdown-it-anchor");
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const pluginNavigation = require("@11ty/eleventy-navigation");
+const markdownIt = require('markdown-it');
+const markdownItAnchor = require('markdown-it-anchor');
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
 
 module.exports = function(eleventyConfig) {
   // Add plugins
-  eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
-  eleventyConfig.addPlugin(pluginNavigation);
-
-  // Copy the `assets` directory to the output
-  eleventyConfig.addPassthroughCopy("src/assets");
-
-  // Date formatting
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
-  });
-
-  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
-  });
-
-  // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
-    if(!Array.isArray(array) || array.length === 0) {
-      return [];
-    }
-    if(n < 0) {
-      return array.slice(n);
-    }
-    return array.slice(0, n);
-  });
-
-  // Return the smallest number argument
-  eleventyConfig.addFilter("min", (...numbers) => {
-    return Math.min.apply(null, numbers);
-  });
-
-  // Return all the tags used in a collection
-  eleventyConfig.addFilter("getAllTags", collection => {
-    let tagSet = new Set();
-    collection.forEach(item => {
-      (item.data.tags || []).forEach(tag => tagSet.add(tag));
+  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+  
+  // Copy assets directly to output
+  eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
+  
+  // Create assets/images directory in output even if source doesn't exist yet
+  eleventyConfig.on('eleventy.before', async () => {
+    const fs = require('fs');
+    const path = require('path');
+    
+    // Ensure output directories exist
+    ['_site/assets', '_site/assets/images', '_site/assets/css'].forEach(dir => {
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
     });
-    return Array.from(tagSet);
+    
+    // Create a favicon if it doesn't exist
+    const faviconPath = 'src/assets/images/favicon.svg';
+    const faviconDir = path.dirname(faviconPath);
+    
+    if (!fs.existsSync(faviconDir)) {
+      fs.mkdirSync(faviconDir, { recursive: true });
+    }
+    
+    if (!fs.existsSync(faviconPath)) {
+      const faviconContent = `<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="16" cy="16" r="14" fill="#0056b3" opacity="0.2"/>
+  <path d="M16 4C9.4 4 4 9.4 4 16s5.4 12 12 12 12-5.4 12-12S22.6 4 16 4zm-1 18h-2v-8h2v8zm5 0h-3V12h3v10z" fill="#0056b3"/>
+</svg>`;
+      fs.writeFileSync(faviconPath, faviconContent);
+    }
   });
-
-  // Filter tags by excluding certain values
-  eleventyConfig.addFilter("filterTagList", tags => {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+  
+  // Create search-index.json
+  eleventyConfig.addCollection('searchIndex', function(collection) {
+    return collection.getAll().map(item => {
+      return {
+        url: item.url,
+        title: item.data.title || '',
+        content: item.template?.frontMatter?.content || item.templateContent || ''
+      };
+    });
   });
-
-  // Customize Markdown library and settings
-  let markdownLibrary = markdownIt({
+  
+  // Configure Markdown library
+  const markdownLibrary = markdownIt({
     html: true,
     breaks: true,
     linkify: true
   }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: "after",
-      class: "direct-link",
-      symbol: "#",
-      level: [1,2,3,4]
-    }),
-    slugify: eleventyConfig.getFilter("slugify")
-  });
-  eleventyConfig.setLibrary("md", markdownLibrary);
-
-  // Override Browsersync defaults
-  eleventyConfig.setBrowserSyncConfig({
-    callbacks: {
-      ready: function(err, browserSync) {
-        const content_404 = require('fs').readFileSync('_site/404.html');
-
-        browserSync.addMiddleware("*", (req, res) => {
-          // 404 responses
-          res.write(content_404);
-          res.end();
-        });
-      }
-    },
-    ui: false,
-    ghostMode: false
-  });
-
-  return {
-    // Control which files Eleventy will process
-    templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid"
-    ],
-
-    // Pre-process *.md files with Nunjucks
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
-
-    // Directory structure
-    dir: {
-      input: "src",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
+    permalink: true,
+    permalinkClass: 'anchor',
+    permalinkSymbol: '#',
+    permalinkSpace: false,
+    level: [1, 2, 3, 4],
+    slugify: function(s) {
+      return String(s)
+        .trim()
+        .toLowerCase()
+        .replace(/[\s+~\/]/g, '-')
+        .replace(/[().`,%·'"!?¿:@*]/g, '');
     }
+  });
+  
+  eleventyConfig.setLibrary('md', markdownLibrary);
+  
+  // Check if URLs include trailing slash
+  eleventyConfig.addFilter('isCurrentPage', function(currentUrl, pageUrl) {
+    return currentUrl === pageUrl;
+  });
+  
+  // Format dates
+  eleventyConfig.addFilter('readableDate', function(dateObj) {
+    if (!(dateObj instanceof Date)) {
+      dateObj = new Date(dateObj);
+    }
+    return dateObj.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  });
+  
+  // Add a debug filter
+  eleventyConfig.addFilter('debug', function(value) {
+    return JSON.stringify(value, null, 2);
+  });
+  
+  // Create a search-index.json file
+  eleventyConfig.addGlobalData('eleventyComputed.permalink', function() {
+    return (data) => {
+      // Special case for search-index.json
+      if (data.page.inputPath.endsWith('search-index.njk')) {
+        return '/search-index.json';
+      }
+      return data.permalink;
+    };
+  });
+  
+  return {
+    dir: {
+      input: 'src',
+      output: '_site',
+      includes: '_includes',
+      layouts: '_includes/layouts',
+      data: '_data'
+    },
+    templateFormats: ['md', 'njk', 'html'],
+    markdownTemplateEngine: 'njk',
+    htmlTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
+    passthroughFileCopy: true
   };
 };

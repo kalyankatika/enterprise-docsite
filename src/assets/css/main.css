@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #368727;
+  --color-primary-dark: #276e1b;
+  --color-secondary: #2d7bb7;
+  --color-secondary-dark: #1f5a8a;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9fafb;
+  --color-bg-code: #f3f4f6;
+}
+
+.dark {
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-border: #374151;
+  --color-bg: #111827;
+  --color-bg-alt: #1f2937;
+  --color-bg-code: #1e293b;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+.eds-alert {
+  @apply p-4 rounded-lg border;
+}
+
+.eds-alert-info {
+  @apply bg-blue-50 text-blue-800 border-blue-200 dark:bg-blue-900/20 dark:text-blue-300 dark:border-blue-800;
+}
+
+.eds-alert-warning {
+  @apply bg-amber-50 text-amber-800 border-amber-200 dark:bg-amber-900/20 dark:text-amber-300 dark:border-amber-800;
+}
+
+.eds-alert-error {
+  @apply bg-red-50 text-red-800 border-red-200 dark:bg-red-900/20 dark:text-red-300 dark:border-red-800;
+}
+
+.eds-alert-success {
+  @apply bg-green-50 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-300 dark:border-green-800;
+}
+
+/* Code Blocks */
+pre[class*="language-"] {
+  @apply my-6 p-4 rounded-lg bg-[var(--color-bg-code)] overflow-auto;
+}
+
+/* Components */
+.eds-tabs {
+  @apply border-b border-[var(--color-border)];
+}
+
+.eds-tab {
+  @apply px-4 py-2 font-medium text-[var(--color-text-muted)] border-b-2 border-transparent hover:text-[var(--color-text)] transition-colors;
+}
+
+.eds-tab.active {
+  @apply text-[var(--color-primary)] border-[var(--color-primary)];
+}
+
+.eds-tab-panel {
+  @apply hidden py-4;
+}
+
+.eds-tab-panel.active {
+  @apply block;
+}
+
+/* Header */
+.site-header {
+  @apply sticky top-0 bg-[var(--color-bg)] border-b border-[var(--color-border)] z-10;
+}
+
+/* Sidebar */
+.sidebar {
+  @apply w-64 border-r border-[var(--color-border)] shrink-0 h-[calc(100vh-64px)] sticky top-16 overflow-y-auto p-4 hidden md:block;
+}
+
+.sidebar-link {
+  @apply block px-3 py-2 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-alt)] mb-1 transition-colors;
+}
+
+.sidebar-link.active {
+  @apply bg-[var(--color-bg-alt)] text-[var(--color-primary)] font-medium;
+}
+
+.sidebar-group {
+  @apply mb-4;
+}
+
+.sidebar-heading {
+  @apply text-xs uppercase tracking-wider text-[var(--color-text-muted)] font-medium px-3 py-1;
+}
+
+/* Content */
+.content {
+  @apply max-w-3xl mx-auto py-8 px-4 md:px-8;
+}
+
+.content h1 {
+  @apply text-3xl md:text-4xl font-bold mb-6;
+}
+
+.content h2 {
+  @apply text-2xl font-bold mt-10 mb-4;
+}
+
+.content h3 {
+  @apply text-xl font-bold mt-8 mb-3;
+}
+
+.content h4 {
+  @apply text-lg font-bold mt-6 mb-2;
+}
+
+.content p {
+  @apply mb-4 leading-relaxed;
+}
+
+.content a:not([class]) {
+  @apply text-[var(--color-primary)] hover:underline;
+}
+
+.content ul:not([class]), 
+.content ol:not([class]) {
+  @apply my-4 pl-6;
+}
+
+.content ul:not([class]) li {
+  @apply mb-2 list-disc;
+}
+
+.content ol:not([class]) li {
+  @apply mb-2 list-decimal;
+}
+
+/* Props Table */
+.props-table {
+  @apply w-full my-6 text-sm;
+}
+
+.props-table th {
+  @apply p-2 text-left bg-[var(--color-bg-alt)] border-b border-[var(--color-border)] font-medium;
+}
+
+.props-table td {
+  @apply p-2 border-b border-[var(--color-border)];
+}
+
+.props-table code {
+  @apply px-1.5 py-0.5 rounded bg-[var(--color-bg-code)] text-[var(--color-text)] font-mono text-sm;
+}
+
+/* Search */
+.search-result {
+  @apply block p-3 border-b border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] transition-colors;
+}
+
+.search-result-title {
+  @apply font-medium text-[var(--color-text)];
+}
+
+.search-result-path {
+  @apply text-sm text-[var(--color-text-muted)];
+}
+
+.search-result-snippet {
+  @apply text-sm mt-1 text-[var(--color-text-muted)];
+}
+
+.search-highlight {
+  @apply bg-yellow-200 dark:bg-yellow-900/50 px-0.5 rounded;
+}
+
+/* Mobile Nav */
+.mobile-nav {
+  @apply fixed inset-0 bg-[var(--color-bg)] z-50 transform transition-transform duration-300 ease-in-out;
+}
+
+.mobile-nav.hidden {
+  @apply -translate-x-full;
+}
+
+/* Version Selector */
+.version-selector {
+  @apply relative;
+}
+
+.version-dropdown {
+  @apply absolute right-0 mt-1 w-48 bg-[var(--color-bg)] border border-[var(--color-border)] rounded-md shadow-lg z-10 hidden;
+}
+
+.version-selector:hover .version-dropdown {
+  @apply block;
+}
+
+.version-item {
+  @apply block px-4 py-2 text-sm hover:bg-[var(--color-bg-alt)] text-[var(--color-text)] cursor-pointer;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  @apply w-10 h-6 bg-gray-300 dark:bg-gray-600 rounded-full relative transition-colors cursor-pointer;
+}
+
+.theme-toggle::after {
+  content: '';
+  @apply absolute w-5 h-5 bg-white rounded-full left-0.5 top-0.5 transform transition-transform;
+}
+
+.dark .theme-toggle::after {
+  @apply translate-x-4;
+}
+
+/* Component Preview */
+.component-preview {
+  @apply border border-[var(--color-border)] rounded-lg overflow-hidden;
+}
+
+.preview-header {
+  @apply flex justify-between items-center p-3 bg-[var(--color-bg-alt)] border-b border-[var(--color-border)];
+}
+
+.preview-actions {
+  @apply flex space-x-2;
+}
+
+.preview-content {
+  @apply p-6 bg-white dark:bg-gray-800;
+}
+
+.preview-code {
+  @apply border-t border-[var(--color-border)] max-h-96 overflow-auto;
+}
+
+/* Utility */
+.truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.toc {
+  @apply sticky top-20 ml-8 p-4 border border-[var(--color-border)] rounded-lg max-h-[calc(100vh-132px)] overflow-y-auto hidden xl:block;
+}
+
+.toc-link {
+  @apply block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text)] py-1.5 border-l-2 border-transparent pl-3 transition-colors;
+}
+
+.toc-link.active {
+  @apply text-[var(--color-primary)] border-[var(--color-primary)];
+}
+
+.toc-h3 {
+  @apply pl-6;
+}
+
+.toc-h4 {
+  @apply pl-9;
+}

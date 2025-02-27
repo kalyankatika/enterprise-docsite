@@ -3,102 +3,274 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Toggle search container
-  const searchToggle = document.querySelector('[data-toggle-search]');
-  const searchContainer = document.getElementById('search-container');
-  
-  if (searchToggle && searchContainer) {
-    searchToggle.addEventListener('click', function() {
-      const isHidden = searchContainer.hidden;
-      searchContainer.hidden = !isHidden;
-      
-      if (!isHidden) {
-        // If closing, reset
-        const searchInput = searchContainer.querySelector('.search-input');
-        if (searchInput) {
-          searchInput.value = '';
-        }
-      } else {
-        // If opening, focus on input
-        const searchInput = searchContainer.querySelector('.search-input');
-        if (searchInput) {
-          setTimeout(() => {
-            searchInput.focus();
-          }, 100);
-        }
-      }
+  initializeComponents();
+  setupSearchFunctionality();
+  setupThemeToggle();
+});
+
+function initializeComponents() {
+  // Initialize tabs
+  const tabGroups = document.querySelectorAll('.eds-tabs');
+  tabGroups.forEach(group => {
+    const tabButtons = group.querySelectorAll('.eds-tab');
+    const tabPanels = document.querySelectorAll('.eds-tab-panel[data-tab-group="' + group.dataset.tabGroup + '"]');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.dataset.tabId;
+        setActiveTab(tabButtons, tabPanels, tabId);
+      });
     });
+    
+    // Set first tab as active by default if none is active
+    if (!Array.from(tabButtons).some(button => button.classList.contains('active'))) {
+      const firstTabId = tabButtons[0]?.dataset.tabId;
+      if (firstTabId) {
+        setActiveTab(tabButtons, tabPanels, firstTabId);
+      }
+    }
+  });
+  
+  // Initialize mobile menu
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuToggle && mobileMenu) {
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    const closeMenu = document.getElementById('close-mobile-menu');
+    if (closeMenu) {
+      closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    }
   }
   
-  // Add anchor links to headings
-  const headings = document.querySelectorAll('h2, h3, h4, h5, h6');
-  headings.forEach(heading => {
-    if (heading.id) {
-      const anchor = document.createElement('a');
-      anchor.setAttribute('href', `#${heading.id}`);
-      anchor.classList.add('heading-anchor');
-      anchor.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>';
-      heading.appendChild(anchor);
+  // Initialize copy code buttons
+  const copyButtons = document.querySelectorAll('.copy-code-button');
+  copyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const codeBlock = button.closest('.component-preview').querySelector('pre code');
+      if (codeBlock) {
+        navigator.clipboard.writeText(codeBlock.textContent)
+          .then(() => {
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          })
+          .catch(err => {
+            console.error('Could not copy text: ', err);
+          });
+      }
+    });
+  });
+}
+
+function setActiveTab(buttons, panels, activeTabId) {
+  buttons.forEach(button => {
+    if (button.dataset.tabId === activeTabId) {
+      button.classList.add('active');
+    } else {
+      button.classList.remove('active');
     }
   });
   
-  // Handle external links
-  const links = document.querySelectorAll('a');
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href && href.startsWith('http') && !href.includes(window.location.hostname)) {
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
-      
-      // Add external link icon if it doesn't already have content
-      if (!link.querySelector('svg') && !link.querySelector('img') && link.textContent.trim() !== '') {
-        const externalIcon = document.createElement('span');
-        externalIcon.classList.add('external-link-icon');
-        externalIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>';
-        link.appendChild(externalIcon);
-      }
+  panels.forEach(panel => {
+    if (panel.dataset.tabId === activeTabId) {
+      panel.classList.add('active');
+    } else {
+      panel.classList.remove('active');
     }
   });
+}
+
+function setupSearchFunctionality() {
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
   
-  // Handle keyboard navigation
-  document.addEventListener('keydown', function(event) {
-    // '/' key to focus search
-    if (event.key === '/' && searchContainer) {
-      event.preventDefault();
-      searchContainer.hidden = false;
-      const searchInput = searchContainer.querySelector('.search-input');
-      if (searchInput) {
-        searchInput.focus();
-      }
-    }
+  if (searchInput && searchResults) {
+    searchInput.addEventListener('focus', () => {
+      searchResults.classList.remove('hidden');
+    });
     
-    // 'Escape' key to close search
-    if (event.key === 'Escape' && searchContainer && !searchContainer.hidden) {
-      searchContainer.hidden = true;
-    }
-  });
+    // Close search when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+        searchResults.classList.add('hidden');
+      }
+    });
+    
+    // Search functionality
+    let searchData = null;
+    
+    // Load search data
+    fetch('/search-index.json')
+      .then(response => response.json())
+      .then(data => {
+        searchData = data;
+      })
+      .catch(error => {
+        console.error('Error loading search data:', error);
+      });
+    
+    // Perform search when typing
+    let debounceTimeout;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        const query = searchInput.value.trim().toLowerCase();
+        
+        if (query.length < 2) {
+          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">Please enter at least 2 characters to search</div>';
+          return;
+        }
+        
+        if (!searchData) {
+          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">Search data is loading...</div>';
+          return;
+        }
+        
+        const results = performSearch(query, searchData);
+        
+        if (results.length === 0) {
+          searchResults.innerHTML = '<div class="p-4 text-[var(--color-text-muted)]">No results found</div>';
+        } else {
+          const resultsHTML = results.map(result => `
+            <a href="${result.url}" class="search-result">
+              <div class="search-result-title">${highlightMatches(result.title, query)}</div>
+              <div class="search-result-path">${result.url}</div>
+              <div class="search-result-snippet">${result.snippet}</div>
+            </a>
+          `).join('');
+          
+          searchResults.innerHTML = resultsHTML;
+        }
+      }, 300);
+    });
+  }
+}
+
+function performSearch(query, searchData) {
+  const results = [];
   
-  // Handle component tabs from URL hash
-  const handleComponentTabsFromHash = () => {
-    const hash = window.location.hash;
-    if (hash && hash.startsWith('#tab-')) {
-      const tabName = hash.replace('#tab-', '');
-      const tabButton = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
-      if (tabButton) {
-        tabButton.click();
+  for (const key in searchData) {
+    const item = searchData[key];
+    const titleScore = scoreMatch(item.title.toLowerCase(), query);
+    const contentScore = scoreMatch(item.content.toLowerCase(), query);
+    
+    const totalScore = titleScore * 2 + contentScore;
+    
+    if (totalScore > 0) {
+      results.push({
+        title: item.title,
+        url: item.url,
+        snippet: getResultSnippet(item.content, query),
+        score: totalScore
+      });
+    }
+  }
+  
+  // Sort by score (highest first)
+  results.sort((a, b) => b.score - a.score);
+  
+  // Return top results
+  return results.slice(0, 8);
+}
+
+function scoreMatch(text, query) {
+  // Direct match
+  if (text.includes(query)) {
+    return 10;
+  }
+  
+  // Partial word matches
+  const words = text.split(/\s+/);
+  for (const word of words) {
+    if (word.startsWith(query)) {
+      return 5;
+    }
+    if (word.includes(query)) {
+      return 3;
+    }
+  }
+  
+  return 0;
+}
+
+function getResultSnippet(content, query) {
+  const maxLength = 150;
+  const lowerContent = content.toLowerCase();
+  const index = lowerContent.indexOf(query);
+  
+  if (index === -1) {
+    // If query not found exactly, return beginning of content
+    return content.substring(0, maxLength) + '...';
+  }
+  
+  // Calculate snippet start and end positions
+  let start = Math.max(0, index - 60);
+  let end = Math.min(content.length, index + query.length + 60);
+  
+  // Adjust to not cut words
+  while (start > 0 && content[start] !== ' ') {
+    start--;
+  }
+  
+  while (end < content.length && content[end] !== ' ') {
+    end++;
+  }
+  
+  // Create snippet
+  let snippet = content.substring(start, end);
+  
+  // Add ellipsis if needed
+  if (start > 0) {
+    snippet = '...' + snippet;
+  }
+  
+  if (end < content.length) {
+    snippet = snippet + '...';
+  }
+  
+  return highlightMatches(snippet, query);
+}
+
+function highlightMatches(text, query) {
+  const regex = new RegExp('(' + escapeRegExp(query) + ')', 'gi');
+  return text.replace(regex, '<span class="search-highlight">$1</span>');
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function setupThemeToggle() {
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      
+      // Save preference to localStorage
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+    });
+    
+    // Set initial theme based on localStorage or system preference
+    const savedPreference = localStorage.getItem('darkMode');
+    
+    if (savedPreference === 'true') {
+      document.documentElement.classList.add('dark');
+    } else if (savedPreference === 'false') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      // Check system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
       }
     }
-  };
-  
-  handleComponentTabsFromHash();
-  window.addEventListener('hashchange', handleComponentTabsFromHash);
-  
-  // Make tables responsive
-  const tables = document.querySelectorAll('table');
-  tables.forEach(table => {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('table-responsive');
-    table.parentNode.insertBefore(wrapper, table);
-    wrapper.appendChild(table);
-  });
-});
+  }
+}

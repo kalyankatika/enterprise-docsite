@@ -1,50 +1,295 @@
+/* Base Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Base colors */
-  --color-primary: #368727;
-  --color-primary-dark: #2E7321;
-  --color-secondary: #4F46E5;
-  --color-secondary-dark: #3730a3;
-  
-  /* Light theme (default) */
-  --color-text: #212121;
-  --color-text-muted: #6B7280;
-  --color-bg: #ffffff;
-  --color-bg-alt: #F3F4F6;
-  --color-border: #E5E7EB;
+/* Custom styles for Enterprise Design System documentation */
+
+/* Prose styling for markdown content */
+.prose {
+  @apply text-[var(--color-text)];
 }
 
-[data-theme="dark"] {
-  --color-text: #F3F4F6;
-  --color-text-muted: #9CA3AF;
-  --color-bg: #1F2937;
-  --color-bg-alt: #374151;
-  --color-border: #4B5563;
+.prose h1 {
+  @apply text-3xl font-bold mt-0 mb-6;
 }
 
-body {
-  font-family: var(--font-sans, 'Inter', system-ui, sans-serif);
-  color: var(--color-text);
-  background-color: var(--color-bg);
+.prose h2 {
+  @apply text-2xl font-bold mt-10 mb-4;
 }
 
-@layer components {
-  .eds-card {
-    @apply p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)];
+.prose h3 {
+  @apply text-xl font-bold mt-8 mb-3;
+}
+
+.prose h4 {
+  @apply text-lg font-bold mt-6 mb-2;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+.prose ul {
+  @apply list-disc pl-6 mb-4;
+}
+
+.prose ol {
+  @apply list-decimal pl-6 mb-4;
+}
+
+.prose li {
+  @apply mb-1;
+}
+
+.prose a {
+  @apply text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] no-underline border-b border-[var(--color-primary)] border-opacity-30 hover:border-opacity-100 transition-colors;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-[var(--color-border)] pl-4 italic my-6;
+}
+
+.prose code {
+  @apply bg-[var(--color-code-bg)] text-[var(--color-code-text)] px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-[var(--color-code-bg)] text-[var(--color-code-text)] p-4 rounded-lg overflow-x-auto my-6;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.prose hr {
+  @apply border-[var(--color-border)] my-8;
+}
+
+.prose table {
+  @apply w-full border-collapse my-6;
+}
+
+.prose thead {
+  @apply bg-[var(--color-bg-alt)];
+}
+
+.prose th {
+  @apply border border-[var(--color-border)] py-2 px-4 text-left font-semibold;
+}
+
+.prose td {
+  @apply border border-[var(--color-border)] py-2 px-4;
+}
+
+.prose img {
+  @apply rounded-lg my-6;
+}
+
+/* Dark mode adjustments for code blocks */
+html.dark .prose pre {
+  @apply bg-gray-800;
+}
+
+html.dark .prose code {
+  @apply bg-gray-800 text-gray-200;
+}
+
+/* Custom component styling */
+.component-example {
+  @apply border border-[var(--color-border)] rounded-lg mb-8 overflow-hidden;
+}
+
+.component-example-preview {
+  @apply p-6 border-b border-[var(--color-border)];
+}
+
+.component-example-code {
+  @apply bg-[var(--color-code-bg)] p-4 overflow-x-auto;
+}
+
+/* Custom scrollbar for code blocks */
+.component-example-code::-webkit-scrollbar {
+  @apply h-2;
+}
+
+.component-example-code::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.component-example-code::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+}
+
+/* Syntax highlighting for code blocks */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.token.punctuation {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  @apply text-blue-600 dark:text-blue-400;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-yellow-600 dark:text-yellow-400;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+.token.function,
+.token.class-name {
+  @apply text-red-600 dark:text-red-400;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-orange-600 dark:text-orange-400;
+}
+
+/* Specific components */
+.component-status {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.component-status-stable {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300;
+}
+
+.component-status-beta {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300;
+}
+
+.component-status-experimental {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+}
+
+/* Utility classes */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .eds-alert {
-    @apply p-4 rounded-lg border;
+  to {
+    opacity: 1;
   }
-  
-  .eds-alert-info {
-    @apply border-blue-200 bg-blue-50 text-blue-800;
+}
+
+/* Mobile navigation */
+@media (max-width: 768px) {
+  .mobile-nav-open {
+    @apply overflow-hidden;
   }
-  
-  [data-theme="dark"] .eds-alert-info {
-    @apply border-blue-800 bg-blue-900 bg-opacity-40 text-blue-100;
-  }
+}
+
+/* Tab component */
+.eds-tabs {
+  @apply mb-6;
+}
+
+.eds-tabs-list {
+  @apply flex border-b border-[var(--color-border)];
+}
+
+.eds-tab-button {
+  @apply px-4 py-2 font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] border-b-2 border-transparent;
+}
+
+.eds-tab-button[aria-selected="true"] {
+  @apply text-[var(--color-primary)] border-[var(--color-primary)];
+}
+
+.eds-tab-panel {
+  @apply hidden pt-4;
+}
+
+.eds-tab-panel[aria-hidden="false"] {
+  @apply block;
+}
+
+/* Search results styling */
+.search-highlight {
+  @apply bg-yellow-100 px-0.5 rounded dark:bg-yellow-900/30;
+}
+
+/* Homepage specific styles */
+.feature-card {
+  @apply h-full bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg p-6 transition-all hover:shadow-md hover:border-[var(--color-primary-light)];
+}
+
+.feature-icon {
+  @apply w-12 h-12 rounded-full flex items-center justify-center mb-4;
+}
+
+/* API documentation tables */
+.api-table th:first-child {
+  @apply w-1/4;
+}
+
+.api-table td:nth-child(2) {
+  @apply font-mono text-sm;
+}
+
+/* Component playground */
+.component-playground {
+  @apply border border-[var(--color-border)] rounded-lg overflow-hidden mb-8;
+}
+
+.playground-preview {
+  @apply p-8 border-b border-[var(--color-border)] flex items-center justify-center min-h-[200px];
+}
+
+.playground-controls {
+  @apply bg-[var(--color-bg-alt)] p-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.playground-control-group {
+  @apply mb-4;
+}
+
+.playground-control-label {
+  @apply block text-sm font-medium mb-1;
+}
+
+.playground-control-input {
+  @apply block w-full border border-[var(--color-border)] rounded px-3 py-2 bg-[var(--color-bg)];
+}
+
+.playground-code {
+  @apply bg-[var(--color-code-bg)] p-4 border-t border-[var(--color-border)];
 }

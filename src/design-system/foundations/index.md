@@ -1,29 +1,31 @@
 ---
 layout: layouts/page.njk
-title: Design Foundations
-description: Core design elements that form the building blocks of our interface
+title: Foundations
+description: The core design elements that form the building blocks of our design system
 sidebarType: design-system
 ---
 
-# Design Foundations
+# Foundations
 
-Design foundations are the core visual elements that establish our design language and ensure consistency across all enterprise applications. These building blocks form the foundation of our entire user interface and help create a cohesive user experience.
+Foundations are the core design elements that form the building blocks of our design system. They establish the visual language of our products and ensure consistency across all interfaces.
 
-## Foundation Elements
+## Core Foundation Elements
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
   <a href="/design-system/foundations/color/" class="block group">
     <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] group-hover:border-[var(--color-primary)] transition-colors h-full flex flex-col">
       <div class="mb-4">
-        <div class="flex space-x-2 mb-3">
-          <div class="w-8 h-8 rounded-full bg-[var(--color-primary)]"></div>
-          <div class="w-8 h-8 rounded-full bg-[var(--color-secondary)]"></div>
-          <div class="w-8 h-8 rounded-full bg-gray-800 dark:bg-gray-200"></div>
-          <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+        <div class="grid grid-cols-6 gap-2">
+          <div class="h-8 bg-blue-600 rounded-md"></div>
+          <div class="h-8 bg-blue-500 rounded-md"></div>
+          <div class="h-8 bg-blue-400 rounded-md"></div>
+          <div class="h-8 bg-green-500 rounded-md"></div>
+          <div class="h-8 bg-yellow-500 rounded-md"></div>
+          <div class="h-8 bg-red-500 rounded-md"></div>
         </div>
       </div>
       <h3 class="text-xl font-semibold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Color</h3>
-      <p class="text-[var(--color-text-muted)] flex-grow">Our color system provides a flexible, cohesive palette optimized for digital interfaces. Learn about our color usage principles and guidelines.</p>
+      <p class="text-[var(--color-text-muted)] flex-grow">Our color palette system, including primary and secondary colors, semantic colors, neutrals, and usage guidelines.</p>
       <div class="mt-4 text-[var(--color-primary)] font-medium">View Color System →</div>
     </div>
   </a>
@@ -31,15 +33,15 @@ Design foundations are the core visual elements that establish our design langua
   <a href="/design-system/foundations/typography/" class="block group">
     <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] group-hover:border-[var(--color-primary)] transition-colors h-full flex flex-col">
       <div class="mb-4">
-        <div class="space-y-2">
-          <div class="h-4 bg-gray-800 dark:bg-gray-200 rounded w-16"></div>
-          <div class="h-8 bg-gray-800 dark:bg-gray-200 rounded w-48"></div>
-          <div class="h-3 bg-gray-400 dark:bg-gray-600 rounded w-56"></div>
-          <div class="h-3 bg-gray-400 dark:bg-gray-600 rounded w-40"></div>
+        <div class="space-y-1">
+          <div class="h-8 font-bold text-xl truncate">Typography Example</div>
+          <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
+          <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-5/6"></div>
+          <div class="h-4 bg-gray-300 dark:bg-gray-700 rounded w-4/6"></div>
         </div>
       </div>
       <h3 class="text-xl font-semibold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Typography</h3>
-      <p class="text-[var(--color-text-muted)] flex-grow">Our typography system is designed for optimal readability and hierarchy, with a carefully selected set of fonts and text styles.</p>
+      <p class="text-[var(--color-text-muted)] flex-grow">Our typefaces, font weights, sizes, and styles for headings, body text, and UI elements.</p>
       <div class="mt-4 text-[var(--color-primary)] font-medium">View Typography System →</div>
     </div>
   </a>
@@ -48,74 +50,81 @@ Design foundations are the core visual elements that establish our design langua
     <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] group-hover:border-[var(--color-primary)] transition-colors h-full flex flex-col">
       <div class="mb-4">
         <div class="flex items-end space-x-1">
-          <div class="h-4 w-4 bg-[var(--color-primary)]"></div>
-          <div class="h-8 w-8 bg-[var(--color-primary)]"></div>
-          <div class="h-12 w-12 bg-[var(--color-primary)]"></div>
-          <div class="h-16 w-16 bg-[var(--color-primary)]"></div>
+          <div class="w-4 h-4 bg-[var(--color-primary)] rounded"></div>
+          <div class="w-6 h-6 bg-[var(--color-primary)] rounded"></div>
+          <div class="w-8 h-8 bg-[var(--color-primary)] rounded"></div>
+          <div class="w-10 h-10 bg-[var(--color-primary)] rounded"></div>
+          <div class="w-12 h-12 bg-[var(--color-primary)] rounded"></div>
         </div>
       </div>
       <h3 class="text-xl font-semibold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Spacing</h3>
-      <p class="text-[var(--color-text-muted)] flex-grow">A consistent spacing system helps create balanced layouts and establish rhythmic relationships between elements.</p>
+      <p class="text-[var(--color-text-muted)] flex-grow">Our spacing scale and system for consistent layout, padding, and margins across all interfaces.</p>
       <div class="mt-4 text-[var(--color-primary)] font-medium">View Spacing System →</div>
-    </div>
-  </a>
-  
-  <a href="/design-system/foundations/grid-system/" class="block group">
-    <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] group-hover:border-[var(--color-primary)] transition-colors h-full flex flex-col">
-      <div class="mb-4">
-        <div class="grid grid-cols-4 gap-2 h-16">
-          <div class="bg-[var(--color-primary)] bg-opacity-20 rounded"></div>
-          <div class="bg-[var(--color-primary)] bg-opacity-20 rounded"></div>
-          <div class="bg-[var(--color-primary)] bg-opacity-20 rounded"></div>
-          <div class="bg-[var(--color-primary)] bg-opacity-20 rounded"></div>
-        </div>
-      </div>
-      <h3 class="text-xl font-semibold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Grid System</h3>
-      <p class="text-[var(--color-text-muted)] flex-grow">Our responsive grid system provides a flexible framework for creating consistent layouts across different screen sizes.</p>
-      <div class="mt-4 text-[var(--color-primary)] font-medium">View Grid System →</div>
     </div>
   </a>
   
   <a href="/design-system/foundations/iconography/" class="block group">
     <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] group-hover:border-[var(--color-primary)] transition-colors h-full flex flex-col">
       <div class="mb-4">
-        <div class="flex space-x-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="grid grid-cols-5 gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-text)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
           </svg>
         </div>
       </div>
       <h3 class="text-xl font-semibold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Iconography</h3>
-      <p class="text-[var(--color-text-muted)] flex-grow">Our icon system provides a consistent visual language to enhance usability and reinforce meaning in interfaces.</p>
+      <p class="text-[var(--color-text-muted)] flex-grow">Our icon system, including usage guidelines, sizing, and available icon sets.</p>
       <div class="mt-4 text-[var(--color-primary)] font-medium">View Icon System →</div>
     </div>
   </a>
   
-  <a href="/design-system/foundations/motion/" class="block group">
+  <a href="/design-system/foundations/grid-system/" class="block group">
     <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] group-hover:border-[var(--color-primary)] transition-colors h-full flex flex-col">
-      <div class="mb-4 overflow-hidden">
-        <div class="w-full h-1 bg-[var(--color-bg-alt)] rounded-full overflow-hidden">
-          <div class="h-full w-1/2 bg-[var(--color-primary)] rounded-full animate-pulse"></div>
+      <div class="mb-4">
+        <div class="grid grid-cols-12 gap-1 h-10">
+          <div class="bg-[var(--color-primary)] opacity-40 rounded col-span-2"></div>
+          <div class="bg-[var(--color-primary)] opacity-40 rounded col-span-2"></div>
+          <div class="bg-[var(--color-primary)] opacity-40 rounded col-span-4"></div>
+          <div class="bg-[var(--color-primary)] opacity-40 rounded col-span-4"></div>
         </div>
       </div>
-      <h3 class="text-xl font-semibold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Motion</h3>
-      <p class="text-[var(--color-text-muted)] flex-grow">Our motion principles guide how to use animation to enhance user experience and provide meaningful feedback.</p>
-      <div class="mt-4 text-[var(--color-primary)] font-medium">View Motion System →</div>
+      <h3 class="text-xl font-semibold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Grid System</h3>
+      <p class="text-[var(--color-text-muted)] flex-grow">Our responsive grid system for consistent layouts across all screen sizes.</p>
+      <div class="mt-4 text-[var(--color-primary)] font-medium">View Grid System →</div>
+    </div>
+  </a>
+  
+  <a href="/design-system/guidelines/accessibility/" class="block group">
+    <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] group-hover:border-[var(--color-primary)] transition-colors h-full flex flex-col">
+      <div class="mb-4">
+        <div class="h-10 rounded bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </div>
+      </div>
+      <h3 class="text-xl font-semibold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Accessibility</h3>
+      <p class="text-[var(--color-text-muted)] flex-grow">Our accessibility guidelines and best practices for creating inclusive interfaces.</p>
+      <div class="mt-4 text-[var(--color-primary)] font-medium">View Accessibility Guidelines →</div>
     </div>
   </a>
 </div>
 
-## Using Design Foundations
+## Purpose of Foundations
 
-These foundations establish the visual language of our design system and ensure consistency across all interfaces. They should be applied thoughtfully and in combination to create cohesive user experiences.
-
-<div class="mt-8 eds-alert eds-alert-info">
+<div class="eds-alert eds-alert-info mt-8">
   <div class="flex">
     <div class="flex-shrink-0">
       <svg class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -123,24 +132,93 @@ These foundations establish the visual language of our design system and ensure 
       </svg>
     </div>
     <div>
-      <p class="font-medium">Design tokens available</p>
-      <p class="mt-1">All foundational elements are available as design tokens that can be integrated into your development workflow. See the <a href="/resources/design-tokens/" class="text-[var(--color-primary)] hover:underline">Design Tokens</a> page for implementation details.</p>
+      <p class="font-medium">Foundation elements should be used consistently</p>
+      <p class="mt-1">Foundations provide the basic building blocks for all design work. Use them consistently to create cohesive and harmonious interfaces.</p>
     </div>
   </div>
 </div>
 
-## Design Foundation Resources
+Foundations serve several critical purposes in our design system:
 
-<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-  <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)]">
-    <h3 class="text-xl font-semibold mb-2">Figma Libraries</h3>
-    <p class="mb-4 text-[var(--color-text-muted)]">Access our Figma libraries that contain all design foundation elements ready for use in your designs.</p>
-    <a href="/resources/downloads/" class="text-[var(--color-primary)] font-medium hover:underline">View Figma Resources →</a>
+### 1. Establish a Consistent Visual Language
+
+Foundations set the visual tone for all our products. By using consistent colors, typography, spacing, and other foundational elements, we create a cohesive look and feel across all interfaces.
+
+### 2. Improve Design Efficiency
+
+With pre-defined foundation elements, designers can make decisions more quickly and focus on solving user problems rather than debating basic visual choices.
+
+### 3. Ensure Accessibility and Usability
+
+Our foundations are designed with accessibility in mind. The color system includes contrast checking, typography ensures readability, and spacing creates clear visual hierarchies.
+
+### 4. Support Theming and Customization
+
+While consistency is important, our foundations also support theming and customization through design tokens that can be adjusted to meet specific brand needs.
+
+### 5. Create a Shared Design Vocabulary
+
+Foundations create a shared language for designers and developers to communicate efficiently about interface elements.
+
+## How to Use Foundations
+
+When working on designs or implementations, always start with the foundation elements. They provide the basic building blocks for all other components and patterns.
+
+<div class="rounded-lg border border-[var(--color-border)] overflow-hidden mt-8">
+  <div class="bg-[var(--color-bg-alt)] px-4 py-3 border-b border-[var(--color-border)]">
+    <div class="font-medium">Example: Building a Card Component</div>
   </div>
-  
-  <div class="bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)]">
-    <h3 class="text-xl font-semibold mb-2">Implementation Guide</h3>
-    <p class="mb-4 text-[var(--color-text-muted)]">Learn how to implement our design foundations in your code to create consistent enterprise applications.</p>
-    <a href="/get-started/implementation/" class="text-[var(--color-primary)] font-medium hover:underline">View Implementation Guide →</a>
+  <div class="p-4">
+    <div class="mb-4">
+      <p class="mb-2 text-sm text-[var(--color-text-muted)]">When designing or implementing a card component, use foundation elements:</p>
+      <ul class="list-disc pl-5 space-y-1 text-sm text-[var(--color-text-muted)]">
+        <li><strong>Colors:</strong> Use the defined background, border, and text colors</li>
+        <li><strong>Typography:</strong> Follow heading and body text guidelines</li>
+        <li><strong>Spacing:</strong> Apply consistent padding and margins using the spacing scale</li>
+        <li><strong>Elevation:</strong> Use the appropriate shadow for the card's visual hierarchy</li>
+      </ul>
+    </div>
+    
+    <div class="bg-white dark:bg-gray-800 border border-[var(--color-border)] rounded-lg p-4 shadow-sm">
+      <h3 class="text-lg font-medium mb-2">Card Title</h3>
+      <p class="text-sm text-[var(--color-text-muted)] mb-4">This is an example card that uses our foundation elements consistently, including color, typography, and spacing.</p>
+      <button class="px-4 py-2 bg-[var(--color-primary)] text-white rounded-md text-sm font-medium">Primary Action</button>
+    </div>
   </div>
 </div>
+
+## Implementation Principles
+
+When implementing foundation elements in your designs and code, follow these principles:
+
+### Use Design Tokens
+
+Design tokens are named entities that store visual design attributes. Use design tokens rather than hard-coded values to ensure consistency and support theming.
+
+```css
+/* Don't use hard-coded values */
+.button {
+  background-color: #0056b3;
+  padding: 12px 16px;
+}
+
+/* Do use design tokens */
+.button {
+  background-color: var(--color-primary);
+  padding: var(--space-3) var(--space-4);
+}
+```
+
+### Follow Documentation Closely
+
+Each foundation element has specific usage guidelines. Follow these guidelines closely to ensure proper implementation and avoid inconsistencies.
+
+### Use Foundation Elements as Building Blocks
+
+Foundations should be the building blocks for all other components and patterns. Start with foundations, then build more complex elements on top of them.
+
+## Related Resources
+
+- [Design Tokens](/resources/design-tokens/) - View all available design tokens
+- [Figma Libraries](/resources/figma/) - Access foundation styles in our Figma libraries
+- [Implementation Guide](/get-started/implementation/) - Technical guidance for implementing foundation elements

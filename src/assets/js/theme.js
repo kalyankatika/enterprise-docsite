@@ -1,48 +1,35 @@
 /**
  * Theme toggle functionality for EDS Documentation
  */
+
 document.addEventListener('DOMContentLoaded', function() {
-  const themeToggle = document.getElementById('themeToggle');
-  const sunIcon = document.getElementById('sunIcon');
-  const moonIcon = document.getElementById('moonIcon');
+  initializeThemeToggle();
+});
+
+function initializeThemeToggle() {
+  const themeToggle = document.getElementById('theme-toggle');
   
-  // Check for saved theme preference or respect OS preference
-  const savedTheme = localStorage.getItem('theme');
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    sunIcon.classList.add('hidden');
-    moonIcon.classList.remove('hidden');
-  }
-  
-  // Toggle theme on click
-  themeToggle.addEventListener('click', function() {
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-      moonIcon.classList.add('hidden');
-      sunIcon.classList.remove('hidden');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      
+      // Save preference to localStorage
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+    });
+    
+    // Set initial theme based on localStorage or system preference
+    const savedPreference = localStorage.getItem('darkMode');
+    
+    if (savedPreference === 'true') {
+      document.documentElement.classList.add('dark');
+    } else if (savedPreference === 'false') {
+      document.documentElement.classList.remove('dark');
     } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      sunIcon.classList.add('hidden');
-      moonIcon.classList.remove('hidden');
-    }
-  });
-  
-  // Handle system preference changes
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    if (!localStorage.getItem('theme')) {
-      if (e.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-        moonIcon.classList.add('hidden');
-        sunIcon.classList.remove('hidden');
+      // Check system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
       }
     }
-  });
-});
+  }
+}

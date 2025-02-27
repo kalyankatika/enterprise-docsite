@@ -2,252 +2,226 @@
  * Navigation structure for EDS Documentation
  */
 module.exports = {
-  // Main navigation shown in the header
   main: [
     {
-      title: "Get Started",
+      label: "Get Started",
       url: "/get-started/"
     },
     {
-      title: "Design System",
+      label: "Design System",
       url: "/design-system/"
     },
     {
-      title: "Components",
+      label: "Components",
       url: "/components/"
     },
     {
-      title: "Resources",
+      label: "Resources",
       url: "/resources/"
-    },
-    {
-      title: "Support",
-      url: "/support/"
     }
   ],
-  
-  // Design System subnavigation
+  getStarted: [
+    {
+      label: "Introduction",
+      url: "/get-started/"
+    },
+    {
+      label: "Installation",
+      url: "/get-started/installation/"
+    },
+    {
+      label: "Usage",
+      url: "/get-started/usage/"
+    },
+    {
+      label: "Customization",
+      url: "/get-started/customization/"
+    },
+    {
+      label: "Theming",
+      url: "/get-started/theming/"
+    },
+    {
+      label: "Accessibility",
+      url: "/get-started/accessibility/"
+    }
+  ],
   designSystem: [
     {
-      title: "Foundations",
-      items: [
+      label: "Overview",
+      url: "/design-system/"
+    },
+    {
+      label: "Foundations",
+      url: "/design-system/foundations/",
+      children: [
         {
-          title: "Color",
+          label: "Color",
           url: "/design-system/foundations/color/"
         },
         {
-          title: "Typography",
+          label: "Typography",
           url: "/design-system/foundations/typography/"
         },
         {
-          title: "Spacing",
+          label: "Spacing",
           url: "/design-system/foundations/spacing/"
         },
         {
-          title: "Grid System",
+          label: "Grid System",
           url: "/design-system/foundations/grid-system/"
         },
         {
-          title: "Iconography",
+          label: "Iconography",
           url: "/design-system/foundations/iconography/"
+        },
+        {
+          label: "Motion",
+          url: "/design-system/foundations/motion/"
         }
       ]
     },
     {
-      title: "Guidelines",
-      items: [
+      label: "Guidelines",
+      url: "/design-system/guidelines/",
+      children: [
         {
-          title: "Accessibility",
+          label: "Accessibility",
           url: "/design-system/guidelines/accessibility/"
         },
         {
-          title: "Content",
+          label: "Content",
           url: "/design-system/guidelines/content/"
         },
         {
-          title: "Responsiveness",
-          url: "/design-system/guidelines/responsiveness/"
-        },
-        {
-          title: "Internationalization",
-          url: "/design-system/guidelines/internationalization/"
+          label: "Voice & Tone",
+          url: "/design-system/guidelines/voice-and-tone/"
         }
       ]
     }
   ],
-  
-  // Component categories
   components: [
     {
-      title: "Layout",
-      items: [
+      label: "Overview",
+      url: "/components/"
+    },
+    {
+      label: "Layout",
+      url: "/components/layout/",
+      children: [
         {
-          title: "Container",
+          label: "Container",
           url: "/components/layout/container/"
         },
         {
-          title: "Grid",
+          label: "Grid",
           url: "/components/layout/grid/"
         },
         {
-          title: "Stack",
-          url: "/components/layout/stack/"
+          label: "Card",
+          url: "/components/layout/card/"
         },
         {
-          title: "Divider",
+          label: "Divider",
           url: "/components/layout/divider/"
         }
       ]
     },
     {
-      title: "Navigation",
-      items: [
+      label: "Inputs",
+      url: "/components/inputs/",
+      children: [
         {
-          title: "Navbar",
-          url: "/components/navigation/navbar/"
-        },
-        {
-          title: "Sidebar",
-          url: "/components/navigation/sidebar/"
-        },
-        {
-          title: "Tabs",
-          url: "/components/navigation/tabs/"
-        },
-        {
-          title: "Breadcrumbs",
-          url: "/components/navigation/breadcrumbs/"
-        }
-      ]
-    },
-    {
-      title: "Inputs",
-      items: [
-        {
-          title: "Button",
+          label: "Button",
           url: "/components/inputs/button/"
         },
         {
-          title: "Text Input",
-          url: "/components/inputs/text-input/"
+          label: "Text Field",
+          url: "/components/inputs/text-field/"
         },
         {
-          title: "Checkbox",
+          label: "Checkbox",
           url: "/components/inputs/checkbox/"
         },
         {
-          title: "Radio Button",
-          url: "/components/inputs/radio-button/"
+          label: "Radio",
+          url: "/components/inputs/radio/"
         },
         {
-          title: "Select",
+          label: "Select",
           url: "/components/inputs/select/"
-        },
-        {
-          title: "Date Picker",
-          url: "/components/inputs/date-picker/"
         }
       ]
     },
     {
-      title: "Data Display",
-      items: [
+      label: "Navigation",
+      url: "/components/navigation/",
+      children: [
         {
-          title: "Table",
-          url: "/components/data-display/table/"
+          label: "Navbar",
+          url: "/components/navigation/navbar/"
         },
         {
-          title: "Card",
-          url: "/components/data-display/card/"
+          label: "Tabs",
+          url: "/components/navigation/tabs/"
         },
         {
-          title: "List",
-          url: "/components/data-display/list/"
+          label: "Breadcrumb",
+          url: "/components/navigation/breadcrumb/"
         },
         {
-          title: "Badge",
-          url: "/components/data-display/badge/"
+          label: "Pagination",
+          url: "/components/navigation/pagination/"
         }
       ]
     },
     {
-      title: "Feedback",
-      items: [
+      label: "Feedback",
+      url: "/components/feedback/",
+      children: [
         {
-          title: "Alert",
+          label: "Alert",
           url: "/components/feedback/alert/"
         },
         {
-          title: "Toast",
+          label: "Toast",
           url: "/components/feedback/toast/"
         },
         {
-          title: "Progress",
-          url: "/components/feedback/progress/"
+          label: "Modal",
+          url: "/components/feedback/modal/"
         },
         {
-          title: "Spinner",
-          url: "/components/feedback/spinner/"
+          label: "Progress",
+          url: "/components/feedback/progress/"
         }
       ]
     }
   ],
-  
-  // Footer navigation
-  footer: {
-    docs: [
-      {
-        title: "Getting Started",
-        url: "/get-started/"
-      },
-      {
-        title: "Design Foundations",
-        url: "/design-system/foundations/"
-      },
-      {
-        title: "Component Library",
-        url: "/components/"
-      },
-      {
-        title: "Guidelines",
-        url: "/design-system/guidelines/"
-      }
-    ],
-    resources: [
-      {
-        title: "Design Tokens",
-        url: "/resources/design-tokens/"
-      },
-      {
-        title: "Templates",
-        url: "/resources/templates/"
-      },
-      {
-        title: "Downloads",
-        url: "/resources/downloads/"
-      },
-      {
-        title: "Release Notes",
-        url: "/resources/release-notes/"
-      }
-    ],
-    community: [
-      {
-        title: "Slack Channel",
-        url: "https://slack.example.com/channel/design-system"
-      },
-      {
-        title: "GitHub",
-        url: "https://github.com/example/eds"
-      },
-      {
-        title: "Report an Issue",
-        url: "/support/report-issue/"
-      },
-      {
-        title: "Request a Feature",
-        url: "/support/feature-request/"
-      }
-    ]
-  }
+  resources: [
+    {
+      label: "Overview",
+      url: "/resources/"
+    },
+    {
+      label: "Design Tokens",
+      url: "/resources/design-tokens/"
+    },
+    {
+      label: "Templates",
+      url: "/resources/templates/"
+    },
+    {
+      label: "Downloads",
+      url: "/resources/downloads/"
+    },
+    {
+      label: "Figma Libraries",
+      url: "/resources/figma/"
+    },
+    {
+      label: "Examples",
+      url: "/resources/examples/"
+    }
+  ]
 };

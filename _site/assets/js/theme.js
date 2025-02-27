@@ -3,48 +3,33 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Check for saved theme preference or use system preference
-  const getInitialTheme = () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
-    }
-    
-    // Check if user has system dark mode preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    
-    // Default to light mode
-    return 'light';
-  };
-  
-  // Set theme on html element
-  const setTheme = (theme) => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  };
-  
-  // Initialize theme
-  setTheme(getInitialTheme());
-  
-  // Handle theme toggle button clicks
-  const themeToggle = document.querySelector('.theme-toggle');
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      setTheme(newTheme);
-    });
-  }
-  
-  // Listen for system theme changes
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-      // Only update if user hasn't manually selected a theme
-      if (!localStorage.getItem('theme')) {
-        setTheme(event.matches ? 'dark' : 'light');
-      }
-    });
-  }
+  initializeThemeToggle();
 });
+
+function initializeThemeToggle() {
+  const themeToggle = document.getElementById('theme-toggle');
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      
+      // Save preference to localStorage
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      localStorage.setItem('darkMode', isDarkMode ? 'true' : 'false');
+    });
+    
+    // Set initial theme based on localStorage or system preference
+    const savedPreference = localStorage.getItem('darkMode');
+    
+    if (savedPreference === 'true') {
+      document.documentElement.classList.add('dark');
+    } else if (savedPreference === 'false') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      // Check system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      }
+    }
+  }
+}

@@ -2,16 +2,24 @@
  * Site-wide configuration values
  */
 module.exports = {
-  name: "Enterprise Design System",
-  shortName: "EDS",
-  description: "Comprehensive documentation for the Enterprise Design System",
-  url: "https://eds.example.com",
-  buildYear: new Date().getFullYear(),
-  copyright: "Enterprise Co.",
+  title: "Enterprise Design System",
+  description: "A comprehensive design system for building consistent, accessible, and beautiful enterprise applications.",
+  url: "https://design-system.enterprise.com",
+  version: "2.0.0",
   author: {
     name: "Enterprise Design Team",
-    email: "design@example.com"
+    email: "design@enterprise.com"
   },
-  environment: process.env.ELEVENTY_ENV || "development",
-  version: "1.0.0" 
+  currentYear: new Date().getFullYear(),
+  github: {
+    repo: "https://github.com/enterprise/design-system",
+    issues: "https://github.com/enterprise/design-system/issues/new"
+  },
+  social: {
+    twitter: "https://twitter.com/enterprisedesign",
+    linkedin: "https://linkedin.com/company/enterprise"
+  },
+  settings: {
+    colorTheme: "light" // default theme
+  }
 };
