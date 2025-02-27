@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="eds-theme-light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,94 +8,113 @@
   <link rel="stylesheet" href="/assets/css/styles.css">
   <script src="/assets/js/alpine.min.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
 </head>
-<body class="eds-body">
-  <div class="eds-page">
-    <header class="eds-header">
-      <div class="eds-container">
-        <div class="eds-header__inner">
-          <a href="/" class="eds-header__logo">
-            <span class="eds-logo">Enterprise Design System</span>
-          </a>
-          
-          <nav class="eds-nav" aria-label="Main navigation">
-            <button class="eds-nav__toggle" aria-expanded="false" aria-controls="main-menu">
-              <span class="eds-nav__toggle-icon"></span>
-              <span class="eds-sr-only">Menu</span>
-            </button>
-            
-            <ul id="main-menu" class="eds-nav__menu">
-              
-              <li class="eds-nav__item">
-                <a href="/" class="eds-nav__link">Home</a>
-              </li>
-              
-              <li class="eds-nav__item">
-                <a href="/components/" class="eds-nav__link">Components</a>
-              </li>
-              
-              <li class="eds-nav__item">
-                <a href="/design-tokens/" class="eds-nav__link">Design Tokens</a>
-              </li>
-              
-              <li class="eds-nav__item">
-                <a href="/patterns/" class="eds-nav__link">Patterns</a>
-              </li>
-              
-              <li class="eds-nav__item">
-                <a href="/guidelines/" class="eds-nav__link">Guidelines</a>
-              </li>
-              
-              <li class="eds-nav__item">
-                <a href="/resources/" class="eds-nav__link">Resources</a>
-              </li>
-              
-              <li class="eds-nav__item">
-                <a href="/updates/" class="eds-nav__link">Updates</a>
-              </li>
-              
-            </ul>
-          </nav>
-          
-          <div class="eds-header__actions">
-            <button class="eds-theme-toggle" aria-label="Toggle dark mode">
-              <span class="eds-theme-toggle__icon"></span>
-            </button>
-            
-            <div class="eds-search" x-data="{ searchOpen: false }">
-              <button class="eds-search__toggle" @click="searchOpen = !searchOpen" aria-expanded="false" aria-controls="search-form">
-                <span class="eds-search__toggle-icon"></span>
-                <span class="eds-sr-only">Search</span>
-              </button>
-              
-              <form id="search-form" class="eds-search__form" :class="{ 'eds-search__form--open': searchOpen }" action="/search/" method="get">
-                <label for="search-input" class="eds-sr-only">Search</label>
-                <input type="search" id="search-input" name="q" class="eds-search__input" placeholder="Search the documentation..." aria-label="Search the documentation">
-                <button type="submit" class="eds-search__submit">
-                  <span class="eds-sr-only">Submit search</span>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
+<body class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen">
+
+  <header class="border-b border-[var(--color-border)] sticky top-0 bg-[var(--color-bg)] z-50">
+    <div class="container mx-auto px-4 md:px-6 flex items-center justify-between py-4">
+      <div class="flex items-center space-x-6">
+        <a href="/" class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span class="text-lg font-bold hidden md:inline-block">Enterprise Design System</span>
+          <span class="text-lg font-bold md:hidden">EDS</span>
+        </a>
+        
+        <nav class="hidden md:flex space-x-6">
+          <a href="/components/" class="hover:text-[var(--color-primary)] transition-colors py-1">Components</a>
+          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)] transition-colors py-1">Foundations</a>
+          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)] transition-colors py-1">Guidelines</a>
+          <a href="/resources/" class="hover:text-[var(--color-primary)] transition-colors py-1">Resources</a>
+        </nav>
       </div>
-    </header>
-
-    <main class="eds-main">
       
-<div class="eds-page">
-  
-    <div class="mb-8">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">Spacing</h1>
-      
-        <p class="text-xl text-gray-600 dark:text-gray-300">A consistent spacing system to create balanced layouts and establish rhythmic relationships between elements</p>
-      
+      <div class="flex items-center space-x-4">
+        <form action="/search/" method="get" role="search" class="hidden md:flex relative">
+          <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-64">
+          <div class="absolute left-3 top-2.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </form>
+        
+        <button class="eds-theme-toggle p-2 rounded-full hover:bg-[var(--color-bg-alt)] transition-colors" aria-label="Toggle theme">
+          <!-- Sun icon (shown in dark mode) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Moon icon (shown in light mode) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+        
+        <button class="md:hidden p-2 rounded-full hover:bg-[var(--color-bg-alt)] transition-colors" aria-label="Menu" id="mobile-menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </div>
-    <hr class="border-gray-200 dark:border-gray-700 mb-8">
-  
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden bg-[var(--color-bg)] border-t border-[var(--color-border)]" id="mobile-menu">
+      <div class="container mx-auto px-4 py-4">
+        <nav class="flex flex-col space-y-4">
+          <a href="/components/" class="hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)] transition-colors">Foundations</a>
+          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)] transition-colors">Guidelines</a>
+          <a href="/resources/" class="hover:text-[var(--color-primary)] transition-colors">Resources</a>
+        </nav>
+        
+        <form action="/search/" method="get" role="search" class="mt-6 relative">
+          <input type="search" name="q" placeholder="Search..." class="w-full py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm">
+          <div class="absolute left-3 top-2.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </form>
+      </div>
+    </div>
+  </header>
 
-  
-    <h1 id="spacing" tabindex="-1">Spacing <a class="anchor" href="#spacing" aria-hidden="true">#</a></h1>
+  <main class="flex-1">
+    
+<div class="container mx-auto px-4 md:px-6 pt-8 pb-16">
+  <div class="flex flex-col lg:flex-row">
+    <!-- Sidebar -->
+    <aside class="w-full lg:w-64 pr-0 lg:pr-8 mb-8 lg:mb-0 lg:border-r border-[var(--color-border)]">
+      
+        <div class="space-y-8">
+  <div>
+    <h3 class="font-medium mb-3">Documentation</h3>
+    <ul class="space-y-2 text-sm">
+      <li><a href="/getting-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Getting Started</a></li>
+      <li><a href="/design-system/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Design System</a></li>
+      <li><a href="/components/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Components</a></li>
+      <li><a href="/resources/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Resources</a></li>
+      <li><a href="/support/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Support</a></li>
+    </ul>
+  </div>
+</div>
+      
+    </aside>
+    
+    <!-- Main content -->
+    <main class="w-full lg:flex-1 lg:pl-8">
+      <div class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Spacing</h1>
+        
+          <p class="text-xl text-gray-600 dark:text-gray-300">A consistent spacing system to create balanced layouts and establish rhythmic relationships between elements</p>
+        
+      </div>
+      <hr class="border-gray-200 dark:border-gray-700 mb-8">
+      
+      <h1 id="spacing" tabindex="-1">Spacing <a class="anchor" href="#spacing" aria-hidden="true">#</a></h1>
 <p>A consistent spacing system helps create balanced layouts and establish rhythmic relationships between elements. Our spacing scale is based on a 4px grid, providing predictable and harmonious spacing throughout interfaces.</p>
 <h2 id="spacing-scale" tabindex="-1">Spacing Scale <a class="anchor" href="#spacing-scale" aria-hidden="true">#</a></h2>
 <p>Our spacing scale follows a geometric progression to provide a natural and harmonious spacing rhythm:</p>
@@ -391,47 +410,85 @@
 <li><a href="/resources/design-tokens/">Design Tokens</a> - View all available design tokens, including spacing</li>
 </ul>
 
-  
-
-  
-</div>
     </main>
+  </div>
+</div>
+  </main>
 
-    <footer class="eds-footer">
-      <div class="eds-container">
-        <div class="eds-footer__inner">
-          <div class="eds-footer__info">
-            <p class="eds-footer__copyright">&copy; 2025 Enterprise Company. All rights reserved.</p>
+  <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
+    <div class="container mx-auto px-4 md:px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="font-bold mb-4">Enterprise Design System</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">A comprehensive design system for building consistent, accessible, and beautiful enterprise applications.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
           </div>
-          
-          <nav class="eds-footer__nav" aria-label="Footer navigation">
-            <ul class="eds-footer__menu">
-              
-              <li class="eds-footer__item">
-                <a href="https://github.com/enterprise/design-system" class="eds-footer__link">GitHub</a>
-              </li>
-              
-              <li class="eds-footer__item">
-                <a href="/privacy-policy/" class="eds-footer__link">Privacy</a>
-              </li>
-              
-              <li class="eds-footer__item">
-                <a href="/terms-of-service/" class="eds-footer__link">Terms</a>
-              </li>
-              
-              <li class="eds-footer__item">
-                <a href="/accessibility/" class="eds-footer__link">Accessibility</a>
-              </li>
-              
-              <li class="eds-footer__item">
-                <a href="/contact/" class="eds-footer__link">Contact</a>
-              </li>
-              
-            </ul>
-          </nav>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="/getting-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Getting Started</a></li>
+            <li><a href="/resources/examples/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Examples</a></li>
+            <li><a href="/resources/templates/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Templates</a></li>
+            <li><a href="/resources/release-notes/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Release Notes</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Components</h4>
+          <ul class="space-y-2">
+            <li><a href="/components/inputs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Input Components</a></li>
+            <li><a href="/components/layout/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Layout Components</a></li>
+            <li><a href="/components/navigation/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Navigation Components</a></li>
+            <li><a href="/components/feedback/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Feedback Components</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Support</h4>
+          <ul class="space-y-2">
+            <li><a href="/support/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Help & Support</a></li>
+            <li><a href="/support/faq/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">FAQ</a></li>
+            <li><a href="/support/contribute/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Contribute</a></li>
+            <li><a href="/support/contact/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Contact Us</a></li>
+          </ul>
         </div>
       </div>
-    </footer>
-  </div>
+      
+      <div class="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center">
+        <p class="text-[var(--color-text-muted)] text-sm mb-4 md:mb-0">&copy; 2025 Enterprise Design System. All rights reserved.</p>
+        <div class="flex space-x-6 text-sm">
+          <a href="/privacy-policy/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Privacy Policy</a>
+          <a href="/terms-of-service/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Terms of Service</a>
+          <a href="/sitemap/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
