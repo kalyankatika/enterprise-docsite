@@ -1,4 +1,5 @@
 ---
-eleventyExcludeFromCollections: true
+permalink: /search-index.json
+excludeFromSearch: true
 ---
-{{ collections.searchIndex | dump | safe }}
+{{ collections.searchIndex | json }}

@@ -42,32 +42,20 @@ module.exports = function(eleventyConfig) {
   });
   
   // Create search-index.json
-  eleventyConfig.addCollection('searchIndex', async function(collection) {
-    const contentPromises = collection.getAll().map(async (item) => {
-      let content = '';
-      
-      // Only process markdown and njk files that aren't component examples
-      const isExampleFile = item.inputPath && item.inputPath.includes('/example.');
-      if (!isExampleFile) {
-        try {
-          // Try to get content safely
-          if (item.template && typeof item.template.read === 'function') {
-            const processed = await item.template.read();
-            content = processed.content || '';
-          }
-        } catch (e) {
-          console.log(`Error processing ${item.inputPath || 'unknown file'}: ${e.message}`);
-        }
-      }
-      
+  eleventyConfig.addCollection('searchIndex', function(collection) {
+    // Filter out example files first
+    const filteredItems = collection.getAll().filter(item => {
+      return !(item.inputPath && item.inputPath.includes('/example.'));
+    });
+    
+    return filteredItems.map(item => {
       return {
         url: item.url,
         title: item.data.title || '',
-        content: content
+        // Don't try to access templateContent here
+        content: '' // We'll extract content when needed, not during build
       };
     });
-    
-    return Promise.all(contentPromises);
   });
   
   // Configure Markdown library
