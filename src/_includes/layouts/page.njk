@@ -1,37 +1,104 @@
----
-layout: layouts/base.njk
----
+{% extends "layouts/base.njk" %}
 
-<div class="max-w-4xl mx-auto">
-  <div class="mb-6">
-    <h1 class="text-3xl font-bold mb-4">{{ title }}</h1>
-    {% if description %}
-      <p class="text-lg text-[var(--color-text-muted)] mb-8">{{ description }}</p>
-    {% endif %}
-    
-    {% if breadcrumbs %}
-      <nav class="eds-breadcrumbs mb-6" aria-label="Breadcrumbs">
-        <ol class="flex items-center space-x-2 text-sm">
-          <li>
-            <a href="/" class="text-[var(--color-primary)] hover:underline">Home</a>
-            <span class="mx-2 text-[var(--color-text-muted)]">/</span>
-          </li>
-          {% for crumb in breadcrumbs %}
-            <li>
-              {% if not loop.last %}
-                <a href="{{ crumb.url }}" class="text-[var(--color-primary)] hover:underline">{{ crumb.label }}</a>
-                <span class="mx-2 text-[var(--color-text-muted)]">/</span>
-              {% else %}
-                <span class="text-[var(--color-text-muted)]">{{ crumb.label }}</span>
-              {% endif %}
-            </li>
-          {% endfor %}
-        </ol>
-      </nav>
-    {% endif %}
+{% block content %}
+<div class="eds-page-layout flex flex-col md:flex-row">
+  <!-- Sidebar navigation -->
+  <aside class="eds-sidebar w-full md:w-64 flex-shrink-0 bg-gray-50 dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700">
+    {% include "partials/sidebar.njk" %}
+  </aside>
+
+  <!-- Main content -->
+  <div class="eds-content-wrapper flex-grow p-6 md:p-8">
+    <div class="eds-content max-w-4xl">
+      <header class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">{{ title }}</h1>
+        {% if description %}
+          <p class="text-xl text-gray-600 dark:text-gray-300">{{ description }}</p>
+        {% endif %}
+      </header>
+
+      <div class="eds-content-body prose dark:prose-invert max-w-none">
+        {{ content | safe }}
+      </div>
+
+      {% if collections.all %}
+        <!-- Related pages (if any) -->
+        {% if related %}
+        <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <h2 class="text-xl font-bold mb-4">Related Pages</h2>
+          <ul class="grid md:grid-cols-2 gap-4">
+            {% for relatedUrl in related %}
+              {% for item in collections.all %}
+                {% if item.url == relatedUrl %}
+                <li>
+                  <a href="{{ item.url }}" class="eds-related-link">
+                    {{ item.data.title }}
+                  </a>
+                </li>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      {% endif %}
+    </div>
   </div>
 
-  <div class="prose dark:prose-invert max-w-none">
-    {{ content | safe }}
-  </div>
+  <!-- Optional right sidebar for table of contents -->
+  {% if content and collections.all and showToc != false %}
+  <aside class="eds-toc-sidebar hidden lg:block w-64 flex-shrink-0 p-6 border-l border-gray-200 dark:border-gray-700">
+    <div class="sticky top-20">
+      <h2 class="text-sm font-semibold mb-4 uppercase tracking-wider text-gray-500 dark:text-gray-400">On This Page</h2>
+      {% set headings = collections.all | getHeadings(page.url) %}
+      {% if headings.length %}
+        <nav class="eds-toc">
+          <ul class="space-y-2 text-sm">
+            {% for heading in headings %}
+              <li class="{% if heading.level == 3 %}ml-4{% endif %}">
+                <a href="#{{ heading.id }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
+                  {{ heading.text }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+  </aside>
+  {% endif %}
 </div>
+{% endblock %}
+
+{% block extraScripts %}
+<script>
+  // Highlight current section in table of contents when scrolling
+  document.addEventListener('DOMContentLoaded', () => {
+    const headings = document.querySelectorAll('h2[id], h3[id]');
+    const tocLinks = document.querySelectorAll('.eds-toc a');
+    
+    if (headings.length && tocLinks.length) {
+      const observerOptions = {
+        rootMargin: '-80px 0px -40% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`.eds-toc a[href="#${id}"]`);
+          
+          if (tocLink) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(link => link.classList.remove('font-medium', 'text-green-600', 'dark:text-green-400'));
+              tocLink.classList.add('font-medium', 'text-green-600', 'dark:text-green-400');
+            }
+          }
+        });
+      }, observerOptions);
+      
+      headings.forEach(heading => observer.observe(heading));
+    }
+  });
+</script>
+{% endblock %}

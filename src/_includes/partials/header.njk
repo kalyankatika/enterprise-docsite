@@ -1,81 +1,96 @@
-<header class="bg-white dark:bg-gray-800 border-b border-[var(--color-border)] sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<header class="eds-header bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
       <div class="flex">
+        <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
-          <a href="/" class="text-xl font-bold text-[var(--color-primary)]">EDS</a>
-        </div>
-        <nav class="hidden md:ml-8 md:flex md:space-x-8" aria-label="Main Navigation">
-          <a href="/getting-started/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]">
-            Getting Started
+          <a href="/" class="flex items-center">
+            <span class="text-xl font-bold text-green-700 dark:text-green-500">{{ site.name }}</span>
           </a>
-          <a href="/components/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]">
-            Components
-          </a>
-          <a href="/design-tokens/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]">
-            Design Tokens
-          </a>
-          <a href="/patterns/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]">
-            Patterns
-          </a>
-        </nav>
-      </div>
-      <div class="flex items-center">
-        <div class="hidden md:ml-4 md:flex-shrink-0 md:flex md:items-center">
-          <div class="relative ml-3" x-data="{ searchOpen: false }">
-            <button @click="searchOpen = !searchOpen" class="p-2 rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)]">
-              <span class="sr-only">Search</span>
-              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
-            
-            <div x-show="searchOpen" 
-                 @click.away="searchOpen = false" 
-                 x-transition:enter="transition ease-out duration-100" 
-                 x-transition:enter-start="transform opacity-0 scale-95" 
-                 x-transition:enter-end="transform opacity-100 scale-100" 
-                 x-transition:leave="transition ease-in duration-75" 
-                 x-transition:leave-start="transform opacity-100 scale-100" 
-                 x-transition:leave-end="transform opacity-0 scale-95" 
-                 class="origin-top-right absolute right-0 mt-2 w-72 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none" 
-                 x-cloak>
-              <div class="p-3">
-                <div class="relative">
-                  <input type="text" id="header-search" class="eds-input w-full" placeholder="Search documentation..." x-ref="searchInput" @focus="$el.value = ''" @focusin="searchOpen = true">
-                </div>
-                <div id="header-search-results" class="mt-2 max-h-64 overflow-y-auto"></div>
-              </div>
-            </div>
-          </div>
-          
-          <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="ml-3 p-2 rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)]">
-            <span class="sr-only" x-text="darkMode ? 'Light Mode' : 'Dark Mode'"></span>
-            <svg x-show="!darkMode" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-            <svg x-show="darkMode" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" x-cloak>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-          </button>
-          
-          <div class="ml-3 relative">
-            <a href="https://github.com/your-org/eds-docs" target="_blank" rel="noopener" class="p-2 rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)]">
-              <span class="sr-only">GitHub</span>
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
         </div>
         
-        <div class="-mr-2 flex items-center md:hidden">
-          <button @click="menuOpen = !menuOpen" type="button" class="bg-white dark:bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--color-primary)]" aria-controls="mobile-menu" aria-expanded="false">
+        <!-- Main Navigation -->
+        <nav class="hidden md:ml-10 md:flex md:space-x-8" aria-label="Main">
+          {% for item in navigation.main %}
+            <a 
+              href="{{ item.url }}" 
+              class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium
+              {% if page.url | isActive(item.url) %}
+                border-green-600 text-green-600 dark:border-green-400 dark:text-green-400
+              {% else %}
+                border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:border-gray-300 dark:hover:border-gray-600
+              {% endif %}"
+            >
+              {{ item.title }}
+            </a>
+          {% endfor %}
+        </nav>
+      </div>
+      
+      <div class="flex items-center">
+        <!-- Search -->
+        <div class="relative mx-3">
+          <button 
+            type="button" 
+            class="p-1 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+            aria-label="Open search"
+            @click="$store.search.open = true"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Theme toggle -->
+        <button 
+          type="button" 
+          class="p-1 text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" 
+          x-data="{ darkMode: document.documentElement.classList.contains('dark') }"
+          @click="darkMode = !darkMode; if (darkMode) { document.documentElement.classList.add('dark'); localStorage.theme = 'dark'; } else { document.documentElement.classList.remove('dark'); localStorage.theme = 'light'; }"
+          aria-label="Toggle dark mode"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+        
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <button 
+            type="button" 
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" 
+            aria-expanded="false"
+            x-data="{ open: false }"
+            @click="open = !open"
+            :aria-expanded="open"
+          >
             <span class="sr-only">Open main menu</span>
-            <svg x-show="!menuOpen" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <!-- Heroicon name: menu -->
+            <svg 
+              class="h-6 w-6" 
+              :class="{ 'hidden': open, 'block': !open }"
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              aria-hidden="true"
+            >
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <svg x-show="menuOpen" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" x-cloak>
+            <!-- Heroicon name: x -->
+            <svg 
+              class="h-6 w-6" 
+              :class="{ 'block': open, 'hidden': !open }"
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              aria-hidden="true"
+            >
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -84,35 +99,158 @@
     </div>
   </div>
 
-  <div x-show="menuOpen" class="md:hidden" id="mobile-menu" x-cloak>
+  <!-- Mobile menu, show/hide based on menu state -->
+  <div 
+    class="md:hidden" 
+    x-data="{ open: false }" 
+    x-show="open" 
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 transform -translate-y-2"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform -translate-y-2"
+    x-cloak
+  >
     <div class="pt-2 pb-3 space-y-1">
-      <a href="/getting-started/" class="block pl-3 pr-4 py-2 text-base font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-gray-50 dark:hover:bg-gray-700">Getting Started</a>
-      <a href="/components/" class="block pl-3 pr-4 py-2 text-base font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-gray-50 dark:hover:bg-gray-700">Components</a>
-      <a href="/design-tokens/" class="block pl-3 pr-4 py-2 text-base font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-gray-50 dark:hover:bg-gray-700">Design Tokens</a>
-      <a href="/patterns/" class="block pl-3 pr-4 py-2 text-base font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-gray-50 dark:hover:bg-gray-700">Patterns</a>
+      {% for item in navigation.main %}
+        <a 
+          href="{{ item.url }}" 
+          class="block pl-3 pr-4 py-2 border-l-4 text-base font-medium
+          {% if page.url | isActive(item.url) %}
+            border-green-600 text-green-600 dark:border-green-400 dark:text-green-400 bg-green-50 dark:bg-green-900
+          {% else %}
+            border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600
+          {% endif %}"
+        >
+          {{ item.title }}
+        </a>
+      {% endfor %}
     </div>
-    <div class="pt-4 pb-3 border-t border-[var(--color-border)]">
-      <div class="flex items-center px-4">
-        <div class="flex-shrink-0">
-          <button @click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)" class="p-2 rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)]">
-            <span class="sr-only" x-text="darkMode ? 'Light Mode' : 'Dark Mode'"></span>
-            <svg x-show="!darkMode" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-            <svg x-show="darkMode" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" x-cloak>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-          </button>
+  </div>
+</header>
+
+<!-- Search modal -->
+<div 
+  x-data="{ open: false }" 
+  x-show="open" 
+  @keydown.escape.window="open = false"
+  x-on:search-open.window="open = true"
+  x-init="$store.search = { open: false, query: '' }; $watch('$store.search.open', value => { open = value; if (value) { $nextTick(() => { $refs.searchInput.focus() }) } })"
+  class="fixed z-10 inset-0 overflow-y-auto" 
+  x-cloak
+>
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div 
+      x-show="open" 
+      x-transition:enter="ease-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in duration-200"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="fixed inset-0 transition-opacity" 
+      aria-hidden="true"
+      @click="open = false"
+    >
+      <div class="absolute inset-0 bg-gray-500 dark:bg-gray-900 opacity-75"></div>
+    </div>
+
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+    
+    <div 
+      x-show="open" 
+      x-transition:enter="ease-out duration-300"
+      x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+      x-transition:leave="ease-in duration-200"
+      x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+      x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full sm:p-6"
+      role="dialog" 
+      aria-modal="true" 
+      aria-labelledby="search-modal-title"
+      @click.away="open = false"
+    >
+      <div>
+        <div class="mt-3 sm:mt-0">
+          <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100" id="search-modal-title">
+            Search Documentation
+          </h3>
+          <div class="mt-4">
+            <div class="relative">
+              <input
+                type="text"
+                class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md leading-5 bg-white dark:bg-gray-700 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-gray-900 dark:text-gray-100 sm:text-sm"
+                placeholder="Search for components, guidelines, patterns..."
+                x-model="$store.search.query"
+                x-ref="searchInput"
+              >
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <button 
+                x-show="$store.search.query" 
+                @click="$store.search.query = ''" 
+                type="button" 
+                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
+              >
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Search results -->
+          <div id="search-results" class="mt-6 max-h-96 overflow-y-auto">
+            <!-- Loading indicator -->
+            <div x-show="$store.search.query && !$store.search.results" class="flex justify-center py-8">
+              <svg class="animate-spin h-8 w-8 text-green-600 dark:text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </div>
+            
+            <!-- No results message -->
+            <div x-show="$store.search.query && $store.search.results && $store.search.results.length === 0" class="text-center py-8 text-gray-500 dark:text-gray-400">
+              No results found for "<span x-text="$store.search.query"></span>"
+            </div>
+            
+            <!-- Results list -->
+            <ul x-show="$store.search.query && $store.search.results && $store.search.results.length > 0" class="divide-y divide-gray-200 dark:divide-gray-700">
+              <template x-for="result in $store.search.results" :key="result.url">
+                <li class="py-4">
+                  <a :href="result.url" class="block hover:bg-gray-50 dark:hover:bg-gray-700 -m-2 p-2 rounded-md" @click="$store.search.open = false">
+                    <div class="flex justify-between">
+                      <h4 class="text-sm font-semibold text-green-600 dark:text-green-400" x-text="result.title"></h4>
+                      <span class="text-xs text-gray-500 dark:text-gray-400" x-text="result.type"></span>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-300 line-clamp-2" x-html="result.snippet"></p>
+                  </a>
+                </li>
+              </template>
+            </ul>
+          </div>
         </div>
-        <div class="ml-3">
-          <a href="https://github.com/your-org/eds-docs" target="_blank" rel="noopener" class="p-2 rounded-full text-[var(--color-text-muted)] hover:text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)]">
-            <span class="sr-only">GitHub</span>
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-            </svg>
-          </a>
+      </div>
+      
+      <div class="mt-5 sm:mt-6">
+        <div class="flex justify-between">
+          <div class="text-xs text-gray-500 dark:text-gray-400">
+            Press <kbd class="px-1 py-0.5 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded text-xs">ESC</kbd> to close
+          </div>
+          <button 
+            type="button" 
+            class="inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+            @click="open = false"
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>
   </div>
-</header>
+</div>

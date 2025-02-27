@@ -1,108 +1,478 @@
----
-layout: layouts/base.njk
-sidebarType: components
----
+{% extends "layouts/base.njk" %}
 
-<article class="max-w-5xl mx-auto">
-  <header class="mb-10">
-    <div class="flex items-center gap-2 text-sm text-[var(--color-text-muted)] mb-2">
-      <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
-      <span>/</span>
-      <a href="/components/{{ componentType }}/" class="hover:text-[var(--color-primary)]">{{ componentCategory }}</a>
-    </div>
-    
-    <h1 class="text-3xl font-bold mb-2">{{ title }}</h1>
-    
-    {% if description %}
-      <p class="text-lg text-[var(--color-text-muted)] mb-6">{{ description }}</p>
-    {% endif %}
-    
-    {% if componentStatus %}
-      <div class="flex gap-4 mb-6">
-        <div class="flex items-center">
-          <span class="text-sm font-medium mr-2">Status:</span>
-          <span class="eds-badge eds-badge-{{ componentStatus | lower }}">{{ componentStatus }}</span>
+{% block content %}
+<div class="eds-page-layout flex flex-col md:flex-row">
+  <!-- Sidebar navigation -->
+  <aside class="eds-sidebar w-full md:w-64 flex-shrink-0 bg-gray-50 dark:bg-gray-800 p-4 border-r border-gray-200 dark:border-gray-700">
+    {% include "partials/sidebar.njk" %}
+  </aside>
+
+  <!-- Main content -->
+  <div class="eds-content-wrapper flex-grow p-6 md:p-8">
+    <div class="eds-content max-w-4xl">
+      <header class="mb-8">
+        <div class="flex flex-wrap items-center gap-2 mb-2">
+          <h1 class="text-3xl md:text-4xl font-bold">{{ title }}</h1>
+          {% if status %}
+            <span class="eds-status-badge eds-status-{{ status | lower }}">{{ status }}</span>
+          {% endif %}
         </div>
         
-        {% if componentVersion %}
-          <div class="flex items-center">
-            <span class="text-sm font-medium mr-2">Version:</span>
-            <span class="text-sm">{{ componentVersion }}</span>
+        {% if description %}
+          <p class="text-xl text-gray-600 dark:text-gray-300">{{ description }}</p>
+        {% endif %}
+        
+        <div class="flex flex-wrap gap-4 mt-4">
+          {% if designFile %}
+            <a href="{{ designFile }}" class="eds-link-button" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              Design File
+            </a>
+          {% endif %}
+          
+          {% if githubUrl %}
+            <a href="{{ githubUrl }}" class="eds-link-button" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              View Source
+            </a>
+          {% endif %}
+        </div>
+      </header>
+
+      <!-- Component documentation tabs -->
+      <div x-data="{ activeTab: 'overview' }" class="eds-component-tabs mb-8">
+        <div class="border-b border-gray-200 dark:border-gray-700">
+          <nav class="flex -mb-px space-x-8" aria-label="Component documentation">
+            <button 
+              @click="activeTab = 'overview'" 
+              :class="{ 'border-green-600 text-green-600 dark:border-green-400 dark:text-green-400': activeTab === 'overview' }"
+              class="py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"
+              :id="'tab-overview'"
+              :aria-selected="activeTab === 'overview'"
+              :aria-controls="'tabpanel-overview'"
+              role="tab"
+            >
+              Overview
+            </button>
+            
+            <button 
+              @click="activeTab = 'usage'" 
+              :class="{ 'border-green-600 text-green-600 dark:border-green-400 dark:text-green-400': activeTab === 'usage' }"
+              class="py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"
+              :id="'tab-usage'"
+              :aria-selected="activeTab === 'usage'"
+              :aria-controls="'tabpanel-usage'"
+              role="tab"
+            >
+              Usage
+            </button>
+            
+            <button 
+              @click="activeTab = 'code'" 
+              :class="{ 'border-green-600 text-green-600 dark:border-green-400 dark:text-green-400': activeTab === 'code' }"
+              class="py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"
+              :id="'tab-code'"
+              :aria-selected="activeTab === 'code'"
+              :aria-controls="'tabpanel-code'"
+              role="tab"
+            >
+              Code
+            </button>
+            
+            <button 
+              @click="activeTab = 'accessibility'" 
+              :class="{ 'border-green-600 text-green-600 dark:border-green-400 dark:text-green-400': activeTab === 'accessibility' }"
+              class="py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"
+              :id="'tab-accessibility'"
+              :aria-selected="activeTab === 'accessibility'"
+              :aria-controls="'tabpanel-accessibility'"
+              role="tab"
+            >
+              Accessibility
+            </button>
+          </nav>
+        </div>
+        
+        <!-- Tab panels -->
+        <div class="mt-6">
+          <div 
+            x-show="activeTab === 'overview'" 
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            id="tabpanel-overview"
+            aria-labelledby="tab-overview"
+            role="tabpanel"
+            tabindex="0"
+          >
+            <div class="prose dark:prose-invert max-w-none">
+              {% block componentOverview %}
+                {{ content | safe }}
+              {% endblock %}
+            </div>
+
+            {% if examples %}
+              <div class="mt-8">
+                <h2 class="text-2xl font-bold mb-4">Examples</h2>
+                {% for example in examples %}
+                  <div class="eds-example mb-8">
+                    <h3 class="text-lg font-medium mb-2">{{ example.title }}</h3>
+                    {% if example.description %}
+                      <p class="text-gray-600 dark:text-gray-300 mb-4">{{ example.description }}</p>
+                    {% endif %}
+                    
+                    <div class="eds-example-demo p-6 border rounded-md bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 mb-4">
+                      {{ example.demo | safe }}
+                    </div>
+                    
+                    {% if example.code %}
+                      <div class="eds-example-code bg-gray-50 dark:bg-gray-900 rounded-md">
+                        <pre class="language-{{ example.language | default('html') }}"><code>{{ example.code }}</code></pre>
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
           </div>
+          
+          <div 
+            x-show="activeTab === 'usage'" 
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-cloak
+            id="tabpanel-usage"
+            aria-labelledby="tab-usage"
+            role="tabpanel"
+            tabindex="0"
+          >
+            {% if usage %}
+              <div class="prose dark:prose-invert max-w-none">
+                {{ usage | safe }}
+              </div>
+            {% else %}
+              <div class="text-gray-500 dark:text-gray-400 italic">
+                Usage guidelines are not available for this component yet.
+              </div>
+            {% endif %}
+            
+            {% if dosAndDonts %}
+              <div class="mt-8">
+                <h2 class="text-2xl font-bold mb-4">Do's and Don'ts</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                  {% for item in dosAndDonts %}
+                    <div class="eds-do-dont {% if item.type === 'do' %}eds-do{% else %}eds-dont{% endif %}">
+                      <div class="eds-do-dont-header">
+                        <span class="eds-do-dont-label">{% if item.type === 'do' %}Do{% else %}Don't{% endif %}</span>
+                      </div>
+                      <div class="eds-do-dont-content">
+                        <div class="eds-do-dont-example">
+                          {{ item.example | safe }}
+                        </div>
+                        <p class="mt-2 text-sm">{{ item.description }}</p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          
+          <div 
+            x-show="activeTab === 'code'" 
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-cloak
+            id="tabpanel-code"
+            aria-labelledby="tab-code"
+            role="tabpanel"
+            tabindex="0"
+          >
+            {% if code %}
+              <div class="prose dark:prose-invert max-w-none">
+                {{ code | safe }}
+              </div>
+            {% endif %}
+            
+            {% if props %}
+              <div class="mt-8">
+                <h2 class="text-2xl font-bold mb-4">Properties</h2>
+                <div class="overflow-x-auto">
+                  <table class="eds-table min-w-full">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for prop in props %}
+                        <tr>
+                          <td>
+                            <code>{{ prop.name }}</code>
+                            {% if prop.required %}<span class="eds-required-badge">Required</span>{% endif %}
+                          </td>
+                          <td><code>{{ prop.type }}</code></td>
+                          <td>
+                            {% if prop.default %}
+                              <code>{{ prop.default }}</code>
+                            {% else %}
+                              -
+                            {% endif %}
+                          </td>
+                          <td>{{ prop.description }}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            {% endif %}
+            
+            {% if methods %}
+              <div class="mt-8">
+                <h2 class="text-2xl font-bold mb-4">Methods</h2>
+                <div class="overflow-x-auto">
+                  <table class="eds-table min-w-full">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Parameters</th>
+                        <th>Return Type</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for method in methods %}
+                        <tr>
+                          <td><code>{{ method.name }}</code></td>
+                          <td>
+                            {% if method.parameters %}
+                              <ul class="list-none m-0 p-0">
+                                {% for param in method.parameters %}
+                                  <li><code>{{ param.name }}: {{ param.type }}</code> - {{ param.description }}</li>
+                                {% endfor %}
+                              </ul>
+                            {% else %}
+                              -
+                            {% endif %}
+                          </td>
+                          <td><code>{{ method.returnType }}</code></td>
+                          <td>{{ method.description }}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            {% endif %}
+            
+            {% if events %}
+              <div class="mt-8">
+                <h2 class="text-2xl font-bold mb-4">Events</h2>
+                <div class="overflow-x-auto">
+                  <table class="eds-table min-w-full">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Payload</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for event in events %}
+                        <tr>
+                          <td><code>{{ event.name }}</code></td>
+                          <td>
+                            {% if event.payload %}
+                              <code>{{ event.payload }}</code>
+                            {% else %}
+                              -
+                            {% endif %}
+                          </td>
+                          <td>{{ event.description }}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          
+          <div 
+            x-show="activeTab === 'accessibility'" 
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-cloak
+            id="tabpanel-accessibility"
+            aria-labelledby="tab-accessibility"
+            role="tabpanel"
+            tabindex="0"
+          >
+            {% if accessibility %}
+              <div class="prose dark:prose-invert max-w-none">
+                {{ accessibility | safe }}
+              </div>
+            {% else %}
+              <div class="text-gray-500 dark:text-gray-400 italic">
+                Accessibility information is not available for this component yet.
+              </div>
+            {% endif %}
+            
+            {% if a11y %}
+              <div class="mt-8">
+                <h2 class="text-2xl font-bold mb-4">Accessibility Considerations</h2>
+                <ul class="space-y-4">
+                  {% for item in a11y %}
+                    <li class="flex">
+                      <div class="flex-shrink-0 mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                      <div class="ml-3">
+                        <p class="text-gray-700 dark:text-gray-300">{{ item }}</p>
+                      </div>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+            
+            {% if wcag %}
+              <div class="mt-8">
+                <h2 class="text-2xl font-bold mb-4">WCAG Compliance</h2>
+                <div class="overflow-x-auto">
+                  <table class="eds-table min-w-full">
+                    <thead>
+                      <tr>
+                        <th>Guideline</th>
+                        <th>Level</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in wcag %}
+                        <tr>
+                          <td>{{ item.guideline }}</td>
+                          <td>{{ item.level }}</td>
+                          <td>
+                            <span class="eds-wcag-status eds-wcag-{{ item.status | lower }}">
+                              {{ item.status }}
+                            </span>
+                          </td>
+                          <td>{{ item.notes }}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      <div class="eds-component-metadata">
+        {% if metadata %}
+          <dl class="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-2 text-sm">
+            {% if metadata.added %}
+              <dt class="text-gray-500 dark:text-gray-400">Added:</dt>
+              <dd>{{ metadata.added }}</dd>
+            {% endif %}
+            
+            {% if metadata.updated %}
+              <dt class="text-gray-500 dark:text-gray-400">Last Updated:</dt>
+              <dd>{{ metadata.updated }}</dd>
+            {% endif %}
+            
+            {% if metadata.category %}
+              <dt class="text-gray-500 dark:text-gray-400">Category:</dt>
+              <dd>{{ metadata.category }}</dd>
+            {% endif %}
+          </dl>
         {% endif %}
       </div>
-    {% endif %}
-  </header>
-
-  <div class="eds-component-tabs" x-data="{ activeTab: 'overview' }">
-    <div class="border-b border-[var(--color-border)] mb-6">
-      <nav class="flex space-x-8" aria-label="Component Documentation Tabs">
-        <button 
-          @click="activeTab = 'overview'" 
-          :class="{'text-[var(--color-primary)] border-b-2 border-[var(--color-primary)]': activeTab === 'overview', 'text-[var(--color-text-muted)]': activeTab !== 'overview'}"
-          class="py-4 px-1 font-medium text-sm focus:outline-none">
-          Overview
-        </button>
-        <button 
-          @click="activeTab = 'code'" 
-          :class="{'text-[var(--color-primary)] border-b-2 border-[var(--color-primary)]': activeTab === 'code', 'text-[var(--color-text-muted)]': activeTab !== 'code'}"
-          class="py-4 px-1 font-medium text-sm focus:outline-none">
-          Code
-        </button>
-        <button 
-          @click="activeTab = 'usage'" 
-          :class="{'text-[var(--color-primary)] border-b-2 border-[var(--color-primary)]': activeTab === 'usage', 'text-[var(--color-text-muted)]': activeTab !== 'usage'}"
-          class="py-4 px-1 font-medium text-sm focus:outline-none">
-          Usage Guidelines
-        </button>
-        <button 
-          @click="activeTab = 'accessibility'" 
-          :class="{'text-[var(--color-primary)] border-b-2 border-[var(--color-primary)]': activeTab === 'accessibility', 'text-[var(--color-text-muted)]': activeTab !== 'accessibility'}"
-          class="py-4 px-1 font-medium text-sm focus:outline-none">
-          Accessibility
-        </button>
-      </nav>
-    </div>
-
-    <div x-show="activeTab === 'overview'" class="prose dark:prose-invert max-w-none">
-      {% if overview %}
-        {{ overview | safe }}
-      {% else %}
-        {{ content | safe }}
-      {% endif %}
-    </div>
-
-    <div x-show="activeTab === 'code'" x-cloak class="prose dark:prose-invert max-w-none">
-      {% if code %}
-        {{ code | safe }}
-      {% else %}
-        <div class="eds-empty-state">
-          <h2>Code Examples</h2>
-          <p>Code examples for this component are coming soon.</p>
-        </div>
-      {% endif %}
-    </div>
-
-    <div x-show="activeTab === 'usage'" x-cloak class="prose dark:prose-invert max-w-none">
-      {% if usage %}
-        {{ usage | safe }}
-      {% else %}
-        <div class="eds-empty-state">
-          <h2>Usage Guidelines</h2>
-          <p>Usage guidelines for this component are coming soon.</p>
-        </div>
-      {% endif %}
-    </div>
-
-    <div x-show="activeTab === 'accessibility'" x-cloak class="prose dark:prose-invert max-w-none">
-      {% if accessibility %}
-        {{ accessibility | safe }}
-      {% else %}
-        <div class="eds-empty-state">
-          <h2>Accessibility</h2>
-          <p>Accessibility information for this component is coming soon.</p>
-        </div>
-      {% endif %}
     </div>
   </div>
-</article>
+
+  <!-- Optional right sidebar for table of contents -->
+  {% if content and collections.all and showToc != false %}
+  <aside class="eds-toc-sidebar hidden lg:block w-64 flex-shrink-0 p-6 border-l border-gray-200 dark:border-gray-700">
+    <div class="sticky top-20">
+      <h2 class="text-sm font-semibold mb-4 uppercase tracking-wider text-gray-500 dark:text-gray-400">On This Page</h2>
+      {% set headings = collections.all | getHeadings(page.url) %}
+      {% if headings.length %}
+        <nav class="eds-toc">
+          <ul class="space-y-2 text-sm">
+            {% for heading in headings %}
+              <li class="{% if heading.level == 3 %}ml-4{% endif %}">
+                <a href="#{{ heading.id }}" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100">
+                  {{ heading.text }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+    </div>
+  </aside>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block extraScripts %}
+<script>
+  // Component-specific script enhancements
+  document.addEventListener('DOMContentLoaded', () => {
+    // Handle tab activation without requiring user interactions
+    // This allows direct linking to specific tabs via URL hash
+    const hash = window.location.hash.substring(1);
+    if (hash && ['overview', 'usage', 'code', 'accessibility'].includes(hash)) {
+      // Use Alpine.js to set the active tab
+      const tabsEl = document.querySelector('.eds-component-tabs');
+      if (tabsEl && window.Alpine) {
+        window.Alpine.store('tabs', { activeTab: hash });
+      }
+    }
+    
+    // Highlight current section in table of contents when scrolling
+    const headings = document.querySelectorAll('h2[id], h3[id]');
+    const tocLinks = document.querySelectorAll('.eds-toc a');
+    
+    if (headings.length && tocLinks.length) {
+      const observerOptions = {
+        rootMargin: '-80px 0px -40% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          const tocLink = document.querySelector(`.eds-toc a[href="#${id}"]`);
+          
+          if (tocLink) {
+            if (entry.isIntersecting) {
+              tocLinks.forEach(link => link.classList.remove('font-medium', 'text-green-600', 'dark:text-green-400'));
+              tocLink.classList.add('font-medium', 'text-green-600', 'dark:text-green-400');
+            }
+          }
+        });
+      }, observerOptions);
+      
+      headings.forEach(heading => observer.observe(heading));
+    }
+  });
+</script>
+{% endblock %}

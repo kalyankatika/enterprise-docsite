@@ -1,5 +1,17 @@
 ---
 permalink: /search-index.json
 ---
-{% set searchData = collections.searchIndex %}
-{{ searchData | json | safe }}
+[
+  {% for item in collections.all %}
+    {% if not item.data.excludeFromSearch %}
+      {
+        "title": "{{ item.data.title | escape }}",
+        "url": "{{ item.url }}",
+        "content": "{{ (item.templateContent or '') | escape }}",
+        "description": "{{ item.data.description | escape }}",
+        "type": "{{ item.data.contentType or 'Page' }}",
+        "date": "{{ item.date | dateToISO }}"
+      }{% if not loop.last %},{% endif %}
+    {% endif %}
+  {% endfor %}
+]

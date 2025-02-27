@@ -1,47 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }} | Enterprise Design System</title>
-  <meta name="description" content="{{ description }}">
+  <title>{{ title }} | {{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <script src="/assets/js/alpine.min.js" defer></script>
-  <script src="/assets/js/main.js" defer></script>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script defer src="/assets/js/alpine.min.js"></script>
+  <script defer src="/assets/js/main.js"></script>
 </head>
-<body class="h-full bg-[var(--color-background)] text-[var(--color-text)] font-sans antialiased" 
-      x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', menuOpen: false }"
-      :class="{ 'dark': darkMode }">
-
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
   {% include "partials/header.njk" %}
   
-  <div class="flex min-h-screen">
-    {% if sidebarType %}
+  <div class="flex-grow flex">
+    {% if not excludeSidebar %}
       {% include "partials/sidebar.njk" %}
     {% endif %}
     
-    <main class="flex-1 px-4 py-8 md:px-8 lg:px-12 max-w-screen-xl mx-auto">
+    <main id="main-content" class="flex-grow py-8 px-4 md:px-8 max-w-full {% if not excludeSidebar %}md:ml-64{% endif %}">
       {{ content | safe }}
     </main>
   </div>
   
   {% include "partials/footer.njk" %}
-
+  
   <script>
-    // Initialize components after DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof initializeComponents === 'function') {
-        initializeComponents();
-      }
-      
-      if (typeof setupThemeToggle === 'function') {
-        setupThemeToggle();
-      }
-      
-      if (typeof setupSearchFunctionality === 'function') {
-        setupSearchFunctionality();
-      }
-    });
+    // Initialize dark mode
+    if (localStorage.getItem('darkMode') === 'true' || 
+        (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   </script>
 </body>
 </html>

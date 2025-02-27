@@ -2,500 +2,363 @@
  * Component metadata for the EDS Documentation
  */
 module.exports = {
-  layout: {
-    container: {
-      title: "Container",
-      description: "A container centers your content horizontally and applies consistent padding",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "maxWidth",
-          type: "string",
-          default: "lg",
-          description: "Maximum width of the container. Options: sm, md, lg, xl, full"
-        },
-        {
-          name: "padding",
-          type: "boolean",
-          default: "true",
-          description: "Whether to apply horizontal padding"
-        },
-        {
-          name: "center",
-          type: "boolean",
-          default: "true",
-          description: "Whether to center the container horizontally"
-        }
-      ]
-    },
-    grid: {
-      title: "Grid",
-      description: "A responsive grid system for creating flexible layouts",
-      status: "stable",
-      version: "4.2.0",
-      props: [
-        {
-          name: "columns",
-          type: "number",
-          default: "12",
-          description: "Number of columns in the grid"
-        },
-        {
-          name: "gap",
-          type: "string",
-          default: "4",
-          description: "Size of the gap between grid items. Uses spacing scale."
-        },
-        {
-          name: "responsive",
-          type: "boolean",
-          default: "true",
-          description: "Whether the grid should adapt to different screen sizes"
-        }
-      ]
-    },
-    card: {
-      title: "Card",
-      description: "A container for related content and actions",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "default",
-          description: "Visual style of the card. Options: default, outlined, elevated"
-        },
-        {
-          name: "padding",
-          type: "string",
-          default: "medium",
-          description: "Amount of padding inside the card. Options: none, small, medium, large"
-        },
-        {
-          name: "interactive",
-          type: "boolean",
-          default: "false",
-          description: "Whether the card should have hover/focus styles"
-        }
-      ]
-    },
-    divider: {
-      title: "Divider",
-      description: "A horizontal or vertical line to separate content",
-      status: "stable",
-      version: "2.0.0",
-      props: [
-        {
-          name: "orientation",
-          type: "string",
-          default: "horizontal",
-          description: "Direction of the divider. Options: horizontal, vertical"
-        },
-        {
-          name: "variant",
-          type: "string",
-          default: "solid",
-          description: "Visual style of the divider. Options: solid, dashed, dotted"
-        },
-        {
-          name: "spacing",
-          type: "string",
-          default: "medium",
-          description: "Margin around the divider. Options: none, small, medium, large"
-        }
+  // INPUTS
+  button: {
+    displayName: "Button",
+    category: "inputs",
+    description: "Buttons allow users to perform actions and make choices.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A456",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must have sufficient color contrast",
+        "Should have visual focus indicator",
+        "Should have appropriate text labels for screen readers"
       ]
     }
   },
-  inputs: {
-    button: {
-      title: "Button",
-      description: "Buttons allow users to take actions and make choices with a single tap",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "primary",
-          description: "Visual style of the button. Options: primary, secondary, tertiary, danger, ghost"
-        },
-        {
-          name: "size",
-          type: "string",
-          default: "medium",
-          description: "Size of the button. Options: small, medium, large"
-        },
-        {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Whether the button is disabled"
-        },
-        {
-          name: "loading",
-          type: "boolean",
-          default: "false",
-          description: "Whether to show a loading indicator"
-        }
-      ]
-    },
-    textField: {
-      title: "Text Field",
-      description: "Text fields allow users to enter text into a UI",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "outlined",
-          description: "Visual style of the field. Options: outlined, filled, underlined"
-        },
-        {
-          name: "size",
-          type: "string",
-          default: "medium",
-          description: "Size of the field. Options: small, medium, large"
-        },
-        {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Whether the field is disabled"
-        },
-        {
-          name: "error",
-          type: "boolean",
-          default: "false",
-          description: "Whether to show an error state"
-        },
-        {
-          name: "helperText",
-          type: "string",
-          description: "Helper text displayed below the field"
-        }
-      ]
-    },
-    checkbox: {
-      title: "Checkbox",
-      description: "Checkboxes allow users to select one or more items from a set",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "checked",
-          type: "boolean",
-          default: "false",
-          description: "Whether the checkbox is checked"
-        },
-        {
-          name: "indeterminate",
-          type: "boolean",
-          default: "false",
-          description: "Whether the checkbox is in an indeterminate state"
-        },
-        {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Whether the checkbox is disabled"
-        },
-        {
-          name: "label",
-          type: "string",
-          description: "Label for the checkbox"
-        }
-      ]
-    },
-    radio: {
-      title: "Radio",
-      description: "Radio buttons allow users to select one option from a set",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "checked",
-          type: "boolean",
-          default: "false",
-          description: "Whether the radio is checked"
-        },
-        {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Whether the radio is disabled"
-        },
-        {
-          name: "name",
-          type: "string",
-          description: "Name attribute for the input, used for grouping radio buttons"
-        },
-        {
-          name: "label",
-          type: "string",
-          description: "Label for the radio button"
-        }
-      ]
-    },
-    select: {
-      title: "Select",
-      description: "Select components allow users to select from a list of options",
-      status: "stable",
-      version: "3.5.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "outlined",
-          description: "Visual style of the select. Options: outlined, filled, underlined"
-        },
-        {
-          name: "size",
-          type: "string",
-          default: "medium",
-          description: "Size of the select. Options: small, medium, large"
-        },
-        {
-          name: "disabled",
-          type: "boolean",
-          default: "false",
-          description: "Whether the select is disabled"
-        },
-        {
-          name: "error",
-          type: "boolean",
-          default: "false",
-          description: "Whether to show an error state"
-        },
-        {
-          name: "multiple",
-          type: "boolean",
-          default: "false",
-          description: "Whether multiple options can be selected"
-        }
+  checkbox: {
+    displayName: "Checkbox",
+    category: "inputs",
+    description: "Checkboxes allow users to select one or more items from a list, or toggle a single option on or off.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A457",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must be keyboard navigable",
+        "Must include proper label association",
+        "Should maintain visible focus state"
       ]
     }
   },
-  navigation: {
-    navbar: {
-      title: "Navbar",
-      description: "A navigation bar that displays at the top of the screen",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "primary",
-          description: "Visual style of the navbar. Options: primary, secondary, transparent"
-        },
-        {
-          name: "fixed",
-          type: "boolean",
-          default: "false",
-          description: "Whether the navbar should be fixed at the top of the viewport"
-        },
-        {
-          name: "expandBreakpoint",
-          type: "string",
-          default: "md",
-          description: "Breakpoint at which the navbar expands from mobile to desktop view"
-        }
-      ]
-    },
-    tabs: {
-      title: "Tabs",
-      description: "Tabs organize content into different views which users can switch between",
-      status: "stable",
-      version: "2.0.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "default",
-          description: "Visual style of the tabs. Options: default, underlined, pills"
-        },
-        {
-          name: "alignment",
-          type: "string",
-          default: "start",
-          description: "Horizontal alignment of the tabs. Options: start, center, end, justified"
-        },
-        {
-          name: "size",
-          type: "string",
-          default: "medium",
-          description: "Size of the tabs. Options: small, medium, large"
-        }
-      ]
-    },
-    breadcrumb: {
-      title: "Breadcrumb",
-      description: "Breadcrumbs indicate the current page's location within a navigational hierarchy",
-      status: "stable",
-      version: "2.5.0",
-      props: [
-        {
-          name: "separator",
-          type: "string | ReactNode",
-          default: "/",
-          description: "Character or element used to separate breadcrumb items"
-        },
-        {
-          name: "maxItems",
-          type: "number",
-          description: "Maximum number of breadcrumb items to show before collapsing"
-        }
-      ]
-    },
-    pagination: {
-      title: "Pagination",
-      description: "Pagination allows users to navigate between pages of content",
-      status: "stable",
-      version: "3.0.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "default",
-          description: "Visual style of pagination. Options: default, simple, rounded"
-        },
-        {
-          name: "size",
-          type: "string",
-          default: "medium",
-          description: "Size of pagination items. Options: small, medium, large"
-        },
-        {
-          name: "showFirstLast",
-          type: "boolean",
-          default: "true",
-          description: "Whether to show first/last page buttons"
-        },
-        {
-          name: "siblingCount",
-          type: "number",
-          default: "1",
-          description: "Number of sibling pages shown on each side of current page"
-        }
+  form: {
+    displayName: "Form",
+    category: "inputs",
+    description: "Forms allow users to enter data for submission.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A459",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "All form controls must have labels",
+        "Error messages must be clearly associated with form fields",
+        "Required fields should be clearly indicated"
       ]
     }
   },
-  feedback: {
-    alert: {
-      title: "Alert",
-      description: "Alerts display short, important messages that attract the user's attention",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "info",
-          description: "Type of alert. Options: info, success, warning, error"
-        },
-        {
-          name: "closable",
-          type: "boolean",
-          default: "false",
-          description: "Whether the alert can be dismissed by the user"
-        },
-        {
-          name: "icon",
-          type: "ReactNode",
-          description: "Custom icon to display with the alert"
-        }
+  radio: {
+    displayName: "Radio Button",
+    category: "inputs",
+    description: "Radio buttons allow users to select a single option from a list of choices.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A460",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must be keyboard navigable",
+        "Must include proper label association",
+        "Radio buttons in a group must share the same name attribute"
       ]
-    },
-    toast: {
-      title: "Toast",
-      description: "Toasts provide brief notifications that appear temporarily",
-      status: "stable",
-      version: "4.1.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "default",
-          description: "Type of toast. Options: default, success, warning, error"
-        },
-        {
-          name: "position",
-          type: "string",
-          default: "bottom-right",
-          description: "Position of the toast. Options: top-right, top-center, top-left, bottom-right, bottom-center, bottom-left"
-        },
-        {
-          name: "duration",
-          type: "number",
-          default: "5000",
-          description: "Duration in milliseconds to show the toast before automatically dismissing"
-        }
+    }
+  },
+  select: {
+    displayName: "Select",
+    category: "inputs",
+    description: "Select components allow users to choose a single option from a dropdown menu.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A461",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must be keyboard operable",
+        "Must have proper label association",
+        "Should provide visual indication when focused"
       ]
-    },
-    modal: {
-      title: "Modal",
-      description: "Modals display content that requires user interaction in a layer above the main interface",
-      status: "stable",
-      version: "1.0.0",
-      props: [
-        {
-          name: "size",
-          type: "string",
-          default: "medium",
-          description: "Size of the modal. Options: small, medium, large, full"
-        },
-        {
-          name: "closeOnEscape",
-          type: "boolean",
-          default: "true",
-          description: "Whether pressing the Escape key closes the modal"
-        },
-        {
-          name: "closeOnOverlayClick",
-          type: "boolean",
-          default: "true",
-          description: "Whether clicking the overlay closes the modal"
-        },
-        {
-          name: "centered",
-          type: "boolean",
-          default: "true",
-          description: "Whether the modal is vertically centered in the viewport"
-        }
+    }
+  },
+  textField: {
+    displayName: "Text Field",
+    category: "inputs",
+    description: "Text fields allow users to enter and edit text.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A462",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must have visible label associated with the input",
+        "Should have visible focus state",
+        "Error messages must be programmatically associated with the field"
       ]
-    },
-    progress: {
-      title: "Progress",
-      description: "Progress indicators display the status of ongoing processes",
-      status: "stable",
-      version: "2.0.0",
-      props: [
-        {
-          name: "variant",
-          type: "string",
-          default: "bar",
-          description: "Type of progress indicator. Options: bar, circular, loader"
-        },
-        {
-          name: "value",
-          type: "number",
-          description: "Current progress value (0-100)"
-        },
-        {
-          name: "indeterminate",
-          type: "boolean",
-          default: "false",
-          description: "Whether to show an indeterminate progress animation"
-        },
-        {
-          name: "size",
-          type: "string",
-          default: "medium",
-          description: "Size of the progress indicator. Options: small, medium, large"
-        }
+    }
+  },
+  toggle: {
+    displayName: "Toggle",
+    category: "inputs",
+    description: "Toggles allow users to switch between two states, usually on and off.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A463",
+    status: "stable",
+    versions: ["1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must be keyboard operable",
+        "Must have proper label that describes the state",
+        "Must communicate current state to assistive technologies"
+      ]
+    }
+  },
+
+  // LAYOUT
+  card: {
+    displayName: "Card",
+    category: "layout",
+    description: "Cards are containers that organize related content and actions.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A464",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Interactive elements within cards must be keyboard accessible",
+        "Should use proper heading hierarchy if applicable",
+        "Should have sufficient color contrast"
+      ]
+    }
+  },
+  container: {
+    displayName: "Container",
+    category: "layout",
+    description: "Containers provide a centered, max-width wrapper for page content.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A465",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"]
+  },
+  divider: {
+    displayName: "Divider",
+    category: "layout",
+    description: "Dividers are thin lines that group content in lists and layouts.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A466",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Should have sufficient color contrast",
+        "Should be used for visual separation only, not structural separation"
+      ]
+    }
+  },
+  grid: {
+    displayName: "Grid",
+    category: "layout",
+    description: "Grids help organize content into consistent columns and rows.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A467",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"]
+  },
+  stack: {
+    displayName: "Stack",
+    category: "layout",
+    description: "Stacks provide a way to handle spacing between elements in vertical or horizontal arrangements.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A468",
+    status: "stable",
+    versions: ["1.0.0"]
+  },
+
+  // NAVIGATION
+  breadcrumbs: {
+    displayName: "Breadcrumbs",
+    category: "navigation",
+    description: "Breadcrumbs indicate the current page's location within a navigational hierarchy.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A469",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Should use an ordered list structure",
+        "Should use proper separators between links",
+        "Current page should be indicated programmatically"
+      ]
+    }
+  },
+  drawer: {
+    displayName: "Drawer",
+    category: "navigation",
+    description: "Drawers provide side navigation or supplementary content that slides in from the edge of the screen.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A470",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must be keyboard accessible",
+        "Should trap focus when open",
+        "Must have proper ARIA roles and states",
+        "Should be dismissible via Escape key"
+      ]
+    }
+  },
+  navbar: {
+    displayName: "Navbar",
+    category: "navigation",
+    description: "Navbars provide consistent navigation across different pages.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A471",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Should use proper semantic markup (nav element)",
+        "Should indicate current page programmatically",
+        "Must be keyboard navigable",
+        "Mobile menu toggle must be accessible"
+      ]
+    }
+  },
+  pagination: {
+    displayName: "Pagination",
+    category: "navigation",
+    description: "Pagination controls allow users to navigate between pages of content.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A472",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Should use proper list structure",
+        "Current page should be programmatically indicated",
+        "Must be keyboard navigable",
+        "Should have sufficiently sized click targets"
+      ]
+    }
+  },
+  tabs: {
+    displayName: "Tabs",
+    category: "navigation",
+    description: "Tabs organize content into separate views which can be accessed without leaving the page.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A473",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must implement proper ARIA roles (tablist, tab, tabpanel)",
+        "Must be keyboard navigable with arrow keys",
+        "Must programmatically indicate active tab",
+        "Tab panels must have proper association with their tabs"
+      ]
+    }
+  },
+
+  // FEEDBACK
+  alert: {
+    displayName: "Alert",
+    category: "feedback",
+    description: "Alerts display short, important messages attracting the user's attention without interrupting their task.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A474",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Should use proper role attribute",
+        "Must have sufficient color contrast",
+        "Should use more than just color to indicate meaning",
+        "Dismissible alerts must be keyboard accessible"
+      ]
+    }
+  },
+  dialog: {
+    displayName: "Dialog",
+    category: "feedback",
+    description: "Dialogs provide information that requires acknowledgment or gather information from users.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A475",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must trap focus within when opened",
+        "Should close on Escape key press",
+        "Must use proper ARIA roles and attributes",
+        "Should return focus to triggering element when closed",
+        "Should have descriptive title"
+      ]
+    }
+  },
+  progress: {
+    displayName: "Progress",
+    category: "feedback",
+    description: "Progress indicators show the completion status of a task or process.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A476",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must use appropriate ARIA roles",
+        "Should provide text alternative for screen readers",
+        "Must have sufficient color contrast",
+        "Should not rely solely on color to convey information"
+      ]
+    }
+  },
+  skeleton: {
+    displayName: "Skeleton",
+    category: "feedback",
+    description: "Skeleton screens provide a low-fidelity representation of content before it's loaded.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A477",
+    status: "stable",
+    versions: ["1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Should have appropriate ARIA live regions or status",
+        "Should have sufficient color contrast",
+        "Should be announced appropriately to screen readers"
+      ]
+    }
+  },
+  toast: {
+    displayName: "Toast",
+    category: "feedback",
+    description: "Toasts provide brief messages about app processes at the bottom or top of the screen.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A478",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Should use ARIA live regions",
+        "Must have sufficient color contrast",
+        "Dismissible toasts must be keyboard accessible",
+        "Should have appropriate timeout for reading content"
+      ]
+    }
+  },
+  tooltip: {
+    displayName: "Tooltip",
+    category: "feedback",
+    description: "Tooltips display informative text when users hover over or focus on an element.",
+    figmaUrl: "https://www.figma.com/file/example/design-system?node-id=123%3A479",
+    status: "stable",
+    versions: ["0.9.0", "1.0.0"],
+    a11y: {
+      wcag: "AA",
+      requirements: [
+        "Must be available on focus as well as hover",
+        "Should use proper ARIA attributes",
+        "Should have sufficient color contrast",
+        "Should be dismissible via Escape key"
       ]
     }
   }

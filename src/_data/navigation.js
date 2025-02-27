@@ -2,226 +2,311 @@
  * Navigation structure for EDS Documentation
  */
 module.exports = {
+  // Top navigation
   main: [
     {
-      label: "Get Started",
-      url: "/get-started/"
+      title: "Getting Started",
+      url: "/getting-started/"
     },
     {
-      label: "Design System",
-      url: "/design-system/"
-    },
-    {
-      label: "Components",
+      title: "Components",
       url: "/components/"
     },
     {
-      label: "Resources",
+      title: "Design Tokens",
+      url: "/design-tokens/"
+    },
+    {
+      title: "Patterns",
+      url: "/patterns/"
+    },
+    {
+      title: "Guidelines",
+      url: "/guidelines/"
+    },
+    {
+      title: "Resources",
       url: "/resources/"
     }
   ],
-  getStarted: [
+  
+  // Footer links
+  footer: [
     {
-      label: "Introduction",
-      url: "/get-started/"
+      title: "GitHub Repository",
+      url: "https://github.com/example/enterprise-design-system",
+      external: true
     },
     {
-      label: "Installation",
-      url: "/get-started/installation/"
+      title: "Design System Support",
+      url: "mailto:design-system@example.com",
+      external: true
     },
     {
-      label: "Usage",
-      url: "/get-started/usage/"
+      title: "Accessibility Statement",
+      url: "/accessibility/"
     },
     {
-      label: "Customization",
-      url: "/get-started/customization/"
-    },
-    {
-      label: "Theming",
-      url: "/get-started/theming/"
-    },
-    {
-      label: "Accessibility",
-      url: "/get-started/accessibility/"
+      title: "Code of Conduct",
+      url: "/code-of-conduct/"
     }
   ],
-  designSystem: [
+  
+  // Sidebar navigation
+  sidebar: [
     {
-      label: "Overview",
-      url: "/design-system/"
-    },
-    {
-      label: "Foundations",
-      url: "/design-system/foundations/",
-      children: [
+      title: "Getting Started",
+      items: [
         {
-          label: "Color",
-          url: "/design-system/foundations/color/"
+          title: "Introduction",
+          url: "/getting-started/"
         },
         {
-          label: "Typography",
-          url: "/design-system/foundations/typography/"
+          title: "Installation",
+          url: "/getting-started/installation/"
         },
         {
-          label: "Spacing",
-          url: "/design-system/foundations/spacing/"
+          title: "Usage",
+          url: "/getting-started/usage/"
         },
         {
-          label: "Grid System",
-          url: "/design-system/foundations/grid-system/"
-        },
-        {
-          label: "Iconography",
-          url: "/design-system/foundations/iconography/"
-        },
-        {
-          label: "Motion",
-          url: "/design-system/foundations/motion/"
+          title: "Contribution",
+          url: "/getting-started/contribution/"
         }
       ]
     },
     {
-      label: "Guidelines",
-      url: "/design-system/guidelines/",
-      children: [
+      title: "Components",
+      items: [
         {
-          label: "Accessibility",
-          url: "/design-system/guidelines/accessibility/"
+          title: "Overview",
+          url: "/components/"
         },
         {
-          label: "Content",
-          url: "/design-system/guidelines/content/"
+          title: "Inputs",
+          url: "/components/inputs/",
+          children: [
+            {
+              title: "Button",
+              url: "/components/inputs/button/"
+            },
+            {
+              title: "Checkbox",
+              url: "/components/inputs/checkbox/"
+            },
+            {
+              title: "Form",
+              url: "/components/inputs/form/"
+            },
+            {
+              title: "Radio Button",
+              url: "/components/inputs/radio/"
+            },
+            {
+              title: "Select",
+              url: "/components/inputs/select/"
+            },
+            {
+              title: "Text Field",
+              url: "/components/inputs/text-field/"
+            },
+            {
+              title: "Toggle",
+              url: "/components/inputs/toggle/"
+            }
+          ]
         },
         {
-          label: "Voice & Tone",
-          url: "/design-system/guidelines/voice-and-tone/"
+          title: "Layout",
+          url: "/components/layout/",
+          children: [
+            {
+              title: "Card",
+              url: "/components/layout/card/"
+            },
+            {
+              title: "Container",
+              url: "/components/layout/container/"
+            },
+            {
+              title: "Divider",
+              url: "/components/layout/divider/"
+            },
+            {
+              title: "Grid",
+              url: "/components/layout/grid/"
+            },
+            {
+              title: "Stack",
+              url: "/components/layout/stack/"
+            }
+          ]
+        },
+        {
+          title: "Navigation",
+          url: "/components/navigation/",
+          children: [
+            {
+              title: "Breadcrumbs",
+              url: "/components/navigation/breadcrumbs/"
+            },
+            {
+              title: "Drawer",
+              url: "/components/navigation/drawer/"
+            },
+            {
+              title: "Navbar",
+              url: "/components/navigation/navbar/"
+            },
+            {
+              title: "Pagination",
+              url: "/components/navigation/pagination/"
+            },
+            {
+              title: "Tabs",
+              url: "/components/navigation/tabs/"
+            }
+          ]
+        },
+        {
+          title: "Feedback",
+          url: "/components/feedback/",
+          children: [
+            {
+              title: "Alert",
+              url: "/components/feedback/alert/"
+            },
+            {
+              title: "Dialog",
+              url: "/components/feedback/dialog/"
+            },
+            {
+              title: "Progress",
+              url: "/components/feedback/progress/"
+            },
+            {
+              title: "Skeleton",
+              url: "/components/feedback/skeleton/"
+            },
+            {
+              title: "Toast",
+              url: "/components/feedback/toast/"
+            },
+            {
+              title: "Tooltip",
+              url: "/components/feedback/tooltip/"
+            }
+          ]
         }
       ]
-    }
-  ],
-  components: [
-    {
-      label: "Overview",
-      url: "/components/"
     },
     {
-      label: "Layout",
-      url: "/components/layout/",
-      children: [
+      title: "Design Tokens",
+      items: [
         {
-          label: "Container",
-          url: "/components/layout/container/"
+          title: "Overview",
+          url: "/design-tokens/"
         },
         {
-          label: "Grid",
-          url: "/components/layout/grid/"
+          title: "Color",
+          url: "/design-tokens/color/"
         },
         {
-          label: "Card",
-          url: "/components/layout/card/"
+          title: "Typography",
+          url: "/design-tokens/typography/"
         },
         {
-          label: "Divider",
-          url: "/components/layout/divider/"
+          title: "Spacing",
+          url: "/design-tokens/spacing/"
+        },
+        {
+          title: "Elevation",
+          url: "/design-tokens/elevation/"
+        },
+        {
+          title: "Borders & Radius",
+          url: "/design-tokens/borders/"
         }
       ]
     },
     {
-      label: "Inputs",
-      url: "/components/inputs/",
-      children: [
+      title: "Patterns",
+      items: [
         {
-          label: "Button",
-          url: "/components/inputs/button/"
+          title: "Overview",
+          url: "/patterns/"
         },
         {
-          label: "Text Field",
-          url: "/components/inputs/text-field/"
+          title: "Authentication",
+          url: "/patterns/authentication/"
         },
         {
-          label: "Checkbox",
-          url: "/components/inputs/checkbox/"
+          title: "Data Tables",
+          url: "/patterns/data-tables/"
         },
         {
-          label: "Radio",
-          url: "/components/inputs/radio/"
+          title: "Forms",
+          url: "/patterns/forms/"
         },
         {
-          label: "Select",
-          url: "/components/inputs/select/"
+          title: "Loading",
+          url: "/patterns/loading/"
+        },
+        {
+          title: "Search",
+          url: "/patterns/search/"
         }
       ]
     },
     {
-      label: "Navigation",
-      url: "/components/navigation/",
-      children: [
+      title: "Guidelines",
+      items: [
         {
-          label: "Navbar",
-          url: "/components/navigation/navbar/"
+          title: "Overview",
+          url: "/guidelines/"
         },
         {
-          label: "Tabs",
-          url: "/components/navigation/tabs/"
+          title: "Accessibility",
+          url: "/guidelines/accessibility/"
         },
         {
-          label: "Breadcrumb",
-          url: "/components/navigation/breadcrumb/"
+          title: "Content",
+          url: "/guidelines/content/"
         },
         {
-          label: "Pagination",
-          url: "/components/navigation/pagination/"
+          title: "Responsive Design",
+          url: "/guidelines/responsive/"
+        },
+        {
+          title: "Internationalization",
+          url: "/guidelines/internationalization/"
         }
       ]
     },
     {
-      label: "Feedback",
-      url: "/components/feedback/",
-      children: [
+      title: "Resources",
+      items: [
         {
-          label: "Alert",
-          url: "/components/feedback/alert/"
+          title: "Overview",
+          url: "/resources/"
         },
         {
-          label: "Toast",
-          url: "/components/feedback/toast/"
+          title: "Design Assets",
+          url: "/resources/design-assets/"
         },
         {
-          label: "Modal",
-          url: "/components/feedback/modal/"
+          title: "Tools",
+          url: "/resources/tools/"
         },
         {
-          label: "Progress",
-          url: "/components/feedback/progress/"
+          title: "Tutorials",
+          url: "/resources/tutorials/"
+        },
+        {
+          title: "FAQ",
+          url: "/resources/faq/"
         }
       ]
-    }
-  ],
-  resources: [
-    {
-      label: "Overview",
-      url: "/resources/"
-    },
-    {
-      label: "Design Tokens",
-      url: "/resources/design-tokens/"
-    },
-    {
-      label: "Templates",
-      url: "/resources/templates/"
-    },
-    {
-      label: "Downloads",
-      url: "/resources/downloads/"
-    },
-    {
-      label: "Figma Libraries",
-      url: "/resources/figma/"
-    },
-    {
-      label: "Examples",
-      url: "/resources/examples/"
     }
   ]
 };

@@ -1,144 +1,83 @@
 ---
 layout: layouts/home.njk
-title: Enterprise Design System Documentation
-description: Comprehensive documentation for our unified design system
+title: Enterprise Design System
+description: A unified design system for building cohesive enterprise applications and documentation
+cta:
+  text: Get Started
+  url: /getting-started/
+featuredComponents:
+  - title: Button
+    description: Primary interactive element for user actions
+    url: /components/inputs/button/
+  - title: Card
+    description: Container for grouping related content and actions
+    url: /components/layout/card/
+  - title: Alert
+    description: Informational messages for user feedback
+    url: /components/feedback/alert/
+categories:
+  - title: Input Components
+    description: Form controls and interactive elements
+    url: /components/inputs/
+    icon: <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+  - title: Layout Components
+    description: Structural elements for page organization
+    url: /components/layout/
+    icon: <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
+  - title: Navigation Components
+    description: Elements for user wayfinding and exploration
+    url: /components/navigation/
+    icon: <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" /></svg>
+  - title: Feedback Components
+    description: Elements for system feedback and user interaction
+    url: /components/feedback/
+    icon: <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
 ---
 
-# Enterprise Design System
+## Welcome to the Enterprise Design System
 
-Welcome to the unified documentation for our Enterprise Design System. This site consolidates component documentation, design guidelines, and implementation resources from multiple legacy sites into a single, comprehensive resource.
+Our design system provides a comprehensive set of guidelines, components, and patterns for building cohesive and accessible enterprise applications. By consolidating our documentation in one place, we aim to improve consistency, accelerate development, and enhance the user experience across all our products.
 
-## Getting Started
+### Key Benefits
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-  <a href="/getting-started/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Introduction</h2>
-    <p class="text-[var(--color-text-muted)]">Learn about our design system's principles, goals, and how to get started with implementation.</p>
-  </a>
-  
-  <a href="/components/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Components</h2>
-    <p class="text-[var(--color-text-muted)]">Explore our library of reusable UI components with examples, code snippets, and best practices.</p>
-  </a>
-  
-  <a href="/design-tokens/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Design Tokens</h2>
-    <p class="text-[var(--color-text-muted)]">Access our design variables for colors, typography, spacing, and other visual properties.</p>
-  </a>
-  
-  <a href="/patterns/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Design Patterns</h2>
-    <p class="text-[var(--color-text-muted)]">Discover common UI patterns and solutions for complex interaction challenges.</p>
-  </a>
-  
-  <a href="/resources/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Resources</h2>
-    <p class="text-[var(--color-text-muted)]">Download design files, code templates, and other useful resources for implementation.</p>
-  </a>
-  
-  <a href="/guidelines/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Guidelines</h2>
-    <p class="text-[var(--color-text-muted)]">Follow our recommendations for accessibility, usability, and consistent implementation.</p>
-  </a>
-</div>
+- **Consistency** - Build applications with a unified look and feel
+- **Efficiency** - Accelerate development with pre-built components
+- **Accessibility** - Ensure all users can access and use our applications
+- **Flexibility** - Customize components to meet specific requirements
+- **Documentation** - Access comprehensive guidelines and examples
 
-## Featured Components
+### Built On Modern Standards
 
-<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-  <a href="/components/inputs/button/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h3 class="text-lg font-semibold mb-2">Buttons</h3>
-    <div class="flex flex-col gap-2">
-      <button class="eds-button-primary">Primary</button>
-      <button class="eds-button-secondary">Secondary</button>
+The Enterprise Design System is built on modern web standards and best practices, with a focus on performance, accessibility, and user experience. Our components are designed to work seamlessly across devices and browsers, and can be easily integrated into your existing projects.
+
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div class="flex flex-col items-center text-center">
+    <div class="text-[var(--color-primary)] bg-[var(--color-primary-light)] dark:bg-[var(--color-primary-light)] rounded-full p-4 mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
     </div>
-  </a>
-  
-  <a href="/components/feedback/alert/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h3 class="text-lg font-semibold mb-2">Alerts</h3>
-    <div class="p-3 bg-blue-50 border-l-4 border-blue-500 text-sm">
-      Information alert
-    </div>
-  </a>
-  
-  <a href="/components/inputs/text-field/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h3 class="text-lg font-semibold mb-2">Form Inputs</h3>
-    <div class="flex flex-col gap-2">
-      <input type="text" class="eds-input" placeholder="Text input">
-      <select class="eds-input">
-        <option>Select option</option>
-      </select>
-    </div>
-  </a>
-  
-  <a href="/components/navigation/tabs/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h3 class="text-lg font-semibold mb-2">Tabs</h3>
-    <div class="border-b border-[var(--color-border)]">
-      <div class="flex text-sm">
-        <button class="py-2 px-3 border-b-2 border-[var(--color-primary)] font-medium">Tab 1</button>
-        <button class="py-2 px-3 text-[var(--color-text-muted)]">Tab 2</button>
-        <button class="py-2 px-3 text-[var(--color-text-muted)]">Tab 3</button>
-      </div>
-    </div>
-  </a>
-</div>
-
-## Latest Updates
-
-<div class="mt-8 space-y-4">
-  <div class="p-4 border border-[var(--color-border)] rounded-lg">
-    <div class="flex justify-between items-start">
-      <div>
-        <h3 class="font-semibold">New Component: Data Tables</h3>
-        <p class="text-sm text-[var(--color-text-muted)]">We've added comprehensive documentation for Data Tables, including sorting, filtering, and pagination examples.</p>
-        <a href="/components/data/table/" class="text-sm text-[var(--color-primary)] font-medium mt-2 inline-block">View Component →</a>
-      </div>
-      <span class="text-xs text-[var(--color-text-muted)]">June 15, 2023</span>
-    </div>
+    <h3 class="text-lg font-semibold text-[var(--color-text)] mb-2">Performance First</h3>
+    <p class="text-[var(--color-text-secondary)]">Optimized for speed and efficiency, with a focus on minimizing bundle size and maximizing rendering performance.</p>
   </div>
   
-  <div class="p-4 border border-[var(--color-border)] rounded-lg">
-    <div class="flex justify-between items-start">
-      <div>
-        <h3 class="font-semibold">Updated: Accessibility Guidelines</h3>
-        <p class="text-sm text-[var(--color-text-muted)]">Our accessibility guidelines have been updated with new examples and WCAG 2.1 AA compliance information.</p>
-        <a href="/guidelines/accessibility/" class="text-sm text-[var(--color-primary)] font-medium mt-2 inline-block">View Guidelines →</a>
-      </div>
-      <span class="text-xs text-[var(--color-text-muted)]">May 28, 2023</span>
+  <div class="flex flex-col items-center text-center">
+    <div class="text-[var(--color-primary)] bg-[var(--color-primary-light)] dark:bg-[var(--color-primary-light)] rounded-full p-4 mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
     </div>
+    <h3 class="text-lg font-semibold text-[var(--color-text)] mb-2">Accessible By Default</h3>
+    <p class="text-[var(--color-text-secondary)]">Designed with accessibility in mind, ensuring all components meet WCAG 2.1 AA standards.</p>
   </div>
   
-  <div class="p-4 border border-[var(--color-border)] rounded-lg">
-    <div class="flex justify-between items-start">
-      <div>
-        <h3 class="font-semibold">Design Token Updates</h3>
-        <p class="text-sm text-[var(--color-text-muted)]">We've expanded our design token documentation with new examples and implementation guides for multiple platforms.</p>
-        <a href="/design-tokens/usage/" class="text-sm text-[var(--color-primary)] font-medium mt-2 inline-block">View Updates →</a>
-      </div>
-      <span class="text-xs text-[var(--color-text-muted)]">May 12, 2023</span>
+  <div class="flex flex-col items-center text-center">
+    <div class="text-[var(--color-primary)] bg-[var(--color-primary-light)] dark:bg-[var(--color-primary-light)] rounded-full p-4 mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+      </svg>
     </div>
-  </div>
-</div>
-
-## Get Involved
-
-<div class="mt-8 p-6 bg-[var(--color-background-alt)] rounded-lg border border-[var(--color-border)]">
-  <h2 class="text-xl font-semibold mb-3">Contribute to the Design System</h2>
-  <p class="mb-4">Our design system is a collaborative effort. We welcome feedback, bug reports, and contribution requests from all teams using the system.</p>
-  
-  <div class="grid md:grid-cols-3 gap-4">
-    <a href="/contribute/report-issue/" class="p-4 bg-white rounded border border-[var(--color-border)] hover:shadow-md transition-shadow duration-200">
-      <h3 class="font-semibold mb-2">Report an Issue</h3>
-      <p class="text-sm text-[var(--color-text-muted)]">Found a bug or inconsistency? Let us know so we can fix it.</p>
-    </a>
-    
-    <a href="/contribute/request-feature/" class="p-4 bg-white rounded border border-[var(--color-border)] hover:shadow-md transition-shadow duration-200">
-      <h3 class="font-semibold mb-2">Request a Feature</h3>
-      <p class="text-sm text-[var(--color-text-muted)]">Suggest a new component or improvement to the system.</p>
-    </a>
-    
-    <a href="/contribute/guidelines/" class="p-4 bg-white rounded border border-[var(--color-border)] hover:shadow-md transition-shadow duration-200">
-      <h3 class="font-semibold mb-2">Contribution Guidelines</h3>
-      <p class="text-sm text-[var(--color-text-muted)]">Learn how to contribute code or design to the system.</p>
-    </a>
+    <h3 class="text-lg font-semibold text-[var(--color-text)] mb-2">Responsive Design</h3>
+    <p class="text-[var(--color-text-secondary)]">All components are designed to work seamlessly across devices, from mobile to desktop.</p>
   </div>
 </div>

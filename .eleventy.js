@@ -1,135 +1,134 @@
-const markdownIt = require('markdown-it');
-const markdownItAnchor = require('markdown-it-anchor');
-const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
+/**
+ * Eleventy Configuration
+ */
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+const yaml = require("js-yaml");
+const { DateTime } = require("luxon");
+const navigationPlugin = require("@11ty/eleventy-navigation");
+const filters = require("./src/_11ty/filters");
 
 module.exports = function(eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(syntaxHighlight);
-  eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  
-  // Copy assets directly to output
-  eleventyConfig.addPassthroughCopy({ 'src/assets': 'assets' });
-  
-  // Create assets/images directory in output even if source doesn't exist yet
-  eleventyConfig.on('eleventy.before', async () => {
-    const fs = require('fs');
-    const path = require('path');
-    
-    // Ensure output directories exist
-    ['_site/assets', '_site/assets/images', '_site/assets/css'].forEach(dir => {
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-      }
-    });
-    
-    // Create a favicon if it doesn't exist
-    const faviconPath = 'src/assets/images/favicon.svg';
-    const faviconDir = path.dirname(faviconPath);
-    
-    if (!fs.existsSync(faviconDir)) {
-      fs.mkdirSync(faviconDir, { recursive: true });
-    }
-    
-    if (!fs.existsSync(faviconPath)) {
-      const faviconContent = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="16" cy="16" r="14" fill="#0056b3" opacity="0.2"/>
-  <path d="M16 4C9.4 4 4 9.4 4 16s5.4 12 12 12 12-5.4 12-12S22.6 4 16 4zm-1 18h-2v-8h2v8zm5 0h-3V12h3v10z" fill="#0056b3"/>
-</svg>`;
-      fs.writeFileSync(faviconPath, faviconContent);
-    }
-  });
-  
-  // Create search-index.json
-  eleventyConfig.addCollection('searchIndex', function(collection) {
-    // Filter out example files first
-    const filteredItems = collection.getAll().filter(item => {
-      return !(item.inputPath && item.inputPath.includes('/example.'));
-    });
-    
-    return filteredItems.map(item => {
-      return {
-        url: item.url,
-        title: item.data.title || '',
-        // Don't try to access templateContent here
-        content: '' // We'll extract content when needed, not during build
-      };
-    });
-  });
-  
-  // Configure Markdown library
+  eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(navigationPlugin);
+
+  // Copy static assets directly to output
+  eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy("src/assets/js");
+  eleventyConfig.addPassthroughCopy("src/assets/css");
+  eleventyConfig.addPassthroughCopy("src/assets/fonts");
+  eleventyConfig.addPassthroughCopy("src/favicon.ico");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/site.webmanifest");
+
+  // Add support for YAML data files
+  eleventyConfig.addDataExtension("yaml", contents => yaml.load(contents));
+  eleventyConfig.addDataExtension("yml", contents => yaml.load(contents));
+
+  // Configure Markdown with anchors for headings
   const markdownLibrary = markdownIt({
     html: true,
     breaks: true,
     linkify: true
   }).use(markdownItAnchor, {
-    permalink: true,
-    permalinkClass: 'anchor',
-    permalinkSymbol: '#',
-    permalinkSpace: false,
-    level: [1, 2, 3, 4],
-    slugify: function(s) {
-      return String(s)
-        .trim()
+    permalink: markdownItAnchor.permalink.ariaHidden({
+      placement: "after",
+      class: "header-anchor",
+      symbol: "#",
+      level: [1, 2, 3, 4]
+    }),
+    slugify: str => {
+      return str
         .toLowerCase()
-        .replace(/[\s+~\/]/g, '-')
-        .replace(/[().`,%·'"!?¿:@*]/g, '');
+        .replace(/[^\\w\\s-]/g, "")
+        .replace(/[\\s_-]+/g, "-")
+        .replace(/^-+|-+$/g, "");
     }
   });
-  
-  eleventyConfig.setLibrary('md', markdownLibrary);
-  
-  // Check if URLs include trailing slash
-  eleventyConfig.addFilter('isCurrentPage', function(currentUrl, pageUrl) {
-    return currentUrl === pageUrl;
+  eleventyConfig.setLibrary("md", markdownLibrary);
+
+  // Add date formatting filter
+  eleventyConfig.addFilter("readableDate", dateObj => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("LLLL dd, yyyy");
   });
+
+  // Add active link filter
+  eleventyConfig.addFilter("isActive", filters.isActiveLink);
+
+  // Get the first 'n' elements of a collection
+  eleventyConfig.addFilter("limit", (arr, limit) => arr.slice(0, limit));
   
-  // Format dates
-  eleventyConfig.addFilter('readableDate', function(dateObj) {
-    if (!(dateObj instanceof Date)) {
-      dateObj = new Date(dateObj);
-    }
-    return dateObj.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
+  // Add custom filters
+  eleventyConfig.addFilter("getHeadings", filters.getHeadings);
+  eleventyConfig.addFilter("dateToISO", filters.dateToISO);
+  eleventyConfig.addFilter("escape", filters.escape);
+
+  // Allow components to be organized in sub-directories 
+  eleventyConfig.addLayoutAlias("component", "layouts/component.njk");
+  eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
+  eleventyConfig.addLayoutAlias("home", "layouts/home.njk");
+
+  // Create a collection for all components
+  eleventyConfig.addCollection("components", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/components/**/*.md");
   });
-  
-  // Add a debug filter
-  eleventyConfig.addFilter('debug', function(value) {
-    return JSON.stringify(value, null, 2);
+
+  // Create component category collections
+  eleventyConfig.addCollection("inputComponents", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/components/inputs/**/*.md");
   });
-  
-  // Add json filter
-  eleventyConfig.addFilter('json', function(value) {
-    return JSON.stringify(value);
+
+  eleventyConfig.addCollection("layoutComponents", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/components/layout/**/*.md");
   });
-  
-  // Create a search-index.json file
-  eleventyConfig.addGlobalData('eleventyComputed.permalink', function() {
-    return (data) => {
-      // Special case for search-index.json
-      if (data.page.inputPath.endsWith('search-index.njk')) {
-        return '/search-index.json';
+
+  eleventyConfig.addCollection("navigationComponents", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/components/navigation/**/*.md");
+  });
+
+  eleventyConfig.addCollection("feedbackComponents", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/components/feedback/**/*.md");
+  });
+
+  // Copy alpinejs from node_modules for client-side JavaScript enhancement
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/alpinejs/dist/cdn.min.js": "assets/js/alpine.min.js",
+  });
+
+  // Watch for changes to CSS files
+  eleventyConfig.addWatchTarget("src/assets/css/**/*.css");
+
+  // Configure BrowserSync for development server
+  eleventyConfig.setBrowserSyncConfig({
+    ui: false,
+    ghostMode: false,
+    callbacks: {
+      ready: function(err, bs) {
+        bs.addMiddleware("*", (req, res) => {
+          const content = "<html><head><title>404 Not Found</title></head><body><h1>404 Not Found</h1><p>Sorry, the page you are looking for does not exist.</p><p><a href='/'>Return to home</a></p></body></html>";
+          res.writeHead(404, { "Content-Type": "text/html" });
+          res.write(content);
+          res.end();
+        });
       }
-      return data.permalink;
-    };
+    }
   });
-  
+
+  // Override default template engine to use Nunjucks
   return {
+    templateFormats: ["md", "njk", "html", "liquid"],
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
     dir: {
-      input: 'src',
-      output: '_site',
-      includes: '_includes',
-      layouts: '_includes',
-      data: '_data'
+      input: "src",
+      output: "_site",
+      includes: "_includes",
+      data: "_data"
     },
-    templateFormats: ['md', 'njk', 'html'],
-    markdownTemplateEngine: 'njk',
-    htmlTemplateEngine: 'njk',
-    dataTemplateEngine: 'njk',
-    passthroughFileCopy: true
+    pathPrefix: "/"
   };
 };

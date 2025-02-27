@@ -1,79 +1,69 @@
 ---
 layout: layouts/page.njk
 title: Input Components
-description: Input components allow users to enter data, make selections, and trigger actions
-sidebarType: components
+description: Components that enable users to input or manipulate data
+excludeFromSearch: false
+contentType: Documentation
+eleventyNavigation:
+  key: Inputs
+  parent: Components
+  order: 1
 ---
 
 # Input Components
 
-Input components allow users to enter data, make selections, and trigger actions. They form the foundation of interactive interfaces in your application.
+Input components are UI elements that allow users to enter data, make selections, or trigger actions. They are essential building blocks for forms and interactive interfaces.
 
-## Available Components
+## Available Input Components
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-  <a href="/components/inputs/button/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Button</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Buttons allow users to take actions and make choices with a single tap</p>
-    <div class="flex gap-2">
-      <button class="eds-button-primary">Primary</button>
-      <button class="eds-button-secondary">Secondary</button>
-    </div>
-  </a>
-  
-  <a href="/components/inputs/text-field/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Text Field</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Text fields allow users to enter and edit text</p>
-    <input type="text" class="eds-input" placeholder="Enter text..." />
-  </a>
-  
-  <a href="/components/inputs/checkbox/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Checkbox</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Checkboxes allow users to select one or more items from a set</p>
-    <div class="flex items-center">
-      <input type="checkbox" id="checkbox-example" class="h-4 w-4 rounded border-[var(--color-border)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]" checked />
-      <label for="checkbox-example" class="ml-2">Option label</label>
-    </div>
-  </a>
-  
-  <a href="/components/inputs/radio/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Radio</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Radio buttons allow users to select one option from a set</p>
-    <div class="flex items-center">
-      <input type="radio" id="radio-example" name="radio-group" class="h-4 w-4 border-[var(--color-border)] text-[var(--color-primary)] focus:ring-[var(--color-primary)]" checked />
-      <label for="radio-example" class="ml-2">Option label</label>
-    </div>
-  </a>
-  
-  <a href="/components/inputs/select/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Select</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Select components allow users to select a value from a list of options</p>
-    <select class="eds-input">
-      <option>Select an option</option>
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
-    </select>
-  </a>
-  
-  <a href="/components/inputs/toggle/" class="eds-card hover:shadow-md transition-shadow duration-200">
-    <h2 class="text-xl font-semibold mb-2">Toggle</h2>
-    <p class="text-[var(--color-text-muted)] mb-4">Toggle switches allow users to turn an option on or off</p>
-    <div class="relative inline-block w-10 mr-2 align-middle select-none">
-      <input type="checkbox" id="toggle-example" class="sr-only peer" checked />
-      <div class="h-6 bg-[var(--color-secondary)] rounded-full peer peer-checked:bg-[var(--color-primary)] peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
-    </div>
-  </a>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+  {% for component in collections.inputComponents %}
+    <a href="{{ component.url }}" class="eds-component-card">
+      <h3 class="text-xl font-medium mb-2">{{ component.data.title }}</h3>
+      <p class="text-gray-600 dark:text-gray-300 mb-4">{{ component.data.description }}</p>
+      <span class="eds-link">View Component →</span>
+    </a>
+  {% endfor %}
 </div>
 
-## Usage Guidelines
+## Accessibility Considerations
 
-When working with input components, consider the following best practices:
+When using input components, keep these accessibility considerations in mind:
 
-- Use clear, descriptive labels for all input components
-- Group related inputs together using appropriate layout components
-- Provide validation and feedback for user inputs
-- Ensure all inputs are accessible by using appropriate ARIA attributes
-- Use consistent styling for similar input types throughout your application
+- All form controls should have associated labels
+- Form elements should be keyboard accessible
+- Error messages should be clearly associated with their respective inputs
+- Required fields should be clearly indicated
+- Focus states should be visible for keyboard users
 
-For component-specific guidelines, refer to the individual component documentation pages.
+## Best Practices
+
+### Use clear and concise labels
+
+Labels should clearly describe the purpose of the input. Avoid using vague or technical terms that might confuse users.
+
+### Provide helpful validation
+
+Validate user input and provide clear error messages when the input doesn't meet the requirements. Use inline validation where appropriate.
+
+### Group related inputs
+
+Group related inputs together using fieldsets and legends to provide context and improve understanding.
+
+### Use appropriate input types
+
+Use the appropriate input type for the data being collected (e.g., email, number, date) to provide the best user experience and enable browser-specific features.
+
+### Maintain consistency
+
+Use input components consistently throughout your application to create a cohesive user experience.
+
+## Form Layout Guidelines
+
+- Align labels and inputs consistently
+- Use a single-column layout for most forms
+- Place related fields in close proximity
+- Use appropriate spacing between form elements
+- Position form actions (buttons) at the bottom of the form
+
+For more detailed guidance on forms, please refer to the [Form Patterns](/patterns/forms/) documentation.
