@@ -1,76 +1,142 @@
 module.exports = {
-  top: [
+  sections: [
     {
-      label: "Home",
-      url: "/"
+      label: "Getting Started",
+      items: [
+        {
+          label: "Introduction", 
+          url: "/"
+        },
+        {
+          label: "Installation",
+          url: "/getting-started/installation/"
+        },
+        {
+          label: "Migration Guide",
+          url: "/getting-started/migration-guide/"
+        },
+        {
+          label: "Contribution Guidelines",
+          url: "/getting-started/contribution-guidelines/"
+        }
+      ]
     },
     {
       label: "Design System",
-      url: "/design-system/",
-      children: [
+      items: [
         {
           label: "Foundations",
           url: "/design-system/foundations/",
           children: [
-            { label: "Colors", url: "/design-system/foundations/colors/" },
-            { label: "Typography", url: "/design-system/foundations/typography/" },
-            { label: "Spacing", url: "/design-system/foundations/spacing/" },
-            { label: "Grid", url: "/design-system/foundations/grid/" },
-            { label: "Elevation", url: "/design-system/foundations/elevation/" }
+            {
+              label: "Colors",
+              url: "/design-system/foundations/colors/"
+            },
+            {
+              label: "Typography",
+              url: "/design-system/foundations/typography/"
+            },
+            {
+              label: "Spacing",
+              url: "/design-system/foundations/spacing/"
+            },
+            {
+              label: "Iconography",
+              url: "/design-system/foundations/iconography/"
+            },
+            {
+              label: "Grid System",
+              url: "/design-system/foundations/grid-system/"
+            }
           ]
         },
         {
-          label: "Brand",
-          url: "/design-system/brand/",
-          children: [
-            { label: "Values", url: "/design-system/brand/values/" },
-            { label: "Principles", url: "/design-system/brand/principles/" },
-            { label: "Logo", url: "/design-system/brand/logo/" }
-          ]
+          label: "Principles",
+          url: "/design-system/principles/"
+        },
+        {
+          label: "Accessibility",
+          url: "/design-system/accessibility/"
+        },
+        {
+          label: "Versioning",
+          url: "/design-system/versioning/"
         }
       ]
     },
     {
       label: "Components",
-      url: "/components/",
-      children: [
+      items: [
         {
-          label: "Android Components",
-          url: "/components/android/",
-          children: []
+          label: "Overview",
+          url: "/components/"
         },
         {
-          label: "iOS Components",
-          url: "/components/ios/",
-          children: []
+          label: "Base Components",
+          url: "/components/base/"
         },
         {
-          label: "Web Components",
-          url: "/components/web/",
-          children: [
-            { label: "Accordion", url: "/components/accordion/" },
-            { label: "Alert", url: "/components/alert/" },
-            { label: "Button", url: "/components/button/" }
-          ]
+          label: "Data Display",
+          url: "/components/data-display/"
+        },
+        {
+          label: "Forms",
+          url: "/components/forms/"
+        },
+        {
+          label: "Navigation",
+          url: "/components/navigation/"
+        },
+        {
+          label: "Feedback",
+          url: "/components/feedback/"
+        },
+        {
+          label: "Layout",
+          url: "/components/layout/"
         }
       ]
     },
     {
       label: "Resources",
-      url: "/resources/",
-      children: [
-        { label: "Templates", url: "/resources/templates/" },
-        { label: "Design Tokens", url: "/resources/design-tokens/" },
-        { label: "Downloads", url: "/resources/downloads/" }
+      items: [
+        {
+          label: "Design Tokens",
+          url: "/resources/design-tokens/"
+        },
+        {
+          label: "UI Kit",
+          url: "/resources/ui-kit/"
+        },
+        {
+          label: "Code Snippets",
+          url: "/resources/code-snippets/"
+        },
+        {
+          label: "Integration Guides",
+          url: "/resources/integration-guides/"
+        }
       ]
     },
     {
       label: "Support",
-      url: "/support/",
-      children: [
-        { label: "FAQ", url: "/support/faq/" },
-        { label: "Contact", url: "/support/contact/" },
-        { label: "Report Bug", url: "/support/report-bug/" }
+      items: [
+        {
+          label: "FAQs",
+          url: "/support/faqs/"
+        },
+        {
+          label: "Known Issues",
+          url: "/support/known-issues/"
+        },
+        {
+          label: "Release Notes",
+          url: "/support/release-notes/"
+        },
+        {
+          label: "Contact Us",
+          url: "/support/contact-us/"
+        }
       ]
     }
   ]

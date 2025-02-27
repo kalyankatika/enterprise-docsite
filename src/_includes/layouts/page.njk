@@ -2,13 +2,39 @@
 layout: base
 ---
 
-<div class="page-header">
+<div class="page-header mb-8">
   <h1>{{ title }}</h1>
   {% if description %}
-    <p class="page-description">{{ description }}</p>
+    <p class="text-[var(--color-text-muted)] text-lg mt-2">{{ description }}</p>
+  {% endif %}
+  
+  {% if breadcrumbs %}
+    <nav class="breadcrumbs mt-4 text-sm text-[var(--color-text-muted)]" aria-label="Breadcrumbs">
+      <ol class="flex flex-wrap items-center">
+        <li><a href="/" class="hover:text-[var(--color-primary)]">Home</a></li>
+        {% for crumb in breadcrumbs %}
+          <li class="flex items-center">
+            <svg class="h-4 w-4 mx-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+            {% if loop.last or not crumb.url %}
+              <span>{{ crumb.label }}</span>
+            {% else %}
+              <a href="{{ crumb.url }}" class="hover:text-[var(--color-primary)]">{{ crumb.label }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </nav>
+  {% endif %}
+  
+  {% if tags and tags.length > 0 %}
+    <div class="mt-4 flex flex-wrap gap-2">
+      {% for tag in tags %}
+        <span class="eds-tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
   {% endif %}
 </div>
 
-<div class="page-content">
-  {{ content | safe }}
-</div>
+{{ content | safe }}

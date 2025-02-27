@@ -2,206 +2,195 @@
 layout: base
 ---
 
-{% set component = components | getComponentByName(page.fileSlug) %}
-
-<div class="component-header">
-  <h1>{{ component.title }} <span class="version-badge">v{{ component.version }}</span></h1>
-  <p class="component-description">{{ component.description }}</p>
-  <div class="component-meta">
-    <span class="component-status status-{{ component.status }}">{{ component.status | title }}</span>
-    <span class="component-platform">{{ component.platform | title }}</span>
-    <span class="component-maintainer">Maintained by: {{ component.maintainer }}</span>
-  </div>
+<div class="component-header mb-8">
+  <h1>{{ title }}</h1>
+  {% if description %}
+    <p class="text-[var(--color-text-muted)] text-lg mt-2">{{ description }}</p>
+  {% endif %}
+  
+  <nav class="breadcrumbs mt-4 text-sm text-[var(--color-text-muted)]" aria-label="Breadcrumbs">
+    <ol class="flex flex-wrap items-center">
+      <li><a href="/" class="hover:text-[var(--color-primary)]">Home</a></li>
+      <li class="flex items-center">
+        <svg class="h-4 w-4 mx-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        <a href="/components/" class="hover:text-[var(--color-primary)]">Components</a>
+      </li>
+      <li class="flex items-center">
+        <svg class="h-4 w-4 mx-2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+        <span>{{ title }}</span>
+      </li>
+    </ol>
+  </nav>
+  
+  {% if tags and tags.length > 0 %}
+    <div class="mt-4 flex flex-wrap gap-2">
+      {% for tag in tags %}
+        <span class="eds-tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
 </div>
 
-<div class="component-tabs" x-data="{ activeTab: '{{ activeTab | default('design') }}' }">
-  <div class="tab-list">
-    {% for tab in component.tabs %}
-      <button 
-        class="tab-button" 
-        :class="{ 'active': activeTab === '{{ tab }}' }" 
-        @click="activeTab = '{{ tab }}'">
-        {{ tab | title }}
-      </button>
-    {% endfor %}
-  </div>
-
-  <div class="tab-content">
-    <div x-show="activeTab === 'design'" class="tab-panel" id="design">
-      <h2>Anatomy</h2>
-      <div class="anatomy-section">
-        {{ sections.anatomy | markdown | safe }}
-      </div>
-
-      <h2>Considerations</h2>
-      <div class="considerations-section">
-        {{ sections.considerations | markdown | safe }}
-      </div>
-
-      <h2>Usage</h2>
-      <div class="usage-section">
-        {{ sections.usage | markdown | safe }}
-      </div>
-
-      <h2>Behavior</h2>
-      <div class="behavior-section">
-        {{ sections.behavior | markdown | safe }}
-      </div>
-
-      <h2>Best practices</h2>
-      <div class="best-practices-section">
-        {{ sections["best-practices"] | markdown | safe }}
-      </div>
-
-      <h2>Specifications</h2>
-      <div class="specifications-section">
-        {{ sections.specifications | markdown | safe }}
+<div class="component-layout">
+  <div class="component-tabs" x-data="{ activeTab: 'usage' }">
+    <div class="tabs-header border-b border-[var(--color-border)] mb-6">
+      <div class="flex -mb-px">
+        <button 
+          @click="activeTab = 'usage'" 
+          :class="{ 'border-[var(--color-primary)] text-[var(--color-primary)]': activeTab === 'usage' }"
+          class="px-4 py-2 border-b-2 border-transparent font-medium text-sm">
+          Usage
+        </button>
+        <button 
+          @click="activeTab = 'code'" 
+          :class="{ 'border-[var(--color-primary)] text-[var(--color-primary)]': activeTab === 'code' }"
+          class="px-4 py-2 border-b-2 border-transparent font-medium text-sm">
+          Code
+        </button>
+        <button 
+          @click="activeTab = 'props'" 
+          :class="{ 'border-[var(--color-primary)] text-[var(--color-primary)]': activeTab === 'props' }"
+          class="px-4 py-2 border-b-2 border-transparent font-medium text-sm">
+          Props
+        </button>
+        <button 
+          @click="activeTab = 'examples'" 
+          :class="{ 'border-[var(--color-primary)] text-[var(--color-primary)]': activeTab === 'examples' }"
+          class="px-4 py-2 border-b-2 border-transparent font-medium text-sm">
+          Examples
+        </button>
       </div>
     </div>
-
-    <div x-show="activeTab === 'code'" class="tab-panel" id="code">
-      <h2>Installation</h2>
-      <p>How to add component-specific imports to your project. For information on placement of external code, if you are integrating from SVN, check component for details.</p>
-      
-      <h2>Attributes</h2>
-      <p>When using properties in JavaScript, we would that properties inherit the APIs that follow for clarity.</p>
-      
-      <div class="code-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Attribute</th>
-              <th>Type</th>
-              <th>Default</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Component attributes would be dynamically populated here -->
-            <tr>
-              <td>prop1</td>
-              <td>string</td>
-              <td>null</td>
-              <td>Description of prop1</td>
-            </tr>
-            <tr>
-              <td>prop2</td>
-              <td>boolean</td>
-              <td>false</td>
-              <td>Description of prop2</td>
-            </tr>
-          </tbody>
-        </table>
+    
+    <div class="tab-content">
+      <div x-show="activeTab === 'usage'" class="animate-fade-in">
+        <div class="mb-8">
+          <div class="bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-lg p-6 mb-6">
+            <div class="component-preview">
+              {% if component.previewTemplate %}
+                {% include component.previewTemplate %}
+              {% else %}
+                <div class="text-center text-[var(--color-text-muted)]">
+                  Preview not available
+                </div>
+              {% endif %}
+            </div>
+          </div>
+          
+          <div class="flex justify-end">
+            <button class="eds-btn eds-btn-secondary text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+              </svg>
+              Reset Example
+            </button>
+          </div>
+        </div>
+        
+        <div class="usage-content">
+          {{ content | safe }}
+        </div>
       </div>
       
-      <h2>States</h2>
-      <div class="code-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Default state</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Component states would be dynamically populated here -->
-            <tr>
-              <td>active</td>
-              <td>false</td>
-              <td>When the component is in active state</td>
-            </tr>
-            <tr>
-              <td>disabled</td>
-              <td>false</td>
-              <td>When the component is disabled</td>
-            </tr>
-          </tbody>
-        </table>
+      <div x-show="activeTab === 'code'" class="animate-fade-in" x-cloak>
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-lg font-medium">Component Code</h3>
+            <button class="eds-btn eds-btn-secondary text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+              </svg>
+              Copy Code
+            </button>
+          </div>
+          
+          <div class="bg-[var(--color-bg-alt)] rounded-lg overflow-hidden">
+            <pre class="language-html"><code>{{ component.code | safe }}</code></pre>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium mb-2">Implementation Details</h3>
+          <div class="text-[var(--color-text)]">
+            {% if component.codeDescription %}
+              {{ component.codeDescription | markdown | safe }}
+            {% else %}
+              <p>No implementation details available.</p>
+            {% endif %}
+          </div>
+        </div>
       </div>
       
-      <h2>Events</h2>
-      <div class="code-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Event context</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Component events would be dynamically populated here -->
-            <tr>
-              <td>onChange</td>
-              <td>{ value: newValue }</td>
-            </tr>
-            <tr>
-              <td>onFocus</td>
-              <td>{ event }</td>
-            </tr>
-          </tbody>
-        </table>
+      <div x-show="activeTab === 'props'" class="animate-fade-in" x-cloak>
+        {% if component.props and component.props.length > 0 %}
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for prop in component.props %}
+                  <tr>
+                    <td class="font-mono text-sm">{{ prop.name }}</td>
+                    <td class="font-mono text-sm">{{ prop.type }}</td>
+                    <td class="font-mono text-sm">{{ prop.default | default('—') }}</td>
+                    <td>{{ prop.description | markdown | safe }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% else %}
+          <div class="text-[var(--color-text-muted)]">
+            No props documentation available.
+          </div>
+        {% endif %}
       </div>
       
-      <h2>CSS helper classes</h2>
-      <div class="code-table">
-        <table>
-          <thead>
-            <tr>
-              <th>CSS name</th>
-              <th>Applies to</th>
-              <th>Outcome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- CSS classes would be dynamically populated here -->
-            <tr>
-              <td>.ds-component</td>
-              <td>Root element</td>
-              <td>Base styling</td>
-            </tr>
-            <tr>
-              <td>.ds-component--active</td>
-              <td>Root element</td>
-              <td>Styling for active state</td>
-            </tr>
-          </tbody>
-        </table>
+      <div x-show="activeTab === 'examples'" class="animate-fade-in" x-cloak>
+        {% if component.examples and component.examples.length > 0 %}
+          <div class="space-y-8">
+            {% for example in component.examples %}
+              <div class="example">
+                <h3 class="text-lg font-medium mb-2">{{ example.title }}</h3>
+                {% if example.description %}
+                  <p class="text-[var(--color-text-muted)] mb-4">{{ example.description }}</p>
+                {% endif %}
+                
+                <div class="bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-lg p-6 mb-4">
+                  <div class="component-preview">
+                    {% if example.template %}
+                      {% include example.template %}
+                    {% else %}
+                      <div class="text-center text-[var(--color-text-muted)]">
+                        Example not available
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+                
+                <div class="bg-[var(--color-bg-alt)] rounded-lg overflow-hidden">
+                  <pre class="language-html"><code>{{ example.code | safe }}</code></pre>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="text-[var(--color-text-muted)]">
+            No examples available.
+          </div>
+        {% endif %}
       </div>
-      
-      <h2>Code example</h2>
-      {% include "partials/code-snippet.njk" %}
-    </div>
-
-    <div x-show="activeTab === 'accessibility'" class="tab-panel" id="accessibility">
-      <h2>Accessibility</h2>
-      
-      <h3>ARIA Heading level</h3>
-      <p>Ensure that heading levels do not skip heading level, and that headings match their visual importance. The value of the attributes should be set accordingly based on the existing section's page structure. For this component, use h3 or more information.</p>
-      
-      <h3>Implementation</h3>
-      <p>Refer to the accessibility feature for more information.</p>
-      
-      <h3>Keyboard Navigation</h3>
-      <ul>
-        <li>Tab: Moves focus to the next focusable element</li>
-        <li>Shift+Tab: Moves focus to the previous focusable element</li>
-        <li>Enter/Space: Activates the focused element</li>
-      </ul>
-      
-      <h3>Screen Reader Support</h3>
-      <p>This component includes appropriate ARIA attributes to ensure proper screen reader announcements.</p>
-    </div>
-
-    <div x-show="activeTab === 'examples'" class="tab-panel" id="examples">
-      <h2>Examples</h2>
-      
-      {% include "components/" + page.fileSlug + "/example.njk" %}
-      
-      <h3>Code for this example:</h3>
-      <pre><code class="language-html">{% include "components/" + page.fileSlug + "/example.njk" %}</code></pre>
     </div>
   </div>
 </div>
-
-{{ content | safe }}

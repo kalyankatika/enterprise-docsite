@@ -45,7 +45,7 @@ Our component library provides a collection of reusable UI elements that follow 
           </li>
         {% endif %}
       {% endfor %}
-      {% if not components | filterByTag("ios") | length %}
+      {% if components | filterByTag("ios") | length === 0 %}
         <li class="component-item empty">No iOS components available yet</li>
       {% endif %}
     </ul>
@@ -65,7 +65,7 @@ Our component library provides a collection of reusable UI elements that follow 
           </li>
         {% endif %}
       {% endfor %}
-      {% if not components | filterByTag("android") | length %}
+      {% if components | filterByTag("android") | length === 0 %}
         <li class="component-item empty">No Android components available yet</li>
       {% endif %}
     </ul>

@@ -1,0 +1,296 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #0ea5e9;
+    --color-primary-dark: #0369a1;
+    --color-secondary: #8b5cf6;
+    --color-text: #171717;
+    --color-text-muted: #737373;
+    --color-text-light: #a3a3a3;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f5f5f5;
+    --color-bg-hover: #e5e5e5;
+    --color-border: #d4d4d4;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+  }
+
+  [data-theme="dark"] {
+    --color-primary: #38bdf8;
+    --color-primary-dark: #7dd3fc;
+    --color-secondary: #a78bfa;
+    --color-text: #f5f5f5;
+    --color-text-muted: #a3a3a3;
+    --color-text-light: #737373;
+    --color-bg: #171717;
+    --color-bg-alt: #262626;
+    --color-bg-hover: #404040;
+    --color-border: #525252;
+    --color-success: #34d399;
+    --color-warning: #fbbf24;
+    --color-error: #f87171;
+  }
+
+  html {
+    @apply font-eds-sans text-base antialiased;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold leading-tight mb-4;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl mt-8;
+  }
+
+  h3 {
+    @apply text-xl mt-6;
+  }
+
+  h4 {
+    @apply text-lg mt-4;
+  }
+
+  p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  a {
+    @apply text-[var(--color-primary)] no-underline transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-[var(--color-primary-dark)] underline;
+  }
+
+  code {
+    @apply font-eds-mono text-sm bg-[var(--color-bg-alt)] px-1 py-0.5 rounded;
+  }
+
+  pre {
+    @apply font-eds-mono text-sm p-4 my-4 bg-[var(--color-bg-alt)] rounded overflow-x-auto;
+  }
+
+  pre code {
+    @apply bg-transparent p-0;
+  }
+
+  ul, ol {
+    @apply pl-6 mb-4;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  li {
+    @apply mb-2;
+  }
+
+  table {
+    @apply w-full border-collapse my-4;
+  }
+
+  th, td {
+    @apply border border-[var(--color-border)] px-4 py-2 text-left;
+  }
+
+  th {
+    @apply bg-[var(--color-bg-alt)] font-semibold;
+  }
+
+  blockquote {
+    @apply border-l-4 border-[var(--color-primary)] pl-4 italic my-4;
+  }
+
+  hr {
+    @apply border-t border-[var(--color-border)] my-6;
+  }
+}
+
+@layer components {
+  .eds-btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded font-medium transition-colors duration-200;
+  }
+
+  .eds-btn-primary {
+    @apply bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)];
+  }
+
+  .eds-btn-secondary {
+    @apply bg-[var(--color-bg-alt)] text-[var(--color-text)] hover:bg-[var(--color-bg-hover)];
+  }
+
+  .eds-btn-outline {
+    @apply border border-[var(--color-primary)] text-[var(--color-primary)] bg-transparent hover:bg-[var(--color-primary)] hover:text-white;
+  }
+
+  .eds-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .eds-card {
+    @apply bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg p-6 shadow-sm;
+  }
+
+  .eds-tag {
+    @apply inline-flex items-center rounded-full px-3 py-0.5 text-sm font-medium bg-[var(--color-bg-alt)] text-[var(--color-text-muted)];
+  }
+
+  .eds-alert {
+    @apply p-4 rounded-lg mb-4 border-l-4;
+  }
+
+  .eds-alert-info {
+    @apply bg-blue-50 border-blue-500 text-blue-700 dark:bg-blue-900/20 dark:border-blue-600 dark:text-blue-300;
+  }
+
+  .eds-alert-success {
+    @apply bg-green-50 border-green-500 text-green-700 dark:bg-green-900/20 dark:border-green-600 dark:text-green-300;
+  }
+
+  .eds-alert-warning {
+    @apply bg-yellow-50 border-yellow-500 text-yellow-700 dark:bg-yellow-900/20 dark:border-yellow-600 dark:text-yellow-300;
+  }
+
+  .eds-alert-error {
+    @apply bg-red-50 border-red-500 text-red-700 dark:bg-red-900/20 dark:border-red-600 dark:text-red-300;
+  }
+}
+
+/* Custom classes that aren't directly part of Tailwind */
+.eds-header {
+  @apply border-b border-[var(--color-border)] bg-[var(--color-bg)];
+}
+
+.eds-footer {
+  @apply border-t border-[var(--color-border)] bg-[var(--color-bg-alt)] mt-12 py-8;
+}
+
+.eds-sidebar {
+  @apply border-r border-[var(--color-border)] p-6 w-64 fixed h-screen overflow-y-auto;
+}
+
+.eds-main {
+  @apply ml-64 p-8;
+}
+
+.eds-content {
+  @apply prose prose-lg max-w-none prose-headings:text-[var(--color-text)] prose-p:text-[var(--color-text)] prose-a:text-[var(--color-primary)] prose-a:no-underline hover:prose-a:text-[var(--color-primary-dark)] hover:prose-a:underline;
+}
+
+.theme-toggle {
+  @apply flex items-center justify-center w-10 h-10 rounded-full hover:bg-[var(--color-bg-hover)] transition-colors duration-200;
+}
+
+.search-container {
+  @apply relative max-w-lg w-full;
+}
+
+.search-input {
+  @apply w-full py-2 pl-10 pr-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)] text-[var(--color-text)] placeholder-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent;
+}
+
+.search-icon {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--color-text-muted)];
+}
+
+/* Code syntax highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  @apply text-[var(--color-text-muted)];
+}
+
+.token.punctuation {
+  @apply text-[var(--color-text-light)];
+}
+
+.token.namespace {
+  @apply opacity-70;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  @apply text-yellow-600 dark:text-yellow-400;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  @apply text-green-600 dark:text-green-400;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  @apply text-yellow-600 dark:text-yellow-300;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  @apply text-blue-600 dark:text-blue-400;
+}
+
+.token.function,
+.token.class-name {
+  @apply text-purple-600 dark:text-purple-400;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  @apply text-red-600 dark:text-red-400;
+}
+
+/* Animation classes for Framer Motion */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

@@ -6,6 +6,9 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const fs = require("fs");
 const path = require("path");
+const postcss = require("postcss");
+const tailwindcss = require("tailwindcss");
+const autoprefixer = require("autoprefixer");
 
 module.exports = function(eleventyConfig) {
   // Copy the `assets` folder to the output
