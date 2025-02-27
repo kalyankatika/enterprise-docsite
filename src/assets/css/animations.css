@@ -217,25 +217,4 @@
   max-height: 1000px; /* Arbitrary large value */
 }
 
-/* Intersection Observer JavaScript to trigger animations */
-document.addEventListener('DOMContentLoaded', function() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-  
-  const animatedElements = document.querySelectorAll(
-    '.eds-animate, .eds-stagger-list, .eds-fade-in, .eds-scale, ' +
-    '.eds-slide-up, .eds-slide-down, .eds-slide-left, .eds-slide-right, ' +
-    '.eds-hero-title, .eds-hero-description, .eds-hero-cta'
-  );
-  
-  animatedElements.forEach(element => {
-    observer.observe(element);
-  });
-});
+/* Intersection Observer JavaScript is now in framer-motion-wrapper.js */
