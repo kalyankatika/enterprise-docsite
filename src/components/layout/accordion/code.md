@@ -1,341 +1,567 @@
 ---
-layout: layouts/component.njk
-title: Accordion
-description: Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.
-category: layout
-version: 1.0.0
-codeContent: true
+layout: layouts/page.njk
+title: Accordion Code Examples
+description: Implementation examples for the Accordion component across various frameworks
+tags: 
+  - layoutComponents
+  - components
+  - code
+componentCategory: Layout
 ---
 
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Installation</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">Make sure the necessary specific libraries are installed (no information or elements of these sites if you are integrating them into other components).</p>
-    
-    <div class="mb-6">
-      <h3 class="text-lg font-bold mb-2">HTML & CSS</h3>
-      <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto">
-        <pre><code class="language-bash">npm install @enterprise-design-system/accordion</code></pre>
+# Accordion Code Examples
+
+This page provides implementation examples for the Accordion component in various frameworks and technologies.
+
+## HTML/CSS Implementation
+
+### Basic HTML Structure
+
+```html
+<div class="eds-accordion">
+  <div class="eds-accordion-item">
+    <h3 class="eds-accordion-header">
+      <button 
+        class="eds-accordion-trigger" 
+        aria-expanded="false" 
+        aria-controls="accordion-content-1"
+      >
+        Section Title
+        <svg class="eds-accordion-icon" viewBox="0 0 24 24">
+          <path d="M7 10l5 5 5-5z"></path>
+        </svg>
+      </button>
+    </h3>
+    <div 
+      id="accordion-content-1" 
+      class="eds-accordion-content" 
+      hidden
+    >
+      <div class="eds-accordion-body">
+        Content goes here...
       </div>
     </div>
-    
-    <div>
-      <h3 class="text-lg font-bold mb-2">React</h3>
-      <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto">
-        <pre><code class="language-bash">npm install @enterprise-design-system/react-accordion</code></pre>
+  </div>
+  
+  <!-- Additional accordion items -->
+  <div class="eds-accordion-item">
+    <h3 class="eds-accordion-header">
+      <button 
+        class="eds-accordion-trigger" 
+        aria-expanded="false" 
+        aria-controls="accordion-content-2"
+      >
+        Another Section
+        <svg class="eds-accordion-icon" viewBox="0 0 24 24">
+          <path d="M7 10l5 5 5-5z"></path>
+        </svg>
+      </button>
+    </h3>
+    <div 
+      id="accordion-content-2" 
+      class="eds-accordion-content" 
+      hidden
+    >
+      <div class="eds-accordion-body">
+        More content here...
       </div>
     </div>
   </div>
-</section>
+</div>
+```
 
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Attributes</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">When using properties in JavaScript, use camelCase versions of the attribute names listed below.</p>
+### Vanilla JavaScript Implementation
+
+```javascript
+// Select all accordion headers
+const accordionTriggers = document.querySelectorAll('.eds-accordion-trigger');
+
+// Add click event listeners
+accordionTriggers.forEach(trigger => {
+  trigger.addEventListener('click', () => {
+    // Get the current state
+    const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
     
-    <div class="overflow-x-auto">
-      <table class="w-full text-left border-collapse">
-        <thead>
-          <tr class="bg-[var(--color-bg)]">
-            <th class="py-3 px-4 border border-[var(--color-border)]">Attribute</th>
-            <th class="py-3 px-4 border border-[var(--color-border)]">Type</th>
-            <th class="py-3 px-4 border border-[var(--color-border)]">Default</th>
-            <th class="py-3 px-4 border border-[var(--color-border)]">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="py-3 px-4 border border-[var(--color-border)]"><code>expanded</code></td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">boolean</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">Expands the accordion panel when set to true.</td>
-          </tr>
-          <tr>
-            <td class="py-3 px-4 border border-[var(--color-border)]"><code>disabled</code></td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">boolean</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">Disables the accordion when set to true.</td>
-          </tr>
-          <tr>
-            <td class="py-3 px-4 border border-[var(--color-border)]"><code>icon-position</code></td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">string</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">right</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">Position of the indicator icon. Options: 'left', 'right', 'none'.</td>
-          </tr>
-          <tr>
-            <td class="py-3 px-4 border border-[var(--color-border)]"><code>aria-labelledby</code></td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">string</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">undefined</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">ID reference to the element that labels the accordion.</td>
-          </tr>
-          <tr>
-            <td class="py-3 px-4 border border-[var(--color-border)]"><code>aria-controls</code></td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">string</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">undefined</td>
-            <td class="py-3 px-4 border border-[var(--color-border)]">ID reference to the controlled content section.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Events</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-3 px-4 border border-[var(--color-border)]">Name</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Event content</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">expand</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Fires when the accordion section is expanded</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">collapse</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Fires when the accordion section is collapsed</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">States</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-3 px-4 border border-[var(--color-border)]">Name</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Default variant</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Default</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">The normal, collapsed state of the accordion</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Expanded</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">When the accordion panel is open and content is visible</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Focused</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">When the accordion header has keyboard focus</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Disabled</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">When the accordion is not interactive</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">CSS Helper classes</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-3 px-4 border border-[var(--color-border)]">CSS class</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Applies to</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Outcome</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Main container class</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion__header</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Header element</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Styles for the clickable header</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion__content</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Content container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Styles for the expandable content</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion__icon</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Icon element</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Styles for the indicator icon</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--expanded</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Applied when accordion is expanded</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--disabled</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Applied when accordion is disabled</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">CSS modifier classes</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-3 px-4 border border-[var(--color-border)]">CSS class</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Applies to</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Outcome</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--bordered</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Adds a border around the accordion</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--compact</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Reduces padding for a more compact appearance</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--icon-left</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Positions the icon on the left side</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--no-icon</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Removes the indicator icon</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--with-bg</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Adds a background color to the header</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Namespaceing</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">If your architecture currently conflicts with Enterprise UI or any other external libraries, it may be that there are conflicting styles (i.e. you are targeting specific selectors in your own code).</p>
+    // Toggle the state
+    trigger.setAttribute('aria-expanded', !isExpanded);
     
-    <p>All components in Enterprise Design System are prefixed with 'eds-' to help reduce the possibility of selector conflicts.</p>
-  </div>
-</section>
-
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Import reference</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">The following two references are used to load libraries and should be referenced from Enterprise Design libraries. These references can be used at any component level.</p>
+    // Get the content panel
+    const contentId = trigger.getAttribute('aria-controls');
+    const content = document.getElementById(contentId);
     
-    <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-6">
-      <pre><code class="language-javascript">import { Accordion } from '@enterprise-design-system/react-components';</code></pre>
-    </div>
-    
-    <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto">
-      <pre><code class="language-html">&lt;link rel="stylesheet" href="https://cdn.enterprise-design.com/libs/accordion.css"&gt;</code></pre>
-    </div>
-  </div>
-</section>
-
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Javascript</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-6">The following JS code samples can be used to interact with Enterprise Design accordion component:</p>
-    
-    <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-6">
-      <pre><code class="language-javascript">// Initialize an accordion
-const accordion = new EnterpriseAccordion(document.querySelector('.eds-accordion'));
-
-// Expand an accordion
-accordion.expand();
-
-// Collapse an accordion
-accordion.collapse();
-
-// Toggle an accordion
-accordion.toggle();
-
-// Listen for events
-accordion.addEventListener('expand', (event) => {
-  console.log('Accordion expanded');
+    // Toggle the hidden attribute
+    if (isExpanded) {
+      content.setAttribute('hidden', '');
+    } else {
+      content.removeAttribute('hidden');
+    }
+  });
 });
 
-accordion.addEventListener('collapse', (event) => {
-  console.log('Accordion collapsed');
-});
-
-// Disable an accordion
-accordion.disabled = true;
-
-// Enable an accordion
-accordion.disabled = false;</code></pre>
-    </div>
-  </div>
-</section>
-
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">SCSS</h2>
+// Add keyboard navigation
+document.addEventListener('keydown', (event) => {
+  const trigger = event.target.closest('.eds-accordion-trigger');
+  if (!trigger) return;
   
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">The following SCSS variables are used by Enterprise Design's accordion when creating/implementing component:</p>
-    
-    <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto">
-      <pre><code class="language-scss">// Accordion variables
-$eds-accordion-header-bg: var(--color-bg-alt);
-$eds-accordion-header-color: var(--color-text);
-$eds-accordion-header-font-weight: 500;
-$eds-accordion-header-padding: 1rem;
-$eds-accordion-content-padding: 1rem;
-$eds-accordion-border-color: var(--color-border);
-$eds-accordion-border-radius: 0.25rem;
-$eds-accordion-icon-size: 1.25rem;
-$eds-accordion-icon-color: var(--color-text-muted);
-$eds-accordion-icon-transition: transform 0.2s ease-in-out;
-$eds-accordion-focus-ring-color: var(--color-primary);
-$eds-accordion-focus-ring-width: 2px;
-$eds-accordion-transition-duration: 0.2s;
-
-// In your custom implementation
-@import '@enterprise-design-system/scss/components/accordion';
-
-// Override variables if needed
-$eds-accordion-header-bg: #f5f5f5;
-
-// Use the accordion mixins
-.custom-accordion {
-  @include eds-accordion();
+  const accordionItem = trigger.closest('.eds-accordion-item');
+  const accordion = accordionItem.closest('.eds-accordion');
+  const allTriggers = Array.from(accordion.querySelectorAll('.eds-accordion-trigger'));
+  const currentIndex = allTriggers.indexOf(trigger);
   
-  // Customizations
-  .eds-accordion__header {
-    border-bottom: 2px solid $eds-accordion-border-color;
+  switch (event.key) {
+    case 'ArrowDown':
+      event.preventDefault();
+      if (currentIndex < allTriggers.length - 1) {
+        allTriggers[currentIndex + 1].focus();
+      }
+      break;
+    case 'ArrowUp':
+      event.preventDefault();
+      if (currentIndex > 0) {
+        allTriggers[currentIndex - 1].focus();
+      }
+      break;
+    case 'Home':
+      event.preventDefault();
+      allTriggers[0].focus();
+      break;
+    case 'End':
+      event.preventDefault();
+      allTriggers[allTriggers.length - 1].focus();
+      break;
   }
-}</code></pre>
+});
+```
+
+### CSS Styling
+
+```css
+/* Base accordion styles */
+.eds-accordion {
+  width: 100%;
+}
+
+.eds-accordion-item {
+  margin-bottom: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.eds-accordion-header {
+  margin: 0;
+}
+
+.eds-accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-weight: 500;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+}
+
+.eds-accordion-trigger:hover {
+  background-color: #f1f5f9;
+}
+
+.eds-accordion-trigger:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+.eds-accordion-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.eds-accordion-trigger[aria-expanded="true"] .eds-accordion-icon {
+  transform: rotate(180deg);
+}
+
+.eds-accordion-content {
+  border-top: 1px solid #e2e8f0;
+}
+
+.eds-accordion-body {
+  padding: 1rem;
+}
+
+/* Animation for the content panel */
+.eds-accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.eds-accordion-content:not([hidden]) {
+  max-height: 1000px; /* Arbitrary large value */
+}
+
+/* Variant: Borderless */
+.eds-accordion-borderless .eds-accordion-item {
+  border: none;
+  margin-bottom: 0.75rem;
+}
+
+.eds-accordion-borderless .eds-accordion-trigger {
+  background-color: #f1f5f9;
+  border-radius: 0.375rem;
+}
+
+.eds-accordion-borderless .eds-accordion-content {
+  border-top: none;
+  padding: 0.5rem 1rem;
+}
+
+/* Variant: Filled */
+.eds-accordion-filled .eds-accordion-trigger {
+  background-color: #10b981;
+  color: white;
+}
+
+.eds-accordion-filled .eds-accordion-trigger:hover {
+  background-color: #059669;
+}
+
+.eds-accordion-filled .eds-accordion-trigger:focus {
+  outline-color: white;
+}
+```
+
+## React Implementation
+
+### React Component
+
+```jsx
+import React, { useState } from 'react';
+import './accordion.css';
+
+// Accordion Item Component
+function AccordionItem({ title, children, defaultExpanded = false }) {
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const contentId = `accordion-content-${Math.random().toString(36).substr(2, 9)}`;
+  
+  return (
+    <div className="eds-accordion-item">
+      <h3 className="eds-accordion-header">
+        <button 
+          className="eds-accordion-trigger"
+          aria-expanded={isExpanded}
+          aria-controls={contentId}
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <span className="eds-accordion-title">{title}</span>
+          <svg 
+            className="eds-accordion-icon" 
+            viewBox="0 0 24 24" 
+            aria-hidden="true"
+          >
+            <path d="M7 10l5 5 5-5z"></path>
+          </svg>
+        </button>
+      </h3>
+      <div 
+        id={contentId}
+        className="eds-accordion-content"
+        hidden={!isExpanded}
+      >
+        <div className="eds-accordion-body">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Main Accordion Component
+function Accordion({ children, variant = 'default', multiExpand = false }) {
+  let variantClass = '';
+  
+  if (variant === 'borderless') {
+    variantClass = 'eds-accordion-borderless';
+  } else if (variant === 'filled') {
+    variantClass = 'eds-accordion-filled';
+  }
+  
+  return (
+    <div className={`eds-accordion ${variantClass}`}>
+      {React.Children.map(children, child => {
+        // If multiExpand is false, we need to handle expanding/collapsing logic
+        if (!multiExpand) {
+          return React.cloneElement(child, {
+            // Additional props for managing single expansion
+          });
+        }
+        return child;
+      })}
+    </div>
+  );
+}
+
+export { Accordion, AccordionItem };
+```
+
+### Usage Example
+
+```jsx
+import { Accordion, AccordionItem } from './Accordion';
+
+function MyComponent() {
+  return (
+    <div>
+      <h2>Accordion Example</h2>
+      
+      <Accordion>
+        <AccordionItem title="First Section" defaultExpanded={true}>
+          <p>This is the content for the first section.</p>
+          <p>You can add any content here.</p>
+        </AccordionItem>
+        
+        <AccordionItem title="Second Section">
+          <p>Content for the second section.</p>
+          <ul>
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3</li>
+          </ul>
+        </AccordionItem>
+        
+        <AccordionItem title="Third Section">
+          <p>Content for the third section.</p>
+        </AccordionItem>
+      </Accordion>
+      
+      <h2>Borderless Variant</h2>
+      <Accordion variant="borderless" multiExpand={true}>
+        <AccordionItem title="Section A">
+          Content for Section A
+        </AccordionItem>
+        <AccordionItem title="Section B">
+          Content for Section B
+        </AccordionItem>
+      </Accordion>
+    </div>
+  );
+}
+```
+
+## Vue Implementation
+
+```vue
+<template>
+  <div class="eds-accordion" :class="variantClass">
+    <div 
+      v-for="(item, index) in items"
+      :key="index"
+      class="eds-accordion-item"
+    >
+      <h3 class="eds-accordion-header">
+        <button 
+          class="eds-accordion-trigger"
+          :aria-expanded="expandedItems.includes(index)"
+          :aria-controls="`accordion-content-${index}`"
+          @click="toggleItem(index)"
+        >
+          <span class="eds-accordion-title">{{ item.title }}</span>
+          <svg 
+            class="eds-accordion-icon" 
+            viewBox="0 0 24 24" 
+            aria-hidden="true"
+          >
+            <path d="M7 10l5 5 5-5z"></path>
+          </svg>
+        </button>
+      </h3>
+      <div 
+        :id="`accordion-content-${index}`"
+        class="eds-accordion-content"
+        :hidden="!expandedItems.includes(index)"
+      >
+        <div class="eds-accordion-body">
+          {{ item.content }}
+        </div>
+      </div>
     </div>
   </div>
-</section>
+</template>
+
+<script>
+export default {
+  name: 'EdsAccordion',
+  props: {
+    items: {
+      type: Array,
+      required: true
+    },
+    variant: {
+      type: String,
+      default: 'default',
+      validator: value => ['default', 'borderless', 'filled'].includes(value)
+    },
+    multiExpand: {
+      type: Boolean,
+      default: false
+    },
+    defaultExpanded: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data() {
+    return {
+      expandedItems: [...this.defaultExpanded]
+    };
+  },
+  computed: {
+    variantClass() {
+      return {
+        'eds-accordion-borderless': this.variant === 'borderless',
+        'eds-accordion-filled': this.variant === 'filled'
+      };
+    }
+  },
+  methods: {
+    toggleItem(index) {
+      if (this.expandedItems.includes(index)) {
+        // Collapse the item
+        this.expandedItems = this.expandedItems.filter(i => i !== index);
+        this.$emit('collapse', { index, content: this.items[index] });
+      } else {
+        // Expand the item
+        if (!this.multiExpand) {
+          // If multiExpand is false, collapse all other items
+          this.expandedItems = [];
+        }
+        this.expandedItems.push(index);
+        this.$emit('expand', { index, content: this.items[index] });
+      }
+      this.$emit('change', { expanded: this.expandedItems.includes(index), index });
+    }
+  }
+};
+</script>
+
+<style>
+/* Include the CSS styles from the CSS section above */
+</style>
+```
+
+## Angular Implementation
+
+```typescript
+// accordion.component.ts
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+export interface AccordionItem {
+  title: string;
+  content: string;
+  expanded?: boolean;
+}
+
+@Component({
+  selector: 'eds-accordion',
+  templateUrl: './accordion.component.html',
+  styleUrls: ['./accordion.component.css']
+})
+export class AccordionComponent {
+  @Input() items: AccordionItem[] = [];
+  @Input() variant: 'default' | 'borderless' | 'filled' = 'default';
+  @Input() multiExpand: boolean = false;
+  
+  @Output() expand = new EventEmitter<{index: number, item: AccordionItem}>();
+  @Output() collapse = new EventEmitter<{index: number, item: AccordionItem}>();
+  @Output() change = new EventEmitter<{expanded: boolean, index: number, item: AccordionItem}>();
+  
+  toggleItem(index: number): void {
+    const item = this.items[index];
+    
+    if (item.expanded) {
+      // Collapse the item
+      item.expanded = false;
+      this.collapse.emit({ index, item });
+    } else {
+      // Expand the item
+      if (!this.multiExpand) {
+        // If multiExpand is false, collapse all other items
+        this.items.forEach((otherItem, i) => {
+          if (i !== index && otherItem.expanded) {
+            otherItem.expanded = false;
+            this.collapse.emit({ index: i, item: otherItem });
+          }
+        });
+      }
+      
+      item.expanded = true;
+      this.expand.emit({ index, item });
+    }
+    
+    this.change.emit({ expanded: item.expanded, index, item });
+  }
+  
+  getVariantClass(): string {
+    switch (this.variant) {
+      case 'borderless':
+        return 'eds-accordion-borderless';
+      case 'filled':
+        return 'eds-accordion-filled';
+      default:
+        return '';
+    }
+  }
+}
+```
+
+```html
+<!-- accordion.component.html -->
+<div class="eds-accordion" [ngClass]="getVariantClass()">
+  <div 
+    *ngFor="let item of items; let i = index" 
+    class="eds-accordion-item"
+  >
+    <h3 class="eds-accordion-header">
+      <button 
+        class="eds-accordion-trigger"
+        [attr.aria-expanded]="item.expanded"
+        [attr.aria-controls]="'accordion-content-' + i"
+        (click)="toggleItem(i)"
+      >
+        <span class="eds-accordion-title">{{ item.title }}</span>
+        <svg 
+          class="eds-accordion-icon" 
+          viewBox="0 0 24 24" 
+          aria-hidden="true"
+        >
+          <path d="M7 10l5 5 5-5z"></path>
+        </svg>
+      </button>
+    </h3>
+    <div 
+      [id]="'accordion-content-' + i"
+      class="eds-accordion-content"
+      [hidden]="!item.expanded"
+    >
+      <div class="eds-accordion-body">
+        <ng-container *ngIf="!item.contentTemplate">
+          {{ item.content }}
+        </ng-container>
+        <ng-container *ngIf="item.contentTemplate">
+          <ng-container *ngTemplateOutlet="item.contentTemplate"></ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+## Additional Resources
+
+- [Complete accordion.css file](/components/layout/accordion/assets/accordion.css)
+- [Accordion TypeScript definitions](/components/layout/accordion/assets/accordion.d.ts)
+- [Accordion test examples](/components/layout/accordion/assets/accordion.test.js)

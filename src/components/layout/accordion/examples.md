@@ -1,325 +1,544 @@
 ---
-layout: layouts/component.njk
-title: Accordion
-description: Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.
-category: layout
-version: 1.0.0
-examplesContent: true
+layout: layouts/page.njk
+title: Accordion Usage Examples
+description: Real-world examples and patterns for implementing the Accordion component
+tags: 
+  - layoutComponents
+  - components
+  - examples
+componentCategory: Layout
 ---
 
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Examples</h2>
+# Accordion Usage Examples
+
+This page demonstrates various real-world examples of the Accordion component in common UI patterns.
+
+## FAQ Example
+
+Accordions are perfect for FAQ (Frequently Asked Questions) sections where users can expand only the questions they're interested in.
+
+<div class="bg-white p-6 rounded border my-6">
+  <h2 class="text-xl font-semibold mb-4">Frequently Asked Questions</h2>
   
-  <div class="space-y-12">
-    <!-- Basic Accordion -->
-    <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-      <h3 class="text-xl font-bold mb-4">Basic Accordion</h3>
-      <p class="mb-6">A standard accordion with default styling.</p>
+  <div class="eds-accordion">
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">How do I reset my password?</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p>To reset your password, click on the "Forgot Password" link on the login page. You'll receive an email with instructions to create a new password.</p>
+      </div>
+    </div>
+    
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">Can I change my username?</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p>Yes, you can change your username in the account settings. Go to Settings > Profile > Edit Username.</p>
+      </div>
+    </div>
+    
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">How do I export my data?</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p>To export your data:</p>
+        <ol class="list-decimal ml-5 mt-2">
+          <li>Go to Account Settings</li>
+          <li>Select "Privacy & Data"</li>
+          <li>Click "Export Data"</li>
+          <li>Choose your preferred format (CSV, JSON, or PDF)</li>
+          <li>Click "Export" and follow the prompts</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+```html
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  
+  <div class="eds-accordion">
+    <div class="eds-accordion-item">
+      <h3 class="eds-accordion-header">
+        <button class="eds-accordion-trigger" aria-expanded="false" aria-controls="faq-1">
+          How do I reset my password?
+          <svg class="eds-accordion-icon" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5z"></path>
+          </svg>
+        </button>
+      </h3>
+      <div id="faq-1" class="eds-accordion-content" hidden>
+        <div class="eds-accordion-body">
+          <p>To reset your password, click on the "Forgot Password" link on the login page. 
+          You'll receive an email with instructions to create a new password.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Additional FAQ items -->
+  </div>
+</div>
+```
+
+## Product Details Example
+
+Use accordions to display detailed product information in e-commerce or product catalog pages.
+
+<div class="bg-white p-6 rounded border my-6">
+  <div class="flex flex-col md:flex-row gap-6">
+    <div class="md:w-1/3">
+      <div class="bg-gray-100 h-48 w-full rounded-lg flex items-center justify-center text-gray-400">
+        [Product Image]
+      </div>
+    </div>
+    
+    <div class="md:w-2/3">
+      <h2 class="text-xl font-semibold">Enterprise Laptop Pro</h2>
+      <p class="text-green-700 font-bold mt-2">$1,299.99</p>
+      <p class="mt-2 text-gray-600">High-performance laptop for enterprise applications</p>
       
-      <div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden">
+      <div class="mt-6">
         <div class="eds-accordion">
-          <div class="bg-white">
-            <button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-              <span>Section 1: Introduction</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="border rounded mb-2">
+            <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+              <h3 class="font-medium">Technical Specifications</h3>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
-            <div class="p-4 border-t border-[var(--color-border)]">
-              <p>This is the content for section 1. It can include any type of content including text, images, and other components.</p>
+            </div>
+            <div class="px-4 py-3 border-t">
+              <ul class="list-disc ml-5">
+                <li>Intel Core i7-12700H Processor</li>
+                <li>16GB DDR5 RAM</li>
+                <li>512GB NVMe SSD</li>
+                <li>14" 4K Display (3840 x 2160)</li>
+                <li>NVIDIA RTX 3050 Ti (4GB GDDR6)</li>
+                <li>Thunderbolt 4, USB-C, HDMI 2.1</li>
+              </ul>
             </div>
           </div>
           
-          <div class="border-t border-[var(--color-border)] bg-white">
-            <button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-              <span>Section 2: Features</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="border rounded mb-2">
+            <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+              <h3 class="font-medium">Warranty Information</h3>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
-          </div>
-          
-          <div class="border-t border-[var(--color-border)] bg-white">
-            <button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-              <span>Section 3: Specifications</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto">
-        <pre><code class="language-html">&lt;div class="eds-accordion"&gt;
-  &lt;div&gt;
-    &lt;button class="w-full p-4 flex items-center justify-between text-left font-medium"&gt;
-      &lt;span&gt;Section 1: Introduction&lt;/span&gt;
-      &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;
-        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /&gt;
-      &lt;/svg&gt;
-    &lt;/button&gt;
-    &lt;div class="p-4 border-t"&gt;
-      &lt;p&gt;This is the content for section 1.&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  
-  &lt;div class="border-t"&gt;
-    &lt;button class="w-full p-4 flex items-center justify-between text-left font-medium"&gt;
-      &lt;span&gt;Section 2: Features&lt;/span&gt;
-      &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;
-        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /&gt;
-      &lt;/svg&gt;
-    &lt;/button&gt;
-  &lt;/div&gt;
-  
-  &lt;div class="border-t"&gt;
-    &lt;button class="w-full p-4 flex items-center justify-between text-left font-medium"&gt;
-      &lt;span&gt;Section 3: Specifications&lt;/span&gt;
-      &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;
-        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /&gt;
-      &lt;/svg&gt;
-    &lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-      </div>
-    </div>
-    
-    <!-- Icon Left Accordion -->
-    <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-      <h3 class="text-xl font-bold mb-4">Icon Left Accordion</h3>
-      <p class="mb-6">An accordion with the expand/collapse icon positioned on the left.</p>
-      
-      <div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden">
-        <div class="eds-accordion">
-          <div class="bg-white">
-            <button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-              <span>Payment Methods</span>
-            </button>
-            <div class="p-4 pl-11 border-t border-[var(--color-border)]">
-              <p>Configure your payment methods and preferences.</p>
+            </div>
+            <div class="px-4 py-3 border-t">
+              <p>3-year limited hardware warranty with next-business-day on-site service after remote diagnosis.</p>
+              <p class="mt-2">Optional warranty extensions available for up to 5 years.</p>
             </div>
           </div>
           
-          <div class="border-t border-[var(--color-border)] bg-white">
-            <button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="border rounded mb-2">
+            <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+              <h3 class="font-medium">Shipping & Returns</h3>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
-              <span>Shipping Address</span>
-            </button>
+            </div>
+            <div class="px-4 py-3 border-t">
+              <p>Free shipping on all orders over $1,000. Standard delivery in 3-5 business days.</p>
+              <p class="mt-2">30-day return policy. Item must be in original condition and packaging.</p>
+            </div>
           </div>
-          
-          <div class="border-t border-[var(--color-border)] bg-white">
-            <button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-              <span>Order History</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- FAQ Accordion -->
-    <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-      <h3 class="text-xl font-bold mb-4">FAQ Accordion</h3>
-      <p class="mb-6">A common implementation pattern for FAQs with multiple sections that can be open simultaneously.</p>
-      
-      <div class="mb-8 space-y-3">
-        <div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white">
-          <button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-            <span>How do I reset my password?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="p-4">
-            <p>To reset your password, click on the "Forgot Password" link on the login page. You'll receive an email with instructions to create a new password.</p>
-          </div>
-        </div>
-        
-        <div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white">
-          <button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-            <span>How do I update my account information?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-        </div>
-        
-        <div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white">
-          <button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset">
-            <span>Can I change my subscription plan?</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Accessible Accordion -->
-    <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-      <h3 class="text-xl font-bold mb-4">Fully Accessible Accordion</h3>
-      <p class="mb-6">An example with all required accessibility attributes for screen reader support.</p>
-      
-      <div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden">
-        <div class="eds-accordion">
-          <h3>
-            <button 
-              id="acc-panel1-header" 
-              class="w-full p-4 flex items-center justify-between text-left font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"
-              aria-expanded="true"
-              aria-controls="acc-panel1-content">
-              <span>Getting Started</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-          </h3>
-          <div 
-            id="acc-panel1-content" 
-            role="region" 
-            aria-labelledby="acc-panel1-header"
-            class="p-4 border-t border-[var(--color-border)] bg-white">
-            <p>This panel includes all the necessary ARIA attributes for accessible accordions. Notice how the expanded state is clearly indicated both visually and programmatically.</p>
-          </div>
-          
-          <h3>
-            <button 
-              id="acc-panel2-header" 
-              class="w-full p-4 flex items-center justify-between text-left font-medium bg-white border-t border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"
-              aria-expanded="false"
-              aria-controls="acc-panel2-content">
-              <span>Advanced Configuration</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-          </h3>
-          <div 
-            id="acc-panel2-content" 
-            role="region" 
-            aria-labelledby="acc-panel2-header"
-            class="hidden p-4 border-t border-[var(--color-border)] bg-white">
-            <p>This content is hidden by default.</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto">
-        <pre><code class="language-html">&lt;div class="eds-accordion"&gt;
-  &lt;h3&gt;
-    &lt;button 
-      id="acc-panel1-header" 
-      class="w-full p-4 flex items-center justify-between text-left font-medium"
-      aria-expanded="true"
-      aria-controls="acc-panel1-content"&gt;
-      &lt;span&gt;Getting Started&lt;/span&gt;
-      &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"&gt;
-        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /&gt;
-      &lt;/svg&gt;
-    &lt;/button&gt;
-  &lt;/h3&gt;
-  &lt;div 
-    id="acc-panel1-content" 
-    role="region" 
-    aria-labelledby="acc-panel1-header"
-    class="p-4 border-t"&gt;
-    &lt;p&gt;Panel content with accessibility features.&lt;/p&gt;
-  &lt;/div&gt;
-  
-  &lt;h3&gt;
-    &lt;button 
-      id="acc-panel2-header" 
-      class="w-full p-4 flex items-center justify-between text-left font-medium border-t"
-      aria-expanded="false"
-      aria-controls="acc-panel2-content"&gt;
-      &lt;span&gt;Advanced Configuration&lt;/span&gt;
-      &lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"&gt;
-        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /&gt;
-      &lt;/svg&gt;
-    &lt;/button&gt;
-  &lt;/h3&gt;
-  &lt;div 
-    id="acc-panel2-content" 
-    role="region" 
-    aria-labelledby="acc-panel2-header"
-    class="hidden p-4 border-t"&gt;
-    &lt;p&gt;This content is hidden by default.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-      </div>
-    </div>
-    
-    <!-- Custom Styled Accordion -->
-    <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-      <h3 class="text-xl font-bold mb-4">Custom Styled Accordion</h3>
-      <p class="mb-6">An example with custom styling applied to demonstrate flexibility.</p>
-      
-      <div class="mb-8 space-y-4">
-        <div class="rounded-md overflow-hidden bg-[var(--color-primary-light)]">
-          <button class="w-full p-4 flex items-center justify-between text-left font-medium text-[var(--color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset rounded-t-md">
-            <span class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              Performance Optimization
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div class="p-4 bg-white border border-[var(--color-primary-light)] border-t-0 rounded-b-md">
-            <p>This accordion uses custom colors and icons to match a specific visual style. You can adapt the styling to fit your application's design system.</p>
-          </div>
-        </div>
-        
-        <div class="rounded-md overflow-hidden bg-[var(--color-primary-light)]">
-          <button class="w-full p-4 flex items-center justify-between text-left font-medium text-[var(--color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset rounded-t-md">
-            <span class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-              Security Best Practices
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Simple accordion functionality for the examples
-    const accordionButtons = document.querySelectorAll('.eds-accordion button');
+## Settings Panel Example
+
+Use accordions to organize multiple settings sections in a dashboard or profile page.
+
+<div class="bg-white p-6 rounded border my-6">
+  <h2 class="text-xl font-semibold mb-4">User Settings</h2>
+  
+  <div class="eds-accordion eds-accordion-filled">
+    <div class="mb-3 border rounded overflow-hidden">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-blue-600 text-white">
+        <h3 class="font-medium">Account Settings</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="p-4">
+        <div class="grid gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+            <input type="email" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="user@example.com">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <button class="bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-md text-sm">Change Password</button>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Two-Factor Authentication</label>
+            <div class="flex items-center">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="twoFactorSwitch">
+                <label class="form-check-label" for="twoFactorSwitch">Enable</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    accordionButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        const controlsId = button.getAttribute('aria-controls');
-        const content = controlsId ? document.getElementById(controlsId) : button.nextElementSibling;
-        const icon = button.querySelector('svg');
+    <div class="mb-3 border rounded overflow-hidden">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-blue-600 text-white">
+        <h3 class="font-medium">Notification Preferences</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="p-4">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-medium">Email Notifications</h4>
+              <p class="text-sm text-gray-500">Receive updates via email</p>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="emailSwitch" checked>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-medium">Push Notifications</h4>
+              <p class="text-sm text-gray-500">Receive notifications on your device</p>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="pushSwitch" checked>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-medium">SMS Notifications</h4>
+              <p class="text-sm text-gray-500">Receive text message alerts</p>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="smsSwitch">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mb-3 border rounded overflow-hidden">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-blue-600 text-white">
+        <h3 class="font-medium">Privacy Settings</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="p-4">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-medium">Profile Visibility</h4>
+              <p class="text-sm text-gray-500">Control who can see your profile</p>
+            </div>
+            <select class="form-select px-3 py-1.5 text-sm border border-gray-300 rounded-md">
+              <option value="public">Public</option>
+              <option value="contacts">Contacts Only</option>
+              <option value="private">Private</option>
+            </select>
+          </div>
+          
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="font-medium">Data Sharing</h4>
+              <p class="text-sm text-gray-500">Share usage data to improve services</p>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="dataSwitch" checked>
+            </div>
+          </div>
+          
+          <button class="mt-2 text-red-600 hover:text-red-800 text-sm font-medium">Delete Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Borderless Accordion in a Sidebar
+
+This example shows how to use the borderless accordion variant in a sidebar navigation.
+
+<div class="bg-white p-6 rounded border my-6">
+  <div class="w-full max-w-xs bg-gray-100 p-4 rounded-lg">
+    <h2 class="text-lg font-semibold mb-3">Documentation</h2>
+    
+    <div class="eds-accordion eds-accordion-borderless">
+      <div class="mb-1 bg-gray-100 rounded">
+        <div class="eds-accordion-header px-3 py-2 flex justify-between items-center">
+          <h3 class="font-medium text-sm">Getting Started</h3>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div class="px-3 py-1">
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="text-blue-600 hover:underline">Installation</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Quick Start</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Configuration</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mb-1 bg-gray-100 rounded">
+        <div class="eds-accordion-header px-3 py-2 flex justify-between items-center">
+          <h3 class="font-medium text-sm">Components</h3>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div class="px-3 py-1">
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="text-blue-600 hover:underline">Buttons</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Forms</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Modals</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Tables</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Cards</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mb-1 bg-gray-100 rounded">
+        <div class="eds-accordion-header px-3 py-2 flex justify-between items-center">
+          <h3 class="font-medium text-sm">API Reference</h3>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+        <div class="px-3 py-1">
+          <ul class="space-y-1 text-sm">
+            <li><a href="#" class="text-blue-600 hover:underline">Authentication</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Users</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Products</a></li>
+            <li><a href="#" class="text-blue-600 hover:underline">Orders</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Accordion with Custom Icons
+
+This example demonstrates using custom icons instead of the default chevron.
+
+<div class="bg-white p-6 rounded border my-6">
+  <h2 class="text-xl font-semibold mb-4">Project Timeline</h2>
+  
+  <div class="eds-accordion">
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">Phase 1: Planning</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p class="mb-2">Timeline: January 1 - February 15</p>
+        <ul class="list-disc ml-5">
+          <li>Requirements gathering</li>
+          <li>Stakeholder interviews</li>
+          <li>Project scope definition</li>
+          <li>Resource allocation</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">Phase 2: Design</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p class="mb-2">Timeline: February 16 - March 31</p>
+        <ul class="list-disc ml-5">
+          <li>UI/UX design</li>
+          <li>Wireframing</li>
+          <li>Prototyping</li>
+          <li>Design reviews</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+```jsx
+// React example with custom icons
+function ProjectTimeline() {
+  return (
+    <div>
+      <h2>Project Timeline</h2>
+      
+      <Accordion 
+        expandIcon={<PlusIcon />}
+        collapseIcon={<MinusIcon />}
+      >
+        <AccordionItem title="Phase 1: Planning">
+          <p>Timeline: January 1 - February 15</p>
+          <ul>
+            <li>Requirements gathering</li>
+            <li>Stakeholder interviews</li>
+            <li>Project scope definition</li>
+            <li>Resource allocation</li>
+          </ul>
+        </AccordionItem>
         
-        if (isExpanded) {
-          button.setAttribute('aria-expanded', 'false');
-          if (content) content.classList.add('hidden');
-          if (icon) icon.classList.remove('rotate-180');
-        } else {
-          button.setAttribute('aria-expanded', 'true');
-          if (content) content.classList.remove('hidden');
-          if (icon) icon.classList.add('rotate-180');
-        }
-      });
-    });
-  });
-</script>
+        <AccordionItem title="Phase 2: Design">
+          <p>Timeline: February 16 - March 31</p>
+          <ul>
+            <li>UI/UX design</li>
+            <li>Wireframing</li>
+            <li>Prototyping</li>
+            <li>Design reviews</li>
+          </ul>
+        </AccordionItem>
+      </Accordion>
+    </div>
+  );
+}
+```
+
+## Nested Accordions
+
+While generally not recommended for usability reasons, there are some cases where nested accordions make sense, such as complex hierarchical data.
+
+<div class="bg-white p-6 rounded border my-6">
+  <h2 class="text-xl font-semibold mb-4">Company Organizational Structure</h2>
+  
+  <div class="eds-accordion">
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">Executive Leadership</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p class="mb-2">Executive leadership team oversees all company operations.</p>
+        
+        <div class="eds-accordion mt-3">
+          <div class="border rounded mb-2">
+            <div class="eds-accordion-header px-3 py-2 flex justify-between items-center bg-gray-100">
+              <h4 class="font-medium text-sm">CEO Office</h4>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="px-3 py-2 border-t">
+              <ul class="list-disc ml-5 text-sm">
+                <li>Chief Executive Officer</li>
+                <li>Executive Assistant</li>
+                <li>Chief of Staff</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="border rounded mb-2">
+            <div class="eds-accordion-header px-3 py-2 flex justify-between items-center bg-gray-100">
+              <h4 class="font-medium text-sm">Finance Department</h4>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="px-3 py-2 border-t">
+              <ul class="list-disc ml-5 text-sm">
+                <li>Chief Financial Officer</li>
+                <li>Financial Controller</li>
+                <li>Financial Analysts</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">Product Development</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p class="mb-2">The product development team builds and maintains all company products.</p>
+        
+        <div class="eds-accordion mt-3">
+          <div class="border rounded mb-2">
+            <div class="eds-accordion-header px-3 py-2 flex justify-between items-center bg-gray-100">
+              <h4 class="font-medium text-sm">Engineering</h4>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="px-3 py-2 border-t">
+              <ul class="list-disc ml-5 text-sm">
+                <li>VP of Engineering</li>
+                <li>Frontend Development</li>
+                <li>Backend Development</li>
+                <li>QA Engineering</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="border rounded mb-2">
+            <div class="eds-accordion-header px-3 py-2 flex justify-between items-center bg-gray-100">
+              <h4 class="font-medium text-sm">Product Management</h4>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div class="px-3 py-2 border-t">
+              <ul class="list-disc ml-5 text-sm">
+                <li>VP of Product</li>
+                <li>Product Managers</li>
+                <li>UX Researchers</li>
+                <li>Technical Writers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Best Practices for These Examples
+
+1. **FAQ Sections**: Use clear, concise questions as headers. Make sure each answer is focused and helpful.
+
+2. **Product Details**: Group related information into logical sections. Use consistent styling for all similar products.
+
+3. **Settings Panels**: Organize settings by function. Consider pre-expanding the most commonly used section.
+
+4. **Sidebar Navigation**: Keep text short. Consider showing the active section expanded by default.
+
+5. **Custom Icons**: Ensure icons clearly communicate the expand/collapse action. Maintain consistency across all accordions within the same interface.
+
+6. **Nested Accordions**: Use with caution! Maintain visual distinction between parent and child accordions. Limit nesting to at most one level deep.

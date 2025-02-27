@@ -1,219 +1,162 @@
 ---
-layout: layouts/component.njk
-title: Accordion
-description: Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.
-category: layout
-version: 1.0.0
-a11yContent: true
+layout: layouts/page.njk
+title: Accordion Accessibility
+description: Accessibility guidelines and best practices for implementing the Accordion component
+tags: 
+  - layoutComponents
+  - components
+  - accessibility
+componentCategory: Layout
 ---
 
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Accessibility</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-6">Accordions should be accessible to all users, including those using assistive technologies such as screen readers. Follow these guidelines to ensure your accordions meet accessibility standards.</p>
-    
-    <h3 class="text-lg font-bold mb-4">ARIA Roles and Attributes</h3>
-    <ul class="space-y-3 list-disc pl-5 mb-6">
-      <li>Use <code>aria-expanded</code> on the header button to indicate the expanded/collapsed state</li>
-      <li>Include <code>aria-controls</code> on the header button that points to the ID of the content panel</li>
-      <li>Apply <code>role="region"</code> to the content panel with <code>aria-labelledby</code> pointing to the header ID</li>
-      <li>Ensure all interactive elements have appropriate ARIA roles and states</li>
-      <li>Use <code>aria-disabled="true"</code> when an accordion is disabled but still visible</li>
-    </ul>
-    
-    <h3 class="text-lg font-bold mb-4">Keyboard Navigation</h3>
-    <table class="w-full text-left border-collapse mb-6">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-2 px-4 border border-[var(--color-border)]">Key</th>
-          <th class="py-2 px-4 border border-[var(--color-border)]">Function</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Tab</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Moves focus to the accordion header</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Enter or Space</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Toggles the accordion panel between expanded and collapsed states</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Arrow Down</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the next accordion header</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Arrow Up</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the previous accordion header</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Home</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the first accordion header</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">End</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the last accordion header</td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <h3 class="text-lg font-bold mb-4">Implementation</h3>
-    <p class="mb-4">Here's how to correctly implement an accessible accordion:</p>
-    
-    <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-6">
-      <pre><code class="language-html">&lt;div class="eds-accordion"&gt;
-  &lt;h3&gt;
-    &lt;button 
-      id="accordion-header-1" 
-      class="eds-accordion__header" 
-      aria-expanded="false" 
-      aria-controls="accordion-panel-1"&gt;
-      Accordion Heading
-      &lt;span class="eds-accordion__icon" aria-hidden="true"&gt;&lt;/span&gt;
-    &lt;/button&gt;
-  &lt;/h3&gt;
-  &lt;div 
-    id="accordion-panel-1" 
-    class="eds-accordion__content" 
-    role="region" 
-    aria-labelledby="accordion-header-1" 
-    hidden&gt;
-    Accordion content goes here.
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-    </div>
-    
-    <div class="bg-[var(--color-warning-light)] p-4 rounded-md mb-6">
-      <div class="flex items-start">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-warning)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-        <p class="text-[var(--color-text-muted)]">Don't use role="button" on elements that aren't naturally focused in the tab order. Instead, use a semantic button element to ensure proper keyboard interaction.</p>
-      </div>
-    </div>
-    
-    <h3 class="text-lg font-bold mb-4">Testing Criteria</h3>
-    <p class="mb-4">Ensure your accordion passes these accessibility checks:</p>
-    
-    <ul class="space-y-2 list-disc pl-5">
-      <li>Accordion headers must be focusable and operable with a keyboard</li>
-      <li>State changes must be programmatically announced to screen readers</li>
-      <li>Focus must remain on the header after expanding/collapsing</li>
-      <li>Content must be properly associated with its header</li>
-      <li>Color contrast must meet WCAG AA standards (4.5:1 for normal text)</li>
-      <li>Icons must have sufficient contrast and not rely solely on color</li>
-      <li>Animations must respect user preferences via the prefers-reduced-motion media query</li>
-    </ul>
-  </div>
-</section>
+# Accordion Accessibility Guidelines
 
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">WAI-ARIA Compliance</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-6">The accordion component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/" class="text-[var(--color-primary)] underline">WAI-ARIA Accordion Pattern</a>. This ensures consistency with established accessibility standards and patterns.</p>
-    
-    <h3 class="text-lg font-bold mb-4">Required ARIA Attributes</h3>
-    <table class="w-full text-left border-collapse mb-6">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-2 px-4 border border-[var(--color-border)]">Attribute</th>
-          <th class="py-2 px-4 border border-[var(--color-border)]">Applied to</th>
-          <th class="py-2 px-4 border border-[var(--color-border)]">Purpose</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-expanded</code></td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Accordion header button</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Indicates whether the accordion panel is expanded or collapsed</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-controls</code></td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Accordion header button</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">References the ID of the controlled panel</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-labelledby</code></td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Accordion panel</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">References the ID of the header for labeling</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]"><code>role="region"</code></td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Accordion panel</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Identifies the element as a region when expanded</td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <div class="bg-[var(--color-info-light)] p-4 rounded-md">
-      <div class="flex items-start">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-info)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+This page outlines how to implement the Accordion component to ensure it meets WCAG 2.1 AA standards and provides an optimal experience for all users, including those using assistive technologies.
+
+## ARIA Attributes
+
+The Accordion component uses the following ARIA attributes to ensure proper accessibility:
+
+### Required Attributes
+
+- `aria-expanded`: Applied to the accordion trigger button to indicate whether the section is expanded (`true`) or collapsed (`false`).
+- `aria-controls`: Applied to the accordion trigger button to associate it with the content panel it controls. The value should be the ID of the content panel.
+
+### Example Implementation
+
+```html
+<div class="eds-accordion">
+  <div class="eds-accordion-item">
+    <h3 class="eds-accordion-header">
+      <button 
+        class="eds-accordion-trigger" 
+        aria-expanded="false" 
+        aria-controls="accordion-content-1"
+      >
+        Section Title
+        <svg class="eds-accordion-icon" viewBox="0 0 24 24">
+          <path d="M7 10l5 5 5-5z"></path>
         </svg>
-        <p class="text-[var(--color-text-muted)]">When using <code>role="region"</code>, it's important to ensure the region has an accessible name using <code>aria-labelledby</code> to avoid ARIA validation errors.</p>
+      </button>
+    </h3>
+    <div id="accordion-content-1" class="eds-accordion-content" hidden>
+      <div class="eds-accordion-body">
+        Content goes here...
       </div>
     </div>
   </div>
-</section>
+</div>
+```
 
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Responsive Considerations</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">For users on mobile or touch devices:</p>
-    
-    <ul class="space-y-3 list-disc pl-5">
-      <li>Ensure touch targets (accordion headers) are at least 44×44 pixels</li>
-      <li>Provide sufficient spacing between adjacent accordion headers to prevent accidental taps</li>
-      <li>Consider starting with all accordions collapsed on mobile to minimize initial scrolling</li>
-      <li>Ensure text remains readable at smaller viewport sizes</li>
-      <li>Adapt padding and margins for comfortable viewing on small screens</li>
-    </ul>
-  </div>
-</section>
+## Keyboard Navigation
 
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Screen Reader Announcements</h2>
-  
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-6">When implemented correctly, screen readers should announce the following when interacting with an accordion:</p>
-    
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-2 px-4 border border-[var(--color-border)]">Action</th>
-          <th class="py-2 px-4 border border-[var(--color-border)]">Announcement</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Focus on collapsed header</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">"Accordion Heading, collapsed, button"</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Expand accordion</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">"Accordion Heading, expanded, button"</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Collapse accordion</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">"Accordion Heading, collapsed, button"</td>
-        </tr>
-        <tr>
-          <td class="py-2 px-4 border border-[var(--color-border)]">Focus on disabled header</td>
-          <td class="py-2 px-4 border border-[var(--color-border)]">"Accordion Heading, button, disabled"</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <div class="bg-[var(--color-success-light)] p-4 rounded-md">
-    <div class="flex items-start">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-success)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-      </svg>
-      <p class="text-[var(--color-text-muted)]">Test your accordions with real screen readers like NVDA, JAWS, and VoiceOver to ensure they work as expected.</p>
+To ensure keyboard accessibility, the Accordion component supports the following keyboard interactions:
+
+| Key | Function |
+|-----|----------|
+| <kbd>Tab</kbd> | Moves focus to the next focusable element |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the previous focusable element |
+| <kbd>Enter</kbd> or <kbd>Space</kbd> | When focus is on an accordion header, toggles the expansion state |
+| <kbd>Down Arrow</kbd> | Moves focus to the next accordion header |
+| <kbd>Up Arrow</kbd> | Moves focus to the previous accordion header |
+| <kbd>Home</kbd> | Moves focus to the first accordion header |
+| <kbd>End</kbd> | Moves focus to the last accordion header |
+
+## Focus Management
+
+- Ensure accordion headers are focusable by using native buttons as trigger elements
+- Maintain focus on the header when expanding or collapsing a section
+- If content is loaded dynamically into an expanded section, focus should remain on the header
+- Use a focus outline that has sufficient contrast against the background (3:1 contrast ratio)
+
+## Screen Reader Considerations
+
+The following considerations should be made for screen reader users:
+
+- Use appropriate heading levels for accordion headers (typically `<h2>` or `<h3>`)
+- Ensure the expand/collapse state is properly announced by screen readers
+- If icons are used to indicate state, ensure they have appropriate `aria-hidden="true"` attributes and don't convey meaning that isn't also conveyed in text or ARIA attributes
+- Avoid using accordion patterns for critical information that should always be visible
+
+## Visual Considerations
+
+For users with visual impairments:
+
+- Ensure sufficient color contrast between text and background (minimum 4.5:1 for normal text, 3:1 for large text)
+- Use visual indicators beyond just color to show expanded/collapsed state (e.g., icons, text styling)
+- Maintain a touch target size of at least 44x44 pixels for accordion headers on touch devices
+- Provide adequate spacing between accordion items to prevent accidental activation
+
+## Implementation Example with All Accessibility Features
+
+```html
+<div class="eds-accordion" role="presentation">
+  <div class="eds-accordion-item">
+    <h3 class="eds-accordion-header">
+      <button 
+        class="eds-accordion-trigger" 
+        id="accordion-header-1"
+        aria-expanded="false" 
+        aria-controls="accordion-content-1"
+      >
+        <span class="eds-accordion-title">Section Title</span>
+        <span class="eds-visually-hidden">
+          (Click to expand or collapse)
+        </span>
+        <svg 
+          class="eds-accordion-icon" 
+          viewBox="0 0 24 24" 
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d="M7 10l5 5 5-5z"></path>
+        </svg>
+      </button>
+    </h3>
+    <div 
+      id="accordion-content-1" 
+      class="eds-accordion-content" 
+      role="region" 
+      aria-labelledby="accordion-header-1" 
+      hidden
+    >
+      <div class="eds-accordion-body">
+        Content goes here...
+      </div>
     </div>
   </div>
-</section>
+</div>
+```
+
+## Testing Checklist
+
+Ensure your accordion implementation meets these accessibility criteria:
+
+- [ ] All accordion headers are implemented as buttons within heading elements
+- [ ] Each button has appropriate `aria-expanded` and `aria-controls` attributes
+- [ ] Each content panel has a unique ID referenced by `aria-controls`
+- [ ] Content panels have `aria-labelledby` referencing their header
+- [ ] Keyboard navigation works as expected
+- [ ] Focus is visible and meets contrast requirements
+- [ ] Icons are properly hidden from screen readers with `aria-hidden="true"`
+- [ ] Color contrast meets WCAG AA standards (4.5:1 for normal text)
+- [ ] Accordion works with screen readers (test with NVDA, JAWS, and VoiceOver)
+- [ ] Touch targets are adequately sized for mobile users
+
+## Related Resources
+
+- [WAI-ARIA Accordion Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
+- [WCAG 2.1 Success Criterion 2.1.1: Keyboard](https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html)
+- [WCAG 2.1 Success Criterion 2.4.3: Focus Order](https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html)
+- [WCAG 2.1 Success Criterion 2.4.7: Focus Visible](https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html)
+- [WCAG 2.1 Success Criterion 4.1.2: Name, Role, Value](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html)
+
+## Common Mistakes to Avoid
+
+- Using `<div>` or other non-interactive elements for accordion headers
+- Not properly managing focus for keyboard users
+- Relying solely on color to indicate state
+- Nesting interactive elements within accordion headers
+- Failing to provide unique IDs for content panels
+- Using accordions for critical content that should always be visible
+- Not providing enough visual distinction between expanded and collapsed states

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accordion | Enterprise Design System</title>
-  <meta name="description" content="Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.">
+  <title>Accordion Usage Examples | Enterprise Design System</title>
+  <meta name="description" content="Real-world examples and patterns for implementing the Accordion component">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -168,502 +168,870 @@
 
   <main class="flex-1">
     
-<div class="container mx-auto px-4 md:px-6 py-8">
-  <div class="flex flex-col lg:flex-row gap-10">
-    <!-- Left sidebar navigation -->
-    <aside class="lg:w-64 shrink-0">
-      <nav class="space-y-6">
-        <div class="space-y-2">
-          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-          <ul class="space-y-2">
-            <li>
-              <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Input Components
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-                Layout Components
-              </a>
-              
-              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-                <li><a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Card</a></li>
-                <li><a href="/components/layout/accordion/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Accordion</a></li>
-                <li><a href="/components/layout/modal/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Modal</a></li>
-                <li><a href="/components/layout/grid/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Grid</a></li>
-              </ul>
-              
-            </li>
-            <li>
-              <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Navigation Components
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Feedback Components
-              </a>
-              
-            </li>
-          </ul>
-        </div>
+<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
+  <div class="flex flex-col lg:flex-row">
+    <!-- Left sidebar - Standard navigation -->
+    <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
+      <div class="sticky top-32">
         
-        <div class="space-y-2">
-          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-          <ul class="space-y-2">
-            <li><a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Colors</a></li>
-            <li><a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Typography</a></li>
-            <li><a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Spacing</a></li>
-            <li><a href="/design-system/foundations/icons/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Icons</a></li>
-          </ul>
-        </div>
-      </nav>
-    </aside>
-    
-    <!-- Main content -->
-    <main class="flex-1">
-      <div class="mb-10">
-        <!-- Breadcrumb -->
-        <nav class="text-sm text-[var(--color-text-muted)] mb-4" aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2">
-            <li><a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a></li>
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/" class="hover:text-[var(--color-primary)] transition-colors">Components</a>
-            </li>
-            
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/layout/" class="hover:text-[var(--color-primary)] transition-colors capitalize">layout</a>
-            </li>
-            
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <span class="font-medium">Accordion</span>
-            </li>
-          </ol>
-        </nav>
-        
-        <!-- Component header -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-          <div>
-            <h1 class="text-3xl font-bold mb-2">Accordion</h1>
-            <p class="text-[var(--color-text-muted)]">Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.</p>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
-              v1.0.0
-            </span>
-            
-            <a href="https://github.com/enterprise-design-system/components/tree/main/src/accordion" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </div>
+
+<nav class="eds-left-nav" aria-label="Main Navigation">
+  <div class="eds-left-nav-inner">
+    <ul class="eds-left-nav-list">
+      <!-- Home -->
+      <li class="eds-left-nav-item">
+        <a href="/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </li>
       
-      <!-- Component content tabs -->
-      <div class="mb-8 border-b border-[var(--color-border)]">
-        <div class="flex space-x-6">
-          <a href="#design" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="design">Design</a>
-          <a href="#code" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="code">Code</a>
-          <a href="#accessibility" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="accessibility">Accessibility</a>
-          <a href="#examples" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="examples">Examples</a>
-        </div>
-      </div>
+      <!-- Getting Started -->
+      <li class="eds-left-nav-item">
+        <a href="/getting-started/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Getting Started</span>
+        </a>
+      </li>
       
-      <!-- Tab content -->
-      <div class="tab-content space-y-10" id="design">
-        <section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Examples</h2>
-  <div class="space-y-12">
-    <!-- Basic Accordion -->
-    <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
-      <h3 class="text-xl font-bold mb-4">Basic Accordion</h3>
-      <p class="mb-6">A standard accordion with default styling.</p>
-<p><div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden"><br>
-<div class="eds-accordion"><br>
-<div class="bg-white"><br>
-<button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<span>Section 1: Introduction</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-<div class="p-4 border-t border-[var(--color-border)]"><br>
-<p>This is the content for section 1. It can include any type of content including text, images, and other components.</p><br>
-</div><br>
-</div></p>
-<p><div class="border-t border-[var(--color-border)] bg-white"><br>
-<button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<span>Section 2: Features</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-</div></p>
-<p><div class="border-t border-[var(--color-border)] bg-white"><br>
-<button class="w-full p-4 flex items-center justify-between text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<span>Section 3: Specifications</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-</div><br>
-</div><br>
-</div></p>
-<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><br>
-<pre><code class="language-html">&lt;div class=&quot;eds-accordion&quot;&gt;<br>
-&lt;div&gt;<br>
-&lt;button class=&quot;w-full p-4 flex items-center justify-between text-left font-medium&quot;&gt;<br>
-&lt;span&gt;Section 1: Introduction&lt;/span&gt;<br>
-&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot;&gt;<br>
-&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
-&lt;/svg&gt;<br>
-&lt;/button&gt;<br>
-&lt;div class=&quot;p-4 border-t&quot;&gt;<br>
-&lt;p&gt;This is the content for section 1.&lt;/p&gt;<br>
-&lt;/div&gt;<br>
-&lt;/div&gt;</p>
-<p>&lt;div class=&quot;border-t&quot;&gt;<br>
-&lt;button class=&quot;w-full p-4 flex items-center justify-between text-left font-medium&quot;&gt;<br>
-&lt;span&gt;Section 2: Features&lt;/span&gt;<br>
-&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot;&gt;<br>
-&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
-&lt;/svg&gt;<br>
-&lt;/button&gt;<br>
-&lt;/div&gt;</p>
-<p>&lt;div class=&quot;border-t&quot;&gt;<br>
-&lt;button class=&quot;w-full p-4 flex items-center justify-between text-left font-medium&quot;&gt;<br>
-&lt;span&gt;Section 3: Specifications&lt;/span&gt;<br>
-&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot;&gt;<br>
-&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
-&lt;/svg&gt;<br>
-&lt;/button&gt;<br>
-&lt;/div&gt;<br>
-&lt;/div&gt;</code></pre><br>
-</div><br>
-</div></p>
-<p><!-- Icon Left Accordion --><br>
-<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
-<h3 class="text-xl font-bold mb-4">Icon Left Accordion</h3><br>
-<p class="mb-6">An accordion with the expand/collapse icon positioned on the left.</p></p>
-<p><div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden"><br>
-<div class="eds-accordion"><br>
-<div class="bg-white"><br>
-<button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-<span>Payment Methods</span><br>
-</button><br>
-<div class="p-4 pl-11 border-t border-[var(--color-border)]"><br>
-<p>Configure your payment methods and preferences.</p><br>
-</div><br>
-</div></p>
-<p><div class="border-t border-[var(--color-border)] bg-white"><br>
-<button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-<span>Shipping Address</span><br>
-</button><br>
-</div></p>
-<p><div class="border-t border-[var(--color-border)] bg-white"><br>
-<button class="w-full p-4 flex items-center text-left font-medium focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-<span>Order History</span><br>
-</button><br>
-</div><br>
-</div><br>
-</div><br>
-</div></p>
-<p><!-- FAQ Accordion --><br>
-<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
-<h3 class="text-xl font-bold mb-4">FAQ Accordion</h3><br>
-<p class="mb-6">A common implementation pattern for FAQs with multiple sections that can be open simultaneously.</p></p>
-<p><div class="mb-8 space-y-3"><br>
-<div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white"><br>
-<button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<span>How do I reset my password?</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-<div class="p-4"><br>
-<p>To reset your password, click on the &quot;Forgot Password&quot; link on the login page. You'll receive an email with instructions to create a new password.</p><br>
-</div><br>
-</div></p>
-<p><div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white"><br>
-<button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<span>How do I update my account information?</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-</div></p>
-<p><div class="border border-[var(--color-border)] rounded-md overflow-hidden bg-white"><br>
-<button class="w-full p-4 flex items-center justify-between text-left font-medium bg-[var(--color-bg-alt)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"><br>
-<span>Can I change my subscription plan?</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-</div><br>
-</div><br>
-</div></p>
-<p><!-- Accessible Accordion --><br>
-<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
-<h3 class="text-xl font-bold mb-4">Fully Accessible Accordion</h3><br>
-<p class="mb-6">An example with all required accessibility attributes for screen reader support.</p></p>
-<p><div class="mb-8 border border-[var(--color-border)] rounded-md overflow-hidden"><br>
-<div class="eds-accordion"><br>
-<h3><br>
-<button 
-              id="acc-panel1-header" 
-              class="w-full p-4 flex items-center justify-between text-left font-medium bg-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"
-              aria-expanded="true"
-              aria-controls="acc-panel1-content"><br>
-<span>Getting Started</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)] transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-</h3><br>
-<div 
-            id="acc-panel1-content" 
-            role="region" 
-            aria-labelledby="acc-panel1-header"
-            class="p-4 border-t border-[var(--color-border)] bg-white"><br>
-<p>This panel includes all the necessary ARIA attributes for accessible accordions. Notice how the expanded state is clearly indicated both visually and programmatically.</p><br>
-</div></p>
-<p><h3><br>
-<button 
-              id="acc-panel2-header" 
-              class="w-full p-4 flex items-center justify-between text-left font-medium bg-white border-t border-[var(--color-border)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset"
-              aria-expanded="false"
-              aria-controls="acc-panel2-content"><br>
-<span>Advanced Configuration</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-</h3><br>
-<div 
-            id="acc-panel2-content" 
-            role="region" 
-            aria-labelledby="acc-panel2-header"
-            class="hidden p-4 border-t border-[var(--color-border)] bg-white"><br>
-<p>This content is hidden by default.</p><br>
-</div><br>
-</div><br>
-</div></p>
-<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><br>
-<pre><code class="language-html">&lt;div class=&quot;eds-accordion&quot;&gt;<br>
-&lt;h3&gt;<br>
-&lt;button<br>
-id=&quot;acc-panel1-header&quot;<br>
-class=&quot;w-full p-4 flex items-center justify-between text-left font-medium&quot;<br>
-aria-expanded=&quot;true&quot;<br>
-aria-controls=&quot;acc-panel1-content&quot;&gt;<br>
-&lt;span&gt;Getting Started&lt;/span&gt;<br>
-&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5 transform rotate-180&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;<br>
-&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
-&lt;/svg&gt;<br>
-&lt;/button&gt;<br>
-&lt;/h3&gt;<br>
-&lt;div<br>
-id=&quot;acc-panel1-content&quot;<br>
-role=&quot;region&quot;<br>
-aria-labelledby=&quot;acc-panel1-header&quot;<br>
-class=&quot;p-4 border-t&quot;&gt;<br>
-&lt;p&gt;Panel content with accessibility features.&lt;/p&gt;<br>
-&lt;/div&gt;</p>
-<p>&lt;h3&gt;<br>
-&lt;button<br>
-id=&quot;acc-panel2-header&quot;<br>
-class=&quot;w-full p-4 flex items-center justify-between text-left font-medium border-t&quot;<br>
-aria-expanded=&quot;false&quot;<br>
-aria-controls=&quot;acc-panel2-content&quot;&gt;<br>
-&lt;span&gt;Advanced Configuration&lt;/span&gt;<br>
-&lt;svg xmlns=&quot;<a href="http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; class=&quot;h-5 w-5&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;<br>
-&lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; d=&quot;M19 9l-7 7-7-7&quot; /&gt;<br>
-&lt;/svg&gt;<br>
-&lt;/button&gt;<br>
-&lt;/h3&gt;<br>
-&lt;div<br>
-id=&quot;acc-panel2-content&quot;<br>
-role=&quot;region&quot;<br>
-aria-labelledby=&quot;acc-panel2-header&quot;<br>
-class=&quot;hidden p-4 border-t&quot;&gt;<br>
-&lt;p&gt;This content is hidden by default.&lt;/p&gt;<br>
-&lt;/div&gt;<br>
-&lt;/div&gt;</code></pre><br>
-</div><br>
-</div></p>
-<p><!-- Custom Styled Accordion --><br>
-<div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
-<h3 class="text-xl font-bold mb-4">Custom Styled Accordion</h3><br>
-<p class="mb-6">An example with custom styling applied to demonstrate flexibility.</p></p>
-<p><div class="mb-8 space-y-4"><br>
-<div class="rounded-md overflow-hidden bg-[var(--color-primary-light)]"><br>
-<button class="w-full p-4 flex items-center justify-between text-left font-medium text-[var(--color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset rounded-t-md"><br>
-<span class="flex items-center"><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /><br>
-</svg><br>
-Performance Optimization<br>
-</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-<div class="p-4 bg-white border border-[var(--color-primary-light)] border-t-0 rounded-b-md"><br>
-<p>This accordion uses custom colors and icons to match a specific visual style. You can adapt the styling to fit your application's design system.</p><br>
-</div><br>
-</div></p>
-<p><div class="rounded-md overflow-hidden bg-[var(--color-primary-light)]"><br>
-<button class="w-full p-4 flex items-center justify-between text-left font-medium text-[var(--color-primary-dark)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-inset rounded-t-md"><br>
-<span class="flex items-center"><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /><br>
-</svg><br>
-Security Best Practices<br>
-</span><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
-</svg><br>
-</button><br>
-</div><br>
-</div><br>
-</div></p>
+      <!-- Design System -->
+      <li class="eds-left-nav-item">
+        <button class="eds-left-nav-button" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+          <span>Design System</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" hidden>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/design-system/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Foundations</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/colors/" class="eds-left-nav-subsubmenu-link">Colors</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/typography/" class="eds-left-nav-subsubmenu-link">Typography</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/spacing/" class="eds-left-nav-subsubmenu-link">Spacing</a>
+              </li>
+            </ul>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/design-system/guidelines/" class="eds-left-nav-submenu-link">Guidelines</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Components -->
+      <li class="eds-left-nav-item eds-left-nav-item-active">
+        <button class="eds-left-nav-button" aria-expanded="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          </svg>
+          <span>Components</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" >
+          <li class="eds-left-nav-submenu-item">
+            <a href="/components/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          
+          <!-- Layout Components -->
+          <li class="eds-left-nav-submenu-item eds-left-nav-submenu-item-active">
+            <button class="eds-left-nav-submenu-button" aria-expanded="true">
+              <span>Layout</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" >
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/layout/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              
+              <!-- Accordion Component with its sub-pages -->
+              <li class="eds-left-nav-subsubmenu-item eds-left-nav-subsubmenu-item-active">
+                <button class="eds-left-nav-subsubmenu-button" aria-expanded="true">
+                  <span>Accordion</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-subsubmenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <ul class="eds-left-nav-subsubsubmenu" >
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/" class="eds-left-nav-subsubsubmenu-link">Overview</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/code/" class="eds-left-nav-subsubsubmenu-link">Code</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item eds-left-nav-subsubsubmenu-item-active">
+                    <a href="/components/layout/accordion/examples/" class="eds-left-nav-subsubsubmenu-link">Examples</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/accessibility/" class="eds-left-nav-subsubsubmenu-link">Accessibility</a>
+                  </li>
+                </ul>
+              </li>
+              
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/layout/card/" class="eds-left-nav-subsubmenu-link">Card</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Navigation Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Navigation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/navigation/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/navigation/breadcrumb/" class="eds-left-nav-subsubmenu-link">Breadcrumb</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Input Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Inputs</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/inputs/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/inputs/button/" class="eds-left-nav-subsubmenu-link">Button</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Feedback Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Feedback</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/feedback/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/feedback/alert/" class="eds-left-nav-subsubmenu-link">Alert</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Alternative Navigation Views -->
+      <li class="eds-left-nav-item">
+        <button class="eds-left-nav-button" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <span>Navigation Views</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" hidden>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-type/" class="eds-left-nav-submenu-link">By Type</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-channel/" class="eds-left-nav-submenu-link">By Channel</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-owner/" class="eds-left-nav-submenu-link">By Owner</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Resources -->
+      <li class="eds-left-nav-item">
+        <a href="/resources/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span>Resources</span>
+        </a>
+      </li>
+      
+      <!-- Support -->
+      <li class="eds-left-nav-item">
+        <a href="/support/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <span>Support</span>
+        </a>
+      </li>
+    </ul>
   </div>
-</section>
+</nav>
+
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Simple accordion functionality for the examples
-    const accordionButtons = document.querySelectorAll('.eds-accordion button');
+  // Initialize the left navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.eds-left-nav-button, .eds-left-nav-submenu-button, .eds-left-nav-subsubmenu-button');
     
-    accordionButtons.forEach(button => {
-      button.addEventListener('click', () => {
+    navButtons.forEach(button => {
+      button.addEventListener('click', function() {
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        const controlsId = button.getAttribute('aria-controls');
-        const content = controlsId ? document.getElementById(controlsId) : button.nextElementSibling;
-        const icon = button.querySelector('svg');
+        button.setAttribute('aria-expanded', !isExpanded);
         
-        if (isExpanded) {
-          button.setAttribute('aria-expanded', 'false');
-          if (content) content.classList.add('hidden');
-          if (icon) icon.classList.remove('rotate-180');
-        } else {
-          button.setAttribute('aria-expanded', 'true');
-          if (content) content.classList.remove('hidden');
-          if (icon) icon.classList.add('rotate-180');
+        const submenu = button.nextElementSibling;
+        if (submenu) {
+          if (isExpanded) {
+            submenu.setAttribute('hidden', '');
+          } else {
+            submenu.removeAttribute('hidden');
+          }
         }
       });
     });
   });
 </script>
       </div>
-      
-      <div class="tab-content hidden space-y-10" id="code">
+    </div>
+    
+    <!-- Main content -->
+    <div class="w-full">
+      <div class="prose max-w-none">
+        <h1>Accordion Usage Examples</h1>
         
-          <p>Code documentation is coming soon.</p>
+          <p class="text-xl text-[var(--color-text-muted)] mb-8">Real-world examples and patterns for implementing the Accordion component</p>
         
+        
+        <h1 id="accordion-usage-examples" tabindex="-1">Accordion Usage Examples <a class="anchor" href="#accordion-usage-examples" aria-hidden="true">#</a></h1>
+<p>This page demonstrates various real-world examples of the Accordion component in common UI patterns.</p>
+<h2 id="faq-example" tabindex="-1">FAQ Example <a class="anchor" href="#faq-example" aria-hidden="true">#</a></h2>
+<p>Accordions are perfect for FAQ (Frequently Asked Questions) sections where users can expand only the questions they're interested in.</p>
+<div class="bg-white p-6 rounded border my-6">
+  <h2 class="text-xl font-semibold mb-4">Frequently Asked Questions</h2>
+  <div class="eds-accordion">
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">How do I reset my password?</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
       </div>
-      
-      <div class="tab-content hidden space-y-10" id="accessibility">
-        
-          <p>Accessibility documentation is coming soon.</p>
-        
+      <div class="px-4 py-3 border-t">
+        <p>To reset your password, click on the "Forgot Password" link on the login page. You'll receive an email with instructions to create a new password.</p>
       </div>
-      
-      <div class="tab-content hidden space-y-10" id="examples">
-        
-          true
-        
+    </div>
+<p><div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50"><br>
+<h3 class="font-medium">Can I change my username?</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-4 py-3 border-t"><br>
+<p>Yes, you can change your username in the account settings. Go to Settings &gt; Profile &gt; Edit Username.</p><br>
+</div><br>
+</div></p>
+<p><div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50"><br>
+<h3 class="font-medium">How do I export my data?</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-4 py-3 border-t"><br>
+<p>To export your data:</p><br>
+<ol class="list-decimal ml-5 mt-2"><br>
+<li>Go to Account Settings</li><br>
+<li>Select &quot;Privacy &amp; Data&quot;</li><br>
+<li>Click &quot;Export Data&quot;</li><br>
+<li>Choose your preferred format (CSV, JSON, or PDF)</li><br>
+<li>Click &quot;Export&quot; and follow the prompts</li><br>
+</ol><br>
+</div><br>
+</div></p>
+  </div>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>faq-section<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Frequently Asked Questions<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+  
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-trigger<span class="token punctuation">"</span></span> <span class="token attr-name">aria-expanded</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">aria-controls</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>faq-1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          How do I reset my password?
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-icon<span class="token punctuation">"</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M7 10l5 5 5-5z<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>faq-1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-content<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>To reset your password, click on the "Forgot Password" link on the login page. 
+          You'll receive an email with instructions to create a new password.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    
+    <span class="token comment">&lt;!-- Additional FAQ items --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="product-details-example" tabindex="-1">Product Details Example <a class="anchor" href="#product-details-example" aria-hidden="true">#</a></h2>
+<p>Use accordions to display detailed product information in e-commerce or product catalog pages.</p>
+<div class="bg-white p-6 rounded border my-6">
+  <div class="flex flex-col md:flex-row gap-6">
+    <div class="md:w-1/3">
+      <div class="bg-gray-100 h-48 w-full rounded-lg flex items-center justify-center text-gray-400">
+        [Product Image]
       </div>
-      
-      <!-- Right sidebar: On this page -->
-      <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
-        <h2 class="text-xl font-bold mb-4">On this page</h2>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#anatomy" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Anatomy</a></li>
-          <li><a href="#considerations" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Considerations</a></li>
-          <li><a href="#usage" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Usage</a></li>
-          <li><a href="#behavior" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Behavior</a></li>
-          <li><a href="#best-practices" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Best Practices</a></li>
-          <li><a href="#specifications" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Specifications</a></li>
+    </div>
+<p><div class="md:w-2/3"><br>
+<h2 class="text-xl font-semibold">Enterprise Laptop Pro</h2><br>
+<p class="text-green-700 font-bold mt-2">$1,299.99</p><br>
+<p class="mt-2 text-gray-600">High-performance laptop for enterprise applications</p></p>
+<p><div class="mt-6"><br>
+<div class="eds-accordion"><br>
+<div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50"><br>
+<h3 class="font-medium">Technical Specifications</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-4 py-3 border-t"><br>
+<ul class="list-disc ml-5"><br>
+<li>Intel Core i7-12700H Processor</li><br>
+<li>16GB DDR5 RAM</li><br>
+<li>512GB NVMe SSD</li><br>
+<li>14&quot; 4K Display (3840 x 2160)</li><br>
+<li>NVIDIA RTX 3050 Ti (4GB GDDR6)</li><br>
+<li>Thunderbolt 4, USB-C, HDMI 2.1</li><br>
+</ul><br>
+</div><br>
+</div></p>
+<p><div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50"><br>
+<h3 class="font-medium">Warranty Information</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-4 py-3 border-t"><br>
+<p>3-year limited hardware warranty with next-business-day on-site service after remote diagnosis.</p><br>
+<p class="mt-2">Optional warranty extensions available for up to 5 years.</p><br>
+</div><br>
+</div></p>
+<p><div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50"><br>
+<h3 class="font-medium">Shipping &amp; Returns</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-4 py-3 border-t"><br>
+<p>Free shipping on all orders over $1,000. Standard delivery in 3-5 business days.</p><br>
+<p class="mt-2">30-day return policy. Item must be in original condition and packaging.</p><br>
+</div><br>
+</div><br>
+</div><br>
+</div><br>
+</div></p>
+  </div>
+</div>
+<h2 id="settings-panel-example" tabindex="-1">Settings Panel Example <a class="anchor" href="#settings-panel-example" aria-hidden="true">#</a></h2>
+<p>Use accordions to organize multiple settings sections in a dashboard or profile page.</p>
+<div class="bg-white p-6 rounded border my-6">
+  <h2 class="text-xl font-semibold mb-4">User Settings</h2>
+  <div class="eds-accordion eds-accordion-filled">
+    <div class="mb-3 border rounded overflow-hidden">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-blue-600 text-white">
+        <h3 class="font-medium">Account Settings</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="p-4">
+        <div class="grid gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+            <input type="email" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" value="user@example.com">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <button class="bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-md text-sm">Change Password</button>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Two-Factor Authentication</label>
+            <div class="flex items-center">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="twoFactorSwitch">
+                <label class="form-check-label" for="twoFactorSwitch">Enable</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<p><div class="mb-3 border rounded overflow-hidden"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-blue-600 text-white"><br>
+<h3 class="font-medium">Notification Preferences</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="p-4"><br>
+<div class="space-y-3"><br>
+<div class="flex items-center justify-between"><br>
+<div><br>
+<h4 class="font-medium">Email Notifications</h4><br>
+<p class="text-sm text-gray-500">Receive updates via email</p><br>
+</div><br>
+<div class="form-check form-switch"><br>
+<input class="form-check-input" type="checkbox" role="switch" id="emailSwitch" checked><br>
+</div><br>
+</div></p>
+<p><div class="flex items-center justify-between"><br>
+<div><br>
+<h4 class="font-medium">Push Notifications</h4><br>
+<p class="text-sm text-gray-500">Receive notifications on your device</p><br>
+</div><br>
+<div class="form-check form-switch"><br>
+<input class="form-check-input" type="checkbox" role="switch" id="pushSwitch" checked><br>
+</div><br>
+</div></p>
+<p><div class="flex items-center justify-between"><br>
+<div><br>
+<h4 class="font-medium">SMS Notifications</h4><br>
+<p class="text-sm text-gray-500">Receive text message alerts</p><br>
+</div><br>
+<div class="form-check form-switch"><br>
+<input class="form-check-input" type="checkbox" role="switch" id="smsSwitch"><br>
+</div><br>
+</div><br>
+</div><br>
+</div><br>
+</div></p>
+<p><div class="mb-3 border rounded overflow-hidden"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-blue-600 text-white"><br>
+<h3 class="font-medium">Privacy Settings</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="p-4"><br>
+<div class="space-y-3"><br>
+<div class="flex items-center justify-between"><br>
+<div><br>
+<h4 class="font-medium">Profile Visibility</h4><br>
+<p class="text-sm text-gray-500">Control who can see your profile</p><br>
+</div><br>
+<select class="form-select px-3 py-1.5 text-sm border border-gray-300 rounded-md"><br>
+<option value="public">Public</option><br>
+<option value="contacts">Contacts Only</option><br>
+<option value="private">Private</option><br>
+</select><br>
+</div></p>
+<p><div class="flex items-center justify-between"><br>
+<div><br>
+<h4 class="font-medium">Data Sharing</h4><br>
+<p class="text-sm text-gray-500">Share usage data to improve services</p><br>
+</div><br>
+<div class="form-check form-switch"><br>
+<input class="form-check-input" type="checkbox" role="switch" id="dataSwitch" checked><br>
+</div><br>
+</div></p>
+<p><button class="mt-2 text-red-600 hover:text-red-800 text-sm font-medium">Delete Account</button><br>
+</div><br>
+</div><br>
+</div></p>
+  </div>
+</div>
+<h2 id="borderless-accordion-in-a-sidebar" tabindex="-1">Borderless Accordion in a Sidebar <a class="anchor" href="#borderless-accordion-in-a-sidebar" aria-hidden="true">#</a></h2>
+<p>This example shows how to use the borderless accordion variant in a sidebar navigation.</p>
+<div class="bg-white p-6 rounded border my-6">
+  <div class="w-full max-w-xs bg-gray-100 p-4 rounded-lg">
+    <h2 class="text-lg font-semibold mb-3">Documentation</h2>
+<p><div class="eds-accordion eds-accordion-borderless"><br>
+<div class="mb-1 bg-gray-100 rounded"><br>
+<div class="eds-accordion-header px-3 py-2 flex justify-between items-center"><br>
+<h3 class="font-medium text-sm">Getting Started</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-3 py-1"><br>
+<ul class="space-y-1 text-sm"><br>
+<li><a href="#" class="text-blue-600 hover:underline">Installation</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Quick Start</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Configuration</a></li><br>
+</ul><br>
+</div><br>
+</div></p>
+<p><div class="mb-1 bg-gray-100 rounded"><br>
+<div class="eds-accordion-header px-3 py-2 flex justify-between items-center"><br>
+<h3 class="font-medium text-sm">Components</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-3 py-1"><br>
+<ul class="space-y-1 text-sm"><br>
+<li><a href="#" class="text-blue-600 hover:underline">Buttons</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Forms</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Modals</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Tables</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Cards</a></li><br>
+</ul><br>
+</div><br>
+</div></p>
+<p><div class="mb-1 bg-gray-100 rounded"><br>
+<div class="eds-accordion-header px-3 py-2 flex justify-between items-center"><br>
+<h3 class="font-medium text-sm">API Reference</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-3 py-1"><br>
+<ul class="space-y-1 text-sm"><br>
+<li><a href="#" class="text-blue-600 hover:underline">Authentication</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Users</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Products</a></li><br>
+<li><a href="#" class="text-blue-600 hover:underline">Orders</a></li><br>
+</ul><br>
+</div><br>
+</div><br>
+</div></p>
+  </div>
+</div>
+<h2 id="accordion-with-custom-icons" tabindex="-1">Accordion with Custom Icons <a class="anchor" href="#accordion-with-custom-icons" aria-hidden="true">#</a></h2>
+<p>This example demonstrates using custom icons instead of the default chevron.</p>
+<div class="bg-white p-6 rounded border my-6">
+  <h2 class="text-xl font-semibold mb-4">Project Timeline</h2>
+  <div class="eds-accordion">
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">Phase 1: Planning</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p class="mb-2">Timeline: January 1 - February 15</p>
+        <ul class="list-disc ml-5">
+          <li>Requirements gathering</li>
+          <li>Stakeholder interviews</li>
+          <li>Project scope definition</li>
+          <li>Resource allocation</li>
         </ul>
       </div>
-    </main>
+    </div>
+<p><div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50"><br>
+<h3 class="font-medium">Phase 2: Design</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /><br>
+</svg><br>
+</div><br>
+<div class="px-4 py-3 border-t"><br>
+<p class="mb-2">Timeline: February 16 - March 31</p><br>
+<ul class="list-disc ml-5"><br>
+<li>UI/UX design</li><br>
+<li>Wireframing</li><br>
+<li>Prototyping</li><br>
+<li>Design reviews</li><br>
+</ul><br>
+</div><br>
+</div></p>
+  </div>
+</div>
+<pre class="language-jsx"><code class="language-jsx"><span class="token comment">// React example with custom icons</span>
+<span class="token keyword">function</span> <span class="token function">ProjectTimeline</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span><span class="token plain-text">Project Timeline</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Accordion</span></span> 
+        <span class="token attr-name">expandIcon</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">PlusIcon</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">}</span></span>
+        <span class="token attr-name">collapseIcon</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MinusIcon</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">}</span></span>
+      <span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AccordionItem</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Phase 1: Planning<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Timeline: January 1 - February 15</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">Requirements gathering</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">Stakeholder interviews</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">Project scope definition</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">Resource allocation</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">AccordionItem</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AccordionItem</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Phase 2: Design<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Timeline: February 16 - March 31</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">UI/UX design</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">Wireframing</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">Prototyping</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">Design reviews</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">AccordionItem</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Accordion</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="nested-accordions" tabindex="-1">Nested Accordions <a class="anchor" href="#nested-accordions" aria-hidden="true">#</a></h2>
+<p>While generally not recommended for usability reasons, there are some cases where nested accordions make sense, such as complex hierarchical data.</p>
+<div class="bg-white p-6 rounded border my-6">
+  <h2 class="text-xl font-semibold mb-4">Company Organizational Structure</h2>
+  <div class="eds-accordion">
+    <div class="border rounded mb-2">
+      <div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50">
+        <h3 class="font-medium">Executive Leadership</h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </div>
+      <div class="px-4 py-3 border-t">
+        <p class="mb-2">Executive leadership team oversees all company operations.</p>
+<p><div class="eds-accordion mt-3"><br>
+<div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-3 py-2 flex justify-between items-center bg-gray-100"><br>
+<h4 class="font-medium text-sm">CEO Office</h4><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-3 py-2 border-t"><br>
+<ul class="list-disc ml-5 text-sm"><br>
+<li>Chief Executive Officer</li><br>
+<li>Executive Assistant</li><br>
+<li>Chief of Staff</li><br>
+</ul><br>
+</div><br>
+</div></p>
+<p><div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-3 py-2 flex justify-between items-center bg-gray-100"><br>
+<h4 class="font-medium text-sm">Finance Department</h4><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-3 py-2 border-t"><br>
+<ul class="list-disc ml-5 text-sm"><br>
+<li>Chief Financial Officer</li><br>
+<li>Financial Controller</li><br>
+<li>Financial Analysts</li><br>
+</ul><br>
+</div><br>
+</div><br>
+</div><br>
+</div><br>
+</div></p>
+<p><div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-4 py-3 flex justify-between items-center bg-gray-50"><br>
+<h3 class="font-medium">Product Development</h3><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-4 py-3 border-t"><br>
+<p class="mb-2">The product development team builds and maintains all company products.</p></p>
+<p><div class="eds-accordion mt-3"><br>
+<div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-3 py-2 flex justify-between items-center bg-gray-100"><br>
+<h4 class="font-medium text-sm">Engineering</h4><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-3 py-2 border-t"><br>
+<ul class="list-disc ml-5 text-sm"><br>
+<li>VP of Engineering</li><br>
+<li>Frontend Development</li><br>
+<li>Backend Development</li><br>
+<li>QA Engineering</li><br>
+</ul><br>
+</div><br>
+</div></p>
+<p><div class="border rounded mb-2"><br>
+<div class="eds-accordion-header px-3 py-2 flex justify-between items-center bg-gray-100"><br>
+<h4 class="font-medium text-sm">Product Management</h4><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /><br>
+</svg><br>
+</div><br>
+<div class="px-3 py-2 border-t"><br>
+<ul class="list-disc ml-5 text-sm"><br>
+<li>VP of Product</li><br>
+<li>Product Managers</li><br>
+<li>UX Researchers</li><br>
+<li>Technical Writers</li><br>
+</ul><br>
+</div><br>
+</div><br>
+</div><br>
+</div><br>
+</div></p>
+  </div>
+</div>
+<h2 id="best-practices-for-these-examples" tabindex="-1">Best Practices for These Examples <a class="anchor" href="#best-practices-for-these-examples" aria-hidden="true">#</a></h2>
+<ol>
+<li>
+<p><strong>FAQ Sections</strong>: Use clear, concise questions as headers. Make sure each answer is focused and helpful.</p>
+</li>
+<li>
+<p><strong>Product Details</strong>: Group related information into logical sections. Use consistent styling for all similar products.</p>
+</li>
+<li>
+<p><strong>Settings Panels</strong>: Organize settings by function. Consider pre-expanding the most commonly used section.</p>
+</li>
+<li>
+<p><strong>Sidebar Navigation</strong>: Keep text short. Consider showing the active section expanded by default.</p>
+</li>
+<li>
+<p><strong>Custom Icons</strong>: Ensure icons clearly communicate the expand/collapse action. Maintain consistency across all accordions within the same interface.</p>
+</li>
+<li>
+<p><strong>Nested Accordions</strong>: Use with caution! Maintain visual distinction between parent and child accordions. Limit nesting to at most one level deep.</p>
+</li>
+</ol>
+
+      </div>
+    </div>
+    
+    <!-- Right sidebar - Table of Contents -->
+    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
+      <div class="sticky top-32">
+        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+        <nav class="toc js-toc">
+          <!-- Table of contents will be auto-generated here -->
+          <ul class="space-y-1">
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- Add table of contents JavaScript -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Initialize tabs
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    // Check if there's a hash in the URL
-    const hash = window.location.hash;
-    if (hash) {
-      // Remove # from hash
-      const tabId = hash.substring(1);
-      showTab(tabId);
-    } else {
-      // Set default active tab
-      tabLinks[0].classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      tabContents[0].classList.remove('hidden');
+  document.addEventListener('DOMContentLoaded', function() {
+    // If no TOC elements exist, we'll generate them
+    if (!document.querySelector('.js-toc li')) {
+      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
+      const toc = document.querySelector('.js-toc');
+      
+      if (toc && headings.length > 0) {
+        const tocList = document.createElement('ul');
+        tocList.className = 'space-y-1';
+        
+        headings.forEach(heading => {
+          if (!heading.id) {
+            // Create an ID if none exists
+            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
+          }
+          
+          const level = parseInt(heading.tagName.charAt(1));
+          const listItem = document.createElement('li');
+          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
+          
+          const link = document.createElement('a');
+          link.href = `#${heading.id}`;
+          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
+          link.textContent = heading.textContent;
+          
+          listItem.appendChild(link);
+          tocList.appendChild(listItem);
+          
+          // Also add the anchor link to the heading
+          if (!heading.querySelector('.anchor')) {
+            const anchor = document.createElement('a');
+            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
+            anchor.href = `#${heading.id}`;
+            anchor.textContent = '#';
+            heading.appendChild(anchor);
+          }
+        });
+        
+        if (tocList.children.length > 0) {
+          toc.appendChild(tocList);
+        } else {
+          // If no headings found, hide the TOC container
+          const tocContainer = toc.closest('.sticky');
+          if (tocContainer) {
+            tocContainer.style.display = 'none';
+          }
+        }
+      }
     }
     
-    tabLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const tabId = link.getAttribute('data-tab');
-        
-        // Update URL with hash
-        history.pushState(null, null, `#${tabId}`);
-        
-        showTab(tabId);
-      });
-    });
+    // Highlight the current section in the TOC as user scrolls
+    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
+    const tocLinks = document.querySelectorAll('.js-toc a');
     
-    function showTab(tabId) {
-      // Hide all tabs and remove active classes
-      tabContents.forEach(content => {
-        content.classList.add('hidden');
+    if (headings.length > 0 && tocLinks.length > 0) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            tocLinks.forEach(link => {
+              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
+            });
+            
+            // Add active class to corresponding link
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
+            }
+          }
+        });
+      }, observerOptions);
+      
+      headings.forEach(heading => {
+        observer.observe(heading);
       });
-      
-      tabLinks.forEach(link => {
-        link.classList.remove('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      });
-      
-      // Show the selected tab
-      const selectedTab = document.getElementById(tabId);
-      if (selectedTab) {
-        selectedTab.classList.remove('hidden');
-      }
-      
-      // Add active class to the clicked tab link
-      const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
-      if (activeLink) {
-        activeLink.classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      }
     }
   });
 </script>

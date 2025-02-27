@@ -175,110 +175,259 @@
       <div class="sticky top-32">
         
 
-<nav class="left-navigation">
-  <div class="space-y-6">
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            All Components
-          </a>
-        </li>
-        <li>
-          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Design Tokens
-          </a>
-        </li>
-        <li>
-          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Patterns
-          </a>
-        </li>
-        <li>
-          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Guidelines
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Layout
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Navigation
-          </a>
-          
-          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-            
-              <li>
-                <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-                  Navigation Components
-                </a>
+<nav class="eds-left-nav" aria-label="Main Navigation">
+  <div class="eds-left-nav-inner">
+    <ul class="eds-left-nav-list">
+      <!-- Home -->
+      <li class="eds-left-nav-item">
+        <a href="/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </li>
+      
+      <!-- Getting Started -->
+      <li class="eds-left-nav-item">
+        <a href="/getting-started/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Getting Started</span>
+        </a>
+      </li>
+      
+      <!-- Design System -->
+      <li class="eds-left-nav-item">
+        <button class="eds-left-nav-button" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+          <span>Design System</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" hidden>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/design-system/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Foundations</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/" class="eds-left-nav-subsubmenu-link">Overview</a>
               </li>
-            
-              <li>
-                <a href="/components/navigation/breadcrumb/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                  Breadcrumb
-                </a>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/colors/" class="eds-left-nav-subsubmenu-link">Colors</a>
               </li>
-            
-          </ul>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/typography/" class="eds-left-nav-subsubmenu-link">Typography</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/spacing/" class="eds-left-nav-subsubmenu-link">Spacing</a>
+              </li>
+            </ul>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/design-system/guidelines/" class="eds-left-nav-submenu-link">Guidelines</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Components -->
+      <li class="eds-left-nav-item eds-left-nav-item-active">
+        <button class="eds-left-nav-button" aria-expanded="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          </svg>
+          <span>Components</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" >
+          <li class="eds-left-nav-submenu-item">
+            <a href="/components/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
           
-        </li>
-        <li>
-          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Feedback
-          </a>
+          <!-- Layout Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Layout</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/layout/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              
+              <!-- Accordion Component with its sub-pages -->
+              <li class="eds-left-nav-subsubmenu-item">
+                <button class="eds-left-nav-subsubmenu-button" aria-expanded="false">
+                  <span>Accordion</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-subsubmenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <ul class="eds-left-nav-subsubsubmenu" hidden>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/" class="eds-left-nav-subsubsubmenu-link">Overview</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/code/" class="eds-left-nav-subsubsubmenu-link">Code</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/examples/" class="eds-left-nav-subsubsubmenu-link">Examples</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/accessibility/" class="eds-left-nav-subsubsubmenu-link">Accessibility</a>
+                  </li>
+                </ul>
+              </li>
+              
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/layout/card/" class="eds-left-nav-subsubmenu-link">Card</a>
+              </li>
+            </ul>
+          </li>
           
-        </li>
-        <li>
-          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Inputs
-          </a>
+          <!-- Navigation Components -->
+          <li class="eds-left-nav-submenu-item eds-left-nav-submenu-item-active">
+            <button class="eds-left-nav-submenu-button" aria-expanded="true">
+              <span>Navigation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" >
+              <li class="eds-left-nav-subsubmenu-item eds-left-nav-subsubmenu-item-active">
+                <a href="/components/navigation/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/navigation/breadcrumb/" class="eds-left-nav-subsubmenu-link">Breadcrumb</a>
+              </li>
+            </ul>
+          </li>
           
-        </li>
-      </ul>
-    </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Colors
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Typography
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Spacing
-          </a>
-        </li>
-        <li>
-          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Migration Tools
-          </a>
-        </li>
-      </ul>
-    </div>
+          <!-- Input Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Inputs</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/inputs/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/inputs/button/" class="eds-left-nav-subsubmenu-link">Button</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Feedback Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Feedback</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/feedback/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/feedback/alert/" class="eds-left-nav-subsubmenu-link">Alert</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Alternative Navigation Views -->
+      <li class="eds-left-nav-item">
+        <button class="eds-left-nav-button" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <span>Navigation Views</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" hidden>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-type/" class="eds-left-nav-submenu-link">By Type</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-channel/" class="eds-left-nav-submenu-link">By Channel</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-owner/" class="eds-left-nav-submenu-link">By Owner</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Resources -->
+      <li class="eds-left-nav-item">
+        <a href="/resources/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span>Resources</span>
+        </a>
+      </li>
+      
+      <!-- Support -->
+      <li class="eds-left-nav-item">
+        <a href="/support/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <span>Support</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
+
+<script>
+  // Initialize the left navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.eds-left-nav-button, .eds-left-nav-submenu-button, .eds-left-nav-subsubmenu-button');
+    
+    navButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !isExpanded);
+        
+        const submenu = button.nextElementSibling;
+        if (submenu) {
+          if (isExpanded) {
+            submenu.setAttribute('hidden', '');
+          } else {
+            submenu.removeAttribute('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>
       </div>
     </div>
     

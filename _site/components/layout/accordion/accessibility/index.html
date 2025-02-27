@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accordion | Enterprise Design System</title>
-  <meta name="description" content="Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.">
+  <title>Accordion Accessibility | Enterprise Design System</title>
+  <meta name="description" content="Accessibility guidelines and best practices for implementing the Accordion component">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -168,401 +168,543 @@
 
   <main class="flex-1">
     
-<div class="container mx-auto px-4 md:px-6 py-8">
-  <div class="flex flex-col lg:flex-row gap-10">
-    <!-- Left sidebar navigation -->
-    <aside class="lg:w-64 shrink-0">
-      <nav class="space-y-6">
-        <div class="space-y-2">
-          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-          <ul class="space-y-2">
-            <li>
-              <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Input Components
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-                Layout Components
-              </a>
-              
-              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-                <li><a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Card</a></li>
-                <li><a href="/components/layout/accordion/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Accordion</a></li>
-                <li><a href="/components/layout/modal/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Modal</a></li>
-                <li><a href="/components/layout/grid/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Grid</a></li>
-              </ul>
-              
-            </li>
-            <li>
-              <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Navigation Components
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Feedback Components
-              </a>
-              
-            </li>
-          </ul>
-        </div>
+<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
+  <div class="flex flex-col lg:flex-row">
+    <!-- Left sidebar - Standard navigation -->
+    <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
+      <div class="sticky top-32">
         
-        <div class="space-y-2">
-          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-          <ul class="space-y-2">
-            <li><a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Colors</a></li>
-            <li><a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Typography</a></li>
-            <li><a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Spacing</a></li>
-            <li><a href="/design-system/foundations/icons/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Icons</a></li>
-          </ul>
-        </div>
-      </nav>
-    </aside>
+
+<nav class="eds-left-nav" aria-label="Main Navigation">
+  <div class="eds-left-nav-inner">
+    <ul class="eds-left-nav-list">
+      <!-- Home -->
+      <li class="eds-left-nav-item">
+        <a href="/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </li>
+      
+      <!-- Getting Started -->
+      <li class="eds-left-nav-item">
+        <a href="/getting-started/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Getting Started</span>
+        </a>
+      </li>
+      
+      <!-- Design System -->
+      <li class="eds-left-nav-item">
+        <button class="eds-left-nav-button" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+          <span>Design System</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" hidden>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/design-system/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Foundations</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/colors/" class="eds-left-nav-subsubmenu-link">Colors</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/typography/" class="eds-left-nav-subsubmenu-link">Typography</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/spacing/" class="eds-left-nav-subsubmenu-link">Spacing</a>
+              </li>
+            </ul>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/design-system/guidelines/" class="eds-left-nav-submenu-link">Guidelines</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Components -->
+      <li class="eds-left-nav-item eds-left-nav-item-active">
+        <button class="eds-left-nav-button" aria-expanded="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          </svg>
+          <span>Components</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" >
+          <li class="eds-left-nav-submenu-item">
+            <a href="/components/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          
+          <!-- Layout Components -->
+          <li class="eds-left-nav-submenu-item eds-left-nav-submenu-item-active">
+            <button class="eds-left-nav-submenu-button" aria-expanded="true">
+              <span>Layout</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" >
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/layout/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              
+              <!-- Accordion Component with its sub-pages -->
+              <li class="eds-left-nav-subsubmenu-item eds-left-nav-subsubmenu-item-active">
+                <button class="eds-left-nav-subsubmenu-button" aria-expanded="true">
+                  <span>Accordion</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-subsubmenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <ul class="eds-left-nav-subsubsubmenu" >
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/" class="eds-left-nav-subsubsubmenu-link">Overview</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/code/" class="eds-left-nav-subsubsubmenu-link">Code</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/examples/" class="eds-left-nav-subsubsubmenu-link">Examples</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item eds-left-nav-subsubsubmenu-item-active">
+                    <a href="/components/layout/accordion/accessibility/" class="eds-left-nav-subsubsubmenu-link">Accessibility</a>
+                  </li>
+                </ul>
+              </li>
+              
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/layout/card/" class="eds-left-nav-subsubmenu-link">Card</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Navigation Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Navigation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/navigation/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/navigation/breadcrumb/" class="eds-left-nav-subsubmenu-link">Breadcrumb</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Input Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Inputs</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/inputs/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/inputs/button/" class="eds-left-nav-subsubmenu-link">Button</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Feedback Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Feedback</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/feedback/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/feedback/alert/" class="eds-left-nav-subsubmenu-link">Alert</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Alternative Navigation Views -->
+      <li class="eds-left-nav-item">
+        <button class="eds-left-nav-button" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <span>Navigation Views</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" hidden>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-type/" class="eds-left-nav-submenu-link">By Type</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-channel/" class="eds-left-nav-submenu-link">By Channel</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-owner/" class="eds-left-nav-submenu-link">By Owner</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Resources -->
+      <li class="eds-left-nav-item">
+        <a href="/resources/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span>Resources</span>
+        </a>
+      </li>
+      
+      <!-- Support -->
+      <li class="eds-left-nav-item">
+        <a href="/support/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <span>Support</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Initialize the left navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.eds-left-nav-button, .eds-left-nav-submenu-button, .eds-left-nav-subsubmenu-button');
+    
+    navButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !isExpanded);
+        
+        const submenu = button.nextElementSibling;
+        if (submenu) {
+          if (isExpanded) {
+            submenu.setAttribute('hidden', '');
+          } else {
+            submenu.removeAttribute('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>
+      </div>
+    </div>
     
     <!-- Main content -->
-    <main class="flex-1">
-      <div class="mb-10">
-        <!-- Breadcrumb -->
-        <nav class="text-sm text-[var(--color-text-muted)] mb-4" aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2">
-            <li><a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a></li>
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/" class="hover:text-[var(--color-primary)] transition-colors">Components</a>
-            </li>
-            
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/layout/" class="hover:text-[var(--color-primary)] transition-colors capitalize">layout</a>
-            </li>
-            
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <span class="font-medium">Accordion</span>
-            </li>
-          </ol>
-        </nav>
+    <div class="w-full">
+      <div class="prose max-w-none">
+        <h1>Accordion Accessibility</h1>
         
-        <!-- Component header -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-          <div>
-            <h1 class="text-3xl font-bold mb-2">Accordion</h1>
-            <p class="text-[var(--color-text-muted)]">Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.</p>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
-              v1.0.0
-            </span>
-            
-            <a href="https://github.com/enterprise-design-system/components/tree/main/src/accordion" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
+          <p class="text-xl text-[var(--color-text-muted)] mb-8">Accessibility guidelines and best practices for implementing the Accordion component</p>
+        
+        
+        <h1 id="accordion-accessibility-guidelines" tabindex="-1">Accordion Accessibility Guidelines <a class="anchor" href="#accordion-accessibility-guidelines" aria-hidden="true">#</a></h1>
+<p>This page outlines how to implement the Accordion component to ensure it meets WCAG 2.1 AA standards and provides an optimal experience for all users, including those using assistive technologies.</p>
+<h2 id="aria-attributes" tabindex="-1">ARIA Attributes <a class="anchor" href="#aria-attributes" aria-hidden="true">#</a></h2>
+<p>The Accordion component uses the following ARIA attributes to ensure proper accessibility:</p>
+<h3 id="required-attributes" tabindex="-1">Required Attributes <a class="anchor" href="#required-attributes" aria-hidden="true">#</a></h3>
+<ul>
+<li><code>aria-expanded</code>: Applied to the accordion trigger button to indicate whether the section is expanded (<code>true</code>) or collapsed (<code>false</code>).</li>
+<li><code>aria-controls</code>: Applied to the accordion trigger button to associate it with the content panel it controls. The value should be the ID of the content panel.</li>
+</ul>
+<h3 id="example-implementation" tabindex="-1">Example Implementation <a class="anchor" href="#example-implementation" aria-hidden="true">#</a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> 
+        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-trigger<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">aria-expanded</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">aria-controls</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-content-1<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        Section Title
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-icon<span class="token punctuation">"</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M7 10l5 5 5-5z<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-content-1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-content<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        Content goes here...
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="keyboard-navigation" tabindex="-1">Keyboard Navigation <a class="anchor" href="#keyboard-navigation" aria-hidden="true">#</a></h2>
+<p>To ensure keyboard accessibility, the Accordion component supports the following keyboard interactions:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd>Tab</kbd></td>
+<td>Moves focus to the next focusable element</td>
+</tr>
+<tr>
+<td><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
+<td>Moves focus to the previous focusable element</td>
+</tr>
+<tr>
+<td><kbd>Enter</kbd> or <kbd>Space</kbd></td>
+<td>When focus is on an accordion header, toggles the expansion state</td>
+</tr>
+<tr>
+<td><kbd>Down Arrow</kbd></td>
+<td>Moves focus to the next accordion header</td>
+</tr>
+<tr>
+<td><kbd>Up Arrow</kbd></td>
+<td>Moves focus to the previous accordion header</td>
+</tr>
+<tr>
+<td><kbd>Home</kbd></td>
+<td>Moves focus to the first accordion header</td>
+</tr>
+<tr>
+<td><kbd>End</kbd></td>
+<td>Moves focus to the last accordion header</td>
+</tr>
+</tbody>
+</table>
+<h2 id="focus-management" tabindex="-1">Focus Management <a class="anchor" href="#focus-management" aria-hidden="true">#</a></h2>
+<ul>
+<li>Ensure accordion headers are focusable by using native buttons as trigger elements</li>
+<li>Maintain focus on the header when expanding or collapsing a section</li>
+<li>If content is loaded dynamically into an expanded section, focus should remain on the header</li>
+<li>Use a focus outline that has sufficient contrast against the background (3:1 contrast ratio)</li>
+</ul>
+<h2 id="screen-reader-considerations" tabindex="-1">Screen Reader Considerations <a class="anchor" href="#screen-reader-considerations" aria-hidden="true">#</a></h2>
+<p>The following considerations should be made for screen reader users:</p>
+<ul>
+<li>Use appropriate heading levels for accordion headers (typically <code>&lt;h2&gt;</code> or <code>&lt;h3&gt;</code>)</li>
+<li>Ensure the expand/collapse state is properly announced by screen readers</li>
+<li>If icons are used to indicate state, ensure they have appropriate <code>aria-hidden=&quot;true&quot;</code> attributes and don't convey meaning that isn't also conveyed in text or ARIA attributes</li>
+<li>Avoid using accordion patterns for critical information that should always be visible</li>
+</ul>
+<h2 id="visual-considerations" tabindex="-1">Visual Considerations <a class="anchor" href="#visual-considerations" aria-hidden="true">#</a></h2>
+<p>For users with visual impairments:</p>
+<ul>
+<li>Ensure sufficient color contrast between text and background (minimum 4.5:1 for normal text, 3:1 for large text)</li>
+<li>Use visual indicators beyond just color to show expanded/collapsed state (e.g., icons, text styling)</li>
+<li>Maintain a touch target size of at least 44x44 pixels for accordion headers on touch devices</li>
+<li>Provide adequate spacing between accordion items to prevent accidental activation</li>
+</ul>
+<h2 id="implementation-example-with-all-accessibility-features" tabindex="-1">Implementation Example with All Accessibility Features <a class="anchor" href="#implementation-example-with-all-accessibility-features" aria-hidden="true">#</a></h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>presentation<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> 
+        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-trigger<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-header-1<span class="token punctuation">"</span></span>
+        <span class="token attr-name">aria-expanded</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">aria-controls</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-content-1<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Section Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-visually-hidden<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          (Click to expand or collapse)
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> 
+          <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-icon<span class="token punctuation">"</span></span> 
+          <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span> 
+          <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+          <span class="token attr-name">focusable</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>
+        <span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M7 10l5 5 5-5z<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> 
+      <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-content-1<span class="token punctuation">"</span></span> 
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-content<span class="token punctuation">"</span></span> 
+      <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>region<span class="token punctuation">"</span></span> 
+      <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-header-1<span class="token punctuation">"</span></span> 
+      <span class="token attr-name">hidden</span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        Content goes here...
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="testing-checklist" tabindex="-1">Testing Checklist <a class="anchor" href="#testing-checklist" aria-hidden="true">#</a></h2>
+<p>Ensure your accordion implementation meets these accessibility criteria:</p>
+<ul>
+<li>[ ] All accordion headers are implemented as buttons within heading elements</li>
+<li>[ ] Each button has appropriate <code>aria-expanded</code> and <code>aria-controls</code> attributes</li>
+<li>[ ] Each content panel has a unique ID referenced by <code>aria-controls</code></li>
+<li>[ ] Content panels have <code>aria-labelledby</code> referencing their header</li>
+<li>[ ] Keyboard navigation works as expected</li>
+<li>[ ] Focus is visible and meets contrast requirements</li>
+<li>[ ] Icons are properly hidden from screen readers with <code>aria-hidden=&quot;true&quot;</code></li>
+<li>[ ] Color contrast meets WCAG AA standards (4.5:1 for normal text)</li>
+<li>[ ] Accordion works with screen readers (test with NVDA, JAWS, and VoiceOver)</li>
+<li>[ ] Touch targets are adequately sized for mobile users</li>
+</ul>
+<h2 id="related-resources" tabindex="-1">Related Resources <a class="anchor" href="#related-resources" aria-hidden="true">#</a></h2>
+<ul>
+<li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">WAI-ARIA Accordion Pattern</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html">WCAG 2.1 Success Criterion 2.1.1: Keyboard</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html">WCAG 2.1 Success Criterion 2.4.3: Focus Order</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html">WCAG 2.1 Success Criterion 2.4.7: Focus Visible</a></li>
+<li><a href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html">WCAG 2.1 Success Criterion 4.1.2: Name, Role, Value</a></li>
+</ul>
+<h2 id="common-mistakes-to-avoid" tabindex="-1">Common Mistakes to Avoid <a class="anchor" href="#common-mistakes-to-avoid" aria-hidden="true">#</a></h2>
+<ul>
+<li>Using <code>&lt;div&gt;</code> or other non-interactive elements for accordion headers</li>
+<li>Not properly managing focus for keyboard users</li>
+<li>Relying solely on color to indicate state</li>
+<li>Nesting interactive elements within accordion headers</li>
+<li>Failing to provide unique IDs for content panels</li>
+<li>Using accordions for critical content that should always be visible</li>
+<li>Not providing enough visual distinction between expanded and collapsed states</li>
+</ul>
+
       </div>
-      
-      <!-- Component content tabs -->
-      <div class="mb-8 border-b border-[var(--color-border)]">
-        <div class="flex space-x-6">
-          <a href="#design" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="design">Design</a>
-          <a href="#code" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="code">Code</a>
-          <a href="#accessibility" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="accessibility">Accessibility</a>
-          <a href="#examples" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="examples">Examples</a>
-        </div>
-      </div>
-      
-      <!-- Tab content -->
-      <div class="tab-content space-y-10" id="design">
-        <section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Accessibility</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-6">Accordions should be accessible to all users, including those using assistive technologies such as screen readers. Follow these guidelines to ensure your accordions meet accessibility standards.</p>
-<p><h3 class="text-lg font-bold mb-4">ARIA Roles and Attributes</h3><br>
-<ul class="space-y-3 list-disc pl-5 mb-6"><br>
-<li>Use <code>aria-expanded</code> on the header button to indicate the expanded/collapsed state</li><br>
-<li>Include <code>aria-controls</code> on the header button that points to the ID of the content panel</li><br>
-<li>Apply <code>role=&quot;region&quot;</code> to the content panel with <code>aria-labelledby</code> pointing to the header ID</li><br>
-<li>Ensure all interactive elements have appropriate ARIA roles and states</li><br>
-<li>Use <code>aria-disabled=&quot;true&quot;</code> when an accordion is disabled but still visible</li><br>
-</ul></p>
-<p><h3 class="text-lg font-bold mb-4">Keyboard Navigation</h3><br>
-<table class="w-full text-left border-collapse mb-6"><br>
-<thead><br>
-<tr class="bg-[var(--color-bg)]"><br>
-<th class="py-2 px-4 border border-[var(--color-border)]">Key</th><br>
-<th class="py-2 px-4 border border-[var(--color-border)]">Function</th><br>
-</tr><br>
-</thead><br>
-<tbody><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Tab</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Moves focus to the accordion header</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Enter or Space</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Toggles the accordion panel between expanded and collapsed states</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Arrow Down</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the next accordion header</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Arrow Up</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the previous accordion header</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Home</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the first accordion header</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">End</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">When focus is on an accordion header, moves focus to the last accordion header</td><br>
-</tr><br>
-</tbody><br>
-</table></p>
-<p><h3 class="text-lg font-bold mb-4">Implementation</h3><br>
-<p class="mb-4">Here's how to correctly implement an accessible accordion:</p></p>
-<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-6"><br>
-<pre><code class="language-html">&lt;div class=&quot;eds-accordion&quot;&gt;<br>
-&lt;h3&gt;<br>
-&lt;button<br>
-id=&quot;accordion-header-1&quot;<br>
-class=&quot;eds-accordion__header&quot;<br>
-aria-expanded=&quot;false&quot;<br>
-aria-controls=&quot;accordion-panel-1&quot;&gt;<br>
-Accordion Heading<br>
-&lt;span class=&quot;eds-accordion__icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;<br>
-&lt;/button&gt;<br>
-&lt;/h3&gt;<br>
-&lt;div<br>
-id=&quot;accordion-panel-1&quot;<br>
-class=&quot;eds-accordion__content&quot;<br>
-role=&quot;region&quot;<br>
-aria-labelledby=&quot;accordion-header-1&quot;<br>
-hidden&gt;<br>
-Accordion content goes here.<br>
-&lt;/div&gt;<br>
-&lt;/div&gt;</code></pre><br>
-</div></p>
-<p><div class="bg-[var(--color-warning-light)] p-4 rounded-md mb-6"><br>
-<div class="flex items-start"><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-warning)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /><br>
-</svg><br>
-<p class="text-[var(--color-text-muted)]">Don't use role=&quot;button&quot; on elements that aren't naturally focused in the tab order. Instead, use a semantic button element to ensure proper keyboard interaction.</p><br>
-</div><br>
-</div></p>
-<p><h3 class="text-lg font-bold mb-4">Testing Criteria</h3><br>
-<p class="mb-4">Ensure your accordion passes these accessibility checks:</p></p>
-<p><ul class="space-y-2 list-disc pl-5"><br>
-<li>Accordion headers must be focusable and operable with a keyboard</li><br>
-<li>State changes must be programmatically announced to screen readers</li><br>
-<li>Focus must remain on the header after expanding/collapsing</li><br>
-<li>Content must be properly associated with its header</li><br>
-<li>Color contrast must meet WCAG AA standards (4.5:1 for normal text)</li><br>
-<li>Icons must have sufficient contrast and not rely solely on color</li><br>
-<li>Animations must respect user preferences via the prefers-reduced-motion media query</li><br>
-</ul></p>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">WAI-ARIA Compliance</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-6">The accordion component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/" class="text-[var(--color-primary)] underline">WAI-ARIA Accordion Pattern</a>. This ensures consistency with established accessibility standards and patterns.</p>
-<p><h3 class="text-lg font-bold mb-4">Required ARIA Attributes</h3><br>
-<table class="w-full text-left border-collapse mb-6"><br>
-<thead><br>
-<tr class="bg-[var(--color-bg)]"><br>
-<th class="py-2 px-4 border border-[var(--color-border)]">Attribute</th><br>
-<th class="py-2 px-4 border border-[var(--color-border)]">Applied to</th><br>
-<th class="py-2 px-4 border border-[var(--color-border)]">Purpose</th><br>
-</tr><br>
-</thead><br>
-<tbody><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-expanded</code></td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Accordion header button</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Indicates whether the accordion panel is expanded or collapsed</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-controls</code></td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Accordion header button</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">References the ID of the controlled panel</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]"><code>aria-labelledby</code></td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Accordion panel</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">References the ID of the header for labeling</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]"><code>role=&quot;region&quot;</code></td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Accordion panel</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Identifies the element as a region when expanded</td><br>
-</tr><br>
-</tbody><br>
-</table></p>
-<p><div class="bg-[var(--color-info-light)] p-4 rounded-md"><br>
-<div class="flex items-start"><br>
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-info)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><br>
-</svg><br>
-<p class="text-[var(--color-text-muted)]">When using <code>role=&quot;region&quot;</code>, it's important to ensure the region has an accessible name using <code>aria-labelledby</code> to avoid ARIA validation errors.</p><br>
-</div><br>
-</div></p>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Responsive Considerations</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">For users on mobile or touch devices:</p>
-<p><ul class="space-y-3 list-disc pl-5"><br>
-<li>Ensure touch targets (accordion headers) are at least 44×44 pixels</li><br>
-<li>Provide sufficient spacing between adjacent accordion headers to prevent accidental taps</li><br>
-<li>Consider starting with all accordions collapsed on mobile to minimize initial scrolling</li><br>
-<li>Ensure text remains readable at smaller viewport sizes</li><br>
-<li>Adapt padding and margins for comfortable viewing on small screens</li><br>
-</ul></p>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Screen Reader Announcements</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-6">When implemented correctly, screen readers should announce the following when interacting with an accordion:</p>
-<p><table class="w-full text-left border-collapse"><br>
-<thead><br>
-<tr class="bg-[var(--color-bg)]"><br>
-<th class="py-2 px-4 border border-[var(--color-border)]">Action</th><br>
-<th class="py-2 px-4 border border-[var(--color-border)]">Announcement</th><br>
-</tr><br>
-</thead><br>
-<tbody><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Focus on collapsed header</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">&quot;Accordion Heading, collapsed, button&quot;</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Expand accordion</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">&quot;Accordion Heading, expanded, button&quot;</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Collapse accordion</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">&quot;Accordion Heading, collapsed, button&quot;</td><br>
-</tr><br>
-<tr><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">Focus on disabled header</td><br>
-<td class="py-2 px-4 border border-[var(--color-border)]">&quot;Accordion Heading, button, disabled&quot;</td><br>
-</tr><br>
-</tbody><br>
-</table></p>
-  </div>
-  <div class="bg-[var(--color-success-light)] p-4 rounded-md">
-    <div class="flex items-start">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-success)] mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-      </svg>
-      <p class="text-[var(--color-text-muted)]">Test your accordions with real screen readers like NVDA, JAWS, and VoiceOver to ensure they work as expected.</p>
     </div>
-  </div>
-</section>
+    
+    <!-- Right sidebar - Table of Contents -->
+    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
+      <div class="sticky top-32">
+        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+        <nav class="toc js-toc">
+          <!-- Table of contents will be auto-generated here -->
+          <ul class="space-y-1">
+            
+          </ul>
+        </nav>
       </div>
-      
-      <div class="tab-content hidden space-y-10" id="code">
-        
-          <p>Code documentation is coming soon.</p>
-        
-      </div>
-      
-      <div class="tab-content hidden space-y-10" id="accessibility">
-        
-          true
-        
-      </div>
-      
-      <div class="tab-content hidden space-y-10" id="examples">
-        
-          <p>Examples are coming soon.</p>
-        
-      </div>
-      
-      <!-- Right sidebar: On this page -->
-      <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
-        <h2 class="text-xl font-bold mb-4">On this page</h2>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#anatomy" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Anatomy</a></li>
-          <li><a href="#considerations" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Considerations</a></li>
-          <li><a href="#usage" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Usage</a></li>
-          <li><a href="#behavior" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Behavior</a></li>
-          <li><a href="#best-practices" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Best Practices</a></li>
-          <li><a href="#specifications" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Specifications</a></li>
-        </ul>
-      </div>
-    </main>
+    </div>
   </div>
 </div>
 
+<!-- Add table of contents JavaScript -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Initialize tabs
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    // Check if there's a hash in the URL
-    const hash = window.location.hash;
-    if (hash) {
-      // Remove # from hash
-      const tabId = hash.substring(1);
-      showTab(tabId);
-    } else {
-      // Set default active tab
-      tabLinks[0].classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      tabContents[0].classList.remove('hidden');
+  document.addEventListener('DOMContentLoaded', function() {
+    // If no TOC elements exist, we'll generate them
+    if (!document.querySelector('.js-toc li')) {
+      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
+      const toc = document.querySelector('.js-toc');
+      
+      if (toc && headings.length > 0) {
+        const tocList = document.createElement('ul');
+        tocList.className = 'space-y-1';
+        
+        headings.forEach(heading => {
+          if (!heading.id) {
+            // Create an ID if none exists
+            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
+          }
+          
+          const level = parseInt(heading.tagName.charAt(1));
+          const listItem = document.createElement('li');
+          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
+          
+          const link = document.createElement('a');
+          link.href = `#${heading.id}`;
+          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
+          link.textContent = heading.textContent;
+          
+          listItem.appendChild(link);
+          tocList.appendChild(listItem);
+          
+          // Also add the anchor link to the heading
+          if (!heading.querySelector('.anchor')) {
+            const anchor = document.createElement('a');
+            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
+            anchor.href = `#${heading.id}`;
+            anchor.textContent = '#';
+            heading.appendChild(anchor);
+          }
+        });
+        
+        if (tocList.children.length > 0) {
+          toc.appendChild(tocList);
+        } else {
+          // If no headings found, hide the TOC container
+          const tocContainer = toc.closest('.sticky');
+          if (tocContainer) {
+            tocContainer.style.display = 'none';
+          }
+        }
+      }
     }
     
-    tabLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const tabId = link.getAttribute('data-tab');
-        
-        // Update URL with hash
-        history.pushState(null, null, `#${tabId}`);
-        
-        showTab(tabId);
-      });
-    });
+    // Highlight the current section in the TOC as user scrolls
+    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
+    const tocLinks = document.querySelectorAll('.js-toc a');
     
-    function showTab(tabId) {
-      // Hide all tabs and remove active classes
-      tabContents.forEach(content => {
-        content.classList.add('hidden');
+    if (headings.length > 0 && tocLinks.length > 0) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            tocLinks.forEach(link => {
+              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
+            });
+            
+            // Add active class to corresponding link
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
+            }
+          }
+        });
+      }, observerOptions);
+      
+      headings.forEach(heading => {
+        observer.observe(heading);
       });
-      
-      tabLinks.forEach(link => {
-        link.classList.remove('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      });
-      
-      // Show the selected tab
-      const selectedTab = document.getElementById(tabId);
-      if (selectedTab) {
-        selectedTab.classList.remove('hidden');
-      }
-      
-      // Add active class to the clicked tab link
-      const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
-      if (activeLink) {
-        activeLink.classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      }
     }
   });
 </script>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accordion | Enterprise Design System</title>
-  <meta name="description" content="Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.">
+  <title>Accordion Code Examples | Enterprise Design System</title>
+  <meta name="description" content="Implementation examples for the Accordion component across various frameworks">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -168,504 +168,902 @@
 
   <main class="flex-1">
     
-<div class="container mx-auto px-4 md:px-6 py-8">
-  <div class="flex flex-col lg:flex-row gap-10">
-    <!-- Left sidebar navigation -->
-    <aside class="lg:w-64 shrink-0">
-      <nav class="space-y-6">
-        <div class="space-y-2">
-          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-          <ul class="space-y-2">
-            <li>
-              <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Input Components
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-                Layout Components
-              </a>
-              
-              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-                <li><a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Card</a></li>
-                <li><a href="/components/layout/accordion/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Accordion</a></li>
-                <li><a href="/components/layout/modal/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Modal</a></li>
-                <li><a href="/components/layout/grid/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">Grid</a></li>
-              </ul>
-              
-            </li>
-            <li>
-              <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Navigation Components
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                Feedback Components
-              </a>
-              
-            </li>
-          </ul>
-        </div>
+<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
+  <div class="flex flex-col lg:flex-row">
+    <!-- Left sidebar - Standard navigation -->
+    <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
+      <div class="sticky top-32">
         
-        <div class="space-y-2">
-          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-          <ul class="space-y-2">
-            <li><a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Colors</a></li>
-            <li><a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Typography</a></li>
-            <li><a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Spacing</a></li>
-            <li><a href="/design-system/foundations/icons/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Icons</a></li>
-          </ul>
-        </div>
-      </nav>
-    </aside>
+
+<nav class="eds-left-nav" aria-label="Main Navigation">
+  <div class="eds-left-nav-inner">
+    <ul class="eds-left-nav-list">
+      <!-- Home -->
+      <li class="eds-left-nav-item">
+        <a href="/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </li>
+      
+      <!-- Getting Started -->
+      <li class="eds-left-nav-item">
+        <a href="/getting-started/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Getting Started</span>
+        </a>
+      </li>
+      
+      <!-- Design System -->
+      <li class="eds-left-nav-item">
+        <button class="eds-left-nav-button" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+          <span>Design System</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" hidden>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/design-system/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Foundations</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/colors/" class="eds-left-nav-subsubmenu-link">Colors</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/typography/" class="eds-left-nav-subsubmenu-link">Typography</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/design-system/foundations/spacing/" class="eds-left-nav-subsubmenu-link">Spacing</a>
+              </li>
+            </ul>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/design-system/guidelines/" class="eds-left-nav-submenu-link">Guidelines</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Components -->
+      <li class="eds-left-nav-item eds-left-nav-item-active">
+        <button class="eds-left-nav-button" aria-expanded="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          </svg>
+          <span>Components</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" >
+          <li class="eds-left-nav-submenu-item">
+            <a href="/components/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          
+          <!-- Layout Components -->
+          <li class="eds-left-nav-submenu-item eds-left-nav-submenu-item-active">
+            <button class="eds-left-nav-submenu-button" aria-expanded="true">
+              <span>Layout</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" >
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/layout/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              
+              <!-- Accordion Component with its sub-pages -->
+              <li class="eds-left-nav-subsubmenu-item eds-left-nav-subsubmenu-item-active">
+                <button class="eds-left-nav-subsubmenu-button" aria-expanded="true">
+                  <span>Accordion</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-subsubmenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <ul class="eds-left-nav-subsubsubmenu" >
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/" class="eds-left-nav-subsubsubmenu-link">Overview</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item eds-left-nav-subsubsubmenu-item-active">
+                    <a href="/components/layout/accordion/code/" class="eds-left-nav-subsubsubmenu-link">Code</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/examples/" class="eds-left-nav-subsubsubmenu-link">Examples</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item">
+                    <a href="/components/layout/accordion/accessibility/" class="eds-left-nav-subsubsubmenu-link">Accessibility</a>
+                  </li>
+                </ul>
+              </li>
+              
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/layout/card/" class="eds-left-nav-subsubmenu-link">Card</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Navigation Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Navigation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/navigation/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/navigation/breadcrumb/" class="eds-left-nav-subsubmenu-link">Breadcrumb</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Input Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Inputs</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/inputs/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/inputs/button/" class="eds-left-nav-subsubmenu-link">Button</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Feedback Components -->
+          <li class="eds-left-nav-submenu-item">
+            <button class="eds-left-nav-submenu-button" aria-expanded="false">
+              <span>Feedback</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" hidden>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/feedback/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item">
+                <a href="/components/feedback/alert/" class="eds-left-nav-subsubmenu-link">Alert</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Alternative Navigation Views -->
+      <li class="eds-left-nav-item">
+        <button class="eds-left-nav-button" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <span>Navigation Views</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" hidden>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-type/" class="eds-left-nav-submenu-link">By Type</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-channel/" class="eds-left-nav-submenu-link">By Channel</a>
+          </li>
+          <li class="eds-left-nav-submenu-item">
+            <a href="/navigation/by-owner/" class="eds-left-nav-submenu-link">By Owner</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Resources -->
+      <li class="eds-left-nav-item">
+        <a href="/resources/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span>Resources</span>
+        </a>
+      </li>
+      
+      <!-- Support -->
+      <li class="eds-left-nav-item">
+        <a href="/support/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <span>Support</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Initialize the left navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.eds-left-nav-button, .eds-left-nav-submenu-button, .eds-left-nav-subsubmenu-button');
+    
+    navButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !isExpanded);
+        
+        const submenu = button.nextElementSibling;
+        if (submenu) {
+          if (isExpanded) {
+            submenu.setAttribute('hidden', '');
+          } else {
+            submenu.removeAttribute('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>
+      </div>
+    </div>
     
     <!-- Main content -->
-    <main class="flex-1">
-      <div class="mb-10">
-        <!-- Breadcrumb -->
-        <nav class="text-sm text-[var(--color-text-muted)] mb-4" aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2">
-            <li><a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a></li>
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/" class="hover:text-[var(--color-primary)] transition-colors">Components</a>
-            </li>
+    <div class="w-full">
+      <div class="prose max-w-none">
+        <h1>Accordion Code Examples</h1>
+        
+          <p class="text-xl text-[var(--color-text-muted)] mb-8">Implementation examples for the Accordion component across various frameworks</p>
+        
+        
+        <h1 id="accordion-code-examples" tabindex="-1">Accordion Code Examples <a class="anchor" href="#accordion-code-examples" aria-hidden="true">#</a></h1>
+<p>This page provides implementation examples for the Accordion component in various frameworks and technologies.</p>
+<h2 id="htmlcss-implementation" tabindex="-1">HTML/CSS Implementation <a class="anchor" href="#htmlcss-implementation" aria-hidden="true">#</a></h2>
+<h3 id="basic-html-structure" tabindex="-1">Basic HTML Structure <a class="anchor" href="#basic-html-structure" aria-hidden="true">#</a></h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> 
+        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-trigger<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">aria-expanded</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">aria-controls</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-content-1<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        Section Title
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-icon<span class="token punctuation">"</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M7 10l5 5 5-5z<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> 
+      <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-content-1<span class="token punctuation">"</span></span> 
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-content<span class="token punctuation">"</span></span> 
+      <span class="token attr-name">hidden</span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        Content goes here...
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  
+  <span class="token comment">&lt;!-- Additional accordion items --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> 
+        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-trigger<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">aria-expanded</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> 
+        <span class="token attr-name">aria-controls</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-content-2<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        Another Section
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-icon<span class="token punctuation">"</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M7 10l5 5 5-5z<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> 
+      <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>accordion-content-2<span class="token punctuation">"</span></span> 
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-content<span class="token punctuation">"</span></span> 
+      <span class="token attr-name">hidden</span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        More content here...
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="vanilla-javascript-implementation" tabindex="-1">Vanilla JavaScript Implementation <a class="anchor" href="#vanilla-javascript-implementation" aria-hidden="true">#</a></h3>
+<pre class="language-javascript"><code class="language-javascript"><span class="token comment">// Select all accordion headers</span>
+<span class="token keyword">const</span> accordionTriggers <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'.eds-accordion-trigger'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add click event listeners</span>
+accordionTriggers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">trigger</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  trigger<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Get the current state</span>
+    <span class="token keyword">const</span> isExpanded <span class="token operator">=</span> trigger<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">'aria-expanded'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'true'</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// Toggle the state</span>
+    trigger<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'aria-expanded'</span><span class="token punctuation">,</span> <span class="token operator">!</span>isExpanded<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// Get the content panel</span>
+    <span class="token keyword">const</span> contentId <span class="token operator">=</span> trigger<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">'aria-controls'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> content <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span>contentId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// Toggle the hidden attribute</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isExpanded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      content<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'hidden'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      content<span class="token punctuation">.</span><span class="token function">removeAttribute</span><span class="token punctuation">(</span><span class="token string">'hidden'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Add keyboard navigation</span>
+document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'keydown'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> trigger <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token string">'.eds-accordion-trigger'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>trigger<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">const</span> accordionItem <span class="token operator">=</span> trigger<span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token string">'.eds-accordion-item'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> accordion <span class="token operator">=</span> accordionItem<span class="token punctuation">.</span><span class="token function">closest</span><span class="token punctuation">(</span><span class="token string">'.eds-accordion'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> allTriggers <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>accordion<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">'.eds-accordion-trigger'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> currentIndex <span class="token operator">=</span> allTriggers<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>trigger<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">'ArrowDown'</span><span class="token operator">:</span>
+      event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>currentIndex <span class="token operator">&lt;</span> allTriggers<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        allTriggers<span class="token punctuation">[</span>currentIndex <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'ArrowUp'</span><span class="token operator">:</span>
+      event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>currentIndex <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        allTriggers<span class="token punctuation">[</span>currentIndex <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'Home'</span><span class="token operator">:</span>
+      event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      allTriggers<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'End'</span><span class="token operator">:</span>
+      event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      allTriggers<span class="token punctuation">[</span>allTriggers<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="css-styling" tabindex="-1">CSS Styling <a class="anchor" href="#css-styling" aria-hidden="true">#</a></h3>
+<pre class="language-css"><code class="language-css"><span class="token comment">/* Base accordion styles */</span>
+<span class="token selector">.eds-accordion</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-item</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #e2e8f0<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.375rem<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-header</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-trigger</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> space-between<span class="token punctuation">;</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #f8fafc<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #1e293b<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 500<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-trigger:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #f1f5f9<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-trigger:focus</span> <span class="token punctuation">{</span>
+  <span class="token property">outline</span><span class="token punctuation">:</span> 2px solid #3b82f6<span class="token punctuation">;</span>
+  <span class="token property">outline-offset</span><span class="token punctuation">:</span> -2px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-icon</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 1.25rem<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 1.25rem<span class="token punctuation">;</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> transform 0.3s ease<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-trigger[aria-expanded="true"] .eds-accordion-icon</span> <span class="token punctuation">{</span>
+  <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">rotate</span><span class="token punctuation">(</span>180deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-content</span> <span class="token punctuation">{</span>
+  <span class="token property">border-top</span><span class="token punctuation">:</span> 1px solid #e2e8f0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-body</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Animation for the content panel */</span>
+<span class="token selector">.eds-accordion-content</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">max-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> max-height 0.3s ease<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-content:not([hidden])</span> <span class="token punctuation">{</span>
+  <span class="token property">max-height</span><span class="token punctuation">:</span> 1000px<span class="token punctuation">;</span> <span class="token comment">/* Arbitrary large value */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Variant: Borderless */</span>
+<span class="token selector">.eds-accordion-borderless .eds-accordion-item</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 0.75rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-borderless .eds-accordion-trigger</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #f1f5f9<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.375rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-borderless .eds-accordion-content</span> <span class="token punctuation">{</span>
+  <span class="token property">border-top</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0.5rem 1rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Variant: Filled */</span>
+<span class="token selector">.eds-accordion-filled .eds-accordion-trigger</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #10b981<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-filled .eds-accordion-trigger:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #059669<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.eds-accordion-filled .eds-accordion-trigger:focus</span> <span class="token punctuation">{</span>
+  <span class="token property">outline-color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="react-implementation" tabindex="-1">React Implementation <a class="anchor" href="#react-implementation" aria-hidden="true">#</a></h2>
+<h3 id="react-component" tabindex="-1">React Component <a class="anchor" href="#react-component" aria-hidden="true">#</a></h3>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'./accordion.css'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Accordion Item Component</span>
+<span class="token keyword">function</span> <span class="token function">AccordionItem</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> title<span class="token punctuation">,</span> children<span class="token punctuation">,</span> defaultExpanded <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>isExpanded<span class="token punctuation">,</span> setIsExpanded<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>defaultExpanded<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> contentId <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">accordion-content-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> 
+          <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-trigger<span class="token punctuation">"</span></span>
+          <span class="token attr-name">aria-expanded</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>isExpanded<span class="token punctuation">}</span></span>
+          <span class="token attr-name">aria-controls</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>contentId<span class="token punctuation">}</span></span>
+          <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setIsExpanded</span><span class="token punctuation">(</span><span class="token operator">!</span>isExpanded<span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+        <span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>title<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> 
+            <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-icon<span class="token punctuation">"</span></span> 
+            <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span> 
+            <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+          <span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M7 10l5 5 5-5z<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> 
+        <span class="token attr-name">id</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>contentId<span class="token punctuation">}</span></span>
+        <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-content<span class="token punctuation">"</span></span>
+        <span class="token attr-name">hidden</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token operator">!</span>isExpanded<span class="token punctuation">}</span></span>
+      <span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token punctuation">{</span>children<span class="token punctuation">}</span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Main Accordion Component</span>
+<span class="token keyword">function</span> <span class="token function">Accordion</span><span class="token punctuation">(</span><span class="token punctuation">{</span> children<span class="token punctuation">,</span> variant <span class="token operator">=</span> <span class="token string">'default'</span><span class="token punctuation">,</span> multiExpand <span class="token operator">=</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> variantClass <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>variant <span class="token operator">===</span> <span class="token string">'borderless'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    variantClass <span class="token operator">=</span> <span class="token string">'eds-accordion-borderless'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>variant <span class="token operator">===</span> <span class="token string">'filled'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    variantClass <span class="token operator">=</span> <span class="token string">'eds-accordion-filled'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">eds-accordion </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>variantClass<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token punctuation">{</span>React<span class="token punctuation">.</span>Children<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> <span class="token parameter">child</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token comment">// If multiExpand is false, we need to handle expanding/collapsing logic</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>multiExpand<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> React<span class="token punctuation">.</span><span class="token function">cloneElement</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Additional props for managing single expansion</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> child<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token punctuation">{</span> Accordion<span class="token punctuation">,</span> AccordionItem <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<h3 id="usage-example" tabindex="-1">Usage Example <a class="anchor" href="#usage-example" aria-hidden="true">#</a></h3>
+<pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> Accordion<span class="token punctuation">,</span> AccordionItem <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./Accordion'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span><span class="token plain-text">Accordion Example</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Accordion</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AccordionItem</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>First Section<span class="token punctuation">"</span></span> <span class="token attr-name">defaultExpanded</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token boolean">true</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">This is the content for the first section.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">You can add any content here.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">AccordionItem</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AccordionItem</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Second Section<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Content for the second section.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">List item 1</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">List item 2</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">List item 3</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">AccordionItem</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AccordionItem</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Third Section<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">Content for the third section.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">AccordionItem</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Accordion</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span><span class="token plain-text">Borderless Variant</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Accordion</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>borderless<span class="token punctuation">"</span></span> <span class="token attr-name">multiExpand</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token boolean">true</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AccordionItem</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Section A<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          Content for Section A
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">AccordionItem</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">AccordionItem</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Section B<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          Content for Section B
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">AccordionItem</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Accordion</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="vue-implementation" tabindex="-1">Vue Implementation <a class="anchor" href="#vue-implementation" aria-hidden="true">#</a></h2>
+<pre class="language-vue"><code class="language-vue"><template>
+  <div class="eds-accordion" :class="variantClass">
+    <div 
+      v-for="(item, index) in items"
+      :key="index"
+      class="eds-accordion-item"
+    >
+      <h3 class="eds-accordion-header">
+        <button 
+          class="eds-accordion-trigger"
+          :aria-expanded="expandedItems.includes(index)"
+          :aria-controls="`accordion-content-${index}`"
+          @click="toggleItem(index)"
+        >
+          <span class="eds-accordion-title"></span>
+          <svg 
+            class="eds-accordion-icon" 
+            viewBox="0 0 24 24" 
+            aria-hidden="true"
+          >
+            <path d="M7 10l5 5 5-5z"></path>
+          </svg>
+        </button>
+      </h3>
+      <div 
+        :id="`accordion-content-${index}`"
+        class="eds-accordion-content"
+        :hidden="!expandedItems.includes(index)"
+      >
+        <div class="eds-accordion-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'EdsAccordion',
+  props: {
+    items: {
+      type: Array,
+      required: true
+    },
+    variant: {
+      type: String,
+      default: 'default',
+      validator: value => ['default', 'borderless', 'filled'].includes(value)
+    },
+    multiExpand: {
+      type: Boolean,
+      default: false
+    },
+    defaultExpanded: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data() {
+    return {
+      expandedItems: [...this.defaultExpanded]
+    };
+  },
+  computed: {
+    variantClass() {
+      return {
+        'eds-accordion-borderless': this.variant === 'borderless',
+        'eds-accordion-filled': this.variant === 'filled'
+      };
+    }
+  },
+  methods: {
+    toggleItem(index) {
+      if (this.expandedItems.includes(index)) {
+        // Collapse the item
+        this.expandedItems = this.expandedItems.filter(i => i !== index);
+        this.$emit('collapse', { index, content: this.items[index] });
+      } else {
+        // Expand the item
+        if (!this.multiExpand) {
+          // If multiExpand is false, collapse all other items
+          this.expandedItems = [];
+        }
+        this.expandedItems.push(index);
+        this.$emit('expand', { index, content: this.items[index] });
+      }
+      this.$emit('change', { expanded: this.expandedItems.includes(index), index });
+    }
+  }
+};
+</script>
+
+<style>
+/* Include the CSS styles from the CSS section above */
+</style></code></pre>
+<h2 id="angular-implementation" tabindex="-1">Angular Implementation <a class="anchor" href="#angular-implementation" aria-hidden="true">#</a></h2>
+<pre class="language-typescript"><code class="language-typescript"><span class="token comment">// accordion.component.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> Input<span class="token punctuation">,</span> Output<span class="token punctuation">,</span> EventEmitter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">AccordionItem</span> <span class="token punctuation">{</span>
+  title<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  content<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  expanded<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token decorator"><span class="token at operator">@</span><span class="token function">Component</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  selector<span class="token operator">:</span> <span class="token string">'eds-accordion'</span><span class="token punctuation">,</span>
+  templateUrl<span class="token operator">:</span> <span class="token string">'./accordion.component.html'</span><span class="token punctuation">,</span>
+  styleUrls<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'./accordion.component.css'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AccordionComponent</span> <span class="token punctuation">{</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Input</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> items<span class="token operator">:</span> AccordionItem<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Input</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> variant<span class="token operator">:</span> <span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'borderless'</span> <span class="token operator">|</span> <span class="token string">'filled'</span> <span class="token operator">=</span> <span class="token string">'default'</span><span class="token punctuation">;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Input</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> multiExpand<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Output</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> expand <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventEmitter<span class="token operator">&lt;</span><span class="token punctuation">{</span>index<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> item<span class="token operator">:</span> AccordionItem<span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Output</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> collapse <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventEmitter<span class="token operator">&lt;</span><span class="token punctuation">{</span>index<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> item<span class="token operator">:</span> AccordionItem<span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token decorator"><span class="token at operator">@</span><span class="token function">Output</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> change <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventEmitter<span class="token operator">&lt;</span><span class="token punctuation">{</span>expanded<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">,</span> index<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> item<span class="token operator">:</span> AccordionItem<span class="token punctuation">}</span><span class="token operator">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token function">toggleItem</span><span class="token punctuation">(</span>index<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> item <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>expanded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Collapse the item</span>
+      item<span class="token punctuation">.</span>expanded <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>collapse<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token punctuation">{</span> index<span class="token punctuation">,</span> item <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Expand the item</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>multiExpand<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// If multiExpand is false, collapse all other items</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>otherItem<span class="token punctuation">,</span> i<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">!==</span> index <span class="token operator">&amp;&amp;</span> otherItem<span class="token punctuation">.</span>expanded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            otherItem<span class="token punctuation">.</span>expanded <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>collapse<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token punctuation">{</span> index<span class="token operator">:</span> i<span class="token punctuation">,</span> item<span class="token operator">:</span> otherItem <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      
+      item<span class="token punctuation">.</span>expanded <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>expand<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token punctuation">{</span> index<span class="token punctuation">,</span> item <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">this</span><span class="token punctuation">.</span>change<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token punctuation">{</span> expanded<span class="token operator">:</span> item<span class="token punctuation">.</span>expanded<span class="token punctuation">,</span> index<span class="token punctuation">,</span> item <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token function">getVariantClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>variant<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">case</span> <span class="token string">'borderless'</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> <span class="token string">'eds-accordion-borderless'</span><span class="token punctuation">;</span>
+      <span class="token keyword">case</span> <span class="token string">'filled'</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> <span class="token string">'eds-accordion-filled'</span><span class="token punctuation">;</span>
+      <span class="token keyword">default</span><span class="token operator">:</span>
+        <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- accordion.component.html --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion<span class="token punctuation">"</span></span> <span class="token attr-name">[ngClass]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>getVariantClass()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> 
+    <span class="token attr-name">*ngFor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>let item of items; let i = index<span class="token punctuation">"</span></span> 
+    <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-item<span class="token punctuation">"</span></span>
+  <span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> 
+        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-trigger<span class="token punctuation">"</span></span>
+        <span class="token attr-name">[attr.aria-expanded]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.expanded<span class="token punctuation">"</span></span>
+        <span class="token attr-name">[attr.aria-controls]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>accordion-content-' + i<span class="token punctuation">"</span></span>
+        <span class="token attr-name">(click)</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>toggleItem(i)<span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> 
+          <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-icon<span class="token punctuation">"</span></span> 
+          <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 24 24<span class="token punctuation">"</span></span> 
+          <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+        <span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span> <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M7 10l5 5 5-5z<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> 
+      <span class="token attr-name">[id]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>accordion-content-' + i<span class="token punctuation">"</span></span>
+      <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-content<span class="token punctuation">"</span></span>
+      <span class="token attr-name">[hidden]</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>!item.expanded<span class="token punctuation">"</span></span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>eds-accordion-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-container</span> <span class="token attr-name">*ngIf</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>!item.contentTemplate<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-container</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-container</span> <span class="token attr-name">*ngIf</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.contentTemplate<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ng-container</span> <span class="token attr-name">*ngTemplateOutlet</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>item.contentTemplate<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-container</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ng-container</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="additional-resources" tabindex="-1">Additional Resources <a class="anchor" href="#additional-resources" aria-hidden="true">#</a></h2>
+<ul>
+<li><a href="/components/layout/accordion/assets/accordion.css">Complete accordion.css file</a></li>
+<li><a href="/components/layout/accordion/assets/accordion.d.ts">Accordion TypeScript definitions</a></li>
+<li><a href="/components/layout/accordion/assets/accordion.test.js">Accordion test examples</a></li>
+</ul>
+
+      </div>
+    </div>
+    
+    <!-- Right sidebar - Table of Contents -->
+    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
+      <div class="sticky top-32">
+        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+        <nav class="toc js-toc">
+          <!-- Table of contents will be auto-generated here -->
+          <ul class="space-y-1">
             
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <a href="/components/layout/" class="hover:text-[var(--color-primary)] transition-colors capitalize">layout</a>
-            </li>
-            
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-              <span class="font-medium">Accordion</span>
-            </li>
-          </ol>
+          </ul>
         </nav>
-        
-        <!-- Component header -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-          <div>
-            <h1 class="text-3xl font-bold mb-2">Accordion</h1>
-            <p class="text-[var(--color-text-muted)]">Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.</p>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
-              v1.0.0
-            </span>
-            
-            <a href="https://github.com/enterprise-design-system/components/tree/main/src/accordion" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-              </svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
       </div>
-      
-      <!-- Component content tabs -->
-      <div class="mb-8 border-b border-[var(--color-border)]">
-        <div class="flex space-x-6">
-          <a href="#design" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="design">Design</a>
-          <a href="#code" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="code">Code</a>
-          <a href="#accessibility" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="accessibility">Accessibility</a>
-          <a href="#examples" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="examples">Examples</a>
-        </div>
-      </div>
-      
-      <!-- Tab content -->
-      <div class="tab-content space-y-10" id="design">
-        <section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Installation</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">Make sure the necessary specific libraries are installed (no information or elements of these sites if you are integrating them into other components).</p>
-<p><div class="mb-6"><br>
-<h3 class="text-lg font-bold mb-2">HTML &amp; CSS</h3><br>
-<div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><br>
-<pre><code class="language-bash">npm install @enterprise-design-system/accordion</code></pre><br>
-</div><br>
-</div></p>
-<p><div><br>
-<h3 class="text-lg font-bold mb-2">React</h3><br>
-<div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><br>
-<pre><code class="language-bash">npm install @enterprise-design-system/react-accordion</code></pre><br>
-</div><br>
-</div></p>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Attributes</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">When using properties in JavaScript, use camelCase versions of the attribute names listed below.</p>
-<p><div class="overflow-x-auto"><br>
-<table class="w-full text-left border-collapse"><br>
-<thead><br>
-<tr class="bg-[var(--color-bg)]"><br>
-<th class="py-3 px-4 border border-[var(--color-border)]">Attribute</th><br>
-<th class="py-3 px-4 border border-[var(--color-border)]">Type</th><br>
-<th class="py-3 px-4 border border-[var(--color-border)]">Default</th><br>
-<th class="py-3 px-4 border border-[var(--color-border)]">Description</th><br>
-</tr><br>
-</thead><br>
-<tbody><br>
-<tr><br>
-<td class="py-3 px-4 border border-[var(--color-border)]"><code>expanded</code></td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">boolean</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">false</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">Expands the accordion panel when set to true.</td><br>
-</tr><br>
-<tr><br>
-<td class="py-3 px-4 border border-[var(--color-border)]"><code>disabled</code></td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">boolean</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">false</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">Disables the accordion when set to true.</td><br>
-</tr><br>
-<tr><br>
-<td class="py-3 px-4 border border-[var(--color-border)]"><code>icon-position</code></td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">string</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">right</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">Position of the indicator icon. Options: 'left', 'right', 'none'.</td><br>
-</tr><br>
-<tr><br>
-<td class="py-3 px-4 border border-[var(--color-border)]"><code>aria-labelledby</code></td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">string</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">undefined</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">ID reference to the element that labels the accordion.</td><br>
-</tr><br>
-<tr><br>
-<td class="py-3 px-4 border border-[var(--color-border)]"><code>aria-controls</code></td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">string</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">undefined</td><br>
-<td class="py-3 px-4 border border-[var(--color-border)]">ID reference to the controlled content section.</td><br>
-</tr><br>
-</tbody><br>
-</table><br>
-</div></p>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Events</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-3 px-4 border border-[var(--color-border)]">Name</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Event content</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">expand</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Fires when the accordion section is expanded</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">collapse</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Fires when the accordion section is collapsed</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">States</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-3 px-4 border border-[var(--color-border)]">Name</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Default variant</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Default</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">The normal, collapsed state of the accordion</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Expanded</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">When the accordion panel is open and content is visible</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Focused</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">When the accordion header has keyboard focus</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Disabled</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">false</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">When the accordion is not interactive</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">CSS Helper classes</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-3 px-4 border border-[var(--color-border)]">CSS class</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Applies to</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Outcome</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Main container class</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion__header</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Header element</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Styles for the clickable header</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion__content</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Content container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Styles for the expandable content</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion__icon</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Icon element</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Styles for the indicator icon</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--expanded</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Applied when accordion is expanded</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--disabled</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Applied when accordion is disabled</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">CSS modifier classes</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <table class="w-full text-left border-collapse">
-      <thead>
-        <tr class="bg-[var(--color-bg)]">
-          <th class="py-3 px-4 border border-[var(--color-border)]">CSS class</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Applies to</th>
-          <th class="py-3 px-4 border border-[var(--color-border)]">Outcome</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--bordered</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Adds a border around the accordion</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--compact</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Reduces padding for a more compact appearance</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--icon-left</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Positions the icon on the left side</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--no-icon</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Removes the indicator icon</td>
-        </tr>
-        <tr>
-          <td class="py-3 px-4 border border-[var(--color-border)]">eds-accordion--with-bg</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Container</td>
-          <td class="py-3 px-4 border border-[var(--color-border)]">Adds a background color to the header</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Namespaceing</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">If your architecture currently conflicts with Enterprise UI or any other external libraries, it may be that there are conflicting styles (i.e. you are targeting specific selectors in your own code).</p>
-<p><p>All components in Enterprise Design System are prefixed with 'eds-' to help reduce the possibility of selector conflicts.</p></p>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Import reference</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">The following two references are used to load libraries and should be referenced from Enterprise Design libraries. These references can be used at any component level.</p>
-<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-6"><br>
-<pre><code class="language-javascript">import { Accordion } from '@enterprise-design-system/react-components';</code></pre><br>
-</div></p>
-<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><br>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;<a href="https://cdn.enterprise-design.com/libs/accordion.css">https://cdn.enterprise-design.com/libs/accordion.css</a>&quot;&gt;</code></pre><br>
-</div></p>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">Javascript</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-6">The following JS code samples can be used to interact with Enterprise Design accordion component:</p>
-<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-6"><br>
-<pre><code class="language-javascript">// Initialize an accordion<br>
-const accordion = new EnterpriseAccordion(document.querySelector('.eds-accordion'));</p>
-<p>// Expand an accordion<br>
-accordion.expand();</p>
-<p>// Collapse an accordion<br>
-accordion.collapse();</p>
-<p>// Toggle an accordion<br>
-accordion.toggle();</p>
-<p>// Listen for events<br>
-accordion.addEventListener('expand', (event) =&gt; {<br>
-console.log('Accordion expanded');<br>
-});</p>
-<p>accordion.addEventListener('collapse', (event) =&gt; {<br>
-console.log('Accordion collapsed');<br>
-});</p>
-<p>// Disable an accordion<br>
-accordion.disabled = true;</p>
-<p>// Enable an accordion<br>
-accordion.disabled = false;</code></pre><br>
-</div></p>
-  </div>
-</section>
-<section class="mb-12">
-  <h2 class="text-2xl font-bold mb-6">SCSS</h2>
-  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
-    <p class="mb-4">The following SCSS variables are used by Enterprise Design's accordion when creating/implementing component:</p>
-<p><div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto"><br>
-<pre><code class="language-scss">// Accordion variables<br>
-$eds-accordion-header-bg: var(--color-bg-alt);<br>
-$eds-accordion-header-color: var(--color-text);<br>
-$eds-accordion-header-font-weight: 500;<br>
-$eds-accordion-header-padding: 1rem;<br>
-$eds-accordion-content-padding: 1rem;<br>
-$eds-accordion-border-color: var(--color-border);<br>
-$eds-accordion-border-radius: 0.25rem;<br>
-$eds-accordion-icon-size: 1.25rem;<br>
-$eds-accordion-icon-color: var(--color-text-muted);<br>
-$eds-accordion-icon-transition: transform 0.2s ease-in-out;<br>
-$eds-accordion-focus-ring-color: var(--color-primary);<br>
-$eds-accordion-focus-ring-width: 2px;<br>
-$eds-accordion-transition-duration: 0.2s;</p>
-<p>// In your custom implementation<br>
-@import '@enterprise-design-system/scss/components/accordion';</p>
-<p>// Override variables if needed<br>
-$eds-accordion-header-bg: #f5f5f5;</p>
-<p>// Use the accordion mixins<br>
-.custom-accordion {<br>
-@include eds-accordion();</p>
-<p>// Customizations<br>
-.eds-accordion__header {<br>
-border-bottom: 2px solid $eds-accordion-border-color;<br>
-}<br>
-}</code></pre><br>
-</div></p>
-  </div>
-</section>
-      </div>
-      
-      <div class="tab-content hidden space-y-10" id="code">
-        
-          true
-        
-      </div>
-      
-      <div class="tab-content hidden space-y-10" id="accessibility">
-        
-          <p>Accessibility documentation is coming soon.</p>
-        
-      </div>
-      
-      <div class="tab-content hidden space-y-10" id="examples">
-        
-          <p>Examples are coming soon.</p>
-        
-      </div>
-      
-      <!-- Right sidebar: On this page -->
-      <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
-        <h2 class="text-xl font-bold mb-4">On this page</h2>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#anatomy" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Anatomy</a></li>
-          <li><a href="#considerations" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Considerations</a></li>
-          <li><a href="#usage" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Usage</a></li>
-          <li><a href="#behavior" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Behavior</a></li>
-          <li><a href="#best-practices" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Best Practices</a></li>
-          <li><a href="#specifications" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Specifications</a></li>
-        </ul>
-      </div>
-    </main>
+    </div>
   </div>
 </div>
 
+<!-- Add table of contents JavaScript -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Initialize tabs
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    // Check if there's a hash in the URL
-    const hash = window.location.hash;
-    if (hash) {
-      // Remove # from hash
-      const tabId = hash.substring(1);
-      showTab(tabId);
-    } else {
-      // Set default active tab
-      tabLinks[0].classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      tabContents[0].classList.remove('hidden');
+  document.addEventListener('DOMContentLoaded', function() {
+    // If no TOC elements exist, we'll generate them
+    if (!document.querySelector('.js-toc li')) {
+      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
+      const toc = document.querySelector('.js-toc');
+      
+      if (toc && headings.length > 0) {
+        const tocList = document.createElement('ul');
+        tocList.className = 'space-y-1';
+        
+        headings.forEach(heading => {
+          if (!heading.id) {
+            // Create an ID if none exists
+            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
+          }
+          
+          const level = parseInt(heading.tagName.charAt(1));
+          const listItem = document.createElement('li');
+          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
+          
+          const link = document.createElement('a');
+          link.href = `#${heading.id}`;
+          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
+          link.textContent = heading.textContent;
+          
+          listItem.appendChild(link);
+          tocList.appendChild(listItem);
+          
+          // Also add the anchor link to the heading
+          if (!heading.querySelector('.anchor')) {
+            const anchor = document.createElement('a');
+            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
+            anchor.href = `#${heading.id}`;
+            anchor.textContent = '#';
+            heading.appendChild(anchor);
+          }
+        });
+        
+        if (tocList.children.length > 0) {
+          toc.appendChild(tocList);
+        } else {
+          // If no headings found, hide the TOC container
+          const tocContainer = toc.closest('.sticky');
+          if (tocContainer) {
+            tocContainer.style.display = 'none';
+          }
+        }
+      }
     }
     
-    tabLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const tabId = link.getAttribute('data-tab');
-        
-        // Update URL with hash
-        history.pushState(null, null, `#${tabId}`);
-        
-        showTab(tabId);
-      });
-    });
+    // Highlight the current section in the TOC as user scrolls
+    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
+    const tocLinks = document.querySelectorAll('.js-toc a');
     
-    function showTab(tabId) {
-      // Hide all tabs and remove active classes
-      tabContents.forEach(content => {
-        content.classList.add('hidden');
+    if (headings.length > 0 && tocLinks.length > 0) {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -80% 0px',
+        threshold: 0
+      };
+      
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            tocLinks.forEach(link => {
+              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
+            });
+            
+            // Add active class to corresponding link
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
+            }
+          }
+        });
+      }, observerOptions);
+      
+      headings.forEach(heading => {
+        observer.observe(heading);
       });
-      
-      tabLinks.forEach(link => {
-        link.classList.remove('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      });
-      
-      // Show the selected tab
-      const selectedTab = document.getElementById(tabId);
-      if (selectedTab) {
-        selectedTab.classList.remove('hidden');
-      }
-      
-      // Add active class to the clicked tab link
-      const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
-      if (activeLink) {
-        activeLink.classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      }
     }
   });
 </script>

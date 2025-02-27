@@ -1,130 +1,255 @@
 {% set currentUrl = page.url %}
 
-<nav class="left-navigation">
-  <div class="space-y-6">
-    {# Main navigation categories #}
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/components/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            All Components
-          </a>
-        </li>
-        <li>
-          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-tokens/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Design Tokens
-          </a>
-        </li>
-        <li>
-          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/patterns/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Patterns
-          </a>
-        </li>
-        <li>
-          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/guidelines/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Guidelines
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    {# Components by Category #}
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') and currentUrl != '/components/layout/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Layout
-          </a>
-          {% if currentUrl.includes('/components/layout/') or currentUrl == '/components/layout/' %}
-          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-            {% for component in collections.layoutComponents %}
-              <li>
-                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
-                  {{ component.data.title }}
-                </a>
+<nav class="eds-left-nav" aria-label="Main Navigation">
+  <div class="eds-left-nav-inner">
+    <ul class="eds-left-nav-list">
+      <!-- Home -->
+      <li class="eds-left-nav-item{% if currentUrl == '/' %} eds-left-nav-item-active{% endif %}">
+        <a href="/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          <span>Home</span>
+        </a>
+      </li>
+      
+      <!-- Getting Started -->
+      <li class="eds-left-nav-item{% if currentUrl.startsWith('/getting-started/') %} eds-left-nav-item-active{% endif %}">
+        <a href="/getting-started/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Getting Started</span>
+        </a>
+      </li>
+      
+      <!-- Design System -->
+      <li class="eds-left-nav-item{% if currentUrl.startsWith('/design-system/') %} eds-left-nav-item-active{% endif %}">
+        <button class="eds-left-nav-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/design-system/') else 'false' }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+          </svg>
+          <span>Design System</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" {{ 'hidden' if not currentUrl.startsWith('/design-system/') }}>
+          <li class="eds-left-nav-submenu-item{% if currentUrl == '/design-system/' %} eds-left-nav-submenu-item-active{% endif %}">
+            <a href="/design-system/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item{% if currentUrl.startsWith('/design-system/foundations/') %} eds-left-nav-submenu-item-active{% endif %}">
+            <button class="eds-left-nav-submenu-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/design-system/foundations/') else 'false' }}">
+              <span>Foundations</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" {{ 'hidden' if not currentUrl.startsWith('/design-system/foundations/') }}>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/design-system/foundations/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/design-system/foundations/" class="eds-left-nav-subsubmenu-link">Overview</a>
               </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </li>
-        <li>
-          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') and currentUrl != '/components/navigation/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Navigation
-          </a>
-          {% if currentUrl.includes('/components/navigation/') or currentUrl == '/components/navigation/' %}
-          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-            {% for component in collections.navigationComponents %}
-              <li>
-                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
-                  {{ component.data.title }}
-                </a>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/design-system/foundations/colors/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/design-system/foundations/colors/" class="eds-left-nav-subsubmenu-link">Colors</a>
               </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </li>
-        <li>
-          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') and currentUrl != '/components/feedback/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Feedback
-          </a>
-          {% if currentUrl.includes('/components/feedback/') or currentUrl == '/components/feedback/' %}
-          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-            {% for component in collections.feedbackComponents %}
-              <li>
-                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
-                  {{ component.data.title }}
-                </a>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/design-system/foundations/typography/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/design-system/foundations/typography/" class="eds-left-nav-subsubmenu-link">Typography</a>
               </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </li>
-        <li>
-          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') and currentUrl != '/components/inputs/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Inputs
-          </a>
-          {% if currentUrl.includes('/components/inputs/') or currentUrl == '/components/inputs/' %}
-          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-            {% for component in collections.inputComponents %}
-              <li>
-                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
-                  {{ component.data.title }}
-                </a>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/design-system/foundations/spacing/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/design-system/foundations/spacing/" class="eds-left-nav-subsubmenu-link">Spacing</a>
               </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </li>
-      </ul>
-    </div>
-    
-    {# Resources #}
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/colors/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Colors
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/typography/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Typography
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/spacing/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Spacing
-          </a>
-        </li>
-        <li>
-          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/resources/migration-tools/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Migration Tools
-          </a>
-        </li>
-      </ul>
-    </div>
+            </ul>
+          </li>
+          <li class="eds-left-nav-submenu-item{% if currentUrl.startsWith('/design-system/guidelines/') %} eds-left-nav-submenu-item-active{% endif %}">
+            <a href="/design-system/guidelines/" class="eds-left-nav-submenu-link">Guidelines</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Components -->
+      <li class="eds-left-nav-item{% if currentUrl.startsWith('/components/') %} eds-left-nav-item-active{% endif %}">
+        <button class="eds-left-nav-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/components/') else 'false' }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+          </svg>
+          <span>Components</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" {{ 'hidden' if not currentUrl.startsWith('/components/') }}>
+          <li class="eds-left-nav-submenu-item{% if currentUrl == '/components/' %} eds-left-nav-submenu-item-active{% endif %}">
+            <a href="/components/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          
+          <!-- Layout Components -->
+          <li class="eds-left-nav-submenu-item{% if currentUrl.startsWith('/components/layout/') %} eds-left-nav-submenu-item-active{% endif %}">
+            <button class="eds-left-nav-submenu-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/components/layout/') else 'false' }}">
+              <span>Layout</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" {{ 'hidden' if not currentUrl.startsWith('/components/layout/') }}>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/components/layout/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/components/layout/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              
+              <!-- Accordion Component with its sub-pages -->
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl.startsWith('/components/layout/accordion/') %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <button class="eds-left-nav-subsubmenu-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/components/layout/accordion/') else 'false' }}">
+                  <span>Accordion</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-subsubmenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <ul class="eds-left-nav-subsubsubmenu" {{ 'hidden' if not currentUrl.startsWith('/components/layout/accordion/') }}>
+                  <li class="eds-left-nav-subsubsubmenu-item{% if currentUrl == '/components/layout/accordion/' %} eds-left-nav-subsubsubmenu-item-active{% endif %}">
+                    <a href="/components/layout/accordion/" class="eds-left-nav-subsubsubmenu-link">Overview</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item{% if currentUrl == '/components/layout/accordion/code/' %} eds-left-nav-subsubsubmenu-item-active{% endif %}">
+                    <a href="/components/layout/accordion/code/" class="eds-left-nav-subsubsubmenu-link">Code</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item{% if currentUrl == '/components/layout/accordion/examples/' %} eds-left-nav-subsubsubmenu-item-active{% endif %}">
+                    <a href="/components/layout/accordion/examples/" class="eds-left-nav-subsubsubmenu-link">Examples</a>
+                  </li>
+                  <li class="eds-left-nav-subsubsubmenu-item{% if currentUrl == '/components/layout/accordion/accessibility/' %} eds-left-nav-subsubsubmenu-item-active{% endif %}">
+                    <a href="/components/layout/accordion/accessibility/" class="eds-left-nav-subsubsubmenu-link">Accessibility</a>
+                  </li>
+                </ul>
+              </li>
+              
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/components/layout/card/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/components/layout/card/" class="eds-left-nav-subsubmenu-link">Card</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Navigation Components -->
+          <li class="eds-left-nav-submenu-item{% if currentUrl.startsWith('/components/navigation/') %} eds-left-nav-submenu-item-active{% endif %}">
+            <button class="eds-left-nav-submenu-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/components/navigation/') else 'false' }}">
+              <span>Navigation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" {{ 'hidden' if not currentUrl.startsWith('/components/navigation/') }}>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/components/navigation/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/components/navigation/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/components/navigation/breadcrumb/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/components/navigation/breadcrumb/" class="eds-left-nav-subsubmenu-link">Breadcrumb</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Input Components -->
+          <li class="eds-left-nav-submenu-item{% if currentUrl.startsWith('/components/inputs/') %} eds-left-nav-submenu-item-active{% endif %}">
+            <button class="eds-left-nav-submenu-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/components/inputs/') else 'false' }}">
+              <span>Inputs</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" {{ 'hidden' if not currentUrl.startsWith('/components/inputs/') }}>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/components/inputs/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/components/inputs/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/components/inputs/button/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/components/inputs/button/" class="eds-left-nav-subsubmenu-link">Button</a>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Feedback Components -->
+          <li class="eds-left-nav-submenu-item{% if currentUrl.startsWith('/components/feedback/') %} eds-left-nav-submenu-item-active{% endif %}">
+            <button class="eds-left-nav-submenu-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/components/feedback/') else 'false' }}">
+              <span>Feedback</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-submenu-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <ul class="eds-left-nav-subsubmenu" {{ 'hidden' if not currentUrl.startsWith('/components/feedback/') }}>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/components/feedback/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/components/feedback/" class="eds-left-nav-subsubmenu-link">Overview</a>
+              </li>
+              <li class="eds-left-nav-subsubmenu-item{% if currentUrl == '/components/feedback/alert/' %} eds-left-nav-subsubmenu-item-active{% endif %}">
+                <a href="/components/feedback/alert/" class="eds-left-nav-subsubmenu-link">Alert</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Alternative Navigation Views -->
+      <li class="eds-left-nav-item{% if currentUrl.startsWith('/navigation/') %} eds-left-nav-item-active{% endif %}">
+        <button class="eds-left-nav-button" aria-expanded="{{ 'true' if currentUrl.startsWith('/navigation/') else 'false' }}">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <span>Navigation Views</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-chevron" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <ul class="eds-left-nav-submenu" {{ 'hidden' if not currentUrl.startsWith('/navigation/') }}>
+          <li class="eds-left-nav-submenu-item{% if currentUrl == '/navigation/' %} eds-left-nav-submenu-item-active{% endif %}">
+            <a href="/navigation/" class="eds-left-nav-submenu-link">Overview</a>
+          </li>
+          <li class="eds-left-nav-submenu-item{% if currentUrl == '/navigation/by-type/' %} eds-left-nav-submenu-item-active{% endif %}">
+            <a href="/navigation/by-type/" class="eds-left-nav-submenu-link">By Type</a>
+          </li>
+          <li class="eds-left-nav-submenu-item{% if currentUrl == '/navigation/by-channel/' %} eds-left-nav-submenu-item-active{% endif %}">
+            <a href="/navigation/by-channel/" class="eds-left-nav-submenu-link">By Channel</a>
+          </li>
+          <li class="eds-left-nav-submenu-item{% if currentUrl == '/navigation/by-owner/' %} eds-left-nav-submenu-item-active{% endif %}">
+            <a href="/navigation/by-owner/" class="eds-left-nav-submenu-link">By Owner</a>
+          </li>
+        </ul>
+      </li>
+      
+      <!-- Resources -->
+      <li class="eds-left-nav-item{% if currentUrl.startsWith('/resources/') %} eds-left-nav-item-active{% endif %}">
+        <a href="/resources/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+          </svg>
+          <span>Resources</span>
+        </a>
+      </li>
+      
+      <!-- Support -->
+      <li class="eds-left-nav-item{% if currentUrl.startsWith('/support/') %} eds-left-nav-item-active{% endif %}">
+        <a href="/support/" class="eds-left-nav-link">
+          <svg xmlns="http://www.w3.org/2000/svg" class="eds-left-nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <span>Support</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </nav>
+
+<script>
+  // Initialize the left navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const navButtons = document.querySelectorAll('.eds-left-nav-button, .eds-left-nav-submenu-button, .eds-left-nav-subsubmenu-button');
+    
+    navButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !isExpanded);
+        
+        const submenu = button.nextElementSibling;
+        if (submenu) {
+          if (isExpanded) {
+            submenu.setAttribute('hidden', '');
+          } else {
+            submenu.removeAttribute('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>
