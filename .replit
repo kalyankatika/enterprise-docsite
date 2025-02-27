@@ -13,10 +13,6 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "11ty Development Server"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
 args = "create_dirs"
 
 [[workflows.workflow.tasks]]
@@ -31,20 +27,9 @@ args = "create_navigation_dir"
 task = "workflow.run"
 args = "create_accordion_dirs"
 
-[[workflows.workflow]]
-name = "11ty Development Server"
-author = "agent"
-
-[workflows.workflow.metadata]
-agentRequireRestartOnSave = false
-
 [[workflows.workflow.tasks]]
-task = "packager.installForAll"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npx @11ty/eleventy --serve --port=5000"
-waitForPort = 5000
+task = "workflow.run"
+args = "11ty Development Server"
 
 [[workflows.workflow]]
 name = "create_dirs"
@@ -102,9 +87,28 @@ task = "packager.installForAll"
 task = "shell.exec"
 args = "mkdir -p src/components/layout/accordion src/assets/images/"
 
+[[workflows.workflow]]
+name = "11ty Development Server"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx @11ty/eleventy --port=5000 --serve"
+waitForPort = 5000
+
 [deployment]
-run = ["sh", "-c", "npx @11ty/eleventy --serve --port=5000"]
+run = ["sh", "-c", "npx @11ty/eleventy --serve"]
 
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[[ports]]
+localPort = 8080
+externalPort = 8080
