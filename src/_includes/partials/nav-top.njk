@@ -1,0 +1,7 @@
+<ul class="nav-list">
+  {% for item in site.navigation.top %}
+    <li class="nav-item{% if page.url.startsWith(item.url) %} active{% endif %}">
+      <a href="{{ item.url }}" class="nav-link">{{ item.label }}</a>
+    </li>
+  {% endfor %}
+</ul>

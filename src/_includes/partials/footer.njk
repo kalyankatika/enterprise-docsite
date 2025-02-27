@@ -1,0 +1,20 @@
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-links">
+      {% for link in site.footer.links %}
+        <a href="{{ link.url }}" class="footer-link">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+    
+    <div class="footer-copyright">
+      {{ site.footer.copyright }}
+    </div>
+    
+    <div class="footer-secondary">
+      <p>Last updated: {{ site.buildTime | readableDate }}</p>
+      {% if site.versioningEnabled %}
+        <p>Version: {{ site.defaultVersion }}</p>
+      {% endif %}
+    </div>
+  </div>
+</footer>

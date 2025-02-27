@@ -1,0 +1,134 @@
+<div class="code-snippet" x-data="{ activeTab: 'html' }">
+  <div class="code-snippet-tabs">
+    <button 
+      class="code-snippet-tab" 
+      :class="{ 'active': activeTab === 'html' }" 
+      @click="activeTab = 'html'"
+    >
+      HTML
+    </button>
+    <button 
+      class="code-snippet-tab" 
+      :class="{ 'active': activeTab === 'js' }" 
+      @click="activeTab = 'js'"
+    >
+      JavaScript
+    </button>
+    <button 
+      class="code-snippet-tab" 
+      :class="{ 'active': activeTab === 'css' }" 
+      @click="activeTab = 'css'"
+    >
+      CSS
+    </button>
+    <button 
+      class="code-snippet-copy" 
+      @click="
+        const codeEl = $refs[activeTab];
+        navigator.clipboard.writeText(codeEl.textContent);
+        $el.textContent = 'Copied!';
+        setTimeout(() => {
+          $el.textContent = 'Copy';
+        }, 2000);
+      "
+    >
+      Copy
+    </button>
+  </div>
+  
+  <div class="code-snippet-content">
+    <pre x-show="activeTab === 'html'" x-ref="html"><code class="language-html">&lt;div class="accordion"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;button class="accordion-header" aria-expanded="false" aria-controls="accordion-panel-1"&gt;
+      &lt;span&gt;Accordion Header 1&lt;/span&gt;
+      &lt;svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+        &lt;polyline points="6 9 12 15 18 9"&gt;&lt;/polyline&gt;
+      &lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div id="accordion-panel-1" class="accordion-panel" hidden&gt;
+      &lt;div class="accordion-content"&gt;
+        &lt;p&gt;Accordion content goes here&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="accordion-item"&gt;
+    &lt;button class="accordion-header" aria-expanded="false" aria-controls="accordion-panel-2"&gt;
+      &lt;span&gt;Accordion Header 2&lt;/span&gt;
+      &lt;svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;
+        &lt;polyline points="6 9 12 15 18 9"&gt;&lt;/polyline&gt;
+      &lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div id="accordion-panel-2" class="accordion-panel" hidden&gt;
+      &lt;div class="accordion-content"&gt;
+        &lt;p&gt;Accordion content goes here&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    <pre x-show="activeTab === 'js'" x-ref="js"><code class="language-js">// Accordion functionality
+document.querySelectorAll('.accordion-header').forEach(button => {
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', !expanded);
+    
+    const panelId = button.getAttribute('aria-controls');
+    const panel = document.getElementById(panelId);
+    
+    if (panel) {
+      panel.hidden = expanded;
+    }
+  });
+});</code></pre>
+    
+    <pre x-show="activeTab === 'css'" x-ref="css"><code class="language-css">.accordion {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.accordion-header:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.accordion-icon {
+  transition: transform 0.2s ease;
+}
+
+.accordion-header[aria-expanded="true"] .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-panel {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.accordion-content {
+  padding: 0 1rem 1rem;
+}</code></pre>
+  </div>
+</div>

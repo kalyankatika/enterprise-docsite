@@ -1,0 +1,71 @@
+<div class="inpage-nav-container">
+  <h2 class="inpage-nav-title">On this page</h2>
+  <nav class="inpage-nav-list" x-data="{ headings: [] }" x-init="
+    headings = Array.from(document.querySelectorAll('h2, h3')).map(heading => ({
+      id: heading.id,
+      text: heading.textContent,
+      level: parseInt(heading.tagName.substring(1)),
+      position: heading.offsetTop
+    }));
+    
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY + 100;
+      const activeHeading = headings
+        .slice()
+        .reverse()
+        .find(heading => heading.position <= scrollPosition);
+      
+      if (activeHeading) {
+        document.querySelectorAll('.inpage-nav-link').forEach(link => {
+          link.classList.remove('active');
+        });
+        
+        const activeLink = document.querySelector(`.inpage-nav-link[href='#${activeHeading.id}']`);
+        if (activeLink) {
+          activeLink.classList.add('active');
+        }
+      }
+    });
+  ">
+    <template x-for="heading in headings" :key="heading.id">
+      <a 
+        :href="'#' + heading.id" 
+        class="inpage-nav-link" 
+        :class="{ 'inpage-nav-link-h3': heading.level === 3 }" 
+        x-text="heading.text">
+      </a>
+    </template>
+  </nav>
+  
+  <div class="inpage-actions">
+    <a href="#" class="inpage-action" title="Edit this page">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2">
+        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+      </svg>
+      <span>Edit</span>
+    </a>
+    
+    <a href="#" class="inpage-action" title="Report an issue">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-flag">
+        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+        <line x1="4" y1="22" x2="4" y2="15"></line>
+      </svg>
+      <span>Report</span>
+    </a>
+    
+    <button class="inpage-action" title="Copy link" @click="
+      const url = window.location.origin + window.location.pathname;
+      navigator.clipboard.writeText(url);
+      $el.querySelector('span').textContent = 'Copied!';
+      setTimeout(() => {
+        $el.querySelector('span').textContent = 'Copy link';
+      }, 2000);
+    ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+      </svg>
+      <span>Copy link</span>
+    </button>
+  </div>
+</div>

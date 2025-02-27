@@ -1,0 +1,109 @@
+<div class="search-form" x-data="{ 
+  query: '',
+  results: [],
+  isSearching: false,
+  showResults: false,
+  
+  search() {
+    if (this.query.length < 2) {
+      this.results = [];
+      this.showResults = false;
+      return;
+    }
+    
+    this.isSearching = true;
+    this.showResults = true;
+    
+    fetch('/search.json')
+      .then(response => response.json())
+      .then(searchIndex => {
+        const queryLower = this.query.toLowerCase();
+        this.results = searchIndex
+          .filter(item => {
+            const titleMatch = item.title.toLowerCase().includes(queryLower);
+            const contentMatch = item.content.toLowerCase().includes(queryLower);
+            const tagsMatch = item.tags && item.tags.some(tag => tag.toLowerCase().includes(queryLower));
+            return titleMatch || contentMatch || tagsMatch;
+          })
+          .slice(0, 10);
+        this.isSearching = false;
+      })
+      .catch(error => {
+        console.error('Search error:', error);
+        this.isSearching = false;
+      });
+  }
+}">
+  <div class="search-input-container">
+    <input 
+      type="search" 
+      class="search-input" 
+      placeholder="Search documentation..." 
+      x-model="query" 
+      @input.debounce.300ms="search()"
+      @focus="if (query.length >= 2) showResults = true"
+      @keydown.escape="showResults = false"
+      aria-label="Search"
+    >
+    <button class="search-button" @click="search()" aria-label="Search">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </button>
+  </div>
+  
+  <div 
+    class="search-results" 
+    x-show="showResults" 
+    @click.away="showResults = false"
+    x-cloak
+  >
+    <template x-if="isSearching">
+      <div class="search-loading">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader spin">
+          <line x1="12" y1="2" x2="12" y2="6"></line>
+          <line x1="12" y1="18" x2="12" y2="22"></line>
+          <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+          <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+          <line x1="2" y1="12" x2="6" y2="12"></line>
+          <line x1="18" y1="12" x2="22" y2="12"></line>
+          <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+          <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+        </svg>
+        <span>Searching...</span>
+      </div>
+    </template>
+    
+    <template x-if="!isSearching && results.length === 0 && query.length >= 2">
+      <div class="search-no-results">
+        <p>No results found for "<span x-text="query"></span>"</p>
+      </div>
+    </template>
+    
+    <template x-if="!isSearching && results.length > 0">
+      <ul class="search-results-list">
+        <template x-for="result in results" :key="result.url">
+          <li class="search-result-item">
+            <a :href="result.url" class="search-result-link" @click="showResults = false">
+              <h3 class="search-result-title" x-text="result.title"></h3>
+              <p class="search-result-excerpt" x-text="result.excerpt || ''"></p>
+              <div class="search-result-meta">
+                <span class="search-result-breadcrumb" x-text="result.breadcrumb || ''"></span>
+                <template x-if="result.tags && result.tags.length > 0">
+                  <span class="search-result-tags" x-text="result.tags.join(', ')"></span>
+                </template>
+              </div>
+            </a>
+          </li>
+        </template>
+      </ul>
+    </template>
+    
+    <div class="search-footer" x-show="results.length > 0">
+      <a href="/search/" class="search-view-all" @click="showResults = false">
+        View all results
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="stylesheet" href="/assets/css/prism.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js" defer></script>
+</head>
+<body x-data="{ sidebarOpen: false }">
+  {% include "partials/header.njk" %}
+  
+  <div class="main-container">
+    {% if page.url != "/" %}
+      <aside class="sidebar" :class="{ 'sidebar-open': sidebarOpen }">
+        {% include "partials/nav-sidebar.njk" %}
+      </aside>
+    {% endif %}
+    
+    <main class="content">
+      {{ content | safe }}
+    </main>
+    
+    {% if page.layout == 'component' or page.layout == 'page' %}
+      <aside class="inpage-nav">
+        {% include "partials/nav-inpage.njk" %}
+      </aside>
+    {% endif %}
+  </div>
+  
+  {% include "partials/footer.njk" %}
+  
+  <script src="/assets/js/main.js"></script>
+  {% if site.searchEnabled %}
+    <script src="/assets/js/search.js"></script>
+  {% endif %}
+  {% if site.themeEnabled %}
+    <script src="/assets/js/theme.js"></script>
+  {% endif %}
+</body>
+</html>

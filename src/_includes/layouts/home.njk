@@ -1,0 +1,58 @@
+---
+layout: base
+---
+
+<div class="home-container">
+  <section class="hero">
+    <h1>{{ site.title }}</h1>
+    <p class="lead">{{ description or site.description }}</p>
+    <div class="search-container">
+      {% include "partials/search.njk" %}
+    </div>
+  </section>
+
+  <section class="home-grid">
+    <div class="home-card">
+      <h2>Design System</h2>
+      <p>Explore the foundations of our design system including colors, typography, spacing, and more.</p>
+      <a href="/design-system/" class="btn">View Design System</a>
+    </div>
+    
+    <div class="home-card">
+      <h2>Components</h2>
+      <p>Browse our library of reusable components for web, iOS, and Android platforms.</p>
+      <a href="/components/" class="btn">View Components</a>
+    </div>
+    
+    <div class="home-card">
+      <h2>Resources</h2>
+      <p>Access templates, design tokens, and downloadable assets for your projects.</p>
+      <a href="/resources/" class="btn">View Resources</a>
+    </div>
+    
+    <div class="home-card">
+      <h2>Support</h2>
+      <p>Get help with implementation, report bugs, or request new features.</p>
+      <a href="/support/" class="btn">Get Support</a>
+    </div>
+  </section>
+
+  <section class="getting-started">
+    <h2>Getting Started</h2>
+    <p>New to the {{ site.title }}? Start with these resources:</p>
+    <div class="resource-list">
+      <a href="/design-system/foundations/" class="resource-item">
+        <h3>Foundations</h3>
+        <p>Learn about the core design elements</p>
+      </a>
+      <a href="/components/" class="resource-item">
+        <h3>Component Library</h3>
+        <p>Explore our component catalog</p>
+      </a>
+      <a href="/resources/templates/" class="resource-item">
+        <h3>Templates</h3>
+        <p>Jump-start your design with templates</p>
+      </a>
+    </div>
+  </section>
+</div>

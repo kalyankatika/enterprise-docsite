@@ -1,0 +1,65 @@
+{% set currentUrl = page.url %}
+{% set currentSection = currentUrl | split('/') | first %}
+
+<div class="sidebar-header">
+  <h2 class="sidebar-title">Navigation</h2>
+  <button class="sidebar-close" aria-label="Close sidebar" @click="sidebarOpen = false">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+</div>
+
+<nav class="sidebar-nav" x-data="{ 
+  activeSection: null,
+  toggleSection(section) {
+    this.activeSection = this.activeSection === section ? null : section;
+  },
+  isActive(url) {
+    return '{{ currentUrl }}' === url || '{{ currentUrl }}'.startsWith(url + '/');
+  },
+  isChildActive(children) {
+    return children.some(child => this.isActive(child.url));
+  }
+}">
+  {% for section in navigation.top %}
+    {% if section.children %}
+      <div class="sidebar-section">
+        <button 
+          class="sidebar-section-title" 
+          :class="{ 'active': isActive('{{ section.url }}') || isChildActive({{ section.children | dump }}) || activeSection === '{{ section.label }}' }"
+          @click="toggleSection('{{ section.label }}')">
+          <span>{{ section.label }}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        
+        <ul class="sidebar-subnav" x-show="isActive('{{ section.url }}') || isChildActive({{ section.children | dump }}) || activeSection === '{{ section.label }}'">
+          {% for child in section.children %}
+            <li class="sidebar-nav-item{% if currentUrl == child.url or currentUrl.startsWith(child.url + '/') %} active{% endif %}">
+              <a href="{{ child.url }}" class="sidebar-nav-link">{{ child.label }}</a>
+              
+              {% if child.children %}
+                <ul class="sidebar-nested-nav" x-show="isActive('{{ child.url }}') || isChildActive({{ child.children | dump }})">
+                  {% for grandchild in child.children %}
+                    <li class="sidebar-nested-item{% if currentUrl == grandchild.url or currentUrl.startsWith(grandchild.url + '/') %} active{% endif %}">
+                      <a href="{{ grandchild.url }}" class="sidebar-nested-link">{{ grandchild.label }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% else %}
+      <div class="sidebar-section">
+        <a href="{{ section.url }}" class="sidebar-section-link{% if currentUrl == section.url %} active{% endif %}">
+          {{ section.label }}
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+</nav>

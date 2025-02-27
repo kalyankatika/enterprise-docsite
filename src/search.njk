@@ -1,0 +1,378 @@
+---
+layout: page
+title: Search Results
+description: Search across the Enterprise Design System documentation.
+permalink: /search/
+---
+
+<div class="search-page">
+  <h1>Search</h1>
+  
+  <div class="search-container">
+    {% include "partials/search.njk" %}
+  </div>
+  
+  <div class="search-results-container">
+    <div class="search-loading" x-data="{ isSearching: false }" x-show="isSearching">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-loader spin">
+        <line x1="12" y1="2" x2="12" y2="6"></line>
+        <line x1="12" y1="18" x2="12" y2="22"></line>
+        <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
+        <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
+        <line x1="2" y1="12" x2="6" y2="12"></line>
+        <line x1="18" y1="12" x2="22" y2="12"></line>
+        <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
+        <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
+      </svg>
+      <span>Searching...</span>
+    </div>
+    
+    <div class="search-no-results" x-data="{ query: '', showNoResults: false }" x-show="showNoResults">
+      <p>No results found for "<span x-text="query"></span>"</p>
+      <div class="search-suggestions">
+        <h3>Suggestions:</h3>
+        <ul>
+          <li>Check your spelling</li>
+          <li>Try more general keywords</li>
+          <li>Try different keywords</li>
+          <li>Browse the <a href="/design-system/">Design System</a> or <a href="/components/">Components</a> sections</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="search-results-display" id="search-results-display"></div>
+  </div>
+  
+  <div class="search-help">
+    <h2>Search Tips</h2>
+    <ul>
+      <li>Use specific keywords for more targeted results</li>
+      <li>Search for component names to find component documentation</li>
+      <li>Use quotation marks for exact phrase matching (e.g., "color palette")</li>
+      <li>Try searching for categories like "foundations", "components", or "patterns"</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchResultsDisplay = document.getElementById('search-results-display');
+    const searchLoadingEl = document.querySelector('.search-loading');
+    const searchNoResultsEl = document.querySelector('.search-no-results');
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q');
+    
+    // Set up Alpine.js data for loading and no results states
+    if (typeof Alpine !== 'undefined') {
+      const loadingEl = searchLoadingEl.__x;
+      const noResultsEl = searchNoResultsEl.__x;
+      
+      if (loadingEl) {
+        loadingEl.$data.isSearching = true;
+      }
+      
+      if (noResultsEl && query) {
+        noResultsEl.$data.query = query;
+      }
+    }
+    
+    // Fill the search input with the query from URL if it exists
+    const searchInput = document.querySelector('.search-input');
+    if (searchInput && query) {
+      searchInput.value = query;
+    }
+    
+    // Function to perform the search
+    const performSearch = async () => {
+      if (!query || query.length < 2) {
+        if (typeof Alpine !== 'undefined' && searchLoadingEl.__x) {
+          searchLoadingEl.__x.$data.isSearching = false;
+        }
+        return;
+      }
+      
+      try {
+        const response = await fetch('/search.json');
+        if (!response.ok) {
+          throw new Error('Failed to fetch search index');
+        }
+        
+        const searchIndex = await response.json();
+        const queryLower = query.toLowerCase();
+        
+        // Filter results based on query
+        const results = searchIndex.filter(item => {
+          const titleMatch = item.title.toLowerCase().includes(queryLower);
+          const contentMatch = item.content.toLowerCase().includes(queryLower);
+          const tagsMatch = item.tags && item.tags.some(tag => tag.toLowerCase().includes(queryLower));
+          return titleMatch || contentMatch || tagsMatch;
+        });
+        
+        // Hide loading state
+        if (typeof Alpine !== 'undefined' && searchLoadingEl.__x) {
+          searchLoadingEl.__x.$data.isSearching = false;
+        }
+        
+        // Show no results state if needed
+        if (results.length === 0) {
+          if (typeof Alpine !== 'undefined' && searchNoResultsEl.__x) {
+            searchNoResultsEl.__x.$data.showNoResults = true;
+          } else {
+            searchNoResultsEl.style.display = 'block';
+          }
+          return;
+        }
+        
+        // Hide no results state if we have results
+        if (typeof Alpine !== 'undefined' && searchNoResultsEl.__x) {
+          searchNoResultsEl.__x.$data.showNoResults = false;
+        } else {
+          searchNoResultsEl.style.display = 'none';
+        }
+        
+        // Clear previous results
+        searchResultsDisplay.innerHTML = '';
+        
+        // Group results by section
+        const sectionGroups = {};
+        results.forEach(result => {
+          const section = result.section || 'Other';
+          if (!sectionGroups[section]) {
+            sectionGroups[section] = [];
+          }
+          sectionGroups[section].push(result);
+        });
+        
+        // Create results HTML
+        const resultCount = document.createElement('div');
+        resultCount.className = 'result-count';
+        resultCount.textContent = `Found ${results.length} result${results.length === 1 ? '' : 's'} for "${query}"`;
+        searchResultsDisplay.appendChild(resultCount);
+        
+        // Create results by section
+        Object.keys(sectionGroups).sort().forEach(section => {
+          const sectionResults = sectionGroups[section];
+          
+          const sectionEl = document.createElement('div');
+          sectionEl.className = 'result-section';
+          
+          const sectionTitle = document.createElement('h2');
+          sectionTitle.className = 'section-title';
+          sectionTitle.textContent = section;
+          sectionEl.appendChild(sectionTitle);
+          
+          const resultsList = document.createElement('ul');
+          resultsList.className = 'results-list';
+          
+          sectionResults.forEach(result => {
+            const resultItem = document.createElement('li');
+            resultItem.className = 'result-item';
+            
+            const resultLink = document.createElement('a');
+            resultLink.className = 'result-link';
+            resultLink.href = result.url;
+            
+            const resultTitle = document.createElement('h3');
+            resultTitle.className = 'result-title';
+            resultTitle.textContent = result.title;
+            
+            const resultExcerpt = document.createElement('p');
+            resultExcerpt.className = 'result-excerpt';
+            
+            // Create highlighted excerpt with the query highlighted
+            let excerpt = result.excerpt || result.content.substring(0, 160) + '...';
+            excerpt = excerpt.replace(new RegExp(query, 'gi'), match => `<mark>${match}</mark>`);
+            resultExcerpt.innerHTML = excerpt;
+            
+            const resultMeta = document.createElement('div');
+            resultMeta.className = 'result-meta';
+            
+            if (result.breadcrumb) {
+              const breadcrumb = document.createElement('span');
+              breadcrumb.className = 'result-breadcrumb';
+              breadcrumb.textContent = result.breadcrumb;
+              resultMeta.appendChild(breadcrumb);
+            }
+            
+            if (result.tags && result.tags.length > 0) {
+              const tags = document.createElement('span');
+              tags.className = 'result-tags';
+              tags.textContent = result.tags.join(', ');
+              resultMeta.appendChild(tags);
+            }
+            
+            resultLink.appendChild(resultTitle);
+            resultLink.appendChild(resultExcerpt);
+            resultLink.appendChild(resultMeta);
+            resultItem.appendChild(resultLink);
+            resultsList.appendChild(resultItem);
+          });
+          
+          sectionEl.appendChild(resultsList);
+          searchResultsDisplay.appendChild(sectionEl);
+        });
+      } catch (error) {
+        console.error('Error performing search:', error);
+        
+        // Hide loading state
+        if (typeof Alpine !== 'undefined' && searchLoadingEl.__x) {
+          searchLoadingEl.__x.$data.isSearching = false;
+        }
+        
+        // Show error message
+        searchResultsDisplay.innerHTML = `
+          <div class="search-error">
+            <p>An error occurred while searching. Please try again later.</p>
+          </div>
+        `;
+      }
+    };
+    
+    // Perform search if we have a query
+    if (query) {
+      performSearch();
+    }
+  });
+</script>
+
+<style>
+  .search-page {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .search-container {
+    margin-bottom: 2rem;
+  }
+  
+  .search-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+    color: var(--color-text-muted);
+  }
+  
+  .search-loading svg {
+    margin-right: 0.75rem;
+  }
+  
+  .spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .search-no-results {
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--color-bg-alt);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  
+  .search-suggestions {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .search-suggestions h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .result-count {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .result-section {
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+  }
+  
+  .results-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .result-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .result-item:last-child {
+    border-bottom: none;
+  }
+  
+  .result-link {
+    display: block;
+    color: var(--color-text);
+  }
+  
+  .result-link:hover {
+    text-decoration: none;
+  }
+  
+  .result-link:hover .result-title {
+    color: var(--color-primary-dark);
+  }
+  
+  .result-title {
+    margin: 0 0 0.5rem;
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+  }
+  
+  .result-excerpt {
+    margin: 0 0 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+  }
+  
+  .result-excerpt mark {
+    background-color: rgba(54, 135, 39, 0.2);
+    color: inherit;
+    padding: 0.125rem 0.25rem;
+    border-radius: 2px;
+  }
+  
+  .result-meta {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .search-help {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .search-help h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .search-error {
+    padding: 2rem;
+    text-align: center;
+    background-color: rgba(229, 62, 62, 0.1);
+    border-radius: 8px;
+    color: var(--color-error);
+  }
+</style>

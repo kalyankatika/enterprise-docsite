@@ -1,0 +1,35 @@
+<div class="version-selector" x-data="{ open: false }">
+  <button 
+    class="version-selector-toggle" 
+    @click="open = !open" 
+    @click.away="open = false"
+    aria-label="Select version"
+  >
+    <span>{{ site.defaultVersion }}</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <div class="version-selector-dropdown" x-show="open" x-cloak>
+    <div class="version-selector-header">
+      <span>Version</span>
+    </div>
+    <ul class="version-selector-list">
+      {% for version in versions %}
+        <li class="version-selector-item">
+          <a 
+            href="{{ version.url }}" 
+            class="version-selector-link{% if version.name === site.defaultVersion %} active{% endif %}"
+          >
+            {{ version.label }}
+            {% if version.name === site.defaultVersion %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            {% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
