@@ -3,122 +3,189 @@
  * This file provides a simplified API for using Framer Motion animations in our templates
  */
 
-// We're using the pre-installed framer-motion library in the project
+// Enhanced Framer Motion-like animations using CSS
 document.addEventListener('DOMContentLoaded', function() {
-  // Define animation variants
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { 
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeInOut" }
-    }
-  };
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-  
-  const staggerChildren = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const scaleIn = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-
-  const slideInRight = {
-    hidden: { opacity: 0, x: 30 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
+  // Define animation types
+  const animationTypes = {
+    'fade-in': 'motion-fade-in',
+    'fade-in-up': 'motion-fade-in-up',
+    'scale-in': 'motion-scale-in',
+    'slide-in-right': 'motion-slide-in-right',
+    'slide-in-left': 'motion-slide-in-left',
+    'stagger-children': 'motion-stagger'
   };
 
   // Apply animations to elements with specific data attributes
   const animateElements = () => {
-    // For fade in animations
-    document.querySelectorAll('[data-motion="fade-in"]').forEach(element => {
-      if (!element.classList.contains('animated')) {
-        if (isInViewport(element)) {
-          element.classList.add('motion-fade-in', 'animated');
-        }
+    // Handle single animations
+    Object.entries(animationTypes).forEach(([motionType, cssClass]) => {
+      if (motionType !== 'stagger-children') {
+        document.querySelectorAll(`[data-motion="${motionType}"]`).forEach(element => {
+          if (!element.classList.contains('animated')) {
+            if (isInViewport(element)) {
+              element.classList.add(cssClass, 'animated');
+              
+              // Apply delay if specified
+              const delay = element.getAttribute('data-delay');
+              if (delay) {
+                element.style.animationDelay = `${delay}s`;
+              }
+            }
+          }
+        });
       }
     });
 
-    // For fade in up animations
-    document.querySelectorAll('[data-motion="fade-in-up"]').forEach(element => {
-      if (!element.classList.contains('animated')) {
-        if (isInViewport(element)) {
-          element.classList.add('motion-fade-in-up', 'animated');
-        }
-      }
-    });
-
-    // For stagger children animations
+    // Handle stagger animations
     document.querySelectorAll('[data-motion="stagger-children"]').forEach(parentElement => {
       if (!parentElement.classList.contains('animated')) {
         if (isInViewport(parentElement)) {
           parentElement.classList.add('motion-stagger', 'animated');
           
+          // Get stagger effect type for children
+          const childEffect = parentElement.getAttribute('data-children-effect') || 'fade-in-up';
+          const staggerDelay = parseFloat(parentElement.getAttribute('data-stagger-delay') || 0.1);
+          
           // Add animation to children
           Array.from(parentElement.children).forEach((child, index) => {
-            child.style.transitionDelay = `${index * 0.1}s`;
-            child.classList.add('motion-fade-in-up');
+            child.style.transitionDelay = `${index * staggerDelay}s`;
+            child.classList.add(animationTypes[childEffect] || 'motion-fade-in-up');
           });
         }
       }
     });
 
-    // For scale in animations
-    document.querySelectorAll('[data-motion="scale-in"]').forEach(element => {
-      if (!element.classList.contains('animated')) {
-        if (isInViewport(element)) {
-          element.classList.add('motion-scale-in', 'animated');
-        }
+    // Handle hero section animations
+    document.querySelectorAll('.hero-title, .hero-description, .hero-cta, .hero-image').forEach(element => {
+      if (!element.classList.contains('animated') && isInViewport(element)) {
+        element.classList.add('animated');
       }
     });
+  };
 
-    // For slide in right animations
-    document.querySelectorAll('[data-motion="slide-in-right"]').forEach(element => {
-      if (!element.classList.contains('animated')) {
-        if (isInViewport(element)) {
-          element.classList.add('motion-slide-in-right', 'animated');
+  // Apply specific animations for accordions
+  const initAccordions = () => {
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        const isOpen = this.classList.contains('open');
+        
+        // Toggle accordion state
+        this.classList.toggle('open');
+        
+        if (isOpen) {
+          content.style.maxHeight = '0';
+          setTimeout(() => {
+            content.classList.remove('open');
+          }, 300);
+        } else {
+          content.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + 'px';
         }
+      });
+    });
+  };
+
+  // Apply card animations
+  const initCardAnimations = () => {
+    document.querySelectorAll('.feature-card, .component-card, .eds-card').forEach(card => {
+      if (!card.classList.contains('animated-card')) {
+        card.classList.add('animated-card');
       }
     });
+  };
+
+  // Apply button animations
+  const initButtonAnimations = () => {
+    document.querySelectorAll('.eds-button').forEach(button => {
+      if (!button.classList.contains('animated-button')) {
+        button.classList.add('animated-button');
+      }
+    });
+  };
+
+  // Animate elements when they enter/leave the viewport
+  const createIntersectionObserver = () => {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (!entry.target.classList.contains('animated')) {
+              const motionType = entry.target.getAttribute('data-motion');
+              if (motionType && animationTypes[motionType]) {
+                entry.target.classList.add(animationTypes[motionType], 'animated');
+              }
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+
+      // Observe all elements with data-motion attribute
+      document.querySelectorAll('[data-motion]').forEach(element => {
+        observer.observe(element);
+      });
+
+      return observer;
+    }
+    
+    return null;
   };
 
   // Helper function to check if element is in viewport
   const isInViewport = (element) => {
     const rect = element.getBoundingClientRect();
     return (
-      rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 1.1 &&
       rect.bottom >= 0 &&
       rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
       rect.right >= 0
     );
   };
 
-  // Run animation check on load
-  animateElements();
+  // Initialize additional animations on page load
+  const initAnimations = () => {
+    // Run animation check
+    animateElements();
+    
+    // Initialize component-specific animations
+    initAccordions();
+    initCardAnimations();
+    initButtonAnimations();
+    
+    // Try to use IntersectionObserver for better performance
+    const observer = createIntersectionObserver();
+    
+    // Fallback to scroll event if IntersectionObserver is not available
+    if (!observer) {
+      window.addEventListener('scroll', animateElements, { passive: true });
+    }
+    
+    // Also check animations on resize (for responsive layouts)
+    window.addEventListener('resize', animateElements, { passive: true });
+  };
 
-  // Run animation check on scroll
-  window.addEventListener('scroll', animateElements);
+  // Initialize Framer Motion implementation
+  const initFramerMotion = () => {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      // Apply all animations instantly without transitions
+      document.querySelectorAll('[data-motion]').forEach(element => {
+        element.classList.add('animated');
+      });
+      return;
+    }
+    
+    // Run all initializations
+    initAnimations();
+    
+    // Add classes to body when everything is loaded
+    document.body.classList.add('js-animation-loaded');
+  };
+
+  // Run all animations
+  initFramerMotion();
+  
+  // Add a small delay to ensure all elements are properly rendered
+  setTimeout(animateElements, 100);
 });
