@@ -11,14 +11,11 @@
   
   <!-- Custom styles -->
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <link rel="stylesheet" href="/assets/css/left-navigation.css">
-  <link rel="stylesheet" href="/assets/css/animations.css">
   
   <!-- Scripts -->
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/theme.js" defer></script>
   <script src="/assets/js/framer-motion-wrapper.js" defer></script>
-  <script src="/assets/js/alpine.min.js" defer></script>
   
   <!-- Fix for SVG icon sizing -->
   <style>
@@ -171,26 +168,236 @@
 
   <main class="flex-1">
     
-<div class="eds-animated-home">
-  <!-- Hero section with Framer Motion animations -->
-  <section class="eds-hero animate-fade-in">
-    <div class="container mx-auto px-4 py-16 md:py-24">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-slide-up">Enterprise Design System</h1>
-      <p class="text-xl md:text-2xl mb-8 max-w-3xl animate-slide-up-delay">A comprehensive design system for building consistent, accessible, and beautiful enterprise applications</p>
-      
-      
-      <a href="/getting-started/" class="eds-button eds-button--primary animate-fade-in-delay">
+<!-- Hero section with subtle animations -->
+<div class="bg-[var(--color-bg)] py-20 md:py-24 border-b border-[var(--color-border)]">
+  <div class="container mx-auto px-4 md:px-6 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6 hero-title" data-motion="fade-in">
+      Grow and evolve while<br>staying true to who we are.
+    </h1>
+    
+    <p class="text-xl max-w-3xl mx-auto mb-10 text-[var(--color-text-muted)]" data-motion="fade-in-up">
+      Enterprise Design System are the guidelines and resources that ensure consistency and continuity across our brand and design system.
+    </p>
+    
+    
+    <div class="flex flex-col md:flex-row gap-4 justify-center" data-motion="fade-in-up">
+      <a href="/getting-started/" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
         Get Started
+      </a>
+      <a href="/components/" class="animated-button inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">
+        Browse Components
+      </a>
+    </div>
+    
+  </div>
+</div>
+
+<div class="container mx-auto px-4 md:px-6 py-16">
+  <!-- Categories Section -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold mb-10 text-center" data-motion="fade-in">Documentation Categories</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion="stagger-children">
+      
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Components</h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Explore our library of reusable components that follow our design guidelines and best practices.</p>
+        <a href="/components/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse Components
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Foundations</h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Learn about the core design elements like colors, typography, spacing, and layout principles.</p>
+        <a href="/design-system/foundations/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse Foundations
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+        </div>
+        <h3 class="text-xl font-bold mb-2">Guidelines</h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Discover our guidelines for creating accessible, consistent, and user-friendly experiences.</p>
+        <a href="/design-system/guidelines/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse Guidelines
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+    </div>
+  </section>
+  
+  <!-- Browse Perspectives Section -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold mb-5 text-center" data-motion="fade-in">Browse Components</h2>
+    <p class="text-xl max-w-3xl mx-auto mb-10 text-center text-[var(--color-text-muted)]" data-motion="fade-in-up">
+      Discover components through multiple navigation perspectives to find exactly what you need.
+    </p>
+    
+    <div class="grid md:grid-cols-3 gap-8" data-motion="stagger-children">
+      <!-- By Channel -->
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          By Channel
+        </h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Find components organized by the channels or environments they're designed for.</p>
+        <ul class="space-y-1 mb-6">
+          <li class="text-[var(--color-text-muted)]">• Web Components</li>
+          <li class="text-[var(--color-text-muted)]">• Mobile Components</li>
+          <li class="text-[var(--color-text-muted)]">• Desktop Components</li>
+        </ul>
+        <a href="/navigation/by-channel/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse by Channel
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- By Type -->
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          By Type
+        </h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Explore components categorized by their functional types and purposes.</p>
+        <ul class="space-y-1 mb-6">
+          <li class="text-[var(--color-text-muted)]">• Input Components</li>
+          <li class="text-[var(--color-text-muted)]">• Layout Components</li>
+          <li class="text-[var(--color-text-muted)]">• Navigation Components</li>
+          <li class="text-[var(--color-text-muted)]">• Feedback Components</li>
+        </ul>
+        <a href="/navigation/by-type/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse by Type
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      
+      <!-- By Owner -->
+      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
+        <h3 class="text-xl font-bold mb-3 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          By Owner
+        </h3>
+        <p class="text-[var(--color-text-muted)] mb-4">Find components based on the teams responsible for their development and maintenance.</p>
+        <ul class="space-y-1 mb-6">
+          <li class="text-[var(--color-text-muted)]">• UI Core Team</li>
+          <li class="text-[var(--color-text-muted)]">• Frontend Platform Team</li>
+          <li class="text-[var(--color-text-muted)]">• Mobile Experience Team</li>
+          <li class="text-[var(--color-text-muted)]">• Design Systems Team</li>
+        </ul>
+        <a href="/navigation/by-owner/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
+          Browse by Owner
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <div class="mt-10 text-center" data-motion="fade-in-up">
+      <a href="/navigation/" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+        View Navigation Hub
+      </a>
+    </div>
+  </section>
+  
+  <!-- Featured Components with scale-in animation -->
+  <section class="mb-20">
+    <h2 class="text-3xl font-bold mb-10 text-center" data-motion="fade-in">Featured Components</h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion="stagger-children">
+      
+      <a href="/components/layout/accordion/" class="block group">
+        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Accordion</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">Expandable content sections that help organize and declutter interfaces.</p>
+          <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
+            View Component
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      
+      <a href="/components/inputs/button/" class="block group">
+        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Buttons</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">Primary, secondary, and tertiary button styles with various states and sizes.</p>
+          <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
+            View Component
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </a>
+      
+      <a href="/components/layout/card/" class="block group">
+        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
+          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Card</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">Versatile container for displaying related content and actions.</p>
+          <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
+            View Component
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
       </a>
       
     </div>
   </section>
-
-  <!-- Main content section -->
-  <section class="eds-content">
-    <div class="container mx-auto px-4 py-8 md:py-12">
-      <div class="eds-content__inner">
-        <h2 id="welcome-to-the-enterprise-design-system" tabindex="-1">Welcome to the Enterprise Design System <a class="anchor" href="#welcome-to-the-enterprise-design-system" aria-hidden="true">#</a></h2>
+  
+  <!-- Quick Search with slide-in animation -->
+  <section class="mb-20" data-motion="scale-in">
+    <div class="bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-lg p-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-4">Quick Search</h2>
+        <p class="text-[var(--color-text-muted)] mb-6">Looking for something specific? Search our documentation.</p>
+        
+        <form action="/search/" method="get" role="search" class="relative max-w-2xl mx-auto">
+          <input type="search" name="q" placeholder="Search documentation..." class="w-full py-3 pl-12 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-lg">
+          <div class="absolute left-4 top-3.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <section class="prose max-w-none" data-motion="fade-in">
+    <h2 id="welcome-to-the-enterprise-design-system" tabindex="-1">Welcome to the Enterprise Design System <a class="anchor" href="#welcome-to-the-enterprise-design-system" aria-hidden="true">#</a></h2>
 <p>The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products.</p>
 <h3 id="recent-updates" tabindex="-1">Recent Updates <a class="anchor" href="#recent-updates" aria-hidden="true">#</a></h3>
 <ul>
@@ -209,93 +416,8 @@
 </ol>
 <p>Visit our <a href="/getting-started/">getting started guide</a> to learn how to integrate the design system into your projects.</p>
 
-      </div>
-    </div>
   </section>
-
-  <!-- Categories section -->
-  
-  <section class="eds-categories bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4 py-16">
-      <h2 class="text-3xl font-bold mb-12 text-center">Explore our documentation</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <a href="/components/" class="eds-category-card">
-          <div class="eds-category-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
-          </div>
-          <h3 class="eds-category-card__title">Components</h3>
-          <p class="eds-category-card__description">Explore our library of reusable components that follow our design guidelines and best practices.</p>
-        </a>
-        
-        <a href="/design-system/foundations/" class="eds-category-card">
-          <div class="eds-category-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-          </div>
-          <h3 class="eds-category-card__title">Foundations</h3>
-          <p class="eds-category-card__description">Learn about the core design elements like colors, typography, spacing, and layout principles.</p>
-        </a>
-        
-        <a href="/design-system/guidelines/" class="eds-category-card">
-          <div class="eds-category-card__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-          </div>
-          <h3 class="eds-category-card__title">Guidelines</h3>
-          <p class="eds-category-card__description">Discover our guidelines for creating accessible, consistent, and user-friendly experiences.</p>
-        </a>
-        
-      </div>
-    </div>
-  </section>
-  
-
-  <!-- Featured components section -->
-  
-  <section class="eds-featured">
-    <div class="container mx-auto px-4 py-16">
-      <h2 class="text-3xl font-bold mb-12 text-center">Featured Components</h2>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        
-        <a href="/components/layout/accordion/" class="eds-component-card">
-          <h3 class="eds-component-card__title">Accordion</h3>
-          <p class="eds-component-card__description">Expandable content sections that help organize and declutter interfaces.</p>
-        </a>
-        
-        <a href="/components/inputs/button/" class="eds-component-card">
-          <h3 class="eds-component-card__title">Buttons</h3>
-          <p class="eds-component-card__description">Primary, secondary, and tertiary button styles with various states and sizes.</p>
-        </a>
-        
-        <a href="/components/layout/card/" class="eds-component-card">
-          <h3 class="eds-component-card__title">Card</h3>
-          <p class="eds-component-card__description">Versatile container for displaying related content and actions.</p>
-        </a>
-        
-      </div>
-    </div>
-  </section>
-  
 </div>
-
-<script src="/assets/js/framer-motion-wrapper.js"></script>
-<script>
-  // Initialize animations when the page loads
-  document.addEventListener('DOMContentLoaded', () => {
-    // Apply Framer Motion-like animations
-    const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up, .animate-slide-up-delay, .animate-fade-in-delay');
-    
-    animateElements.forEach(element => {
-      element.style.opacity = '1';
-      
-      if (element.classList.contains('animate-slide-up') || 
-          element.classList.contains('animate-slide-up-delay')) {
-        element.style.transform = 'translateY(0)';
-      }
-    });
-  });
-</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">

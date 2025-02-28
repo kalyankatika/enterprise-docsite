@@ -1,95 +1,130 @@
-<div class="eds-left-nav" x-data="{ openSection: null }">
-  <div class="eds-left-nav__header">
-    <h2 class="eds-left-nav__title">{{ navTitle | default('Documentation') }}</h2>
-  </div>
-  
-  <nav class="eds-left-nav__menu">
-    <ul class="eds-left-nav__list">
-      <!-- Main Sections -->
-      <li class="eds-left-nav__section" 
-          x-data="{ open: $persist(openSection === 'components').as('components-open') || {{ 'true' if page.url.includes('/components') else 'false' }} }"
-          @click.away="open = (openSection === 'components')">
-        <button class="eds-left-nav__section-toggle" @click="open = !open; openSection = open ? 'components' : null">
-          <span>Components</span>
-          <svg class="eds-left-nav__icon" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <ul class="eds-left-nav__submenu" x-show="open" x-transition>
-          <li class="eds-left-nav__item"><a href="/components/layout/" class="{{ 'active' if page.url.includes('/components/layout') }}">Layout Components</a></li>
-          <li class="eds-left-nav__item"><a href="/components/navigation/" class="{{ 'active' if page.url.includes('/components/navigation') }}">Navigation Components</a></li>
-          <li class="eds-left-nav__item"><a href="/components/feedback/" class="{{ 'active' if page.url.includes('/components/feedback') }}">Feedback Components</a></li>
-          <li class="eds-left-nav__item"><a href="/components/inputs/" class="{{ 'active' if page.url.includes('/components/inputs') }}">Input Components</a></li>
-        </ul>
-      </li>
-      
-      <li class="eds-left-nav__section" 
-          x-data="{ open: $persist(openSection === 'design').as('design-open') || {{ 'true' if page.url.includes('/design-system') else 'false' }} }"
-          @click.away="open = (openSection === 'design')">
-        <button class="eds-left-nav__section-toggle" @click="open = !open; openSection = open ? 'design' : null">
-          <span>Design System</span>
-          <svg class="eds-left-nav__icon" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <ul class="eds-left-nav__submenu" x-show="open" x-transition>
-          <li class="eds-left-nav__item"><a href="/design-system/foundations/" class="{{ 'active' if page.url.includes('/design-system/foundations') }}">Foundations</a></li>
-          <li class="eds-left-nav__item"><a href="/design-system/guidelines/" class="{{ 'active' if page.url.includes('/design-system/guidelines') }}">Guidelines</a></li>
-          <li class="eds-left-nav__item"><a href="/design-system/tokens/" class="{{ 'active' if page.url.includes('/design-system/tokens') }}">Design Tokens</a></li>
-        </ul>
-      </li>
-      
-      <li class="eds-left-nav__section" 
-          x-data="{ open: $persist(openSection === 'resources').as('resources-open') || {{ 'true' if page.url.includes('/resources') else 'false' }} }"
-          @click.away="open = (openSection === 'resources')">
-        <button class="eds-left-nav__section-toggle" @click="open = !open; openSection = open ? 'resources' : null">
-          <span>Resources</span>
-          <svg class="eds-left-nav__icon" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <ul class="eds-left-nav__submenu" x-show="open" x-transition>
-          <li class="eds-left-nav__item"><a href="/resources/migration-tools/" class="{{ 'active' if page.url.includes('/resources/migration-tools') }}">Migration Tools</a></li>
-          <li class="eds-left-nav__item"><a href="/resources/legacy-site-imports/" class="{{ 'active' if page.url.includes('/resources/legacy-site-imports') }}">Legacy Site Imports</a></li>
-          <li class="eds-left-nav__item"><a href="/resources/templates/" class="{{ 'active' if page.url.includes('/resources/templates') }}">Templates</a></li>
-        </ul>
-      </li>
-      
-      <li class="eds-left-nav__section" 
-          x-data="{ open: $persist(openSection === 'navigation').as('navigation-open') || {{ 'true' if page.url.includes('/navigation') else 'false' }} }"
-          @click.away="open = (openSection === 'navigation')">
-        <button class="eds-left-nav__section-toggle" @click="open = !open; openSection = open ? 'navigation' : null">
-          <span>Navigation</span>
-          <svg class="eds-left-nav__icon" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <ul class="eds-left-nav__submenu" x-show="open" x-transition>
-          <li class="eds-left-nav__item"><a href="/navigation/by-type/" class="{{ 'active' if page.url.includes('/navigation/by-type') }}">By Type</a></li>
-          <li class="eds-left-nav__item"><a href="/navigation/by-channel/" class="{{ 'active' if page.url.includes('/navigation/by-channel') }}">By Channel</a></li>
-          <li class="eds-left-nav__item"><a href="/navigation/by-owner/" class="{{ 'active' if page.url.includes('/navigation/by-owner') }}">By Owner</a></li>
-        </ul>
-      </li>
-      
-      <!-- Direct links -->
-      <li class="eds-left-nav__item">
-        <a href="/getting-started/" class="{{ 'active' if page.url == '/getting-started/' }}">Getting Started</a>
-      </li>
-      <li class="eds-left-nav__item">
-        <a href="/support/" class="{{ 'active' if page.url == '/support/' }}">Support</a>
-      </li>
-    </ul>
-  </nav>
-  
-  <!-- Version selector -->
-  <div class="eds-left-nav__footer">
-    <div class="eds-left-nav__version-selector">
-      <label for="version-select" class="eds-left-nav__version-label">Version</label>
-      <select id="version-select" class="eds-left-nav__version-select">
-        <option value="2.0" selected>2.0 (current)</option>
-        <option value="1.5">1.5</option>
-        <option value="1.0">1.0</option>
-      </select>
+{% set currentUrl = page.url %}
+
+<nav class="left-navigation">
+  <div class="space-y-6">
+    {# Main navigation categories #}
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/components/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            All Components
+          </a>
+        </li>
+        <li>
+          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-tokens/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Design Tokens
+          </a>
+        </li>
+        <li>
+          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/patterns/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Patterns
+          </a>
+        </li>
+        <li>
+          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/guidelines/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Guidelines
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    {# Components by Category #}
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') and currentUrl != '/components/layout/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Layout
+          </a>
+          {% if currentUrl.includes('/components/layout/') or currentUrl == '/components/layout/' %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            {% for component in collections.layoutComponents %}
+              <li>
+                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        <li>
+          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') and currentUrl != '/components/navigation/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Navigation
+          </a>
+          {% if currentUrl.includes('/components/navigation/') or currentUrl == '/components/navigation/' %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            {% for component in collections.navigationComponents %}
+              <li>
+                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        <li>
+          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') and currentUrl != '/components/feedback/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Feedback
+          </a>
+          {% if currentUrl.includes('/components/feedback/') or currentUrl == '/components/feedback/' %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            {% for component in collections.feedbackComponents %}
+              <li>
+                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        <li>
+          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') and currentUrl != '/components/inputs/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Inputs
+          </a>
+          {% if currentUrl.includes('/components/inputs/') or currentUrl == '/components/inputs/' %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            {% for component in collections.inputComponents %}
+              <li>
+                <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
+                  {{ component.data.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+    
+    {# Resources #}
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/colors/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Colors
+          </a>
+        </li>
+        <li>
+          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/typography/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Typography
+          </a>
+        </li>
+        <li>
+          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/spacing/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Spacing
+          </a>
+        </li>
+        <li>
+          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/resources/migration-tools/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Migration Tools
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
-</div>
+</nav>

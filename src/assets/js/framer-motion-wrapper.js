@@ -1,146 +1,124 @@
 /**
- * Framer Motion Wrapper for EDS Documentation
- * 
- * This file provides a simple implementation of Framer Motion-like animations
- * using CSS and vanilla JavaScript for the Enterprise Documentation System.
+ * Framer Motion Wrapper for 11ty
+ * This file provides a simplified API for using Framer Motion animations in our templates
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Only initialize if not already initialized
-  if (window.edsFramerMotion) return;
-  
-  // Animation helper class
-  const AnimationHelper = {
-    init() {
-      // Find all elements with animation classes
-      const animationElements = document.querySelectorAll([
-        '.animate-fade-in',
-        '.animate-slide-up',
-        '.animate-slide-up-delay',
-        '.animate-fade-in-delay',
-        '.animate-scale',
-        '.animate-rotate',
-        '.stagger-container > *'
-      ].join(','));
-      
-      // Set up intersection observer for animations
-      this.setupIntersectionObserver(animationElements);
-      
-      // Initialize staggered containers
-      this.initStaggeredContainers();
-      
-      // Add event listeners for tab animations
-      this.initTabAnimations();
-      
-      // Initialize any animations that are already on screen
-      this.initializeVisibleAnimations();
-    },
-    
-    setupIntersectionObserver(elements) {
-      const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Add .visible class to trigger animations
-            entry.target.classList.add('visible');
-            
-            // If element is in a staggered container, handle parent
-            if (entry.target.parentElement?.classList.contains('stagger-container')) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-            }
-            
-            // Stop observing after animation is triggered
-            observer.unobserve(entry.target);
-          }
-        });
-      }, options);
-      
-      // Observe all animation elements
-      elements.forEach(el => {
-        observer.observe(el);
-      });
-    },
-    
-    initStaggeredContainers() {
-      const staggerContainers = document.querySelectorAll('.stagger-container');
-      
-      staggerContainers.forEach(container => {
-        // Set initial state
-        Array.from(container.children).forEach((child, index) => {
-          child.style.opacity = '0';
-          child.style.transform = 'translateY(10px)';
-        });
-        
-        // Create observer for the container
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              // Animate children with staggered delay
-              Array.from(container.children).forEach((child, index) => {
-                setTimeout(() => {
-                  child.style.opacity = '1';
-                  child.style.transform = 'translateY(0)';
-                }, 100 * index);
-              });
-              
-              // Stop observing
-              observer.unobserve(container);
-            }
-          });
-        }, { threshold: 0.1 });
-        
-        observer.observe(container);
-      });
-    },
-    
-    initTabAnimations() {
-      const tabButtons = document.querySelectorAll('.eds-tabs__tab');
-      const tabContents = document.querySelectorAll('.eds-tabs__content');
-      
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const targetId = button.getAttribute('data-target');
-          
-          // Remove active class from all tabs and content
-          tabButtons.forEach(tab => tab.classList.remove('active'));
-          tabContents.forEach(content => content.classList.remove('active'));
-          
-          // Add active class to clicked tab and its content
-          button.classList.add('active');
-          
-          if (targetId) {
-            const targetContent = document.getElementById(targetId);
-            if (targetContent) {
-              targetContent.classList.add('active');
-            }
-          }
-        });
-      });
-    },
-    
-    initializeVisibleAnimations() {
-      // Initialize any animations that are already on screen
-      document.querySelectorAll('.animate-fade-in, .animate-slide-up, .animate-slide-up-delay, .animate-fade-in-delay')
-        .forEach(element => {
-          element.style.opacity = '1';
-          
-          if (element.classList.contains('animate-slide-up') || 
-              element.classList.contains('animate-slide-up-delay')) {
-            element.style.transform = 'translateY(0)';
-          }
-        });
+// We're using the pre-installed framer-motion library in the project
+document.addEventListener('DOMContentLoaded', function() {
+  // Define animation variants
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeInOut" }
+    }
+  };
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
   
-  // Initialize animations
-  AnimationHelper.init();
-  
-  // Make globally available
-  window.edsFramerMotion = AnimationHelper;
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 30 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
+  // Apply animations to elements with specific data attributes
+  const animateElements = () => {
+    // For fade in animations
+    document.querySelectorAll('[data-motion="fade-in"]').forEach(element => {
+      if (!element.classList.contains('animated')) {
+        if (isInViewport(element)) {
+          element.classList.add('motion-fade-in', 'animated');
+        }
+      }
+    });
+
+    // For fade in up animations
+    document.querySelectorAll('[data-motion="fade-in-up"]').forEach(element => {
+      if (!element.classList.contains('animated')) {
+        if (isInViewport(element)) {
+          element.classList.add('motion-fade-in-up', 'animated');
+        }
+      }
+    });
+
+    // For stagger children animations
+    document.querySelectorAll('[data-motion="stagger-children"]').forEach(parentElement => {
+      if (!parentElement.classList.contains('animated')) {
+        if (isInViewport(parentElement)) {
+          parentElement.classList.add('motion-stagger', 'animated');
+          
+          // Add animation to children
+          Array.from(parentElement.children).forEach((child, index) => {
+            child.style.transitionDelay = `${index * 0.1}s`;
+            child.classList.add('motion-fade-in-up');
+          });
+        }
+      }
+    });
+
+    // For scale in animations
+    document.querySelectorAll('[data-motion="scale-in"]').forEach(element => {
+      if (!element.classList.contains('animated')) {
+        if (isInViewport(element)) {
+          element.classList.add('motion-scale-in', 'animated');
+        }
+      }
+    });
+
+    // For slide in right animations
+    document.querySelectorAll('[data-motion="slide-in-right"]').forEach(element => {
+      if (!element.classList.contains('animated')) {
+        if (isInViewport(element)) {
+          element.classList.add('motion-slide-in-right', 'animated');
+        }
+      }
+    });
+  };
+
+  // Helper function to check if element is in viewport
+  const isInViewport = (element) => {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom >= 0 &&
+      rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+      rect.right >= 0
+    );
+  };
+
+  // Run animation check on load
+  animateElements();
+
+  // Run animation check on scroll
+  window.addEventListener('scroll', animateElements);
 });
