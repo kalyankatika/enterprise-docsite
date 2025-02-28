@@ -1,152 +1,22 @@
 /**
- * Animation Styles for Enterprise Design System
- * 
- * This file contains styles and animations that enhance
- * the user experience with subtle motion.
+ * Animation styles for the EDS
+ * Provides CSS transitions to simulate Framer Motion animations
  */
 
-/* Base animation variables */
-:root {
-  --animation-duration-fast: 0.2s;
-  --animation-duration-base: 0.3s;
-  --animation-duration-slow: 0.5s;
-  --animation-easing: cubic-bezier(0.25, 0.1, 0.25, 1.0);
-  --animation-stagger-delay: 0.05s;
-}
-
-/* Standard transitions */
-.animated-transition {
-  transition: all var(--animation-duration-base) var(--animation-easing);
-}
-
-/* Button animations */
-.animated-button {
-  position: relative;
-  overflow: hidden;
-  transition: all var(--animation-duration-fast) var(--animation-easing);
-}
-
-.animated-button::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 5px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.4);
+/* Base styles for animations */
+[data-motion] {
   opacity: 0;
-  border-radius: 100%;
-  transform: scale(1, 1) translate(-50%, -50%);
-  transform-origin: 50% 50%;
 }
 
-.animated-button:focus:not(:active)::after {
-  animation: ripple 0.8s ease-out;
-}
-
-@keyframes ripple {
-  0% {
-    transform: scale(0, 0);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(30, 30);
-    opacity: 0;
-  }
-}
-
-/* Card animations */
-.animated-card {
-  transition: transform var(--animation-duration-base) var(--animation-easing),
-              box-shadow var(--animation-duration-base) var(--animation-easing),
-              border-color var(--animation-duration-base) var(--animation-easing);
-}
-
-.animated-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.12);
-}
-
-/* Page transitions (for Framer Motion) */
-.page-transition-enter {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.page-transition-enter-active {
+[data-motion].animated {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity var(--animation-duration-base) var(--animation-easing),
-              transform var(--animation-duration-base) var(--animation-easing);
 }
 
-.page-transition-exit {
-  opacity: 1;
-  transform: translateY(0);
+/* Fade in animation */
+.motion-fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
 }
 
-.page-transition-exit-active {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity var(--animation-duration-base) var(--animation-easing),
-              transform var(--animation-duration-base) var(--animation-easing);
-}
-
-/* Layout Animations (for Framer Motion) */
-[data-motion="fade-in"] {
-  opacity: 0;
-  animation: fadeIn var(--animation-duration-base) var(--animation-easing) forwards;
-}
-
-[data-motion="slide-up"] {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp var(--animation-duration-base) var(--animation-easing) forwards;
-}
-
-[data-motion="slide-down"] {
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: slideDown var(--animation-duration-base) var(--animation-easing) forwards;
-}
-
-[data-motion="slide-left"] {
-  opacity: 0;
-  transform: translateX(20px);
-  animation: slideLeft var(--animation-duration-base) var(--animation-easing) forwards;
-}
-
-[data-motion="slide-right"] {
-  opacity: 0;
-  transform: translateX(-20px);
-  animation: slideRight var(--animation-duration-base) var(--animation-easing) forwards;
-}
-
-[data-motion="zoom-in"] {
-  opacity: 0;
-  transform: scale(0.95);
-  animation: zoomIn var(--animation-duration-base) var(--animation-easing) forwards;
-}
-
-[data-motion="stagger-children"] > * {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeIn var(--animation-duration-base) var(--animation-easing) forwards;
-}
-
-/* Generate staggered animations for children */
-[data-motion="stagger-children"] > *:nth-child(1) { animation-delay: calc(var(--animation-stagger-delay) * 1); }
-[data-motion="stagger-children"] > *:nth-child(2) { animation-delay: calc(var(--animation-stagger-delay) * 2); }
-[data-motion="stagger-children"] > *:nth-child(3) { animation-delay: calc(var(--animation-stagger-delay) * 3); }
-[data-motion="stagger-children"] > *:nth-child(4) { animation-delay: calc(var(--animation-stagger-delay) * 4); }
-[data-motion="stagger-children"] > *:nth-child(5) { animation-delay: calc(var(--animation-stagger-delay) * 5); }
-[data-motion="stagger-children"] > *:nth-child(6) { animation-delay: calc(var(--animation-stagger-delay) * 6); }
-[data-motion="stagger-children"] > *:nth-child(7) { animation-delay: calc(var(--animation-stagger-delay) * 7); }
-[data-motion="stagger-children"] > *:nth-child(8) { animation-delay: calc(var(--animation-stagger-delay) * 8); }
-[data-motion="stagger-children"] > *:nth-child(9) { animation-delay: calc(var(--animation-stagger-delay) * 9); }
-[data-motion="stagger-children"] > *:nth-child(10) { animation-delay: calc(var(--animation-stagger-delay) * 10); }
-
-/* Animation keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -156,7 +26,12 @@
   }
 }
 
-@keyframes slideUp {
+/* Fade in up animation */
+.motion-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -167,43 +42,15 @@
   }
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Scale in animation */
+.motion-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
 }
 
-@keyframes slideLeft {
+@keyframes scaleIn {
   from {
     opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
@@ -211,49 +58,111 @@
   }
 }
 
-/* Reduce motion preferences */
-@media (prefers-reduced-motion) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+/* Slide in right animation */
+.motion-slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
   }
-  
-  .animated-button:focus:not(:active)::after {
-    animation: none;
-  }
-  
-  .animated-card:hover {
-    transform: none;
-    box-shadow: none;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-/* Special animations for home page */
-.home-hero-title {
-  animation: fadeIn var(--animation-duration-base) var(--animation-easing) forwards,
-             slideUp var(--animation-duration-base) var(--animation-easing) forwards;
+/* Stagger container */
+.motion-stagger {
+  opacity: 1;
 }
 
-.home-hero-description {
+.motion-stagger > * {
   opacity: 0;
-  animation: fadeIn var(--animation-duration-base) var(--animation-easing) forwards,
-             slideUp var(--animation-duration-base) var(--animation-easing) forwards;
-  animation-delay: 0.1s;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
 }
 
-.home-hero-cta {
-  opacity: 0;
-  animation: fadeIn var(--animation-duration-base) var(--animation-easing) forwards,
-             slideUp var(--animation-duration-base) var(--animation-easing) forwards;
-  animation-delay: 0.2s;
+.motion-stagger.animated > * {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.home-feature-section {
+/* Hero section specific animations */
+.hero-title {
+  transform: translateY(-10px);
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease-out;
+}
+
+.hero-title.animated {
+  transform: translateY(0);
+}
+
+.hero-image {
+  transform: scale(0.95);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s ease-out;
+}
+
+.hero-image.animated {
+  transform: scale(1);
+}
+
+/* Card hover animations */
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Icon animations */
+.animated-icon {
+  transition: transform 0.3s ease;
+}
+
+.animated-card:hover .animated-icon {
+  transform: translateX(5px);
+}
+
+/* Button animations */
+.animated-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
   opacity: 0;
-  animation: fadeIn var(--animation-duration-slow) var(--animation-easing) forwards;
-  animation-delay: 0.3s;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.animated-button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
 }

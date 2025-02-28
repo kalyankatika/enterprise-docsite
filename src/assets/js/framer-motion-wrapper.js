@@ -1,170 +1,124 @@
 /**
- * Framer Motion Wrapper for EDS Documentation
- * 
- * A lightweight wrapper that initializes simple animations using data attributes
- * This provides graceful degradation when JS is disabled while enhancing the 
- * user experience when JS is available.
+ * Framer Motion Wrapper for 11ty
+ * This file provides a simplified API for using Framer Motion animations in our templates
  */
 
-(function() {
-  // Animation options with default settings
-  const defaultOptions = {
-    duration: 0.3,
-    ease: [0.25, 0.1, 0.25, 1.0],
-    staggerChildren: 0.05,
-    delayChildren: 0.1
+// We're using the pre-installed framer-motion library in the project
+document.addEventListener('DOMContentLoaded', function() {
+  // Define animation variants
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeInOut" }
+    }
   };
 
-  // Initialize animations when DOM is loaded
-  document.addEventListener('DOMContentLoaded', function() {
-    initializeAnimations();
-    handleThemeToggle();
-  });
-
-  // Main animation initialization function
-  function initializeAnimations() {
-    // Find all elements with data-motion attribute
-    const animatedElements = document.querySelectorAll('[data-motion]');
-    
-    if (animatedElements.length === 0) return;
-    
-    // Set up observer to trigger animations when elements enter viewport
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const element = entry.target;
-          const animationType = element.getAttribute('data-motion');
-          
-          // Apply appropriate animation based on data-motion value
-          switch (animationType) {
-            case 'fade-in':
-              fadeIn(element);
-              break;
-            case 'slide-up':
-              slideUp(element);
-              break;
-            case 'slide-down':
-              slideDown(element);
-              break;
-            case 'slide-left':
-              slideLeft(element);
-              break;
-            case 'slide-right':
-              slideRight(element);
-              break;
-            case 'zoom-in':
-              zoomIn(element);
-              break;
-            case 'stagger-children':
-              staggerChildren(element);
-              break;
-            default:
-              // Default to fade in if no recognized animation type
-              fadeIn(element);
-          }
-          
-          // Unobserve after animating
-          observer.unobserve(element);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -10% 0px'
-    });
-    
-    // Start observing all animated elements
-    animatedElements.forEach(element => {
-      observer.observe(element);
-    });
-  }
-  
-  // Animation implementations
-  function fadeIn(element) {
-    element.style.opacity = 1;
-    element.style.transition = `opacity ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}`;
-  }
-  
-  function slideUp(element) {
-    element.style.opacity = 1;
-    element.style.transform = 'translateY(0)';
-    element.style.transition = `opacity ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}, 
-                               transform ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}`;
-  }
-  
-  function slideDown(element) {
-    element.style.opacity = 1;
-    element.style.transform = 'translateY(0)';
-    element.style.transition = `opacity ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}, 
-                               transform ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}`;
-  }
-  
-  function slideLeft(element) {
-    element.style.opacity = 1;
-    element.style.transform = 'translateX(0)';
-    element.style.transition = `opacity ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}, 
-                               transform ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}`;
-  }
-  
-  function slideRight(element) {
-    element.style.opacity = 1;
-    element.style.transform = 'translateX(0)';
-    element.style.transition = `opacity ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}, 
-                               transform ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}`;
-  }
-  
-  function zoomIn(element) {
-    element.style.opacity = 1;
-    element.style.transform = 'scale(1)';
-    element.style.transition = `opacity ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}, 
-                               transform ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}`;
-  }
-  
-  function staggerChildren(element) {
-    const children = Array.from(element.children);
-    children.forEach((child, index) => {
-      child.style.opacity = 0;
-      child.style.transform = 'translateY(10px)';
-      
-      setTimeout(() => {
-        child.style.opacity = 1;
-        child.style.transform = 'translateY(0)';
-        child.style.transition = `opacity ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}, 
-                                 transform ${defaultOptions.duration}s ${cssEasing(defaultOptions.ease)}`;
-      }, index * (defaultOptions.staggerChildren * 1000));
-    });
-  }
-  
-  // Helper to convert Framer Motion easing array to CSS cubic-bezier
-  function cssEasing(ease) {
-    if (Array.isArray(ease) && ease.length === 4) {
-      return `cubic-bezier(${ease[0]}, ${ease[1]}, ${ease[2]}, ${ease[3]})`;
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
     }
-    return 'ease';
-  }
+  };
   
-  // Handle theme toggle
-  function handleThemeToggle() {
-    const themeToggle = document.getElementById('themeToggle');
-    if (!themeToggle) return;
-    
-    themeToggle.addEventListener('click', () => {
-      const root = document.documentElement;
-      const currentTheme = root.getAttribute('data-theme') || 'light';
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      // Add transition class for smooth theme change
-      root.classList.add('theme-transition');
-      
-      // Set the new theme
-      root.setAttribute('data-theme', newTheme);
-      
-      // Store preference in localStorage
-      localStorage.setItem('theme', newTheme);
-      
-      // Remove transition class after animation completes
-      setTimeout(() => {
-        root.classList.remove('theme-transition');
-      }, 300);
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const scaleIn = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 30 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
+  // Apply animations to elements with specific data attributes
+  const animateElements = () => {
+    // For fade in animations
+    document.querySelectorAll('[data-motion="fade-in"]').forEach(element => {
+      if (!element.classList.contains('animated')) {
+        if (isInViewport(element)) {
+          element.classList.add('motion-fade-in', 'animated');
+        }
+      }
     });
-  }
-})();
+
+    // For fade in up animations
+    document.querySelectorAll('[data-motion="fade-in-up"]').forEach(element => {
+      if (!element.classList.contains('animated')) {
+        if (isInViewport(element)) {
+          element.classList.add('motion-fade-in-up', 'animated');
+        }
+      }
+    });
+
+    // For stagger children animations
+    document.querySelectorAll('[data-motion="stagger-children"]').forEach(parentElement => {
+      if (!parentElement.classList.contains('animated')) {
+        if (isInViewport(parentElement)) {
+          parentElement.classList.add('motion-stagger', 'animated');
+          
+          // Add animation to children
+          Array.from(parentElement.children).forEach((child, index) => {
+            child.style.transitionDelay = `${index * 0.1}s`;
+            child.classList.add('motion-fade-in-up');
+          });
+        }
+      }
+    });
+
+    // For scale in animations
+    document.querySelectorAll('[data-motion="scale-in"]').forEach(element => {
+      if (!element.classList.contains('animated')) {
+        if (isInViewport(element)) {
+          element.classList.add('motion-scale-in', 'animated');
+        }
+      }
+    });
+
+    // For slide in right animations
+    document.querySelectorAll('[data-motion="slide-in-right"]').forEach(element => {
+      if (!element.classList.contains('animated')) {
+        if (isInViewport(element)) {
+          element.classList.add('motion-slide-in-right', 'animated');
+        }
+      }
+    });
+  };
+
+  // Helper function to check if element is in viewport
+  const isInViewport = (element) => {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom >= 0 &&
+      rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
+      rect.right >= 0
+    );
+  };
+
+  // Run animation check on load
+  animateElements();
+
+  // Run animation check on scroll
+  window.addEventListener('scroll', animateElements);
+});
