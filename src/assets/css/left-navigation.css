@@ -1,99 +1,90 @@
-.left-navigation {
-  font-size: 0.95rem;
-  line-height: 1.5;
+/* Left Navigation Styles */
+.eds-left-nav {
+  @apply w-full h-full flex flex-col bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800;
+  max-width: 300px;
 }
 
-.left-navigation a {
-  color: var(--color-text);
-  text-decoration: none;
-  display: block;
-  border-radius: 0.25rem;
-  transition: all 0.2s ease;
+.eds-left-nav__header {
+  @apply px-4 py-5 border-b border-gray-200 dark:border-gray-800;
 }
 
-.left-navigation a:hover {
-  color: var(--color-primary);
-  background-color: var(--color-bg-alt);
-  padding-left: 0.5rem;
-  margin-left: -0.5rem;
+.eds-left-nav__title {
+  @apply text-lg font-semibold text-gray-900 dark:text-white;
 }
 
-.left-navigation a.active {
-  color: var(--color-primary);
-  font-weight: 500;
+.eds-left-nav__menu {
+  @apply flex-1 overflow-y-auto py-4;
 }
 
-.left-navigation ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.eds-left-nav__list {
+  @apply space-y-2 px-3;
 }
 
-/* Expandable sections */
-.left-navigation details {
-  margin-bottom: 0.5rem;
+.eds-left-nav__section {
+  @apply mb-2;
 }
 
-.left-navigation summary {
-  cursor: pointer;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
+.eds-left-nav__section-toggle {
+  @apply flex items-center justify-between w-full px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-all duration-200;
 }
 
-.left-navigation summary::-webkit-details-marker {
-  display: none;
+.eds-left-nav__icon {
+  @apply h-5 w-5 transition-transform duration-200;
 }
 
-.left-navigation summary::before {
-  content: "›";
-  display: inline-block;
-  margin-right: 0.5rem;
-  transition: transform 0.2s ease;
-  width: 1rem;
-  text-align: center;
+.eds-left-nav__submenu {
+  @apply pl-4 mt-1 space-y-1;
 }
 
-.left-navigation details[open] summary::before {
-  transform: rotate(90deg);
+.eds-left-nav__item {
+  @apply block;
 }
 
-.left-navigation details ul {
-  padding-left: 1rem;
-  margin-top: 0.25rem;
+.eds-left-nav__item a {
+  @apply block px-3 py-2 text-sm rounded-md text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200;
 }
 
-/* Category styling */
-.left-navigation h3 {
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+.eds-left-nav__item a.active {
+  @apply bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 font-medium;
 }
 
-/* Child list with border */
-.left-navigation .border-l {
-  border-color: var(--color-border);
+.eds-left-nav__footer {
+  @apply p-4 border-t border-gray-200 dark:border-gray-800;
 }
 
-/* Mobile adjustments */
-@media (max-width: 1024px) {
-  .left-navigation {
-    display: none;
+.eds-left-nav__version-selector {
+  @apply flex flex-col space-y-1;
+}
+
+.eds-left-nav__version-label {
+  @apply text-xs text-gray-600 dark:text-gray-400;
+}
+
+.eds-left-nav__version-select {
+  @apply block w-full px-3 py-2 text-sm bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400;
+}
+
+/* For mobile navigation toggle */
+.eds-mobile-nav-toggle {
+  @apply md:hidden fixed bottom-4 right-4 z-50 p-3 bg-indigo-600 dark:bg-indigo-500 text-white rounded-full shadow-lg;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .eds-left-nav {
+    @apply fixed top-0 left-0 z-40 transform -translate-x-full transition-transform duration-300;
+    height: 100vh;
   }
-}
-
-/* Component cards in navigation */
-.left-navigation .component-card {
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid var(--color-border);
-  margin-bottom: 0.5rem;
-  transition: all 0.2s ease;
-}
-
-.left-navigation .component-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  
+  .eds-left-nav.open {
+    @apply translate-x-0;
+  }
+  
+  .eds-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-30 hidden;
+  }
+  
+  .eds-overlay.active {
+    @apply block;
+  }
 }

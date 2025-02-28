@@ -1,0 +1,90 @@
+---
+layout: layouts/base.njk
+---
+
+<div class="eds-layout-with-nav">
+  <!-- Left Navigation -->
+  <aside class="eds-layout-with-nav__sidebar">
+    {% include "partials/left-navigation.njk" %}
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="eds-layout-with-nav__main">
+    <div class="eds-layout-with-nav__content">
+      <!-- Breadcrumbs (if available) -->
+      {% if breadcrumbs %}
+      <nav class="eds-breadcrumbs mb-6" aria-label="Breadcrumbs">
+        <ol class="flex flex-wrap items-center space-x-2 text-sm">
+          <li>
+            <a href="/" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+          </li>
+          {% for item in breadcrumbs %}
+            <li>
+              <span class="text-gray-400 mx-1">/</span>
+              {% if item.url %}
+                <a href="{{ item.url }}" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400">{{ item.title }}</a>
+              {% else %}
+                <span class="text-gray-900 dark:text-white font-medium">{{ item.title }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ol>
+      </nav>
+      {% endif %}
+      
+      <!-- Page Header -->
+      <header class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold mb-3">{{ title }}</h1>
+        {% if description %}
+          <p class="text-gray-600 dark:text-gray-300 text-lg">{{ description }}</p>
+        {% endif %}
+      </header>
+      
+      <!-- Page Content -->
+      <div class="eds-content prose dark:prose-invert max-w-none prose-indigo">
+        {{ content | safe }}
+      </div>
+    </div>
+  </main>
+</div>
+
+<style>
+  .eds-layout-with-nav {
+    display: flex;
+    min-height: calc(100vh - 64px); /* Account for header */
+  }
+  
+  .eds-layout-with-nav__sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--color-border);
+  }
+  
+  .eds-layout-with-nav__main {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
+  .eds-layout-with-nav__content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .eds-layout-with-nav {
+      flex-direction: column;
+    }
+    
+    .eds-layout-with-nav__sidebar {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .eds-layout-with-nav__main {
+      padding: 1.5rem;
+    }
+  }
+</style>

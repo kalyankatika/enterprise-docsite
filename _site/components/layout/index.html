@@ -11,11 +11,14 @@
   
   <!-- Custom styles -->
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/left-navigation.css">
+  <link rel="stylesheet" href="/assets/css/animations.css">
   
   <!-- Scripts -->
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/theme.js" defer></script>
   <script src="/assets/js/framer-motion-wrapper.js" defer></script>
+  <script src="/assets/js/alpine.min.js" defer></script>
   
   <!-- Fix for SVG icon sizing -->
   <style>
@@ -173,112 +176,101 @@
     <!-- Left sidebar - Standard navigation -->
     <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
       <div class="sticky top-32">
-        
-
-<nav class="left-navigation">
-  <div class="space-y-6">
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            All Components
-          </a>
-        </li>
-        <li>
-          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Design Tokens
-          </a>
-        </li>
-        <li>
-          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Patterns
-          </a>
-        </li>
-        <li>
-          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Guidelines
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Layout
-          </a>
-          
-          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-            
-              <li>
-                <a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                  Card
-                </a>
-              </li>
-            
-              <li>
-                <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-                  Layout Components
-                </a>
-              </li>
-            
-          </ul>
-          
-        </li>
-        <li>
-          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Navigation
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Feedback
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Inputs
-          </a>
-          
-        </li>
-      </ul>
-    </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Colors
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Typography
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Spacing
-          </a>
-        </li>
-        <li>
-          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Migration Tools
-          </a>
-        </li>
-      </ul>
+        <div class="eds-left-nav" x-data="{ openSection: null }">
+  <div class="eds-left-nav__header">
+    <h2 class="eds-left-nav__title">Documentation</h2>
+  </div>
+  
+  <nav class="eds-left-nav__menu">
+    <ul class="eds-left-nav__list">
+      <!-- Main Sections -->
+      <li class="eds-left-nav__section" 
+          x-data="{ open: $persist(openSection === 'components').as('components-open') || true }"
+          @click.away="open = (openSection === 'components')">
+        <button class="eds-left-nav__section-toggle" @click="open = !open; openSection = open ? 'components' : null">
+          <span>Components</span>
+          <svg class="eds-left-nav__icon" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul class="eds-left-nav__submenu" x-show="open" x-transition>
+          <li class="eds-left-nav__item"><a href="/components/layout/" class="active">Layout Components</a></li>
+          <li class="eds-left-nav__item"><a href="/components/navigation/" class="">Navigation Components</a></li>
+          <li class="eds-left-nav__item"><a href="/components/feedback/" class="">Feedback Components</a></li>
+          <li class="eds-left-nav__item"><a href="/components/inputs/" class="">Input Components</a></li>
+        </ul>
+      </li>
+      
+      <li class="eds-left-nav__section" 
+          x-data="{ open: $persist(openSection === 'design').as('design-open') || false }"
+          @click.away="open = (openSection === 'design')">
+        <button class="eds-left-nav__section-toggle" @click="open = !open; openSection = open ? 'design' : null">
+          <span>Design System</span>
+          <svg class="eds-left-nav__icon" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul class="eds-left-nav__submenu" x-show="open" x-transition>
+          <li class="eds-left-nav__item"><a href="/design-system/foundations/" class="">Foundations</a></li>
+          <li class="eds-left-nav__item"><a href="/design-system/guidelines/" class="">Guidelines</a></li>
+          <li class="eds-left-nav__item"><a href="/design-system/tokens/" class="">Design Tokens</a></li>
+        </ul>
+      </li>
+      
+      <li class="eds-left-nav__section" 
+          x-data="{ open: $persist(openSection === 'resources').as('resources-open') || false }"
+          @click.away="open = (openSection === 'resources')">
+        <button class="eds-left-nav__section-toggle" @click="open = !open; openSection = open ? 'resources' : null">
+          <span>Resources</span>
+          <svg class="eds-left-nav__icon" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul class="eds-left-nav__submenu" x-show="open" x-transition>
+          <li class="eds-left-nav__item"><a href="/resources/migration-tools/" class="">Migration Tools</a></li>
+          <li class="eds-left-nav__item"><a href="/resources/legacy-site-imports/" class="">Legacy Site Imports</a></li>
+          <li class="eds-left-nav__item"><a href="/resources/templates/" class="">Templates</a></li>
+        </ul>
+      </li>
+      
+      <li class="eds-left-nav__section" 
+          x-data="{ open: $persist(openSection === 'navigation').as('navigation-open') || false }"
+          @click.away="open = (openSection === 'navigation')">
+        <button class="eds-left-nav__section-toggle" @click="open = !open; openSection = open ? 'navigation' : null">
+          <span>Navigation</span>
+          <svg class="eds-left-nav__icon" :class="{'rotate-180': open}" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul class="eds-left-nav__submenu" x-show="open" x-transition>
+          <li class="eds-left-nav__item"><a href="/navigation/by-type/" class="">By Type</a></li>
+          <li class="eds-left-nav__item"><a href="/navigation/by-channel/" class="">By Channel</a></li>
+          <li class="eds-left-nav__item"><a href="/navigation/by-owner/" class="">By Owner</a></li>
+        </ul>
+      </li>
+      
+      <!-- Direct links -->
+      <li class="eds-left-nav__item">
+        <a href="/getting-started/" class="">Getting Started</a>
+      </li>
+      <li class="eds-left-nav__item">
+        <a href="/support/" class="">Support</a>
+      </li>
+    </ul>
+  </nav>
+  
+  <!-- Version selector -->
+  <div class="eds-left-nav__footer">
+    <div class="eds-left-nav__version-selector">
+      <label for="version-select" class="eds-left-nav__version-label">Version</label>
+      <select id="version-select" class="eds-left-nav__version-select">
+        <option value="2.0" selected>2.0 (current)</option>
+        <option value="1.5">1.5</option>
+        <option value="1.0">1.0</option>
+      </select>
     </div>
   </div>
-</nav>
+</div>
       </div>
     </div>
     
