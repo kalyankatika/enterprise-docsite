@@ -175,94 +175,424 @@
       <div class="sticky top-32">
         
 
-<nav class="left-navigation">
-  <div class="space-y-6">
+<nav class="eds-left-navigation" id="leftNavigation" aria-label="Main Navigation">
+  <div class="eds-left-nav-header">
+    <a href="/" class="eds-left-nav-logo">
+      <svg class="eds-logo" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="8" fill="var(--color-primary)" />
+        <path d="M10 12H30V16H10V12Z" fill="white" />
+        <path d="M10 18H22V22H10V18Z" fill="white" />
+        <path d="M10 24H30V28H10V24Z" fill="white" />
+      </svg>
+      <span>Enterprise Design System</span>
+    </a>
+    <button class="eds-left-nav-toggle" aria-label="Toggle navigation" aria-controls="leftNavigation" aria-expanded="false">
+      <span class="eds-left-nav-toggle-icon"></span>
+    </button>
+  </div>
+
+  <div class="eds-left-nav-search">
+    <form action="/search/" method="get" role="search">
+      <label for="leftNavSearch" class="sr-only">Search documentation</label>
+      <div class="eds-search-input-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input 
+          type="search" 
+          id="leftNavSearch" 
+          name="q" 
+          placeholder="Search documentation"
+          class="eds-search-input"
+        >
+      </div>
+    </form>
+  </div>
+
+  <div class="eds-left-nav-body">
+    <ul class="eds-left-nav-menu">
+      <li class="eds-left-nav-section">
+        <span class="eds-left-nav-section-title">Getting Started</span>
+        <ul class="eds-left-nav-section-items">
+          
+          
+            
+              
+  
+  
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/getting-started/" 
+      class="eds-left-nav-link  "
+      aria-label="Getting Started"
+      
+    >
+      
+      <span class="eds-left-nav-text">Getting Started</span>
+      
+    </a>
+
     
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-            All Components
-          </a>
-        </li>
-        <li>
-          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Design Tokens
-          </a>
-        </li>
-        <li>
-          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Patterns
-          </a>
-        </li>
-        <li>
-          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Guidelines
-          </a>
-        </li>
+  </li>
+
+            
+          
+            
+          
+            
+          
+            
+          
+        </ul>
+      </li>
+
+      <li class="eds-left-nav-section">
+        <span class="eds-left-nav-section-title">Design System</span>
+        <ul class="eds-left-nav-section-items">
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        </ul>
+      </li>
+
+      <li class="eds-left-nav-section">
+        <span class="eds-left-nav-section-title">Components</span>
+        <ul class="eds-left-nav-section-items">
+          
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+  <li class="eds-left-nav-item is-active">
+    <a 
+      href="/components/" 
+      class="eds-left-nav-link is-current has-active-child"
+      aria-label="Components"
+      data-has-children="true"
+    >
+      
+      <span class="eds-left-nav-text">Components</span>
+      
+        <span class="eds-left-nav-expand">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      
+    </a>
+
+    
+      <ul class="eds-left-nav-submenu is-expanded">
+        
+          
+  
+  
+  
+
+  <li class="eds-left-nav-item is-active">
+    <a 
+      href="/components/inputs/" 
+      class="eds-left-nav-link is-current "
+      aria-label="Inputs"
+      
+    >
+      
+      <span class="eds-left-nav-text">Inputs</span>
+      
+    </a>
+
+    
+  </li>
+
+        
+          
+  
+  
+  
+
+  <li class="eds-left-nav-item is-active">
+    <a 
+      href="/components/directory/" 
+      class="eds-left-nav-link is-current "
+      aria-label="Components Directory"
+      
+    >
+      
+      <span class="eds-left-nav-text">Components Directory</span>
+      
+    </a>
+
+    
+  </li>
+
+        
       </ul>
+    
+  </li>
+
+            
+          
+            
+          
+            
+          
+
+          <li class="eds-left-nav-item">
+            <a href="/components/layout/" class="eds-left-nav-link is-current">
+              <span class="eds-left-nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              </span>
+              <span class="eds-left-nav-text">Layout Components</span>
+              <span class="eds-left-nav-expand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            <ul class="eds-left-nav-submenu is-expanded">
+              <li class="eds-left-nav-item">
+                <a href="/components/layout/accordion/" class="eds-left-nav-link is-current">
+                  <span class="eds-left-nav-text">Accordion</span>
+                </a>
+              </li>
+              <li class="eds-left-nav-item">
+                <a href="/components/layout/card/" class="eds-left-nav-link is-current">
+                  <span class="eds-left-nav-text">Card</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="eds-left-nav-item">
+            <a href="/components/inputs/" class="eds-left-nav-link is-current">
+              <span class="eds-left-nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </span>
+              <span class="eds-left-nav-text">Input Components</span>
+              <span class="eds-left-nav-expand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            <ul class="eds-left-nav-submenu is-expanded">
+              <li class="eds-left-nav-item">
+                <a href="/components/inputs/button/" class="eds-left-nav-link is-current">
+                  <span class="eds-left-nav-text">Button</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="eds-left-nav-item">
+            <a href="/components/navigation/" class="eds-left-nav-link is-current">
+              <span class="eds-left-nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </span>
+              <span class="eds-left-nav-text">Navigation Components</span>
+              <span class="eds-left-nav-expand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            <ul class="eds-left-nav-submenu is-expanded">
+              <li class="eds-left-nav-item">
+                <a href="/components/navigation/breadcrumb/" class="eds-left-nav-link is-current">
+                  <span class="eds-left-nav-text">Breadcrumb</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="eds-left-nav-item">
+            <a href="/components/feedback/" class="eds-left-nav-link is-current">
+              <span class="eds-left-nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              <span class="eds-left-nav-text">Feedback Components</span>
+              <span class="eds-left-nav-expand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            <ul class="eds-left-nav-submenu is-expanded">
+              <li class="eds-left-nav-item">
+                <a href="/components/feedback/alert/" class="eds-left-nav-link is-current">
+                  <span class="eds-left-nav-text">Alert</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li class="eds-left-nav-section">
+        <span class="eds-left-nav-section-title">Resources</span>
+        <ul class="eds-left-nav-section-items">
+          
+            
+          
+            
+          
+            
+              
+  
+  
+  
+    
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/resources/" 
+      class="eds-left-nav-link  "
+      aria-label="Resources"
+      data-has-children="true"
+    >
+      
+      <span class="eds-left-nav-text">Resources</span>
+      
+        <span class="eds-left-nav-expand">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      
+    </a>
+
+    
+      <ul class="eds-left-nav-submenu ">
+        
+          
+  
+  
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/resources/migration-tools/" 
+      class="eds-left-nav-link  "
+      aria-label="Migration Tools"
+      
+    >
+      
+      <span class="eds-left-nav-text">Migration Tools</span>
+      
+    </a>
+
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+            
+          
+            
+          
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="eds-left-nav-footer">
+    <div class="eds-theme-toggle-wrapper">
+      <button id="themeToggle" class="eds-theme-toggle" aria-label="Toggle dark theme">
+        <span class="eds-theme-toggle-light">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </span>
+        <span class="eds-theme-toggle-dark">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </span>
+      </button>
+      <span class="eds-theme-toggle-label">Switch theme</span>
     </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Layout
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Navigation
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Feedback
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Inputs
-          </a>
-          
-        </li>
-      </ul>
-    </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Colors
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Typography
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Spacing
-          </a>
-        </li>
-        <li>
-          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Migration Tools
-          </a>
-        </li>
-      </ul>
+    <div class="eds-left-nav-version">
+      <span>Version 2.0</span>
     </div>
   </div>
 </nav>
+
+<div class="eds-nav-overlay" id="navOverlay"></div>
+
+<script>
+  // Toggle navigation on mobile
+  document.querySelector('.eds-left-nav-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('nav-open');
+    const isExpanded = document.body.classList.contains('nav-open');
+    this.setAttribute('aria-expanded', isExpanded);
+  });
+
+  // Toggle overlay
+  document.getElementById('navOverlay').addEventListener('click', function() {
+    document.body.classList.remove('nav-open');
+    document.querySelector('.eds-left-nav-toggle').setAttribute('aria-expanded', 'false');
+  });
+
+  // Expand/collapse submenu
+  document.querySelectorAll('.eds-left-nav-link[data-has-children="true"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const listItem = this.parentElement;
+      const submenu = listItem.querySelector('.eds-left-nav-submenu');
+      const isExpanded = submenu.classList.contains('is-expanded');
+      
+      // Close other open submenus in the same level
+      const siblings = listItem.parentElement.querySelectorAll('.eds-left-nav-item');
+      siblings.forEach(function(sibling) {
+        if (sibling !== listItem) {
+          sibling.querySelector('.eds-left-nav-submenu')?.classList.remove('is-expanded');
+        }
+      });
+      
+      // Toggle current submenu
+      submenu.classList.toggle('is-expanded');
+      
+      // If opening the submenu, navigate to the link
+      if (!isExpanded) {
+        setTimeout(function() {
+          window.location.href = link.getAttribute('href');
+        }, 300);
+      }
+    });
+  });
+</script>
       </div>
     </div>
     
@@ -274,95 +604,187 @@
           <p class="text-xl text-[var(--color-text-muted)] mb-8">A comprehensive library of reusable UI components for building enterprise applications</p>
         
         
-        <h1 id="enterprise-design-system-components" tabindex="-1">Enterprise Design System Components <a class="anchor" href="#enterprise-design-system-components" aria-hidden="true">#</a></h1>
-<p>The Enterprise Design System (EDS) provides a comprehensive library of UI components that help build consistent and accessible interfaces. All components follow our core design principles and are built with accessibility, usability, and flexibility in mind.</p>
-<h2 id="finding-components" tabindex="-1">Finding Components <a class="anchor" href="#finding-components" aria-hidden="true">#</a></h2>
-<p>Our documentation offers multiple ways to find the components you need:</p>
-<ul>
-<li><strong>Left Navigation</strong>: Use the sidebar to browse components by category</li>
-<li><strong>Category View</strong>: Browse components organized by functional categories below</li>
-<li><strong>Search</strong>: Use the search function in the top navigation to quickly find a specific component</li>
-</ul>
-<h2 id="component-categories" tabindex="-1">Component Categories <a class="anchor" href="#component-categories" aria-hidden="true">#</a></h2>
-<p>Our components are organized into the following functional categories:</p>
-<h3 id="input-components" tabindex="-1">Input Components <a class="anchor" href="#input-components" aria-hidden="true">#</a></h3>
-<p>Components that enable users to input or manipulate data.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-<p><a href="/components/inputs/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Input Components</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Components that enable users to input or manipulate data</p><br>
-<span class="eds-link">View Component →</span><br>
+        <div class="max-w-prose" data-motion="fade-in">
+  <h1 class="mb-6 text-3xl font-bold">Enterprise Design System Components</h1>
+  <p class="text-lg mb-8 text-[var(--color-text-muted)]">
+    Our component library provides consistent, accessible, and flexible building blocks for creating enterprise applications.
+  </p>
+  <div class="flex flex-col sm:flex-row gap-4 mb-10">
+    <a href="/components/layout/" class="animated-button inline-flex items-center justify-center px-5 py-2 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+      Browse Layout Components
+    </a>
+    <a href="/design-system/foundations/" class="animated-button inline-flex items-center justify-center px-5 py-2 border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">
+      View Design Foundations
+    </a>
+  </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12" data-motion="stagger-children">
+  <div class="bg-[var(--color-bg-alt)] rounded-lg p-6 border border-[var(--color-border)]">
+    <h2 class="text-xl font-bold mb-4">Component Categories</h2>
+    <p class="mb-4">Our components are organized into four functional categories:</p>
+    <ul class="space-y-2 mb-6">
+      <li class="flex items-start">
+        <div class="flex-shrink-0 w-5 h-5 mt-1 mr-2 text-[var(--color-primary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M5.5 3A2.5 2.5 0 003 5.5v2.879a2.5 2.5 0 00.732 1.767l6.5 6.5a2.5 2.5 0 003.536 0l2.878-2.878a2.5 2.5 0 000-3.536l-6.5-6.5A2.5 2.5 0 008.38 3H5.5zM6 7a1 1 0 100-2 1 1 0 000 2z" />
+          </svg>
+        </div>
+        <div>
+          <a href="/components/inputs/" class="font-medium hover:text-[var(--color-primary)]">Input Components</a> - For user input and data manipulation
+        </div>
+      </li>
+      <li class="flex items-start">
+        <div class="flex-shrink-0 w-5 h-5 mt-1 mr-2 text-[var(--color-primary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
+          </svg>
+        </div>
+        <div>
+          <a href="/components/layout/" class="font-medium hover:text-[var(--color-primary)]">Layout Components</a> - For structuring content and UI elements
+        </div>
+      </li>
+      <li class="flex items-start">
+        <div class="flex-shrink-0 w-5 h-5 mt-1 mr-2 text-[var(--color-primary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div>
+          <a href="/components/navigation/" class="font-medium hover:text-[var(--color-primary)]">Navigation Components</a> - For user wayfinding and movement
+        </div>
+      </li>
+      <li class="flex items-start">
+        <div class="flex-shrink-0 w-5 h-5 mt-1 mr-2 text-[var(--color-primary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div>
+          <a href="/components/feedback/" class="font-medium hover:text-[var(--color-primary)]">Feedback Components</a> - For user notifications and messaging
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="bg-[var(--color-bg-alt)] rounded-lg p-6 border border-[var(--color-border)]">
+    <h2 class="text-xl font-bold mb-4">Component Structure</h2>
+    <p class="mb-4">Each component follows a consistent documentation structure:</p>
+    <ul class="space-y-3">
+      <li class="flex items-start">
+        <div class="flex-shrink-0 w-5 h-5 mt-1 mr-2 text-[var(--color-primary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-medium">Overview</span> - Description and use cases
+        </div>
+      </li>
+      <li class="flex items-start">
+        <div class="flex-shrink-0 w-5 h-5 mt-1 mr-2 text-[var(--color-primary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-medium">Code</span> - Implementation details and API
+        </div>
+      </li>
+      <li class="flex items-start">
+        <div class="flex-shrink-0 w-5 h-5 mt-1 mr-2 text-[var(--color-primary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-medium">Usage</span> - Guidelines and best practices
+        </div>
+      </li>
+      <li class="flex items-start">
+        <div class="flex-shrink-0 w-5 h-5 mt-1 mr-2 text-[var(--color-primary)]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div>
+          <span class="font-medium">Accessibility</span> - WCAG compliance information
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<h2 class="text-2xl font-bold mb-6" data-motion="fade-in">Featured Components</h2>
+<div class="grid md:grid-cols-3 gap-6 mb-10" data-motion="stagger-children">
+<p><a href="/components/layout/card/" class="animated-card block group border border-[var(--color-border)] bg-[var(--color-bg)] hover:border-[var(--color-primary)] rounded-lg p-6 transition-colors"><br>
+<h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)]">Card</h3><br>
+<p class="text-[var(--color-text-muted)] mb-4">Cards organize content and actions about a single subject</p><br>
+<span class="text-[var(--color-primary)] font-medium inline-flex items-center"><br>
+View Component<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</span><br>
 </a></p>
-<p><a href="/components/inputs/button/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Button Component</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">A versatile button component supporting various styles, states, and sizes.</p><br>
-<span class="eds-link">View Component →</span><br>
+<p><a href="/components/layout/" class="animated-card block group border border-[var(--color-border)] bg-[var(--color-bg)] hover:border-[var(--color-primary)] rounded-lg p-6 transition-colors"><br>
+<h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)]">Layout Components</h3><br>
+<p class="text-[var(--color-text-muted)] mb-4">Components that help with page structure and content organization.</p><br>
+<span class="text-[var(--color-primary)] font-medium inline-flex items-center"><br>
+View Component<br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /><br>
+</svg><br>
+</span><br>
 </a></p>
 </div>
-<h3 id="layout-components" tabindex="-1">Layout Components <a class="anchor" href="#layout-components" aria-hidden="true">#</a></h3>
-<p>Components that help structure content and UI elements on the page.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-<p><a href="/components/layout/card/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Card</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Cards organize content and actions about a single subject</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-<p><a href="/components/layout/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Layout Components</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Components that help with page structure and content organization.</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
+<div class="bg-[var(--color-bg-alt)] rounded-lg p-8 border border-[var(--color-border)] mb-12" data-motion="fade-in">
+  <h2 class="text-2xl font-bold mb-4">Design Principles</h2>
+  <p class="mb-6">All components in the Enterprise Design System follow these core principles:</p>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <h3 class="font-bold mb-2 flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+        </svg>
+        Consistent
+      </h3>
+      <p>Visual and behavioral consistency across all interfaces using shared design tokens.</p>
+    </div>
+<p><div><br>
+<h3 class="font-bold mb-2 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" viewBox="0 0 20 20" fill="currentColor"><br>
+<path fill-rule="evenodd" d="M6.625 2.655A9 9 0 0119 11a1 1 0 11-2 0 7 7 0 00-9.625-6.492 1 1 0 11-.75-1.853zM4.662 4.959A1 1 0 014.75 6.37 6.97 6.97 0 003 11a1 1 0 11-2 0 8.97 8.97 0 012.25-5.953 1 1 0 011.412-.088z" clip-rule="evenodd" /><br>
+<path fill-rule="evenodd" d="M5 11a5 5 0 1110 0 1 1 0 11-2 0 3 3 0 10-6 0c0 1.677-.345 3.276-.968 4.729a1 1 0 11-1.838-.789A9.964 9.964 0 005 11zm8.921 2.012a1 1 0 01.831 1.145 19.86 19.86 0 01-.545 2.436 1 1 0 11-1.92-.558c.207-.713.371-1.445.49-2.192a1 1 0 011.144-.83z" clip-rule="evenodd" /><br>
+</svg><br>
+Accessible<br>
+</h3><br>
+<p>Meeting WCAG 2.1 AA standards, making applications usable by people with disabilities.</p><br>
+</div></p>
+<p><div><br>
+<h3 class="font-bold mb-2 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" viewBox="0 0 20 20" fill="currentColor"><br>
+<path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /><br>
+</svg><br>
+Responsive<br>
+</h3><br>
+<p>Adapting to various screen sizes, from desktop to mobile, for a consistent user experience.</p><br>
+</div></p>
+<p><div><br>
+<h3 class="font-bold mb-2 flex items-center"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" viewBox="0 0 20 20" fill="currentColor"><br>
+<path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><br>
+<path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" /><br>
+</svg><br>
+Customizable<br>
+</h3><br>
+<p>Flexible components that can be customized to meet specific design needs and brand guidelines.</p><br>
+</div></p>
+  </div>
 </div>
-<h3 id="navigation-components" tabindex="-1">Navigation Components <a class="anchor" href="#navigation-components" aria-hidden="true">#</a></h3>
-<p>Components that help users navigate within the application.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-<p><a href="/components/navigation/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Navigation Components</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Navigation components help users move through and find content in your application</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-<p><a href="/components/navigation/breadcrumb/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Breadcrumb</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Breadcrumbs show the navigational path within a site hierarchy</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
+<div class="text-center" data-motion="fade-in">
+  <a href="/getting-started/" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
+    Get Started with Components
+  </a>
 </div>
-<h3 id="feedback-components" tabindex="-1">Feedback Components <a class="anchor" href="#feedback-components" aria-hidden="true">#</a></h3>
-<p>Components that provide feedback or display notifications to users.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-<p><a href="/components/feedback/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Feedback Components</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Feedback components communicate system status and provide information to users</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-<p><a href="/components/feedback/alert/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Alert</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Alerts provide contextual feedback messages for user actions and system states</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-</div>
-<h2 id="component-structure" tabindex="-1">Component Structure <a class="anchor" href="#component-structure" aria-hidden="true">#</a></h2>
-<p>Each component in our design system follows a consistent structure in its documentation:</p>
-<ol>
-<li><strong>Overview</strong>: A description of the component and its use cases</li>
-<li><strong>Usage</strong>: Guidelines on how and when to use the component</li>
-<li><strong>Code</strong>: Implementation details including props, methods, and events</li>
-<li><strong>Accessibility</strong>: Information on how the component meets accessibility standards</li>
-</ol>
-<h2 id="design-principles" tabindex="-1">Design Principles <a class="anchor" href="#design-principles" aria-hidden="true">#</a></h2>
-<p>All components in the Enterprise Design System follow these core principles:</p>
-<h3 id="consistent" tabindex="-1">Consistent <a class="anchor" href="#consistent" aria-hidden="true">#</a></h3>
-<p>Components maintain visual and behavioral consistency across the interface. They use the same design tokens for spacing, colors, and typography.</p>
-<h3 id="accessible" tabindex="-1">Accessible <a class="anchor" href="#accessible" aria-hidden="true">#</a></h3>
-<p>Components meet WCAG 2.1 AA standards, ensuring that applications built with our design system are usable by people with disabilities.</p>
-<h3 id="responsive" tabindex="-1">Responsive <a class="anchor" href="#responsive" aria-hidden="true">#</a></h3>
-<p>Components are designed to work across various screen sizes, from desktop to mobile, providing a good user experience regardless of device.</p>
-<h3 id="customizable" tabindex="-1">Customizable <a class="anchor" href="#customizable" aria-hidden="true">#</a></h3>
-<p>While maintaining consistency, components can be customized to meet specific design needs and brand guidelines.</p>
-<h2 id="implementation" tabindex="-1">Implementation <a class="anchor" href="#implementation" aria-hidden="true">#</a></h2>
-<p>Components are implemented using clean, semantic HTML and CSS, with JavaScript used only when necessary for enhanced functionality. They are framework-agnostic but offer specific implementations for React and Vue.js.</p>
-<p>For installation and basic usage, please refer to our <a href="/getting-started/">Getting Started</a> guide.</p>
-
       </div>
     </div>
     

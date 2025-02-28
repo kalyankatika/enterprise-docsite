@@ -175,110 +175,420 @@
       <div class="sticky top-32">
         
 
-<nav class="left-navigation">
-  <div class="space-y-6">
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            All Components
-          </a>
-        </li>
-        <li>
-          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Design Tokens
-          </a>
-        </li>
-        <li>
-          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Patterns
-          </a>
-        </li>
-        <li>
-          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Guidelines
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Layout
-          </a>
+<nav class="eds-left-navigation" id="leftNavigation" aria-label="Main Navigation">
+  <div class="eds-left-nav-header">
+    <a href="/" class="eds-left-nav-logo">
+      <svg class="eds-logo" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="8" fill="var(--color-primary)" />
+        <path d="M10 12H30V16H10V12Z" fill="white" />
+        <path d="M10 18H22V22H10V18Z" fill="white" />
+        <path d="M10 24H30V28H10V24Z" fill="white" />
+      </svg>
+      <span>Enterprise Design System</span>
+    </a>
+    <button class="eds-left-nav-toggle" aria-label="Toggle navigation" aria-controls="leftNavigation" aria-expanded="false">
+      <span class="eds-left-nav-toggle-icon"></span>
+    </button>
+  </div>
+
+  <div class="eds-left-nav-search">
+    <form action="/search/" method="get" role="search">
+      <label for="leftNavSearch" class="sr-only">Search documentation</label>
+      <div class="eds-search-input-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input 
+          type="search" 
+          id="leftNavSearch" 
+          name="q" 
+          placeholder="Search documentation"
+          class="eds-search-input"
+        >
+      </div>
+    </form>
+  </div>
+
+  <div class="eds-left-nav-body">
+    <ul class="eds-left-nav-menu">
+      <li class="eds-left-nav-section">
+        <span class="eds-left-nav-section-title">Getting Started</span>
+        <ul class="eds-left-nav-section-items">
           
-        </li>
-        <li>
-          <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Navigation
-          </a>
           
-        </li>
-        <li>
-          <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Feedback
-          </a>
-          
-          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
             
-              <li>
-                <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-                  Feedback Components
+              
+  
+  
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/getting-started/" 
+      class="eds-left-nav-link  "
+      aria-label="Getting Started"
+      
+    >
+      
+      <span class="eds-left-nav-text">Getting Started</span>
+      
+    </a>
+
+    
+  </li>
+
+            
+          
+            
+          
+            
+          
+            
+          
+        </ul>
+      </li>
+
+      <li class="eds-left-nav-section">
+        <span class="eds-left-nav-section-title">Design System</span>
+        <ul class="eds-left-nav-section-items">
+          
+            
+          
+            
+          
+            
+          
+            
+          
+        </ul>
+      </li>
+
+      <li class="eds-left-nav-section">
+        <span class="eds-left-nav-section-title">Components</span>
+        <ul class="eds-left-nav-section-items">
+          
+            
+          
+            
+              
+  
+  
+  
+    
+  
+    
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/components/" 
+      class="eds-left-nav-link  "
+      aria-label="Components"
+      data-has-children="true"
+    >
+      
+      <span class="eds-left-nav-text">Components</span>
+      
+        <span class="eds-left-nav-expand">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      
+    </a>
+
+    
+      <ul class="eds-left-nav-submenu ">
+        
+          
+  
+  
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/components/inputs/" 
+      class="eds-left-nav-link  "
+      aria-label="Inputs"
+      
+    >
+      
+      <span class="eds-left-nav-text">Inputs</span>
+      
+    </a>
+
+    
+  </li>
+
+        
+          
+  
+  
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/components/directory/" 
+      class="eds-left-nav-link  "
+      aria-label="Components Directory"
+      
+    >
+      
+      <span class="eds-left-nav-text">Components Directory</span>
+      
+    </a>
+
+    
+  </li>
+
+        
+      </ul>
+    
+  </li>
+
+            
+          
+            
+          
+            
+          
+
+          <li class="eds-left-nav-item">
+            <a href="/components/layout/" class="eds-left-nav-link ">
+              <span class="eds-left-nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              </span>
+              <span class="eds-left-nav-text">Layout Components</span>
+              <span class="eds-left-nav-expand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            <ul class="eds-left-nav-submenu ">
+              <li class="eds-left-nav-item">
+                <a href="/components/layout/accordion/" class="eds-left-nav-link ">
+                  <span class="eds-left-nav-text">Accordion</span>
                 </a>
               </li>
-            
-              <li>
-                <a href="/components/feedback/alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                  Alert
+              <li class="eds-left-nav-item">
+                <a href="/components/layout/card/" class="eds-left-nav-link ">
+                  <span class="eds-left-nav-text">Card</span>
                 </a>
               </li>
+            </ul>
+          </li>
+
+          <li class="eds-left-nav-item">
+            <a href="/components/inputs/" class="eds-left-nav-link ">
+              <span class="eds-left-nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </span>
+              <span class="eds-left-nav-text">Input Components</span>
+              <span class="eds-left-nav-expand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            <ul class="eds-left-nav-submenu ">
+              <li class="eds-left-nav-item">
+                <a href="/components/inputs/button/" class="eds-left-nav-link ">
+                  <span class="eds-left-nav-text">Button</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="eds-left-nav-item">
+            <a href="/components/navigation/" class="eds-left-nav-link ">
+              <span class="eds-left-nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </span>
+              <span class="eds-left-nav-text">Navigation Components</span>
+              <span class="eds-left-nav-expand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            <ul class="eds-left-nav-submenu ">
+              <li class="eds-left-nav-item">
+                <a href="/components/navigation/breadcrumb/" class="eds-left-nav-link ">
+                  <span class="eds-left-nav-text">Breadcrumb</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="eds-left-nav-item">
+            <a href="/components/feedback/" class="eds-left-nav-link is-current">
+              <span class="eds-left-nav-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              <span class="eds-left-nav-text">Feedback Components</span>
+              <span class="eds-left-nav-expand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </a>
+            <ul class="eds-left-nav-submenu is-expanded">
+              <li class="eds-left-nav-item">
+                <a href="/components/feedback/alert/" class="eds-left-nav-link is-current">
+                  <span class="eds-left-nav-text">Alert</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li class="eds-left-nav-section">
+        <span class="eds-left-nav-section-title">Resources</span>
+        <ul class="eds-left-nav-section-items">
+          
             
-          </ul>
           
-        </li>
-        <li>
-          <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Inputs
-          </a>
+            
           
-        </li>
+            
+              
+  
+  
+  
+    
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/resources/" 
+      class="eds-left-nav-link  "
+      aria-label="Resources"
+      data-has-children="true"
+    >
+      
+      <span class="eds-left-nav-text">Resources</span>
+      
+        <span class="eds-left-nav-expand">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </span>
+      
+    </a>
+
+    
+      <ul class="eds-left-nav-submenu ">
+        
+          
+  
+  
+  
+
+  <li class="eds-left-nav-item ">
+    <a 
+      href="/resources/migration-tools/" 
+      class="eds-left-nav-link  "
+      aria-label="Migration Tools"
+      
+    >
+      
+      <span class="eds-left-nav-text">Migration Tools</span>
+      
+    </a>
+
+    
+  </li>
+
+        
       </ul>
+    
+  </li>
+
+            
+          
+            
+          
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="eds-left-nav-footer">
+    <div class="eds-theme-toggle-wrapper">
+      <button id="themeToggle" class="eds-theme-toggle" aria-label="Toggle dark theme">
+        <span class="eds-theme-toggle-light">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </span>
+        <span class="eds-theme-toggle-dark">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </span>
+      </button>
+      <span class="eds-theme-toggle-label">Switch theme</span>
     </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Colors
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Typography
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Spacing
-          </a>
-        </li>
-        <li>
-          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Migration Tools
-          </a>
-        </li>
-      </ul>
+    <div class="eds-left-nav-version">
+      <span>Version 2.0</span>
     </div>
   </div>
 </nav>
+
+<div class="eds-nav-overlay" id="navOverlay"></div>
+
+<script>
+  // Toggle navigation on mobile
+  document.querySelector('.eds-left-nav-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('nav-open');
+    const isExpanded = document.body.classList.contains('nav-open');
+    this.setAttribute('aria-expanded', isExpanded);
+  });
+
+  // Toggle overlay
+  document.getElementById('navOverlay').addEventListener('click', function() {
+    document.body.classList.remove('nav-open');
+    document.querySelector('.eds-left-nav-toggle').setAttribute('aria-expanded', 'false');
+  });
+
+  // Expand/collapse submenu
+  document.querySelectorAll('.eds-left-nav-link[data-has-children="true"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const listItem = this.parentElement;
+      const submenu = listItem.querySelector('.eds-left-nav-submenu');
+      const isExpanded = submenu.classList.contains('is-expanded');
+      
+      // Close other open submenus in the same level
+      const siblings = listItem.parentElement.querySelectorAll('.eds-left-nav-item');
+      siblings.forEach(function(sibling) {
+        if (sibling !== listItem) {
+          sibling.querySelector('.eds-left-nav-submenu')?.classList.remove('is-expanded');
+        }
+      });
+      
+      // Toggle current submenu
+      submenu.classList.toggle('is-expanded');
+      
+      // If opening the submenu, navigate to the link
+      if (!isExpanded) {
+        setTimeout(function() {
+          window.location.href = link.getAttribute('href');
+        }, 300);
+      }
+    });
+  });
+</script>
       </div>
     </div>
     
