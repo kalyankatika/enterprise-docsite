@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="eds-theme-light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legacy Documentation Page | Enterprise Design System</title>
+  <meta name="description" content="A sample legacy page from the previous documentation system">
+  
+  <!-- Load Tailwind CSS from CDN for reliable rendering -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  
+  <!-- Scripts -->
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/framer-motion-wrapper.js" defer></script>
+  
+  <!-- Fix for SVG icon sizing -->
+  <style>
+    /* Global icon sizing fix */
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+      height: 1em;
+      width: 1em;
+    }
+    
+    /* Ensure proper sizing for specific icons */
+    svg.h-5 {
+      height: 1.25rem !important;
+      width: 1.25rem !important;
+    }
+    
+    svg.h-6 {
+      height: 1.5rem !important;
+      width: 1.5rem !important;
+    }
+    
+    svg.h-8 {
+      height: 2rem !important;
+      width: 2rem !important;
+    }
+    
+    /* Typography improvements */
+    .prose {
+      color: var(--color-text) !important;
+    }
+    
+    .prose h1, .prose h2, .prose h3, .prose h4 {
+      color: var(--color-text) !important;
+    }
+    
+    .prose a {
+      color: var(--color-primary) !important;
+      text-decoration-color: var(--color-primary) !important;
+    }
+    
+    .prose code {
+      background-color: var(--color-bg-alt) !important;
+      color: var(--color-text) !important;
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen">
+
+  <header class="bg-[var(--color-bg)] shadow-sm z-50 border-b border-[var(--color-border)]">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo and site title -->
+        <a href="/" class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="font-bold text-lg">Enterprise Design System</span>
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-6">
+          <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Overview</a>
+          <a href="/design-system/foundations/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
+          <a href="/components/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/navigation/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Browse</a>
+          
+          <!-- Search -->
+          <form action="/search/" method="get" role="search" class="relative ml-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-40 md:w-60">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
+          
+          <!-- Theme Toggle Button -->
+          <button class="eds-theme-toggle p-2 rounded-md hover:bg-[var(--color-bg-alt)] ml-2" aria-label="Toggle theme">
+            <!-- Sun (light) icon - show in dark mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon (dark) icon - show in light mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 eds-theme-dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+        </nav>
+        
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <form action="/search/" method="get" role="search" class="relative mr-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-32">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </form>
+          
+          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- No secondary navigation - using left sidebar instead -->
+      
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)]">
+        <nav class="flex flex-col space-y-4">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
+          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Overview</a>
+          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
+          <a href="/components/" class="hover:text-[var(--color-primary)] ">Components</a>
+          <a href="/navigation/" class="hover:text-[var(--color-primary)]">Browse</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Browse Components</h3>
+          <a href="/navigation/by-channel/" class="hover:text-[var(--color-primary)]">By Channel</a>
+          <a href="/navigation/by-type/" class="hover:text-[var(--color-primary)]">By Type</a>
+          <a href="/navigation/by-owner/" class="hover:text-[var(--color-primary)]">By Owner</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
+          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
+          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
+          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
+          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
+          
+          <!-- Theme Toggle Button (Mobile) -->
+          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)] mt-4" aria-label="Toggle theme">
+            <!-- Sun (light) icon - show in dark mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon (dark) icon - show in light mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 eds-theme-dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <span class="hidden eds-theme-dark:block">Switch to Light Mode</span>
+            <span class="eds-theme-dark:hidden">Switch to Dark Mode</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <div class="legacy-doc-wrapper">
+  <div class="legacy-doc-header">
+    <h1>Legacy Documentation Page</h1>
+    
+      <p class="description">A sample legacy page from the previous documentation system</p>
+    
+    
+  </div>
+
+  <div class="legacy-doc-content">
+    <div class="legacy-page">
+  <h1>Legacy Documentation Page</h1>
+  
+  <div class="info">
+    This page was part of the legacy documentation system and has been migrated.
+  </div>
+  
+  <h2>Introduction</h2>
+  <p>This documentation page was written in the old format. It contains various elements that need to be properly converted.</p>
+  
+  <h2>Section 1</h2>
+  <p>Here is an example of a paragraph with some <strong>bold text</strong> and <em>italic text</em>.</p>
+  
+  <h3>Subsection</h3>
+  <p>Lists are also common in documentation:</p>
+  
+  <ul>
+    <li>First item</li>
+    <li>Second item with <a href="#nested">a link</a></li>
+    <li>Third item</li>
+  </ul>
+  
+  <h2>Section 2</h2>
+  <p>Sometimes we need to include code snippets:</p>
+  
+  <pre><code class="language-javascript">
+function exampleFunction() {
+  const message = "Hello, legacy documentation!";
+  console.log(message);
+  return message;
+}
+  </code></pre>
+  
+  <div class="warning">
+    Be careful when migrating legacy content to ensure all formatting is preserved correctly.
+  </div>
+</div>
+  </div>
+
+  
+</div>
+
+<style>
+  .legacy-doc-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .legacy-doc-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+  }
+
+  .migration-badge {
+    display: inline-block;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+  }
+
+  .legacy-doc-meta {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .legacy-doc-content {
+    line-height: 1.6;
+  }
+</style>
+  </main>
+
+  <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
+    <div class="container mx-auto px-4 md:px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div>
+          <h3 class="font-bold mb-4">Enterprise Design System</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">A comprehensive design system for building consistent, accessible, and beautiful enterprise applications.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="#" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="/getting-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Getting Started</a></li>
+            <li><a href="/resources/examples/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Examples</a></li>
+            <li><a href="/resources/templates/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Templates</a></li>
+            <li><a href="/resources/release-notes/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Release Notes</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Navigation</h4>
+          <ul class="space-y-2">
+            <li><a href="/navigation/by-channel/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Channel</a></li>
+            <li><a href="/navigation/by-type/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Type</a></li>
+            <li><a href="/navigation/by-owner/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Owner</a></li>
+            <li><a href="/search/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Search</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Components</h4>
+          <ul class="space-y-2">
+            <li><a href="/components/inputs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Input Components</a></li>
+            <li><a href="/components/layout/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Layout Components</a></li>
+            <li><a href="/components/navigation/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Navigation Components</a></li>
+            <li><a href="/components/feedback/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Feedback Components</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Support</h4>
+          <ul class="space-y-2">
+            <li><a href="/support/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Help & Support</a></li>
+            <li><a href="/support/faq/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">FAQ</a></li>
+            <li><a href="/support/contribute/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Contribute</a></li>
+            <li><a href="/support/contact/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center">
+        <p class="text-[var(--color-text-muted)] text-sm mb-4 md:mb-0">&copy; 2025 Enterprise Design System. All rights reserved.</p>
+        <div class="flex space-x-6 text-sm">
+          <a href="/privacy-policy/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Privacy Policy</a>
+          <a href="/terms-of-service/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Terms of Service</a>
+          <a href="/sitemap/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

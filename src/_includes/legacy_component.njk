@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+---
+<div class="legacy-component-wrapper">
+  <div class="legacy-component-header">
+    <h1>{{ title }}</h1>
+    {% if description %}
+      <p class="description">{{ description }}</p>
+    {% endif %}
+    {% if migrated %}
+      <div class="migration-badge">Legacy Component</div>
+    {% endif %}
+  </div>
+
+  <div class="legacy-component-content">
+    {{ content | safe }}
+  </div>
+
+  {% if created_at or author %}
+    <div class="legacy-component-meta">
+      {% if author %}<span class="author">Author: {{ author }}</span>{% endif %}
+      {% if created_at %}<span class="date">Created: {{ created_at }}</span>{% endif %}
+      {% if converted_from %}<span class="conversion">Source: {{ converted_from }}</span>{% endif %}
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .legacy-component-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+
+  .legacy-component-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+  }
+
+  .migration-badge {
+    display: inline-block;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+  }
+
+  .legacy-component-meta {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .legacy-component-content {
+    line-height: 1.6;
+  }
+</style>
