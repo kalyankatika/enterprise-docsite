@@ -1,9 +1,5 @@
 /* Enterprise Design System (EDS) CSS */
 
-/* Import component-specific styles */
-@import url('left-navigation.css');
-@import url('animations.css');
-
 :root {
   /* Primary color - Green #368727 */
   --color-primary: #368727;
@@ -18,9 +14,15 @@
   --color-text-muted: #4a5568;
   --color-border: #e2e8f0;
   --color-danger: #e53e3e;
+  --color-danger-rgb: 229, 62, 62;
   --color-warning: #dd6b20;
+  --color-warning-rgb: 221, 107, 32;
   --color-success: #38a169;
+  --color-success-rgb: 56, 161, 105;
   --color-info: #3182ce;
+  --color-info-rgb: 49, 130, 206;
+  --color-hover: rgba(0, 0, 0, 0.05);
+  --color-scrollbar: #cbd5e0;
   
   /* Shadow variables */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -41,16 +43,20 @@
 }
 
 /* Dark Theme */
-.eds-theme-dark {
+[data-theme="dark"] {
   --color-bg: #1a202c;
   --color-bg-alt: #2d3748;
   --color-text: #f7fafc;
   --color-text-muted: #a0aec0;
   --color-border: #4a5568;
+  --color-border-dark: #4a5568;
   --color-danger: #fc8181;
   --color-warning: #fbd38d;
   --color-success: #68d391;
   --color-info: #63b3ed;
+  --color-primary-light: rgba(54, 135, 39, 0.2);
+  --color-hover: rgba(255, 255, 255, 0.05);
+  --color-scrollbar: #4a5568;
   
   /* Shadow overrides for dark mode */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);

@@ -1,153 +1,193 @@
-.left-navigation {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  position: sticky;
-  top: 32px;
-  max-height: calc(100vh - 64px);
+/* 
+ * Enterprise Design System - Left Navigation Component
+ * This file contains styles for the left navigation sidebar
+ */
+
+.eds-left-navigation {
+  width: 100%;
+  max-height: calc(100vh - 4rem);
   overflow-y: auto;
-  padding-right: 0.75rem;
+  position: sticky;
+  top: 4rem;
+  padding: 1.5rem 0.75rem;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
+  scrollbar-color: var(--color-scrollbar) transparent;
+  font-size: 0.875rem;
+  border-right: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.left-navigation::-webkit-scrollbar {
-  width: 4px;
+.eds-left-navigation::-webkit-scrollbar {
+  width: 6px;
 }
 
-.left-navigation::-webkit-scrollbar-thumb {
-  background-color: var(--color-border);
-  border-radius: 4px;
+.eds-left-navigation::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.left-navigation::-webkit-scrollbar-track {
-  background-color: transparent;
+.eds-left-navigation::-webkit-scrollbar-thumb {
+  background-color: var(--color-scrollbar);
+  border-radius: 6px;
 }
 
-.left-navigation a {
-  color: var(--color-text);
-  text-decoration: none;
-  display: block;
-  border-radius: 0.25rem;
-  transition: all 0.2s ease;
-  padding: 0.375rem 0.5rem;
-  margin: 0.125rem 0;
+.eds-nav-section {
+  margin-bottom: 1.5rem;
 }
 
-.left-navigation a:hover {
-  color: var(--color-primary);
-  background-color: var(--color-bg-alt);
+.eds-nav-heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  padding-left: 0.5rem;
 }
 
-.left-navigation a.active,
-.left-navigation a.text-\[var\(--color-primary\)\] {
-  color: var(--color-primary);
-  font-weight: 500;
-  background-color: rgba(var(--color-primary-rgb), 0.08);
-}
-
-.left-navigation ul {
-  list-style: none;
+.eds-nav-list {
+  list-style-type: none;
   padding: 0;
-  margin: 0 0 1rem 0;
+  margin: 0;
 }
 
-/* Expandable sections */
-.left-navigation details {
-  margin-bottom: 0.5rem;
+.eds-nav-item {
+  margin-bottom: 0.25rem;
 }
 
-.left-navigation summary {
-  cursor: pointer;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+.eds-nav-link {
   display: flex;
   align-items: center;
-  padding: 0.375rem 0.5rem;
+  padding: 0.5rem;
   border-radius: 0.25rem;
+  color: var(--color-text);
+  text-decoration: none;
   transition: all 0.2s ease;
+  font-weight: 500;
 }
 
-.left-navigation summary:hover {
-  background-color: var(--color-bg-alt);
+.eds-nav-link:hover, 
+.eds-nav-link:focus {
+  background-color: var(--color-hover);
+  color: var(--color-text);
+  text-decoration: none;
 }
 
-.left-navigation summary::-webkit-details-marker {
+.eds-nav-link.active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.eds-nav-icon {
+  display: flex;
+  margin-right: 0.5rem;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.eds-nav-link:hover .eds-nav-icon,
+.eds-nav-link:focus .eds-nav-icon {
+  color: var(--color-primary);
+}
+
+.eds-nav-link.active .eds-nav-icon {
+  color: var(--color-primary);
+}
+
+.eds-nav-sublist {
+  padding-left: 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.eds-nav-group {
+  margin-bottom: 0.25rem;
+}
+
+.eds-nav-group-title {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  list-style: none;
+}
+
+.eds-nav-group-title:hover {
+  background-color: var(--color-hover);
+}
+
+.eds-nav-group-title::marker {
   display: none;
 }
 
-.left-navigation summary::before {
-  content: "›";
-  display: inline-block;
-  margin-right: 0.5rem;
+.eds-nav-group-title::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
   transition: transform 0.2s ease;
-  width: 1.25rem;
-  height: 1.25rem;
-  text-align: center;
-  line-height: 1.25rem;
-  color: var(--color-text-muted);
 }
 
-.left-navigation details[open] summary::before {
-  transform: rotate(90deg);
-  color: var(--color-primary);
+.eds-nav-group[open] > .eds-nav-group-title::after {
+  transform: rotate(180deg);
 }
 
-.left-navigation details ul {
-  padding-left: 0.75rem;
-  margin-top: 0.25rem;
+/* Animation for expand/collapse */
+.eds-nav-group:not([open]) > .eds-nav-sublist {
+  display: none;
 }
 
-/* Category styling */
-.left-navigation h3 {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  margin: 1.5rem 0 0.75rem;
-  padding: 0 0.5rem;
-  text-transform: uppercase;
+.eds-nav-group[open] > .eds-nav-sublist {
+  animation: slideDown 0.2s ease-out;
 }
 
-.left-navigation h3:first-child {
-  margin-top: 0;
-}
-
-/* Child list with border */
-.left-navigation .border-l {
-  border-color: var(--color-border);
-  margin-left: 0.75rem;
-  padding-left: 0.75rem;
-}
-
-/* Mobile adjustments */
-@media (max-width: 1024px) {
-  .left-navigation {
-    display: none;
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Component cards in navigation */
-.left-navigation .component-card {
-  padding: 0.75rem;
-  border-radius: 0.25rem;
-  border: 1px solid var(--color-border);
-  margin-bottom: 0.75rem;
-  transition: all 0.2s ease;
-  background-color: var(--color-bg);
+/* Dark mode adjustments */
+:root[data-theme="dark"] .eds-left-navigation {
+  border-right-color: var(--color-border-dark);
 }
 
-.left-navigation .component-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+:root[data-theme="dark"] .eds-nav-sublist {
+  border-left-color: var(--color-border-dark);
 }
 
-/* Active section highlight */
-.left-navigation .section-active {
-  font-weight: 500;
-  color: var(--color-primary);
+:root[data-theme="dark"] .eds-nav-link.active {
+  background-color: rgba(var(--color-primary-rgb), 0.15);
 }
 
-/* Smooth transitions for all interactions */
-.left-navigation * {
-  transition: all 0.2s ease;
+@media (max-width: 768px) {
+  .eds-left-navigation {
+    position: fixed;
+    left: -100%;
+    top: 4rem;
+    height: calc(100vh - 4rem);
+    width: 80%;
+    max-width: 300px;
+    z-index: 50;
+    transition: left 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .eds-left-navigation.active {
+    left: 0;
+  }
 }

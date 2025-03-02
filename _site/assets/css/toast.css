@@ -1,0 +1,143 @@
+/**
+ * Enterprise Design System - Toast Notifications
+ */
+
+/* Toast container */
+.eds-toast-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 320px;
+  width: 100%;
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .eds-toast-container {
+    left: 1rem;
+    right: 1rem;
+    max-width: calc(100% - 2rem);
+    bottom: 5rem;
+  }
+}
+
+/* Basic toast */
+.eds-toast {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--color-bg);
+  border-left: 4px solid var(--color-primary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: auto;
+}
+
+.eds-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.eds-toast-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.eds-toast-content {
+  flex-grow: 1;
+}
+
+.eds-toast-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.eds-toast-message {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.eds-toast-close {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.eds-toast-close:hover {
+  color: var(--color-text);
+}
+
+.eds-toast-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--color-primary);
+  opacity: 0.7;
+  transition: width 100ms linear;
+}
+
+/* Toast types */
+.eds-toast-success {
+  border-left-color: var(--color-success);
+}
+
+.eds-toast-success .eds-toast-icon,
+.eds-toast-success .eds-toast-progress {
+  color: var(--color-success);
+  background-color: var(--color-success);
+}
+
+.eds-toast-warning {
+  border-left-color: var(--color-warning);
+}
+
+.eds-toast-warning .eds-toast-icon,
+.eds-toast-warning .eds-toast-progress {
+  color: var(--color-warning);
+  background-color: var(--color-warning);
+}
+
+.eds-toast-error {
+  border-left-color: var(--color-danger);
+}
+
+.eds-toast-error .eds-toast-icon,
+.eds-toast-error .eds-toast-progress {
+  color: var(--color-danger);
+  background-color: var(--color-danger);
+}
+
+.eds-toast-info {
+  border-left-color: var(--color-info);
+}
+
+.eds-toast-info .eds-toast-icon,
+.eds-toast-info .eds-toast-progress {
+  color: var(--color-info);
+  background-color: var(--color-info);
+}

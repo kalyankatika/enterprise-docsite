@@ -1,191 +1,213 @@
 /**
- * Framer Motion Wrapper for 11ty
- * This file provides a simplified API for using Framer Motion animations in our templates
+ * Enterprise Documentation System - Framer Motion Integration
+ * 
+ * This script provides a wrapper around Framer Motion-like animations
+ * for use in our documentation site. It's designed to be lightweight and work with
+ * Alpine.js to provide smooth transitions and animations throughout the UI.
  */
 
-// Enhanced Framer Motion-like animations using CSS
-document.addEventListener('DOMContentLoaded', function() {
-  // Define animation types
-  const animationTypes = {
-    'fade-in': 'motion-fade-in',
-    'fade-in-up': 'motion-fade-in-up',
-    'scale-in': 'motion-scale-in',
-    'slide-in-right': 'motion-slide-in-right',
-    'slide-in-left': 'motion-slide-in-left',
-    'stagger-children': 'motion-stagger'
+const FramerMotion = (() => {
+  // Helper utility for checking if reduced motion is preferred
+  const prefersReducedMotion = () => {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   };
 
-  // Apply animations to elements with specific data attributes
-  const animateElements = () => {
-    // Handle single animations
-    Object.entries(animationTypes).forEach(([motionType, cssClass]) => {
-      if (motionType !== 'stagger-children') {
-        document.querySelectorAll(`[data-motion="${motionType}"]`).forEach(element => {
-          if (!element.classList.contains('animated')) {
-            if (isInViewport(element)) {
-              element.classList.add(cssClass, 'animated');
-              
-              // Apply delay if specified
-              const delay = element.getAttribute('data-delay');
-              if (delay) {
-                element.style.animationDelay = `${delay}s`;
-              }
-            }
-          }
-        });
-      }
-    });
+  // Animation variants for common patterns
+  const variants = {
+    fadeIn: {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1, transition: { duration: 0.3 } }
+    },
+    
+    slideUp: {
+      hidden: { opacity: 0, y: 20 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+    },
+    
+    slideLeft: {
+      hidden: { opacity: 0, x: 20 },
+      visible: { opacity: 1, x: 0, transition: { duration: 0.4 } }
+    },
+    
+    staggerChildren: {
+      hidden: {},
+      visible: { transition: { staggerChildren: 0.1 } }
+    },
+    
+    childVariant: {
+      hidden: { opacity: 0, y: 20 },
+      visible: { opacity: 1, y: 0 }
+    },
+    
+    scale: {
+      hidden: { opacity: 0, scale: 0.9 },
+      visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } }
+    },
+    
+    accordion: {
+      collapsed: { height: 0, overflow: 'hidden' },
+      expanded: { height: 'auto', overflow: 'visible' }
+    },
+    
+    rotate: {
+      normal: { rotate: 0 },
+      rotated: { rotate: 180 }
+    }
+  };
 
-    // Handle stagger animations
-    document.querySelectorAll('[data-motion="stagger-children"]').forEach(parentElement => {
-      if (!parentElement.classList.contains('animated')) {
-        if (isInViewport(parentElement)) {
-          parentElement.classList.add('motion-stagger', 'animated');
-          
-          // Get stagger effect type for children
-          const childEffect = parentElement.getAttribute('data-children-effect') || 'fade-in-up';
-          const staggerDelay = parseFloat(parentElement.getAttribute('data-stagger-delay') || 0.1);
-          
-          // Add animation to children
-          Array.from(parentElement.children).forEach((child, index) => {
-            child.style.transitionDelay = `${index * staggerDelay}s`;
-            child.classList.add(animationTypes[childEffect] || 'motion-fade-in-up');
-          });
-        }
-      }
-    });
-
-    // Handle hero section animations
-    document.querySelectorAll('.hero-title, .hero-description, .hero-cta, .hero-image').forEach(element => {
-      if (!element.classList.contains('animated') && isInViewport(element)) {
-        element.classList.add('animated');
+  // Initialize elements with data-motion attributes
+  const initMotionElements = () => {
+    if (prefersReducedMotion()) return;
+    
+    document.querySelectorAll('[data-motion]').forEach(element => {
+      const motionType = element.getAttribute('data-motion');
+      const delay = element.getAttribute('data-motion-delay') || 0;
+      
+      if (variants[motionType]) {
+        const classes = motionVariantToClasses(motionType);
+        
+        setTimeout(() => {
+          classes.add.forEach(cls => element.classList.add(cls));
+          classes.remove.forEach(cls => element.classList.remove(cls));
+        }, delay * 1000);
       }
     });
   };
-
-  // Apply specific animations for accordions
-  const initAccordions = () => {
-    document.querySelectorAll('.accordion-header').forEach(header => {
-      header.addEventListener('click', function() {
-        const content = this.nextElementSibling;
-        const isOpen = this.classList.contains('open');
+  
+  // Convert motion variant to CSS class changes
+  const motionVariantToClasses = (variant) => {
+    const classMap = {
+      fadeIn: { add: ['eds-fade-in'], remove: [] },
+      slideUp: { add: ['eds-slide-up'], remove: [] },
+      slideLeft: { add: ['eds-slide-left'], remove: [] },
+      staggerChildren: { add: ['eds-stagger-list'], remove: [] },
+      scale: { add: ['eds-scale-in'], remove: [] }
+    };
+    
+    return classMap[variant] || { add: [], remove: [] };
+  };
+  
+  // Apply animation to an element
+  const animate = (element, motionType, options = {}) => {
+    if (prefersReducedMotion()) return;
+    
+    const { delay = 0, duration, onComplete } = options;
+    
+    if (variants[motionType]) {
+      const classes = motionVariantToClasses(motionType);
+      
+      setTimeout(() => {
+        classes.add.forEach(cls => element.classList.add(cls));
         
-        // Toggle accordion state
-        this.classList.toggle('open');
-        
-        if (isOpen) {
-          content.style.maxHeight = '0';
+        if (duration) {
           setTimeout(() => {
-            content.classList.remove('open');
-          }, 300);
-        } else {
-          content.classList.add('open');
-          content.style.maxHeight = content.scrollHeight + 'px';
+            if (onComplete && typeof onComplete === 'function') {
+              onComplete();
+            }
+          }, duration * 1000);
         }
-      });
-    });
+      }, delay * 1000);
+    }
   };
 
-  // Apply card animations
-  const initCardAnimations = () => {
-    document.querySelectorAll('.feature-card, .component-card, .eds-card').forEach(card => {
-      if (!card.classList.contains('animated-card')) {
-        card.classList.add('animated-card');
-      }
-    });
-  };
-
-  // Apply button animations
-  const initButtonAnimations = () => {
-    document.querySelectorAll('.eds-button').forEach(button => {
-      if (!button.classList.contains('animated-button')) {
-        button.classList.add('animated-button');
-      }
-    });
-  };
-
-  // Animate elements when they enter/leave the viewport
-  const createIntersectionObserver = () => {
-    if ('IntersectionObserver' in window) {
+  // Initialize when DOM is ready
+  const init = () => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMotionElements);
+    } else {
+      initMotionElements();
+    }
+    
+    // Initialize intersection observer for scroll-based animations
+    if ('IntersectionObserver' in window && !prefersReducedMotion()) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            if (!entry.target.classList.contains('animated')) {
-              const motionType = entry.target.getAttribute('data-motion');
-              if (motionType && animationTypes[motionType]) {
-                entry.target.classList.add(animationTypes[motionType], 'animated');
-              }
-            }
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
           }
         });
       }, { threshold: 0.1 });
-
-      // Observe all elements with data-motion attribute
-      document.querySelectorAll('[data-motion]').forEach(element => {
-        observer.observe(element);
+      
+      document.querySelectorAll('.eds-section-transition').forEach(el => {
+        observer.observe(el);
       });
-
-      return observer;
-    }
-    
-    return null;
-  };
-
-  // Helper function to check if element is in viewport
-  const isInViewport = (element) => {
-    const rect = element.getBoundingClientRect();
-    return (
-      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 1.1 &&
-      rect.bottom >= 0 &&
-      rect.left <= (window.innerWidth || document.documentElement.clientWidth) &&
-      rect.right >= 0
-    );
-  };
-
-  // Initialize additional animations on page load
-  const initAnimations = () => {
-    // Run animation check
-    animateElements();
-    
-    // Initialize component-specific animations
-    initAccordions();
-    initCardAnimations();
-    initButtonAnimations();
-    
-    // Try to use IntersectionObserver for better performance
-    const observer = createIntersectionObserver();
-    
-    // Fallback to scroll event if IntersectionObserver is not available
-    if (!observer) {
-      window.addEventListener('scroll', animateElements, { passive: true });
-    }
-    
-    // Also check animations on resize (for responsive layouts)
-    window.addEventListener('resize', animateElements, { passive: true });
-  };
-
-  // Initialize Framer Motion implementation
-  const initFramerMotion = () => {
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      // Apply all animations instantly without transitions
-      document.querySelectorAll('[data-motion]').forEach(element => {
-        element.classList.add('animated');
+    } else {
+      // Fallback for browsers without IntersectionObserver
+      document.querySelectorAll('.eds-section-transition').forEach(el => {
+        el.classList.add('in-view');
       });
-      return;
     }
-    
-    // Run all initializations
-    initAnimations();
-    
-    // Add classes to body when everything is loaded
-    document.body.classList.add('js-animation-loaded');
   };
-
-  // Run all animations
-  initFramerMotion();
   
-  // Add a small delay to ensure all elements are properly rendered
-  setTimeout(animateElements, 100);
+  // Handle page transitions - for future enhancement with Turbo or similar
+  const pageTransition = {
+    enter: (element) => {
+      animate(element, 'fadeIn');
+    },
+    exit: (element, done) => {
+      element.style.opacity = '0';
+      setTimeout(done, 300);
+    }
+  };
+  
+  // Register Alpine.js integration when Alpine is available
+  const registerAlpine = () => {
+    if (window.Alpine) {
+      // Register a custom directive
+      window.Alpine.directive('motion', (el, { value, modifiers, expression }, { evaluate }) => {
+        let motionType = value;
+        let options = {};
+        
+        if (expression) {
+          options = evaluate(expression);
+        }
+        
+        if (modifiers.includes('hover')) {
+          el.addEventListener('mouseenter', () => {
+            animate(el, motionType, options);
+          });
+        } else if (modifiers.includes('click')) {
+          el.addEventListener('click', () => {
+            animate(el, motionType, options);
+          });
+        } else {
+          animate(el, motionType, options);
+        }
+      });
+      
+      // Register a magic property
+      window.Alpine.magic('motion', (el) => {
+        return (motionType, options = {}) => {
+          animate(el, motionType, options);
+        };
+      });
+    }
+  };
+  
+  // Public API
+  return {
+    init,
+    animate,
+    variants,
+    registerAlpine,
+    pageTransition
+  };
+})();
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  FramerMotion.init();
+  
+  // Register with Alpine.js if it's available
+  if (window.Alpine) {
+    FramerMotion.registerAlpine();
+  } else {
+    document.addEventListener('alpine:initialized', FramerMotion.registerAlpine);
+  }
 });
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = FramerMotion;
+}
