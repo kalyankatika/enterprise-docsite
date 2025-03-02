@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Legacy Nunjucks Template",
+    "url": "/njk-sample/"
+  },
+  {
+    "title": "migration-report",
+    "url": "/migration-report/"
+  },
+  {
+    "title": "index",
+    "url": "/index/"
+  },
+  {
+    "title": "html-sample",
+    "url": "/html-sample/"
+  },
+  {
+    "title": "formatted-sample",
+    "url": "/formatted-sample/"
+  },
+  {
+    "title": "Sample Document",
+    "url": "/test-migration/sample/"
+  },
+  {
+    "title": "Sample HTML Document",
+    "url": "/test-migration/sample-page/"
+  },
+  {
+    "title": "sample-doc",
+    "url": "/test-migration/sample-doc/"
+  },
+  {
+    "title": "Sample Component",
+    "url": "/test-migration/sample-component/"
+  }
+]

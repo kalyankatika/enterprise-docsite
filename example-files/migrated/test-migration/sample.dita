@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="sample_concept">
+  <title>Sample DITA Concept</title>
+  <shortdesc>This is a sample DITA concept document for testing XML conversion.</shortdesc>
+  <prolog>
+    <author>Documentation Team</author>
+    <created date="2023-10-16"/>
+  </prolog>
+  <conbody>
+    <section>
+      <title>Overview</title>
+      <p>This document demonstrates the structure of a DITA concept.</p>
+    </section>
+    <section>
+      <title>Key Features</title>
+      <ul>
+        <li>Structured XML content</li>
+        <li>Metadata support</li>
+        <li>Reusable components</li>
+      </ul>
+    </section>
+    <codeblock>
+      <codetext>
+function example() {
+  console.log("Hello from DITA!");
+}
+      </codetext>
+    </codeblock>
+  </conbody>
+</concept>

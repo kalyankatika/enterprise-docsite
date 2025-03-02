@@ -1,0 +1,25 @@
+= Sample Wiki Document =
+
+This is a sample wiki document for testing the legacy parser.
+
+== Features ==
+
+* Wiki-style headings
+* Simple formatting
+* Lists and tables
+
+== Code Example ==
+
+{{{
+function wiki() {
+  return "This is wiki syntax";
+}
+}}}
+
+== Table ==
+
+|| Name || Type || Description ||
+|| id || string || Unique identifier ||
+|| title || string || Display title ||
+
+''Note:'' This is a wiki-formatted note.
