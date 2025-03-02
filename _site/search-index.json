@@ -569,17 +569,6 @@
         "description": "Content migrated from legacy documentation systems",
         "type": "Page",
         "date": "2025-03-02"
-      },
-    
-  
-    
-      {
-        "title": "Migration Report",
-        "url": "/migrated/migration-report/",
-        "content": "Migration Report # Generated on: 2025-03-02T17:08:25.855Z Summary # Repository Files Processed Success Failed Formatted Converted Copied test-migration 8 8 0 1 2 3 Total 8 8 0 1 2 3 Errors # No errors were found during migration. Next Steps # Review the migrated content for accuracy Update internal links and references Rebuild the site with npx @11ty/eleventy Test the site and fix any issues Migrated Files # You can browse the migrated files here: Sample Document Sample Component Sample Page Sample",
-        "description": "Report of the migration process",
-        "type": "Page",
-        "date": "2025-03-02"
       }
     
   
