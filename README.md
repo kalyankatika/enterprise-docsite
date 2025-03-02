@@ -2,8 +2,6 @@
 
 A unified 11ty-based documentation platform that consolidates content from multiple legacy sites, providing a robust and modular documentation experience with enhanced user interaction and performance.
 
-![Enterprise Documentation System](attached_assets/eds-lightmode.png)
-
 ## 🚀 Features
 
 - **11ty (Eleventy)** static site generator for fast performance
