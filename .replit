@@ -29,6 +29,10 @@ args = "create_accordion_dirs"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
+args = "11ty Development Server"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
 args = "create_migration_dirs"
 
 [[workflows.workflow.tasks]]
@@ -38,10 +42,6 @@ args = "create_example_dirs"
 [[workflows.workflow.tasks]]
 task = "workflow.run"
 args = "run_migration_test"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "11ty Development Server"
 
 [[workflows.workflow]]
 name = "create_dirs"
@@ -100,6 +100,21 @@ task = "shell.exec"
 args = "mkdir -p src/components/layout/accordion src/assets/images/"
 
 [[workflows.workflow]]
+name = "11ty Development Server"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx @11ty/eleventy --port=5000 --serve"
+waitForPort = 5000
+
+[[workflows.workflow]]
 name = "create_migration_dirs"
 author = "agent"
 
@@ -141,31 +156,12 @@ task = "packager.installForAll"
 task = "shell.exec"
 args = "node scripts/run-migration-test.js"
 
-[[workflows.workflow]]
-name = "11ty Development Server"
-author = "agent"
-
-[workflows.workflow.metadata]
-agentRequireRestartOnSave = false
-
-[[workflows.workflow.tasks]]
-task = "packager.installForAll"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npx @11ty/eleventy --serve --port=5000"
-waitForPort = 5000
-
 [deployment]
 run = ["sh", "-c", "npx @11ty/eleventy --serve"]
 
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 5001
-externalPort = 3000
 
 [[ports]]
 localPort = 8080

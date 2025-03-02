@@ -1,27 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" class="eds-theme-light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Card | Enterprise Design System</title>
   <meta name="description" content="Cards organize content and actions about a single subject">
   
-  <!-- Load Tailwind CSS -->
+  <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   
   <!-- Custom styles -->
   <link rel="stylesheet" href="/assets/css/styles.css">
-  <link rel="stylesheet" href="/assets/css/left-navigation.css">
-  <link rel="stylesheet" href="/assets/css/animations.css">
-  <link rel="stylesheet" href="/assets/css/toast.css">
   
   <!-- Scripts -->
-  <script src="/assets/js/alpine.min.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
   <script src="/assets/js/framer-motion-wrapper.js" defer></script>
-  
-  <!-- Favicon -->
-  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
   
   <!-- Fix for SVG icon sizing -->
   <style>
@@ -67,23 +61,11 @@
       background-color: var(--color-bg-alt) !important;
       color: var(--color-text) !important;
     }
-    
-    /* Mobile menu overlay */
-    #mobile-menu-overlay {
-      background-color: rgba(0, 0, 0, 0.5);
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 40;
-      transition: opacity 0.3s ease;
-    }
   </style>
 </head>
-<body class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen eds-theme-transition">
+<body class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen">
 
-  <header class="bg-[var(--color-bg)] shadow-sm z-50 border-b border-[var(--color-border)] sticky top-0">
+  <header class="bg-[var(--color-bg)] shadow-sm z-50 border-b border-[var(--color-border)]">
     <div class="container mx-auto px-4 md:px-6">
       <div class="flex items-center justify-between py-4">
         <!-- Logo and site title -->
@@ -96,14 +78,14 @@
         
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center space-x-6">
-          <a href="/design-system/" class="py-2 px-3 hover:text-[var(--color-primary)] transition-colors rounded-md ">Overview</a>
-          <a href="/design-system/foundations/" class="py-2 px-3 hover:text-[var(--color-primary)] transition-colors rounded-md ">Foundations</a>
-          <a href="/components/" class="py-2 px-3 hover:text-[var(--color-primary)] transition-colors rounded-md bg-[var(--color-bg-alt)]">Components</a>
-          <a href="/navigation/" class="py-2 px-3 hover:text-[var(--color-primary)] transition-colors rounded-md ">Browse</a>
+          <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Overview</a>
+          <a href="/design-system/foundations/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
+          <a href="/components/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/navigation/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Browse</a>
           
           <!-- Search -->
           <form action="/search/" method="get" role="search" class="relative ml-2">
-            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-40 md:w-60 transition-all">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-40 md:w-60">
             <div class="absolute left-3 top-2.5">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -112,13 +94,13 @@
           </form>
           
           <!-- Theme Toggle Button -->
-          <button id="theme-toggle" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] ml-2 transition-colors" aria-label="Toggle theme">
+          <button class="eds-theme-toggle p-2 rounded-md hover:bg-[var(--color-bg-alt)] ml-2" aria-label="Toggle theme">
             <!-- Sun (light) icon - show in dark mode -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark-mode-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
             <!-- Moon (dark) icon - show in light mode -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 light-mode-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 eds-theme-dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
           </button>
@@ -127,7 +109,7 @@
         <!-- Mobile menu button -->
         <div class="flex items-center md:hidden">
           <form action="/search/" method="get" role="search" class="relative mr-2">
-            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-32 transition-all">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-32">
             <div class="absolute left-3 top-2.5">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -135,7 +117,7 @@
             </div>
           </form>
           
-          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] transition-colors" aria-label="Toggle menu">
+          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -143,49 +125,48 @@
         </div>
       </div>
       
-      <!-- Mobile menu overlay -->
-      <div id="mobile-menu-overlay" class="hidden md:hidden" aria-hidden="true"></div>
+      <!-- No secondary navigation - using left sidebar instead -->
       
       <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)] absolute bg-[var(--color-bg)] left-0 right-0 shadow-lg z-50 eds-fade-in">
-        <div class="container mx-auto px-4">
-          <nav class="flex flex-col space-y-4">
-            <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
-            <a href="/design-system/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">Overview</a>
-            <a href="/design-system/foundations/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">Foundations</a>
-            <a href="/components/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors bg-[var(--color-bg-alt)] text-[var(--color-primary)]">Components</a>
-            <a href="/navigation/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">Browse</a>
-            
-            <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Browse Components</h3>
-            <a href="/navigation/by-channel/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">By Channel</a>
-            <a href="/navigation/by-type/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">By Type</a>
-            <a href="/navigation/by-owner/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">By Owner</a>
-            
-            <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
-            <a href="/getting-started/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">Getting Started</a>
-            <a href="/resources/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">Resources</a>
-            <a href="/resources/migration-tools/" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-primary)] transition-colors ">Migration Tools</a>
-            
-            <!-- Theme Toggle Button (Mobile) -->
-            <button id="theme-toggle-mobile" class="flex items-center hover:text-[var(--color-primary)] mt-4 p-2 rounded-md hover:bg-[var(--color-bg-alt)] transition-colors w-full" aria-label="Toggle theme">
-              <!-- Sun (light) icon - show in dark mode -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 hidden dark-mode-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <!-- Moon (dark) icon - show in light mode -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 light-mode-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-              <span class="hidden dark-mode-text">Switch to Light Mode</span>
-              <span class="light-mode-text">Switch to Dark Mode</span>
-            </button>
-          </nav>
-        </div>
+      <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)]">
+        <nav class="flex flex-col space-y-4">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
+          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Overview</a>
+          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
+          <a href="/components/" class="hover:text-[var(--color-primary)] text-[var(--color-primary)] font-medium">Components</a>
+          <a href="/navigation/" class="hover:text-[var(--color-primary)]">Browse</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Browse Components</h3>
+          <a href="/navigation/by-channel/" class="hover:text-[var(--color-primary)]">By Channel</a>
+          <a href="/navigation/by-type/" class="hover:text-[var(--color-primary)]">By Type</a>
+          <a href="/navigation/by-owner/" class="hover:text-[var(--color-primary)]">By Owner</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
+          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
+          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
+          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
+          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
+          
+          <!-- Theme Toggle Button (Mobile) -->
+          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)] mt-4" aria-label="Toggle theme">
+            <!-- Sun (light) icon - show in dark mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon (dark) icon - show in light mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 eds-theme-dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <span class="hidden eds-theme-dark:block">Switch to Light Mode</span>
+            <span class="eds-theme-dark:hidden">Switch to Dark Mode</span>
+          </button>
+        </nav>
       </div>
     </div>
   </header>
 
-  <main class="flex-1 eds-page-transition">
+  <main class="flex-1">
     
 <div class="container mx-auto px-4 md:px-6 py-8">
   <div class="flex flex-col lg:flex-row gap-10">
@@ -432,8 +413,8 @@
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
     <div class="container mx-auto px-4 md:px-6 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-        <div class="md:col-span-2">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div>
           <h3 class="font-bold mb-4">Enterprise Design System</h3>
           <p class="text-[var(--color-text-muted)] mb-4">A comprehensive design system for building consistent, accessible, and beautiful enterprise applications.</p>
           <div class="flex space-x-4">
@@ -461,6 +442,16 @@
         </div>
         
         <div>
+          <h4 class="font-medium mb-4">Navigation</h4>
+          <ul class="space-y-2">
+            <li><a href="/navigation/by-channel/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Channel</a></li>
+            <li><a href="/navigation/by-type/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Type</a></li>
+            <li><a href="/navigation/by-owner/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Owner</a></li>
+            <li><a href="/search/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Search</a></li>
+          </ul>
+        </div>
+        
+        <div>
           <h4 class="font-medium mb-4">Components</h4>
           <ul class="space-y-2">
             <li><a href="/components/inputs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Input Components</a></li>
@@ -483,7 +474,7 @@
       
       <div class="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center">
         <p class="text-[var(--color-text-muted)] text-sm mb-4 md:mb-0">&copy; 2025 Enterprise Design System. All rights reserved.</p>
-        <div class="flex flex-wrap justify-center gap-6 text-sm">
+        <div class="flex space-x-6 text-sm">
           <a href="/privacy-policy/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Privacy Policy</a>
           <a href="/terms-of-service/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Terms of Service</a>
           <a href="/sitemap/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Sitemap</a>
@@ -491,13 +482,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Back to top button -->
-  <button id="back-to-top" class="fixed bottom-6 right-6 p-2 bg-[var(--color-primary)] text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-[var(--color-primary-dark)]" aria-label="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-    </svg>
-  </button>
 
 </body>
 </html>

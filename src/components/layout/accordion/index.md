@@ -1,10 +1,9 @@
 ---
-layout: layouts/page.njk
+layout: layouts/component.njk
 title: Accordion
 description: Accordions are lightweight containers that can be used independently or integrated into a larger surface, interacting with the expansion controls and other content on the same page section or container to show or hide information.
 category: layout
 version: 1.0.0
-showSidebar: true
 ---
 
 <section id="anatomy" class="mb-12">

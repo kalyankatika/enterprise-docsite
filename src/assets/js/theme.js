@@ -1,101 +1,62 @@
 /**
  * Enterprise Design System Theme Switcher
  * 
- * Handles theme preferences (light/dark) with system preference detection
+ * Manages theme preferences (light/dark) with system preference detection
  * and persistent storage via localStorage.
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Theme toggle elements
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+(function() {
+  // Check for saved theme preference or use system preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const savedTheme = localStorage.getItem('eds-theme');
   
-  // Theme state indicators
-  const lightModeIcons = document.querySelectorAll('.light-mode-icon');
-  const darkModeIcons = document.querySelectorAll('.dark-mode-icon');
-  const lightModeText = document.querySelectorAll('.light-mode-text');
-  const darkModeText = document.querySelectorAll('.dark-mode-text');
-
-  // System preference media query
-  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-  
-  /**
-   * Set the theme based on preference or system settings
-   */
-  function setInitialTheme() {
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    
-    // If saved preference exists, use it
-    if (savedTheme) {
-      applyTheme(savedTheme);
-      return;
-    }
-    
-    // Otherwise use system preference
-    if (prefersDarkScheme.matches) {
-      applyTheme('dark');
-    } else {
-      applyTheme('light');
-    }
+  // Set initial theme
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    document.documentElement.classList.add('eds-theme-dark');
   }
   
-  /**
-   * Apply the specified theme to the document
-   * @param {string} theme - 'light' or 'dark'
-   */
-  function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    
-    // Update UI indicators based on theme
-    if (theme === 'dark') {
-      lightModeIcons.forEach(icon => icon.classList.add('hidden'));
-      darkModeIcons.forEach(icon => icon.classList.remove('hidden'));
-      lightModeText.forEach(text => text.classList.add('hidden'));
-      darkModeText.forEach(text => text.classList.remove('hidden'));
-    } else {
-      lightModeIcons.forEach(icon => icon.classList.remove('hidden'));
-      darkModeIcons.forEach(icon => icon.classList.add('hidden'));
-      lightModeText.forEach(text => text.classList.remove('hidden'));
-      darkModeText.forEach(text => text.classList.add('hidden'));
-    }
-    
-    // Store preference
-    localStorage.setItem('theme', theme);
-  }
-  
-  /**
-   * Toggle between light and dark themes
-   */
+  // Toggle theme function
   function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
+    const isDark = document.documentElement.classList.contains('eds-theme-dark');
+    
+    if (isDark) {
+      document.documentElement.classList.remove('eds-theme-dark');
+      localStorage.setItem('eds-theme', 'light');
+    } else {
+      document.documentElement.classList.add('eds-theme-dark');
+      localStorage.setItem('eds-theme', 'dark');
+    }
   }
-  
-  // Initialize theme
-  setInitialTheme();
-  
-  // Add event listeners for theme toggle buttons
-  if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-  }
-  
-  if (themeToggleMobile) {
-    themeToggleMobile.addEventListener('click', toggleTheme);
-  }
-  
-  // Listen for system preference changes
-  prefersDarkScheme.addEventListener('change', function(e) {
-    // Only auto-change if user hasn't set a preference
-    if (!localStorage.getItem('theme')) {
-      applyTheme(e.matches ? 'dark' : 'light');
+
+  // Initialize theme toggle buttons when DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    // Find all theme toggle buttons
+    const themeToggles = document.querySelectorAll('.eds-theme-toggle');
+    
+    // Add click event listener to all toggle buttons
+    themeToggles.forEach(button => {
+      button.addEventListener('click', toggleTheme);
+    });
+    
+    // Handle system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('eds-theme')) {
+        if (e.matches) {
+          document.documentElement.classList.add('eds-theme-dark');
+        } else {
+          document.documentElement.classList.remove('eds-theme-dark');
+        }
+      }
+    });
+    
+    // Initialize mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
     }
   });
-  
-  // Add CSS transition class after initial load
-  // This prevents transitions during page load
-  setTimeout(() => {
-    document.body.classList.add('eds-theme-transition');
-  }, 100);
-});
+})();

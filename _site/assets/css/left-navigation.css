@@ -1,167 +1,153 @@
-/**
- * Enterprise Design System - Left Navigation Component
- */
-
-/* Left navigation container */
-.eds-left-nav {
-  background-color: var(--color-bg);
-  border-right: 1px solid var(--color-border);
-  height: 100%;
-  max-height: calc(100vh - var(--header-height) - 2rem);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-scrollbar) transparent;
+.left-navigation {
+  font-size: 0.95rem;
+  line-height: 1.5;
   position: sticky;
-  top: calc(var(--header-height) + 1rem);
-  padding-right: 1rem;
-  font-size: 0.875rem;
+  top: 32px;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding-right: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
 }
 
-.eds-left-nav::-webkit-scrollbar {
+.left-navigation::-webkit-scrollbar {
   width: 4px;
 }
 
-.eds-left-nav::-webkit-scrollbar-thumb {
-  background-color: var(--color-scrollbar);
+.left-navigation::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
   border-radius: 4px;
 }
 
-.eds-left-nav::-webkit-scrollbar-track {
+.left-navigation::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-/* Left navigation header */
-.eds-left-nav-header {
-  font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--color-border);
+.left-navigation a {
   color: var(--color-text);
-}
-
-/* Left navigation sections */
-.eds-left-nav-section {
-  margin-bottom: 1rem;
-}
-
-.eds-left-nav-section:last-child {
-  margin-bottom: 0;
-}
-
-/* Section toggle button */
-.eds-left-nav-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  text-align: left;
-  padding: 0.5rem 0;
-  background: none;
-  border: none;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-text);
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.eds-left-nav-toggle:hover {
-  color: var(--color-primary);
-}
-
-.eds-left-nav-toggle:focus {
-  outline: none;
-  color: var(--color-primary);
-}
-
-/* Toggle icons */
-.eds-left-nav-toggle .icon {
-  width: 1rem;
-  height: 1rem;
-  transition: transform 0.2s ease;
-}
-
-/* Section content */
-.eds-left-nav-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-}
-
-.eds-left-nav-content.active {
-  max-height: 50vh;
-  transition: max-height 0.5s ease-in;
-}
-
-/* Navigation links */
-.eds-left-nav-links {
-  list-style: none;
-  padding-left: 0.75rem;
-  margin: 0.5rem 0;
-}
-
-.eds-left-nav-link {
-  margin-bottom: 0.25rem;
-}
-
-.eds-left-nav-link a {
-  display: block;
-  padding: 0.375rem 0.5rem;
-  color: var(--color-text-muted);
   text-decoration: none;
-  border-radius: var(--border-radius);
+  display: block;
+  border-radius: 0.25rem;
   transition: all 0.2s ease;
-  border-left: 2px solid transparent;
+  padding: 0.375rem 0.5rem;
+  margin: 0.125rem 0;
 }
 
-.eds-left-nav-link a:hover {
+.left-navigation a:hover {
   color: var(--color-primary);
   background-color: var(--color-bg-alt);
-  text-decoration: none;
 }
 
-.eds-left-nav-link a.current-page {
+.left-navigation a.active,
+.left-navigation a.text-\[var\(--color-primary\)\] {
   color: var(--color-primary);
   font-weight: 500;
-  background-color: rgba(var(--color-primary-rgb), 0.05);
-  border-left-color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.08);
 }
 
-/* Nested links */
-.eds-left-nav-nested {
+.left-navigation ul {
   list-style: none;
-  padding-left: 1rem;
-  margin: 0.25rem 0;
+  padding: 0;
+  margin: 0 0 1rem 0;
 }
 
-.eds-left-nav-nested .eds-left-nav-link a {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.8125rem;
+/* Expandable sections */
+.left-navigation details {
+  margin-bottom: 0.5rem;
 }
 
-/* Left navigation footer */
-.eds-left-nav-footer {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--color-border);
-  font-size: 0.75rem;
+.left-navigation summary {
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.left-navigation summary:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.left-navigation summary::-webkit-details-marker {
+  display: none;
+}
+
+.left-navigation summary::before {
+  content: "›";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+  width: 1.25rem;
+  height: 1.25rem;
+  text-align: center;
+  line-height: 1.25rem;
   color: var(--color-text-muted);
 }
 
-/* Mobile left navigation modifications */
+.left-navigation details[open] summary::before {
+  transform: rotate(90deg);
+  color: var(--color-primary);
+}
+
+.left-navigation details ul {
+  padding-left: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Category styling */
+.left-navigation h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin: 1.5rem 0 0.75rem;
+  padding: 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.left-navigation h3:first-child {
+  margin-top: 0;
+}
+
+/* Child list with border */
+.left-navigation .border-l {
+  border-color: var(--color-border);
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+/* Mobile adjustments */
 @media (max-width: 1024px) {
-  .eds-left-nav {
-    position: static;
-    max-height: none;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
-    padding-right: 0;
+  .left-navigation {
+    display: none;
   }
-  
-  .eds-left-nav-content.active {
-    max-height: 100vh;
-  }
+}
+
+/* Component cards in navigation */
+.left-navigation .component-card {
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+  background-color: var(--color-bg);
+}
+
+.left-navigation .component-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+}
+
+/* Active section highlight */
+.left-navigation .section-active {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+/* Smooth transitions for all interactions */
+.left-navigation * {
+  transition: all 0.2s ease;
 }
