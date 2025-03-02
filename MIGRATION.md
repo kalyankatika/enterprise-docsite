@@ -8,7 +8,27 @@ This guide provides simple instructions for migrating legacy documentation to th
 - Access to your legacy documentation repositories
 - Basic familiarity with the command line
 
-## Step 1: Prepare Your Configuration
+## Migration Options
+
+### Option 1: Interactive CLI Tool (Recommended)
+
+We've created an interactive CLI tool that walks you through the migration process:
+
+```bash
+# Make the script executable
+chmod +x scripts/migrate-cli.js
+
+# Run the migration tool
+node scripts/migrate-cli.js
+```
+
+The CLI tool will:
+1. Ask you which migration mode you want to use
+2. Guide you through setting up your repositories
+3. Run the migration process
+4. Offer to build and serve the site
+
+### Option 2: Configuration File
 
 1. Edit `scripts/migration-config.js` to specify your source repositories:
 
@@ -25,11 +45,7 @@ module.exports = {
 };
 ```
 
-## Step 2: Run the Migration
-
-### Option 1: Using the Shell Script (Recommended)
-
-Simply run:
+2. Run using the shell script:
 
 ```bash
 # Make the script executable
@@ -44,28 +60,28 @@ This will:
 - Build the site
 - Provide instructions for viewing the results
 
-### Option 2: Manual Process
+### Option 3: Git Repository Import
 
-If you prefer to run the steps manually:
+To directly import and migrate a Git repository:
 
 ```bash
-# Install dependencies
-npm install glob fs-extra --save-dev
-
-# Run the migration
-node scripts/quick-migrate.js scripts/migration-config.js
-
-# Build the site
-npx @11ty/eleventy
-
-# Serve the site locally (optional)
-npx @11ty/eleventy --serve
+# Run the import tool
+node scripts/import-repo.js https://github.com/username/repo.git [repo-name]
 ```
 
-## Step 3: Review the Results
+### Option 4: Test Migration
+
+To test the migration process with sample files:
+
+```bash
+# Run the test migration
+node scripts/run-migration-test.js
+```
+
+## Review the Results
 
 1. Check the migration report at `src/migrated/migration-report.md`
-2. Browse the migrated content in your browser at http://localhost:8080/migrated/
+2. Browse the migrated content in your browser at http://localhost:5000/migrated/
 3. Verify navigation and links are working correctly
 
 ## What Gets Migrated
