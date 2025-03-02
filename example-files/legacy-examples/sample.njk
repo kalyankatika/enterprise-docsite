@@ -1,0 +1,37 @@
+---
+layout: legacy_component
+title: "Legacy Nunjucks Template"
+description: "A sample Nunjucks template for testing conversion"
+created_at: "2023-10-17"
+author: "Template Team"
+---
+<div class="legacy-template">
+  <h1>{{ title }}</h1>
+  
+  <div class="description">
+    {{ description }}
+  </div>
+  
+  <h2>Template Features</h2>
+  <ul>
+    <li>Variable interpolation: {{ '{{ variable }}' }}</li>
+    <li>Conditional blocks</li>
+    <li>Loops and iterations</li>
+  </ul>
+  
+  <div class="code-example">
+    {% raw %}
+    <pre><code>
+    {% if condition %}
+      <p>This content is conditional</p>
+    {% endif %}
+    
+    {% for item in items %}
+      <li>{{ item.name }}</li>
+    {% endfor %}
+    </code></pre>
+    {% endraw %}
+  </div>
+  
+  <p class="note">This template will be converted to Markdown while preserving the front matter.</p>
+</div>
