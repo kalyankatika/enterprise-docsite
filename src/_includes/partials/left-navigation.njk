@@ -62,9 +62,34 @@
           {% if currentUrl.includes('/components/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
             <li>
-              <a href="/components/all/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/all/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                All Components
+              <a href="/components/all/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/all/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                <span>All</span>
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/all/') %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% endif %}
+                </span>
               </a>
+              {% if currentUrl.includes('/components/all/') %}
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+                <li>
+                  <a href="/components/all/alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/all/alert/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                    Alert
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/button/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/all/button/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                    Button
+                  </a>
+                </li>
+              </ul>
+              {% endif %}
             </li>
             <li>
               <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}">
