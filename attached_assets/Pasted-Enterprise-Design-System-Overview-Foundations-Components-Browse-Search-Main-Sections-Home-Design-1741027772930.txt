@@ -1,0 +1,173 @@
+Enterprise Design System
+Overview
+Foundations
+Components
+Browse
+Search...
+
+Main Sections
+Home
+Design System
+Foundations
+Colors
+Typography
+Spacing
+Components
+▼
+Browse
+▼
+Resources
+▼
+Support
+Migrated Content
+Migrated Overview
+▼
+Legacy Content
+Converted Legacy
+▼
+Preserved Legacy
+▼
+Migration Examples
+▼
+Foundations
+The core design elements that form the building blocks of our design system
+
+Foundations
+Foundations are the core design elements that form the building blocks of our design system. They establish the visual language of our products and ensure consistency across all interfaces.
+
+Core Foundation Elements
+Color
+Our color palette system, including primary and secondary colors, semantic colors, neutrals, and usage guidelines.
+
+View Color System →
+Typography Example
+Typography
+Our typefaces, font weights, sizes, and styles for headings, body text, and UI elements.
+
+View Typography System →
+Spacing
+Our spacing scale and system for consistent layout, padding, and margins across all interfaces.
+
+View Spacing System →
+Iconography
+Our icon system, including usage guidelines, sizing, and available icon sets.
+
+View Icon System →
+Grid System
+Our responsive grid system for consistent layouts across all screen sizes.
+
+View Grid System →
+Accessibility
+Our accessibility guidelines and best practices for creating inclusive interfaces.
+
+View Accessibility Guidelines →
+Purpose of Foundations
+Foundation elements should be used consistently
+
+Foundations provide the basic building blocks for all design work. Use them consistently to create cohesive and harmonious interfaces.
+
+Foundations serve several critical purposes in our design system:
+
+1. Establish a Consistent Visual Language
+Foundations set the visual tone for all our products. By using consistent colors, typography, spacing, and other foundational elements, we create a cohesive look and feel across all interfaces.
+
+2. Improve Design Efficiency
+With pre-defined foundation elements, designers can make decisions more quickly and focus on solving user problems rather than debating basic visual choices.
+
+3. Ensure Accessibility and Usability
+Our foundations are designed with accessibility in mind. The color system includes contrast checking, typography ensures readability, and spacing creates clear visual hierarchies.
+
+4. Support Theming and Customization
+While consistency is important, our foundations also support theming and customization through design tokens that can be adjusted to meet specific brand needs.
+
+5. Create a Shared Design Vocabulary
+Foundations create a shared language for designers and developers to communicate efficiently about interface elements.
+
+How to Use Foundations
+When working on designs or implementations, always start with the foundation elements. They provide the basic building blocks for all other components and patterns.
+
+Example: Building a Card Component
+When designing or implementing a card component, use foundation elements:
+
+Colors: Use the defined background, border, and text colors
+Typography: Follow heading and body text guidelines
+Spacing: Apply consistent padding and margins using the spacing scale
+Elevation: Use the appropriate shadow for the card's visual hierarchy
+
+Card Title
+
+This is an example card that uses our foundation elements consistently, including color, typography, and spacing.
+
+
+Primary Action
+Implementation Principles
+When implementing foundation elements in your designs and code, follow these principles:
+
+Use Design Tokens
+Design tokens are named entities that store visual design attributes. Use design tokens rather than hard-coded values to ensure consistency and support theming.
+
+/* Don't use hard-coded values */
+.button {
+  background-color: #0056b3;
+  padding: 12px 16px;
+}
+
+/* Do use design tokens */
+.button {
+  background-color: var(--color-primary);
+  padding: var(--space-3) var(--space-4);
+}
+Follow Documentation Closely
+Each foundation element has specific usage guidelines. Follow these guidelines closely to ensure proper implementation and avoid inconsistencies.
+
+Use Foundation Elements as Building Blocks
+Foundations should be the building blocks for all other components and patterns. Start with foundations, then build more complex elements on top of them.
+
+Related Resources
+Design Tokens - View all available design tokens
+Figma Libraries - Access foundation styles in our Figma libraries
+Implementation Guide - Technical guidance for implementing foundation elements
+On this page
+Core Foundation Elements
+Color
+Typography
+Spacing
+Iconography
+Grid System
+Accessibility
+Purpose of Foundations
+1. Establish a Consistent Visual Language
+2. Improve Design Efficiency
+3. Ensure Accessibility and Usability
+4. Support Theming and Customization
+5. Create a Shared Design Vocabulary
+How to Use Foundations
+Card Title
+Implementation Principles
+Use Design Tokens
+Follow Documentation Closely
+Use Foundation Elements as Building Blocks
+Related Resources
+Enterprise Design System
+A comprehensive design system for building consistent, accessible, and beautiful enterprise applications.
+
+Resources
+Getting Started
+Examples
+Templates
+Release Notes
+Navigation
+Browse by Channel
+Browse by Type
+Browse by Owner
+Search
+Support
+Help & Support
+FAQ
+Contribute
+Contact Us
+© 2025 Enterprise Design System. All rights reserved.
+
+Privacy Policy
+Terms of Service
+Sitemap
