@@ -11,11 +11,13 @@
   
   <!-- Custom styles -->
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
   
   <!-- Scripts -->
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/theme.js" defer></script>
   <script src="/assets/js/framer-motion-wrapper.js" defer></script>
+  <script src="/assets/js/tabs.js" defer></script>
   
   <!-- Fix for SVG icon sizing -->
   <style>
@@ -356,24 +358,36 @@
         
         <!-- Component content tabs -->
         <div class="mb-8 border-b border-[var(--color-border)]">
-          <nav class="flex flex-wrap -mb-px">
+          <nav class="flex flex-wrap -mb-px" role="tablist" aria-label="Component documentation sections">
             <a href="/components/feedback/alert/" 
-              class="tab-link mr-6 py-3 border-b-2 font-medium text-[var(--color-primary)] border-[var(--color-primary)] transition-colors">
+              class="tab-link mr-6 py-3 border-b-2 font-medium text-[var(--color-primary)] border-[var(--color-primary)] transition-colors"
+              role="tab" 
+              aria-selected="true"
+              tabindex="0">
               Design
             </a>
             
             <a href="/components/feedback/alert/code/" 
-              class="tab-link mr-6 py-3 border-b-2 font-medium text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)] transition-colors">
+              class="tab-link mr-6 py-3 border-b-2 font-medium text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)] transition-colors"
+              role="tab" 
+              aria-selected="false"
+              tabindex="-1">
               Code
             </a>
             
             <a href="/components/feedback/alert/accessibility/" 
-              class="tab-link mr-6 py-3 border-b-2 font-medium text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)] transition-colors">
+              class="tab-link mr-6 py-3 border-b-2 font-medium text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)] transition-colors"
+              role="tab" 
+              aria-selected="false"
+              tabindex="-1">
               Accessibility
             </a>
             
             <a href="/components/feedback/alert/examples/" 
-              class="tab-link py-3 border-b-2 font-medium text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)] transition-colors">
+              class="tab-link py-3 border-b-2 font-medium text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)] transition-colors"
+              role="tab" 
+              aria-selected="false"
+              tabindex="-1">
               Examples
             </a>
           </nav>

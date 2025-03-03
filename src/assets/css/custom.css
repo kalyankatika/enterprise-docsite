@@ -1,0 +1,66 @@
+/* Custom overrides for EDS Documentation */
+
+/* Tighter line height for code blocks */
+pre[class*="language-"],
+code[class*="language-"],
+.prose pre code {
+  line-height: 1.4 !important;
+  font-size: 0.9em !important;
+}
+
+/* Improve component tabs styling */
+.tab-link {
+  transition: all 0.2s ease-in-out;
+}
+
+.tab-link.text-\[var\(--color-primary\)\] {
+  border-color: var(--color-primary) !important;
+  font-weight: 600;
+}
+
+.tab-link:hover {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary-light) !important;
+}
+
+/* Fix tab navigation accessibility */
+.tab-link:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.tab-link:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Code block styling improvements */
+.prose pre {
+  margin-bottom: 1.5rem !important;
+  background-color: #1e293b !important; /* Darker background for better contrast */
+}
+
+.prose pre code {
+  padding: 0 !important;
+  color: #f8fafc !important;
+  font-family: var(--font-mono);
+}
+
+/* Add scrollbar styling for code blocks only */
+.prose pre {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.prose pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 3px;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  background-color: transparent;
+}

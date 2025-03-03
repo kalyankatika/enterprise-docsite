@@ -65,24 +65,36 @@ layout: layouts/base.njk
         
         <!-- Component content tabs -->
         <div class="mb-8 border-b border-[var(--color-border)]">
-          <nav class="flex flex-wrap -mb-px">
+          <nav class="flex flex-wrap -mb-px" role="tablist" aria-label="Component documentation sections">
             <a href="{{ page.url | replace('/index.html', '/') | replace('//index.html', '/') }}" 
-              class="tab-link mr-6 py-3 border-b-2 font-medium {% if not page.url.includes('/code/') and not page.url.includes('/accessibility/') and not page.url.includes('/examples/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">
+              class="tab-link mr-6 py-3 border-b-2 font-medium {% if not page.url.includes('/code/') and not page.url.includes('/accessibility/') and not page.url.includes('/examples/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors"
+              role="tab" 
+              aria-selected="{% if not page.url.includes('/code/') and not page.url.includes('/accessibility/') and not page.url.includes('/examples/') %}true{% else %}false{% endif %}"
+              tabindex="{% if not page.url.includes('/code/') and not page.url.includes('/accessibility/') and not page.url.includes('/examples/') %}0{% else %}-1{% endif %}">
               Design
             </a>
             
             <a href="{{ page.url | replace('/index.html', '') | replace('/code/', '/') | replace('/accessibility/', '/') | replace('/examples/', '/') }}{% if not page.url.endsWith('/') %}/{% endif %}code/" 
-              class="tab-link mr-6 py-3 border-b-2 font-medium {% if page.url.includes('/code/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">
+              class="tab-link mr-6 py-3 border-b-2 font-medium {% if page.url.includes('/code/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors"
+              role="tab" 
+              aria-selected="{% if page.url.includes('/code/') %}true{% else %}false{% endif %}"
+              tabindex="{% if page.url.includes('/code/') %}0{% else %}-1{% endif %}">
               Code
             </a>
             
             <a href="{{ page.url | replace('/index.html', '') | replace('/code/', '/') | replace('/accessibility/', '/') | replace('/examples/', '/') }}{% if not page.url.endsWith('/') %}/{% endif %}accessibility/" 
-              class="tab-link mr-6 py-3 border-b-2 font-medium {% if page.url.includes('/accessibility/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">
+              class="tab-link mr-6 py-3 border-b-2 font-medium {% if page.url.includes('/accessibility/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors"
+              role="tab" 
+              aria-selected="{% if page.url.includes('/accessibility/') %}true{% else %}false{% endif %}"
+              tabindex="{% if page.url.includes('/accessibility/') %}0{% else %}-1{% endif %}">
               Accessibility
             </a>
             
             <a href="{{ page.url | replace('/index.html', '') | replace('/code/', '/') | replace('/accessibility/', '/') | replace('/examples/', '/') }}{% if not page.url.endsWith('/') %}/{% endif %}examples/" 
-              class="tab-link py-3 border-b-2 font-medium {% if page.url.includes('/examples/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">
+              class="tab-link py-3 border-b-2 font-medium {% if page.url.includes('/examples/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors"
+              role="tab" 
+              aria-selected="{% if page.url.includes('/examples/') %}true{% else %}false{% endif %}"
+              tabindex="{% if page.url.includes('/examples/') %}0{% else %}-1{% endif %}">
               Examples
             </a>
           </nav>
