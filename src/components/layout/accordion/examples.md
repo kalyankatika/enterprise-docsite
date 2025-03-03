@@ -5,13 +5,6 @@ description: Accordions are lightweight containers that can be used independentl
 category: layout
 version: 1.0.0
 examplesContent: true
-subTabs:
-  - label: Basic Examples
-    url: /components/layout/accordion/examples/
-  - label: Advanced Examples
-    url: /components/layout/accordion/examples/#advanced-examples
-  - label: Code Snippets
-    url: /components/layout/accordion/examples/#code-snippets
 ---
 
 <section class="mb-12">

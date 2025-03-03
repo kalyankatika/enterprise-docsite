@@ -1,10 +1,5 @@
 /* Custom overrides for EDS Documentation */
 
-/* Add padding below top nav for content pages */
-main {
-  padding-top: 2rem;
-}
-
 /* Tighter line height for code blocks */
 pre[class*="language-"],
 code[class*="language-"],
@@ -26,23 +21,6 @@ code[class*="language-"],
 .tab-link:hover {
   color: var(--color-primary) !important;
   border-color: var(--color-primary-light) !important;
-}
-
-/* Remove underline from sub tabs in components (accordion) */
-.sub-tabs .tab-link {
-  border-bottom-width: 0 !important;
-}
-
-.sub-tabs .tab-link.active {
-  color: var(--color-primary) !important;
-  font-weight: 600;
-  background-color: rgba(var(--color-primary-rgb), 0.08);
-  border-radius: 0.25rem;
-}
-
-.sub-tabs .tab-link:hover {
-  background-color: rgba(var(--color-primary-rgb), 0.05);
-  border-radius: 0.25rem;
 }
 
 /* Fix tab navigation accessibility */
