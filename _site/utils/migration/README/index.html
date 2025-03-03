@@ -1,6 +1,6 @@
-<h1 id="migration-utilities" tabindex="-1">Migration Utilities <a class="anchor" href="#migration-utilities" aria-hidden="true">#</a></h1>
+<h1 id="migration-utilities" tabindex="-1">Migration Utilities <a class="anchor" href="#migration-utilities" aria-hidden="true"></a></h1>
 <p>This directory contains utilities for migrating content from legacy documentation systems to the new 11ty-based Enterprise Documentation System.</p>
-<h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
+<h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true"></a></h2>
 <p>The migration utilities provide tools for converting content from various legacy formats:</p>
 <ul>
 <li><code>html-to-md.js</code> - Converts HTML files to Markdown</li>
@@ -9,8 +9,8 @@
 <li><code>md-formatter.js</code> - Formats and normalizes converted Markdown files</li>
 <li><code>index.js</code> - Exports all migration utilities for easy importing</li>
 </ul>
-<h2 id="usage" tabindex="-1">Usage <a class="anchor" href="#usage" aria-hidden="true">#</a></h2>
-<h3 id="basic-conversion" tabindex="-1">Basic Conversion <a class="anchor" href="#basic-conversion" aria-hidden="true">#</a></h3>
+<h2 id="usage" tabindex="-1">Usage <a class="anchor" href="#usage" aria-hidden="true"></a></h2>
+<h3 id="basic-conversion" tabindex="-1">Basic Conversion <a class="anchor" href="#basic-conversion" aria-hidden="true"></a></h3>
 <p>To convert HTML content to Markdown:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> convertHtmlToMd <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./html-to-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -34,7 +34,7 @@
     <span class="token literal-property property">siteType</span><span class="token operator">:</span> <span class="token string">'confluence'</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="xml-based-documentation" tabindex="-1">XML-based Documentation <a class="anchor" href="#xml-based-documentation" aria-hidden="true">#</a></h3>
+<h3 id="xml-based-documentation" tabindex="-1">XML-based Documentation <a class="anchor" href="#xml-based-documentation" aria-hidden="true"></a></h3>
 <p>To convert DITA or DocBook content:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> convertXmlToMd <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./xml-to-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -47,7 +47,7 @@
     <span class="token literal-property property">extractMetadata</span><span class="token operator">:</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="proprietary-formats" tabindex="-1">Proprietary Formats <a class="anchor" href="#proprietary-formats" aria-hidden="true">#</a></h3>
+<h3 id="proprietary-formats" tabindex="-1">Proprietary Formats <a class="anchor" href="#proprietary-formats" aria-hidden="true"></a></h3>
 <p>For custom or proprietary legacy documentation formats:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> parseLegacyToMd <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./legacy-parser'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -59,7 +59,7 @@
     <span class="token literal-property property">format</span><span class="token operator">:</span> <span class="token string">'wiki'</span>  <span class="token comment">// or 'rtf', 'custom', etc.</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="post-processing-markdown" tabindex="-1">Post-processing Markdown <a class="anchor" href="#post-processing-markdown" aria-hidden="true">#</a></h3>
+<h3 id="post-processing-markdown" tabindex="-1">Post-processing Markdown <a class="anchor" href="#post-processing-markdown" aria-hidden="true"></a></h3>
 <p>After conversion, you can normalize and format the Markdown files:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> formatMarkdown <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./md-formatter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -74,8 +74,8 @@
     <span class="token literal-property property">baseUrl</span><span class="token operator">:</span> <span class="token string">'https://docs.example.com'</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h2 id="configuration-options" tabindex="-1">Configuration Options <a class="anchor" href="#configuration-options" aria-hidden="true">#</a></h2>
-<h3 id="html-to-markdown-options" tabindex="-1">HTML to Markdown Options <a class="anchor" href="#html-to-markdown-options" aria-hidden="true">#</a></h3>
+<h2 id="configuration-options" tabindex="-1">Configuration Options <a class="anchor" href="#configuration-options" aria-hidden="true"></a></h2>
+<h3 id="html-to-markdown-options" tabindex="-1">HTML to Markdown Options <a class="anchor" href="#html-to-markdown-options" aria-hidden="true"></a></h3>
 <table>
 <thead>
 <tr>
@@ -124,7 +124,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="xml-to-markdown-options" tabindex="-1">XML to Markdown Options <a class="anchor" href="#xml-to-markdown-options" aria-hidden="true">#</a></h3>
+<h3 id="xml-to-markdown-options" tabindex="-1">XML to Markdown Options <a class="anchor" href="#xml-to-markdown-options" aria-hidden="true"></a></h3>
 <table>
 <thead>
 <tr>
@@ -161,7 +161,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="legacy-parser-options" tabindex="-1">Legacy Parser Options <a class="anchor" href="#legacy-parser-options" aria-hidden="true">#</a></h3>
+<h3 id="legacy-parser-options" tabindex="-1">Legacy Parser Options <a class="anchor" href="#legacy-parser-options" aria-hidden="true"></a></h3>
 <table>
 <thead>
 <tr>
@@ -192,7 +192,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="markdown-formatter-options" tabindex="-1">Markdown Formatter Options <a class="anchor" href="#markdown-formatter-options" aria-hidden="true">#</a></h3>
+<h3 id="markdown-formatter-options" tabindex="-1">Markdown Formatter Options <a class="anchor" href="#markdown-formatter-options" aria-hidden="true"></a></h3>
 <table>
 <thead>
 <tr>
@@ -235,11 +235,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="testing" tabindex="-1">Testing <a class="anchor" href="#testing" aria-hidden="true">#</a></h2>
+<h2 id="testing" tabindex="-1">Testing <a class="anchor" href="#testing" aria-hidden="true"></a></h2>
 <p>You can test the migration utilities with sample files:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token comment"># Run migration tests</span>
 <span class="token function">node</span> scripts/run-migration-test.js</code></pre>
-<h2 id="example" tabindex="-1">Example <a class="anchor" href="#example" aria-hidden="true">#</a></h2>
+<h2 id="example" tabindex="-1">Example <a class="anchor" href="#example" aria-hidden="true"></a></h2>
 <p>A complete migration workflow might look like:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> convertHtmlToMd <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./src/utils/migration/html-to-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token punctuation">{</span> formatMarkdown <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./src/utils/migration/md-formatter'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -271,7 +271,7 @@
   console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Failed to convert: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sourcePath<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="architecture" tabindex="-1">Architecture <a class="anchor" href="#architecture" aria-hidden="true">#</a></h2>
+<h2 id="architecture" tabindex="-1">Architecture <a class="anchor" href="#architecture" aria-hidden="true"></a></h2>
 <p>The migration utilities are designed to be modular and composable. Each module focuses on a specific conversion task, and they can be combined to create custom migration workflows.</p>
 <pre><code>migration/
 ├── index.js            # Main entry point exporting all utilities

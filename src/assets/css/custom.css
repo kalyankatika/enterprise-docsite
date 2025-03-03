@@ -15,19 +15,19 @@ code[class*="language-"],
 
 /* Light/dark mode icon adjustments */
 .eds-theme-toggle .light-icon {
-  display: block !important;
+  display: none !important;
 }
 
 .eds-theme-dark .eds-theme-toggle .light-icon {
-  display: none !important;
+  display: block !important;
 }
 
 .eds-theme-toggle .dark-icon {
-  display: none !important;
+  display: block !important;
 }
 
 .eds-theme-dark .eds-theme-toggle .dark-icon {
-  display: block !important;
+  display: none !important;
 }
 
 /* Simple code block styling improvements */

@@ -169,11 +169,11 @@
   </header>
 
   <main class="flex-1">
-    <h1 id="migration-tools" tabindex="-1">Migration Tools <a class="anchor" href="#migration-tools" aria-hidden="true">#</a></h1>
+    <h1 id="migration-tools" tabindex="-1">Migration Tools <a class="anchor" href="#migration-tools" aria-hidden="true"></a></h1>
 <p>The Enterprise Documentation System (EDS) provides a suite of tools to help migrate content from legacy documentation systems into our unified 11ty-based platform. These tools are designed to preserve content structure and formatting while converting to Markdown format, which is the standard for our documentation.</p>
-<h2 id="available-migration-utilities" tabindex="-1">Available Migration Utilities <a class="anchor" href="#available-migration-utilities" aria-hidden="true">#</a></h2>
+<h2 id="available-migration-utilities" tabindex="-1">Available Migration Utilities <a class="anchor" href="#available-migration-utilities" aria-hidden="true"></a></h2>
 <p>The following migration utilities are available to help you convert content from various sources:</p>
-<h3 id="html-to-markdown-converter" tabindex="-1">HTML to Markdown Converter <a class="anchor" href="#html-to-markdown-converter" aria-hidden="true">#</a></h3>
+<h3 id="html-to-markdown-converter" tabindex="-1">HTML to Markdown Converter <a class="anchor" href="#html-to-markdown-converter" aria-hidden="true"></a></h3>
 <p>Converts HTML-based legacy sites to Markdown format. This utility can handle:</p>
 <ul>
 <li>Generic HTML content</li>
@@ -182,35 +182,35 @@
 <li>Jira documentation</li>
 <li>WordPress content</li>
 </ul>
-<h3 id="xml-to-markdown-converter" tabindex="-1">XML to Markdown Converter <a class="anchor" href="#xml-to-markdown-converter" aria-hidden="true">#</a></h3>
+<h3 id="xml-to-markdown-converter" tabindex="-1">XML to Markdown Converter <a class="anchor" href="#xml-to-markdown-converter" aria-hidden="true"></a></h3>
 <p>Converts XML-based documentation formats to Markdown, supporting:</p>
 <ul>
 <li>DITA XML</li>
 <li>DocBook XML</li>
 <li>Generic XML structures</li>
 </ul>
-<h3 id="nunjucks-to-markdown-converter" tabindex="-1">Nunjucks to Markdown Converter <a class="anchor" href="#nunjucks-to-markdown-converter" aria-hidden="true">#</a></h3>
+<h3 id="nunjucks-to-markdown-converter" tabindex="-1">Nunjucks to Markdown Converter <a class="anchor" href="#nunjucks-to-markdown-converter" aria-hidden="true"></a></h3>
 <p>Converts Nunjucks templates to Markdown format, useful for migrating from other 11ty-based sites.</p>
-<h3 id="markdown-formatter" tabindex="-1">Markdown Formatter <a class="anchor" href="#markdown-formatter" aria-hidden="true">#</a></h3>
+<h3 id="markdown-formatter" tabindex="-1">Markdown Formatter <a class="anchor" href="#markdown-formatter" aria-hidden="true"></a></h3>
 <p>Formats and normalizes converted Markdown files to ensure they adhere to our documentation standards and styling conventions.</p>
-<h2 id="migration-cli-tool" tabindex="-1">Migration CLI Tool <a class="anchor" href="#migration-cli-tool" aria-hidden="true">#</a></h2>
+<h2 id="migration-cli-tool" tabindex="-1">Migration CLI Tool <a class="anchor" href="#migration-cli-tool" aria-hidden="true"></a></h2>
 <p>We provide a command-line interface (CLI) tool that makes it easy to run migrations either on individual files or in batch mode for entire directories.</p>
-<h3 id="installation" tabindex="-1">Installation <a class="anchor" href="#installation" aria-hidden="true">#</a></h3>
+<h3 id="installation" tabindex="-1">Installation <a class="anchor" href="#installation" aria-hidden="true"></a></h3>
 <p>The migration tools are included in the repository. Before using them, make sure you have the necessary dependencies installed:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span></code></pre>
-<h3 id="basic-usage" tabindex="-1">Basic Usage <a class="anchor" href="#basic-usage" aria-hidden="true">#</a></h3>
-<h4 id="single-file-conversion" tabindex="-1">Single File Conversion <a class="anchor" href="#single-file-conversion" aria-hidden="true">#</a></h4>
+<h3 id="basic-usage" tabindex="-1">Basic Usage <a class="anchor" href="#basic-usage" aria-hidden="true"></a></h3>
+<h4 id="single-file-conversion" tabindex="-1">Single File Conversion <a class="anchor" href="#single-file-conversion" aria-hidden="true"></a></h4>
 <p>To convert a single file from a legacy format to Markdown:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token function">node</span> scripts/migration/migrate.js convert source.html destination.md <span class="token parameter variable">--type</span> html</code></pre>
-<h4 id="batch-conversion" tabindex="-1">Batch Conversion <a class="anchor" href="#batch-conversion" aria-hidden="true">#</a></h4>
+<h4 id="batch-conversion" tabindex="-1">Batch Conversion <a class="anchor" href="#batch-conversion" aria-hidden="true"></a></h4>
 <p>To convert multiple files in a directory:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token function">node</span> scripts/migration/migrate.js batch source-directory/ destination-directory/ <span class="token parameter variable">--type</span> html</code></pre>
-<h4 id="configuration-file" tabindex="-1">Configuration File <a class="anchor" href="#configuration-file" aria-hidden="true">#</a></h4>
+<h4 id="configuration-file" tabindex="-1">Configuration File <a class="anchor" href="#configuration-file" aria-hidden="true"></a></h4>
 <p>For more complex migration scenarios, you can create a configuration file:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token function">node</span> scripts/migration/migrate.js schema migration-config.yml</code></pre>
 <p>Then use the configuration file in your migration:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token function">node</span> scripts/migration/migrate.js batch source-directory/ destination-directory/ <span class="token parameter variable">--config</span> migration-config.yml</code></pre>
-<h3 id="migration-options" tabindex="-1">Migration Options <a class="anchor" href="#migration-options" aria-hidden="true">#</a></h3>
+<h3 id="migration-options" tabindex="-1">Migration Options <a class="anchor" href="#migration-options" aria-hidden="true"></a></h3>
 <p>The migration tools support the following options:</p>
 <table>
 <thead>
@@ -246,27 +246,27 @@
 </tr>
 </tbody>
 </table>
-<h2 id="best-practices-for-content-migration" tabindex="-1">Best Practices for Content Migration <a class="anchor" href="#best-practices-for-content-migration" aria-hidden="true">#</a></h2>
+<h2 id="best-practices-for-content-migration" tabindex="-1">Best Practices for Content Migration <a class="anchor" href="#best-practices-for-content-migration" aria-hidden="true"></a></h2>
 <p>When migrating content from legacy systems, consider the following best practices:</p>
-<h3 id="preparation" tabindex="-1">Preparation <a class="anchor" href="#preparation" aria-hidden="true">#</a></h3>
+<h3 id="preparation" tabindex="-1">Preparation <a class="anchor" href="#preparation" aria-hidden="true"></a></h3>
 <ol>
 <li><strong>Content Audit</strong>: Perform a content audit to identify what needs to be migrated and what can be discarded.</li>
 <li><strong>Structure Planning</strong>: Map the structure of your legacy content to the new documentation structure.</li>
 <li><strong>Test Migration</strong>: Run test migrations on a small subset of content before processing everything.</li>
 </ol>
-<h3 id="during-migration" tabindex="-1">During Migration <a class="anchor" href="#during-migration" aria-hidden="true">#</a></h3>
+<h3 id="during-migration" tabindex="-1">During Migration <a class="anchor" href="#during-migration" aria-hidden="true"></a></h3>
 <ol>
 <li><strong>Preserve Metadata</strong>: Make sure to capture and convert any metadata like authors, dates, and categories.</li>
 <li><strong>Handle Images</strong>: Ensure images are properly transferred and references are updated.</li>
 <li><strong>Check Links</strong>: Update internal links to reflect the new structure.</li>
 </ol>
-<h3 id="post-migration" tabindex="-1">Post-Migration <a class="anchor" href="#post-migration" aria-hidden="true">#</a></h3>
+<h3 id="post-migration" tabindex="-1">Post-Migration <a class="anchor" href="#post-migration" aria-hidden="true"></a></h3>
 <ol>
 <li><strong>Format Review</strong>: Review the formatting of migrated content to ensure it meets our standards.</li>
 <li><strong>Structural Check</strong>: Verify the structure and navigation of the migrated content.</li>
 <li><strong>Fix Broken Elements</strong>: Address any elements that didn't convert properly.</li>
 </ol>
-<h2 id="example-migrating-from-confluence" tabindex="-1">Example: Migrating from Confluence <a class="anchor" href="#example-migrating-from-confluence" aria-hidden="true">#</a></h2>
+<h2 id="example-migrating-from-confluence" tabindex="-1">Example: Migrating from Confluence <a class="anchor" href="#example-migrating-from-confluence" aria-hidden="true"></a></h2>
 <p>Here's an example of migrating content from Confluence:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token comment"># Create a migration configuration</span>
 <span class="token function">node</span> scripts/migration/migrate.js schema confluence-migration.yml
@@ -278,7 +278,7 @@
 
 <span class="token comment"># Format the migrated content</span>
 <span class="token function">node</span> src/utils/migration/md-formatter.js batch src/migrated-content/</code></pre>
-<h2 id="example-configuration-file" tabindex="-1">Example Configuration File <a class="anchor" href="#example-configuration-file" aria-hidden="true">#</a></h2>
+<h2 id="example-configuration-file" tabindex="-1">Example Configuration File <a class="anchor" href="#example-configuration-file" aria-hidden="true"></a></h2>
 <p>Here's an example of a migration configuration file:</p>
 <pre class="language-yaml"><code class="language-yaml"><span class="token comment"># Migration Configuration</span>
 <span class="token key atrule">type</span><span class="token punctuation">:</span> html
@@ -305,7 +305,7 @@
     <span class="token punctuation">-</span> migrated
   <span class="token key atrule">migrationSource</span><span class="token punctuation">:</span> <span class="token string">"Confluence"</span>
   <span class="token key atrule">migrationDate</span><span class="token punctuation">:</span> <span class="token string">"2025-02-27"</span></code></pre>
-<h2 id="technical-documentation" tabindex="-1">Technical Documentation <a class="anchor" href="#technical-documentation" aria-hidden="true">#</a></h2>
+<h2 id="technical-documentation" tabindex="-1">Technical Documentation <a class="anchor" href="#technical-documentation" aria-hidden="true"></a></h2>
 <p>For detailed technical documentation on the migration utilities, refer to:</p>
 <ul>
 <li><a href="/utils/migration/html-to-md/">HTML to Markdown Converter API</a></li>
@@ -313,7 +313,7 @@
 <li><a href="/utils/migration/njk-to-md/">Nunjucks to Markdown Converter API</a></li>
 <li><a href="/utils/migration/md-formatter/">Markdown Formatter API</a></li>
 </ul>
-<h2 id="getting-help" tabindex="-1">Getting Help <a class="anchor" href="#getting-help" aria-hidden="true">#</a></h2>
+<h2 id="getting-help" tabindex="-1">Getting Help <a class="anchor" href="#getting-help" aria-hidden="true"></a></h2>
 <p>If you encounter issues with the migration tools, please reach out to the Documentation Team or file an issue in the repository.</p>
 
   </main>

@@ -1,10 +1,10 @@
-<h1 id="enterprise-documentation-system-utilities" tabindex="-1">Enterprise Documentation System Utilities <a class="anchor" href="#enterprise-documentation-system-utilities" aria-hidden="true">#</a></h1>
+<h1 id="enterprise-documentation-system-utilities" tabindex="-1">Enterprise Documentation System Utilities <a class="anchor" href="#enterprise-documentation-system-utilities" aria-hidden="true"></a></h1>
 <p>This directory contains utility modules used throughout the EDS documentation platform.</p>
-<h2 id="migration-utilities" tabindex="-1">Migration Utilities <a class="anchor" href="#migration-utilities" aria-hidden="true">#</a></h2>
+<h2 id="migration-utilities" tabindex="-1">Migration Utilities <a class="anchor" href="#migration-utilities" aria-hidden="true"></a></h2>
 <p>The <code>migration/</code> directory contains tools for migrating content from legacy documentation systems to the new 11ty-based Enterprise Documentation System. See the <a href="./migration/README.md">Migration README</a> for detailed documentation.</p>
-<h2 id="nunjucks-to-markdown-converter" tabindex="-1">Nunjucks to Markdown Converter <a class="anchor" href="#nunjucks-to-markdown-converter" aria-hidden="true">#</a></h2>
+<h2 id="nunjucks-to-markdown-converter" tabindex="-1">Nunjucks to Markdown Converter <a class="anchor" href="#nunjucks-to-markdown-converter" aria-hidden="true"></a></h2>
 <p>The <code>njk-to-md.js</code> utility converts Nunjucks (.njk) templates to Markdown (.md) format to facilitate content migration and consolidation.</p>
-<h3 id="features" tabindex="-1">Features <a class="anchor" href="#features" aria-hidden="true">#</a></h3>
+<h3 id="features" tabindex="-1">Features <a class="anchor" href="#features" aria-hidden="true"></a></h3>
 <ul>
 <li>Convert Nunjucks templates to Markdown</li>
 <li>Preserve original templates when needed</li>
@@ -13,7 +13,7 @@
 <li>Generate reports of the conversion process</li>
 <li>Create sample legacy content for testing</li>
 </ul>
-<h3 id="usage" tabindex="-1">Usage <a class="anchor" href="#usage" aria-hidden="true">#</a></h3>
+<h3 id="usage" tabindex="-1">Usage <a class="anchor" href="#usage" aria-hidden="true"></a></h3>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> 
   convertNjkToMd<span class="token punctuation">,</span> 
   copyNjkFile<span class="token punctuation">,</span> 
@@ -64,8 +64,8 @@
 
 <span class="token comment">// Create sample legacy content for testing</span>
 <span class="token function">createSampleLegacyContent</span><span class="token punctuation">(</span><span class="token string">'src/legacy-samples'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="api-reference" tabindex="-1">API Reference <a class="anchor" href="#api-reference" aria-hidden="true">#</a></h3>
-<h4 id="convertnjktomdsource-dest-data-options-" tabindex="-1"><code>convertNjkToMd(source, dest, data = {}, options = {})</code> <a class="anchor" href="#convertnjktomdsource-dest-data-options-" aria-hidden="true">#</a></h4>
+<h3 id="api-reference" tabindex="-1">API Reference <a class="anchor" href="#api-reference" aria-hidden="true"></a></h3>
+<h4 id="convertnjktomdsource-dest-data-options-" tabindex="-1"><code>convertNjkToMd(source, dest, data = {}, options = {})</code> <a class="anchor" href="#convertnjktomdsource-dest-data-options-" aria-hidden="true"></a></h4>
 <p>Converts a Nunjucks template to Markdown.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -82,7 +82,7 @@
 </li>
 </ul>
 <p><strong>Returns:</strong> Promise<object> - Result object with status and path</p>
-<h4 id="copynjkfilesource-dest-options-" tabindex="-1"><code>copyNjkFile(source, dest, options = {})</code> <a class="anchor" href="#copynjkfilesource-dest-options-" aria-hidden="true">#</a></h4>
+<h4 id="copynjkfilesource-dest-options-" tabindex="-1"><code>copyNjkFile(source, dest, options = {})</code> <a class="anchor" href="#copynjkfilesource-dest-options-" aria-hidden="true"></a></h4>
 <p>Copies a Nunjucks file without converting it.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -96,7 +96,7 @@
 </li>
 </ul>
 <p><strong>Returns:</strong> Promise<object> - Result object with status and path</p>
-<h4 id="processdirectorysourcedir-destdir-options-" tabindex="-1"><code>processDirectory(sourceDir, destDir, options = {})</code> <a class="anchor" href="#processdirectorysourcedir-destdir-options-" aria-hidden="true">#</a></h4>
+<h4 id="processdirectorysourcedir-destdir-options-" tabindex="-1"><code>processDirectory(sourceDir, destDir, options = {})</code> <a class="anchor" href="#processdirectorysourcedir-destdir-options-" aria-hidden="true"></a></h4>
 <p>Process a directory of Nunjucks files, converting them to Markdown or preserving them as needed.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -113,20 +113,20 @@
 </li>
 </ul>
 <p><strong>Returns:</strong> Promise<object> - Results of the processing with converted, preserved, and error counts</p>
-<h4 id="generateconversionreportresults-reportpath" tabindex="-1"><code>generateConversionReport(results, reportPath)</code> <a class="anchor" href="#generateconversionreportresults-reportpath" aria-hidden="true">#</a></h4>
+<h4 id="generateconversionreportresults-reportpath" tabindex="-1"><code>generateConversionReport(results, reportPath)</code> <a class="anchor" href="#generateconversionreportresults-reportpath" aria-hidden="true"></a></h4>
 <p>Generate a report of the conversion process.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>results</code> (object): The results from processDirectory</li>
 <li><code>reportPath</code> (string): Path to save the report</li>
 </ul>
-<h4 id="createsamplelegacycontentdirectory" tabindex="-1"><code>createSampleLegacyContent(directory)</code> <a class="anchor" href="#createsamplelegacycontentdirectory" aria-hidden="true">#</a></h4>
+<h4 id="createsamplelegacycontentdirectory" tabindex="-1"><code>createSampleLegacyContent(directory)</code> <a class="anchor" href="#createsamplelegacycontentdirectory" aria-hidden="true"></a></h4>
 <p>Create sample legacy content for demonstration.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>directory</code> (string): Directory to create sample content</li>
 </ul>
-<h3 id="example" tabindex="-1">Example <a class="anchor" href="#example" aria-hidden="true">#</a></h3>
+<h3 id="example" tabindex="-1">Example <a class="anchor" href="#example" aria-hidden="true"></a></h3>
 <p>Full example of converting legacy content:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token punctuation">{</span> 

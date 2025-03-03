@@ -316,18 +316,18 @@
           <p class="text-xl text-[var(--color-text-muted)] mb-8">How to migrate legacy documentation from Nunjucks templates to the new markdown format</p>
         
         
-        <h1 id="legacy-documentation-migration" tabindex="-1">Legacy Documentation Migration <a class="anchor" href="#legacy-documentation-migration" aria-hidden="true">#</a></h1>
+        <h1 id="legacy-documentation-migration" tabindex="-1">Legacy Documentation Migration <a class="anchor" href="#legacy-documentation-migration" aria-hidden="true"></a></h1>
 <p>This guide explains how to use our migration tools to convert legacy documentation from Nunjucks (.njk) templates to the modern Markdown format used in the Enterprise Design System.</p>
-<h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
+<h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true"></a></h2>
 <p>The migration tools provide two main approaches:</p>
 <ol>
 <li><strong>Convert to Markdown</strong> - Transform .njk files to .md format for integration into the modern documentation system</li>
 <li><strong>Preserve as Nunjucks</strong> - Keep certain files in .njk format when they contain complex templates that should be rendered directly</li>
 </ol>
-<h2 id="migration-process" tabindex="-1">Migration Process <a class="anchor" href="#migration-process" aria-hidden="true">#</a></h2>
-<h3 id="step-1-identify-legacy-content" tabindex="-1">Step 1: Identify Legacy Content <a class="anchor" href="#step-1-identify-legacy-content" aria-hidden="true">#</a></h3>
+<h2 id="migration-process" tabindex="-1">Migration Process <a class="anchor" href="#migration-process" aria-hidden="true"></a></h2>
+<h3 id="step-1-identify-legacy-content" tabindex="-1">Step 1: Identify Legacy Content <a class="anchor" href="#step-1-identify-legacy-content" aria-hidden="true"></a></h3>
 <p>First, identify the legacy .njk files you want to migrate. These are typically located in legacy documentation repositories or systems.</p>
-<h3 id="step-2-use-the-migration-utility" tabindex="-1">Step 2: Use the Migration Utility <a class="anchor" href="#step-2-use-the-migration-utility" aria-hidden="true">#</a></h3>
+<h3 id="step-2-use-the-migration-utility" tabindex="-1">Step 2: Use the Migration Utility <a class="anchor" href="#step-2-use-the-migration-utility" aria-hidden="true"></a></h3>
 <p>Our migration utilities are available in the <code>src/utils/njk-to-md.js</code> module. You can use them programmatically or through our conversion scripts.</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">{</span> processDirectory <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./src/utils/njk-to-md'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -341,7 +341,7 @@
     <span class="token literal-property property">preserveLayout</span><span class="token operator">:</span> <span class="token boolean">false</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h3 id="step-3-review-conversion-results" tabindex="-1">Step 3: Review Conversion Results <a class="anchor" href="#step-3-review-conversion-results" aria-hidden="true">#</a></h3>
+<h3 id="step-3-review-conversion-results" tabindex="-1">Step 3: Review Conversion Results <a class="anchor" href="#step-3-review-conversion-results" aria-hidden="true"></a></h3>
 <p>After conversion, review the generated Markdown files to ensure:</p>
 <ul>
 <li>Content is properly formatted</li>
@@ -349,9 +349,9 @@
 <li>Tables are correctly structured</li>
 <li>Links work as expected</li>
 </ul>
-<h2 id="migration-examples" tabindex="-1">Migration Examples <a class="anchor" href="#migration-examples" aria-hidden="true">#</a></h2>
+<h2 id="migration-examples" tabindex="-1">Migration Examples <a class="anchor" href="#migration-examples" aria-hidden="true"></a></h2>
 <p>Below are examples of legacy documentation files and their converted versions.</p>
-<h3 id="example-1-legacy-component-documentation" tabindex="-1">Example 1: Legacy Component Documentation <a class="anchor" href="#example-1-legacy-component-documentation" aria-hidden="true">#</a></h3>
+<h3 id="example-1-legacy-component-documentation" tabindex="-1">Example 1: Legacy Component Documentation <a class="anchor" href="#example-1-legacy-component-documentation" aria-hidden="true"></a></h3>
 <div class="code-example">
   <div class="code-example-preview">
     <h3>Legacy Component (Original .njk)</h3>
@@ -417,7 +417,7 @@ This component was migrated from the legacy documentation system.<br>
 &lt;/div&gt;</code></pre></p>
   </div>
 </div>
-<h3 id="example-2-converted-markdown" tabindex="-1">Example 2: Converted Markdown <a class="anchor" href="#example-2-converted-markdown" aria-hidden="true">#</a></h3>
+<h3 id="example-2-converted-markdown" tabindex="-1">Example 2: Converted Markdown <a class="anchor" href="#example-2-converted-markdown" aria-hidden="true"></a></h3>
 <div class="code-example">
   <div class="code-example-preview">
     <h3>Converted to Markdown</h3>
@@ -439,13 +439,13 @@ author: "Previous Team"
 converted_from: "src/legacy-docs/legacy-component.njk"
 conversion_date: "2025-03-02"
 ---
-<h1 id="legacy-component" tabindex="-1">Legacy Component <a class="anchor" href="#legacy-component" aria-hidden="true">#</a></h1>
+<h1 id="legacy-component" tabindex="-1">Legacy Component <a class="anchor" href="#legacy-component" aria-hidden="true"></a></h1>
 <blockquote>
 <p>This component was migrated from the legacy documentation system.</p>
 </blockquote>
-<h2 id="usage" tabindex="-1">Usage <a class="anchor" href="#usage" aria-hidden="true">#</a></h2>
+<h2 id="usage" tabindex="-1">Usage <a class="anchor" href="#usage" aria-hidden="true"></a></h2>
 <p>This is an example of how a component was documented in the previous system.</p>
-<h3 id="properties" tabindex="-1">Properties <a class="anchor" href="#properties" aria-hidden="true">#</a></h3>
+<h3 id="properties" tabindex="-1">Properties <a class="anchor" href="#properties" aria-hidden="true"></a></h3>
 <table>
 <thead>
 <tr>
@@ -469,7 +469,7 @@ conversion_date: "2025-03-02"
 </table>
   </div>
 </div>
-<h2 id="conversion-options" tabindex="-1">Conversion Options <a class="anchor" href="#conversion-options" aria-hidden="true">#</a></h2>
+<h2 id="conversion-options" tabindex="-1">Conversion Options <a class="anchor" href="#conversion-options" aria-hidden="true"></a></h2>
 <p>The migration utilities support several options to control the conversion process:</p>
 <table>
 <thead>
@@ -507,10 +507,10 @@ conversion_date: "2025-03-02"
 </tr>
 </tbody>
 </table>
-<h2 id="handling-special-cases" tabindex="-1">Handling Special Cases <a class="anchor" href="#handling-special-cases" aria-hidden="true">#</a></h2>
-<h3 id="nunjucks-templates-with-variables" tabindex="-1">Nunjucks Templates with Variables <a class="anchor" href="#nunjucks-templates-with-variables" aria-hidden="true">#</a></h3>
+<h2 id="handling-special-cases" tabindex="-1">Handling Special Cases <a class="anchor" href="#handling-special-cases" aria-hidden="true"></a></h2>
+<h3 id="nunjucks-templates-with-variables" tabindex="-1">Nunjucks Templates with Variables <a class="anchor" href="#nunjucks-templates-with-variables" aria-hidden="true"></a></h3>
 <p>Some legacy templates may contain Nunjucks variables (``) that need special handling. Our converter attempts to render these variables using the front matter data. If rendering fails, it falls back to using the original template content.</p>
-<h3 id="complex-html-elements" tabindex="-1">Complex HTML Elements <a class="anchor" href="#complex-html-elements" aria-hidden="true">#</a></h3>
+<h3 id="complex-html-elements" tabindex="-1">Complex HTML Elements <a class="anchor" href="#complex-html-elements" aria-hidden="true"></a></h3>
 <p>The converter handles special HTML structures like:</p>
 <ul>
 <li>Notes, warnings, and info boxes (converted to blockquotes)</li>
@@ -518,7 +518,7 @@ conversion_date: "2025-03-02"
 <li>Tables with proper structure</li>
 <li>Lists with proper formatting</li>
 </ul>
-<h2 id="migration-report" tabindex="-1">Migration Report <a class="anchor" href="#migration-report" aria-hidden="true">#</a></h2>
+<h2 id="migration-report" tabindex="-1">Migration Report <a class="anchor" href="#migration-report" aria-hidden="true"></a></h2>
 <p>After running a conversion, the tool can generate a detailed report of the process:</p>
 <pre class="language-markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> Legacy Documentation Conversion Report</span>
 
@@ -540,7 +540,7 @@ Report generated on: 2025-03-02T16:30:45.123Z
 
 <span class="token list punctuation">-</span> src/legacy-docs/njk/template1.njk → src/components/shared/migration-examples/template1.njk
 <span class="token list punctuation">-</span> src/legacy-docs/njk/template2.njk → src/components/shared/migration-examples/template2.njk</code></pre>
-<h2 id="viewing-examples" tabindex="-1">Viewing Examples <a class="anchor" href="#viewing-examples" aria-hidden="true">#</a></h2>
+<h2 id="viewing-examples" tabindex="-1">Viewing Examples <a class="anchor" href="#viewing-examples" aria-hidden="true"></a></h2>
 <p>You can view real examples of converted legacy documentation by running the legacy conversion script:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token function">node</span> scripts/legacy-converter.js</code></pre>
 <p>This will create sample legacy content and process it using different conversion options, demonstrating the capabilities of the migration tools.</p>

@@ -114,7 +114,7 @@ module.exports = function(eleventyConfig) {
     permalink: markdownItAnchor.permalink.ariaHidden({
       placement: 'after',
       class: 'anchor',
-      symbol: '#',
+      symbol: '',
       level: [2, 3, 4]
     }),
     slugify: s => s.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-')
