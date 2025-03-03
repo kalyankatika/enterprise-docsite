@@ -17,10 +17,6 @@ module.exports = {
       url: "/components/"
     },
     {
-      title: "Browse",
-      url: "/navigation/"
-    },
-    {
       title: "Resources",
       url: "/resources/"
     },
@@ -57,46 +53,6 @@ module.exports = {
   // Legacy and migrated content
   legacy: [
     {
-      title: "Legacy Content",
-      items: [
-        {
-          title: "Converted Legacy Components",
-          url: "/legacy-docs/converted/legacy-component/",
-          status: "migrated"
-        },
-        {
-          title: "Converted Legacy Pages",
-          url: "/legacy-docs/converted/legacy-page/",
-          status: "migrated"
-        },
-        {
-          title: "Preserved Legacy Components",
-          url: "/legacy-docs/njk/legacy-component/",
-          status: "preserved"
-        },
-        {
-          title: "Preserved Legacy Pages",
-          url: "/legacy-docs/njk/legacy-page/",
-          status: "preserved"
-        }
-      ]
-    },
-    {
-      title: "Migration Examples",
-      items: [
-        {
-          title: "Legacy Component Preserved",
-          url: "/components/shared/migration-examples/legacy-component-preserved/",
-          status: "example"
-        },
-        {
-          title: "Legacy Page Converted",
-          url: "/components/shared/migration-examples/legacy-page-converted/",
-          status: "example"
-        }
-      ]
-    },
-    {
       title: "Migrated Content",
       items: [
         {
@@ -110,42 +66,37 @@ module.exports = {
           status: "migrated"
         },
         {
-          title: "Test Migration Sample Page",
-          url: "/migrated/test-migration/sample-page/",
-          status: "migrated"
-        },
-        {
           title: "Test Migration Sample Component",
           url: "/migrated/test-migration/sample-component/",
-          status: "migrated"
-        },
-        {
-          title: "Test Migration Sample Doc",
-          url: "/migrated/test-migration/sample-doc/",
           status: "migrated"
         }
       ]
     }
   ],
   
-  // Navigation categories
+  // Navigation categories for components
   navigation: [
     {
-      title: "Browse Categories",
+      title: "Component Categories",
       items: [
         {
-          title: "By Channel",
-          url: "/navigation/by-channel/",
+          title: "Layout",
+          url: "/components/layout/",
           status: "stable"
         },
         {
-          title: "By Type",
-          url: "/navigation/by-type/",
+          title: "Navigation",
+          url: "/components/navigation/",
           status: "stable"
         },
         {
-          title: "By Owner",
-          url: "/navigation/by-owner/",
+          title: "Feedback",
+          url: "/components/feedback/",
+          status: "stable"
+        },
+        {
+          title: "Inputs",
+          url: "/components/inputs/",
           status: "stable"
         }
       ]
@@ -199,13 +150,18 @@ module.exports = {
           status: "stable"
         },
         {
-          title: "Legacy Migration",
-          url: "/resources/legacy-migration/",
+          title: "Content Migration System",
+          url: "/resources/content-migration/",
           status: "stable"
         },
         {
-          title: "Migrated Content",
-          url: "/resources/migrated-content/",
+          title: "Migration Guide",
+          url: "/resources/migration-guide/",
+          status: "stable"
+        },
+        {
+          title: "Migration Tools",
+          url: "/resources/migration-tools/",
           status: "stable"
         }
       ]
