@@ -269,15 +269,18 @@
       <!-- Component content tabs -->
       <div class="mb-8 border-b border-[var(--color-border)]">
         <div class="flex space-x-6">
-          <a href="#design" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="design">Design</a>
-          <a href="#code" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="code">Code</a>
-          <a href="#accessibility" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="accessibility">Accessibility</a>
-          <a href="#examples" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors" data-tab="examples">Examples</a>
+          <a href="/components/navigation/breadcrumb/" class="tab-link py-3 border-b-2 text-[var(--color-primary)] border-[var(--color-primary)] transition-colors">Design</a>
+          
+          <a href="/components/navigation/breadcrumb/code/" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors">Code</a>
+          
+          <a href="/components/navigation/breadcrumb/accessibility/" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors">Accessibility</a>
+          
+          <a href="/components/navigation/breadcrumb/examples/" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors">Examples</a>
         </div>
       </div>
       
       <!-- Tab content -->
-      <div class="tab-content space-y-10" id="design">
+      <div class="tab-content space-y-10">
         <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true">#</a></h2>
 <p>The Breadcrumb component displays a navigational path showing the user their current location within the site's hierarchy.</p>
 <h2 id="when-to-use" tabindex="-1">When to use <a class="anchor" href="#when-to-use" aria-hidden="true">#</a></h2>
@@ -319,24 +322,6 @@
 
       </div>
       
-      <div class="tab-content hidden space-y-10" id="code">
-        
-          <p>Code documentation is coming soon.</p>
-        
-      </div>
-      
-      <div class="tab-content hidden space-y-10" id="accessibility">
-        
-          <p>Accessibility documentation is coming soon.</p>
-        
-      </div>
-      
-      <div class="tab-content hidden space-y-10" id="examples">
-        
-          <p>Examples are coming soon.</p>
-        
-      </div>
-      
       <!-- Right sidebar: On this page -->
       <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
         <h2 class="text-xl font-bold mb-4">On this page</h2>
@@ -354,58 +339,8 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Initialize tabs
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    // Check if there's a hash in the URL
-    const hash = window.location.hash;
-    if (hash) {
-      // Remove # from hash
-      const tabId = hash.substring(1);
-      showTab(tabId);
-    } else {
-      // Set default active tab
-      tabLinks[0].classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      tabContents[0].classList.remove('hidden');
-    }
-    
-    tabLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const tabId = link.getAttribute('data-tab');
-        
-        // Update URL with hash
-        history.pushState(null, null, `#${tabId}`);
-        
-        showTab(tabId);
-      });
-    });
-    
-    function showTab(tabId) {
-      // Hide all tabs and remove active classes
-      tabContents.forEach(content => {
-        content.classList.add('hidden');
-      });
-      
-      tabLinks.forEach(link => {
-        link.classList.remove('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      });
-      
-      // Show the selected tab
-      const selectedTab = document.getElementById(tabId);
-      if (selectedTab) {
-        selectedTab.classList.remove('hidden');
-      }
-      
-      // Add active class to the clicked tab link
-      const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
-      if (activeLink) {
-        activeLink.classList.add('text-[var(--color-primary)]', 'border-[var(--color-primary)]');
-      }
-    }
-  });
+  // No tab handling JavaScript needed as we're using navigation to separate pages
+  // for the component documentation sections
 </script>
   </main>
 

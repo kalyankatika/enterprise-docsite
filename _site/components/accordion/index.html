@@ -1,546 +1,628 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="eds-theme-light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accordion | Enterprise Design System</title>
   <meta name="description" content="Accordions are lightweight containers that can function independently or be integrated into a single-page section, interacting with the expansion controls and other adjacent content.">
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+  <!-- Load Tailwind CSS from CDN for reliable rendering -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   
-  <!-- CSS -->
+  <!-- Custom styles -->
   <link rel="stylesheet" href="/assets/css/styles.css">
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Scripts -->
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/framer-motion-wrapper.js" defer></script>
   
-  <!-- Alpine.js -->
-  <script defer src="/assets/js/alpine.min.js"></script>
-  
-  <!-- Theme Toggle Script -->
-  <script>
-    // Check for saved theme preference or respect OS preference
-    const themeMedia = window.matchMedia('(prefers-color-scheme: dark)');
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme === 'dark' || (!savedTheme && themeMedia.matches)) {
-      document.documentElement.classList.remove('light');
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
+  <!-- Fix for SVG icon sizing -->
+  <style>
+    /* Global icon sizing fix */
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+      height: 1em;
+      width: 1em;
     }
-  </script>
+    
+    /* Ensure proper sizing for specific icons */
+    svg.h-5 {
+      height: 1.25rem !important;
+      width: 1.25rem !important;
+    }
+    
+    svg.h-6 {
+      height: 1.5rem !important;
+      width: 1.5rem !important;
+    }
+    
+    svg.h-8 {
+      height: 2rem !important;
+      width: 2rem !important;
+    }
+    
+    /* Typography improvements */
+    .prose {
+      color: var(--color-text) !important;
+    }
+    
+    .prose h1, .prose h2, .prose h3, .prose h4 {
+      color: var(--color-text) !important;
+    }
+    
+    .prose a {
+      color: var(--color-primary) !important;
+      text-decoration-color: var(--color-primary) !important;
+    }
+    
+    .prose code {
+      background-color: var(--color-bg-alt) !important;
+      color: var(--color-text) !important;
+    }
+  </style>
 </head>
-<body class="bg-[var(--color-bg)] text-[var(--color-text)] min-h-screen flex flex-col">
-  <header class="sticky top-0 z-50 w-full border-b border-[var(--color-border)] bg-[var(--color-bg)] backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <!-- Logo & Main Nav -->
-        <div class="flex">
-          <div class="flex-shrink-0 flex items-center">
-            <a href="/" class="flex items-center">
-              <svg class="h-8 w-8 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
-                <path d="M17 12H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M12 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              <span class="ml-2 text-lg font-semibold">Enterprise Design System</span>
-            </a>
-          </div>
-          <nav class="hidden md:ml-8 md:flex md:space-x-8" aria-label="Main Navigation">
-            <a href="/design-system/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)] ">
-              Design System
-            </a>
-            <a href="/components/" class="inline-flex items-center px-1 pt-1 border-b-2 border-[var(--color-primary)] text-[var(--color-text)] ">
-              Components
-            </a>
-            <a href="/get-started/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)] ">
-              Get Started
-            </a>
-            <a href="/resources/" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)] ">
-              Resources
-            </a>
-          </nav>
-        </div>
+<body class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen">
+
+  <header class="bg-[var(--color-bg)] shadow-sm z-50 border-b border-[var(--color-border)]">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex items-center justify-between py-4">
+        <!-- Logo and site title -->
+        <a href="/" class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="font-bold text-lg">Enterprise Design System</span>
+        </a>
         
-        <!-- Right side actions -->
-        <div class="flex items-center">
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center space-x-6">
+          <a href="/design-system/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Overview</a>
+          <a href="/design-system/foundations/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Foundations</a>
+          <a href="/components/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Components</a>
+          <a href="/navigation/" class="py-2 px-1 hover:text-[var(--color-primary)] transition-colors">Browse</a>
+          
           <!-- Search -->
-          <div class="relative" x-data="{ isOpen: false }">
-            <button @click="isOpen = !isOpen" class="p-2 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]" aria-label="Search">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <form action="/search/" method="get" role="search" class="relative ml-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-40 md:w-60">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-            </button>
-            
-            <div x-show="isOpen" @click.away="isOpen = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 w-72 rounded-md shadow-lg bg-[var(--color-bg)] border border-[var(--color-border)]" style="display: none;">
-              <div class="p-2">
-                <form action="/search/" method="get">
-                  <div class="relative">
-                    <input type="text" name="q" class="w-full pl-3 pr-10 py-2 border border-[var(--color-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] bg-[var(--color-bg)] text-[var(--color-text)]" placeholder="Search documentation...">
-                    <button type="submit" class="absolute inset-y-0 right-0 flex items-center pr-2" aria-label="Submit search">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
-                    </button>
-                  </div>
-                </form>
-              </div>
             </div>
-          </div>
+          </form>
           
-          <!-- Theme Toggle -->
-          <button id="theme-toggle" class="ml-4 p-2 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]" aria-label="Toggle theme">
-            <!-- Sun (light mode) icon -->
-            <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <!-- Theme Toggle Button -->
+          <button class="eds-theme-toggle p-2 rounded-md hover:bg-[var(--color-bg-alt)] ml-2" aria-label="Toggle theme">
+            <!-- Sun (light) icon - show in dark mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
-            <!-- Moon (dark mode) icon -->
-            <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <!-- Moon (dark) icon - show in light mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 eds-theme-dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
           </button>
-          
-          <!-- GitHub Link -->
-          <a href="https://github.com/enterprise/design-system" class="ml-4 p-2 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]" aria-label="GitHub repository" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-          </a>
-          
-          <!-- Mobile menu button -->
-          <div class="flex items-center md:hidden">
-            <button id="mobile-menu-button" class="ml-4 p-2 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]" aria-label="Open menu">
-              <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </nav>
+        
+        <!-- Mobile menu button -->
+        <div class="flex items-center md:hidden">
+          <form action="/search/" method="get" role="search" class="relative mr-2">
+            <input type="search" name="q" placeholder="Search..." class="py-2 pl-10 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] text-sm w-32">
+            <div class="absolute left-3 top-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-            </button>
-          </div>
+            </div>
+          </form>
+          
+          <button id="mobile-menu-button" class="p-2 rounded-md hover:bg-[var(--color-bg-alt)]" aria-label="Toggle menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </div>
-    </div>
-    
-    <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--color-border)] bg-[var(--color-bg)]">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <a href="/design-system/" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text)] ">
-          Design System
-        </a>
-        <a href="/components/" class="block px-3 py-2 rounded-md text-base font-medium bg-[var(--color-primary-light)] text-[var(--color-primary)] ">
-          Components
-        </a>
-        <a href="/get-started/" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text)] ">
-          Get Started
-        </a>
-        <a href="/resources/" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text)] ">
-          Resources
-        </a>
-      </div>
-      <div class="pt-4 pb-3 border-t border-[var(--color-border)]">
-        <div class="px-4 flex items-center">
-          <a href="/search/" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text)]">
-            Search
-          </a>
-        </div>
+      
+      <!-- No secondary navigation - using left sidebar instead -->
+      
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-[var(--color-border)]">
+        <nav class="flex flex-col space-y-4">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mb-1">Main Navigation</h3>
+          <a href="/design-system/" class="hover:text-[var(--color-primary)]">Overview</a>
+          <a href="/design-system/foundations/" class="hover:text-[var(--color-primary)]">Foundations</a>
+          <a href="/components/" class="hover:text-[var(--color-primary)] text-[var(--color-primary)] font-medium">Components</a>
+          <a href="/navigation/" class="hover:text-[var(--color-primary)]">Browse</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Browse Components</h3>
+          <a href="/navigation/by-channel/" class="hover:text-[var(--color-primary)]">By Channel</a>
+          <a href="/navigation/by-type/" class="hover:text-[var(--color-primary)]">By Type</a>
+          <a href="/navigation/by-owner/" class="hover:text-[var(--color-primary)]">By Owner</a>
+          
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)] mt-4 mb-1">Resources</h3>
+          <a href="/getting-started/" class="hover:text-[var(--color-primary)]">Getting Started</a>
+          <a href="/design-system/guidelines/" class="hover:text-[var(--color-primary)]">Guidelines</a>
+          <a href="/templates/" class="hover:text-[var(--color-primary)]">Templates</a>
+          <a href="/resources/" class="hover:text-[var(--color-primary)]">Resources</a>
+          <a href="/whats-new/" class="hover:text-[var(--color-primary)]">What's New</a>
+          
+          <!-- Theme Toggle Button (Mobile) -->
+          <button class="eds-theme-toggle flex items-center hover:text-[var(--color-primary)] mt-4" aria-label="Toggle theme">
+            <!-- Sun (light) icon - show in dark mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 hidden eds-theme-dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon (dark) icon - show in light mode -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 eds-theme-dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <span class="hidden eds-theme-dark:block">Switch to Light Mode</span>
+            <span class="eds-theme-dark:hidden">Switch to Dark Mode</span>
+          </button>
+        </nav>
       </div>
     </div>
   </header>
-  
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+  <main class="flex-1">
     
-<div class="flex flex-col md:flex-row gap-8 mt-8">
-  
-  <!-- Sidebar -->
-  <div class="w-full md:w-64 lg:w-72 md:shrink-0">
-    <div class="sticky top-24">
-      <div class="pb-6 mb-6 border-b border-[var(--color-border)]">
-        <!-- Breadcrumb -->
-        <nav class="text-sm text-[var(--color-text-muted)]" aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2">
+<div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col lg:flex-row gap-10">
+    <!-- Left sidebar navigation -->
+    <aside class="lg:w-64 shrink-0">
+      <nav class="space-y-6">
+        <div class="space-y-2">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
+          <ul class="space-y-2">
             <li>
-              <a href="/" class="hover:text-[var(--color-text)]">Home</a>
+              <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Input Components
+              </a>
+              
             </li>
-            
+            <li>
+              <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Layout Components
+              </a>
+              
+            </li>
+            <li>
+              <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Navigation Components
+              </a>
+              
+            </li>
+            <li>
+              <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Feedback Components
+              </a>
+              
+            </li>
+          </ul>
+        </div>
+        
+        <div class="space-y-2">
+          <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Colors</a></li>
+            <li><a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Typography</a></li>
+            <li><a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Spacing</a></li>
+            <li><a href="/design-system/foundations/icons/" class="block py-1 hover:text-[var(--color-primary)] transition-colors">Icons</a></li>
+          </ul>
+        </div>
+      </nav>
+    </aside>
+    
+    <!-- Main content -->
+    <main class="flex-1">
+      <div class="mb-10">
+        <!-- Breadcrumb -->
+        <nav class="text-sm text-[var(--color-text-muted)] mb-4" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2">
+            <li><a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a></li>
+            <li class="flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <a href="/components/" class="hover:text-[var(--color-primary)] transition-colors">Components</a>
+            </li>
             
             <li class="flex items-center space-x-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-              <a href="/components/" class="hover:text-[var(--color-text)]">Components</a>
+              <a href="/components/layout/" class="hover:text-[var(--color-primary)] transition-colors capitalize">layout</a>
             </li>
             
-            
-            
-            
+            <li class="flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+              <span class="font-medium">Accordion</span>
+            </li>
           </ol>
         </nav>
-      </div>
-      
-      <!-- Sidebar Navigation -->
-      <nav aria-label="Sidebar Navigation">
         
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Layout</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/components/layout/container/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Container</a></li>
-            <li><a href="/components/layout/grid/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Grid</a></li>
-            <li><a href="/components/layout/card/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Card</a></li>
-            <li><a href="/components/layout/divider/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Divider</a></li>
-          </ul>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Inputs</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/components/inputs/button/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Button</a></li>
-            <li><a href="/components/inputs/text-field/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Text Field</a></li>
-            <li><a href="/components/inputs/checkbox/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Checkbox</a></li>
-            <li><a href="/components/inputs/radio/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Radio</a></li>
-            <li><a href="/components/inputs/select/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Select</a></li>
-            <li><a href="/components/inputs/toggle/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Toggle</a></li>
-          </ul>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Navigation</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/components/navigation/navbar/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Navbar</a></li>
-            <li><a href="/components/navigation/tabs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Tabs</a></li>
-            <li><a href="/components/navigation/breadcrumb/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Breadcrumb</a></li>
-            <li><a href="/components/navigation/pagination/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Pagination</a></li>
-          </ul>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="font-medium mb-3">Feedback</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/components/feedback/alert/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Alert</a></li>
-            <li><a href="/components/feedback/toast/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Toast</a></li>
-            <li><a href="/components/feedback/modal/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Modal</a></li>
-            <li><a href="/components/feedback/progress/" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)] block py-1">Progress</a></li>
-          </ul>
-        </div>
-        
-        
-        
-        <!-- Version selector -->
-        <div class="mt-8 py-4 border-t border-[var(--color-border)]">
-          <div class="flex items-center justify-between text-sm mb-2">
-            <span class="text-[var(--color-text-muted)]">Current Version</span>
-            <span class="bg-[var(--color-primary)] text-white px-2 py-0.5 rounded text-xs font-medium">v2.0.0</span>
+        <!-- Component header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <h1 class="text-3xl font-bold mb-2">Accordion</h1>
+            <p class="text-[var(--color-text-muted)]">Accordions are lightweight containers that can function independently or be integrated into a single-page section, interacting with the expansion controls and other adjacent content.</p>
           </div>
-          <select class="w-full bg-[var(--color-bg)] border border-[var(--color-border)] rounded-md text-sm p-2">
-            <option value="v2.0.0">v2.0.0 (Latest)</option>
-            <option value="v1.5.0">v1.5.0</option>
-            <option value="v1.0.0">v1.0.0</option>
-          </select>
+          <div class="flex items-center space-x-3">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
+              v1.0.0
+            </span>
+            
+            <a href="https://github.com/enterprise-design-system/components/tree/main/src/accordion" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View on GitHub
+            </a>
+          </div>
         </div>
-      </nav>
-    </div>
-  </div>
-  
-  
-  <!-- Main Content -->
-  <div class="flex-1 min-w-0 ">
-    
-    
-    <div class="prose dark:prose-invert max-w-none prose-headings:scroll-mt-20">
-      
-<div class="component-documentation">
-  <div class="mb-8">
-    <div class="flex flex-wrap items-center gap-3 mb-4">
-      <h1 class="text-3xl font-bold mb-0">Accordion</h1>
-      
-      
-    </div>
-    
-    
-    <p class="text-xl text-[var(--color-text-muted)] mt-2">Accordions are lightweight containers that can function independently or be integrated into a single-page section, interacting with the expansion controls and other adjacent content.</p>
-    
-  </div>
-  
-  <div class="mt-12">
-    <!-- Tab navigation -->
-    <div class="border-b border-[var(--color-border)] mb-8">
-      <div class="flex flex-wrap -mb-px" role="tablist" aria-orientation="horizontal">
-        <button class="py-2 px-4 text-sm font-medium border-b-2 border-[var(--color-primary)] text-[var(--color-primary)]" role="tab" aria-selected="true" id="tab-usage" aria-controls="panel-usage">
-          Usage
-        </button>
-        <button class="py-2 px-4 text-sm font-medium border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]" role="tab" aria-selected="false" id="tab-code" aria-controls="panel-code">
-          Code
-        </button>
-        <button class="py-2 px-4 text-sm font-medium border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]" role="tab" aria-selected="false" id="tab-props" aria-controls="panel-props">
-          Props
-        </button>
-        <button class="py-2 px-4 text-sm font-medium border-b-2 border-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:border-[var(--color-border)]" role="tab" aria-selected="false" id="tab-accessibility" aria-controls="panel-accessibility">
-          Accessibility
-        </button>
-      </div>
-    </div>
-    
-    <!-- Tab panels -->
-    <div>
-      <!-- Usage panel -->
-      <div id="panel-usage" role="tabpanel" aria-labelledby="tab-usage">
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Overview</h2>
-          
-        </div>
-        
-        
-        
-        
       </div>
       
-      <!-- Code panel -->
-      <div id="panel-code" role="tabpanel" aria-labelledby="tab-code" class="hidden">
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Implementation</h2>
+      <!-- Component content tabs -->
+      <div class="mb-8 border-b border-[var(--color-border)]">
+        <div class="flex space-x-6">
+          <a href="/components/accordion/" class="tab-link py-3 border-b-2 text-[var(--color-primary)] border-[var(--color-primary)] transition-colors">Design</a>
           
+          <a href="/components/accordion/code/" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors">Code</a>
           
-          <p class="text-[var(--color-text-muted)]">Implementation details coming soon.</p>
+          <a href="/components/accordion/accessibility/" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors">Accessibility</a>
           
+          <a href="/components/accordion/examples/" class="tab-link py-3 border-b-2 border-transparent hover:text-[var(--color-primary)] transition-colors">Examples</a>
         </div>
-        
-        
       </div>
       
-      <!-- Props panel -->
-      <div id="panel-props" role="tabpanel" aria-labelledby="tab-props" class="hidden">
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Properties & Attributes</h2>
-          
-          
-          <p class="text-[var(--color-text-muted)]">No properties available for this component.</p>
-          
-        </div>
-        
-        
-        
-        
+      <!-- Tab content -->
+      <div class="tab-content space-y-10">
+        <section id="anatomy" class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Anatomy</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <div class="flex flex-col md:flex-row gap-6">
+      <div class="md:w-1/2">
+        <img src="https://via.placeholder.com/600x200/e0e0e0/333333?text=Accordion+Anatomy+Diagram" alt="Accordion anatomy" class="w-full rounded-lg border border-[var(--color-border)]">
       </div>
-      
-      <!-- Accessibility panel -->
-      <div id="panel-accessibility" role="tabpanel" aria-labelledby="tab-accessibility" class="hidden">
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Accessibility</h2>
-          
-          
-          <p class="text-[var(--color-text-muted)]">Accessibility information coming soon.</p>
-          
-          
-          
-        </div>
+      <div class="md:w-1/2">
+        <h3 class="font-medium mb-3">Key Elements</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[var(--color-primary)] text-white text-sm font-medium mr-3">1</span>
+            <div>
+              <span class="font-medium">Accordion container</span> - Wrapper that groups all accordion items
+            </div>
+          </li>
+          <li class="flex items-start">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[var(--color-primary)] text-white text-sm font-medium mr-3">2</span>
+            <div>
+              <span class="font-medium">Header button</span> - Interactive element that toggles the visibility of its panel
+            </div>
+          </li>
+          <li class="flex items-start">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[var(--color-primary)] text-white text-sm font-medium mr-3">3</span>
+            <div>
+              <span class="font-medium">Expansion indicator</span> - Icon that visually indicates whether a panel is expanded or collapsed
+            </div>
+          </li>
+          <li class="flex items-start">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-[var(--color-primary)] text-white text-sm font-medium mr-3">4</span>
+            <div>
+              <span class="font-medium">Panel</span> - Content container that can be shown or hidden
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const tabButtons = Array.from(document.querySelectorAll('[role="tab"]'));
-      const tabPanels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+</section>
+<section id="considerations" class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Considerations</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+    <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+      <h3 class="text-lg font-bold mb-4">When to use the accordion component</h3>
+      <ul class="space-y-3 list-disc list-inside">
+        <li>If you need to break down complex content into manageable sections</li>
+        <li>When screen space is limited and you need to prioritize information</li>
+        <li>For FAQ sections where users want to quickly scan questions</li>
+        <li>When information should be revealed progressively to avoid overwhelming users</li>
+      </ul>
+    </div>
+<p><div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]"><br>
+<h3 class="text-lg font-bold mb-4">When to use something else</h3><br>
+<ul class="space-y-3 list-disc list-inside"><br>
+<li>If users need to see all content at once for comparison</li><br>
+<li>When content is brief enough to display without hiding</li><br>
+<li>If most users will need all the information rather than just specific sections</li><br>
+<li>When hiding content will significantly disrupt the user's workflow</li><br>
+</ul><br>
+</div></p>
+  </div>
+</section>
+<section id="usage" class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Usage</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <h3 class="text-lg font-bold mb-4">General Usage Guidelines</h3>
+<p><ul class="space-y-4"><br>
+<li class="flex items-start"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)] mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /><br>
+</svg><br>
+<div><br>
+<p class="font-medium">Use clear, descriptive headers</p><br>
+<p class="text-[var(--color-text-muted)]">Headers should clearly communicate the panel content.</p><br>
+</div><br>
+</li><br>
+<li class="flex items-start"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)] mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /><br>
+</svg><br>
+<div><br>
+<p class="font-medium">Keep content concise</p><br>
+<p class="text-[var(--color-text-muted)]">Don't overload accordion sections with too much information.</p><br>
+</div><br>
+</li><br>
+<li class="flex items-start"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)] mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /><br>
+</svg><br>
+<div><br>
+<p class="font-medium">Consider icon usage</p><br>
+<p class="text-[var(--color-text-muted)]">Icons alongside text in headers can improve visual communication.</p><br>
+</div><br>
+</li><br>
+<li class="flex items-start"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)] mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /><br>
+</svg><br>
+<div><br>
+<p class="font-medium">Group related information</p><br>
+<p class="text-[var(--color-text-muted)]">Keep related content together within each panel.</p><br>
+</div><br>
+</li><br>
+<li class="flex items-start"><br>
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-primary)] mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><br>
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /><br>
+</svg><br>
+<div><br>
+<p class="font-medium">Limit nesting</p><br>
+<p class="text-[var(--color-text-muted)]">Avoid nesting accordions to prevent complexity.</p><br>
+</div><br>
+</li><br>
+</ul></p>
+  </div>
+</section>
+<section id="behavior" class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Behavior</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <h3 class="text-lg font-bold mb-4">Expanding</h3>
+    <p class="mb-4">When a user clicks or taps the accordion header, the panel toggles between expanded and collapsed states. All other components in the accordion remain in their current state.</p>
+<p><div class="mb-6"><br>
+<h4 class="font-medium mb-2">When clicking on a collapsed header:</h4><br>
+<ul class="list-disc list-inside ml-4 space-y-1 text-[var(--color-text-muted)]"><br>
+<li>The panel expands to reveal its content</li><br>
+<li>The expansion indicator rotates to indicate the expanded state</li><br>
+<li>The <code>aria-expanded</code> attribute changes to <code>true</code></li><br>
+<li>The panel's <code>hidden</code> attribute is removed</li><br>
+</ul><br>
+</div></p>
+<p><div><br>
+<h4 class="font-medium mb-2">When clicking on an expanded header:</h4><br>
+<ul class="list-disc list-inside ml-4 space-y-1 text-[var(--color-text-muted)]"><br>
+<li>The panel collapses to hide its content</li><br>
+<li>The expansion indicator rotates back to indicate the collapsed state</li><br>
+<li>The <code>aria-expanded</code> attribute changes to <code>false</code></li><br>
+<li>The panel receives the <code>hidden</code> attribute</li><br>
+</ul><br>
+</div></p>
+  </div>
+</section>
+<section id="best-practices" class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Best Practices</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)]">
+    <h3 class="text-lg font-bold mb-4">Content</h3>
+    <ul class="space-y-3 list-disc pl-5">
+      <li>Keep header text short, descriptive, and clearly indicating the content</li>
+      <li>Avoid long content that would create excessive scrolling</li>
+      <li>Structure content with headings where appropriate</li>
+      <li>Use consistent content patterns across accordion items</li>
+      <li>Consider progressive disclosure of complex information</li>
+      <li>Include visual indicators or previews when helpful</li>
+      <li>Ensure proper content hierarchy within panels</li>
+      <li>Limit embedded interactive elements to avoid confusion</li>
+    </ul>
+  </div>
+</section>
+<section id="specifications" class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Specifications</h2>
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4">Typography</h3>
+        <table class="w-full border-collapse text-sm">
+          <thead>
+            <tr class="border-b border-[var(--color-border)]">
+              <th class="text-left py-2 font-medium">Element</th>
+              <th class="text-left py-2 font-medium">Spec</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2">Accordion title</td>
+              <td class="py-2">
+                System UI bold<br>
+                16px font size<br>
+                24px line height
+              </td>
+            </tr>
+            <tr class="border-b border-[var(--color-border)]">
+              <td class="py-2">Accordion content</td>
+              <td class="py-2">
+                System UI regular<br>
+                14px font size<br>
+                20px line height
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+<p><div><br>
+<h3 class="text-lg font-bold mb-4">Layout</h3><br>
+<table class="w-full border-collapse text-sm"><br>
+<thead><br>
+<tr class="border-b border-[var(--color-border)]"><br>
+<th class="text-left py-2 font-medium">Property</th><br>
+<th class="text-left py-2 font-medium">Value</th><br>
+</tr><br>
+</thead><br>
+<tbody><br>
+<tr class="border-b border-[var(--color-border)]"><br>
+<td class="py-2">Padding (Header)</td><br>
+<td class="py-2">16px</td><br>
+</tr><br>
+<tr class="border-b border-[var(--color-border)]"><br>
+<td class="py-2">Padding (Content)</td><br>
+<td class="py-2">0 16px 16px</td><br>
+</tr><br>
+<tr class="border-b border-[var(--color-border)]"><br>
+<td class="py-2">Border</td><br>
+<td class="py-2">1px solid (#E0E0E0)</td><br>
+</tr><br>
+<tr class="border-b border-[var(--color-border)]"><br>
+<td class="py-2">Border radius</td><br>
+<td class="py-2">4px</td><br>
+</tr><br>
+</tbody><br>
+</table><br>
+</div><br>
+</div></p>
+<p><div class="mt-8"><br>
+<h3 class="text-lg font-bold mb-4">Colors</h3><br>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4"><br>
+<div class="p-4 bg-white border border-[#E0E0E0] rounded-md"><br>
+<div class="h-12 bg-white mb-2 rounded border border-[#E0E0E0]"></div><br>
+<p class="text-xs font-medium">Background</p><br>
+<p class="text-xs text-[var(--color-text-muted)]">White</p><br>
+</div><br>
+<div class="p-4 bg-white border border-[#E0E0E0] rounded-md"><br>
+<div class="h-12 bg-[#E0E0E0] mb-2 rounded"></div><br>
+<p class="text-xs font-medium">Border</p><br>
+<p class="text-xs text-[var(--color-text-muted)]">#E0E0E0</p><br>
+</div><br>
+<div class="p-4 bg-white border border-[#E0E0E0] rounded-md"><br>
+<div class="h-12 bg-[#333333] mb-2 rounded"></div><br>
+<p class="text-xs font-medium">Header text</p><br>
+<p class="text-xs text-[var(--color-text-muted)]">#333333</p><br>
+</div><br>
+<div class="p-4 bg-white border border-[#E0E0E0] rounded-md"><br>
+<div class="h-12 bg-[#666666] mb-2 rounded"></div><br>
+<p class="text-xs font-medium">Content text</p><br>
+<p class="text-xs text-[var(--color-text-muted)]">#666666</p><br>
+</div><br>
+</div><br>
+</div></p>
+  </div>
+</section>
+
+      </div>
       
-      // Handle tab clicks
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const targetPanelId = button.getAttribute('aria-controls');
-          
-          // Update tab button states
-          tabButtons.forEach(btn => {
-            const isActive = btn === button;
-            btn.setAttribute('aria-selected', isActive.toString());
-            btn.classList.toggle('border-[var(--color-primary)]', isActive);
-            btn.classList.toggle('text-[var(--color-primary)]', isActive);
-            btn.classList.toggle('border-transparent', !isActive);
-            btn.classList.toggle('text-[var(--color-text-muted)]', !isActive);
-          });
-          
-          // Show the selected panel and hide others
-          tabPanels.forEach(panel => {
-            panel.classList.toggle('hidden', panel.id !== targetPanelId);
-          });
-        });
-      });
-    });
-  </script>
+      <!-- Right sidebar: On this page -->
+      <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
+        <h2 class="text-xl font-bold mb-4">On this page</h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#anatomy" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Anatomy</a></li>
+          <li><a href="#considerations" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Considerations</a></li>
+          <li><a href="#usage" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Usage</a></li>
+          <li><a href="#behavior" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Behavior</a></li>
+          <li><a href="#best-practices" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Best Practices</a></li>
+          <li><a href="#specifications" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Specifications</a></li>
+        </ul>
+      </div>
+    </main>
+  </div>
 </div>
 
-
-    </div>
-    
-    <!-- Page navigation -->
-    
-    <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
-      <div class="flex justify-between">
-        <div>
-          
-        </div>
-        
-        <div>
-          
-        </div>
-      </div>
-    </div>
-    
-    
-    <!-- Feedback section -->
-    <div class="mt-16 pt-8 border-t border-[var(--color-border)]">
-      <h2 class="text-xl font-bold mb-4">Feedback</h2>
-      <p class="mb-4">Was this page helpful? Let us know how we can improve it.</p>
-      
-      <div class="flex flex-col sm:flex-row gap-4">
-        <button class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)]">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-          </svg>
-          Yes, it was helpful
-        </button>
-        
-        <button class="inline-flex items-center justify-center px-4 py-2 border border-[var(--color-border)] text-sm font-medium rounded-md bg-[var(--color-bg)] text-[var(--color-text)] hover:bg-[var(--color-bg-alt)]">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M18 9.5a1.5 1.5 0 11-3 0v-6a1.5 1.5 0 013 0v6zM14 9.667v-5.43a2 2 0 00-1.105-1.79l-.05-.025A4 4 0 0011.055 2H5.64a2 2 0 00-1.962 1.608l-1.2 6A2 2 0 004.44 12H8v4a2 2 0 002 2 1 1 0 001-1v-.667a4 4 0 01.8-2.4l1.4-1.866a4 4 0 00.8-2.4z" />
-          </svg>
-          No, I need help
-        </button>
-      </div>
-      
-      <div class="mt-6 text-sm text-[var(--color-text-muted)]">
-        <p>Have a suggestion? <a href="https://github.com/enterprise/design-system/issues/new" class="text-[var(--color-primary)] hover:underline">Open an issue</a> or <a href="https://github.com/enterprise/design-system/edit/main/./src/components/accordion/index.md" class="text-[var(--color-primary)] hover:underline">edit this page</a>.</p>
-      </div>
-    </div>
-  </div>
-</div>
+<script>
+  // No tab handling JavaScript needed as we're using navigation to separate pages
+  // for the component documentation sections
+</script>
   </main>
-  
-  <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)]">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div class="col-span-1 md:col-span-2">
-          <div class="flex items-center">
-            <svg class="h-8 w-8 text-[var(--color-primary)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
-              <path d="M17 12H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M12 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <span class="ml-2 text-lg font-semibold">Enterprise Design System</span>
-          </div>
-          <p class="mt-4 text-[var(--color-text-muted)]">
-            A comprehensive design system for creating consistent, accessible, and beautiful enterprise applications.
-          </p>
-          <div class="mt-6 flex space-x-6">
-            <a href="https://github.com/enterprise/design-system" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)]" target="_blank" rel="noopener noreferrer">
-              <span class="sr-only">GitHub</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+
+  <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
+    <div class="container mx-auto px-4 md:px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div>
+          <h3 class="font-bold mb-4">Enterprise Design System</h3>
+          <p class="text-[var(--color-text-muted)] mb-4">A comprehensive design system for building consistent, accessible, and beautiful enterprise applications.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
               </svg>
             </a>
-            <a href="https://twitter.com/enterprisedesign" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)]" target="_blank" rel="noopener noreferrer">
-              <span class="sr-only">Twitter</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 9.99 9.99 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z"/>
-              </svg>
-            </a>
-            <a href="https://www.figma.com/@enterprisedesign" class="text-[var(--color-text-muted)] hover:text-[var(--color-text)]" target="_blank" rel="noopener noreferrer">
-              <span class="sr-only">Figma</span>
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8.5 2c-1.93 0-3.5 1.57-3.5 3.5v13c0 1.93 1.57 3.5 3.5 3.5h7c1.93 0 3.5-1.57 3.5-3.5v-13c0-1.93-1.57-3.5-3.5-3.5h-7zm0 2h7c.84 0 1.5.66 1.5 1.5v3.5h-4v-2h-2v2h-4v-3.5c0-.84.66-1.5 1.5-1.5zm-1.5 7h4v4h-2v-2h-2v2c0 .84.66 1.5 1.5 1.5h2.5v3.5c0 .84-.66 1.5-1.5 1.5h-3c-.84 0-1.5-.66-1.5-1.5v-7zm7.5 0h2.5c.84 0 1.5.66 1.5 1.5v3c0 .84-.66 1.5-1.5 1.5h-2.5v-6zm0 2v2h1.5c.28 0 .5-.22.5-.5v-1c0-.28-.22-.5-.5-.5h-1.5z"/>
+            <a href="#" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
               </svg>
             </a>
           </div>
         </div>
         
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
-            Resources
-          </h3>
-          <ul class="mt-4 space-y-4">
-            <li>
-              <a href="/design-system/foundations/" class="text-base text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
-                Foundations
-              </a>
-            </li>
-            <li>
-              <a href="/components/" class="text-base text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
-                Components
-              </a>
-            </li>
-            <li>
-              <a href="/resources/design-tokens/" class="text-base text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
-                Design Tokens
-              </a>
-            </li>
-            <li>
-              <a href="/resources/figma/" class="text-base text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
-                Figma Libraries
-              </a>
-            </li>
+          <h4 class="font-medium mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="/getting-started/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Getting Started</a></li>
+            <li><a href="/resources/examples/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Examples</a></li>
+            <li><a href="/resources/templates/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Templates</a></li>
+            <li><a href="/resources/release-notes/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Release Notes</a></li>
           </ul>
         </div>
         
         <div>
-          <h3 class="text-sm font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
-            Support
-          </h3>
-          <ul class="mt-4 space-y-4">
-            <li>
-              <a href="/get-started/" class="text-base text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
-                Getting Started
-              </a>
-            </li>
-            <li>
-              <a href="/resources/faq/" class="text-base text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
-                FAQ
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/enterprise/design-system/issues" class="text-base text-[var(--color-text-muted)] hover:text-[var(--color-text)]" target="_blank" rel="noopener noreferrer">
-                Report an Issue
-              </a>
-            </li>
-            <li>
-              <a href="mailto:design-system@enterprise.com" class="text-base text-[var(--color-text-muted)] hover:text-[var(--color-text)]">
-                Contact Us
-              </a>
-            </li>
+          <h4 class="font-medium mb-4">Navigation</h4>
+          <ul class="space-y-2">
+            <li><a href="/navigation/by-channel/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Channel</a></li>
+            <li><a href="/navigation/by-type/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Type</a></li>
+            <li><a href="/navigation/by-owner/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Browse by Owner</a></li>
+            <li><a href="/search/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Search</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Components</h4>
+          <ul class="space-y-2">
+            <li><a href="/components/inputs/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Input Components</a></li>
+            <li><a href="/components/layout/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Layout Components</a></li>
+            <li><a href="/components/navigation/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Navigation Components</a></li>
+            <li><a href="/components/feedback/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Feedback Components</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-medium mb-4">Support</h4>
+          <ul class="space-y-2">
+            <li><a href="/support/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Help & Support</a></li>
+            <li><a href="/support/faq/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">FAQ</a></li>
+            <li><a href="/support/contribute/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Contribute</a></li>
+            <li><a href="/support/contact/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Contact Us</a></li>
           </ul>
         </div>
       </div>
       
-      <div class="mt-12 pt-8 border-t border-[var(--color-border)]">
-        <p class="text-base text-[var(--color-text-muted)] text-center">
-          &copy; 2025 Enterprise, Inc. All rights reserved.
-        </p>
+      <div class="mt-12 pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center">
+        <p class="text-[var(--color-text-muted)] text-sm mb-4 md:mb-0">&copy; 2025 Enterprise Design System. All rights reserved.</p>
+        <div class="flex space-x-6 text-sm">
+          <a href="/privacy-policy/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Privacy Policy</a>
+          <a href="/terms-of-service/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Terms of Service</a>
+          <a href="/sitemap/" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">Sitemap</a>
+        </div>
       </div>
     </div>
   </footer>
-  
-  <!-- JavaScript -->
-  <script src="/assets/js/main.js"></script>
-  <script>
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    }
-    
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.toggle('dark');
-        document.documentElement.classList.toggle('light', !isDark);
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      });
-    }
-  </script>
+
 </body>
 </html>

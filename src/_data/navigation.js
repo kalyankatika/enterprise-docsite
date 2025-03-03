@@ -64,6 +64,11 @@ module.exports = {
       title: "Layout",
       items: [
         {
+          title: "Accordion",
+          url: "/components/layout/accordion/",
+          status: "stable"
+        },
+        {
           title: "Card",
           url: "/components/layout/card/",
           status: "stable"
