@@ -80,6 +80,11 @@ module.exports = {
       title: "Component Categories",
       items: [
         {
+          title: "All Components",
+          url: "/components/all/",
+          status: "stable"
+        },
+        {
           title: "Layout",
           url: "/components/layout/",
           status: "stable"
@@ -162,6 +167,25 @@ module.exports = {
         {
           title: "Migration Tools",
           url: "/resources/migration-tools/",
+          status: "stable"
+        }
+      ]
+    }
+  ],
+  
+  // Documentation guides
+  guides: [
+    {
+      title: "Guides",
+      items: [
+        {
+          title: "Component Documentation",
+          url: "/guides/component-documentation/",
+          status: "stable"
+        },
+        {
+          title: "Content Migration",
+          url: "/guides/migration-guide/",
           status: "stable"
         }
       ]

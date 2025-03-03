@@ -690,6 +690,2635 @@
         "description": "Feedback components communicate system status and provide information to users",
         "type": "Page",
         "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/breadcrumbs/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox-group/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/chip/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/content-block/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/description-list/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/expand-collapse/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-group/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-key/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/file-upload/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/footnotes-and-disclosures/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/form-actions/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/grid/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/icon/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/image/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/inline-alert/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/input/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/label/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/link/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/list-group/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/menu/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/microcopy/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/modal/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-footer/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-header/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/popover/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/progress-indicator/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio-group/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segment/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segmented-control/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/select/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/slider/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/spinner/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/status/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/stepper/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/switch/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tab-group/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/table/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tag/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/text-input/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/textarea/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tile/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/title/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tooltip/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/breadcrumbs/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/breadcrumbs/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/breadcrumbs/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/breadcrumbs/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox-group/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox-group/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox-group/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox-group/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/checkbox/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/chip/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/chip/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/chip/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/chip/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/content-block/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/content-block/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/content-block/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/content-block/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/description-list/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/description-list/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/description-list/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/description-list/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/expand-collapse/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/expand-collapse/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/expand-collapse/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/expand-collapse/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-group/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-group/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-group/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-group/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-key/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-key/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-key/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/field-key/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/file-upload/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/file-upload/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/file-upload/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/file-upload/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/footnotes-and-disclosures/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/footnotes-and-disclosures/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/footnotes-and-disclosures/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/footnotes-and-disclosures/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/form-actions/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/form-actions/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/form-actions/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/form-actions/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/grid/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/grid/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/grid/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/grid/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/icon/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/icon/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/icon/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/icon/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/image/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/image/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/image/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/image/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/inline-alert/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/inline-alert/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/inline-alert/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/inline-alert/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/input/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/input/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/input/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/input/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/label/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/label/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/label/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/label/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/link/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/link/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/link/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/link/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/list-group/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/list-group/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/list-group/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/list-group/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/menu/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/menu/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/menu/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/menu/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/microcopy/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/microcopy/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/microcopy/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/microcopy/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/modal/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/modal/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/modal/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/modal/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-footer/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-footer/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-footer/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-footer/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-header/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-header/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-header/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/page-header/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/popover/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/popover/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/popover/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/popover/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/progress-indicator/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/progress-indicator/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/progress-indicator/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/progress-indicator/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio-group/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio-group/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio-group/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio-group/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/radio/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segment/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segment/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segment/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segment/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segmented-control/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segmented-control/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segmented-control/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/segmented-control/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/select/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/select/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/select/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/select/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/slider/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/slider/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/slider/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/slider/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/spinner/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/spinner/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/spinner/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/spinner/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/status/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/status/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/status/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/status/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/stepper/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/stepper/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/stepper/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/stepper/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/switch/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/switch/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/switch/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/switch/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tab-group/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tab-group/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tab-group/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tab-group/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/table/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/table/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/table/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/table/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tag/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tag/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tag/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tag/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/text-input/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/text-input/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/text-input/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/text-input/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/textarea/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/textarea/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/textarea/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/textarea/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tile/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tile/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tile/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tile/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/title/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/title/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/title/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/title/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tooltip/design/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tooltip/code/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tooltip/accessibility/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "",
+        "url": "/components/all/tooltip/examples/",
+        "content": "",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Alert",
+        "url": "/components/all/alert/",
+        "content": "Alert An alert displays a short, important message in a way that attracts the user&amp;#039;s attention without interrupting the user&amp;#039;s task. Overview Alerts provide contextual feedback messages for typical user actions. They can be used to communicate success, information, warnings, or errors. Types Success: Indicates the successful completion of an action Warning: Warns the user of a potentially negative outcome Error: Indicates that an error has occurred Info: Provides neutral or general information to the user When to Use To provide feedback after user actions To notify users of system status changes To highlight important information To display error messages or validation feedback Best Practices Keep alert messages concise and clear Use appropriate alert types based on the context Include actionable information when relevant Ensure alerts are accessible to all users Position alerts where they are easily noticeable but not disruptive Related Components Inline Alert Toast Banner Tabs Design Code Accessibility Examples",
+        "description": "An alert displays a short, important message in a way that attracts the user&amp;#039;s attention without interrupting the user&amp;#039;s task.",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Alert Design",
+        "url": "/components/all/alert/design/",
+        "content": "Alert Design Guidelines Anatomy The alert component consists of several key elements: Container: Wraps the entire alert with distinctive background colors based on alert type Icon: Visual indicator of the alert type (success, warning, error, info) Title (optional): Bold text summarizing the alert message Message: Primary content of the alert Close button (optional): Allows users to dismiss the alert Visual Design Colors Alert Type Background Color Border Color Icon Color Success var(--color-success-light) var(--color-success) var(--color-success) Warning var(--color-warning-light) var(--color-warning) var(--color-warning) Error var(--color-error-light) var(--color-error) var(--color-error) Info var(--color-info-light) var(--color-info) var(--color-info) Typography Title: 16px/1rem, font-weight: 600 Message: 14px/0.875rem, font-weight: 400 Sizing and Spacing Padding: 16px (1rem) Border radius: 4px (0.25rem) Border width: 1px Icon size: 20px (1.25rem) Space between icon and text: 12px (0.75rem) States Default: Shown with full opacity Dismissing: Fade-out animation when being dismissed Dismissed: Hidden from view Variations Simple Alert A basic alert with an icon and message. Alert with Title Includes a bold title above the message for added emphasis. Dismissible Alert Includes a close button that allows users to dismiss the alert. Alert with Actions Includes action buttons or links to help users respond to the alert. Design Do&amp;#039;s and Don&amp;#039;ts Do&amp;#039;s Keep messages concise and actionable Use appropriate colors for each alert type Include an icon to reinforce the alert type Position alerts where they are easily visible Don&amp;#039;ts Use too many alerts on a single page Include complex or lengthy content in alerts Use custom colors that don&amp;#039;t meet accessibility standards Create alerts that completely block content unless absolutely necessary",
+        "description": "Design guidelines for the Alert component",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Alert Code",
+        "url": "/components/all/alert/code/",
+        "content": "Alert Code Implementation The Alert component is available in various frameworks and can be implemented using the code examples below. HTML Implementation &amp;amp;lt;div class=&amp;quot;alert alert-success&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;Your changes have been successfully saved.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;button class=&amp;quot;alert-close&amp;quot; aria-label=&amp;quot;Close alert&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; &amp;amp;lt;/div&amp;gt; CSS .alert { display: flex; align-items: flex-start; padding: 1rem; border-radius: 0.25rem; border: 1px solid; margin-bottom: 1rem; } .alert-success { background-color: var(--color-success-light); border-color: var(--color-success); color: var(--color-success-dark); } .alert-warning { background-color: var(--color-warning-light); border-color: var(--color-warning); color: var(--color-warning-dark); } .alert-error { background-color: var(--color-error-light); border-color: var(--color-error); color: var(--color-error-dark); } .alert-info { background-color: var(--color-info-light); border-color: var(--color-info); color: var(--color-info-dark); } .alert-icon { flex-shrink: 0; margin-right: 0.75rem; display: flex; } .alert-content { flex-grow: 1; } .alert-title { font-weight: 600; margin-top: 0; margin-bottom: 0.25rem; } .alert-message { margin: 0; } .alert-close { background: none; border: none; cursor: pointer; padding: 0.25rem; color: currentColor; opacity: 0.7; } .alert-close:hover { opacity: 1; } JavaScript // Close alert functionality document.querySelectorAll(&amp;#039;.alert-close&amp;#039;).forEach(button =&amp;gt; { button.addEventListener(&amp;#039;click&amp;#039;, () =&amp;gt; { const alert = button.closest(&amp;#039;.alert&amp;#039;); // Add fade-out animation alert.style.opacity = &amp;#039;0&amp;#039;; alert.style.transition = &amp;#039;opacity 0.3s ease-out&amp;#039;; // Remove alert after animation completes setTimeout(() =&amp;gt; { alert.remove(); }, 300); }); }); React Implementation import React, { useState } from &amp;#039;react&amp;#039;; import &amp;#039;./Alert.css&amp;#039;; const icons = { success: ( &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fillRule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z&amp;quot; clipRule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; ), warning: ( &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fillRule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z&amp;quot; clipRule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; ), error: ( &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fillRule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z&amp;quot; clipRule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; ), info: ( &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fillRule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z&amp;quot; clipRule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; ) }; const Alert = ({ type = &amp;#039;info&amp;#039;, title, children, dismissible = false }) =&amp;gt; { const [isVisible, setIsVisible] = useState(true); if (!isVisible) { return null; } return ( &amp;amp;lt;div className={`alert alert-${type}`} role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div className=&amp;quot;alert-icon&amp;quot;&amp;gt; {icons[type]} &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div className=&amp;quot;alert-content&amp;quot;&amp;gt; {title &amp;amp;amp;&amp;amp;amp; &amp;amp;lt;h4 className=&amp;quot;alert-title&amp;quot;&amp;gt;{title}&amp;amp;lt;/h4&amp;gt;} &amp;amp;lt;p className=&amp;quot;alert-message&amp;quot;&amp;gt;{children}&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; {dismissible &amp;amp;amp;&amp;amp;amp; ( &amp;amp;lt;button className=&amp;quot;alert-close&amp;quot; onClick={() =&amp;gt; setIsVisible(false)} aria-label=&amp;quot;Close alert&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; )} &amp;amp;lt;/div&amp;gt; ); }; export default Alert; Usage &amp;amp;lt;Alert type=&amp;quot;success&amp;quot; title=&amp;quot;Success!&amp;quot;&amp;gt; Your changes have been successfully saved. &amp;amp;lt;/Alert&amp;gt; &amp;amp;lt;Alert type=&amp;quot;warning&amp;quot;&amp;gt; Please review your information before continuing. &amp;amp;lt;/Alert&amp;gt; &amp;amp;lt;Alert type=&amp;quot;error&amp;quot; dismissible&amp;gt; An error occurred while submitting the form. &amp;amp;lt;/Alert&amp;gt; &amp;amp;lt;Alert type=&amp;quot;info&amp;quot; title=&amp;quot;Note&amp;quot; dismissible&amp;gt; Your session will expire in 5 minutes. &amp;amp;lt;/Alert&amp;gt; Customization Options The Alert component can be customized with the following props: Prop Type Default Description type string &amp;#039;info&amp;#039; One of: &amp;#039;success&amp;#039;, &amp;#039;warning&amp;#039;, &amp;#039;error&amp;#039;, &amp;#039;info&amp;#039; title string null Optional title text for the alert children node - Main content of the alert dismissible boolean false Whether the alert can be dismissed onClose function - Function to call when alert is dismissed",
+        "description": "Implementation guidelines for the Alert component",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Alert Accessibility",
+        "url": "/components/all/alert/accessibility/",
+        "content": "Alert Accessibility Guidelines Alerts are important UI elements for communicating information to users, and must be designed to be accessible to all users, including those with disabilities. WCAG Compliance The Alert component should comply with the following WCAG 2.1 success criteria: 1.4.1 Use of Color (Level A): Color alone is not used to convey information 1.4.3 Contrast (Level AA): Text has sufficient contrast against background 2.4.2 Page Titled (Level A): Alert content has descriptive heading when appropriate 4.1.2 Name, Role, Value (Level A): Alert has appropriate ARIA roles and properties Implementation Requirements Proper Semantic Structure Use the role=&amp;amp;quot;alert&amp;amp;quot; attribute to ensure screen readers announce the alert content immediately For non-critical alerts, use role=&amp;amp;quot;status&amp;amp;quot; instead Include descriptive and concise text that clearly explains the purpose of the alert &amp;amp;lt;div role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;p&amp;gt;Your changes have been successfully saved.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; Focus Management For critical alerts, consider moving focus to the alert Ensure dismissible alerts return focus to the previously focused element when closed For alerts that appear as a result of user action, ensure they are in a logical position in the reading order Keyboard Accessibility For dismissible alerts: Ensure the close button is keyboard focusable (tabbable) Provide clear visual indication of focus state Implement proper key handlers (Enter/Space) to activate the close button &amp;amp;lt;button class=&amp;quot;alert-close&amp;quot; aria-label=&amp;quot;Close alert&amp;quot;&amp;gt; &amp;amp;lt;svg aria-hidden=&amp;quot;true&amp;quot; focusable=&amp;quot;false&amp;quot;&amp;gt;&amp;amp;lt;!-- icon --&amp;gt;&amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; Screen Reader Considerations Use ARIA live regions appropriately: aria-live=&amp;amp;quot;assertive&amp;amp;quot; for critical alerts aria-live=&amp;amp;quot;polite&amp;amp;quot; for non-critical alerts Provide context about the type of alert using aria-label or other text &amp;amp;lt;div class=&amp;quot;alert alert-success&amp;quot; role=&amp;quot;alert&amp;quot; aria-labelledby=&amp;quot;alert-heading&amp;quot;&amp;gt; &amp;amp;lt;h2 id=&amp;quot;alert-heading&amp;quot; class=&amp;quot;alert-title&amp;quot;&amp;gt;Success&amp;amp;lt;/h2&amp;gt; &amp;amp;lt;p&amp;gt;Your changes have been successfully saved.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; Color and Contrast Ensure the alert has sufficient color contrast (minimum 4.5:1 ratio for text) Don&amp;#039;t rely solely on color to convey the type of alert (use icons and text) Provide visual boundaries (borders) to help define the alert area Icon Usage Include descriptive icons that reinforce the alert type Make icons decorative with aria-hidden=&amp;amp;quot;true&amp;amp;quot; and focusable=&amp;amp;quot;false&amp;amp;quot; Ensure icons have sufficient contrast against their background &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg aria-hidden=&amp;quot;true&amp;quot; focusable=&amp;quot;false&amp;quot;&amp;gt;&amp;amp;lt;!-- icon --&amp;gt;&amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; Motion and Animation Avoid excessive animation that could trigger vestibular disorders If animations are used (such as when dismissing alerts): Keep them brief (under 5 seconds) Ensure they respect the user&amp;#039;s reduced motion preferences @media (prefers-reduced-motion: reduce) { .alert { transition: none; } } Testing Guidelines Test alerts with: Screen readers (NVDA, JAWS, VoiceOver) to ensure content is announced appropriately Keyboard only navigation to verify all interactive elements are accessible High contrast mode to check visibility in Windows High Contrast settings Zoom levels of up to 200% to ensure content remains readable Common Accessibility Issues to Avoid Missing role=&amp;amp;quot;alert&amp;amp;quot; or appropriate ARIA live region attributes Low color contrast between text and background Relying solely on color to convey alert type Missing text alternatives for icons Auto-dismissing alerts without sufficient time to read Animations that can&amp;#039;t be disabled Lack of keyboard accessibility for interactive alerts",
+        "description": "Accessibility guidelines for the Alert component",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Alert Examples",
+        "url": "/components/all/alert/examples/",
+        "content": "Alert Examples Below are various examples of the Alert component in different contexts and configurations. Basic Alert Types Success Alert &amp;amp;lt;div class=&amp;quot;alert alert-success&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;Your changes have been successfully saved.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; Your changes have been successfully saved. Warning Alert &amp;amp;lt;div class=&amp;quot;alert alert-warning&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;Please review your information before continuing.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; Please review your information before continuing. Error Alert &amp;amp;lt;div class=&amp;quot;alert alert-error&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;An error occurred while submitting the form.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; An error occurred while submitting the form. Info Alert &amp;amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;Your session will expire in 5 minutes.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; Your session will expire in 5 minutes. Alert with Title &amp;amp;lt;div class=&amp;quot;alert alert-info&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;h4 class=&amp;quot;alert-title&amp;quot;&amp;gt;Information&amp;amp;lt;/h4&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;Your session will expire in 5 minutes. Please save your work.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; Information Your session will expire in 5 minutes. Please save your work. Dismissible Alert &amp;amp;lt;div class=&amp;quot;alert alert-success&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;Your changes have been successfully saved.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;button class=&amp;quot;alert-close&amp;quot; aria-label=&amp;quot;Close alert&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; &amp;amp;lt;/div&amp;gt; Your changes have been successfully saved. Alert with Actions &amp;amp;lt;div class=&amp;quot;alert alert-warning&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;h4 class=&amp;quot;alert-title&amp;quot;&amp;gt;Unsaved Changes&amp;amp;lt;/h4&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;You have unsaved changes that will be lost if you navigate away from this page.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-actions&amp;quot;&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-warning&amp;quot;&amp;gt;Save Changes&amp;amp;lt;/button&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-outline&amp;quot;&amp;gt;Discard&amp;amp;lt;/button&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; Unsaved Changes You have unsaved changes that will be lost if you navigate away from this page. Save Changes Discard Form Validation Alert &amp;amp;lt;form&amp;gt; &amp;amp;lt;div class=&amp;quot;form-group&amp;quot;&amp;gt; &amp;amp;lt;label for=&amp;quot;email&amp;quot;&amp;gt;Email&amp;amp;lt;/label&amp;gt; &amp;amp;lt;input type=&amp;quot;email&amp;quot; id=&amp;quot;email&amp;quot; class=&amp;quot;is-invalid&amp;quot; /&amp;gt; &amp;amp;lt;div class=&amp;quot;alert alert-error&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM7 4a1 1 0 0 0-1 1v4a1 1 0 1 0 2 0V5a1 1 0 0 0-1-1zm0 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;Please enter a valid email address.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;button type=&amp;quot;submit&amp;quot;&amp;gt;Submit&amp;amp;lt;/button&amp;gt; &amp;amp;lt;/form&amp;gt; Email Please enter a valid email address. Submit System Status Alert &amp;amp;lt;div class=&amp;quot;alert alert-warning alert-system&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-icon&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;20&amp;quot; height=&amp;quot;20&amp;quot; viewBox=&amp;quot;0 0 20 20&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path fill-rule=&amp;quot;evenodd&amp;quot; d=&amp;quot;M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z&amp;quot; clip-rule=&amp;quot;evenodd&amp;quot; /&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;h4 class=&amp;quot;alert-title&amp;quot;&amp;gt;System Maintenance&amp;amp;lt;/h4&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;The system will be undergoing maintenance on March 15th from 2:00 AM to 4:00 AM EST. Please save your work before this time.&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; System Maintenance The system will be undergoing maintenance on March 15th from 2:00 AM to 4:00 AM EST. Please save your work before this time. Global Banner Alert &amp;amp;lt;div class=&amp;quot;alert alert-info alert-banner&amp;quot; role=&amp;quot;alert&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;alert-content&amp;quot;&amp;gt; &amp;amp;lt;p class=&amp;quot;alert-message&amp;quot;&amp;gt;We&amp;#039;ve updated our privacy policy. &amp;amp;lt;a href=&amp;quot;#&amp;quot;&amp;gt;Learn more&amp;amp;lt;/a&amp;gt;&amp;amp;lt;/p&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;button class=&amp;quot;alert-close&amp;quot; aria-label=&amp;quot;Close alert&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; We&amp;#039;ve updated our privacy policy. Learn more",
+        "description": "Examples of the Alert component in various contexts",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "All Components",
+        "url": "/components/all/",
+        "content": "All Components This section provides a comprehensive list of all components available in the Enterprise Design System. Each component includes detailed documentation for design, code implementation, accessibility guidelines, and usage examples. Component List Layout Components Accordion Card Content Block Description List Expand/Collapse Grid Page Footer Page Header Tab Group Navigation Components Breadcrumbs Link List Group Menu Segmented Control Form Components Button Checkbox Checkbox Group Field Group Field Key File Upload Form Actions Input Label Radio Radio Group Select Slider Switch Text Input Textarea Feedback Components Alert Inline Alert Modal Popover Progress Indicator Spinner Status Stepper Tooltip Content Components Chip Footnotes and Disclosures Icon Image Microcopy Segment Table Tag Tile Title Component Structure Each component follows a standardized documentation structure: Overview - General information and purpose of the component Tabs: Design - Design specifications, visual guidelines, and anatomy Code - Implementation details and code examples Accessibility - WCAG compliance and accessibility best practices Examples - Interactive examples and use cases Component Status Components are at different stages of development: Production Ready - Fully tested and ready for use in production Beta - Feature complete, but may still undergo changes In Development - Currently being developed and not ready for production use Deprecated - Still supported but scheduled for replacement Check individual component documentation for current status information.",
+        "description": "Complete library of components in the Enterprise Design System",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Button",
+        "url": "/components/all/button/",
+        "content": "Button Buttons enable users to trigger actions or events with a single click. They communicate what action will occur when the user interacts with them. Overview Buttons are interactive elements that enable users to trigger actions throughout the interface. They should clearly communicate what will happen when pressed and provide visual feedback during interaction. Types Primary: High-emphasis buttons for main actions Secondary: Medium-emphasis buttons for secondary actions Tertiary: Low-emphasis buttons for tertiary actions Danger: For destructive actions that should be highlighted Ghost: Minimally visually intrusive buttons Icon: Buttons that consist primarily of an icon with optional text When to Use To submit forms To trigger modal dialogs To initiate a new action To proceed through a multi-step process To provide navigation options Best Practices Use clear, concise, and action-oriented labels Prioritize button hierarchy on each screen Maintain consistent positioning across similar screens Ensure buttons are large enough to be easily tapped on touch devices Avoid using too many buttons in one section Use standard button styles for recognizability Related Components Link Form Actions Segmented Control Tabs Design Code Accessibility Examples",
+        "description": "Buttons enable users to trigger actions or events with a single click.",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Button Design",
+        "url": "/components/all/button/design/",
+        "content": "Button Design Guidelines Anatomy The button component consists of several key elements: Container: The visible boundary of the button that provides the interactive area Label: Text that describes the action the button performs Icon (optional): Visual symbol that reinforces the action or provides additional context Focus state: Visual indicator when the button receives keyboard focus Visual Design Colors Button Type Background Color Text Color Border Hover State Primary var(--color-primary) var(--color-white) none var(--color-primary-dark) Secondary var(--color-white) var(--color-primary) 1px solid var(--color-primary) var(--color-primary-light) background Tertiary transparent var(--color-primary) none var(--color-primary-light) background Danger var(--color-error) var(--color-white) none var(--color-error-dark) Ghost transparent var(--color-text) none var(--color-gray-100) background Typography Font: System font stack (same as body text) Font weight: 500 (medium) or 600 (semibold) Font size: 14px (0.875rem) or 16px (1rem) Text case: Sentence case (capitalize first word only) Text alignment: Center-aligned Sizing and Spacing Size Height Padding (Left/Right) Font Size Icon Size Small 32px 12px 14px 16px Medium 40px 16px 14px 18px Large 48px 20px 16px 20px XLarge 56px 24px 16px 22px Border radius: 4px (0.25rem) for standard buttons, 8px (0.5rem) for rounded buttons Spacing between buttons: 16px (1rem) for horizontal layout, 12px (0.75rem) for vertical layout Icon spacing: 8px (0.5rem) between icon and text States Interactive States Default: The button&amp;#039;s normal appearance Hover: Visual feedback when a pointer is positioned over the button Focus: Visual indication when the button receives keyboard focus Active/Pressed: Visual feedback when the button is being clicked/tapped Disabled: Visual indication that the button is not interactive State Styling State Visual Changes Hover Darken background color by 10%, cursor: pointer Focus 2px outline in var(--color-focus), offset by 2px Active Darken background color by 15%, &amp;amp;quot;pressed&amp;amp;quot; effect (slight scale/shadow change) Disabled 60% opacity, cursor: not-allowed Variations Button with Icon Icons can be positioned either to the left or right of the button text: Left-aligned icon: Used for actions or to categorize the button Right-aligned icon: Typically indicates direction (e.g., forward/next actions) Icon-only Button Always include a tooltip or aria-label for accessibility Maintain adequate touch target size (minimum 44px × 44px) Use familiar, recognizable icons Full-width Button Occupies 100% of the container width Typically used in mobile layouts or for main actions in forms Loading State Include a spinner animation to indicate processing Maintain the same button width to prevent layout shifts Disable the button during loading to prevent multiple submissions Design Do&amp;#039;s and Don&amp;#039;ts Do&amp;#039;s Use a primary button for the main action on a page Keep button labels concise and action-oriented Maintain consistent button styling throughout the application Ensure sufficient contrast between button text and background Group related buttons together Don&amp;#039;ts Use too many primary buttons on a single page Place multiple buttons with equal visual weight next to each other Use overly generic labels like &amp;amp;quot;Click Here&amp;amp;quot; or &amp;amp;quot;Submit&amp;amp;quot; Create custom button styles that don&amp;#039;t match the design system Put too much text on a button",
+        "description": "Design specifications and guidelines for the Button component",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Button Code",
+        "url": "/components/all/button/code/",
+        "content": "Button Code Implementation The Button component is available in various frameworks and can be implemented using the code examples below. HTML Implementation &amp;amp;lt;!-- Primary Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Primary Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Secondary Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-secondary&amp;quot;&amp;gt;Secondary Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Tertiary Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-tertiary&amp;quot;&amp;gt;Tertiary Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Danger Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-danger&amp;quot;&amp;gt;Danger Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Ghost Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-ghost&amp;quot;&amp;gt;Ghost Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Button with Left Icon --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt; &amp;amp;lt;svg class=&amp;quot;btn-icon btn-icon-left&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; Button with Icon &amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Button with Right Icon --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt; Next &amp;amp;lt;svg class=&amp;quot;btn-icon btn-icon-right&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Icon-only Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-icon-only&amp;quot; aria-label=&amp;quot;Settings&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Disabled Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot; disabled&amp;gt;Disabled Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Full-width Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-full-width&amp;quot;&amp;gt;Full-width Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Small Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-sm&amp;quot;&amp;gt;Small Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Large Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-lg&amp;quot;&amp;gt;Large Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Extra Large Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-xl&amp;quot;&amp;gt;Extra Large Button&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Loading Button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-loading&amp;quot; disabled&amp;gt; &amp;amp;lt;span class=&amp;quot;btn-spinner&amp;quot;&amp;gt;&amp;amp;lt;/span&amp;gt; &amp;amp;lt;span class=&amp;quot;btn-text&amp;quot;&amp;gt;Loading...&amp;amp;lt;/span&amp;gt; &amp;amp;lt;/button&amp;gt; CSS .btn { display: inline-flex; align-items: center; justify-content: center; font-family: inherit; font-weight: 500; font-size: 0.875rem; line-height: 1.5; text-align: center; text-decoration: none; vertical-align: middle; cursor: pointer; user-select: none; border: 1px solid transparent; padding: 0.5rem 1rem; border-radius: 0.25rem; transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; } .btn:focus { outline: 0; box-shadow: 0 0 0 0.25rem rgba(var(--color-primary-rgb), 0.25); } .btn:disabled, .btn.disabled { opacity: 0.65; pointer-events: none; } /* Button Variants */ .btn-primary { color: var(--color-white); background-color: var(--color-primary); border-color: var(--color-primary); } .btn-primary:hover { color: var(--color-white); background-color: var(--color-primary-dark); border-color: var(--color-primary-dark); } .btn-secondary { color: var(--color-primary); background-color: var(--color-white); border-color: var(--color-primary); } .btn-secondary:hover { color: var(--color-primary); background-color: var(--color-primary-light); border-color: var(--color-primary); } .btn-tertiary { color: var(--color-primary); background-color: transparent; border-color: transparent; } .btn-tertiary:hover { color: var(--color-primary-dark); background-color: var(--color-primary-light); } .btn-danger { color: var(--color-white); background-color: var(--color-error); border-color: var(--color-error); } .btn-danger:hover { color: var(--color-white); background-color: var(--color-error-dark); border-color: var(--color-error-dark); } .btn-ghost { color: var(--color-text); background-color: transparent; border-color: transparent; } .btn-ghost:hover { color: var(--color-text-dark); background-color: var(--color-gray-100); } /* Button Sizes */ .btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 0.2rem; height: 2rem; } .btn-lg { padding: 0.75rem 1.5rem; font-size: 1rem; border-radius: 0.3rem; height: 3rem; } .btn-xl { padding: 1rem 2rem; font-size: 1.125rem; border-radius: 0.3rem; height: 3.5rem; } /* Full-width Button */ .btn-full-width { display: block; width: 100%; } /* Icon Button */ .btn-icon { display: inline-flex; fill: currentColor; width: 1rem; height: 1rem; } .btn-icon-left { margin-right: 0.5rem; } .btn-icon-right { margin-left: 0.5rem; } .btn-icon-only { padding: 0.5rem; border-radius: 50%; line-height: 1; } /* Loading Button */ .btn-loading { position: relative; } .btn-spinner { display: inline-block; width: 1rem; height: 1rem; margin-right: 0.5rem; vertical-align: text-bottom; border: 0.2em solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spinner-border .75s linear infinite; } @keyframes spinner-border { to { transform: rotate(360deg); } } JavaScript // Add event listeners to buttons document.querySelectorAll(&amp;#039;.btn&amp;#039;).forEach(button =&amp;gt; { button.addEventListener(&amp;#039;click&amp;#039;, function(event) { if (this.classList.contains(&amp;#039;btn-loading&amp;#039;)) { // Prevent multiple clicks on loading buttons event.preventDefault(); return; } // For buttons that trigger loading states if (this.dataset.loading === &amp;#039;true&amp;#039;) { this.classList.add(&amp;#039;btn-loading&amp;#039;); this.disabled = true; const originalText = this.innerHTML; this.innerHTML = ` &amp;amp;lt;span class=&amp;quot;btn-spinner&amp;quot;&amp;gt;&amp;amp;lt;/span&amp;gt; &amp;amp;lt;span class=&amp;quot;btn-text&amp;quot;&amp;gt;Loading...&amp;amp;lt;/span&amp;gt; `; // Simulate async operation setTimeout(() =&amp;gt; { this.classList.remove(&amp;#039;btn-loading&amp;#039;); this.disabled = false; this.innerHTML = originalText; }, 2000); } }); }); React Implementation import React, { useState } from &amp;#039;react&amp;#039;; import &amp;#039;./Button.css&amp;#039;; const Button = ({ children, type = &amp;#039;button&amp;#039;, variant = &amp;#039;primary&amp;#039;, size = &amp;#039;medium&amp;#039;, icon = null, iconPosition = &amp;#039;left&amp;#039;, fullWidth = false, isLoading = false, disabled = false, onClick, ...props }) =&amp;gt; { const handleClick = (event) =&amp;gt; { if (disabled || isLoading) return; if (onClick) onClick(event); }; const getButtonClasses = () =&amp;gt; { const classes = [&amp;#039;btn&amp;#039;, `btn-${variant}`]; if (size === &amp;#039;small&amp;#039;) classes.push(&amp;#039;btn-sm&amp;#039;); if (size === &amp;#039;large&amp;#039;) classes.push(&amp;#039;btn-lg&amp;#039;); if (size === &amp;#039;xlarge&amp;#039;) classes.push(&amp;#039;btn-xl&amp;#039;); if (fullWidth) classes.push(&amp;#039;btn-full-width&amp;#039;); if (isLoading) classes.push(&amp;#039;btn-loading&amp;#039;); if (icon &amp;amp;amp;&amp;amp;amp; !children) classes.push(&amp;#039;btn-icon-only&amp;#039;); return classes.join(&amp;#039; &amp;#039;); }; const renderIcon = () =&amp;gt; { if (!icon) return null; return ( &amp;amp;lt;span className={`btn-icon ${children ? `btn-icon-${iconPosition}` : &amp;#039;&amp;#039;}`}&amp;gt; {icon} &amp;amp;lt;/span&amp;gt; ); }; const renderContent = () =&amp;gt; { if (isLoading) { return ( &amp;amp;lt;&amp;gt; &amp;amp;lt;span className=&amp;quot;btn-spinner&amp;quot;&amp;gt;&amp;amp;lt;/span&amp;gt; &amp;amp;lt;span className=&amp;quot;btn-text&amp;quot;&amp;gt;Loading...&amp;amp;lt;/span&amp;gt; &amp;amp;lt;/&amp;gt; ); } return ( &amp;amp;lt;&amp;gt; {icon &amp;amp;amp;&amp;amp;amp; iconPosition === &amp;#039;left&amp;#039; &amp;amp;amp;&amp;amp;amp; renderIcon()} {children &amp;amp;amp;&amp;amp;amp; &amp;amp;lt;span className=&amp;quot;btn-text&amp;quot;&amp;gt;{children}&amp;amp;lt;/span&amp;gt;} {icon &amp;amp;amp;&amp;amp;amp; iconPosition === &amp;#039;right&amp;#039; &amp;amp;amp;&amp;amp;amp; renderIcon()} &amp;amp;lt;/&amp;gt; ); }; return ( &amp;amp;lt;button type={type} className={getButtonClasses()} disabled={disabled || isLoading} onClick={handleClick} {...props} &amp;gt; {renderContent()} &amp;amp;lt;/button&amp;gt; ); }; export default Button; Usage // Primary Button &amp;amp;lt;Button variant=&amp;quot;primary&amp;quot;&amp;gt;Primary Button&amp;amp;lt;/Button&amp;gt; // Secondary Button &amp;amp;lt;Button variant=&amp;quot;secondary&amp;quot;&amp;gt;Secondary Button&amp;amp;lt;/Button&amp;gt; // Button with Icon &amp;amp;lt;Button variant=&amp;quot;primary&amp;quot; icon={&amp;amp;lt;ArrowRightIcon /&amp;gt;} iconPosition=&amp;quot;right&amp;quot; &amp;gt; Next &amp;amp;lt;/Button&amp;gt; // Icon-only Button &amp;amp;lt;Button variant=&amp;quot;ghost&amp;quot; icon={&amp;amp;lt;SettingsIcon /&amp;gt;} aria-label=&amp;quot;Settings&amp;quot; /&amp;gt; // Loading Button &amp;amp;lt;Button isLoading={true}&amp;gt;Submit&amp;amp;lt;/Button&amp;gt; // Full-width Button &amp;amp;lt;Button variant=&amp;quot;primary&amp;quot; fullWidth={true}&amp;gt; Save Changes &amp;amp;lt;/Button&amp;gt; Accessibility Considerations in Code Always use the appropriate semantic element: Use &amp;amp;lt;button&amp;amp;gt; for actions on the same page Use &amp;amp;lt;a&amp;amp;gt; for navigation to a new page Never use a &amp;amp;lt;div&amp;amp;gt; or &amp;amp;lt;span&amp;amp;gt; styled as a button Include proper ARIA attributes when necessary: Add aria-label for icon-only buttons Use aria-pressed for toggle buttons Set aria-busy=&amp;amp;quot;true&amp;amp;quot; and aria-live=&amp;amp;quot;polite&amp;amp;quot; for loading buttons Ensure keyboard accessibility: Buttons should be focusable and operable with the keyboard Test keyboard functionality for custom button implementations Make loading states perceivable: Include both visual and textual indicators for loading states Use aria-live regions to announce state changes Customization Options The Button component can be customized with the following props: Prop Type Default Description variant string &amp;#039;primary&amp;#039; Button variant: &amp;#039;primary&amp;#039;, &amp;#039;secondary&amp;#039;, &amp;#039;tertiary&amp;#039;, &amp;#039;danger&amp;#039;, &amp;#039;ghost&amp;#039; size string &amp;#039;medium&amp;#039; Button size: &amp;#039;small&amp;#039;, &amp;#039;medium&amp;#039;, &amp;#039;large&amp;#039;, &amp;#039;xlarge&amp;#039; icon node null Icon element to display within the button iconPosition string &amp;#039;left&amp;#039; Position of the icon: &amp;#039;left&amp;#039; or &amp;#039;right&amp;#039; fullWidth boolean false Whether the button should take up the full width of its container isLoading boolean false Whether to show a loading spinner disabled boolean false Whether the button is disabled",
+        "description": "Implementation guidelines for the Button component",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Component Documentation Guide",
+        "url": "/guides/component-documentation/",
+        "content": "Component Documentation Guide This guide outlines the standardized structure and process for creating or migrating component documentation within the Enterprise Design System (EDS) documentation platform. Component Structure All components in the EDS documentation follow a standardized structure consisting of: Main Component Page: Overview and general information Four Tab Pages: Design: Visual specifications and guidelines Code: Implementation details and examples Accessibility: Accessibility requirements and best practices Examples: Interactive examples and use cases Directory Structure Components should be organized following this directory structure: src/ └── components/ └── all/ └── [component-name]/ ├── index.md (Main component page) ├── design/ │ └── index.md (Design guidelines) ├── code/ │ └── index.md (Code implementation) ├── accessibility/ │ └── index.md (Accessibility guidelines) └── examples/ └── index.md (Usage examples) Creating Component Documentation 1. Main Component Page (index.md) The main component page should include: Component name (title) Brief description Overview Types/variants When to use Best practices Related components Links to the four tab pages Template: --- layout: layouts/component.njk title: [Component Name] description: [Brief description of the component] tags: allComponents --- # [Component Name] [Brief description of the component] ## Overview [General information and purpose of the component] ## Types - **[Type 1]**: [Description] - **[Type 2]**: [Description] - **[Type 3]**: [Description] ## When to Use - [Use case 1] - [Use case 2] - [Use case 3] ## Best Practices - [Best practice 1] - [Best practice 2] - [Best practice 3] ## Related Components - [Related component 1](/components/all/[related-component-1]/) - [Related component 2](/components/all/[related-component-2]/) ## Tabs - [Design](design/) - [Code](code/) - [Accessibility](accessibility/) - [Examples](examples/) 2. Design Tab (design/index.md) The design tab should include: Anatomy Visual design specifications Colors Typography Sizing and spacing States Variations Do&amp;#039;s and don&amp;#039;ts Template: --- layout: layouts/component.njk title: [Component Name] Design description: Design guidelines for the [Component Name] component --- # [Component Name] Design Guidelines ## Anatomy [Description of component parts and structure] ## Visual Design ### Colors [Color specifications] ### Typography [Typography specifications] ### Sizing and Spacing [Sizing and spacing specifications] ## States [Interactive states documentation] ## Variations [Component variations documentation] ## Design Do&amp;#039;s and Don&amp;#039;ts ### Do&amp;#039;s - [Design recommendation 1] - [Design recommendation 2] ### Don&amp;#039;ts - [Design warning 1] - [Design warning 2] 3. Code Tab (code/index.md) The code tab should include: HTML implementation CSS JavaScript (if applicable) Framework-specific implementations (React, Vue, etc.) Usage examples Accessibility considerations Customization options Template: --- layout: layouts/component.njk title: [Component Name] Code description: Implementation guidelines for the [Component Name] component --- # [Component Name] Code Implementation [Brief introduction to implementing the component] ## HTML Implementation ```html [HTML code example] CSS [CSS code example] JavaScript [JavaScript code example] React Implementation [React code example] Usage [Usage examples] Accessibility Considerations in Code [Accessibility implementation details] Customization Options [Customization documentation with table of properties] ### 4. Accessibility Tab (`accessibility/index.md`) The accessibility tab should include: - WCAG compliance requirements - Implementation requirements - Keyboard support - Screen reader considerations - Testing guidelines - Common issues to avoid **Template:** ```markdown --- layout: layouts/component.njk title: [Component Name] Accessibility description: Accessibility guidelines for the [Component Name] component --- # [Component Name] Accessibility Guidelines [Brief introduction to accessibility for this component] ## WCAG Compliance [WCAG success criteria] ## Implementation Requirements [Implementation details for accessibility] ## Keyboard Accessibility [Keyboard support documentation] ## Screen Reader Considerations [Screen reader support documentation] ## Testing Guidelines [How to test accessibility] ## Common Accessibility Issues to Avoid [List of common issues] 5. Examples Tab (examples/index.md) The examples tab should include: Basic examples Advanced examples Interactive examples Use case demonstrations Code samples with visual results Template: --- layout: layouts/component.njk title: [Component Name] Examples description: Examples of the [Component Name] component in various contexts --- # [Component Name] Examples [Brief introduction to the examples section] ## Basic Examples [Basic examples with code and visual representation] ## Advanced Examples [Advanced examples with code and visual representation] ## Use Case Examples [Use case specific examples] Migrating Legacy Documentation When migrating component documentation from legacy systems: Follow the standardized structure outlined above Convert all HTML or Nunjucks content to Markdown Update references to design tokens and variables Ensure all code examples are up-to-date Add any missing sections required by the new structure Optimize images and other assets Component Categories Components should be categorized under one of these groups within the &amp;amp;quot;All Components&amp;amp;quot; section: Layout Components: Components that define structure and layout Navigation Components: Components used for navigation Form Components: Components used in forms and user input Feedback Components: Components that provide feedback to users Content Components: Components for displaying content Best Practices for Documentation Be concise: Keep documentation clear and to the point Use examples: Provide practical examples for each concept Show visuals: Include screenshots, diagrams, or live examples Maintain consistency: Use consistent terminology and style Link related content: Cross-reference related components and concepts Keep code examples simple: Focus on the core concepts in examples Consider beginners: Assume minimal prior knowledge Update regularly: Keep documentation in sync with component changes Component Status Include the component&amp;#039;s current status in the main page: Production Ready: Fully tested and ready for use in production Beta: Feature complete, but may still undergo changes In Development: Currently being developed and not ready for production use Deprecated: Still supported but scheduled for replacement Documentation Review Process All component documentation should go through the following review process: Technical review by developers Design review by designers Accessibility review by accessibility experts Content review by technical writers Final approval by documentation team lead",
+        "description": "Guidelines for creating and migrating component documentation in the Enterprise Design System",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Content Migration Guide",
+        "url": "/guides/migration-guide/",
+        "content": "Content Migration Guide This guide provides a comprehensive approach to migrating legacy documentation from various sources into the unified Enterprise Design System (EDS) documentation platform. Migration Overview The migration process involves transferring documentation from multiple legacy sources into a standardized 11ty-based documentation system. Each piece of content needs to be converted to Markdown format, organized according to the established structure, and enhanced with proper metadata. Migration Process Step 1: Identify Source Material Catalog existing documentation: Document the URLs/locations of all legacy documentation Note the content type (component, guide, pattern, etc.) Identify the format (HTML, PDF, Nunjucks, etc.) Document any dependencies or related content Prioritize content for migration: Start with frequently used components Prioritize critical documentation Group related content to migrate together Step 2: Prepare for Migration Create destination structure: Set up appropriate directory structure in the 11ty platform Establish clear naming conventions Prepare any required templates Set up migration tools: Configure the migration utilities in /scripts/migration Update any configuration in scripts/migration-config.js Test the migration pipeline with sample content Step 3: Perform Content Migration For Component Documentation Follow the Component Documentation Guide and ensure all components have: Main index page with general information Four standardized tabs: Design Code Accessibility Examples Use this directory structure: src/ └── components/ └── all/ └── [component-name]/ ├── index.md ├── design/ │ └── index.md ├── code/ │ └── index.md ├── accessibility/ │ └── index.md └── examples/ └── index.md For Guide/Article Documentation Convert to Markdown format Add proper frontmatter metadata Place in appropriate directory structure Update internal links Optimize and migrate any associated assets Step 4: Content Enhancement During migration, enhance the documentation by: Improving structure: Add clear headings and subheadings Use consistent section organization Ensure logical content flow Enhancing metadata: Add descriptive titles and descriptions Include proper tagging for search Add related content links Updating examples: Ensure code examples follow current best practices Add interactive examples where possible Include accessible examples Step 5: Quality Assurance After migration, perform these quality checks: Content review: Verify all content has been migrated Check for any missing sections Review for outdated information Technical validation: Test all internal links Ensure all code examples work Verify images and assets load properly Accessibility check: Ensure content follows accessibility guidelines Check contrast and readability Verify proper heading structure Migration Tools The EDS documentation platform includes several tools to assist with migration: HTML to Markdown Converter Located at src/utils/migration/html-to-md.js, this utility converts HTML documentation to Markdown format. // Example usage const { convertHtmlToMd } = require(&amp;#039;../utils/migration/html-to-md&amp;#039;); // Convert an HTML file to Markdown await convertHtmlToMd(&amp;#039;path/to/source.html&amp;#039;, &amp;#039;path/to/destination.md&amp;#039;, { siteType: &amp;#039;confluence&amp;#039;, // or &amp;#039;sharepoint&amp;#039;, &amp;#039;jira&amp;#039;, &amp;#039;wordpress&amp;#039;, etc. preserveHeadingLevels: true, includeTableOfContents: true }); Nunjucks to Markdown Converter Located at src/utils/njk-to-md.js, this utility converts Nunjucks templates to Markdown. // Example usage const { convertNjkToMd } = require(&amp;#039;../utils/njk-to-md&amp;#039;); // Convert a Nunjucks file to Markdown await convertNjkToMd(&amp;#039;path/to/source.njk&amp;#039;, &amp;#039;path/to/destination.md&amp;#039;, { data: {}, // Optional data to pass to the template preserveComponents: true }); XML to Markdown Converter Located at src/utils/migration/xml-to-md.js, this utility converts XML-based documentation (like DITA or DocBook) to Markdown. // Example usage const { convertXmlToMd } = require(&amp;#039;../utils/migration/xml-to-md&amp;#039;); // Convert an XML file to Markdown await convertXmlToMd(&amp;#039;path/to/source.xml&amp;#039;, &amp;#039;path/to/destination.md&amp;#039;, { xmlType: &amp;#039;dita&amp;#039;, // or &amp;#039;docbook&amp;#039;, &amp;#039;generic&amp;#039; preserveStructure: true }); Markdown Formatter Located at src/utils/migration/md-formatter.js, this utility formats and normalizes Markdown content. // Example usage const { formatMarkdown } = require(&amp;#039;../utils/migration/md-formatter&amp;#039;); // Format a Markdown file await formatMarkdown(&amp;#039;path/to/source.md&amp;#039;, &amp;#039;path/to/destination.md&amp;#039;, { fixHeadingLevels: true, applyEdsStyles: true }); Quick Migration Script For bulk migration, use the Quick Migration script located at scripts/quick-migrate.js. # Run from project root node scripts/quick-migrate.js --source=/path/to/source --dest=/path/to/destination Common Migration Challenges Content Structure Differences Challenge: Legacy documentation may have inconsistent or different structure than the new system. Solution: Map legacy document sections to new structure Create templates for common content types Use migration utilities with custom transformations Formatting and Styling Conversion Challenge: Legacy formatting may not convert cleanly to Markdown. Solution: Use the Markdown formatter to clean up converted content Create custom transformations for special cases Manual review and touch-up for complex formatting Media and Asset Management Challenge: Images, videos, and other assets need to be migrated and referenced correctly. Solution: Copy all assets to the appropriate src/assets directory Update references in Markdown content Optimize images during migration Consider using asset processors for automated handling Code Examples Update Challenge: Code examples may be outdated or use deprecated patterns. Solution: Review and update code examples during migration Use linters to check code quality Standardize code formatting Best Practices for Migration Migrate in batches: Group related content and migrate together Test thoroughly: Verify each piece of content after migration Update links: Ensure all internal links are updated to new paths Preserve IDs: Maintain important IDs for bookmarking and linking Track progress: Maintain a migration log to track status Document decisions: Keep a record of migration decisions for reference Post-Migration Activities Create redirects: Set up redirects from old URLs to new locations Update search indexes: Ensure new content is indexed for search Gather feedback: Get user feedback on migrated content Continuous improvement: Iteratively enhance migrated content Support and Resources For support with the migration process: Check the migration utilities documentation Use the example migrations in /example-files Run test migrations with npm run migrate:test Contact the documentation team for assistance",
+        "description": "Guidelines for migrating legacy documentation to the Enterprise Design System documentation platform",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Documentation Guides",
+        "url": "/guides/",
+        "content": "Documentation Guides Welcome to the Enterprise Design System (EDS) Documentation Guides. These guides provide detailed instructions and best practices for creating, maintaining, and migrating content within the EDS documentation platform. Available Guides Component Documentation Guide This guide explains the standardized structure and process for creating component documentation within the EDS platform. It covers: Standardized component structure with four tabs (design, code, accessibility, examples) Templates and examples for creating consistent documentation Best practices for documenting components Quality guidelines and review process Content Migration Guide This guide provides a comprehensive approach to migrating legacy documentation from various sources into the unified EDS documentation platform. It covers: Migration process overview Tools and utilities for content migration Handling different source formats (HTML, Nunjucks, XML, etc.) Quality assurance for migrated content Common migration challenges and solutions Using These Guides Each guide is designed to be a comprehensive resource for a specific aspect of the documentation system. They provide: Step-by-step instructions: Clear procedural guidance for common tasks Templates and examples: Ready-to-use templates that follow best practices Best practices: Recommendations based on experience and industry standards Common challenges: Solutions to frequently encountered issues Contributing to the Guides These guides are living documents that evolve with the EDS documentation platform. If you would like to contribute: Review the existing content for areas that need improvement Follow the existing style and structure Include practical examples that demonstrate concepts Submit updates through the standard documentation workflow Additional Resources In addition to these guides, you can find more resources in: Migration Tools Documentation Component Templates Example Migrations Need Help? If you need assistance or have questions about the documentation platform, please contact the documentation team through the Support channels. Component Documentation Guide Learn how to create standardized component documentation with examples and templates. Read Guide → Content Migration Guide Detailed instructions for migrating content from legacy systems to the EDS documentation platform. Read Guide →",
+        "description": "Comprehensive guides for using and contributing to the Enterprise Design System documentation",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Button Accessibility",
+        "url": "/components/all/button/accessibility/",
+        "content": "Button Accessibility Guidelines Buttons are one of the most common interactive elements in interfaces, making their accessibility particularly important. This guide outlines how to create accessible button implementations. WCAG Compliance The Button component should comply with the following WCAG 2.1 success criteria: 1.4.1 Use of Color (Level A): Color is not used as the only visual means of conveying information 1.4.3 Contrast (Level AA): Text has sufficient contrast against background (minimum 4.5:1 ratio) 2.1.1 Keyboard (Level A): All functionality is operable through a keyboard interface 2.4.7 Focus Visible (Level AA): Keyboard focus indicator is visible 2.5.3 Label in Name (Level A): Visual label text is included in the accessible name 4.1.2 Name, Role, Value (Level A): Button has appropriate role and state information Implementation Requirements Proper Semantic Structure Use the native HTML &amp;amp;lt;button&amp;amp;gt; element for actions within the current page Use the native HTML &amp;amp;lt;a&amp;amp;gt; element for navigation to other pages Always specify a type attribute for buttons in forms (e.g., type=&amp;amp;quot;button&amp;amp;quot;, type=&amp;amp;quot;submit&amp;amp;quot;) Never use non-interactive elements (like &amp;amp;lt;div&amp;amp;gt; or &amp;amp;lt;span&amp;amp;gt;) styled as buttons &amp;amp;lt;!-- Correct: Using a button element for an action --&amp;gt; &amp;amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Save Changes&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Correct: Using an anchor for navigation --&amp;gt; &amp;amp;lt;a href=&amp;quot;/settings&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Go to Settings&amp;amp;lt;/a&amp;gt; &amp;amp;lt;!-- Incorrect: Using a div as a button --&amp;gt; &amp;amp;lt;div class=&amp;quot;btn btn-primary&amp;quot; onclick=&amp;quot;saveChanges()&amp;quot;&amp;gt;Save Changes&amp;amp;lt;/div&amp;gt; Accessible Names Provide clear, descriptive text for buttons that indicates the action it performs For icon-only buttons, include text with aria-label or visually hidden text Ensure that any visually hidden text is appropriately communicated to screen readers &amp;amp;lt;!-- Icon-only button with aria-label --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-icon-only&amp;quot; aria-label=&amp;quot;Close dialog&amp;quot;&amp;gt; &amp;amp;lt;svg aria-hidden=&amp;quot;true&amp;quot; focusable=&amp;quot;false&amp;quot;&amp;gt;&amp;amp;lt;!-- icon --&amp;gt;&amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Icon-only button with visually hidden text --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-icon-only&amp;quot;&amp;gt; &amp;amp;lt;svg aria-hidden=&amp;quot;true&amp;quot; focusable=&amp;quot;false&amp;quot;&amp;gt;&amp;amp;lt;!-- icon --&amp;gt;&amp;amp;lt;/svg&amp;gt; &amp;amp;lt;span class=&amp;quot;visually-hidden&amp;quot;&amp;gt;Close dialog&amp;amp;lt;/span&amp;gt; &amp;amp;lt;/button&amp;gt; Keyboard Accessibility Ensure all buttons are focusable and operable with a keyboard Maintain logical tab order Provide visible focus styles that meet contrast requirements For custom buttons, ensure Enter and Space keys trigger the action /* Focus styles with sufficient contrast */ .btn:focus { outline: 2px solid var(--color-focus); /* High contrast color */ outline-offset: 2px; } /* For Windows High Contrast Mode */ @media (forced-colors: active) { .btn:focus { outline: 2px solid ButtonText; } } State Communication Clearly indicate different button states (disabled, loading, active) Use aria-disabled=&amp;amp;quot;true&amp;amp;quot; for visually disabled buttons that should remain in the tab order Use the disabled attribute for buttons that should be removed from the tab order For loading states, use aria-busy=&amp;amp;quot;true&amp;amp;quot; and consider aria-live to announce status changes &amp;amp;lt;!-- Disabled button removed from tab order --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot; disabled&amp;gt;Submit&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Visually disabled but focusable button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot; aria-disabled=&amp;quot;true&amp;quot;&amp;gt;Submit&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Loading button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-loading&amp;quot; aria-busy=&amp;quot;true&amp;quot;&amp;gt; &amp;amp;lt;span class=&amp;quot;btn-spinner&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt;&amp;amp;lt;/span&amp;gt; &amp;amp;lt;span&amp;gt;Loading...&amp;amp;lt;/span&amp;gt; &amp;amp;lt;/button&amp;gt; Touch Targets Ensure buttons have adequate touch target size (minimum 44×44 pixels) Provide sufficient spacing between buttons to prevent accidental activation For small buttons, consider increasing the touch target area using padding .btn { min-height: 44px; min-width: 44px; padding: 8px 16px; } /* For very small icon buttons, extend the touch target */ .btn-icon-small { position: relative; width: 24px; height: 24px; } .btn-icon-small::before { content: &amp;quot;&amp;quot;; position: absolute; top: -10px; right: -10px; bottom: -10px; left: -10px; } Color and Contrast Ensure text and background color combinations meet WCAG AA contrast ratio of 4.5:1 Do not use color alone to indicate button types or states Include additional indicators for states (icons, text, borders) Test buttons in high contrast mode &amp;amp;lt;!-- Good: Using both color and icon to convey error state --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-danger&amp;quot;&amp;gt; &amp;amp;lt;svg aria-hidden=&amp;quot;true&amp;quot; focusable=&amp;quot;false&amp;quot;&amp;gt;&amp;amp;lt;!-- warning icon --&amp;gt;&amp;amp;lt;/svg&amp;gt; Delete Account &amp;amp;lt;/button&amp;gt; Screen Reader Considerations Test with popular screen readers (NVDA, JAWS, VoiceOver) Ensure icons within buttons have aria-hidden=&amp;amp;quot;true&amp;amp;quot; and focusable=&amp;amp;quot;false&amp;amp;quot; For toggle buttons, use aria-pressed to indicate state For buttons that expand/collapse content, use aria-expanded &amp;amp;lt;!-- Toggle button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-toggle&amp;quot; aria-pressed=&amp;quot;false&amp;quot;&amp;gt;Dark Mode&amp;amp;lt;/button&amp;gt; &amp;amp;lt;!-- Expand/collapse button --&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-expand&amp;quot; aria-expanded=&amp;quot;false&amp;quot; aria-controls=&amp;quot;content-panel&amp;quot;&amp;gt; Show Details &amp;amp;lt;/button&amp;gt; Testing Guidelines Keyboard Testing Tab to the button using the keyboard Verify the focus state is clearly visible Press Enter or Space to activate the button Verify the button action is triggered Screen Reader Testing Navigate to the button using screen reader commands Verify the button&amp;#039;s name is announced correctly Verify the button&amp;#039;s role is announced correctly Verify any state information (pressed, expanded, etc.) is announced Activate the button and verify the result is announced appropriately Additional Tests Test with browser zoom at 200% Test with high contrast mode Test on mobile devices with screen readers Test with voice recognition software Common Accessibility Issues to Avoid Using non-semantic elements (&amp;amp;lt;div&amp;amp;gt;, &amp;amp;lt;span&amp;amp;gt;) as buttons Creating buttons with poor color contrast Making small buttons that are difficult to target Using ambiguous button text like &amp;amp;quot;Click Here&amp;amp;quot; or &amp;amp;quot;Submit&amp;amp;quot; Forgetting to include labels for icon-only buttons Removing focus styles Creating custom buttons that don&amp;#039;t support keyboard activation Not communicating loading or disabled states to screen readers",
+        "description": "Accessibility guidelines for the Button component",
+        "type": "Page",
+        "date": "2025-03-03"
+      },
+    
+  
+    
+      {
+        "title": "Button Examples",
+        "url": "/components/all/button/examples/",
+        "content": "Button Examples Below are various examples of the Button component in different contexts and configurations. Button Variants Primary Button &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Primary Button&amp;amp;lt;/button&amp;gt; Primary Button Secondary Button &amp;amp;lt;button class=&amp;quot;btn btn-secondary&amp;quot;&amp;gt;Secondary Button&amp;amp;lt;/button&amp;gt; Secondary Button Tertiary Button &amp;amp;lt;button class=&amp;quot;btn btn-tertiary&amp;quot;&amp;gt;Tertiary Button&amp;amp;lt;/button&amp;gt; Tertiary Button Danger Button &amp;amp;lt;button class=&amp;quot;btn btn-danger&amp;quot;&amp;gt;Danger Button&amp;amp;lt;/button&amp;gt; Danger Button Ghost Button &amp;amp;lt;button class=&amp;quot;btn btn-ghost&amp;quot;&amp;gt;Ghost Button&amp;amp;lt;/button&amp;gt; Ghost Button Button Sizes Small Button &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-sm&amp;quot;&amp;gt;Small Button&amp;amp;lt;/button&amp;gt; Small Button Medium Button (Default) &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Medium Button&amp;amp;lt;/button&amp;gt; Medium Button Large Button &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-lg&amp;quot;&amp;gt;Large Button&amp;amp;lt;/button&amp;gt; Large Button Extra Large Button &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-xl&amp;quot;&amp;gt;Extra Large Button&amp;amp;lt;/button&amp;gt; Extra Large Button Button with Icons Button with Left Icon &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt; &amp;amp;lt;svg class=&amp;quot;btn-icon btn-icon-left&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; Button with Icon &amp;amp;lt;/button&amp;gt; Button with Icon Button with Right Icon &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt; Next &amp;amp;lt;svg class=&amp;quot;btn-icon btn-icon-right&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; Next Icon-only Button &amp;amp;lt;button class=&amp;quot;btn btn-icon-only&amp;quot; aria-label=&amp;quot;Settings&amp;quot;&amp;gt; &amp;amp;lt;svg xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; &amp;amp;lt;/button&amp;gt; Button States Disabled Button &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot; disabled&amp;gt;Disabled Button&amp;amp;lt;/button&amp;gt; Disabled Button Loading Button &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-loading&amp;quot; disabled&amp;gt; &amp;amp;lt;span class=&amp;quot;btn-spinner&amp;quot;&amp;gt;&amp;amp;lt;/span&amp;gt; &amp;amp;lt;span class=&amp;quot;btn-text&amp;quot;&amp;gt;Loading...&amp;amp;lt;/span&amp;gt; &amp;amp;lt;/button&amp;gt; Loading... Button Width Variations Full-width Button &amp;amp;lt;button class=&amp;quot;btn btn-primary btn-full-width&amp;quot;&amp;gt;Full-width Button&amp;amp;lt;/button&amp;gt; Full-width Button Button Groups Horizontal Button Group &amp;amp;lt;div class=&amp;quot;btn-group&amp;quot;&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Left&amp;amp;lt;/button&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Middle&amp;amp;lt;/button&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Right&amp;amp;lt;/button&amp;gt; &amp;amp;lt;/div&amp;gt; Left Middle Right Vertical Button Group &amp;amp;lt;div class=&amp;quot;btn-group-vertical&amp;quot;&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Top&amp;amp;lt;/button&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Middle&amp;amp;lt;/button&amp;gt; &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Bottom&amp;amp;lt;/button&amp;gt; &amp;amp;lt;/div&amp;gt; Top Middle Bottom Common Use Cases Form Submit Button &amp;amp;lt;form&amp;gt; &amp;amp;lt;div class=&amp;quot;form-group&amp;quot;&amp;gt; &amp;amp;lt;label for=&amp;quot;email&amp;quot;&amp;gt;Email&amp;amp;lt;/label&amp;gt; &amp;amp;lt;input type=&amp;quot;email&amp;quot; id=&amp;quot;email&amp;quot; required /&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;form-group&amp;quot;&amp;gt; &amp;amp;lt;label for=&amp;quot;password&amp;quot;&amp;gt;Password&amp;amp;lt;/label&amp;gt; &amp;amp;lt;input type=&amp;quot;password&amp;quot; id=&amp;quot;password&amp;quot; required /&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;button type=&amp;quot;submit&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Sign In&amp;amp;lt;/button&amp;gt; &amp;amp;lt;/form&amp;gt; Email Password Sign In Button with Modal Trigger &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot; data-toggle=&amp;quot;modal&amp;quot; data-target=&amp;quot;#exampleModal&amp;quot;&amp;gt; Open Modal &amp;amp;lt;/button&amp;gt; &amp;amp;lt;div class=&amp;quot;modal&amp;quot; id=&amp;quot;exampleModal&amp;quot; tabindex=&amp;quot;-1&amp;quot; aria-labelledby=&amp;quot;exampleModalLabel&amp;quot; aria-hidden=&amp;quot;true&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;modal-dialog&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;modal-content&amp;quot;&amp;gt; &amp;amp;lt;div class=&amp;quot;modal-header&amp;quot;&amp;gt; &amp;amp;lt;h5 class=&amp;quot;modal-title&amp;quot; id=&amp;quot;exampleModalLabel&amp;quot;&amp;gt;Modal title&amp;amp;lt;/h5&amp;gt; &amp;amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn-close&amp;quot; data-dismiss=&amp;quot;modal&amp;quot; aria-label=&amp;quot;Close&amp;quot;&amp;gt;&amp;amp;lt;/button&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;modal-body&amp;quot;&amp;gt; Modal content goes here... &amp;amp;lt;/div&amp;gt; &amp;amp;lt;div class=&amp;quot;modal-footer&amp;quot;&amp;gt; &amp;amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-secondary&amp;quot; data-dismiss=&amp;quot;modal&amp;quot;&amp;gt;Close&amp;amp;lt;/button&amp;gt; &amp;amp;lt;button type=&amp;quot;button&amp;quot; class=&amp;quot;btn btn-primary&amp;quot;&amp;gt;Save changes&amp;amp;lt;/button&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; &amp;amp;lt;/div&amp;gt; Open Modal Toggle Button &amp;amp;lt;button class=&amp;quot;btn btn-primary&amp;quot; aria-pressed=&amp;quot;false&amp;quot; id=&amp;quot;darkModeToggle&amp;quot;&amp;gt; &amp;amp;lt;svg class=&amp;quot;btn-icon btn-icon-left&amp;quot; xmlns=&amp;quot;http://www.w3.org/2000/svg&amp;quot; width=&amp;quot;16&amp;quot; height=&amp;quot;16&amp;quot; viewBox=&amp;quot;0 0 16 16&amp;quot; fill=&amp;quot;currentColor&amp;quot;&amp;gt; &amp;amp;lt;path d=&amp;quot;M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z&amp;quot;/&amp;gt; &amp;amp;lt;/svg&amp;gt; Light Mode &amp;amp;lt;/button&amp;gt; Light Mode",
+        "description": "Examples of the Button component in various contexts",
+        "type": "Page",
+        "date": "2025-03-03"
       }
     
   
