@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/with-sidebar.njk
 title: All Components
 description: Complete list of Enterprise Design System components
 ---

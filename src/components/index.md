@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/with-sidebar.njk
 title: Components
 description: Enterprise Design System component library
 ---
