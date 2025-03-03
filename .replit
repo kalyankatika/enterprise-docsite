@@ -43,6 +43,18 @@ args = "create_example_dirs"
 task = "workflow.run"
 args = "run_migration_test"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "npm start"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "npm build"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "npm run migrate:test"
+
 [[workflows.workflow]]
 name = "create_dirs"
 author = "agent"
@@ -156,12 +168,59 @@ task = "packager.installForAll"
 task = "shell.exec"
 args = "node scripts/run-migration-test.js"
 
+[[workflows.workflow]]
+name = "npm start"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx @11ty/eleventy --serve --port=5000"
+waitForPort = 5000
+
+[[workflows.workflow]]
+name = "npm build"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx @11ty/eleventy"
+
+[[workflows.workflow]]
+name = "npm run migrate:test"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/run-migration-test.js"
+
 [deployment]
 run = ["sh", "-c", "npx @11ty/eleventy --serve"]
 
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[[ports]]
+localPort = 5001
+externalPort = 3000
 
 [[ports]]
 localPort = 8080
