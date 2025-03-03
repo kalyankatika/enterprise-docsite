@@ -339,3 +339,35 @@ $eds-accordion-header-bg: #f5f5f5;
     </div>
   </div>
 </section>
+
+<section class="mb-12">
+  <h2 class="text-2xl font-bold mb-6">Storybook Example</h2>
+  
+  <div class="bg-[var(--color-bg-alt)] p-6 rounded-lg border border-[var(--color-border)] mb-6">
+    <p class="mb-4">The following is an interactive Storybook example of the ShadowBox CTA component that shows usage options and properties:</p>
+    
+    <div class="w-full overflow-hidden mb-6">
+      <iframe
+        src="https://5ccbc373887ca40020446347-wtuhidckxo.chromatic.com/iframe.html?id=shadowboxcta--docs&viewMode=docs&shortcuts=false&singleStory=true"
+        width="100%"
+        height="400"
+        style="border: 1px solid var(--color-border); border-radius: 0.375rem;"
+        loading="lazy"
+      ></iframe>
+    </div>
+    
+    <p class="text-sm text-[var(--color-text-muted)] mb-2">Embed URL:</p>
+    <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto mb-6">
+      <pre><code class="language-html">https://5ccbc373887ca40020446347-wtuhidckxo.chromatic.com/iframe.html?id=shadowboxcta--docs&viewMode=docs&shortcuts=false&singleStory=true</code></pre>
+    </div>
+    
+    <p class="text-sm text-[var(--color-text-muted)] mb-2">Iframe embed code:</p>
+    <div class="bg-gray-900 text-white p-4 rounded-md overflow-x-auto">
+      <pre><code class="language-html">&lt;iframe
+  src="https://5ccbc373887ca40020446347-wtuhidckxo.chromatic.com/iframe.html?id=shadowboxcta--docs&viewMode=docs&shortcuts=false&singleStory=true"
+  width="800"
+  height="400"
+&gt;&lt;/iframe&gt;</code></pre>
+    </div>
+  </div>
+</section>
