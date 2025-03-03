@@ -179,26 +179,39 @@
   <div class="space-y-6">
     
     <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Main Sections</h3>
       <ul class="space-y-2">
         <li>
+          <a href="/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/design-system/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Design System
+          </a>
+          
+        </li>
+        <li>
           <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            All Components
+            Components
           </a>
         </li>
         <li>
-          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Design Tokens
+          <a href="/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Browse
           </a>
+          
         </li>
         <li>
-          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Patterns
+          <a href="/resources/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Resources
           </a>
+          
         </li>
         <li>
-          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Guidelines
+          <a href="/support/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Support
           </a>
         </li>
       </ul>
@@ -237,27 +250,51 @@
     
     
     <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Migrated Content</h3>
       <ul class="space-y-2">
         <li>
-          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Colors
+          <a href="/migrated/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Migrated Overview
           </a>
+          
+        </li>
+      </ul>
+    </div>
+    
+    
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Legacy Content</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/legacy-docs/converted/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
+            Converted Legacy
+          </a>
+          
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/legacy-docs/converted/legacy-component/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Legacy Component
+              </a>
+            </li>
+            <li>
+              <a href="/legacy-docs/converted/legacy-page/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
+                Legacy Page
+              </a>
+            </li>
+          </ul>
+          
         </li>
         <li>
-          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Typography
+          <a href="/legacy-docs/njk/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Preserved Legacy
           </a>
+          
         </li>
         <li>
-          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Spacing
+          <a href="/components/shared/migration-examples/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Migration Examples
           </a>
-        </li>
-        <li>
-          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Migration Tools
-          </a>
+          
         </li>
       </ul>
     </div>
@@ -351,12 +388,12 @@ function exampleFunction() {
           listItem.appendChild(link);
           tocList.appendChild(listItem);
           
-          // Also add the anchor link to the heading
+          // Add a hidden anchor link to the heading
           if (!heading.querySelector('.anchor')) {
             const anchor = document.createElement('a');
             anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
             anchor.href = `#${heading.id}`;
-            anchor.textContent = '#';
+            anchor.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>';
             heading.appendChild(anchor);
           }
         });

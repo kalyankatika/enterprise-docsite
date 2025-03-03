@@ -5,7 +5,7 @@ description: Comprehensive guidelines and principles for creating consistent ent
 sidebarType: design-system
 ---
 
-# Enterprise Design System
+<h1>Enterprise Design System</h1>
 
 The Enterprise Design System (EDS) provides a comprehensive set of guidelines, components, and resources to help teams create cohesive, accessible, and visually consistent enterprise applications.
 

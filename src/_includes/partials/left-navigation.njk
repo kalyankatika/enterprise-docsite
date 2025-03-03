@@ -2,28 +2,99 @@
 
 <nav class="left-navigation">
   <div class="space-y-6">
-    {# Main navigation categories #}
+    {# Main navigation sections #}
     <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Browse By</h3>
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Main Sections</h3>
       <ul class="space-y-2">
         <li>
+          <a href="/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/design-system/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-system') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Design System
+          </a>
+          {% if currentUrl.includes('/design-system/') %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/design-system/foundations/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-system/foundations/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                Foundations
+              </a>
+              {% if currentUrl.includes('/design-system/foundations/') %}
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+                <li>
+                  <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/colors/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                    Colors
+                  </a>
+                </li>
+                <li>
+                  <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/typography/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                    Typography
+                  </a>
+                </li>
+                <li>
+                  <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/spacing/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                    Spacing
+                  </a>
+                </li>
+              </ul>
+              {% endif %}
+            </li>
+          </ul>
+          {% endif %}
+        </li>
+        <li>
           <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/components/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            All Components
+            Components
           </a>
         </li>
         <li>
-          <a href="/design-tokens/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-tokens/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Design Tokens
+          <a href="/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Browse
           </a>
+          {% if currentUrl.includes('/navigation/') %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/navigation/by-channel/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/navigation/by-channel/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                By Channel
+              </a>
+            </li>
+            <li>
+              <a href="/navigation/by-type/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/navigation/by-type/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                By Type
+              </a>
+            </li>
+            <li>
+              <a href="/navigation/by-owner/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/navigation/by-owner/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                By Owner
+              </a>
+            </li>
+          </ul>
+          {% endif %}
         </li>
         <li>
-          <a href="/patterns/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/patterns/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Patterns
+          <a href="/resources/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/resources/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Resources
           </a>
+          {% if currentUrl.includes('/resources/') %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/resources/legacy-migration/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/resources/legacy-migration/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Legacy Migration
+              </a>
+            </li>
+            <li>
+              <a href="/resources/migrated-content/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/resources/migrated-content/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Migrated Content
+              </a>
+            </li>
+          </ul>
+          {% endif %}
         </li>
         <li>
-          <a href="/guidelines/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/guidelines/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Guidelines
+          <a href="/support/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/support/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Support
           </a>
         </li>
       </ul>
@@ -100,29 +171,102 @@
       </ul>
     </div>
     
-    {# Resources #}
+    {# Migrated & Legacy Content #}
     <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Resources</h3>
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Migrated Content</h3>
       <ul class="space-y-2">
         <li>
-          <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/colors/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Colors
+          <a href="/migrated/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/migrated/') and currentUrl != '/migrated/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            Migrated Overview
           </a>
+          {% if currentUrl.includes('/migrated/') %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/migrated/test-migration/sample/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/migrated/test-migration/sample/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Test Sample
+              </a>
+            </li>
+            <li>
+              <a href="/migrated/test-migration/sample-component/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/migrated/test-migration/sample-component/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Test Component
+              </a>
+            </li>
+            <li>
+              <a href="/migrated/test-migration/sample-page/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/migrated/test-migration/sample-page/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Test Page
+              </a>
+            </li>
+            <li>
+              <a href="/migrated/test-migration/sample-doc/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/migrated/test-migration/sample-doc/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Test Doc
+              </a>
+            </li>
+          </ul>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+    
+    {# Legacy Content #}
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Legacy Content</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/legacy-docs/converted/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/legacy-docs/converted/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Converted Legacy
+          </a>
+          {% if currentUrl.includes('/legacy-docs/converted/') %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/legacy-docs/converted/legacy-component/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/legacy-docs/converted/legacy-component/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Legacy Component
+              </a>
+            </li>
+            <li>
+              <a href="/legacy-docs/converted/legacy-page/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/legacy-docs/converted/legacy-page/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Legacy Page
+              </a>
+            </li>
+          </ul>
+          {% endif %}
         </li>
         <li>
-          <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/typography/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Typography
+          <a href="/legacy-docs/njk/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/legacy-docs/njk/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Preserved Legacy
           </a>
+          {% if currentUrl.includes('/legacy-docs/njk/') %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/legacy-docs/njk/legacy-component/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/legacy-docs/njk/legacy-component/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Legacy Component
+              </a>
+            </li>
+            <li>
+              <a href="/legacy-docs/njk/legacy-page/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/legacy-docs/njk/legacy-page/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Legacy Page
+              </a>
+            </li>
+          </ul>
+          {% endif %}
         </li>
         <li>
-          <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/design-system/foundations/spacing/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Spacing
+          <a href="/components/shared/migration-examples/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/shared/migration-examples/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            Migration Examples
           </a>
-        </li>
-        <li>
-          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/resources/migration-tools/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Migration Tools
-          </a>
+          {% if currentUrl.includes('/components/shared/migration-examples/') %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/components/shared/migration-examples/legacy-component-preserved/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/components/shared/migration-examples/legacy-component-preserved/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Component Preserved
+              </a>
+            </li>
+            <li>
+              <a href="/components/shared/migration-examples/legacy-page-converted/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/components/shared/migration-examples/legacy-page-converted/' %}text-[var(--color-primary)] font-medium{% endif %}">
+                Page Converted
+              </a>
+            </li>
+          </ul>
+          {% endif %}
         </li>
       </ul>
     </div>
