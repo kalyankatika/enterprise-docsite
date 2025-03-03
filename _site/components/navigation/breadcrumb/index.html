@@ -177,7 +177,7 @@
 
 <nav class="left-navigation">
   <!-- Back arrow for navigation at the top -->
-  <div class="mb-6">
+  <div class="nav-back-link mb-6">
     <a href="/" class="flex items-center text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -186,10 +186,10 @@
     </a>
   </div>
   
-  <div class="space-y-4">
+  <div class="space-y-6">
     
-    <div>
-      <h2 class="text-xl font-bold mb-3">Documentation</h2>
+    <div class="nav-section">
+      <h2 class="text-lg font-bold mb-3">Documentation</h2>
       <ul class="space-y-1">
         <!-- Home Link -->
         <li class="nav-item py-1 px-2 rounded-md ">
@@ -200,42 +200,69 @@
         
         <!-- Design System with Expandable Sub-menu -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/design-system/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Design System
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            <li class="nav-item">
+              <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
+                <a href="/design-system/foundations/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
+                  Foundations
+                </a>
+                <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </div>
+              <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+                <li class="nav-item py-1 px-2 rounded-md ">
+                  <a href="/design-system/foundations/colors/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                    Colors
+                  </a>
+                </li>
+                <li class="nav-item py-1 px-2 rounded-md ">
+                  <a href="/design-system/foundations/typography/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                    Typography
+                  </a>
+                </li>
+                <li class="nav-item py-1 px-2 rounded-md ">
+                  <a href="/design-system/foundations/spacing/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                    Spacing
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </li>
         
         <!-- Components with Expandable Sub-menu -->
-        <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
-            <a href="/components/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
-              Components
-            </a>
-          </div>
+        <li class="nav-item py-1 px-2 rounded-md ">
+          <a href="/components/" class="block  hover:text-[var(--color-primary)] transition-colors">
+            Components
+          </a>
         </li>
         
         <!-- Browse with Expandable Sub-menu -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md bg-[var(--color-bg-alt)]">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md nav-current-page cursor-pointer">
             <a href="/navigation/" class="flex-grow text-[var(--color-primary)] font-medium hover:text-[var(--color-primary)] transition-colors">
               Browse
             </a>
-            <span class="transform transition-transform duration-200 rotate-180">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 rotate-180">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
-          <ul class="pl-4 space-y-1 mt-1">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" >
             <li class="nav-item py-1 px-2 rounded-md ">
               <a href="/navigation/by-channel/" class="block  hover:text-[var(--color-primary)] transition-colors">
                 By Channel
@@ -252,22 +279,32 @@
               </a>
             </li>
           </ul>
-          
         </li>
         
         <!-- Resources with Expandable Sub-menu -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/resources/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Resources
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/resources/legacy-migration/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Legacy Migration
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/resources/migrated-content/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Migrated Content
+              </a>
+            </li>
+          </ul>
         </li>
         
         <!-- Support -->
@@ -280,38 +317,82 @@
     </div>
     
     
-    <div>
-      <h2 class="text-xl font-bold mb-3">Components</h2>
+    <div class="nav-section">
+      <h2 class="text-lg font-bold mb-3">Components</h2>
       <ul class="space-y-1">
         <!-- Layout Components -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/components/layout/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Layout
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            <!-- Static component list -->
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/components/layout/accordion/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Accordion
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/components/layout/card/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Card
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/components/layout/grid/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Grid
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/components/layout/modal/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Modal
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/components/layout/tabs/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Tabs
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/components/layout/divider/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Divider
+              </a>
+            </li>
+            
+            <!-- Dynamic component list -->
+            
+              
+            
+              
+              <li class="nav-item py-1 px-2 rounded-md ">
+                <a href="/components/layout/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                  Layout Components
+                </a>
+              </li>
+              
+            
+          </ul>
         </li>
         
         <!-- Navigation Components -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md bg-[var(--color-bg-alt)]">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md nav-current-page cursor-pointer">
             <a href="/components/navigation/" class="flex-grow text-[var(--color-primary)] font-medium hover:text-[var(--color-primary)] transition-colors">
               Navigation
             </a>
-            <span class="transform transition-transform duration-200 rotate-180">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 rotate-180">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
-          <ul class="pl-4 space-y-1 mt-1">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" >
             
               <li class="nav-item py-1 px-2 rounded-md ">
                 <a href="/components/navigation/" class="block  hover:text-[var(--color-primary)] transition-colors">
@@ -319,117 +400,240 @@
                 </a>
               </li>
             
-              <li class="nav-item py-1 px-2 rounded-md bg-[var(--color-bg-alt)]">
+              <li class="nav-item py-1 px-2 rounded-md nav-current-page">
                 <a href="/components/navigation/breadcrumb/" class="block text-[var(--color-primary)] font-medium hover:text-[var(--color-primary)] transition-colors">
                   Breadcrumb
                 </a>
               </li>
             
           </ul>
-          
         </li>
         
         <!-- Feedback Components -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/components/feedback/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Feedback
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            
+              <li class="nav-item py-1 px-2 rounded-md ">
+                <a href="/components/feedback/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                  Feedback Components
+                </a>
+              </li>
+            
+              <li class="nav-item py-1 px-2 rounded-md ">
+                <a href="/components/feedback/alert/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                  Alert
+                </a>
+              </li>
+            
+          </ul>
         </li>
         
         <!-- Input Components -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/components/inputs/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Inputs
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            
+              <li class="nav-item py-1 px-2 rounded-md ">
+                <a href="/components/inputs/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                  Input Components
+                </a>
+              </li>
+            
+              <li class="nav-item py-1 px-2 rounded-md ">
+                <a href="/components/inputs/button/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                  Button Component
+                </a>
+              </li>
+            
+              <li class="nav-item py-1 px-2 rounded-md ">
+                <a href="/components/inputs/button-component/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                  Button Component
+                </a>
+              </li>
+            
+          </ul>
         </li>
       </ul>
     </div>
     
     
-    <div>
-      <h2 class="text-xl font-bold mb-3">Migrated Content</h2>
+    <div class="nav-section">
+      <h2 class="text-lg font-bold mb-3">Migrated Content</h2>
       <ul class="space-y-1">
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/migrated/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Migrated Overview
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/migrated/test-migration/sample/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Test Sample
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/migrated/test-migration/sample-component/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Test Component
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/migrated/test-migration/sample-page/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Test Page
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/migrated/test-migration/sample-doc/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Test Doc
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
     
     
-    <div>
-      <h2 class="text-xl font-bold mb-3">Legacy Content</h2>
+    <div class="nav-section">
+      <h2 class="text-lg font-bold mb-3">Legacy Content</h2>
       <ul class="space-y-1">
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/legacy-docs/converted/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Converted Legacy
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/legacy-docs/converted/legacy-component/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Legacy Component
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/legacy-docs/converted/legacy-page/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Legacy Page
+              </a>
+            </li>
+          </ul>
         </li>
         
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/legacy-docs/njk/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Preserved Legacy
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/legacy-docs/njk/legacy-component/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Legacy Component
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/legacy-docs/njk/legacy-page/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Legacy Page
+              </a>
+            </li>
+          </ul>
         </li>
         
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md ">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md  cursor-pointer">
             <a href="/components/shared/migration-examples/" class="flex-grow  hover:text-[var(--color-primary)] transition-colors">
               Migration Examples
             </a>
-            <span class="transform transition-transform duration-200 ">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 ">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" style="display: none">
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/components/shared/migration-examples/legacy-component-preserved/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Component Preserved
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md ">
+              <a href="/components/shared/migration-examples/legacy-page-converted/" class="block  hover:text-[var(--color-primary)] transition-colors">
+                Page Converted
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggleItems = document.querySelectorAll('.nav-toggle-item');
+  
+  navToggleItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      // If clicking on the arrow or the containing div (not the link)
+      if (e.target === item || e.target.classList.contains('nav-arrow') || e.target.closest('.nav-arrow')) {
+        e.preventDefault();
+        
+        // Find the parent li
+        const parentLi = e.target.closest('li');
+        if (!parentLi) return;
+        
+        // Find the child menu
+        const submenu = parentLi.querySelector('.nav-child-menu');
+        if (!submenu) return;
+        
+        // Toggle display
+        if (submenu.style.display === 'none' || !submenu.style.display) {
+          submenu.style.display = 'block';
+          // Rotate arrow
+          const arrow = parentLi.querySelector('.arrow-icon');
+          if (arrow) arrow.classList.add('rotate-180');
+        } else {
+          submenu.style.display = 'none';
+          // Reset arrow rotation
+          const arrow = parentLi.querySelector('.arrow-icon');
+          if (arrow) arrow.classList.remove('rotate-180');
+        }
+      }
+    });
+  });
+});
+</script>
       </div>
     </div>
     

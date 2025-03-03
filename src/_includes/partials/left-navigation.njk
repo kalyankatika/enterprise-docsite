@@ -2,7 +2,7 @@
 
 <nav class="left-navigation">
   <!-- Back arrow for navigation at the top -->
-  <div class="mb-6">
+  <div class="nav-back-link mb-6">
     <a href="/" class="flex items-center text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -11,13 +11,13 @@
     </a>
   </div>
   
-  <div class="space-y-4">
+  <div class="space-y-6">
     {# Main navigation sections #}
-    <div>
-      <h2 class="text-xl font-bold mb-3">Documentation</h2>
+    <div class="nav-section">
+      <h2 class="text-lg font-bold mb-3">Documentation</h2>
       <ul class="space-y-1">
         <!-- Home Link -->
-        <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/' %}bg-[var(--color-bg-alt)]{% endif %}">
+        <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/' %}nav-current-page{% endif %}">
           <a href="/" class="block {% if currentUrl == '/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
             Home
           </a>
@@ -25,125 +25,115 @@
         
         <!-- Design System with Expandable Sub-menu -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/design-system') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/design-system') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/design-system/" class="flex-grow {% if currentUrl.includes('/design-system') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Design System
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/design-system/') %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/design-system/') %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/design-system/') %}
-          <ul class="pl-4 space-y-1 mt-1">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not currentUrl.includes('/design-system/') %}style="display: none"{% endif %}>
             <li class="nav-item">
-              <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/design-system/foundations/') %}bg-[var(--color-bg-alt)]{% endif %}">
+              <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/design-system/foundations/') %}nav-current-page{% endif %} cursor-pointer">
                 <a href="/design-system/foundations/" class="flex-grow {% if currentUrl.includes('/design-system/foundations/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                   Foundations
                 </a>
-                <span class="transform transition-transform duration-200 {% if currentUrl.includes('/design-system/foundations/') %}rotate-180{% endif %}">
+                <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/design-system/foundations/') %}rotate-180{% endif %}">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </span>
               </div>
-              {% if currentUrl.includes('/design-system/foundations/') %}
-              <ul class="pl-4 space-y-1 mt-1">
-                <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/design-system/foundations/colors/' %}bg-[var(--color-bg-alt)]{% endif %}">
+              <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not currentUrl.includes('/design-system/foundations/') %}style="display: none"{% endif %}>
+                <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/design-system/foundations/colors/' %}nav-current-page{% endif %}">
                   <a href="/design-system/foundations/colors/" class="block {% if currentUrl == '/design-system/foundations/colors/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                     Colors
                   </a>
                 </li>
-                <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/design-system/foundations/typography/' %}bg-[var(--color-bg-alt)]{% endif %}">
+                <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/design-system/foundations/typography/' %}nav-current-page{% endif %}">
                   <a href="/design-system/foundations/typography/" class="block {% if currentUrl == '/design-system/foundations/typography/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                     Typography
                   </a>
                 </li>
-                <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/design-system/foundations/spacing/' %}bg-[var(--color-bg-alt)]{% endif %}">
+                <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/design-system/foundations/spacing/' %}nav-current-page{% endif %}">
                   <a href="/design-system/foundations/spacing/" class="block {% if currentUrl == '/design-system/foundations/spacing/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                     Spacing
                   </a>
                 </li>
               </ul>
-              {% endif %}
             </li>
           </ul>
-          {% endif %}
         </li>
         
         <!-- Components with Expandable Sub-menu -->
-        <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl == '/components/' %}bg-[var(--color-bg-alt)]{% endif %}">
-            <a href="/components/" class="flex-grow {% if currentUrl == '/components/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
-              Components
-            </a>
-          </div>
+        <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/components/' %}nav-current-page{% endif %}">
+          <a href="/components/" class="block {% if currentUrl == '/components/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
+            Components
+          </a>
         </li>
         
         <!-- Browse with Expandable Sub-menu -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/navigation/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/navigation/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/navigation/" class="flex-grow {% if currentUrl.includes('/navigation/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Browse
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/navigation/') %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/navigation/') %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/navigation/') %}
-          <ul class="pl-4 space-y-1 mt-1">
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/navigation/by-channel/' %}bg-[var(--color-bg-alt)]{% endif %}">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not currentUrl.includes('/navigation/') %}style="display: none"{% endif %}>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/navigation/by-channel/' %}nav-current-page{% endif %}">
               <a href="/navigation/by-channel/" class="block {% if currentUrl == '/navigation/by-channel/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 By Channel
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/navigation/by-type/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/navigation/by-type/' %}nav-current-page{% endif %}">
               <a href="/navigation/by-type/" class="block {% if currentUrl == '/navigation/by-type/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 By Type
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/navigation/by-owner/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/navigation/by-owner/' %}nav-current-page{% endif %}">
               <a href="/navigation/by-owner/" class="block {% if currentUrl == '/navigation/by-owner/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 By Owner
               </a>
             </li>
           </ul>
-          {% endif %}
         </li>
         
         <!-- Resources with Expandable Sub-menu -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/resources/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/resources/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/resources/" class="flex-grow {% if currentUrl.includes('/resources/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Resources
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/resources/') %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/resources/') %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/resources/') %}
-          <ul class="pl-4 space-y-1 mt-1">
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/resources/legacy-migration/' %}bg-[var(--color-bg-alt)]{% endif %}">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not currentUrl.includes('/resources/') %}style="display: none"{% endif %}>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/resources/legacy-migration/' %}nav-current-page{% endif %}">
               <a href="/resources/legacy-migration/" class="block {% if currentUrl == '/resources/legacy-migration/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Legacy Migration
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/resources/migrated-content/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/resources/migrated-content/' %}nav-current-page{% endif %}">
               <a href="/resources/migrated-content/" class="block {% if currentUrl == '/resources/migrated-content/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Migrated Content
               </a>
             </li>
           </ul>
-          {% endif %}
         </li>
         
         <!-- Support -->
-        <li class="nav-item py-1 px-2 rounded-md {% if currentUrl.includes('/support/') %}bg-[var(--color-bg-alt)]{% endif %}">
+        <li class="nav-item py-1 px-2 rounded-md {% if currentUrl.includes('/support/') %}nav-current-page{% endif %}">
           <a href="/support/" class="block {% if currentUrl.includes('/support/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
             Support
           </a>
@@ -152,239 +142,294 @@
     </div>
     
     {# Components by Category #}
-    <div>
-      <h2 class="text-xl font-bold mb-3">Components</h2>
+    <div class="nav-section">
+      <h2 class="text-lg font-bold mb-3">Components</h2>
       <ul class="space-y-1">
         <!-- Layout Components -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/layout/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/layout/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/components/layout/" class="flex-grow {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Layout
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/components/layout/') or currentUrl == '/components/layout/' %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/components/layout/') or currentUrl == '/components/layout/' %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/components/layout/') or currentUrl == '/components/layout/' %}
-          <ul class="pl-4 space-y-1 mt-1">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not (currentUrl.includes('/components/layout/') or currentUrl == '/components/layout/') %}style="display: none"{% endif %}>
+            <!-- Static component list -->
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl.includes('/components/layout/accordion/') %}nav-current-page{% endif %}">
+              <a href="/components/layout/accordion/" class="block {% if currentUrl.includes('/components/layout/accordion/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
+                Accordion
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl.includes('/components/layout/card/') %}nav-current-page{% endif %}">
+              <a href="/components/layout/card/" class="block {% if currentUrl.includes('/components/layout/card/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
+                Card
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl.includes('/components/layout/grid/') %}nav-current-page{% endif %}">
+              <a href="/components/layout/grid/" class="block {% if currentUrl.includes('/components/layout/grid/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
+                Grid
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl.includes('/components/layout/modal/') %}nav-current-page{% endif %}">
+              <a href="/components/layout/modal/" class="block {% if currentUrl.includes('/components/layout/modal/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
+                Modal
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl.includes('/components/layout/tabs/') %}nav-current-page{% endif %}">
+              <a href="/components/layout/tabs/" class="block {% if currentUrl.includes('/components/layout/tabs/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
+                Tabs
+              </a>
+            </li>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl.includes('/components/layout/divider/') %}nav-current-page{% endif %}">
+              <a href="/components/layout/divider/" class="block {% if currentUrl.includes('/components/layout/divider/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
+                Divider
+              </a>
+            </li>
+            
+            <!-- Dynamic component list -->
             {% for component in collections.layoutComponents %}
-              <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == component.url %}bg-[var(--color-bg-alt)]{% endif %}">
+              {% if component.data.title !== 'Accordion' and component.data.title !== 'Card' and component.data.title !== 'Grid' and component.data.title !== 'Modal' and component.data.title !== 'Tabs' and component.data.title !== 'Divider' %}
+              <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == component.url %}nav-current-page{% endif %}">
                 <a href="{{ component.url }}" class="block {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                   {{ component.data.title }}
                 </a>
               </li>
+              {% endif %}
             {% endfor %}
           </ul>
-          {% endif %}
         </li>
         
         <!-- Navigation Components -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/navigation/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/navigation/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/components/navigation/" class="flex-grow {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Navigation
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/components/navigation/') or currentUrl == '/components/navigation/' %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/components/navigation/') or currentUrl == '/components/navigation/' %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/components/navigation/') or currentUrl == '/components/navigation/' %}
-          <ul class="pl-4 space-y-1 mt-1">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not (currentUrl.includes('/components/navigation/') or currentUrl == '/components/navigation/') %}style="display: none"{% endif %}>
             {% for component in collections.navigationComponents %}
-              <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == component.url %}bg-[var(--color-bg-alt)]{% endif %}">
+              <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == component.url %}nav-current-page{% endif %}">
                 <a href="{{ component.url }}" class="block {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                   {{ component.data.title }}
                 </a>
               </li>
             {% endfor %}
           </ul>
-          {% endif %}
         </li>
         
         <!-- Feedback Components -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/feedback/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/feedback/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/components/feedback/" class="flex-grow {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Feedback
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/components/feedback/') or currentUrl == '/components/feedback/' %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/components/feedback/') or currentUrl == '/components/feedback/' %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/components/feedback/') or currentUrl == '/components/feedback/' %}
-          <ul class="pl-4 space-y-1 mt-1">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not (currentUrl.includes('/components/feedback/') or currentUrl == '/components/feedback/') %}style="display: none"{% endif %}>
             {% for component in collections.feedbackComponents %}
-              <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == component.url %}bg-[var(--color-bg-alt)]{% endif %}">
+              <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == component.url %}nav-current-page{% endif %}">
                 <a href="{{ component.url }}" class="block {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                   {{ component.data.title }}
                 </a>
               </li>
             {% endfor %}
           </ul>
-          {% endif %}
         </li>
         
         <!-- Input Components -->
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/inputs/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/inputs/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/components/inputs/" class="flex-grow {% if currentUrl.includes('/components/inputs/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Inputs
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/components/inputs/') or currentUrl == '/components/inputs/' %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/components/inputs/') or currentUrl == '/components/inputs/' %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/components/inputs/') or currentUrl == '/components/inputs/' %}
-          <ul class="pl-4 space-y-1 mt-1">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not (currentUrl.includes('/components/inputs/') or currentUrl == '/components/inputs/') %}style="display: none"{% endif %}>
             {% for component in collections.inputComponents %}
-              <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == component.url %}bg-[var(--color-bg-alt)]{% endif %}">
+              <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == component.url %}nav-current-page{% endif %}">
                 <a href="{{ component.url }}" class="block {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                   {{ component.data.title }}
                 </a>
               </li>
             {% endfor %}
           </ul>
-          {% endif %}
         </li>
       </ul>
     </div>
     
     {# Migrated & Legacy Content #}
-    <div>
-      <h2 class="text-xl font-bold mb-3">Migrated Content</h2>
+    <div class="nav-section">
+      <h2 class="text-lg font-bold mb-3">Migrated Content</h2>
       <ul class="space-y-1">
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/migrated/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/migrated/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/migrated/" class="flex-grow {% if currentUrl.includes('/migrated/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Migrated Overview
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/migrated/') %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/migrated/') %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/migrated/') %}
-          <ul class="pl-4 space-y-1 mt-1">
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/migrated/test-migration/sample/' %}bg-[var(--color-bg-alt)]{% endif %}">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not currentUrl.includes('/migrated/') %}style="display: none"{% endif %}>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/migrated/test-migration/sample/' %}nav-current-page{% endif %}">
               <a href="/migrated/test-migration/sample/" class="block {% if currentUrl == '/migrated/test-migration/sample/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Test Sample
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/migrated/test-migration/sample-component/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/migrated/test-migration/sample-component/' %}nav-current-page{% endif %}">
               <a href="/migrated/test-migration/sample-component/" class="block {% if currentUrl == '/migrated/test-migration/sample-component/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Test Component
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/migrated/test-migration/sample-page/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/migrated/test-migration/sample-page/' %}nav-current-page{% endif %}">
               <a href="/migrated/test-migration/sample-page/" class="block {% if currentUrl == '/migrated/test-migration/sample-page/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Test Page
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/migrated/test-migration/sample-doc/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/migrated/test-migration/sample-doc/' %}nav-current-page{% endif %}">
               <a href="/migrated/test-migration/sample-doc/" class="block {% if currentUrl == '/migrated/test-migration/sample-doc/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Test Doc
               </a>
             </li>
           </ul>
-          {% endif %}
         </li>
       </ul>
     </div>
     
     {# Legacy Content #}
-    <div>
-      <h2 class="text-xl font-bold mb-3">Legacy Content</h2>
+    <div class="nav-section">
+      <h2 class="text-lg font-bold mb-3">Legacy Content</h2>
       <ul class="space-y-1">
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/legacy-docs/converted/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/legacy-docs/converted/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/legacy-docs/converted/" class="flex-grow {% if currentUrl.includes('/legacy-docs/converted/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Converted Legacy
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/legacy-docs/converted/') %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/legacy-docs/converted/') %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/legacy-docs/converted/') %}
-          <ul class="pl-4 space-y-1 mt-1">
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/legacy-docs/converted/legacy-component/' %}bg-[var(--color-bg-alt)]{% endif %}">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not currentUrl.includes('/legacy-docs/converted/') %}style="display: none"{% endif %}>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/legacy-docs/converted/legacy-component/' %}nav-current-page{% endif %}">
               <a href="/legacy-docs/converted/legacy-component/" class="block {% if currentUrl == '/legacy-docs/converted/legacy-component/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Legacy Component
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/legacy-docs/converted/legacy-page/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/legacy-docs/converted/legacy-page/' %}nav-current-page{% endif %}">
               <a href="/legacy-docs/converted/legacy-page/" class="block {% if currentUrl == '/legacy-docs/converted/legacy-page/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Legacy Page
               </a>
             </li>
           </ul>
-          {% endif %}
         </li>
         
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/legacy-docs/njk/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/legacy-docs/njk/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/legacy-docs/njk/" class="flex-grow {% if currentUrl.includes('/legacy-docs/njk/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Preserved Legacy
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/legacy-docs/njk/') %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/legacy-docs/njk/') %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/legacy-docs/njk/') %}
-          <ul class="pl-4 space-y-1 mt-1">
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/legacy-docs/njk/legacy-component/' %}bg-[var(--color-bg-alt)]{% endif %}">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not currentUrl.includes('/legacy-docs/njk/') %}style="display: none"{% endif %}>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/legacy-docs/njk/legacy-component/' %}nav-current-page{% endif %}">
               <a href="/legacy-docs/njk/legacy-component/" class="block {% if currentUrl == '/legacy-docs/njk/legacy-component/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Legacy Component
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/legacy-docs/njk/legacy-page/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/legacy-docs/njk/legacy-page/' %}nav-current-page{% endif %}">
               <a href="/legacy-docs/njk/legacy-page/" class="block {% if currentUrl == '/legacy-docs/njk/legacy-page/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Legacy Page
               </a>
             </li>
           </ul>
-          {% endif %}
         </li>
         
         <li class="nav-item">
-          <div class="flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/shared/migration-examples/') %}bg-[var(--color-bg-alt)]{% endif %}">
+          <div class="nav-toggle-item flex items-center justify-between py-1 px-2 rounded-md {% if currentUrl.includes('/components/shared/migration-examples/') %}nav-current-page{% endif %} cursor-pointer">
             <a href="/components/shared/migration-examples/" class="flex-grow {% if currentUrl.includes('/components/shared/migration-examples/') %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
               Migration Examples
             </a>
-            <span class="transform transition-transform duration-200 {% if currentUrl.includes('/components/shared/migration-examples/') %}rotate-180{% endif %}">
+            <span class="nav-arrow arrow-icon transform transition-transform duration-200 {% if currentUrl.includes('/components/shared/migration-examples/') %}rotate-180{% endif %}">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </span>
           </div>
-          {% if currentUrl.includes('/components/shared/migration-examples/') %}
-          <ul class="pl-4 space-y-1 mt-1">
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/components/shared/migration-examples/legacy-component-preserved/' %}bg-[var(--color-bg-alt)]{% endif %}">
+          <ul class="nav-child-menu pl-4 space-y-1 mt-1" {% if not currentUrl.includes('/components/shared/migration-examples/') %}style="display: none"{% endif %}>
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/components/shared/migration-examples/legacy-component-preserved/' %}nav-current-page{% endif %}">
               <a href="/components/shared/migration-examples/legacy-component-preserved/" class="block {% if currentUrl == '/components/shared/migration-examples/legacy-component-preserved/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Component Preserved
               </a>
             </li>
-            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/components/shared/migration-examples/legacy-page-converted/' %}bg-[var(--color-bg-alt)]{% endif %}">
+            <li class="nav-item py-1 px-2 rounded-md {% if currentUrl == '/components/shared/migration-examples/legacy-page-converted/' %}nav-current-page{% endif %}">
               <a href="/components/shared/migration-examples/legacy-page-converted/" class="block {% if currentUrl == '/components/shared/migration-examples/legacy-page-converted/' %}text-[var(--color-primary)] font-medium{% endif %} hover:text-[var(--color-primary)] transition-colors">
                 Page Converted
               </a>
             </li>
           </ul>
-          {% endif %}
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggleItems = document.querySelectorAll('.nav-toggle-item');
+  
+  navToggleItems.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+      // If clicking on the arrow or the containing div (not the link)
+      if (e.target === item || e.target.classList.contains('nav-arrow') || e.target.closest('.nav-arrow')) {
+        e.preventDefault();
+        
+        // Find the parent li
+        const parentLi = e.target.closest('li');
+        if (!parentLi) return;
+        
+        // Find the child menu
+        const submenu = parentLi.querySelector('.nav-child-menu');
+        if (!submenu) return;
+        
+        // Toggle display
+        if (submenu.style.display === 'none' || !submenu.style.display) {
+          submenu.style.display = 'block';
+          // Rotate arrow
+          const arrow = parentLi.querySelector('.arrow-icon');
+          if (arrow) arrow.classList.add('rotate-180');
+        } else {
+          submenu.style.display = 'none';
+          // Reset arrow rotation
+          const arrow = parentLi.querySelector('.arrow-icon');
+          if (arrow) arrow.classList.remove('rotate-180');
+        }
+      }
+    });
+  });
+});
+</script>
