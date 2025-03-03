@@ -45,9 +45,33 @@
           {% endif %}
         </li>
         <li>
-          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == '/components/' %}text-[var(--color-primary)] font-medium{% endif %}">
+          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}">
             Components
           </a>
+          {% if currentUrl.includes('/components/') %}
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                Layout →
+              </a>
+            </li>
+            <li>
+              <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                Navigation →
+              </a>
+            </li>
+            <li>
+              <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                Feedback →
+              </a>
+            </li>
+            <li>
+              <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                Inputs →
+              </a>
+            </li>
+          </ul>
+          {% endif %}
         </li>
         <li>
           <a href="/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
@@ -100,7 +124,8 @@
       </ul>
     </div>
     
-    {# Components by Category #}
+    {# Only show component details section when we're not already viewing a component page #}
+    {% if not currentUrl.includes('/components/') %}
     <div class="space-y-2">
       <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Components</h3>
       <ul class="space-y-2">
@@ -205,6 +230,7 @@
         </li>
       </ul>
     </div>
+    {% endif %}
     
     {# Migrated & Legacy Content #}
     <div class="space-y-2">
