@@ -45,14 +45,28 @@
           {% endif %}
         </li>
         <li>
-          <a href="/components/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Components
+          <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            <span>Components</span>
+            <span class="text-xs">
+              {% if currentUrl.includes('/components/') %}
+                <span class="inline-block">▲</span>
+              {% else %}
+                <span class="inline-block">▼</span>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/components/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
             <li>
-              <a href="/components/layout/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                Layout
+              <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                <span>Layout</span>
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/layout/') %}
+                    <span class="inline-block">▲</span>
+                  {% else %}
+                    <span class="inline-block">▼</span>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/layout/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -87,7 +101,7 @@
                   </a>
                 </li>
                 {% for component in collections.layoutComponents %}
-                  {% if component.data.title !== 'Accordion' and component.data.title !== 'Card' and component.data.title !== 'Grid' and component.data.title !== 'Modal' and component.data.title !== 'Tabs' and component.data.title !== 'Divider' %}
+                  {% if component.data.title !== 'Accordion' and component.data.title !== 'Card' and component.data.title !== 'Grid' and component.data.title !== 'Modal' and component.data.title !== 'Tabs' and component.data.title !== 'Divider' and component.data.title !== 'Layout Components' %}
                   <li>
                     <a href="{{ component.url }}" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl == component.url %}text-[var(--color-primary)] font-medium{% endif %}">
                       {{ component.data.title }}
@@ -99,8 +113,15 @@
               {% endif %}
             </li>
             <li>
-              <a href="/components/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                Navigation
+              <a href="/components/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                <span>Navigation</span>
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/navigation/') %}
+                    <span class="inline-block">▲</span>
+                  {% else %}
+                    <span class="inline-block">▼</span>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/navigation/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -115,8 +136,15 @@
               {% endif %}
             </li>
             <li>
-              <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                Feedback
+              <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                <span>Feedback</span>
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/feedback/') %}
+                    <span class="inline-block">▲</span>
+                  {% else %}
+                    <span class="inline-block">▼</span>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/feedback/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -131,8 +159,15 @@
               {% endif %}
             </li>
             <li>
-              <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                Inputs
+              <a href="/components/inputs/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                <span>Inputs</span>
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/inputs/') %}
+                    <span class="inline-block">▲</span>
+                  {% else %}
+                    <span class="inline-block">▼</span>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/inputs/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -150,8 +185,15 @@
           {% endif %}
         </li>
         <li>
-          <a href="/navigation/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Browse
+          <a href="/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            <span>Browse</span>
+            <span class="text-xs">
+              {% if currentUrl.includes('/navigation/') %}
+                <span class="inline-block">▲</span>
+              {% else %}
+                <span class="inline-block">▼</span>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/navigation/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -174,8 +216,15 @@
           {% endif %}
         </li>
         <li>
-          <a href="/resources/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/resources/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Resources
+          <a href="/resources/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/resources/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            <span>Resources</span>
+            <span class="text-xs">
+              {% if currentUrl.includes('/resources/') %}
+                <span class="inline-block">▲</span>
+              {% else %}
+                <span class="inline-block">▼</span>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/resources/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -207,8 +256,15 @@
       <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Migrated Content</h3>
       <ul class="space-y-2">
         <li>
-          <a href="/migrated/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/migrated/') and currentUrl != '/migrated/' %}text-[var(--color-primary)] font-medium{% endif %}">
-            Migrated Overview
+          <a href="/migrated/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/migrated/') and currentUrl != '/migrated/' %}text-[var(--color-primary)] font-medium{% endif %}">
+            <span>Migrated Overview</span>
+            <span class="text-xs">
+              {% if currentUrl.includes('/migrated/') %}
+                <span class="inline-block">▲</span>
+              {% else %}
+                <span class="inline-block">▼</span>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/migrated/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -243,8 +299,15 @@
       <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Legacy Content</h3>
       <ul class="space-y-2">
         <li>
-          <a href="/legacy-docs/converted/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/legacy-docs/converted/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Converted Legacy
+          <a href="/legacy-docs/converted/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/legacy-docs/converted/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            <span>Converted Legacy</span>
+            <span class="text-xs">
+              {% if currentUrl.includes('/legacy-docs/converted/') %}
+                <span class="inline-block">▲</span>
+              {% else %}
+                <span class="inline-block">▼</span>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/legacy-docs/converted/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -262,8 +325,15 @@
           {% endif %}
         </li>
         <li>
-          <a href="/legacy-docs/njk/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/legacy-docs/njk/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Preserved Legacy
+          <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/legacy-docs/njk/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            <span>Preserved Legacy</span>
+            <span class="text-xs">
+              {% if currentUrl.includes('/legacy-docs/njk/') %}
+                <span class="inline-block">▲</span>
+              {% else %}
+                <span class="inline-block">▼</span>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/legacy-docs/njk/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -281,8 +351,15 @@
           {% endif %}
         </li>
         <li>
-          <a href="/components/shared/migration-examples/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/shared/migration-examples/') %}text-[var(--color-primary)] font-medium{% endif %}">
-            Migration Examples
+          <a href="/components/shared/migration-examples/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/shared/migration-examples/') %}text-[var(--color-primary)] font-medium{% endif %}">
+            <span>Migration Examples</span>
+            <span class="text-xs">
+              {% if currentUrl.includes('/components/shared/migration-examples/') %}
+                <span class="inline-block">▲</span>
+              {% else %}
+                <span class="inline-block">▼</span>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/components/shared/migration-examples/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
