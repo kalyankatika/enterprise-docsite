@@ -497,10 +497,57 @@ This section covers common tasks developers will perform:
 
 ### Adding a New Component
 
-1. Create component documentation in `src/components/category/component-name.md`
-2. Create component template in `src/_includes/components/category/component-name.njk`
-3. Add component to `src/_data/components.js`
-4. Implement component styles and behavior
+To add a new component to the documentation system, follow these steps:
+
+1. **Create Component Files**:
+   ```
+   src/components/[category]/[component-name]/
+   ├── index.md           # Main component documentation (Design tab)
+   ├── code.md            # Code documentation 
+   ├── accessibility.md   # Accessibility documentation
+   └── examples.md        # Examples of component usage
+   ```
+
+2. **Add Component to Navigation**:
+   - Edit `src/_data/navigation.js` to add your component to the appropriate category:
+   ```javascript
+   {
+     title: "Category Name",
+     items: [
+       // Existing components...
+       {
+         title: "New Component",
+         url: "/components/category/component-name/",
+         status: "stable" // or "experimental" or "deprecated"
+       }
+     ]
+   }
+   ```
+
+3. **Create Component Front Matter**:
+   Ensure each component file includes the proper front matter:
+   ```yaml
+   ---
+   layout: layouts/component.njk
+   title: Component Name
+   description: A brief description of the component
+   category: category-name
+   version: 1.0.0
+   ---
+   ```
+
+4. **Implement Component Sections**:
+   - `index.md`: Design guidelines, anatomy, usage, best practices
+   - `code.md`: Implementation details, code samples, API reference
+   - `accessibility.md`: Accessibility considerations and guidelines
+   - `examples.md`: Interactive examples and variations
+
+5. **Test Navigation**:
+   - Restart the development server if needed
+   - Verify your component appears in the navigation
+   - Test all component tabs (Design, Code, Accessibility, Examples)
+
+> **Note**: Components will not appear in the left navigation unless they are specifically added to the `src/_data/navigation.js` file, even if the component files exist in the correct location.
 
 ### Creating a New Layout
 
