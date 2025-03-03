@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feedback Components | Enterprise Design System</title>
+  <title>Feedback | Enterprise Design System</title>
   <meta name="description" content="Feedback components communicate system status and provide information to users">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
@@ -221,7 +221,9 @@
                 <span>Navigation</span>
                 <span class="text-xs">
                   
-                    <span class="inline-block">▼</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
                   
                 </span>
               </a>
@@ -230,7 +232,7 @@
             <li>
               <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
                 <span>Feedback</span>
-                <span>
+                <span class="text-xs">
                   
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
@@ -242,14 +244,14 @@
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
                 
                   <li>
-                    <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-                      Feedback Components
+                    <a href="/components/feedback/alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                      Alert
                     </a>
                   </li>
                 
                   <li>
-                    <a href="/components/feedback/alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                      Alert
+                    <a href="/components/feedback/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
+                      Feedback
                     </a>
                   </li>
                 
@@ -259,7 +261,7 @@
             <li>
               <a href="/components/inputs/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
                 <span>Inputs</span>
-                <span>
+                <span class="text-xs">
                   
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -275,7 +277,7 @@
         <li>
           <a href="/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Browse</span>
-            <span>
+            <span class="text-xs">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -288,7 +290,7 @@
         <li>
           <a href="/resources/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Resources</span>
-            <span>
+            <span class="text-xs">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -315,7 +317,7 @@
         <li>
           <a href="/migrated/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Migrated Overview</span>
-            <span>
+            <span class="text-xs">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -335,7 +337,7 @@
         <li>
           <a href="/legacy-docs/converted/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Converted Legacy</span>
-            <span>
+            <span class="text-xs">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -348,7 +350,7 @@
         <li>
           <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Preserved Legacy</span>
-            <span>
+            <span class="text-xs">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -361,7 +363,7 @@
         <li>
           <a href="/components/shared/migration-examples/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Migration Examples</span>
-            <span>
+            <span class="text-xs">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -381,12 +383,12 @@
     <!-- Main content -->
     <div class="w-full">
       <div class="prose max-w-none">
-        <h1>Feedback Components</h1>
+        <h1>Feedback</h1>
         
           <p class="text-xl text-[var(--color-text-muted)] mb-8">Feedback components communicate system status and provide information to users</p>
         
         
-        <h1 id="feedback-components" tabindex="-1">Feedback Components <a class="anchor" href="#feedback-components" aria-hidden="true"></a></h1>
+        <h1 id="feedback" tabindex="-1">Feedback <a class="anchor" href="#feedback" aria-hidden="true"></a></h1>
 <p>Feedback components communicate system status and provide information to users. They help create a responsive and informative user experience by notifying users about events, errors, and processes.</p>
 <h2 id="available-components" tabindex="-1">Available Components <a class="anchor" href="#available-components" aria-hidden="true"></a></h2>
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

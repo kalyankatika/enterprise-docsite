@@ -1,11 +1,11 @@
 ---
 layout: layouts/page.njk
-title: Feedback Components
+title: Feedback
 description: Feedback components communicate system status and provide information to users
 sidebarType: components
 ---
 
-# Feedback Components
+# Feedback
 
 Feedback components communicate system status and provide information to users. They help create a responsive and informative user experience by notifying users about events, errors, and processes.
 
