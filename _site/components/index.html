@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Components | Enterprise Design System</title>
-  <meta name="description" content="A comprehensive library of reusable UI components for building enterprise applications">
+  <meta name="description" content="Enterprise Design System component library">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -169,412 +169,45 @@
   </header>
 
   <main class="flex-1">
-    
-<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
-  <div class="flex flex-col lg:flex-row">
-    <!-- Left sidebar - Standard navigation -->
-    <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
-      <div class="sticky top-32">
-        
-
-<nav class="nav-main left-navigation">
-  <div class="space-y-6">
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Main Sections</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="/design-system/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Design System
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
-            <span>Components</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
-            <li>
-              <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-                <span>Layout</span>
-                <span class="text-xs">
-                  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  
-                </span>
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-                <span>Navigation</span>
-                <span class="text-xs">
-                  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  
-                </span>
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-                <span>Feedback</span>
-                <span class="text-xs">
-                  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  
-                </span>
-              </a>
-              
-            </li>
-            <li>
-              <a href="/components/inputs/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-                <span>Inputs</span>
-                <span class="text-xs">
-                  
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                  
-                </span>
-              </a>
-              
-            </li>
-          </ul>
-          
-        </li>
-        <li>
-          <a href="/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Browse</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-        </li>
-        <li>
-          <a href="/resources/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Resources</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-        </li>
-        <li>
-          <a href="/support/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-            Support
-          </a>
-        </li>
-      </ul>
-    </div>
-    
-    
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Migrated Content</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/migrated/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Migrated Overview</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-        </li>
-      </ul>
-    </div>
-    
-    
-    <div class="space-y-2">
-      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Legacy Content</h3>
-      <ul class="space-y-2">
-        <li>
-          <a href="/legacy-docs/converted/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Converted Legacy</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-        </li>
-        <li>
-          <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Preserved Legacy</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-        </li>
-        <li>
-          <a href="/components/shared/migration-examples/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Migration Examples</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-      </div>
-    </div>
-    
-    <!-- Main content -->
-    <div class="w-full">
-      <div class="prose max-w-none">
-        <h1>Components</h1>
-        
-          <p class="text-xl text-[var(--color-text-muted)] mb-8">A comprehensive library of reusable UI components for building enterprise applications</p>
-        
-        
-        <h1 id="enterprise-design-system-components" tabindex="-1">Enterprise Design System Components <a class="anchor" href="#enterprise-design-system-components" aria-hidden="true"></a></h1>
-<p>The Enterprise Design System (EDS) provides a comprehensive library of UI components that help build consistent and accessible interfaces. All components follow our core design principles and are built with accessibility, usability, and flexibility in mind.</p>
-<h2 id="finding-components" tabindex="-1">Finding Components <a class="anchor" href="#finding-components" aria-hidden="true"></a></h2>
-<p>Our documentation offers multiple ways to find the components you need:</p>
+    <h1 id="enterprise-design-system-components" tabindex="-1">Enterprise Design System Components <a class="anchor" href="#enterprise-design-system-components" aria-hidden="true"></a></h1>
+<p>Welcome to the Enterprise Design System (EDS) component library. This section contains all the components available in the design system, organized in different ways to help you find what you need.</p>
+<h2 id="component-sections" tabindex="-1">Component Sections <a class="anchor" href="#component-sections" aria-hidden="true"></a></h2>
+<h3 id="all-components" tabindex="-1"><a href="/components/all/">All Components</a> <a class="anchor" href="#all-components" aria-hidden="true"></a></h3>
+<p>Browse the complete library of components in a single, comprehensive view. Components are organized by type (layout, navigation, form, feedback, content) for easy discovery.</p>
+<h3 id="component-categories" tabindex="-1">Component Categories <a class="anchor" href="#component-categories" aria-hidden="true"></a></h3>
+<p>Components are also organized into functional categories:</p>
 <ul>
-<li><strong>Left Navigation</strong>: Use the sidebar to browse components by category</li>
-<li><strong>Category View</strong>: Browse components organized by functional categories below</li>
-<li><strong>Search</strong>: Use the search function in the top navigation to quickly find a specific component</li>
+<li><a href="/components/layout/">Layout Components</a>: Components that define the structure and layout of pages</li>
+<li><a href="/components/navigation/">Navigation Components</a>: Components used for navigation and wayfinding</li>
+<li><a href="/components/feedback/">Feedback Components</a>: Components used to provide feedback to users</li>
+<li><a href="/components/inputs/">Input Components</a>: Components used for user input and forms</li>
 </ul>
-<h2 id="component-categories" tabindex="-1">Component Categories <a class="anchor" href="#component-categories" aria-hidden="true"></a></h2>
-<p>Our components are organized into the following functional categories:</p>
-<h3 id="input-components" tabindex="-1">Input Components <a class="anchor" href="#input-components" aria-hidden="true"></a></h3>
-<p>Components that enable users to input or manipulate data.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-<p><a href="/components/inputs/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Input Components</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Components that enable users to input or manipulate data</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-<p><a href="/components/inputs/button/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Button Component</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">A versatile button component supporting various styles, states, and sizes.</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-<p><a href="/components/inputs/button-component/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Button Component</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Standard button component with multiple styles and sizes</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-</div>
-<h3 id="layout-components" tabindex="-1">Layout Components <a class="anchor" href="#layout-components" aria-hidden="true"></a></h3>
-<p>Components that help structure content and UI elements on the page.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-<p><a href="/components/layout/card/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Card</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Cards organize content and actions about a single subject</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-<p><a href="/components/layout/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Layout Components</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Components that help with page structure and content organization.</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-</div>
-<h3 id="navigation-components" tabindex="-1">Navigation Components <a class="anchor" href="#navigation-components" aria-hidden="true"></a></h3>
-<p>Components that help users navigate within the application.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-<p><a href="/components/navigation/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Navigation Components</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Navigation components help users move through and find content in your application</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-<p><a href="/components/navigation/breadcrumb/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Breadcrumb</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Breadcrumbs show the navigational path within a site hierarchy</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-</div>
-<h3 id="feedback-components" tabindex="-1">Feedback Components <a class="anchor" href="#feedback-components" aria-hidden="true"></a></h3>
-<p>Components that provide feedback or display notifications to users.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-<p><a href="/components/feedback/alert/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Alert</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Alerts provide contextual feedback messages for user actions and system states</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-<p><a href="/components/feedback/" class="eds-component-card"><br>
-<h3 class="text-xl font-medium mb-2">Feedback</h3><br>
-<p class="text-gray-600 dark:text-gray-300 mb-4">Feedback components communicate system status and provide information to users</p><br>
-<span class="eds-link">View Component →</span><br>
-</a></p>
-</div>
-<h2 id="component-structure" tabindex="-1">Component Structure <a class="anchor" href="#component-structure" aria-hidden="true"></a></h2>
-<p>Each component in our design system follows a consistent structure in its documentation:</p>
+<h2 id="getting-started-with-components" tabindex="-1">Getting Started with Components <a class="anchor" href="#getting-started-with-components" aria-hidden="true"></a></h2>
+<p>Each component in the library includes:</p>
 <ol>
-<li><strong>Overview</strong>: A description of the component and its use cases</li>
-<li><strong>Usage</strong>: Guidelines on how and when to use the component</li>
-<li><strong>Code</strong>: Implementation details including props, methods, and events</li>
-<li><strong>Accessibility</strong>: Information on how the component meets accessibility standards</li>
+<li><strong>Overview</strong>: General information and usage guidelines</li>
+<li><strong>Design</strong>: Visual specifications and design guidelines</li>
+<li><strong>Code</strong>: Implementation details with examples in HTML/CSS and JavaScript frameworks</li>
+<li><strong>Accessibility</strong>: Guidelines to ensure components are accessible to all users</li>
+<li><strong>Examples</strong>: Interactive examples showing the component in various contexts</li>
 </ol>
-<h2 id="design-principles" tabindex="-1">Design Principles <a class="anchor" href="#design-principles" aria-hidden="true"></a></h2>
-<p>All components in the Enterprise Design System follow these core principles:</p>
-<h3 id="consistent" tabindex="-1">Consistent <a class="anchor" href="#consistent" aria-hidden="true"></a></h3>
-<p>Components maintain visual and behavioral consistency across the interface. They use the same design tokens for spacing, colors, and typography.</p>
-<h3 id="accessible" tabindex="-1">Accessible <a class="anchor" href="#accessible" aria-hidden="true"></a></h3>
-<p>Components meet WCAG 2.1 AA standards, ensuring that applications built with our design system are usable by people with disabilities.</p>
-<h3 id="responsive" tabindex="-1">Responsive <a class="anchor" href="#responsive" aria-hidden="true"></a></h3>
-<p>Components are designed to work across various screen sizes, from desktop to mobile, providing a good user experience regardless of device.</p>
-<h3 id="customizable" tabindex="-1">Customizable <a class="anchor" href="#customizable" aria-hidden="true"></a></h3>
-<p>While maintaining consistency, components can be customized to meet specific design needs and brand guidelines.</p>
-<h2 id="implementation" tabindex="-1">Implementation <a class="anchor" href="#implementation" aria-hidden="true"></a></h2>
-<p>Components are implemented using clean, semantic HTML and CSS, with JavaScript used only when necessary for enhanced functionality. They are framework-agnostic but offer specific implementations for React and Vue.js.</p>
-<p>For installation and basic usage, please refer to our <a href="/getting-started/">Getting Started</a> guide.</p>
+<h2 id="using-the-component-library" tabindex="-1">Using the Component Library <a class="anchor" href="#using-the-component-library" aria-hidden="true"></a></h2>
+<p>The component library is designed to help you:</p>
+<ul>
+<li><strong>Find the right component</strong> for your specific needs</li>
+<li><strong>Understand how to use it</strong> correctly in your design or implementation</li>
+<li><strong>Copy code examples</strong> to implement the component in your project</li>
+<li><strong>Ensure consistency</strong> across the enterprise by using standard components</li>
+</ul>
+<h2 id="looking-for-something-specific" tabindex="-1">Looking for Something Specific? <a class="anchor" href="#looking-for-something-specific" aria-hidden="true"></a></h2>
+<ul>
+<li>Use the search feature to find components by name or functionality</li>
+<li>Browse the <a href="/components/all/">All Components</a> section to see everything at once</li>
+<li>Check out the component categories for functionally related components</li>
+</ul>
+<h2 id="need-help" tabindex="-1">Need Help? <a class="anchor" href="#need-help" aria-hidden="true"></a></h2>
+<p>If you can't find what you're looking for or need assistance with a component, please <a href="/support/">contact the design system team</a>.</p>
 
-      </div>
-    </div>
-    
-    <!-- Right sidebar - Table of Contents -->
-    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
-      <div class="sticky top-32">
-        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
-        <nav class="toc js-toc">
-          <!-- Table of contents will be auto-generated here -->
-          <ul class="space-y-1">
-            
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Add table of contents JavaScript -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // If no TOC elements exist, we'll generate them
-    if (!document.querySelector('.js-toc li')) {
-      const headings = document.querySelectorAll('.prose h2, .prose h3, .prose h4');
-      const toc = document.querySelector('.js-toc');
-      
-      if (toc && headings.length > 0) {
-        const tocList = document.createElement('ul');
-        tocList.className = 'space-y-1';
-        
-        headings.forEach(heading => {
-          if (!heading.id) {
-            // Create an ID if none exists
-            heading.id = heading.textContent.toLowerCase().replace(/[^\w]+/g, '-');
-          }
-          
-          const level = parseInt(heading.tagName.charAt(1));
-          const listItem = document.createElement('li');
-          listItem.className = `toc-item ${level === 2 ? 'pl-0' : 'pl-' + ((level - 2) * 4)}`;
-          
-          const link = document.createElement('a');
-          link.href = `#${heading.id}`;
-          link.className = `text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm ${level === 2 ? 'font-medium' : ''}`;
-          link.textContent = heading.textContent;
-          
-          listItem.appendChild(link);
-          tocList.appendChild(listItem);
-          
-          // Add a hidden anchor link to the heading
-          if (!heading.querySelector('.anchor')) {
-            const anchor = document.createElement('a');
-            anchor.className = 'anchor opacity-0 ml-2 text-[var(--color-text-muted)] hover:opacity-100 transition-opacity';
-            anchor.href = `#${heading.id}`;
-            anchor.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>';
-            heading.appendChild(anchor);
-          }
-        });
-        
-        if (tocList.children.length > 0) {
-          toc.appendChild(tocList);
-        } else {
-          // If no headings found, hide the TOC container
-          const tocContainer = toc.closest('.sticky');
-          if (tocContainer) {
-            tocContainer.style.display = 'none';
-          }
-        }
-      }
-    }
-    
-    // Highlight the current section in the TOC as user scrolls
-    const headings = Array.from(document.querySelectorAll('.prose h2, .prose h3, .prose h4'));
-    const tocLinks = document.querySelectorAll('.js-toc a');
-    
-    if (headings.length > 0 && tocLinks.length > 0) {
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -80% 0px',
-        threshold: 0
-      };
-      
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Remove active class from all links
-            tocLinks.forEach(link => {
-              link.classList.remove('text-[var(--color-primary)]', 'font-medium');
-            });
-            
-            // Add active class to corresponding link
-            const id = entry.target.id;
-            const activeLink = document.querySelector(`.js-toc a[href="#${id}"]`);
-            if (activeLink) {
-              activeLink.classList.add('text-[var(--color-primary)]', 'font-medium');
-            }
-          }
-        });
-      }, observerOptions);
-      
-      headings.forEach(heading => {
-        observer.observe(heading);
-      });
-    }
-  });
-</script>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">

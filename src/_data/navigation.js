@@ -195,6 +195,11 @@ module.exports = {
   // Component categories in the sidebar
   components: [
     {
+      title: "All Components",
+      url: "/components/all/",
+      status: "stable"
+    },
+    {
       title: "Layout",
       items: [
         {

@@ -1,92 +1,70 @@
 ---
 layout: layouts/base.njk
 title: All Components
-description: Complete library of components in the Enterprise Design System
+description: Complete list of Enterprise Design System components
 ---
 
 # All Components
 
-This section provides a comprehensive list of all components available in the Enterprise Design System. Each component includes detailed documentation for design, code implementation, accessibility guidelines, and usage examples.
+This page provides a comprehensive view of all components in the Enterprise Design System, organized by type.
 
-## Component List
+## Layout Components
 
-### Layout Components
-- [Accordion](/components/all/accordion/)
-- [Card](/components/all/card/)
-- [Content Block](/components/all/content-block/)
-- [Description List](/components/all/description-list/)
-- [Expand/Collapse](/components/all/expand-collapse/)
-- [Grid](/components/all/grid/)
-- [Page Footer](/components/all/page-footer/)
-- [Page Header](/components/all/page-header/)
-- [Tab Group](/components/all/tab-group/)
+Layout components help structure and organize content on a page.
 
-### Navigation Components
-- [Breadcrumbs](/components/all/breadcrumbs/)
-- [Link](/components/all/link/)
-- [List Group](/components/all/list-group/)
-- [Menu](/components/all/menu/)
-- [Segmented Control](/components/all/segmented-control/)
+- [Accordion](/components/all/accordion/) - Expandable containers for showing and hiding content
+- [Card](/components/layout/card/) - Containers for related content and actions
+- [Grid](/components/layout/grid/) - Layout system for arranging content in rows and columns
+- [Container](/components/layout/container/) - Wrapper element that constrains content width
+- [Divider](/components/layout/divider/) - Horizontal line that visually separates content
 
-### Form Components
-- [Button](/components/all/button/)
-- [Checkbox](/components/all/checkbox/)
-- [Checkbox Group](/components/all/checkbox-group/)
-- [Field Group](/components/all/field-group/)
-- [Field Key](/components/all/field-key/)
-- [File Upload](/components/all/file-upload/)
-- [Form Actions](/components/all/form-actions/)
-- [Input](/components/all/input/)
-- [Label](/components/all/label/)
-- [Radio](/components/all/radio/)
-- [Radio Group](/components/all/radio-group/)
-- [Select](/components/all/select/)
-- [Slider](/components/all/slider/)
-- [Switch](/components/all/switch/)
-- [Text Input](/components/all/text-input/)
-- [Textarea](/components/all/textarea/)
+## Navigation Components
 
-### Feedback Components
-- [Alert](/components/all/alert/)
-- [Inline Alert](/components/all/inline-alert/)
-- [Modal](/components/all/modal/)
-- [Popover](/components/all/popover/)
-- [Progress Indicator](/components/all/progress-indicator/)
-- [Spinner](/components/all/spinner/)
-- [Status](/components/all/status/)
-- [Stepper](/components/all/stepper/)
-- [Tooltip](/components/all/tooltip/)
+Navigation components help users move through the interface.
 
-### Content Components
-- [Chip](/components/all/chip/)
-- [Footnotes and Disclosures](/components/all/footnotes-and-disclosures/)
-- [Icon](/components/all/icon/)
-- [Image](/components/all/image/)
-- [Microcopy](/components/all/microcopy/)
-- [Segment](/components/all/segment/)
-- [Table](/components/all/table/)
-- [Tag](/components/all/tag/)
-- [Tile](/components/all/tile/)
-- [Title](/components/all/title/)
+- [Breadcrumb](/components/navigation/breadcrumb/) - Shows the user's current location in a hierarchical structure
+- [Menu](/components/navigation/menu/) - List of options that allow users to navigate
+- [Tabs](/components/navigation/tabs/) - Organizes content into separate views
+- [Pagination](/components/navigation/pagination/) - Helps navigate through multi-page content
 
-## Component Structure
+## Feedback Components
 
-Each component follows a standardized documentation structure:
+Feedback components communicate information to users about system status, errors, or notifications.
 
-1. **Overview** - General information and purpose of the component
-2. **Tabs**:
-   - **Design** - Design specifications, visual guidelines, and anatomy
-   - **Code** - Implementation details and code examples
-   - **Accessibility** - WCAG compliance and accessibility best practices
-   - **Examples** - Interactive examples and use cases
+- [Alert](/components/all/alert/) - Communicates important contextual feedback or information
+- [Progress](/components/feedback/progress/) - Shows the progress of an operation
+- [Toast](/components/feedback/toast/) - Temporary notification that appears and disappears
+- [Skeleton](/components/feedback/skeleton/) - Placeholder for content that is loading
 
-## Component Status
+## Input Components
 
-Components are at different stages of development:
+Input components allow users to enter data or interact with the interface.
 
-- **Production Ready** - Fully tested and ready for use in production
-- **Beta** - Feature complete, but may still undergo changes
-- **In Development** - Currently being developed and not ready for production use
-- **Deprecated** - Still supported but scheduled for replacement
+- [Button](/components/all/button/) - Triggers an action when clicked
+- [Input](/components/inputs/input/) - Single-line text field for user input
+- [Checkbox](/components/inputs/checkbox/) - Allows users to select multiple options
+- [Radio](/components/inputs/radio/) - Allows users to select a single option from a group
+- [Select](/components/inputs/select/) - Dropdown selector for choosing from a list of options
+- [Textarea](/components/inputs/textarea/) - Multi-line text input field
 
-Check individual component documentation for current status information.
+## Content Components
+
+Components for displaying and formatting content.
+
+- [Badge](/components/content/badge/) - Small count or status indicator
+- [Table](/components/content/table/) - Displays tabular data
+- [Icon](/components/content/icon/) - Visual symbols for representing concepts and actions
+- [Typography](/components/content/typography/) - Text styling and formatting
+
+## Utility Components
+
+Utility components that serve specific functional purposes.
+
+- [Modal](/components/utility/modal/) - Dialog that appears over other content
+- [Tooltip](/components/utility/tooltip/) - Small informational popup that appears on hover
+- [Popover](/components/utility/popover/) - Displays additional content in a popup
+
+## Recently Updated Components
+
+- [Alert](/components/all/alert/) - Updated with new accessibility guidelines and examples
+- [Button](/components/all/button/) - Added new sizes and variants

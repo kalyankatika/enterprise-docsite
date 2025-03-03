@@ -62,6 +62,11 @@
           {% if currentUrl.includes('/components/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
             <li>
+              <a href="/components/all/" class="block py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/all/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                All Components
+              </a>
+            </li>
+            <li>
               <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}">
                 <span>Layout</span>
                 <span class="text-xs">

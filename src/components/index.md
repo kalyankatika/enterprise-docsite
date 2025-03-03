@@ -1,117 +1,53 @@
 ---
-layout: layouts/page.njk
+layout: layouts/base.njk
 title: Components
-description: A comprehensive library of reusable UI components for building enterprise applications
-excludeFromSearch: false
-contentType: Documentation
-eleventyNavigation:
-  key: Components
-  order: 2
+description: Enterprise Design System component library
 ---
 
 # Enterprise Design System Components
 
-The Enterprise Design System (EDS) provides a comprehensive library of UI components that help build consistent and accessible interfaces. All components follow our core design principles and are built with accessibility, usability, and flexibility in mind.
+Welcome to the Enterprise Design System (EDS) component library. This section contains all the components available in the design system, organized in different ways to help you find what you need.
 
-## Finding Components
+## Component Sections
 
-Our documentation offers multiple ways to find the components you need:
+### [All Components](/components/all/)
 
-- **Left Navigation**: Use the sidebar to browse components by category
-- **Category View**: Browse components organized by functional categories below
-- **Search**: Use the search function in the top navigation to quickly find a specific component
+Browse the complete library of components in a single, comprehensive view. Components are organized by type (layout, navigation, form, feedback, content) for easy discovery.
 
-## Component Categories
+### Component Categories
 
-Our components are organized into the following functional categories:
+Components are also organized into functional categories:
 
-### Input Components
+- [Layout Components](/components/layout/): Components that define the structure and layout of pages
+- [Navigation Components](/components/navigation/): Components used for navigation and wayfinding
+- [Feedback Components](/components/feedback/): Components used to provide feedback to users
+- [Input Components](/components/inputs/): Components used for user input and forms
 
-Components that enable users to input or manipulate data.
+## Getting Started with Components
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-  {% for component in collections.inputComponents %}
-    <a href="{{ component.url }}" class="eds-component-card">
-      <h3 class="text-xl font-medium mb-2">{{ component.data.title }}</h3>
-      <p class="text-gray-600 dark:text-gray-300 mb-4">{{ component.data.description }}</p>
-      <span class="eds-link">View Component →</span>
-    </a>
-  {% endfor %}
-</div>
+Each component in the library includes:
 
-### Layout Components
+1. **Overview**: General information and usage guidelines
+2. **Design**: Visual specifications and design guidelines
+3. **Code**: Implementation details with examples in HTML/CSS and JavaScript frameworks
+4. **Accessibility**: Guidelines to ensure components are accessible to all users
+5. **Examples**: Interactive examples showing the component in various contexts
 
-Components that help structure content and UI elements on the page.
+## Using the Component Library
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-  {% for component in collections.layoutComponents %}
-    <a href="{{ component.url }}" class="eds-component-card">
-      <h3 class="text-xl font-medium mb-2">{{ component.data.title }}</h3>
-      <p class="text-gray-600 dark:text-gray-300 mb-4">{{ component.data.description }}</p>
-      <span class="eds-link">View Component →</span>
-    </a>
-  {% endfor %}
-</div>
+The component library is designed to help you:
 
-### Navigation Components
+- **Find the right component** for your specific needs
+- **Understand how to use it** correctly in your design or implementation
+- **Copy code examples** to implement the component in your project
+- **Ensure consistency** across the enterprise by using standard components
 
-Components that help users navigate within the application.
+## Looking for Something Specific?
 
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-  {% for component in collections.navigationComponents %}
-    <a href="{{ component.url }}" class="eds-component-card">
-      <h3 class="text-xl font-medium mb-2">{{ component.data.title }}</h3>
-      <p class="text-gray-600 dark:text-gray-300 mb-4">{{ component.data.description }}</p>
-      <span class="eds-link">View Component →</span>
-    </a>
-  {% endfor %}
-</div>
+- Use the search feature to find components by name or functionality
+- Browse the [All Components](/components/all/) section to see everything at once
+- Check out the component categories for functionally related components
 
-### Feedback Components
+## Need Help?
 
-Components that provide feedback or display notifications to users.
-
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
-  {% for component in collections.feedbackComponents %}
-    <a href="{{ component.url }}" class="eds-component-card">
-      <h3 class="text-xl font-medium mb-2">{{ component.data.title }}</h3>
-      <p class="text-gray-600 dark:text-gray-300 mb-4">{{ component.data.description }}</p>
-      <span class="eds-link">View Component →</span>
-    </a>
-  {% endfor %}
-</div>
-
-## Component Structure
-
-Each component in our design system follows a consistent structure in its documentation:
-
-1. **Overview**: A description of the component and its use cases
-2. **Usage**: Guidelines on how and when to use the component
-3. **Code**: Implementation details including props, methods, and events
-4. **Accessibility**: Information on how the component meets accessibility standards
-
-## Design Principles
-
-All components in the Enterprise Design System follow these core principles:
-
-### Consistent
-
-Components maintain visual and behavioral consistency across the interface. They use the same design tokens for spacing, colors, and typography.
-
-### Accessible
-
-Components meet WCAG 2.1 AA standards, ensuring that applications built with our design system are usable by people with disabilities.
-
-### Responsive
-
-Components are designed to work across various screen sizes, from desktop to mobile, providing a good user experience regardless of device.
-
-### Customizable
-
-While maintaining consistency, components can be customized to meet specific design needs and brand guidelines.
-
-## Implementation
-
-Components are implemented using clean, semantic HTML and CSS, with JavaScript used only when necessary for enhanced functionality. They are framework-agnostic but offer specific implementations for React and Vue.js.
-
-For installation and basic usage, please refer to our [Getting Started](/getting-started/) guide.
+If you can't find what you're looking for or need assistance with a component, please [contact the design system team](/support/).
