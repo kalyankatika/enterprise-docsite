@@ -5,6 +5,15 @@ description: Accordions are lightweight containers that can be used independentl
 category: layout
 version: 1.0.0
 codeContent: true
+subTabs:
+  - label: API
+    url: /components/layout/accordion/code/
+  - label: Installation
+    url: /components/layout/accordion/code/#installation
+  - label: Usage
+    url: /components/layout/accordion/code/#attributes
+  - label: Examples
+    url: /components/layout/accordion/code/#storybook-example
 ---
 
 <section class="mb-12">

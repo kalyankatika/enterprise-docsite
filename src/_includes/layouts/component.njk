@@ -100,6 +100,23 @@ layout: layouts/base.njk
           </nav>
         </div>
         
+        {% if subTabs %}
+        <!-- Component sub-tabs -->
+        <div class="sub-tabs mb-8 bg-[var(--color-bg-alt)] rounded-lg p-1">
+          <nav class="flex flex-wrap" role="tablist" aria-label="Component sub-sections">
+            {% for tab in subTabs %}
+            <a href="{{ tab.url }}" 
+              class="tab-link px-4 py-2 text-sm font-medium {% if page.url == tab.url %}active text-[var(--color-primary)]{% else %}text-[var(--color-text-muted)]{% endif %} transition-colors"
+              role="tab" 
+              aria-selected="{% if page.url == tab.url %}true{% else %}false{% endif %}"
+              tabindex="{% if page.url == tab.url %}0{% else %}-1{% endif %}">
+              {{ tab.label }}
+            </a>
+            {% endfor %}
+          </nav>
+        </div>
+        {% endif %}
+        
         <!-- Component content -->
         {{ content | safe }}
       </div>

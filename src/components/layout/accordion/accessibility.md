@@ -5,6 +5,13 @@ description: Accordions are lightweight containers that can be used independentl
 category: layout
 version: 1.0.0
 a11yContent: true
+subTabs:
+  - label: Guidelines
+    url: /components/layout/accordion/accessibility/
+  - label: Technical Requirements
+    url: /components/layout/accordion/accessibility/#wai-aria-compliance
+  - label: Testing
+    url: /components/layout/accordion/accessibility/#screen-reader-announcements
 ---
 
 <section class="mb-12">
