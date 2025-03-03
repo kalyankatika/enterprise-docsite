@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layouts/page.njk
 title: Resources
 description: Access templates, design tokens, and downloadable assets for your projects.
 eleventyNavigation:

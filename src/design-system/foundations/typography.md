@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layouts/page.njk
 title: Typography
 description: Typography guidelines and specifications for the Enterprise Design System
 ---

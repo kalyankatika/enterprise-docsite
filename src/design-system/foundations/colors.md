@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layouts/page.njk
 title: Colors
 description: Our color palette, including primary, secondary, and semantic colors, along with usage guidelines.
 eleventyNavigation:

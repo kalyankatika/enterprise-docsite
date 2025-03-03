@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: layouts/page.njk
 title: Support
 description: Get help with implementation, report bugs, or request new features.
 eleventyNavigation:
