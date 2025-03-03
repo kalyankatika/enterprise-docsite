@@ -176,50 +176,40 @@ migrate(config).then(() => {
 
 ### Adding a New Component
 
-1. Create a new Markdown file in the appropriate component directory:
+We follow a standardized four-tab structure for all component documentation:
+
+1. Create a new directory for your component:
    ```bash
-   touch src/components/category/component-name.md
+   mkdir -p src/components/category/component-name
    ```
 
-2. Add front matter with the necessary metadata:
+2. Copy the template files from `src/templates/component-tab-templates/` and rename them:
+   ```bash
+   cp src/templates/component-tab-templates/design.md src/components/category/component-name/index.md
+   cp src/templates/component-tab-templates/code.md src/components/category/component-name/code.md
+   cp src/templates/component-tab-templates/accessibility.md src/components/category/component-name/accessibility.md
+   cp src/templates/component-tab-templates/examples.md src/components/category/component-name/examples.md
+   ```
+
+3. Update the front matter in each file:
    ```yaml
    ---
    layout: layouts/component.njk
    title: Component Name
    description: Brief component description
-   eleventyNavigation:
-     key: ComponentName
-     parent: Components
-   status: stable # options: experimental, beta, stable, deprecated, legacy
-   tags:
-     - UI
-     - Component
-   lastUpdated: 2023-03-15
+   category: layout # options: layout, navigation, feedback, inputs
+   version: 1.0.0
    ---
    ```
 
-3. Add component documentation content in Markdown format with these recommended sections:
-   ```markdown
-   ## Overview
-   Brief description of what the component is and its purpose.
+4. For specific tab files, include the appropriate content flag in front matter:
+   - **code.md**: Add `codeContent: true`
+   - **accessibility.md**: Add `a11yContent: true`
+   - **examples.md**: Add `examplesContent: true`
 
-   ## Usage
-   When and how to use this component.
+5. Fill in the template sections with your component's documentation
 
-   ## Examples
-   ```html
-   <div class="eds-component">Example code</div>
-   ```
-
-   ## Accessibility
-   Accessibility considerations and WCAG compliance notes.
-
-   ## API Reference
-   Properties, methods, events, and other technical details.
-
-   ## Related Components
-   Links to related components.
-   ```
+For detailed guidance, see the [Component Documentation Guide](/resources/component-documentation-guide/).
 
 ### Working with Design System Documentation
 
@@ -312,10 +302,27 @@ Navigation is generated from multiple sources:
 │   │   ├── fonts/      # Web fonts
 │   │   └── images/     # Images and icons
 │   ├── components/     # Component documentation
+│   │   ├── feedback/   # Feedback components (alerts, notifications)
+│   │   ├── inputs/     # Input components (buttons, forms)
+│   │   ├── layout/     # Layout components (accordion, card)
+│   │   └── navigation/ # Navigation components (breadcrumb, tabs)
 │   ├── design-system/  # Design system foundations and guidelines
 │   │   ├── foundations/# Color, typography, spacing, etc.
 │   │   └── patterns/   # Design patterns and usage
+│   ├── incoming/       # Directories for incoming content to be processed
+│   │   ├── markdown/   # Markdown files to be migrated
+│   │   ├── nunjucks/   # Nunjucks templates to be migrated
+│   │   ├── html/       # HTML files to be migrated
+│   │   └── xml/        # XML files to be migrated
 │   ├── migrated/       # Migrated content from legacy systems
+│   ├── resources/      # Resource pages and guides
+│   ├── templates/      # Template files for new content
+│   │   └── component-tab-templates/ # Component documentation templates
+│   │       ├── design.md        # Design tab template
+│   │       ├── code.md          # Code tab template
+│   │       ├── accessibility.md # Accessibility tab template
+│   │       ├── examples.md      # Examples tab template
+│   │       └── README.md        # Templates usage guide
 │   └── utils/          # Utility functions and migration tools
 │       └── migration/  # Migration utilities for different formats
 ├── .eleventy.js        # Eleventy configuration

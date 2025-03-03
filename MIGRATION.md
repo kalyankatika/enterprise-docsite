@@ -99,6 +99,29 @@ node scripts/run-migration-test.js
 2. Browse the migrated content in your browser at http://localhost:5000/migrated/
 3. Verify navigation and links are working correctly
 
+## 📑 Component Documentation Structure
+
+When migrating component documentation, follow our standardized four-tab structure for consistency:
+
+### Component Directory Structure
+Each component should use this directory structure:
+```
+src/components/[category]/[component-name]/
+├── index.md         # Design tab (main component page)
+├── code.md          # Code tab
+├── accessibility.md # Accessibility tab
+└── examples.md      # Examples tab
+```
+
+### Component Templates
+We've created standardized templates in `src/templates/component-tab-templates/` for each tab:
+- `design.md` → Design tab (anatomy, usage, specifications)
+- `code.md` → Code tab (implementation, API, properties)
+- `accessibility.md` → Accessibility tab (ARIA, keyboard navigation)
+- `examples.md` → Examples tab (implementation examples)
+
+For step-by-step instructions on using these templates, refer to the [Component Documentation Guide](/resources/component-documentation-guide/).
+
 ## 📄 Supported Source Formats and Conversion Process
 
 The migration toolkit supports a wide range of source formats:
@@ -312,6 +335,38 @@ After successfully migrating your content, follow these best practices:
    - Replace generic headings with more descriptive ones
    - Add code language specifiers to code blocks
    - Add alt text to images
+
+### Component Documentation Migration
+
+When migrating component documentation, follow these steps to ensure proper structure:
+
+1. **Identify Component Content Types**:
+   - Design information (anatomy, usage guidelines)
+   - Code implementation details (API, props, methods)
+   - Accessibility information (ARIA attributes, keyboard nav)
+   - Examples and implementation samples
+   
+2. **Create Component Directory Structure**:
+   ```bash
+   mkdir -p src/components/[category]/[component-name]
+   ```
+   
+3. **Distribute Content to Appropriate Templates**:
+   - Copy the templates from `src/templates/component-tab-templates/`
+   - For each template, fill in with the corresponding content from source
+   - Follow the structure defined in each template
+   
+4. **Ensure Consistent Tab Navigation**:
+   - Verify all four tabs are present for each component
+   - Make sure tab links are properly pointing to each other
+   - Check that component front matter is consistent across all tab files
+   
+5. **Verify Visual Assets**:
+   - Place component images in `src/assets/images/components/[component-name]/`
+   - Update image paths in markdown files
+   - Ensure all diagrams and examples have proper references
+
+Refer to the [Component Documentation Guide](/resources/component-documentation-guide/) for full details.
 
 ## 🔄 Continuous Migration Process
 
