@@ -55,6 +55,10 @@ args = "npm build"
 task = "workflow.run"
 args = "npm run migrate:test"
 
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "watch incoming"
+
 [[workflows.workflow]]
 name = "create_dirs"
 author = "agent"
@@ -210,6 +214,20 @@ task = "packager.installForAll"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "node scripts/run-migration-test.js"
+
+[[workflows.workflow]]
+name = "watch incoming"
+author = "agent"
+
+[workflows.workflow.metadata]
+agentRequireRestartOnSave = false
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node scripts/watch-incoming.js"
 
 [deployment]
 run = ["sh", "-c", "npx @11ty/eleventy --serve"]
