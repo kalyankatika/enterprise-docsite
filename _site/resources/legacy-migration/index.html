@@ -170,11 +170,11 @@
 
   <main class="flex-1">
     
-<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
-  <div class="flex flex-col lg:flex-row">
-    <!-- Left sidebar - Standard navigation -->
-    <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
-      <div class="sticky top-32">
+<div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col md:flex-row">
+    <!-- Left Navigation Sidebar -->
+    <aside class="w-full md:w-64 lg:w-72 flex-shrink-0 mb-8 md:mb-0 md:mr-8">
+      <div class="sticky top-20">
         
 
 <nav class="nav-main left-navigation">
@@ -324,17 +324,18 @@
   </div>
 </nav>
       </div>
-    </div>
+    </aside>
     
-    <!-- Main content -->
-    <div class="w-full">
-      <div class="prose max-w-none">
-        <h1>Legacy Documentation Migration</h1>
-        
-          <p class="text-xl text-[var(--color-text-muted)] mb-8">How to migrate legacy documentation from Nunjucks templates to the new markdown format</p>
-        
-        
-        <h1 id="legacy-documentation-migration" tabindex="-1">Legacy Documentation Migration <a class="anchor" href="#legacy-documentation-migration" aria-hidden="true"></a></h1>
+    <!-- Main Content -->
+    <div class="flex-1 min-w-0">
+      
+<div class="prose max-w-none">
+  <h1>Legacy Documentation Migration</h1>
+  
+    <p class="text-xl text-[var(--color-text-muted)] mb-8">How to migrate legacy documentation from Nunjucks templates to the new markdown format</p>
+  
+  
+  <h1 id="legacy-documentation-migration" tabindex="-1">Legacy Documentation Migration <a class="anchor" href="#legacy-documentation-migration" aria-hidden="true"></a></h1>
 <p>This guide explains how to use our migration tools to convert legacy documentation from Nunjucks (.njk) templates to the modern Markdown format used in the Enterprise Design System.</p>
 <h2 id="overview" tabindex="-1">Overview <a class="anchor" href="#overview" aria-hidden="true"></a></h2>
 <p>The migration tools provide two main approaches:</p>
@@ -563,21 +564,18 @@ Report generated on: 2025-03-02T16:30:45.123Z
 <pre class="language-bash"><code class="language-bash"><span class="token function">node</span> scripts/legacy-converter.js</code></pre>
 <p>This will create sample legacy content and process it using different conversion options, demonstrating the capabilities of the migration tools.</p>
 
-      </div>
-    </div>
-    
-    <!-- Right sidebar - Table of Contents -->
-    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
-      <div class="sticky top-32">
-        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
-        <nav class="toc js-toc">
-          <!-- Table of contents will be auto-generated here -->
-          <ul class="space-y-1">
-            
-          </ul>
-        </nav>
-      </div>
-    </div>
+</div>
+
+<!-- Right sidebar - Table of Contents -->
+<div class="hidden lg:block fixed top-32 right-6 w-64">
+  <div class="sticky top-32">
+    <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+    <nav class="toc js-toc">
+      <!-- Table of contents will be auto-generated here -->
+      <ul class="space-y-1">
+        
+      </ul>
+    </nav>
   </div>
 </div>
 
@@ -668,6 +666,9 @@ Report generated on: 2025-03-02T16:30:45.123Z
     }
   });
 </script>
+    </div>
+  </div>
+</div>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">

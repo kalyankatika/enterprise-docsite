@@ -170,11 +170,11 @@
 
   <main class="flex-1">
     
-<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
-  <div class="flex flex-col lg:flex-row">
-    <!-- Left sidebar - Standard navigation -->
-    <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
-      <div class="sticky top-32">
+<div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col md:flex-row">
+    <!-- Left Navigation Sidebar -->
+    <aside class="w-full md:w-64 lg:w-72 flex-shrink-0 mb-8 md:mb-0 md:mr-8">
+      <div class="sticky top-20">
         
 
 <nav class="nav-main left-navigation">
@@ -320,17 +320,18 @@
   </div>
 </nav>
       </div>
-    </div>
+    </aside>
     
-    <!-- Main content -->
-    <div class="w-full">
-      <div class="prose max-w-none">
-        <h1>Design System</h1>
-        
-          <p class="text-xl text-[var(--color-text-muted)] mb-8">Comprehensive guidelines and principles for creating consistent enterprise applications</p>
-        
-        
-        <h1>Enterprise Design System</h1>
+    <!-- Main Content -->
+    <div class="flex-1 min-w-0">
+      
+<div class="prose max-w-none">
+  <h1>Design System</h1>
+  
+    <p class="text-xl text-[var(--color-text-muted)] mb-8">Comprehensive guidelines and principles for creating consistent enterprise applications</p>
+  
+  
+  <h1>Enterprise Design System</h1>
 <p>The Enterprise Design System (EDS) provides a comprehensive set of guidelines, components, and resources to help teams create cohesive, accessible, and visually consistent enterprise applications.</p>
 <h2 id="core-principles" tabindex="-1">Core Principles <a class="anchor" href="#core-principles" aria-hidden="true"></a></h2>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
@@ -444,21 +445,18 @@
 <li><a href="/resources/design-tokens/">Design Tokens</a> - Understand how to implement the design system in your projects.</li>
 </ol>
 
-      </div>
-    </div>
-    
-    <!-- Right sidebar - Table of Contents -->
-    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
-      <div class="sticky top-32">
-        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
-        <nav class="toc js-toc">
-          <!-- Table of contents will be auto-generated here -->
-          <ul class="space-y-1">
-            
-          </ul>
-        </nav>
-      </div>
-    </div>
+</div>
+
+<!-- Right sidebar - Table of Contents -->
+<div class="hidden lg:block fixed top-32 right-6 w-64">
+  <div class="sticky top-32">
+    <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+    <nav class="toc js-toc">
+      <!-- Table of contents will be auto-generated here -->
+      <ul class="space-y-1">
+        
+      </ul>
+    </nav>
   </div>
 </div>
 
@@ -549,6 +547,9 @@
     }
   });
 </script>
+    </div>
+  </div>
+</div>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">

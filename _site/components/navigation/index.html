@@ -170,11 +170,11 @@
 
   <main class="flex-1">
     
-<div class="container mx-auto px-4 py-8 md:px-6 md:py-12">
-  <div class="flex flex-col lg:flex-row">
-    <!-- Left sidebar - Standard navigation -->
-    <div class="hidden lg:block w-64 pr-8 flex-shrink-0">
-      <div class="sticky top-32">
+<div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col md:flex-row">
+    <!-- Left Navigation Sidebar -->
+    <aside class="w-full md:w-64 lg:w-72 flex-shrink-0 mb-8 md:mb-0 md:mr-8">
+      <div class="sticky top-20">
         
 
 <nav class="nav-main left-navigation">
@@ -413,17 +413,18 @@
   </div>
 </nav>
       </div>
-    </div>
+    </aside>
     
-    <!-- Main content -->
-    <div class="w-full">
-      <div class="prose max-w-none">
-        <h1>Navigation Components</h1>
-        
-          <p class="text-xl text-[var(--color-text-muted)] mb-8">Navigation components help users move through and find content in your application</p>
-        
-        
-        <h1 id="navigation-components" tabindex="-1">Navigation Components <a class="anchor" href="#navigation-components" aria-hidden="true"></a></h1>
+    <!-- Main Content -->
+    <div class="flex-1 min-w-0">
+      
+<div class="prose max-w-none">
+  <h1>Navigation Components</h1>
+  
+    <p class="text-xl text-[var(--color-text-muted)] mb-8">Navigation components help users move through and find content in your application</p>
+  
+  
+  <h1 id="navigation-components" tabindex="-1">Navigation Components <a class="anchor" href="#navigation-components" aria-hidden="true"></a></h1>
 <p>Navigation components help users move through and find content in your application. They provide intuitive ways to explore, search, and discover content.</p>
 <h2 id="available-components" tabindex="-1">Available Components <a class="anchor" href="#available-components" aria-hidden="true"></a></h2>
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -527,21 +528,18 @@
 </ul>
 <p>For component-specific guidelines, refer to the individual component documentation pages.</p>
 
-      </div>
-    </div>
-    
-    <!-- Right sidebar - Table of Contents -->
-    <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
-      <div class="sticky top-32">
-        <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
-        <nav class="toc js-toc">
-          <!-- Table of contents will be auto-generated here -->
-          <ul class="space-y-1">
-            
-          </ul>
-        </nav>
-      </div>
-    </div>
+</div>
+
+<!-- Right sidebar - Table of Contents -->
+<div class="hidden lg:block fixed top-32 right-6 w-64">
+  <div class="sticky top-32">
+    <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
+    <nav class="toc js-toc">
+      <!-- Table of contents will be auto-generated here -->
+      <ul class="space-y-1">
+        
+      </ul>
+    </nav>
   </div>
 </div>
 
@@ -632,6 +630,9 @@
     }
   });
 </script>
+    </div>
+  </div>
+</div>
   </main>
 
   <footer class="bg-[var(--color-bg-alt)] border-t border-[var(--color-border)] mt-16">
