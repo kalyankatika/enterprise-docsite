@@ -3,7 +3,6 @@
 /* Import component-specific styles */
 @import url('left-navigation.css');
 @import url('animations.css');
-@import url('navigation.css');
 
 :root {
   /* Primary color - Green #368727 */

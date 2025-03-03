@@ -16,26 +16,28 @@ layout: layouts/base.njk
       <div class="prose max-w-none">
         <!-- Breadcrumb -->
         <nav class="text-sm text-[var(--color-text-muted)] mb-4" aria-label="Breadcrumb">
-          <ol class="flex items-center space-x-2">
-            <li><a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a></li>
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <ol class="flex flex-wrap items-center">
+            <li class="flex items-center">
+              <a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
+            </li>
+            <li class="flex items-center">
               <a href="/components/" class="hover:text-[var(--color-primary)] transition-colors">Components</a>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
             </li>
             {% if category %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <li class="flex items-center">
+              <a href="/components/{{ category }}/" class="hover:text-[var(--color-primary)] transition-colors capitalize">{{ category }}</a>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
-              <a href="/components/{{ category }}/" class="hover:text-[var(--color-primary)] transition-colors capitalize">{{ category }}</a>
             </li>
             {% endif %}
-            <li class="flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
+            <li>
               <span class="font-medium">{{ title }}</span>
             </li>
           </ol>
@@ -48,7 +50,7 @@ layout: layouts/base.njk
         {% endif %}
 
         <!-- Component metadata -->
-        <div class="flex items-center space-x-3 mb-8">
+        <div class="flex flex-wrap items-center gap-3 mb-8">
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--color-primary-light)] text-[var(--color-primary-dark)]">
             v{{ version | default('1.0.0') }}
           </span>
@@ -63,15 +65,27 @@ layout: layouts/base.njk
         
         <!-- Component content tabs -->
         <div class="mb-8 border-b border-[var(--color-border)]">
-          <div class="flex space-x-6">
-            <a href="{{ page.url }}" class="tab-link py-3 border-b-2 {% if not page.url.includes('/code/') and not page.url.includes('/accessibility/') and not page.url.includes('/examples/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">Design</a>
+          <nav class="flex flex-wrap -mb-px">
+            <a href="{{ page.url | replace('/index.html', '/') | replace('//index.html', '/') }}" 
+              class="tab-link mr-6 py-3 border-b-2 font-medium {% if not page.url.includes('/code/') and not page.url.includes('/accessibility/') and not page.url.includes('/examples/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">
+              Design
+            </a>
             
-            <a href="{{ page.url | replace('/index.html', '') }}{% if not page.url.endsWith('/') %}/{% endif %}code/" class="tab-link py-3 border-b-2 {% if page.url.includes('/code/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">Code</a>
+            <a href="{{ page.url | replace('/index.html', '') | replace('/code/', '/') | replace('/accessibility/', '/') | replace('/examples/', '/') }}{% if not page.url.endsWith('/') %}/{% endif %}code/" 
+              class="tab-link mr-6 py-3 border-b-2 font-medium {% if page.url.includes('/code/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">
+              Code
+            </a>
             
-            <a href="{{ page.url | replace('/index.html', '') }}{% if not page.url.endsWith('/') %}/{% endif %}accessibility/" class="tab-link py-3 border-b-2 {% if page.url.includes('/accessibility/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">Accessibility</a>
+            <a href="{{ page.url | replace('/index.html', '') | replace('/code/', '/') | replace('/accessibility/', '/') | replace('/examples/', '/') }}{% if not page.url.endsWith('/') %}/{% endif %}accessibility/" 
+              class="tab-link mr-6 py-3 border-b-2 font-medium {% if page.url.includes('/accessibility/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">
+              Accessibility
+            </a>
             
-            <a href="{{ page.url | replace('/index.html', '') }}{% if not page.url.endsWith('/') %}/{% endif %}examples/" class="tab-link py-3 border-b-2 {% if page.url.includes('/examples/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">Examples</a>
-          </div>
+            <a href="{{ page.url | replace('/index.html', '') | replace('/code/', '/') | replace('/accessibility/', '/') | replace('/examples/', '/') }}{% if not page.url.endsWith('/') %}/{% endif %}examples/" 
+              class="tab-link py-3 border-b-2 font-medium {% if page.url.includes('/examples/') %}text-[var(--color-primary)] border-[var(--color-primary)]{% else %}text-[var(--color-text-muted)] border-transparent hover:text-[var(--color-primary)]{% endif %} transition-colors">
+              Examples
+            </a>
+          </nav>
         </div>
         
         <!-- Component content -->
@@ -83,36 +97,35 @@ layout: layouts/base.njk
     <div class="hidden lg:block w-64 pl-8 flex-shrink-0">
       <div class="sticky top-32">
         <h3 class="text-sm font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-4">On this page</h3>
-        <nav class="toc js-toc">
-          <!-- Table of contents will be auto-generated here -->
-          <ul class="space-y-1">
-            <li class="toc-item pl-0">
-              <a href="#anatomy" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm font-medium">
+        <nav class="toc">
+          <ul class="space-y-2 border-l border-[var(--color-border)]">
+            <li>
+              <a href="#anatomy" class="block pl-3 text-sm hover:text-[var(--color-primary)] transition-colors">
                 Anatomy
               </a>
             </li>
-            <li class="toc-item pl-0">
-              <a href="#considerations" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm font-medium">
+            <li>
+              <a href="#considerations" class="block pl-3 text-sm hover:text-[var(--color-primary)] transition-colors">
                 Considerations
               </a>
             </li>
-            <li class="toc-item pl-0">
-              <a href="#usage" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm font-medium">
+            <li>
+              <a href="#usage" class="block pl-3 text-sm hover:text-[var(--color-primary)] transition-colors">
                 Usage
               </a>
             </li>
-            <li class="toc-item pl-0">
-              <a href="#behavior" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm font-medium">
+            <li>
+              <a href="#behavior" class="block pl-3 text-sm hover:text-[var(--color-primary)] transition-colors">
                 Behavior
               </a>
             </li>
-            <li class="toc-item pl-0">
-              <a href="#best-practices" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm font-medium">
+            <li>
+              <a href="#best-practices" class="block pl-3 text-sm hover:text-[var(--color-primary)] transition-colors">
                 Best Practices
               </a>
             </li>
-            <li class="toc-item pl-0">
-              <a href="#specifications" class="text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors text-sm font-medium">
+            <li>
+              <a href="#specifications" class="block pl-3 text-sm hover:text-[var(--color-primary)] transition-colors">
                 Specifications
               </a>
             </li>
@@ -122,8 +135,3 @@ layout: layouts/base.njk
     </div>
   </div>
 </div>
-
-<script>
-  // No tab handling JavaScript needed as we're using navigation to separate pages
-  // for the component documentation sections
-</script>
