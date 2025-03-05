@@ -134,17 +134,6 @@
   
     
       {
-        "title": "Enterprise Design System",
-        "url": "/alternative-home/",
-        "content": "Enterprise Design System A unified platform for building consistent, accessible, and high-quality enterprise applications Get Started View Components What&amp;#039;s New Version 2.0 Released February 15, 2025 We&amp;#039;ve released version 2.0 of the Enterprise Design System with new components, improved documentation, and better accessibility. Read more New Data Table Component February 10, 2025 The new Data Table component provides a powerful way to display and interact with structured data in your applications. View component Improved Accessibility February 5, 2025 All components have been audited and updated to ensure compliance with WCAG 2.1 AA accessibility standards. Read guidelines Component Categories All Components View all All Components components Layout Accordion stable Card stable Grid stable Container stable View all Layout components Navigation Breadcrumb stable Menu stable Tabs stable Pagination stable View all Navigation components Feedback Alert stable Progress stable Toast stable Skeleton experimental View all Feedback components Inputs Button stable Input stable Checkbox stable Radio stable View all Inputs components Get Started Design Tokens Learn how to use our design tokens to maintain consistent styling across your applications. Explore design tokens Guidelines Discover our design and development guidelines to ensure consistency across your projects. Review guidelines Patterns Explore common UI patterns and learn how to solve common design challenges in your applications. Explore patterns Resources Figma Library Access our Figma component library to kickstart your design process. Sketch Library Download our Sketch component library for designing with the Enterprise Design System. Icon Library Browse and download our comprehensive collection of UI icons. Starter Templates Get a head start with our application templates and boilerplates.",
-        "description": "A unified documentation platform for the Enterprise Design System",
-        "type": "Page",
-        "date": "2025-02-27"
-      },
-    
-  
-    
-      {
         "title": "Home",
         "url": "/alternative-home-tailwind/",
         "content": "Enterprise Design System A comprehensive design system for building consistent, accessible, and beautiful enterprise applications. Get Started Browse Components Everything you need to build enterprise applications Design Foundations Comprehensive color palettes, typography, spacing, and other foundational elements for consistent design. Explore Foundations Components A library of 40+ ready-made, accessible UI components from buttons to complex data tables. Browse Components Guidelines Accessibility, responsive design, and content guidelines to ensure high-quality implementations. View Guidelines Quick Search Looking for something specific? Search our documentation. Featured Components Primary Secondary Buttons Cards Input label Text Fields Tab 1 Tab 2 Tab 3 Tabs Latest Updates Design System v2.0.0 Released February 20, 2025 Major update with new components, improved accessibility, and dark mode support. View Release Notes → New Component: Data Table February 10, 2025 Introducing our new Data Table component with sorting, filtering, and pagination. View Component → Updated Accessibility Guidelines January 28, 2025 Our accessibility guidelines have been updated to follow WCAG 2.2 standards. View Guidelines → Ready to get started? Join thousands of developers building better enterprise applications with our design system. Get Started View Examples",
@@ -248,17 +237,6 @@
         "url": "/resources/migration-tools/",
         "content": "Migration Tools The Enterprise Documentation System (EDS) provides a suite of tools to help migrate content from legacy documentation systems into our unified 11ty-based platform. These tools are designed to preserve content structure and formatting while converting to Markdown format, which is the standard for our documentation. Available Migration Utilities The following migration utilities are available to help you convert content from various sources: HTML to Markdown Converter Converts HTML-based legacy sites to Markdown format. This utility can handle: Generic HTML content Confluence-specific HTML formats SharePoint-specific HTML formats Jira documentation WordPress content XML to Markdown Converter Converts XML-based documentation formats to Markdown, supporting: DITA XML DocBook XML Generic XML structures Nunjucks to Markdown Converter Converts Nunjucks templates to Markdown format, useful for migrating from other 11ty-based sites. Markdown Formatter Formats and normalizes converted Markdown files to ensure they adhere to our documentation standards and styling conventions. Migration CLI Tool We provide a command-line interface (CLI) tool that makes it easy to run migrations either on individual files or in batch mode for entire directories. Installation The migration tools are included in the repository. Before using them, make sure you have the necessary dependencies installed: npm install Basic Usage Single File Conversion To convert a single file from a legacy format to Markdown: node scripts/migration/migrate.js convert source.html destination.md --type html Batch Conversion To convert multiple files in a directory: node scripts/migration/migrate.js batch source-directory/ destination-directory/ --type html Configuration File For more complex migration scenarios, you can create a configuration file: node scripts/migration/migrate.js schema migration-config.yml Then use the configuration file in your migration: node scripts/migration/migrate.js batch source-directory/ destination-directory/ --config migration-config.yml Migration Options The migration tools support the following options: Option Description --type Source file type (html, xml, njk) --site-type Type of site (confluence, sharepoint, jira, wordpress) --front-matter Additional front matter as JSON string --config Path to a YAML configuration file --recursive Process directories recursively (for batch operations) --pattern File name pattern to match (for batch operations) Best Practices for Content Migration When migrating content from legacy systems, consider the following best practices: Preparation Content Audit: Perform a content audit to identify what needs to be migrated and what can be discarded. Structure Planning: Map the structure of your legacy content to the new documentation structure. Test Migration: Run test migrations on a small subset of content before processing everything. During Migration Preserve Metadata: Make sure to capture and convert any metadata like authors, dates, and categories. Handle Images: Ensure images are properly transferred and references are updated. Check Links: Update internal links to reflect the new structure. Post-Migration Format Review: Review the formatting of migrated content to ensure it meets our standards. Structural Check: Verify the structure and navigation of the migrated content. Fix Broken Elements: Address any elements that didn&amp;#039;t convert properly. Example: Migrating from Confluence Here&amp;#039;s an example of migrating content from Confluence: # Create a migration configuration node scripts/migration/migrate.js schema confluence-migration.yml # Edit the configuration file to customize settings # Run the migration node scripts/migration/migrate.js batch confluence-export/ src/migrated-content/ --config confluence-migration.yml # Format the migrated content node src/utils/migration/md-formatter.js batch src/migrated-content/ Example Configuration File Here&amp;#039;s an example of a migration configuration file: # Migration Configuration type: html siteType: confluence # Processing options options: recursive: true pattern: &amp;quot;*.html&amp;quot; # Image handling images: handling: copy destDir: &amp;quot;src/assets/images/migrated&amp;quot; baseUrl: &amp;quot;/assets/images/migrated&amp;quot; # Front matter to add to all converted files frontMatter: layout: layouts/base.njk eleventyNavigation: key: Migrated Content parent: Documentation tags: - migrated migrationSource: &amp;quot;Confluence&amp;quot; migrationDate: &amp;quot;2025-02-27&amp;quot; Technical Documentation For detailed technical documentation on the migration utilities, refer to: HTML to Markdown Converter API XML to Markdown Converter API Nunjucks to Markdown Converter API Markdown Formatter API Getting Help If you encounter issues with the migration tools, please reach out to the Documentation Team or file an issue in the repository.",
         "description": "Tools and utilities for migrating legacy documentation to the Enterprise Documentation System",
-        "type": "Page",
-        "date": "2025-02-27"
-      },
-    
-  
-    
-      {
-        "title": "Enterprise Design System",
-        "url": "/",
-        "content": "Welcome to the Enterprise Design System The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products. Recent Updates Version 2.0 Released: Our latest version includes improved accessibility, new components, and enhanced documentation. Learn more Dark Mode Support: All components now support dark mode out of the box, with seamless theme switching. Expanded Component Library: We&amp;#039;ve added 15 new components based on user feedback and real-world use cases. About the Design System The Enterprise Design System is built on the following principles: Consistency: Creating a unified experience across all enterprise applications. Accessibility: Ensuring all components meet WCAG 2.1 AA standards. Flexibility: Providing components that can be customized to meet various needs. Performance: Optimizing components for fast load times and smooth interactions. Maintainability: Creating a system that is easy to update and extend. Visit our getting started guide to learn how to integrate the design system into your projects.",
-        "description": "A comprehensive design system for building consistent, accessible, and beautiful enterprise applications",
         "type": "Page",
         "date": "2025-02-27"
       },
@@ -401,17 +379,6 @@
         "title": "Sample HTML Document",
         "url": "/migrated/test-migration/sample-page/",
         "content": "Sample HTML Document This content was migrated from HTML. Review may be needed.",
-        "description": "",
-        "type": "Page",
-        "date": "2025-03-02"
-      },
-    
-  
-    
-      {
-        "title": "Sample Component",
-        "url": "/migrated/test-migration/sample-component/",
-        "content": "&amp;lt;!DOCTYPE html&amp;gt; Sample Component | Enterprise Design System /* Global icon sizing fix */ svg { max-width: 100%; max-height: 100%; height: 1em; width: 1em; } /* Ensure proper sizing for specific icons */ svg.h-5 { height: 1.25rem !important; width: 1.25rem !important; } svg.h-6 { height: 1.5rem !important; width: 1.5rem !important; } svg.h-8 { height: 2rem !important; width: 2rem !important; } /* Typography improvements */ .prose { color: var(--color-text) !important; } .prose h1, .prose h2, .prose h3, .prose h4 { color: var(--color-text) !important; } .prose a { color: var(--color-primary) !important; text-decoration-color: var(--color-primary) !important; } .prose code { background-color: var(--color-bg-alt) !important; color: var(--color-text) !important; } Enterprise Design System Overview Foundations Components Browse Main Navigation Overview Foundations Components Browse Browse Components By Channel By Type By Owner Resources Getting Started Guidelines Templates Resources What&amp;#039;s New Switch to Light Mode Switch to Dark Mode Enterprise Design System A comprehensive design system for building consistent, accessible, and beautiful enterprise applications. Resources Getting Started Examples Templates Release Notes Navigation Browse by Channel Browse by Type Browse by Owner Search Support Help &amp;amp;amp; Support FAQ Contribute Contact Us © 2025 Enterprise Design System. All rights reserved. Privacy Policy Terms of Service Sitemap",
         "description": "",
         "type": "Page",
         "date": "2025-03-02"
@@ -3319,6 +3286,39 @@
         "description": "Examples of different checkbox group variants and use cases",
         "type": "Page",
         "date": "2025-03-04"
+      },
+    
+  
+    
+      {
+        "title": "Sample Component",
+        "url": "/migrated/test-migration/sample-component/",
+        "content": "&amp;lt;!DOCTYPE html&amp;gt; Sample Component | Enterprise Design System /* Global icon sizing fix */ svg { max-width: 100%; max-height: 100%; height: 1em; width: 1em; } /* Ensure proper sizing for specific icons */ svg.h-5 { height: 1.25rem !important; width: 1.25rem !important; } svg.h-6 { height: 1.5rem !important; width: 1.5rem !important; } svg.h-8 { height: 2rem !important; width: 2rem !important; } /* Typography improvements */ .prose { color: var(--color-text) !important; } .prose h1, .prose h2, .prose h3, .prose h4 { color: var(--color-text) !important; } .prose a { color: var(--color-primary) !important; text-decoration-color: var(--color-primary) !important; } .prose code { background-color: var(--color-bg-alt) !important; color: var(--color-text) !important; } Enterprise Design System Overview Foundations Components Browse Main Navigation Overview Foundations Components Browse Browse Components By Channel By Type By Owner Resources Getting Started Guidelines Templates Resources What&amp;#039;s New Switch to Light Mode Switch to Dark Mode Enterprise Design System A comprehensive design system for building consistent, accessible, and beautiful enterprise applications. Resources Getting Started Examples Templates Release Notes Navigation Browse by Channel Browse by Type Browse by Owner Search Support Help &amp;amp;amp; Support FAQ Contribute Contact Us © 2025 Enterprise Design System. All rights reserved. Privacy Policy Terms of Service Sitemap",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-05"
+      },
+    
+  
+    
+      {
+        "title": "Enterprise Design System",
+        "url": "/",
+        "content": "Welcome to the Enterprise Design System The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products. Recent Updates Version 2.0 Released: Our latest version includes improved accessibility, new components, and enhanced documentation. Learn more Dark Mode Support: All components now support dark mode out of the box, with seamless theme switching. Expanded Component Library: We&amp;#039;ve added 15 new components based on user feedback and real-world use cases. About the Design System The Enterprise Design System is built on the following principles: Consistency: Creating a unified experience across all enterprise applications. Accessibility: Ensuring all components meet WCAG 2.1 AA standards. Flexibility: Providing components that can be customized to meet various needs. Performance: Optimizing components for fast load times and smooth interactions. Maintainability: Creating a system that is easy to update and extend. Visit our getting started guide to learn how to integrate the design system into your projects.",
+        "description": "A comprehensive design system for building consistent, accessible, and beautiful enterprise applications",
+        "type": "Page",
+        "date": "2025-03-05"
+      },
+    
+  
+    
+      {
+        "title": "Enterprise Design System",
+        "url": "/alternative-home/",
+        "content": "Enterprise Design System A unified platform for building consistent, accessible, and high-quality enterprise applications Get Started View Components What&amp;#039;s New Version 2.0 Released February 15, 2025 We&amp;#039;ve released version 2.0 of the Enterprise Design System with new components, improved documentation, and better accessibility. Read more New Data Table Component February 10, 2025 The new Data Table component provides a powerful way to display and interact with structured data in your applications. View component Improved Accessibility February 5, 2025 All components have been audited and updated to ensure compliance with WCAG 2.1 AA accessibility standards. Read guidelines Component Categories All Components View all All Components components Layout Accordion stable Card stable Grid stable Container stable View all Layout components Navigation Breadcrumb stable Menu stable Tabs stable Pagination stable View all Navigation components Feedback Alert stable Progress stable Toast stable Skeleton experimental View all Feedback components Inputs Button stable Input stable Checkbox stable Radio stable View all Inputs components Get Started Design Tokens Learn how to use our design tokens to maintain consistent styling across your applications. Explore design tokens Guidelines Discover our design and development guidelines to ensure consistency across your projects. Review guidelines Patterns Explore common UI patterns and learn how to solve common design challenges in your applications. Explore patterns Resources Figma Library Access our Figma component library to kickstart your design process. Sketch Library Download our Sketch component library for designing with the Enterprise Design System. Icon Library Browse and download our comprehensive collection of UI icons. Starter Templates Get a head start with our application templates and boilerplates.",
+        "description": "A unified documentation platform for the Enterprise Design System",
+        "type": "Page",
+        "date": "2025-03-05"
       }
     
   
