@@ -16,60 +16,8 @@
   <!-- Scripts -->
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/theme.js" defer></script>
-  <script src="/assets/js/navigation.js" defer></script>
   <script src="/assets/js/framer-motion-wrapper.js" defer></script>
   <script src="/assets/js/tabs.js" defer></script>
-  
-  <!-- Inline navigation script as fallback -->
-  <script>
-    // Wait until the DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      // Give a moment for everything to render
-      setTimeout(function() {
-        // Find all navigation toggle buttons
-        var toggleButtons = document.querySelectorAll('button.nav-toggle');
-        
-        console.log('Inline script found ' + toggleButtons.length + ' navigation toggle buttons');
-        
-        // Set up click handler for each button
-        toggleButtons.forEach(function(button) {
-          button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            var isExpanded = this.getAttribute('aria-expanded') === 'true';
-            var targetId = this.getAttribute('aria-controls');
-            var targetMenu = document.getElementById(targetId);
-            
-            console.log('Toggle clicked: ' + targetId + ', current state: ' + (isExpanded ? 'expanded' : 'collapsed'));
-            
-            // Toggle expanded state
-            this.setAttribute('aria-expanded', !isExpanded);
-            
-            // Toggle submenu visibility
-            if (targetMenu) {
-              if (isExpanded) {
-                targetMenu.classList.add('hidden');
-                
-                // Rotate chevron down
-                var chevron = this.querySelector('.chevron-icon svg');
-                if (chevron) {
-                  chevron.innerHTML = '<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />';
-                }
-              } else {
-                targetMenu.classList.remove('hidden');
-                
-                // Rotate chevron up
-                var chevron = this.querySelector('.chevron-icon svg');
-                if (chevron) {
-                  chevron.innerHTML = '<path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />';
-                }
-              }
-            }
-          });
-        });
-      }, 500);
-    });
-  </script>
   
   <!-- Fix for SVG icon sizing -->
   <style>
@@ -229,339 +177,101 @@
       <div class="sticky top-20">
         
 
-<nav class="nav-main left-navigation" aria-label="Main navigation">
+<nav class="nav-main left-navigation">
   <div class="space-y-6">
     
     <div class="space-y-2">
       <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Main Sections</h3>
       <ul class="space-y-2">
-        
         <li>
           <a href="/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
             Home
           </a>
         </li>
-
-        
-        <li class="nav-item">
-          <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors " aria-expanded="false" aria-controls="design-system-submenu">
-            <span>Design System</span>
-            <span class="chevron-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </span>
-          </button>
-          <ul id="design-system-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
-            
-            <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors " aria-expanded="false" aria-controls="foundations-submenu">
-                <span>Foundations</span>
-                <span class="chevron-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
-                </span>
-              </button>
-              <ul id="foundations-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
-                <li>
-                  <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Colors
-                  </a>
-                </li>
-                <li>
-                  <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Typography
-                  </a>
-                </li>
-                <li>
-                  <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Spacing
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+        <li>
+          <a href="/design-system/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Design System
+          </a>
+          
         </li>
-
-        
-        <li class="nav-item">
-          <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium" aria-expanded="true" aria-controls="components-submenu">
+        <li>
+          <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
             <span>Components</span>
-            <span class="chevron-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
+            <span class="text-xs">
+              
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+              
             </span>
-          </button>
-          <ul id="components-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 ">
-            
-            <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors " aria-expanded="false" aria-controls="all-components-submenu">
+          </a>
+          
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
+            <li>
+              <a href="/components/all/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
                 <span>All</span>
-                <span class="chevron-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
+                <span class="text-xs">
+                  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  
                 </span>
-              </button>
-              <ul id="all-components-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
-                <li>
-                  <a href="/components/all/alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Alert
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/breadcrumbs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Breadcrumbs
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/button/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Button
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/checkbox/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Checkbox
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/checkbox-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Checkbox Group
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/chip/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Chip
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/content-block/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Content Block
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/description-list/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Description List
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/expand-collapse/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Expand Collapse
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/field-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Field Group
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/field-key/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Field Key
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/file-upload/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    File Upload
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/form-actions/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Form Actions
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/grid/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Grid
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/icon/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Icon
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/image/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Image
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/inline-alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Inline Alert
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/input/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Input
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/label/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Label
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/link/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Link
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/list-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    List Group
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/menu/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Menu
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/modal/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Modal
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/progress-indicator/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Progress Indicator
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/radio/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Radio
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/radio-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Radio Group
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/select/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Select
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/switch/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Switch
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/tab-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Tab Group
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/table/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Table
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/textarea/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Textarea
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/toast/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Toast
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/all/tooltip/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Tooltip
-                  </a>
-                </li>
-              </ul>
+              </a>
+              
             </li>
-            
-            
-            <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors " aria-expanded="false" aria-controls="layout-components-submenu">
+            <li>
+              <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
                 <span>Layout</span>
-                <span class="chevron-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
+                <span class="text-xs">
+                  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  
                 </span>
-              </button>
-              <ul id="layout-components-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
-                <li>
-                  <a href="/components/layout/accordion/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Accordion
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/layout/container/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Container
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/layout/divider/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Divider
-                  </a>
-                </li>
-              </ul>
+              </a>
+              
             </li>
-            
-            
-            <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors " aria-expanded="false" aria-controls="navigation-components-submenu">
+            <li>
+              <a href="/components/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
                 <span>Navigation</span>
-                <span class="chevron-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
+                <span class="text-xs">
+                  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  
                 </span>
-              </button>
-              <ul id="navigation-components-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
-                <li>
-                  <a href="/components/navigation/pagination/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Pagination
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/navigation/tabs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Tabs
-                  </a>
-                </li>
-              </ul>
+              </a>
+              
             </li>
-            
-            
-            <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors " aria-expanded="false" aria-controls="feedback-components-submenu">
+            <li>
+              <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
                 <span>Feedback</span>
-                <span class="chevron-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
+                <span class="text-xs">
+                  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  
                 </span>
-              </button>
-              <ul id="feedback-components-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
-                <li>
-                  <a href="/components/feedback/loading-spinner/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Loading Spinner
-                  </a>
-                </li>
-                <li>
-                  <a href="/components/feedback/badge/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
-                    Badge
-                  </a>
-                </li>
-              </ul>
+              </a>
+              
             </li>
-            
-            
-            <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium" aria-expanded="true" aria-controls="inputs-components-submenu">
+            <li>
+              <a href="/components/inputs/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
                 <span>Inputs</span>
-                <span class="chevron-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
+                <span class="text-xs">
+                  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                  
                 </span>
-              </button>
-              <ul id="inputs-components-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 ">
+              </a>
+              
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
                 
                   <li>
                     <a href="/components/inputs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
@@ -582,11 +292,11 @@
                   </li>
                 
               </ul>
+              
             </li>
           </ul>
+          
         </li>
-        
-        
         <li>
           <a href="/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Browse</span>
@@ -600,38 +310,6 @@
           </a>
           
         </li>
-        
-        
-        <li>
-          <a href="/guidelines/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Guidelines</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-        </li>
-        
-        
-        <li>
-          <a href="/guides/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Guides</span>
-            <span class="text-xs">
-              
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              
-            </span>
-          </a>
-          
-        </li>
-        
-        
         <li>
           <a href="/resources/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Resources</span>
@@ -645,11 +323,23 @@
           </a>
           
         </li>
-        
-        
         <li>
-          <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
-            <span>Legacy Docs</span>
+          <a href="/support/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Support
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    
+    
+    
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Migrated Content</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/migrated/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+            <span>Migrated Overview</span>
             <span class="text-xs">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -660,8 +350,39 @@
           </a>
           
         </li>
-        
-        
+      </ul>
+    </div>
+    
+    
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Legacy Content</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/legacy-docs/converted/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+            <span>Converted Legacy</span>
+            <span class="text-xs">
+              
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              
+            </span>
+          </a>
+          
+        </li>
+        <li>
+          <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+            <span>Preserved Legacy</span>
+            <span class="text-xs">
+              
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              
+            </span>
+          </a>
+          
+        </li>
         <li>
           <a href="/components/shared/migration-examples/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
             <span>Migration Examples</span>
@@ -679,65 +400,6 @@
     </div>
   </div>
 </nav>
-
-<script>
-// Simple navigation toggle script - directly embedded in the page
-(function() {
-  // Execute immediately when the script loads
-  setupNavigation();
-
-  // Main function to set up the navigation
-  function setupNavigation() {
-    // Get all toggle buttons on the page
-    let toggleButtons = document.querySelectorAll('button.nav-toggle');
-    console.log('Found ' + toggleButtons.length + ' toggle buttons');
-    
-    // Add click handlers to each button
-    toggleButtons.forEach(function(button) {
-      button.addEventListener('click', function() {
-        // Get the current expanded state
-        let isExpanded = this.getAttribute('aria-expanded') === 'true';
-        
-        // Get the target menu
-        let targetId = this.getAttribute('aria-controls');
-        let targetMenu = document.getElementById(targetId);
-        
-        // Log for debugging
-        console.log('Toggle clicked: ' + targetId + ', current state: ' + (isExpanded ? 'expanded' : 'collapsed'));
-        
-        // Toggle the expanded state
-        this.setAttribute('aria-expanded', !isExpanded);
-        
-        // Toggle the submenu visibility
-        if (targetMenu) {
-          if (isExpanded) {
-            // If expanded, hide it
-            targetMenu.classList.add('hidden');
-            
-            // Rotate chevron down
-            let chevron = this.querySelector('.chevron-icon svg');
-            if (chevron) {
-              chevron.innerHTML = '<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />';
-            }
-          } else {
-            // If collapsed, show it
-            targetMenu.classList.remove('hidden');
-            
-            // Rotate chevron up
-            let chevron = this.querySelector('.chevron-icon svg');
-            if (chevron) {
-              chevron.innerHTML = '<path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />';
-            }
-          }
-        }
-      });
-    });
-  }
-  
-  // Also add a DOMContentLoaded handler as a backup
-  document.addEventListener('DOMContentLoaded', setupNavigation);
-})();
-</script>
       </div>
     </aside>
     
