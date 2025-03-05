@@ -15,7 +15,7 @@
 
         {# Design System with submenu #}
         <li class="nav-item">
-          <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-system') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/design-system/') %}true{% else %}false{% endif %}" aria-controls="design-system-submenu">
+          <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-system') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/design-system/') %}true{% else %}false{% endif %}" aria-controls="design-system-submenu" onclick="toggleSubmenu(this, 'design-system-submenu')">
             <span>Design System</span>
             <span class="chevron-icon">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -26,7 +26,7 @@
           <ul id="design-system-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 {% if not currentUrl.includes('/design-system/') %}hidden{% endif %}">
             {# Foundations with submenu #}
             <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-system/foundations/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/design-system/foundations/') %}true{% else %}false{% endif %}" aria-controls="foundations-submenu">
+              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/design-system/foundations/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/design-system/foundations/') %}true{% else %}false{% endif %}" aria-controls="foundations-submenu" onclick="toggleSubmenu(this, 'foundations-submenu')">
                 <span>Foundations</span>
                 <span class="chevron-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -57,7 +57,7 @@
 
         {# Components with submenu #}
         <li class="nav-item">
-          <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/') %}true{% else %}false{% endif %}" aria-controls="components-submenu">
+          <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/') %}true{% else %}false{% endif %}" aria-controls="components-submenu" onclick="toggleSubmenu(this, 'components-submenu')">
             <span>Components</span>
             <span class="chevron-icon">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -68,7 +68,7 @@
           <ul id="components-submenu" class="nav-submenu ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 {% if not currentUrl.includes('/components/') %}hidden{% endif %}">
             {# All Components with submenu #}
             <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/all/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/all/') %}true{% else %}false{% endif %}" aria-controls="all-components-submenu">
+              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/all/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/all/') %}true{% else %}false{% endif %}" aria-controls="all-components-submenu" onclick="toggleSubmenu(this, 'all-components-submenu')">
                 <span>All</span>
                 <span class="chevron-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -247,7 +247,7 @@
             
             {# Layout Components with submenu #}
             <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/layout/') %}true{% else %}false{% endif %}" aria-controls="layout-components-submenu">
+              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/layout/') %}true{% else %}false{% endif %}" aria-controls="layout-components-submenu" onclick="toggleSubmenu(this, 'layout-components-submenu')">
                 <span>Layout</span>
                 <span class="chevron-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -276,7 +276,7 @@
             
             {# Navigation Components with submenu #}
             <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/navigation/') %}true{% else %}false{% endif %}" aria-controls="navigation-components-submenu">
+              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/navigation/') %}true{% else %}false{% endif %}" aria-controls="navigation-components-submenu" onclick="toggleSubmenu(this, 'navigation-components-submenu')">
                 <span>Navigation</span>
                 <span class="chevron-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -300,7 +300,7 @@
             
             {# Feedback Components with submenu #}
             <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/feedback/') %}true{% else %}false{% endif %}" aria-controls="feedback-components-submenu">
+              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/feedback/') %}true{% else %}false{% endif %}" aria-controls="feedback-components-submenu" onclick="toggleSubmenu(this, 'feedback-components-submenu')">
                 <span>Feedback</span>
                 <span class="chevron-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -324,7 +324,7 @@
             
             {# Inputs Components with submenu #}
             <li class="nav-item">
-              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/inputs/') %}true{% else %}false{% endif %}" aria-controls="inputs-components-submenu">
+              <button type="button" class="nav-toggle w-full flex items-center justify-between py-1 text-left hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') %}text-[var(--color-primary)] font-medium{% endif %}" aria-expanded="{% if currentUrl.includes('/components/inputs/') %}true{% else %}false{% endif %}" aria-controls="inputs-components-submenu" onclick="toggleSubmenu(this, 'inputs-components-submenu')">
                 <span>Inputs</span>
                 <span class="chevron-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -540,6 +540,57 @@
     </div>
   </div>
 </nav>
+
+<script>
+  function toggleSubmenu(button, targetId) {
+    // Prevent default button action
+    event.preventDefault();
+    
+    // Get current expanded state
+    var isExpanded = button.getAttribute('aria-expanded') === 'true';
+    var targetMenu = document.getElementById(targetId);
+    
+    console.log('Toggle clicked: ' + targetId + ', current state: ' + (isExpanded ? 'expanded' : 'collapsed'));
+    
+    // Toggle expanded state
+    button.setAttribute('aria-expanded', !isExpanded);
+    
+    // Toggle submenu visibility
+    if (targetMenu) {
+      if (isExpanded) {
+        targetMenu.classList.add('hidden');
+        
+        // Rotate chevron down
+        var chevron = button.querySelector('.chevron-icon svg');
+        if (chevron) {
+          chevron.innerHTML = '<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />';
+        }
+      } else {
+        targetMenu.classList.remove('hidden');
+        
+        // Rotate chevron up
+        var chevron = button.querySelector('.chevron-icon svg');
+        if (chevron) {
+          chevron.innerHTML = '<path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />';
+        }
+      }
+    }
+  }
+  
+  // Initialize all navigation toggle buttons at load time
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add onclick handler to all nav-toggle buttons
+    var toggleButtons = document.querySelectorAll('button.nav-toggle');
+    console.log('Found ' + toggleButtons.length + ' navigation toggle buttons in left-navigation.njk');
+    
+    toggleButtons.forEach(function(button) {
+      if (!button.hasAttribute('onclick')) {
+        var targetId = button.getAttribute('aria-controls');
+        button.setAttribute('onclick', 'toggleSubmenu(this, "' + targetId + '")');
+      }
+    });
+  });
+</script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
