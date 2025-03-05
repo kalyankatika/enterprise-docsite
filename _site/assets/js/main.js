@@ -26,9 +26,4 @@ document.addEventListener('DOMContentLoaded', function() {
       heading.appendChild(anchor);
     }
   });
-  
-  // Load navigation functionality (defined in navigation.js)
-  if (typeof initializeNavigation === 'function') {
-    initializeNavigation();
-  }
 });
