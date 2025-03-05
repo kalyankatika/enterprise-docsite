@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enterprise Design System | Enterprise Design System</title>
-  <meta name="description" content="A comprehensive design system for building consistent, accessible, and beautiful enterprise applications">
+  <meta name="description" content="A unified documentation platform for the Enterprise Design System">
   
   <!-- Load Tailwind CSS from CDN for reliable rendering -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -171,255 +171,870 @@
 
   <main class="flex-1">
     
-<!-- Hero section with subtle animations -->
-<div class="bg-[var(--color-bg)] py-20 md:py-24 border-b border-[var(--color-border)]">
-  <div class="container mx-auto px-4 md:px-6 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6 hero-title" data-motion="fade-in">
-      Grow and evolve while<br>staying true to who we are.
-    </h1>
+<div class="container mx-auto px-4 md:px-6 py-8">
+  <div class="flex flex-col md:flex-row">
+    <!-- Left Navigation Sidebar -->
+    <aside class="w-full md:w-64 lg:w-72 flex-shrink-0 mb-8 md:mb-0 md:mr-8">
+      <div class="sticky top-20">
+        
+
+<nav class="nav-main left-navigation">
+  <div class="space-y-6">
     
-    <p class="text-xl max-w-3xl mx-auto mb-10 text-[var(--color-text-muted)]" data-motion="fade-in-up">
-      Enterprise Design System are the guidelines and resources that ensure consistency and continuity across our brand and design system.
-    </p>
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Main Sections</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/" class="block py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/design-system/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+            <span>Design System</span>
+            <span class="text-xs chevron-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+            <li>
+              <a href="/design-system/foundations/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+                <span>Foundations</span>
+                <span class="text-xs chevron-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+                <li>
+                  <a href="/design-system/foundations/colors/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Colors
+                  </a>
+                </li>
+                <li>
+                  <a href="/design-system/foundations/typography/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Typography
+                  </a>
+                </li>
+                <li>
+                  <a href="/design-system/foundations/spacing/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Spacing
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        
+        
+        <li>
+          <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+            <span>Components</span>
+            <span class="text-xs chevron-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+            
+            
+            <li>
+              <a href="/components/all/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+                <span>All</span>
+                <span class="text-xs chevron-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+                <li>
+                  <a href="/components/all/alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Alert
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/breadcrumbs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Breadcrumbs
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/button/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Button
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/checkbox/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Checkbox
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/checkbox-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Checkbox Group
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/chip/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Chip
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/content-block/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Content Block
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/description-list/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Description List
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/expand-collapse/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Expand Collapse
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/field-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Field Group
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/field-key/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Field Key
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/file-upload/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    File Upload
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/form-actions/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Form Actions
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/grid/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Grid
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/icon/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Icon
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/image/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Image
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/inline-alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Inline Alert
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/input/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Input
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/label/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Label
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/link/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Link
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/list-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    List Group
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/menu/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Menu
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/modal/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Modal
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/progress-indicator/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Progress Indicator
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/radio/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Radio
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/radio-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Radio Group
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/select/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Select
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/switch/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Switch
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/tab-group/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Tab Group
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/table/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Table
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/tag/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Tag
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/text-input/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Text Input
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/textarea/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Textarea
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/tile/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Tile
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/all/tooltip/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Tooltip
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            
+            <li>
+              <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+                <span>Layout</span>
+                <span class="text-xs chevron-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+                <li>
+                  <a href="/components/layout/accordion/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Accordion
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/layout/card/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Card
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/layout/grid/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Grid
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/layout/modal/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Modal
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/layout/tabs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Tabs
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/layout/divider/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Divider
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            
+            <li>
+              <a href="/components/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+                <span>Navigation</span>
+                <span class="text-xs chevron-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+                <li>
+                  <a href="/components/navigation/breadcrumbs/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Breadcrumbs
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/navigation/menu/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Menu
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/navigation/pagination/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Pagination
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            
+            <li>
+              <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+                <span>Feedback</span>
+                <span class="text-xs chevron-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+                <li>
+                  <a href="/components/feedback/alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Alert
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/feedback/inline-alert/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Inline Alert
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/feedback/progress-indicator/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Progress Indicator
+                  </a>
+                </li>
+                <li>
+                  <a href="/components/feedback/tooltip/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Tooltip
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        
+        
+        <li>
+          <a href="/migrated/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+            <span>Migrated Content</span>
+            <span class="text-xs chevron-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+            <li>
+              <a href="/migrated/test-migration/sample/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Sample Page
+              </a>
+            </li>
+            <li>
+              <a href="/migrated/test-migration/sample-component/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Sample Component
+              </a>
+            </li>
+            <li>
+              <a href="/migrated/test-migration/sample-doc/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Sample Document
+              </a>
+            </li>
+          </ul>
+        </li>
+        
+        
+        <li>
+          <a href="/legacy-docs/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+            <span>Legacy Documents</span>
+            <span class="text-xs chevron-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+            
+            
+            <li>
+              <a href="/legacy-docs/converted/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+                <span>Converted (MD)</span>
+                <span class="text-xs chevron-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+                <li>
+                  <a href="/legacy-docs/converted/legacy-component/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Legacy Component
+                  </a>
+                </li>
+                <li>
+                  <a href="/legacy-docs/converted/legacy-page/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Legacy Page
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            
+            <li>
+              <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+                <span>Original (NJK)</span>
+                <span class="text-xs chevron-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+                <li>
+                  <a href="/legacy-docs/njk/legacy-component/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Legacy Component
+                  </a>
+                </li>
+                <li>
+                  <a href="/legacy-docs/njk/legacy-page/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                    Legacy Page
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        
+        
+        <li>
+          <a href="/components/shared/migration-examples/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
+            <span>Migration Examples</span>
+            <span class="text-xs chevron-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </a>
+          <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1 hidden">
+            <li>
+              <a href="/components/shared/migration-examples/legacy-component-preserved/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Legacy Component (Preserved)
+              </a>
+            </li>
+            <li>
+              <a href="/components/shared/migration-examples/legacy-page-converted/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+                Legacy Page (Converted)
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  
     
-    
-    <div class="flex flex-col md:flex-row gap-4 justify-center" data-motion="fade-in-up">
-      <a href="/getting-started/" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
-        Get Started
-      </a>
-      <a href="/components/" class="animated-button inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">
-        Browse Components
-      </a>
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Getting Help</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/getting-started/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Getting Started
+          </a>
+        </li>
+        <li>
+          <a href="/guides/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Guides
+          </a>
+        </li>
+        <li>
+          <a href="/resources/migration-tools/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Migration Tools
+          </a>
+        </li>
+      </ul>
     </div>
     
+    
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Navigation Models</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/navigation/by-type/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            By Type
+          </a>
+        </li>
+        <li>
+          <a href="/navigation/by-channel/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            By Channel
+          </a>
+        </li>
+        <li>
+          <a href="/navigation/by-owner/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            By Owner
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    
+    <div class="space-y-2">
+      <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Updates</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="/updates/2025-02-15-version-2-release/" class="block py-1 hover:text-[var(--color-primary)] transition-colors ">
+            Version 2.0 Release
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <div class="flex-1 min-w-0">
+      
+<div class="space-y-8">
+  <div>
+    <h1 class="text-3xl font-bold text-[var(--color-text)] mb-4">Enterprise Design System</h1>
+    <p class="text-xl text-[var(--color-text-muted)] mb-6">A unified platform for building consistent, accessible, and high-quality enterprise applications</p>
+    
+    <div class="flex flex-wrap gap-4 mb-8">
+      <a href="/getting-started/" class="px-4 py-2 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">Get Started</a>
+      <a href="/components/" class="px-4 py-2 border border-[var(--color-border)] rounded-md hover:bg-[var(--color-bg-alt)] transition-colors">View Components</a>
+    </div>
+  </div>
+  
+  <div class="border-t border-[var(--color-border)] pt-8">
+    <h2 class="text-2xl font-bold mb-6">What's New</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden shadow-sm">
+        <div class="p-4 border-b border-[var(--color-border)]">
+          <h3 class="font-bold">Version 2.0 Released</h3>
+          <p class="text-sm text-[var(--color-text-muted)]">February 15, 2025</p>
+        </div>
+        <div class="p-4">
+          <p>We've released version 2.0 of the Enterprise Design System with new components, improved documentation, and better accessibility.</p>
+        </div>
+        <div class="p-4 border-t border-[var(--color-border)]">
+          <a href="/updates/2025-02-15-version-2-release/" class="text-[var(--color-primary)] hover:underline">Read more</a>
+        </div>
+      </div>
+      
+      <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden shadow-sm">
+        <div class="p-4 border-b border-[var(--color-border)]">
+          <h3 class="font-bold">New Data Table Component</h3>
+          <p class="text-sm text-[var(--color-text-muted)]">February 10, 2025</p>
+        </div>
+        <div class="p-4">
+          <p>The new Data Table component provides a powerful way to display and interact with structured data in your applications.</p>
+        </div>
+        <div class="p-4 border-t border-[var(--color-border)]">
+          <a href="/components/data/table/" class="text-[var(--color-primary)] hover:underline">View component</a>
+        </div>
+      </div>
+      
+      <div class="bg-[var(--color-bg)] border border-[var(--color-border)] rounded-lg overflow-hidden shadow-sm">
+        <div class="p-4 border-b border-[var(--color-border)]">
+          <h3 class="font-bold">Improved Accessibility</h3>
+          <p class="text-sm text-[var(--color-text-muted)]">February 5, 2025</p>
+        </div>
+        <div class="p-4">
+          <p>All components have been audited and updated to ensure compliance with WCAG 2.1 AA accessibility standards.</p>
+        </div>
+        <div class="p-4 border-t border-[var(--color-border)]">
+          <a href="/guidelines/accessibility/" class="text-[var(--color-primary)] hover:underline">Read guidelines</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="border-t border-[var(--color-border)] pt-8">
+    <h2 class="text-2xl font-bold mb-6">Component Categories</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div class="bg-[var(--color-bg)] p-4 border border-[var(--color-border)] rounded-lg">
+        <h3 class="font-bold mb-3">All Components</h3>
+        <ul class="space-y-2 mb-4">
+          
+        </ul>
+        <a href="/components/#all-components" class="text-[var(--color-primary)] text-sm hover:underline">View all All Components components</a>
+      </div>
+      
+      <div class="bg-[var(--color-bg)] p-4 border border-[var(--color-border)] rounded-lg">
+        <h3 class="font-bold mb-3">Layout</h3>
+        <ul class="space-y-2 mb-4">
+          
+          <li>
+            <a href="/components/layout/accordion/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Accordion</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/layout/card/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Card</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/layout/grid/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Grid</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/layout/container/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Container</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+        </ul>
+        <a href="/components/#layout" class="text-[var(--color-primary)] text-sm hover:underline">View all Layout components</a>
+      </div>
+      
+      <div class="bg-[var(--color-bg)] p-4 border border-[var(--color-border)] rounded-lg">
+        <h3 class="font-bold mb-3">Navigation</h3>
+        <ul class="space-y-2 mb-4">
+          
+          <li>
+            <a href="/components/navigation/breadcrumb/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Breadcrumb</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/navigation/menu/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Menu</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/navigation/tabs/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Tabs</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/navigation/pagination/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Pagination</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+        </ul>
+        <a href="/components/#navigation" class="text-[var(--color-primary)] text-sm hover:underline">View all Navigation components</a>
+      </div>
+      
+      <div class="bg-[var(--color-bg)] p-4 border border-[var(--color-border)] rounded-lg">
+        <h3 class="font-bold mb-3">Feedback</h3>
+        <ul class="space-y-2 mb-4">
+          
+          <li>
+            <a href="/components/feedback/alert/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Alert</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/feedback/progress/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Progress</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/feedback/toast/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Toast</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/feedback/skeleton/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Skeleton</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-experimental text-white">experimental</span>
+              
+            </a>
+          </li>
+          
+        </ul>
+        <a href="/components/#feedback" class="text-[var(--color-primary)] text-sm hover:underline">View all Feedback components</a>
+      </div>
+      
+      <div class="bg-[var(--color-bg)] p-4 border border-[var(--color-border)] rounded-lg">
+        <h3 class="font-bold mb-3">Inputs</h3>
+        <ul class="space-y-2 mb-4">
+          
+          <li>
+            <a href="/components/inputs/button/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Button</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/inputs/input/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Input</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/inputs/checkbox/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Checkbox</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+          <li>
+            <a href="/components/inputs/radio/" class="flex items-center justify-between group">
+              <span class="group-hover:text-[var(--color-primary)]">Radio</span>
+              
+              <span class="px-2 py-0.5 text-xs rounded bg-stable text-white">stable</span>
+              
+            </a>
+          </li>
+          
+        </ul>
+        <a href="/components/#inputs" class="text-[var(--color-primary)] text-sm hover:underline">View all Inputs components</a>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div class="border-t border-[var(--color-border)] pt-8">
+    <h2 class="text-2xl font-bold mb-6">Get Started</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)]">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+            <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+            <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <h3 class="font-bold mb-2">Design Tokens</h3>
+        <p class="mb-4 text-[var(--color-text-muted)]">Learn how to use our design tokens to maintain consistent styling across your applications.</p>
+        <a href="/design-tokens/" class="text-[var(--color-primary)] hover:underline">Explore design tokens</a>
+      </div>
+      
+      <div class="p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)]">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+          </svg>
+        </div>
+        <h3 class="font-bold mb-2">Guidelines</h3>
+        <p class="mb-4 text-[var(--color-text-muted)]">Discover our design and development guidelines to ensure consistency across your projects.</p>
+        <a href="/guidelines/" class="text-[var(--color-primary)] hover:underline">Review guidelines</a>
+      </div>
+      
+      <div class="p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)]">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="font-bold mb-2">Patterns</h3>
+        <p class="mb-4 text-[var(--color-text-muted)]">Explore common UI patterns and learn how to solve common design challenges in your applications.</p>
+        <a href="/patterns/" class="text-[var(--color-primary)] hover:underline">Explore patterns</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="border-t border-[var(--color-border)] pt-8">
+    <h2 class="text-2xl font-bold mb-6">Resources</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <a href="/resources/figma-library/" class="block p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)] hover:border-[var(--color-primary)] hover:shadow-md transition-all">
+        <h3 class="font-bold mb-2">Figma Library</h3>
+        <p class="text-[var(--color-text-muted)]">Access our Figma component library to kickstart your design process.</p>
+      </a>
+      
+      <a href="/resources/sketch-library/" class="block p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)] hover:border-[var(--color-primary)] hover:shadow-md transition-all">
+        <h3 class="font-bold mb-2">Sketch Library</h3>
+        <p class="text-[var(--color-text-muted)]">Download our Sketch component library for designing with the Enterprise Design System.</p>
+      </a>
+      
+      <a href="/resources/icon-library/" class="block p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)] hover:border-[var(--color-primary)] hover:shadow-md transition-all">
+        <h3 class="font-bold mb-2">Icon Library</h3>
+        <p class="text-[var(--color-text-muted)]">Browse and download our comprehensive collection of UI icons.</p>
+      </a>
+      
+      <a href="/resources/starter-templates/" class="block p-4 border border-[var(--color-border)] rounded-lg bg-[var(--color-bg)] hover:border-[var(--color-primary)] hover:shadow-md transition-all">
+        <h3 class="font-bold mb-2">Starter Templates</h3>
+        <p class="text-[var(--color-text-muted)]">Get a head start with our application templates and boilerplates.</p>
+      </a>
+    </div>
   </div>
 </div>
-
-<div class="container mx-auto px-4 md:px-6 py-16">
-  <!-- Categories Section -->
-  <section class="mb-20">
-    <h2 class="text-3xl font-bold mb-10 text-center" data-motion="fade-in">Documentation Categories</h2>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion="stagger-children">
-      
-      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-2">Components</h3>
-        <p class="text-[var(--color-text-muted)] mb-4">Explore our library of reusable components that follow our design guidelines and best practices.</p>
-        <a href="/components/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
-          Browse Components
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-      
-      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-2">Foundations</h3>
-        <p class="text-[var(--color-text-muted)] mb-4">Learn about the core design elements like colors, typography, spacing, and layout principles.</p>
-        <a href="/design-system/foundations/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
-          Browse Foundations
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-      
-      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-light)] text-[var(--color-primary)] mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-        </div>
-        <h3 class="text-xl font-bold mb-2">Guidelines</h3>
-        <p class="text-[var(--color-text-muted)] mb-4">Discover our guidelines for creating accessible, consistent, and user-friendly experiences.</p>
-        <a href="/design-system/guidelines/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
-          Browse Guidelines
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-      
     </div>
-  </section>
-  
-  <!-- Browse Perspectives Section -->
-  <section class="mb-20">
-    <h2 class="text-3xl font-bold mb-5 text-center" data-motion="fade-in">Browse Components</h2>
-    <p class="text-xl max-w-3xl mx-auto mb-10 text-center text-[var(--color-text-muted)]" data-motion="fade-in-up">
-      Discover components through multiple navigation perspectives to find exactly what you need.
-    </p>
-    
-    <div class="grid md:grid-cols-3 gap-8" data-motion="stagger-children">
-      <!-- By Channel -->
-      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
-        <h3 class="text-xl font-bold mb-3 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-          </svg>
-          By Channel
-        </h3>
-        <p class="text-[var(--color-text-muted)] mb-4">Find components organized by the channels or environments they're designed for.</p>
-        <ul class="space-y-1 mb-6">
-          <li class="text-[var(--color-text-muted)]">• Web Components</li>
-          <li class="text-[var(--color-text-muted)]">• Mobile Components</li>
-          <li class="text-[var(--color-text-muted)]">• Desktop Components</li>
-        </ul>
-        <a href="/navigation/by-channel/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
-          Browse by Channel
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-      
-      <!-- By Type -->
-      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
-        <h3 class="text-xl font-bold mb-3 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-          </svg>
-          By Type
-        </h3>
-        <p class="text-[var(--color-text-muted)] mb-4">Explore components categorized by their functional types and purposes.</p>
-        <ul class="space-y-1 mb-6">
-          <li class="text-[var(--color-text-muted)]">• Input Components</li>
-          <li class="text-[var(--color-text-muted)]">• Layout Components</li>
-          <li class="text-[var(--color-text-muted)]">• Navigation Components</li>
-          <li class="text-[var(--color-text-muted)]">• Feedback Components</li>
-        </ul>
-        <a href="/navigation/by-type/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
-          Browse by Type
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-      
-      <!-- By Owner -->
-      <div class="animated-card bg-[var(--color-bg)] p-6 rounded-lg border border-[var(--color-border)] shadow-sm hover:shadow-md transition-shadow">
-        <h3 class="text-xl font-bold mb-3 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          By Owner
-        </h3>
-        <p class="text-[var(--color-text-muted)] mb-4">Find components based on the teams responsible for their development and maintenance.</p>
-        <ul class="space-y-1 mb-6">
-          <li class="text-[var(--color-text-muted)]">• UI Core Team</li>
-          <li class="text-[var(--color-text-muted)]">• Frontend Platform Team</li>
-          <li class="text-[var(--color-text-muted)]">• Mobile Experience Team</li>
-          <li class="text-[var(--color-text-muted)]">• Design Systems Team</li>
-        </ul>
-        <a href="/navigation/by-owner/" class="text-[var(--color-primary)] font-medium inline-flex items-center hover:underline">
-          Browse by Owner
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-    </div>
-    
-    <div class="mt-10 text-center" data-motion="fade-in-up">
-      <a href="/navigation/" class="animated-button inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white rounded-md hover:bg-[var(--color-primary-dark)] transition-colors">
-        View Navigation Hub
-      </a>
-    </div>
-  </section>
-  
-  <!-- Featured Components with scale-in animation -->
-  <section class="mb-20">
-    <h2 class="text-3xl font-bold mb-10 text-center" data-motion="fade-in">Featured Components</h2>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-motion="stagger-children">
-      
-      <a href="/components/layout/accordion/" class="block group">
-        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Accordion</h3>
-          <p class="text-[var(--color-text-muted)] mb-4">Expandable content sections that help organize and declutter interfaces.</p>
-          <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
-            View Component
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </div>
-      </a>
-      
-      <a href="/components/inputs/button/" class="block group">
-        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Buttons</h3>
-          <p class="text-[var(--color-text-muted)] mb-4">Primary, secondary, and tertiary button styles with various states and sizes.</p>
-          <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
-            View Component
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </div>
-      </a>
-      
-      <a href="/components/layout/card/" class="block group">
-        <div class="animated-card bg-[var(--color-bg)] border border-[var(--color-border)] group-hover:border-[var(--color-primary)] rounded-lg p-6 h-full transition-colors">
-          <h3 class="text-xl font-bold mb-2 group-hover:text-[var(--color-primary)] transition-colors">Card</h3>
-          <p class="text-[var(--color-text-muted)] mb-4">Versatile container for displaying related content and actions.</p>
-          <span class="text-[var(--color-primary)] font-medium inline-flex items-center">
-            View Component
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 animated-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </div>
-      </a>
-      
-    </div>
-  </section>
-  
-  <!-- Quick Search with slide-in animation -->
-  <section class="mb-20" data-motion="scale-in">
-    <div class="bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-lg p-8">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-2xl font-bold mb-4">Quick Search</h2>
-        <p class="text-[var(--color-text-muted)] mb-6">Looking for something specific? Search our documentation.</p>
-        
-        <form action="/search/" method="get" role="search" class="relative max-w-2xl mx-auto">
-          <input type="search" name="q" placeholder="Search documentation..." class="w-full py-3 pl-12 pr-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-lg">
-          <div class="absolute left-4 top-3.5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Main Content -->
-  <section class="prose max-w-none" data-motion="fade-in">
-    <h2 id="welcome-to-the-enterprise-design-system" tabindex="-1">Welcome to the Enterprise Design System <a class="anchor" href="#welcome-to-the-enterprise-design-system" aria-hidden="true"></a></h2>
-<p>The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products.</p>
-<h3 id="recent-updates" tabindex="-1">Recent Updates <a class="anchor" href="#recent-updates" aria-hidden="true"></a></h3>
-<ul>
-<li><strong>Version 2.0 Released</strong>: Our latest version includes improved accessibility, new components, and enhanced documentation. <a href="/updates/2025-02-15-version-2-release/">Learn more</a></li>
-<li><strong>Dark Mode Support</strong>: All components now support dark mode out of the box, with seamless theme switching.</li>
-<li><strong>Expanded Component Library</strong>: We've added 15 new components based on user feedback and real-world use cases.</li>
-</ul>
-<h3 id="about-the-design-system" tabindex="-1">About the Design System <a class="anchor" href="#about-the-design-system" aria-hidden="true"></a></h3>
-<p>The Enterprise Design System is built on the following principles:</p>
-<ol>
-<li><strong>Consistency</strong>: Creating a unified experience across all enterprise applications.</li>
-<li><strong>Accessibility</strong>: Ensuring all components meet WCAG 2.1 AA standards.</li>
-<li><strong>Flexibility</strong>: Providing components that can be customized to meet various needs.</li>
-<li><strong>Performance</strong>: Optimizing components for fast load times and smooth interactions.</li>
-<li><strong>Maintainability</strong>: Creating a system that is easy to update and extend.</li>
-</ol>
-<p>Visit our <a href="/getting-started/">getting started guide</a> to learn how to integrate the design system into your projects.</p>
-
-  </section>
+  </div>
 </div>
   </main>
 
