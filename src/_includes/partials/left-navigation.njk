@@ -48,13 +48,25 @@
           <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}">
             <span>Components</span>
             
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/components/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
             <li>
               <a href="/components/all/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/all/') %}text-[var(--color-primary)] font-medium{% endif %}">
                 <span>All</span>
-                
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/all/') %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/all/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -239,7 +251,17 @@
             <li>
               <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}">
                 <span>Layout</span>
-                
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/layout/') %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/layout/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -288,7 +310,17 @@
             <li>
               <a href="/components/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
                 <span>Navigation</span>
-                
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/navigation/') %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/navigation/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -305,7 +337,17 @@
             <li>
               <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %}">
                 <span>Feedback</span>
-                
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/feedback/') %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/feedback/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -322,7 +364,17 @@
             <li>
               <a href="/components/inputs/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/inputs/') %}text-[var(--color-primary)] font-medium{% endif %}">
                 <span>Inputs</span>
-                
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/inputs/') %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% endif %}
+                </span>
               </a>
               {% if currentUrl.includes('/components/inputs/') %}
               <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -342,7 +394,17 @@
         <li>
           <a href="/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
             <span>Browse</span>
-            
+            <span class="text-xs">
+              {% if currentUrl.includes('/navigation/') %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/navigation/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -367,7 +429,17 @@
         <li>
           <a href="/resources/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/resources/') %}text-[var(--color-primary)] font-medium{% endif %}">
             <span>Resources</span>
-            
+            <span class="text-xs">
+              {% if currentUrl.includes('/resources/') %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/resources/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -391,9 +463,9 @@
         </li>
       </ul>
     </div>
-
+    
     {# We've moved all component navigation to the main Components section #}
-
+    
     {# Migrated & Legacy Content #}
     <div class="space-y-2">
       <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Migrated Content</h3>
@@ -401,7 +473,17 @@
         <li>
           <a href="/migrated/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/migrated/') and currentUrl != '/migrated/' %}text-[var(--color-primary)] font-medium{% endif %}">
             <span>Migrated Overview</span>
-            
+            <span class="text-xs">
+              {% if currentUrl.includes('/migrated/') %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/migrated/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -430,7 +512,7 @@
         </li>
       </ul>
     </div>
-
+    
     {# Legacy Content #}
     <div class="space-y-2">
       <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Legacy Content</h3>
@@ -438,7 +520,17 @@
         <li>
           <a href="/legacy-docs/converted/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/legacy-docs/converted/') %}text-[var(--color-primary)] font-medium{% endif %}">
             <span>Converted Legacy</span>
-            
+            <span class="text-xs">
+              {% if currentUrl.includes('/legacy-docs/converted/') %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/legacy-docs/converted/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -458,7 +550,17 @@
         <li>
           <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/legacy-docs/njk/') %}text-[var(--color-primary)] font-medium{% endif %}">
             <span>Preserved Legacy</span>
-            
+            <span class="text-xs">
+              {% if currentUrl.includes('/legacy-docs/njk/') %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/legacy-docs/njk/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
@@ -478,7 +580,17 @@
         <li>
           <a href="/components/shared/migration-examples/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/shared/migration-examples/') %}text-[var(--color-primary)] font-medium{% endif %}">
             <span>Migration Examples</span>
-            
+            <span class="text-xs">
+              {% if currentUrl.includes('/components/shared/migration-examples/') %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              {% endif %}
+            </span>
           </a>
           {% if currentUrl.includes('/components/shared/migration-examples/') %}
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
