@@ -16,6 +16,7 @@
   <!-- Scripts -->
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/navigation.js" defer></script>
   <script src="/assets/js/framer-motion-wrapper.js" defer></script>
   <script src="/assets/js/tabs.js" defer></script>
   
@@ -195,7 +196,7 @@
           
         </li>
         <li>
-          <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
+          <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium" data-toggle="menu">
             <span>Components</span>
             <span class="text-xs">
               
@@ -208,9 +209,9 @@
           
           <ul class="ml-4 space-y-1 border-l border-[var(--color-border)] pl-2 mt-1">
             <li>
-              <a href="/components/all/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+              <a href="/components/all/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
                 <span>All</span>
-                <span class="text-xs">
+                <span class="text-xs chevron-icon">
                   
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -221,9 +222,9 @@
               
             </li>
             <li>
-              <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+              <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
                 <span>Layout</span>
-                <span class="text-xs">
+                <span class="text-xs chevron-icon">
                   
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -234,7 +235,7 @@
               
             </li>
             <li>
-              <a href="/components/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+              <a href="/components/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
                 <span>Navigation</span>
                 <span class="text-xs">
                   
@@ -247,9 +248,9 @@
               
             </li>
             <li>
-              <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium">
+              <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors text-[var(--color-primary)] font-medium" data-toggle="menu">
                 <span>Feedback</span>
-                <span class="text-xs">
+                <span class="text-xs chevron-icon">
                   
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
@@ -276,9 +277,9 @@
               
             </li>
             <li>
-              <a href="/components/inputs/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+              <a href="/components/inputs/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
                 <span>Inputs</span>
-                <span class="text-xs">
+                <span class="text-xs chevron-icon">
                   
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -292,9 +293,9 @@
           
         </li>
         <li>
-          <a href="/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+          <a href="/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
             <span>Browse</span>
-            <span class="text-xs">
+            <span class="text-xs chevron-icon">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -305,9 +306,9 @@
           
         </li>
         <li>
-          <a href="/resources/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+          <a href="/resources/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
             <span>Resources</span>
-            <span class="text-xs">
+            <span class="text-xs chevron-icon">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -332,9 +333,9 @@
       <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Migrated Content</h3>
       <ul class="space-y-2">
         <li>
-          <a href="/migrated/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+          <a href="/migrated/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
             <span>Migrated Overview</span>
-            <span class="text-xs">
+            <span class="text-xs chevron-icon">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -352,9 +353,9 @@
       <h3 class="font-medium text-sm uppercase text-[var(--color-text-muted)]">Legacy Content</h3>
       <ul class="space-y-2">
         <li>
-          <a href="/legacy-docs/converted/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+          <a href="/legacy-docs/converted/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
             <span>Converted Legacy</span>
-            <span class="text-xs">
+            <span class="text-xs chevron-icon">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -365,9 +366,9 @@
           
         </li>
         <li>
-          <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+          <a href="/legacy-docs/njk/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
             <span>Preserved Legacy</span>
-            <span class="text-xs">
+            <span class="text-xs chevron-icon">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -378,9 +379,9 @@
           
         </li>
         <li>
-          <a href="/components/shared/migration-examples/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors ">
+          <a href="/components/shared/migration-examples/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors " data-toggle="menu">
             <span>Migration Examples</span>
-            <span class="text-xs">
+            <span class="text-xs chevron-icon">
               
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
