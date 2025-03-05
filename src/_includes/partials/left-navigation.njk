@@ -37,56 +37,43 @@
           <div class="text-xs font-medium uppercase text-[var(--color-text-muted)] tracking-wider py-1">Components</div>
           <ul class="space-y-1 mt-1 ml-2">
             <li>
-              <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl === '/components/' %}text-[var(--color-primary)] font-medium{% endif %}">
+              <a href="/components/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/') %}text-[var(--color-primary)] font-medium{% endif %}">
                 <span>Components</span>
+                <span class="text-xs">
+                  {% if currentUrl.includes('/components/') %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  {% endif %}
+                </span>
               </a>
-            </li>
-
-            <li>
-              <a href="/components/layout/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                <span>Layout</span>
-                {% if currentUrl.includes('/components/layout/') %}
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
-                </svg>
-                {% else %}
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-                {% endif %}
-              </a>
-              {% if currentUrl.includes('/components/layout/') %}
+              {% if currentUrl.includes('/components/') %}
                 <ul class="ml-4 space-y-1 mt-1">
                   <li>
-                    <a href="/components/layout/accordion/" class="flex items-center py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/accordion/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                      <span>Accordion</span>
+                    <a href="/components/layout/" class="flex items-center py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                      <span>Layout</span>
                     </a>
                   </li>
+
                   <li>
-                    <a href="/components/layout/card/" class="flex items-center py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/card/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                      <span>Card</span>
+                    <a href="/components/navigation/" class="flex items-center py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                      <span>Navigation</span>
                     </a>
                   </li>
+
                   <li>
-                    <a href="/components/layout/container/" class="flex items-center py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/layout/container/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                      <span>Container</span>
+                    <a href="/components/feedback/" class="flex items-center py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %}">
+                      <span>Feedback</span>
                     </a>
                   </li>
                 </ul>
               {% endif %}
             </li>
 
-            <li>
-              <a href="/components/navigation/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/navigation/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                <span>Navigation</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="/components/feedback/" class="flex items-center justify-between py-1 hover:text-[var(--color-primary)] transition-colors {% if currentUrl.includes('/components/feedback/') %}text-[var(--color-primary)] font-medium{% endif %}">
-                <span>Feedback</span>
-              </a>
-            </li>
           </ul>
         </li>
 
