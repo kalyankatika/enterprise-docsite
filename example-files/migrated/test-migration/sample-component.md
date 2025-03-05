@@ -2,7 +2,7 @@
 layout: "layouts/component.njk"
 title: "Sample Component"
 converted_from: "/home/runner/workspace/example-files/legacy-examples/sample-component.njk"
-conversion_date: "2025-03-04"
+conversion_date: "2025-03-05"
 ---
 
 <html><head></head><body>{% extends "layouts/base.njk" %}
