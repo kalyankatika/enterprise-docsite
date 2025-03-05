@@ -3291,6 +3291,17 @@
   
     
       {
+        "title": "Sample Component",
+        "url": "/migrated/test-migration/sample-component/",
+        "content": "&amp;lt;!DOCTYPE html&amp;gt; Sample Component | Enterprise Design System /* Global icon sizing fix */ svg { max-width: 100%; max-height: 100%; height: 1em; width: 1em; } /* Ensure proper sizing for specific icons */ svg.h-5 { height: 1.25rem !important; width: 1.25rem !important; } svg.h-6 { height: 1.5rem !important; width: 1.5rem !important; } svg.h-8 { height: 2rem !important; width: 2rem !important; } /* Typography improvements */ .prose { color: var(--color-text) !important; } .prose h1, .prose h2, .prose h3, .prose h4 { color: var(--color-text) !important; } .prose a { color: var(--color-primary) !important; text-decoration-color: var(--color-primary) !important; } .prose code { background-color: var(--color-bg-alt) !important; color: var(--color-text) !important; } Enterprise Design System Overview Foundations Components Browse Main Navigation Overview Foundations Components Browse Browse Components By Channel By Type By Owner Resources Getting Started Guidelines Templates Resources What&amp;#039;s New Switch to Light Mode Switch to Dark Mode Enterprise Design System A comprehensive design system for building consistent, accessible, and beautiful enterprise applications. Resources Getting Started Examples Templates Release Notes Navigation Browse by Channel Browse by Type Browse by Owner Search Support Help &amp;amp;amp; Support FAQ Contribute Contact Us © 2025 Enterprise Design System. All rights reserved. Privacy Policy Terms of Service Sitemap",
+        "description": "",
+        "type": "Page",
+        "date": "2025-03-05"
+      },
+    
+  
+    
+      {
         "title": "Enterprise Design System",
         "url": "/",
         "content": "Welcome to the Enterprise Design System The Enterprise Design System (EDS) provides a comprehensive set of design guidelines, components, and resources for building consistent, accessible, and user-friendly enterprise applications. Our goal is to streamline the design and development process, reduce redundancy, and create a cohesive user experience across all enterprise products. Recent Updates Version 2.0 Released: Our latest version includes improved accessibility, new components, and enhanced documentation. Learn more Dark Mode Support: All components now support dark mode out of the box, with seamless theme switching. Expanded Component Library: We&amp;#039;ve added 15 new components based on user feedback and real-world use cases. About the Design System The Enterprise Design System is built on the following principles: Consistency: Creating a unified experience across all enterprise applications. Accessibility: Ensuring all components meet WCAG 2.1 AA standards. Flexibility: Providing components that can be customized to meet various needs. Performance: Optimizing components for fast load times and smooth interactions. Maintainability: Creating a system that is easy to update and extend. Visit our getting started guide to learn how to integrate the design system into your projects.",
@@ -3306,17 +3317,6 @@
         "url": "/alternative-home/",
         "content": "Enterprise Design System A unified platform for building consistent, accessible, and high-quality enterprise applications Get Started View Components What&amp;#039;s New Version 2.0 Released February 15, 2025 We&amp;#039;ve released version 2.0 of the Enterprise Design System with new components, improved documentation, and better accessibility. Read more New Data Table Component February 10, 2025 The new Data Table component provides a powerful way to display and interact with structured data in your applications. View component Improved Accessibility February 5, 2025 All components have been audited and updated to ensure compliance with WCAG 2.1 AA accessibility standards. Read guidelines Component Categories All Components View all All Components components Layout Accordion stable Card stable Grid stable Container stable View all Layout components Navigation Breadcrumb stable Menu stable Tabs stable Pagination stable View all Navigation components Feedback Alert stable Progress stable Toast stable Skeleton experimental View all Feedback components Inputs Button stable Input stable Checkbox stable Radio stable View all Inputs components Get Started Design Tokens Learn how to use our design tokens to maintain consistent styling across your applications. Explore design tokens Guidelines Discover our design and development guidelines to ensure consistency across your projects. Review guidelines Patterns Explore common UI patterns and learn how to solve common design challenges in your applications. Explore patterns Resources Figma Library Access our Figma component library to kickstart your design process. Sketch Library Download our Sketch component library for designing with the Enterprise Design System. Icon Library Browse and download our comprehensive collection of UI icons. Starter Templates Get a head start with our application templates and boilerplates.",
         "description": "A unified documentation platform for the Enterprise Design System",
-        "type": "Page",
-        "date": "2025-03-05"
-      },
-    
-  
-    
-      {
-        "title": "Sample Component",
-        "url": "/migrated/test-migration/sample-component/",
-        "content": "&amp;lt;!DOCTYPE html&amp;gt; Sample Component | Enterprise Design System /* Global icon sizing fix */ svg { max-width: 100%; max-height: 100%; height: 1em; width: 1em; } /* Ensure proper sizing for specific icons */ svg.h-5 { height: 1.25rem !important; width: 1.25rem !important; } svg.h-6 { height: 1.5rem !important; width: 1.5rem !important; } svg.h-8 { height: 2rem !important; width: 2rem !important; } /* Typography improvements */ .prose { color: var(--color-text) !important; } .prose h1, .prose h2, .prose h3, .prose h4 { color: var(--color-text) !important; } .prose a { color: var(--color-primary) !important; text-decoration-color: var(--color-primary) !important; } .prose code { background-color: var(--color-bg-alt) !important; color: var(--color-text) !important; } Enterprise Design System Overview Foundations Components Browse Main Navigation Overview Foundations Components Browse Browse Components By Channel By Type By Owner Resources Getting Started Guidelines Templates Resources What&amp;#039;s New Switch to Light Mode Switch to Dark Mode Enterprise Design System A comprehensive design system for building consistent, accessible, and beautiful enterprise applications. Resources Getting Started Examples Templates Release Notes Navigation Browse by Channel Browse by Type Browse by Owner Search Support Help &amp;amp;amp; Support FAQ Contribute Contact Us © 2025 Enterprise Design System. All rights reserved. Privacy Policy Terms of Service Sitemap",
-        "description": "",
         "type": "Page",
         "date": "2025-03-05"
       }
