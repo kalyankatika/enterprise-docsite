@@ -1,0 +1,289 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS
+{% set component_status = "Available" %} #}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Alert
+    An Alert is a message that communicates page-, section-, or system level statuses including critical, warning, success, or information.
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+
+    {% filter markdown %}
+    ## Critical Alert
+    - Use to indicate "high" priority or an error.
+    - Use to describe situations which may not allow users to proceed.
+    - If the Alert is due to an error, ensure that the content provides context for the error and any steps that the user may take to correct it.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(example='<eds-alert eds-disable-a11y-attributes>Please refresh the page or try again later.</eds-alert>')}}
+
+    {% filter markdown %}
+    ## Warning Alert
+    - Use to indicate "medium" priority or warning.
+    - Use to describe situations or responses that may cause unexpected or undesirable results, or indicate a change that requires attention.
+    - Typical warning messages describe situations such as date and data range violations, server/system problems, and non-critical security information.
+    - Note: A warning will not prevent a user from completing a transaction.
+    {% endfilter %}
+
+        {% set alert_warning_example %}
+        <eds-alert eds-disable-a11y-attributes eds-variant="warning">
+            The market closes today, August 13, 2019, at 4 PM ET. If you start a transaction request and don't complete it before the close of market,
+            you'll need to restart the request and you may lose the information you entered. If you start after the close of market, the information you
+            entered will not be affected and the request will process on the next available trade date.
+        </eds-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_warning_example)}}
+
+    {% filter markdown %}
+    ## Informational Alert
+    - Use to indicate a message that is informational.
+    - Use to describe or explain a situation that is important but won't prevent a user from completing an action.
+    {% endfilter %}
+
+    {% set alert_info_example %}
+        <eds-alert eds-disable-a11y-attributes eds-variant="info">
+            If you modify your distribution elections, it may result in a delay of payment.
+        </eds-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_info_example)}}
+
+    {% filter markdown %}
+    ## Success Alert
+    - Use to indicate a transaction has been successfully completed.
+    - Use to indicate the confirmation of an action.
+    {% endfilter %}
+
+    {% set alert_success_example %}
+        <eds-alert eds-disable-a11y-attributes eds-variant="success">
+            Confirmation number 14303332012554WHD. Please print and save this confirmation
+            for your records before leaving this page. After the transaction has been processed, an email notification
+            will be sent to anneslater@thea.com.
+        </eds-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_success_example)}}
+
+    {% filter markdown %}
+    ## Alert with title
+    *Since version 3.16.3, eds-title emits a Lvl 2 heading by default for proper accessibility markup. In the unlikely event you need a different heading level, set the `eds-title-heading-level` prop to the appropriate level.*
+    {% endfilter %}
+
+    {% set alert_with_title_example %}
+        <eds-alert eds-disable-a11y-attributes eds-variant="critical" eds-title="A technical error occurred">Please refresh the page or try again later.</eds-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_with_title_example) }}
+
+    <h2 class="docsite__linkable-heading">Dismissible Alert</h2>
+
+    {% set alert_dismissible_example %}
+        <eds-alert eds-disable-a11y-attributes eds-variant="critical" eds-title="A technical error occurred" eds-dismissible>
+        Please refresh the page or try again later.
+        </eds-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_dismissible_example) }}
+
+    <h2 class="docsite__linkable-heading">Default Slot</h2>
+
+    {% set alert_default_slot %}
+        <eds-alert eds-variant="critical" eds-title="A technical error occurred" eds-dismissible>
+        Please refresh the page or try again later.
+        </eds-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_default_slot) }}
+
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Fidelity Design System (FDS) <eds-link eds-new-window eds-href="https://design.fmr.com/fds/web/help-systems/message/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+
+    {% filter markdown %}
+    ## Use when
+
+    Communicating information specifically about the page, system, or section of the page that the user is currently experiencing.
+
+    ## Don't use when
+
+    - A message needs to be prompted by clicking on an action.
+    - Communicating information specific to items within the content of the page, like a form input error. Use an <eds-link eds-href="/components/inline-alert/inline-alert.html">Inline Alert</eds-link> instead.
+
+    ## Visual style
+    - Specific <eds-link eds-href="/visual-style/color/color.html#alerts">core palette colors</eds-link> and <eds-link eds-href="/components/icon/icon.html#names">icons</eds-link> visually indicate the type of each Alert.
+    - Titles of critical Alerts are red to add visual importance.
+    - The background of the Alert content area should always be white. Never override the background to be transparent.
+
+    ### Sizes
+    - A single size of the Alert is provided that adjusts responsively.
+    - While the height and width may change based on the parent container and content, the default fonts should only change based on responsive font size rules.
+
+    ## Behavior
+    - Alerts will conform to the width of their parent container.
+    - The “dismiss" action is optional.
+    - "Dismissible" alerts will be removed from view if the reader clicks the "close" icon in the upper right corner of the container. Any subsequent content adjusts its vertical position accordingly.
+
+    {% endfilter %}
+
+    {# THIS WILL BECOME AN ANIMATED GIF POST-BETA #}
+
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/alert/doc-alert-dismiss.png 1x,
+            ../images/alert/doc-alert-dismiss@2x.png 2x
+        ",
+        alt="Diagram of an Alert closing using the dismiss icon.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="Using the dismiss icon will collapse the content in the Alert.",
+        sentiment="neutral"
+        )
+    }}
+
+    {% filter markdown %}
+    ## Multiple Alerts
+    If multiple Alerts need to be displayed simultaneously, stack them with at least 1.5rem (24px) of margin between them.
+
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/alert/doc-alert-multiple.png 1x,
+            ../images/alert/doc-alert-multiple@2x.png 2x
+        ",
+        alt="Diagram of how to place mutiple Alerts on a page.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="Content will collapse when the Alert is dismissed.",
+        sentiment="neutral"
+        )
+    }}
+
+
+    {% filter markdown %}
+    ## Placement
+    - Place page– and system–level alerts at the top of the page below the navigation but above the page title.
+    - Place section-specific alerts at the top of the section that it describes.
+
+    ## Content
+    - Write messages in an objective and factual tone that is concise and easy to understand.
+    - Avoid redundancy when writing titles and messages. If a title doesn't offer additional value, remove it.
+    - Content may contain links that are actions the user may take.
+    - Use paragraphs, ordered and unordered lists, spans, and links for guidelines in the content area.
+    {% endfilter %}
+
+    {{ library.eds_editorial(href="http://uxdesignstandards.fmr.com/general-error-messages")}}
+
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+
+    | Attribute                     | Type    | Validation                                                                                 | Default       | Description                                                                                                      |
+    | ----------------------------- | ------- | ------------------------------------------------------------------------------------------ | ------------- | ---------------------------------------------------------------------------------------------------------------- |
+    | `eds-a11y-icon-text`          | string  | --                                                                                         | --            | Specify an accessible title for the alert's svg icon.                                                            |
+    | `eds-disable-a11y-attributes` | boolean | -- | `false` | Prevents `aria-live` and `role` attributes from being added to the Alert. Note, this option is deprecated and will be removed in the next version. |
+    | `eds-dismiss-icon-a11y-text`  | string  | --                                                                                         | Dismiss alert | Screen reader-only text that is set to the dismiss `eds-icon` title for accessibility.                                |
+    | `eds-dismissible`             | boolean | Anything other than empty string, `true`, or `eds-dismissible` will be treated as `false`. | `false`       | Determines if a dismiss icon will be added to the Alert.                                                         |
+    | `eds-text`                    | string  | --                                                                                         | --            | Fallback content for message if you cannot use slots.                                                            |
+    | `eds-title`                   | string  | --                                                                                         | --            | Allows you to put a title within the Alert.                                                                      |
+    | `eds-title-heading-level`     | number  | `2`, `3`, `4`, `5`, `6`                                                                    | `2`           | Provides a means to adjust the Alert heading level to better fit the page layout for accessibility.
+    | `eds-variant`                 | string  | `critical`, `info`, `warning`, `success`                                                   | `critical`    | Defines what variant of alert needs to be used.                                                                  |
+
+    ## Slots
+
+    | Name         | Default content     | Description                                                                                                           |
+    |--------------|----------------------|----------------------------------------------------------------------------------------------------------------------|
+    | `default`    | --                   | Content that is placed inside `<eds-alert>` will be added to the content section of the Alert.                       |
+
+    ## Events
+
+    The `eds-alert-closed` event can be used when you need to know when the Alert is being closed using the dismiss action. This will only be available if you set the `eds-dismissible` attribute to `true` in the web component.
+
+    ## Methods
+
+    `closeAlert()` is a public function that can be used to close that specific alert instance. The `eds-alert-closed` event will occur when this is called.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                       | Applies to        | Outcome                                       |
+    |----------------------------------|-------------------|-----------------------------------------------|
+    | `.eds-alert--critical`           | `.eds-alert-root` | Adds critical Alert styles.                   |
+    | `.eds-alert--info`               | `.eds-alert-root` | Adds informational Alert styles.              |
+    | `.eds-alert--success`            | `.eds-alert-root` | Adds success Alert styles.                    |
+    | `.eds-alert--warning`            | `.eds-alert-root` | Adds warning Alert styles.                    |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-alert>...</eds3-alert>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-alert-root eds-alert--critical">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Alert", root_class="alert-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                                                                                                                         | Required                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `import { edsAlert } from '@fmr-ap153177/apex-kit';`                                                                                                                                         | Yes                                         |
+| `import { edsIcon } from '@fmr-ap153177/apex-kit';`                                                                                                                                          | Yes                                         |
+| `import { injectSpriteSheet } from '@fmr-ap153177/apex-kit';`                                                                                                                                | Yes, unless using `injectCustomSpriteSheet` |
+| `import { injectCustomSpriteSheet, ICON_ALERT_CRITICAL_OUTLINE, ICON_ALERT_INFO_OUTLINE, ICON_ALERT_SUCCESS, ICON_ALERT_WARNING_OUTLINE, ICON_ACTION_CLOSE } from '@fmr-ap153177/apex-kit';` | Yes, unless using `injectSpriteSheet`       |
+
+    {% endset %}
+
+{{ library.import_reference(component_name="Alert", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+
+    {% filter markdown %}
+    ## Attributes
+    - The default `eds-disable-a11y-attributes` boolean will cause any alerts on the page to automatically announce once the page loads. This may be necessary for single, critical, show-stopper errors that need immediate attention, but may be overkill for most other scenarios. Furthermore having these attributes present imposes critical accessibility bugs in certain combinations of browsers and screen readers. Use with caution. **It's best to disable these attributes unless absolutely necessary.**
+    - If you use a critical alert variant, applications should force focus directy when it's rendered onto the page. For all other page alert viariants, we do not recommend you set focus to it.
+
+    ## Semantics
+    - When `eds-disable-a11y-attributes` is "true" ...
+        - Critical alerts use `role="alert" aria-live="assertive"`.
+        - Warning, informational, and success alerts use `role="status" aria-live="polite"`.
+    - When using `eds-dismissible` ...
+        - Critical alerts use `role="alertdialog"`.
+        - All other alerts use `role="complementary"`.
+
+    ## Implementation
+    {% endfilter %}
+    {{ library.eds_accessibility()}}
+
+{% endblock %}
