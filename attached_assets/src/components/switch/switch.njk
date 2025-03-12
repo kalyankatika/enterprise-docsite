@@ -1,0 +1,396 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{## 
+ # TITLE 
+ #}
+{% block page__title %}
+
+    {% filter markdown %}
+    ##### Components
+    # Switch
+    A Switch presents two mutually exclusive values, "off" and "on," and initiates an action immediately after changing the setting.
+    {% endfilter %}
+
+{% endblock %}
+
+{##
+ # Examples Tab 
+ #}
+{% block examples_tab %}
+
+   {% filter markdown %}
+    ## Text as an attribute value
+    Use to present a simple text string.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: '<eds-switch eds-text="Show account balances"></eds-switch>',
+                label: "Text as an attribute value",
+                generate_html: true
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+   
+   {% filter markdown %}
+    ## Slotted text
+    Use to present special characters or HTML.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples=[  
+            {
+                example: '<eds-switch>Beta view&trade;</eds-switch>',
+                label: "Text in default slot",
+                generate_html: true
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+
+
+    {% filter markdown %}
+    ## Sizes
+    {% endfilter %}
+
+    {% set switch_large_example %} 
+        <eds-switch eds-size="large" eds-text="Dark mode"></eds-switch>
+    {% endset %}
+
+    {% set switch_medium_example %} 
+        <eds-switch eds-text="Dark mode"></eds-switch>
+    {% endset %} 
+
+    {% set switch_small_example %} 
+        <eds-switch eds-size="small" eds-text="Dark mode"></eds-switch>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    
+    <!-- Large -->
+    {{switch_large_example | safe | trim}}
+
+    <!-- Medium -->
+    {{switch_medium_example | safe | trim}}
+
+    <!-- Small -->
+    {{switch_small_example | safe | trim}}
+    
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example:switch_large_example,
+                label: "Large",
+                generate_html: true
+            },
+            {
+                example: switch_medium_example,
+                label: "Medium (Default)",
+                generate_html: true
+            },
+            {
+                example: switch_small_example,
+                label: "Small",
+                generate_html: true
+            }
+            
+        ],
+        code_snippet_source=code_snippet_source,
+        language='html',
+        preformatted=true,
+        show_copy_button=true
+    )}}
+
+{% endblock %}
+
+
+{##
+ # Design Tab 
+ #}
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/data-entry/switch/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+   
+    {% filter markdown %}
+    ## Use when
+    Turning on/off a user preference or system setting.
+
+    ## Don't use when
+    - The results of the change can't be immediately noticed.
+    - Requiring a user's consent. Instead use a <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link>.
+    - Collecting data in a Form.
+    - Presenting multiple options. Instead use a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> containing a <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link>, <eds-link eds-href="/components/radio-group/radio-group.html">Radio Group</eds-link>, or <eds-link eds-href="/components/select/select.html">Select</eds-link>.
+    - View-switching between blocks of related content in a shared section of a page or inside a smaller container. Instead use a <eds-link eds-href="/components/tab-group/tab-group.html">Tab Group</eds-link>.
+    {% endfilter %}
+
+    
+    {% include "src/templates/partials/selection_comparison.njk" %}
+
+    
+    {% filter markdown %}
+    ## Visual style
+    ### Anatomy and construction
+    {% endfilter %}
+
+    {% set content_block_anatomy_caption %} 
+    <ol class="eds-figure__figcaption-inline-list">
+        <li>Text</li>
+        <li>Gap</li>
+        <li>Control (off)</li>
+        <li>Handle</li>
+        <li>Track</li>
+    </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/switch/doc-switch-anatomy.png 1x,
+                ../images/switch/doc-switch-anatomy@2x.png 2x
+            ",
+            alt="Diagram describing the required elements",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=content_block_anatomy_caption,
+            sentiment="neutral"
+            ) 
+        }}
+
+    {% filter markdown %}
+
+    ### Width
+    The gap between the text and the control is set at a fixed width of 12px.
+    
+    {% endfilter %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/switch/doc-switch-gap.png 1x,
+                ../images/switch/doc-switch-gap@2x.png 2x
+            ",
+            alt="Diagram describing space between the text and the control.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            ) 
+        }}
+
+    {% filter markdown %}
+
+    ## Behavior
+    - Handle slides left/right upon toggling from "Off" to "On."
+    - Action is initiated immediately.
+
+
+    ## Content
+    {% endfilter %}
+
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/switch/doc-switch-label-do.png 1x,
+                ../images/switch/doc-switch-label-do@2x.png 2x
+            ",
+            alt:"",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Always",
+            caption:"use short and direct text.",
+            sentiment:"positive"
+            },
+            { 
+            srcset:"
+                ../images/switch/doc-switch-label-dont.png 1x,
+                ../images/switch/doc-switch-label-dont@2x.png 2x
+            ",
+            alt:"",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:"format text as a yes/no question.",
+            sentiment:"negative"
+            }
+        ],
+        inline_at="at-512"
+    )}}
+
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/switch/doc-switch-yesno-do.png 1x,
+                ../images/switch/doc-switch-yesno-do@2x.png 2x
+            ",
+            alt:"",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Always",
+            caption:"use the Checkbox to allow the user to acknowledge something or provide consent.",
+            sentiment:"positive"
+            },
+            { 
+            srcset:"
+                ../images/switch/doc-switch-yesno-dont.png 1x,
+                ../images/switch/doc-switch-yesno-dont@2x.png 2x
+            ",
+            alt:"",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:"use the Switch to perform a task that requires an additional submission action.",
+            sentiment:"negative"
+            }
+        ],
+        inline_at="at-512"
+    )}}
+
+
+{% endblock %}
+
+{##
+ # Code Tab 
+ #}
+{% block code_tab %}
+{% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+        
+    | Attribute              | Type    | Validation                                           | Default  | Description                                                                                                                                                                                             |
+    | ---------------------- | ------- | ---------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-describedby` | string  | --                                                   | --       | A string of `id`s separated by spaces that will be set at the `aria-describedby` attribute on the native `<button>` element.                                                                            |
+    | `eds-id`               | string  | --                                                   | --       | Sets the `id` to the native `<button>` element. Used to associate the native `<button>` element with the native `<label>` element. A randomly generated value will be used if `eds-id` is not provided. |
+    | `eds-label-id`         | string  | --                                                   | --       | Sets the `id` to the native `<span>` element used as the label for the Switch component. A randomly generated value will be used if `eds-label-id` is not provided.                                     |
+    | `eds-on`               | boolean | Anything other than empty string, `true` or `eds-on` | `false`  | Determines if the Switch is "on" or "off".                                                                                                                                                              |
+    | `eds-size`             | string  | `small`, `medium`, or `large`                        | `medium` | Determines the size of the Switch component.                                                                                                                                                            |
+    | `eds-text`             | string  | --                                                   | --       | The text used to `<label>` the Switch.                                                                                                                                                                  |
+
+
+    ## Slots
+    | Name      | Default content | Description                                                                                                                           |
+    | --------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+    | `default` | --              | Use in place of the eds-text attribute. If both the `eds-text` attribute and default slot are set, the slot content will be rendered. |
+
+    ## Events
+    The Switch component does not trigger any custom events. 
+
+
+    ## Methods
+    `toggleSwitch`: toggles the `edsState` property of the Switch.
+
+    
+
+    ## CSS modifier classes
+    {% endfilter %}
+    {% include "src/templates/partials/cssModifiers.njk" %}
+    {% filter markdown%}
+
+    | Class name                              | Applies to                      | Outcome                                                                                                           |
+    | --------------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+    | `.eds-switch--on`	                      | `.eds-switch-root`	            | Applies the “on” state styles to the Switch button and handle.                                                    |
+    | `.eds-switch--off`	                  | `.eds-switch-root`	            | Applies the “off” state styles to the Switch button and handle.                                                   |
+    | `.eds-switch--small`	                  | `.eds-switch-root`	            | Adjusts the style to render a "small" Switch component.                                                           |
+    | `.eds-switch--medium`	                  | `.eds-switch-root`	            | Adjusts the style to render a "medium" Switch component.                                                          |
+    | `.eds-swtich--large`	                  | `.eds-switch-root`	            | Adjusts the style to render a "large" Switch component.                                                           |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+      <eds3-switch>...</eds3-switch>
+    {% endset %}
+
+    {% set namespace_example_html %}
+      <div class=”eds3-switch-root eds-switch--off”>...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Switch", root_class="switch-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+{% set js_import_table %}
+| Import                                                  | Required |
+| ------------------------------------------------------- | -------- |
+| `import { edsSwitch } from '@xyz-ap153177/apex-kit';` | Yes      |
+{% endset %}
+
+    {{ library.import_reference(component_name="Switch", js_import_table=js_import_table) }}
+ 
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+{% block a11y_tab %}
+{% filter markdown %}
+## Switch using icon as label
+In the event you need a Switch that uses a non-text element like an Icon or an Image, be sure it contains an accessible text attribute for assistive technology.
+{% endfilter %}
+    {% set switch_a11y_example %}
+    <eds-switch><eds-icon eds-name="status__star" eds-a11y-label="I am your favorite" /></eds-switch>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: (switch_a11y_example | safe),
+                label: "Icon as label",
+                generate_html: true
+            }        
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+{% filter markdown %}
+## Associate error text to Switch 
+To properly link error elements to a Switch, use the eds-aria-describedby property to link an Inline Alert component.
+{% endfilter %}
+    {% set switch_a11y_error_example %}
+    <eds-switch eds-text="Show Account Balances" eds-aria-describedby="eds-account-balance-alert"></eds-switch>
+    <eds-inline-alert eds-id="eds-account-balance-alert">Your account has an error.</eds-inline-alert>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: (switch_a11y_error_example | safe),
+                label: "Error text association",
+                generate_html: true
+            }        
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+
+{% endblock %}

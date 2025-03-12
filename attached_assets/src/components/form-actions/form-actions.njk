@@ -1,0 +1,392 @@
+    {% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+
+{% block page__title %}
+
+    {% filter markdown %}
+    ##### Components
+    # Form Actions
+    Form Actions present people with one or more <eds-link eds-href="/components/button/button.html">Buttons</eds-link>, and optional text, to initiate actions within a <eds-link eds-href="/components/form/form.html">Form</eds-link>. 
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+
+    <h2 class="docsite__linkable-heading">Single primary action</h2>
+    <p>Other primary actions could include, "Search, Add, Continue, etc."</p>
+    {% set form_actions_primary_example %}
+        <eds-form-actions> 
+            <eds-button slot="primary-action" eds-type="submit" eds-native-button-attributes='{"aria-label":"disclosure information"}'>
+                Submit
+            </eds-button>
+        </eds-form-actions> 
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=form_actions_primary_example)}}
+
+
+    <h2 class="docsite__linkable-heading">Multiple actions</h2>
+    
+    {% set form_actions_multiple_actions_example %}
+    <eds-form-actions> 
+        <eds-button slot="primary-action" eds-native-button-attributes='{"aria-label":"Continue to step three"}'>
+            Continue
+        </eds-button> 
+        <eds-button slot="secondary-action" eds-variant="secondary" eds-native-button-attributes='{"aria-label":"Go back to step one"}'>
+            Go back
+        </eds-button> 
+        <eds-button slot="tertiary-action" eds-variant="tertiary" eds-native-button-attributes='{"aria-label":"Exit to the homepage"}'>
+            Exit
+        </eds-button>
+    </eds-form-actions> 
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=form_actions_multiple_actions_example)}}
+
+    <h2 class="docsite__linkable-heading">With additional instructions or disclosure</h2>
+
+    {% set form_actions_instructions_example %}
+    <eds-form-actions eds-text="Part or all of your withdrawal amount may be considered taxable income.
+    You will be responsible for the payment of income tax based on the taxable amount of your withdrawal.
+    You may be responsible for a 10% early withdrawal fee if you are under the age of 59.
+    Regardless of the tax withholding information provided, based on the type of withdrawal and your status
+    as a U.S. citizen, resident, or resident alien, Enterprise may be required to withhold or increase the amount
+    of federal taxes withheld based on applicable regulations and IRS guidance."> 
+        <eds-button slot="primary-action">Save and continue</eds-button> 
+        <eds-button slot="tertiary-action" eds-variant="tertiary" eds-native-button-attributes='{"aria-label":"Exit back to the homepage"}'>
+            Exit
+        </eds-button> 
+    </eds-form-actions>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=form_actions_instructions_example)}}
+
+    {% filter markdown %}
+    For web components, refer to the <eds-link eds-href="?tab=code#slots">slot documentation</eds-link> in the code reference for information related to including text that contains HTML.
+    {% endfilter %}
+
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/layout/button-group/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+    
+    {% filter markdown %}
+    ## Use when
+    - A <eds-link eds-href="/components/form/form.html">Form</eds-link>, or section of a <eds-link eds-href="/components/form/form.html">Form</eds-link>, needs a group of <eds-link eds-href="/components/button/button.html#primary-action">Buttons</eds-link> for primary and secondary actions. Examples of these actions include:
+        - Submitting data
+        - Continuing to the next section.
+        - Going back to the previous section.
+    - A <eds-link eds-href="/components/form/form.html">Form</eds-link> needs a "tertiary" <eds-link eds-href="/components/button/button.html#tertiary">Button</eds-link> to exit or cancel the engagement.
+    - A <eds-link eds-href="/components/form/form.html">Form</eds-link> needs to present additional instructions or disclosures in close proximity to the action <eds-link eds-href="/components/button/button.html">Buttons</eds-link>.
+
+    ## Visual style
+    - Always include one primary action inside Form Actions.
+    - Always use the "primary" <eds-link eds-href="/components/button/button.html">Button</eds-link> component for actions such as, "Submit," "Next," "Continue," etc.
+    - Always use the "secondary" <eds-link eds-href="/components/button/button.html">Button</eds-link> component for actions such as, "Previous," "Go back," etc.
+    - Always use the "tertiary" <eds-link eds-href="/components/button/button.html">Button</eds-link> component for actions such as, "Cancel," "Exit," "Save and exit," etc.
+    - Never use controls other than <eds-link eds-href="/components/button/button.html">Button</eds-link> inside Form Actions.
+    - The top border appears by default to visually separate the Form Actions from the content above it, but it may be removed.
+
+    ### Anatomy and construction
+    {% endfilter %}
+
+    {% set form_actions_anatomy_caption %} 
+    <ol class="eds-figure__figcaption-inline-list">
+        <li>Border</li>
+        <li>Text</li>
+        <li>Tertiary action</li>
+        <li>Secondary action</li>
+        <li>Primary action (required)</li>
+    </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/form-actions/doc-form-actions-anatomy.png 1x,
+            ../images/form-actions/doc-form-actions-anatomy@2x.png 2x
+        ",
+        alt="Anatomy of a stacked Form Actions.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=form_actions_anatomy_caption,
+        sentiment="neutral"
+        ) 
+    }}
+
+   
+    {% filter markdown%}
+    ### Spacing
+    {% endfilter %}
+    {{ library.eds_figure(
+        srcset="
+            ../images/form-actions/doc-form-actions-spacing-default.png 1x,
+            ../images/form-actions/doc-form-actions-spacing-default@2x.png 2x
+        ",
+        alt="Spacing diagram for Form Action at less than 512.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="Space between Form Action elements in viewports less than 512.",
+        sentiment="neutral"
+        ) 
+    }}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/form-actions/doc-form-actions-spacing-at-512.png 1x,
+            ../images/form-actions/doc-form-actions-spacing-at-512@2x.png 2x
+        ",
+        alt="Spacing diagram for Form Action at 512.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="Space between Form Action elements in viewports at 512 and above.",
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {% filter markdown%}
+    ## Behavior
+
+    ### Responsive behavior
+    You may designate the breakpoint at which the <eds-link eds-href="/components/button/button.html">Buttons</eds-link> go from a stacked to an inline arrangement. 
+    {% endfilter %}
+
+    {% macro form_actions_inline_example(inline="at-512") %}
+    <eds-form-actions eds-inline="{{inline}}"> 
+        <eds-button slot="primary-action">Continue
+            <span class="screen-reader-only">to step three</span>
+        </eds-button> 
+        <eds-button slot="secondary-action" eds-variant="secondary">Go back
+            <span class="screen-reader-only">to step one</span>
+        </eds-button> 
+        <eds-button slot="tertiary-action" eds-variant="tertiary">Exit
+            <span class="screen-reader-only">back to the homepage</span>
+        </eds-button>
+    </eds-form-actions>
+    {% endmacro %}
+
+    {% set form_actions_inline_examples %}
+        <eds-form-actions eds-inline="never">...</eds-form-actions>
+        <eds-form-actions eds-inline="at-1280">...</eds-form-actions>
+        <eds-form-actions eds-inline="at-960">...</eds-form-actions>
+        <eds-form-actions eds-inline="at-768">...</eds-form-actions>
+        <eds-form-actions eds-inline="at-512">...</eds-form-actions>
+        <eds-form-actions eds-inline="always">...</eds-form-actions>
+    {% endset %}
+
+    {# TODO allow open_in_new_window to open the full code_example_pair? #}
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: form_actions_inline_example(inline="never"),
+                label: "Never inline (stacked)"
+            },
+            {
+                example: form_actions_inline_example(inline="at-1280"),
+                label: "Inline at-1280"
+            },
+            {
+                example: form_actions_inline_example(inline="at-960"),
+                label: "Inline at-960"
+            },
+            {
+                example: form_actions_inline_example(inline="at-768"),
+                label: "Inline at-768"
+            },
+            {
+                example: form_actions_inline_example(inline="at-512"),
+                label: "Inline at-512"
+            },
+            {
+                example: form_actions_inline_example(inline="always"),
+                label: "Inline always"
+            }
+        ],
+        language='html',
+        open_in_new_window=true,
+        code_snippet_source=form_actions_inline_examples
+    )}}
+
+    {% filter markdown %}
+    ## Content
+    - Help people understand the intent of the actions by making them descriptive using relevant details. (e.g., use "Add beneficiary" instead of "Add" or "Submit" as a "primary" action.)
+    - When content requires someone to acknowledge their understanding and agreement, use "Agree and Continue" instead of "Continue" as the "primary" action. (e.g., Disclaimers and Terms of Service)
+    {% endfilter %}
+    {{ library.eds_editorial()}}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute            | Type    | Validation                                                                                    | Default  | Description                                                                                                                                                                                                                                                      |
+    | -------------------- | ------- | --------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-disable-border` | boolean | Anything other than empty string, `false`, or `eds-disable-border` will be treated as `true`. | `false`  | Disables the top border.                                                                                                                                                                                                                                         |
+    | `eds-inline`         | string  | `always`,`never`, `at-512`, `at-768`, `at-960`, `at-1280`                                              | `at-512` | Determines the point at which the content within the Form Actions goes from stacked to inline. For any breakpoint, if `eds-inline` is set to `never` the content within the Form Actions will stay stacked while `always` will force the content to stay inline. |
+    | `eds-text`           | string  | --                                                                                            | --       | Text above the actions. Alternative to using the `text` slot.                                                                                                                                                                                                    |
+
+    ## Slots
+    | Name               | Default content | Description                                                                                                                                            |
+    | ------------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | `text`             | --              | Optional slot and alternative to `eds-text`. If you need HTML markup in the text above the actions section in Form Actions (e.g., links).               |
+    | `primary-action`   | --              | Required slot for the "primary" action of your Form Actions. Use the "primary" variant of the `eds-button`.                                                |
+    | `secondary-action` | --              | Optional slot for "secondary" actions of your Form Actions. Use the "secondary" variant of the `eds-button`.                                               |
+    | `tertiary-action`  | --              | Optional slot for the "tertiary" action of your Form Actions.                                                                                            |
+
+    ### Example with primary action only (minimum required)
+    {% endfilter %}
+
+    {% set form_actions_slot_usage_example %}
+    <eds-form-actions> 
+        <eds-button slot="primary-action" eds-type="submit">Submit
+            <span class="screen-reader-only">disclosure data</span>
+        </eds-button> 
+    </eds-form-actions> 
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        example=form_actions_slot_usage_example,
+        show_copy_button=false,
+        generate_html=false
+    )}}
+
+    {% filter markdown %}
+    ### Example with all possible slotted content
+    {% endfilter %}
+
+    {% set form_actions_all_slot_usage_example %}
+    <eds-form-actions> 
+        <p slot="text" class="eds-form-actions__text">Instructions or disclosure.</p> 
+        <eds-button slot="primary-action">Continue
+            <span class="screen-reader-only">to step three</span>
+        </eds-button> 
+        <eds-button slot="secondary-action" eds-variant="secondary">Go back
+            <span class="screen-reader-only">to step one</span>
+        </eds-button>
+        <eds-button slot="secondary-action" eds-variant="secondary">Additional action
+            <span class="screen-reader-only">to review 'additional information' document</span>
+        </eds-button> 
+        <eds-button slot="tertiary-action" eds-variant="tertiary">Exit
+            <span class="screen-reader-only">back to the homepage</span>
+        </eds-button> 
+    </eds-form-actions> 
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        example=form_actions_all_slot_usage_example,
+        show_copy_button=false,
+        generate_html=false
+    )}}
+
+    {% filter markdown %}
+    ### Example with text as a property and actions as slot-able content
+    {% endfilter %}
+
+    {% set form_actions_no_text_slot_usage_example %}
+    <eds-form-actions eds-text="Instructions or disclosure"> 
+        <eds-button slot="primary-action">Continue
+            <span class="screen-reader-only">to step three</span>
+        </eds-button> 
+        <eds-button slot="secondary-action" eds-variant="secondary">Go back
+            <span class="screen-reader-only">to step one</span>
+        </eds-button> 
+        <eds-button slot="tertiary-action" eds-variant="tertiary">Exit
+            <span class="screen-reader-only">to the homepage</span>
+        </eds-button> 
+    </eds-form-actions> 
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        example=form_actions_no_text_slot_usage_example,
+        show_copy_button=false,
+        generate_html=false
+    )}}
+
+    {% filter markdown %}
+    ## Events
+    The Form Actions component does not emit any custom events.
+
+    ## Methods
+    The Form Actions component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                                 | Applies to               | Outcome                                                                                                                          |
+    | ------------------------------------------ | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+    | `.eds-form-actions--disable-border`        | `.eds-form-actions-root` | Removes the top border from the Form Actions.                                                                                    |
+    | `.eds-form-actions--inline-always`         | `.eds-form-actions-root` | Actions within `eds-form-actions` will be arranged inline and will never stack.                                                  |
+    | `.eds-form-actions--inline-at-512`         | `.eds-form-actions-root` | Actions within `eds-form-actions` will be arranged inline at a screen width of 512px and above, otherwise they will be stacked.  |
+    | `.eds-form-actions--inline-at-768`         | `.eds-form-actions-root` | Actions within `eds-form-actions` will be arranged inline at a screen width of 768px and above, otherwise they will be stacked.  |
+    | `.eds-form-actions--inline-at-960`         | `.eds-form-actions-root` | Actions within `eds-form-actions` will be arranged inline at a screen width of 960px and above, otherwise they will be stacked.  |
+    | `.eds-form-actions--inline-at-1280`        | `.eds-form-actions-root` | Actions within `eds-form-actions` will be arranged inline at a screen width of 1280px and above, otherwise they will be stacked. |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-form-actions eds-disable-border>...</eds3-form-actions>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-form-actions-root eds-form-actions--disable-border">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Form Actions", root_class="form-actions-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                           | Required                |
+| ---------------------------------------------------------------- | ----------------------- |
+| `import { edsFormActions } from '@xyz-ap153177/apex-kit';`     | Yes                     |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Form Actions", js_import_table=js_import_table) }}
+
+    {% include "src/templates/partials/autoprefixer.njk" %}
+    
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Screen reader-only text  
+    Use screen reader-only text to provide additional detail to a <eds-link eds-href="/components/button/button.html">Button</eds-link> within Form Actions.
+    
+    ### Example
+    {% endfilter %}
+
+    {% set form_actions_button_content_example %}
+    <eds-form-actions>
+        <eds-button slot="primary-action">Add beneficiary</eds-button>
+        <eds-button slot="tertiary-action" eds-variant="tertiary">Exit
+            <span class="screen-reader-only">to your customer profile page</span>
+        </eds-button>
+    </eds-form-actions>
+    {% endset%}
+
+    {{ library.eds_code_snippet(
+        source=form_actions_button_content_example,
+        show_copy_button=false
+    )}}
+{% endblock %}

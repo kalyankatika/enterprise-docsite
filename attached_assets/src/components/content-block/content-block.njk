@@ -1,0 +1,1352 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+  {% filter markdown %}
+  ##### Components
+  # Content Block
+  A Content Block presents short-form content and may be accompanied by a <eds-link eds-href="/components/button/button.html">Button</eds-link> and/or <eds-link eds-href="/components/link/link.html">Link</eds-link> as a call-to-action. 
+  {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+
+  {% filter markdown %}
+    ## Component-level alignment
+  {% endfilter %}
+
+  {% set left_aligned_example %}
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set center_aligned_example %}
+  <eds-content-block>
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set right_aligned_example %}
+  <eds-content-block eds-align="right">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Left aligned -->
+  {{ left_aligned_example | safe | trim }}
+
+  <!-- Center aligned -->
+  <eds-content-block>
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Right aligned -->
+  <eds-content-block eds-align="right">
+    ...same slotted content as above...
+  </eds-content-block>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: left_aligned_example, label: "Left aligned" },
+        { example: center_aligned_example, label: "Center aligned (default)" },
+        { example: right_aligned_example, label: "Right aligned" }
+      ],
+      preformatted=true,
+      show_copy_button=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+  ## Image content alignment
+  {% endfilter %}
+
+  {% set left_aligned_image_example %}
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set center_aligned_image_example %}
+  <eds-content-block eds-align="left" eds-image-align="center">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set right_aligned_image_example %}
+  <eds-content-block eds-align="left" eds-image-align="right">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set left_side_image_example %}
+  <eds-content-block eds-inline="at-512">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set right_side_image_example %}
+  <eds-content-block eds-inline="at-512" eds-inline-image-position-right>
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Left aligned image -->
+  <!-- eds-image-align only required if you need to overwrite the default alignment -->
+  {{ left_aligned_image_example | safe | trim }}
+
+  <!-- Center aligned image -->
+  <eds-content-block eds-align="left" eds-image-align="center">
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Right aligned image -->
+  <eds-content-block eds-align="left" eds-image-align="right">
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Image on left side -->
+  <eds-content-block eds-inline="at-512">
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Image on right side -->
+  <eds-content-block eds-inline="at-512" eds-image-position-right>
+    ...same slotted content as above...
+  </eds-content-block>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: left_aligned_image_example, label: "Left aligned" },
+        { example: center_aligned_image_example, label: "Center aligned" },
+        { example: right_aligned_image_example, label: "Right aligned" },
+        { example: left_side_image_example, label: "Left side" },
+        { example: right_side_image_example, label: "Right side" }
+      ],
+      preformatted=true,
+      show_copy_button=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+  ## Image content sizes
+  Adhere to <eds-link eds-href="/visual-style/illustration/illustration.html#spot-illustrations">spot illustration</eds-link> guidelines pertaining to sizing.
+  {% endfilter %}
+
+  {% set extra_large_image_example %}
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--extra-large"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set large_image_example %}
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--large"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set medium_image_example %}
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set small_image_example %}
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--small"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <eds-link slot="action" eds-href="#">Learn more</eds-link>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Extra large -->
+  {{ extra_large_image_example | safe | trim }}
+
+  <!-- Large -->
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--large"
+    />
+
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Medium -->
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Small -->
+  <eds-content-block eds-align="left">
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--small"
+    />
+
+    ...same slotted content as above...
+  </eds-content-block>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: extra_large_image_example, label: "Extra large" },
+        { example: large_image_example, label: "Large" },
+        { example: medium_image_example, label: "Medium (default)" },
+        { example: small_image_example, label: "Small" }
+      ],
+      preformatted=true,
+      show_copy_button=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+  ## Heading content
+
+  {% endfilter %}
+
+  {% set heading_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set slotted_title_heading_example %}
+  <eds-content-block eds-heading-full-width eds-body-full-width>
+    <eds-title slot="heading" eds-border="bottom">
+      <h2
+        slot="heading"
+        class="eds-title__heading"
+      >
+        Your Retirement Score
+      </h2>
+
+      <eds-button
+        slot="action"
+        eds-variant="tertiary"
+        eds-icon-right="nav__overflow-menu"
+      ></eds-button>
+    </eds-title>
+
+    <eds-button slot="action" eds-variant="secondary">
+      Improve your score
+    </eds-button>
+
+    <img
+      style="width: 50%;"
+      class="eds-content-block__image"
+      src="/images/content-block/content-block-RPM.png"
+      alt="A representation of your retirement score"
+    />
+  </eds-content-block>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  {{ heading_example | safe | trim }}
+
+  <!-- inline styles used for demonstration only -->
+  {{ slotted_title_heading_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: heading_example, label: "Heading", generate_html: false },
+        { example: slotted_title_heading_example, label: "Title component" }
+      ],
+      preformatted=true,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+  ## Heading sizes
+  - Apply `.eds-content-block__heading...` class to heading text to produce a desired size.
+  - The `<h#>` and the heading size are mutually exclusive.
+  {% endfilter %}
+
+  {% set heading_level_1_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading eds-content-block__heading--level-1"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set heading_level_2_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading eds-content-block__heading--level-2"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set heading_level_3_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading eds-content-block__heading--level-3"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set heading_level_4_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set heading_level_5_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading eds-content-block__heading--level-5"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Level 1 -->
+  {{ heading_level_1_example | safe | trim }}
+
+  <!-- Level 2 -->
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading eds-content-block__heading--level-2"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Level 3 -->
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading eds-content-block__heading--level-3"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Level 4 -->
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Level 5 -->
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading eds-content-block__heading--level-5"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    ...same slotted content as above...
+  </eds-content-block>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: heading_level_1_example, label: "Level 1" },
+        { example: heading_level_2_example, label: "Level 2" },
+        { example: heading_level_3_example, label: "Level 3" },
+        { example: heading_level_4_example, label: "Level 4 (default)" },
+        { example: heading_level_5_example, label: "Level 5" }
+      ],
+      preformatted=true,
+      show_copy_button=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+  ## Heading as a Link
+  Use the <eds-link eds-href="/components/link/link.html">Link</eds-link> component to wrap heading text.
+  {% endfilter %}
+
+  {% set link_heading_example %}
+  <eds-content-block eds-align="left">
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      <eds-link eds-href="#" eds-disable-underline>Equity trading</eds-link>
+    </h2>
+
+    Choose from common stock, depository receipt, unit trust fund, real estate
+    investment trusts (REITs), preferred securities, closed-end funds, and
+    variable interest entity.
+  </eds-content-block>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: link_heading_example }
+      ],
+      preformatted=true
+  )}}
+
+  {% filter markdown %}
+  ## Body content
+  {% endfilter %}
+
+  {% set slotted_text_content %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set slotted_body_content %}
+  <eds-content-block eds-heading-full-width eds-body-full-width>
+    <eds-title slot="heading" eds-border="bottom">
+      <h2
+        slot="heading"
+        class="eds-title__heading"
+      >
+        Your Retirement Score
+      </h2>
+
+      <eds-button
+        slot="action"
+        eds-variant="tertiary"
+        eds-icon-right="nav__overflow-menu"
+      ></eds-button>
+    </eds-title>
+
+    <eds-button slot="action" eds-variant="secondary">
+      Improve your score
+    </eds-button>
+
+    <img
+      style="width: 50%;"
+      class="eds-content-block__image"
+      src="/images/content-block/content-block-RPM.png"
+      alt="A representation of your retirement score"
+    />
+  </eds-content-block>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Slotted text content -->
+  {{ slotted_text_content | safe | trim }}
+
+  <!-- Slotted body content -->
+  <!-- inline styles used for demonstration only -->
+  {{ slotted_body_content | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: slotted_text_content, label: "Slotted text content" },
+        { example: slotted_body_content, label: "Slotted body content" }
+      ],
+      preformatted=true,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+  ## Body text sizes
+  Apply `.eds-content-block__body…` class to body text to produce a desired size.
+  {% endfilter %}
+
+  {% set large_body_text_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading eds-content-block__heading--level-2"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <span class="eds-content-block__body eds-content-block__body--large">
+      There's a reason we're a world leader in mutual funds—our rich history,
+      global research, and dedication to innovation create more choices for you.
+    </span>
+  </eds-content-block>
+  {% endset %}
+
+  {% set medium_body_text_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    There's a reason we're a world leader in mutual funds—our rich history,
+    global research, and dedication to innovation create more choices for you.
+  </eds-content-block>
+  {% endset %}
+
+  {% set small_body_text_example %}
+  <eds-content-block>
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Why choose Enterprise funds?
+    </h2>
+
+    <span class="eds-content-block__body eds-content-block__body--small">
+      There's a reason we're a world leader in mutual funds—our rich history,
+      global research, and dedication to innovation create more choices for you.
+    </span>
+  </eds-content-block>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Large -->
+  {{ large_body_text_example | safe | trim }}
+
+  <!-- Medium (default) -->
+  {{ medium_body_text_example | safe | trim }}
+
+  <!-- Small -->
+  {{ small_body_text_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: large_body_text_example, label: "Large" },
+        { example: medium_body_text_example, label: "Medium (default)" },
+        { example: small_body_text_example, label: "Small" }
+      ],
+      preformatted=true,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+  ## Action content
+  {% endfilter %}
+
+  {% set left_aligned_action_example %}
+  <eds-content-block eds-align="left">
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Wealth management
+    </h2>
+
+    <div slot="action">
+      <eds-button>Find an advisor</eds-button><br>
+
+      <!-- inline styles used for demonstration only -->
+      <eds-link style="display: inline-block; margin-top: 1rem;">
+        Learn more
+      </eds-link>
+    </div>
+
+    You can work with a dedicated advisor, who can help you build a flexible
+    plan that's designed to adapt to your changing needs and help grow and
+    protect your wealth over time.
+  </eds-content-block>
+  {% endset %}
+
+  {% set center_aligned_action_example %}
+  <eds-content-block eds-align="left" eds-action-align="center">
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Wealth management
+    </h2>
+
+    <div slot="action">
+      <eds-button>Find an advisor</eds-button><br>
+
+      <!-- inline styles used for demonstration only -->
+      <eds-link style="display: inline-block; margin-top: 1rem;">
+        Learn more
+      </eds-link>
+    </div>
+
+    You can work with a dedicated advisor, who can help you build a flexible
+    plan that's designed to adapt to your changing needs and help grow and
+    protect your wealth over time.
+  </eds-content-block>
+  {% endset %}
+
+  {% set right_aligned_action_example %}
+  <eds-content-block eds-align="left" eds-action-align="right">
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Wealth management
+    </h2>
+
+    <div slot="action">
+      <eds-button>Find an advisor</eds-button><br>
+
+      <!-- inline styles used for demonstration only -->
+      <eds-link style="display: inline-block; margin-top: 1rem;">
+        Learn more
+      </eds-link>
+    </div>
+
+    You can work with a dedicated advisor, who can help you build a flexible
+    plan that's designed to adapt to your changing needs and help grow and
+    protect your wealth over time.
+  </eds-content-block>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Left aligned -->
+  <!-- eds-action-align only required if you need to overwrite the default alignment -->
+  {{ left_aligned_action_example | safe | trim }}
+
+  <!-- Center aligned -->
+  <eds-content-block eds-align="left" eds-action-align="center">
+    ...same slotted content as above...
+  </eds-content-block>
+
+  <!-- Right aligned -->
+  <eds-content-block eds-align="left" eds-action-align="right">
+    ...same slotted content as above...
+  </eds-content-block>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: left_aligned_action_example, label: "Left aligned" },
+        { example: center_aligned_action_example, label: "Center aligned" },
+        { example: right_aligned_action_example, label: "Right aligned" }
+      ],
+      preformatted=true,
+      show_copy_button=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+  ## Tile background
+  {% endfilter %}
+
+  {% set tile_example %}
+  <eds-content-block
+    eds-tile-background
+    eds-heading-full-width
+    eds-body-full-width
+  >
+    <eds-title slot="heading" eds-border="bottom">
+      <h2
+        slot="heading"
+        class="eds-title__heading"
+      >
+        Your Retirement Score
+      </h2>
+
+      <eds-button
+        slot="action"
+        eds-variant="tertiary"
+        eds-icon-right="nav__overflow-menu"
+      ></eds-button>
+    </eds-title>
+
+    <eds-button slot="action" eds-variant="secondary">
+      Improve your score
+    </eds-button>
+
+    <img
+      style="width: 50%;"
+      class="eds-content-block__image"
+      src="/images/content-block/content-block-RPM.png"
+      alt="A representation of your retirement score"
+    />
+  </eds-content-block>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        {
+          example: tile_example,
+          class: 'eds-html-example-list__item--gray-background'
+        }
+      ],
+      preformatted=true
+  )}}
+
+  {% filter markdown %}
+  ## Vertical spacing
+  - The Content Block will distribute all content sections uniformly.
+  - A dense spacing option is available to decrease the amount of space between sections.
+  {% endfilter %}
+
+  {{ library.eds_do_dont(items=[{
+      imagepath:"/images/content-block/content-block-spacing-default.png",
+      alt:"An image of 16px default spacing",
+      caption:"Default spacing of content."
+    },{
+      imagepath:"/images/content-block/content-block-spacing-dense.png",
+      alt:"An image of 12px dense spacing",
+      caption:"Dense spacing applied to the Content Block."
+    }])
+  }}
+
+  {% set dense_example %}
+  <eds-content-block eds-align="left" eds-dense>
+    <img
+      slot="image"
+      src="/images/content-block/content-block-image.png"
+      alt="A beautiful mountain range"
+      class="eds-content-block__image eds-content-block__image--medium"
+    />
+
+    <h2
+      slot="heading"
+      class="eds-content-block__heading"
+    >
+      Sector investing
+    </h2>
+
+    <eds-button slot="action">Open an account</eds-button>
+
+    Sector investing offers targeted exposure to the stocks of companies in
+    specific segments of the economy and can help you pursue growth, diversify
+    your portfolio, and manage risks. Open a Enterprise brokerage or other type of
+    account to take advantage of sector investing opportunities.
+  </eds-content-block>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: dense_example, label: 'Dense spacing'}
+      ],
+      preformatted=true
+  )}}
+
+  {# START GRID COMPOSITION STUFF #}
+        {% filter markdown %}
+        ## Composing with Grid
+
+        Many components can be composed and visually organized using Grid.
+        {% endfilter %}
+        
+        {% set composing_content_blocks_and_grid %}
+          <div class="eds-grid-root">
+            <div class="eds-grid__grid eds-grid__grid--default-column-span-4">
+              <div class="eds-grid__item">
+                <eds-content-block eds-align="left" eds-image-align="center">
+                  <img
+                    slot="image"
+                    src="/images/content-block/content-block-image.png"
+                    alt="Some helpful alternate text for screen readers"
+                    class="eds-content-block__image eds-content-block__image--medium"
+                  />
+                  <h2 slot="heading" class="eds-content-block__heading">
+                    Why choose Enterprise funds?
+                  </h2>
+                  <eds-link slot="action" eds-href="#">Learn more</eds-link>
+                  Lorem ipsum and then some...
+                </eds-content-block>
+              </div>
+              <div class="eds-grid__item">
+                <eds-content-block eds-align="left" eds-image-align="center">
+                  <img
+                    slot="image"
+                    src="/images/content-block/content-block-image.png"
+                    alt="Some helpful alternate text for screen readers"
+                    class="eds-content-block__image eds-content-block__image--medium"
+                  />
+                  <h2 slot="heading" class="eds-content-block__heading">
+                    What Enterprise offers
+                  </h2>
+                  <eds-link slot="action" eds-href="#">Learn more</eds-link>
+                  Lorem ipsum and then some...
+                </eds-content-block>
+              </div>
+              <div class="eds-grid__item">
+                <eds-content-block eds-align="left" eds-image-align="center">
+                  <img
+                    slot="image"
+                    src="/images/content-block/content-block-image.png"
+                    alt="Some helpful alternate text for screen readers"
+                    class="eds-content-block__image eds-content-block__image--medium"
+                  />
+                  <h2 slot="heading" class="eds-content-block__heading">
+                    Other things
+                  </h2>
+                  <eds-link slot="action" eds-href="#">Learn more</eds-link>
+                  Lorem ipsum and then some...
+                </eds-content-block>
+              </div>
+            </div>
+          </div>
+        {% endset %}
+
+        {% set composing_content_blocks_and_grid_example %}
+            {{ composing_content_blocks_and_grid | safe }}
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=composing_content_blocks_and_grid_example,
+            code_snippet_source=composing_content_blocks_and_grid,
+            example_label= "Composing content blocks and grid",
+            generate_html=false
+        )}}
+
+    {# END GRID COMPOSOTION STUFF #}
+
+{% endblock %}
+
+{% block design_tab %}
+  <section class="external-design-link">
+      You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/content/content-section/#visual-design-specifications">design guidance</eds-link> for this component.
+  </section>
+
+  {% filter markdown %}
+    ## Use when
+    - Presenting high-level, short-form content on an overview or summary page.
+    - Presenting high-level content that guides the user to more detailed content on another page.
+    - Presenting section headings with summary content.
+
+    ### Don't use when
+    - Presenting detailed, long-form content.
+
+    ## Visual style
+    - The width of the Content Block is 100% of its parent container.
+    - The `max-width` of the `default` and `heading` slots is 45rem (720px) to aid in readability.
+
+    ### Anatomy and construction
+  {% endfilter %}
+
+  {% set content_block_anatomy_caption %} 
+    <ol class="eds-figure__figcaption-inline-list">
+      <li>Image</li>
+      <li>Heading (required)</li>
+      <li>Default (required)</li>
+      <li>Action</li>
+    </ol>
+
+  <p class="eds-docsite-diagram-note"><strong>Note:</strong> Vertical space between content sections can be reduced using the dense option.</p>
+  {% endset %} 
+
+  {{ library.eds_figure(
+        srcset="
+            ../images/content-block/content-block-anatomy.png 1x,
+            ../images/content-block/content-block-anatomy@2x.png 2x
+        ",
+        alt="Diagram identifying Content Block components and anotating the space between them.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=content_block_anatomy_caption,
+        sentiment="neutral"
+        ) 
+    }}
+
+  {% filter markdown %}
+  ### Widths
+  {% endfilter %}
+
+  {{ library.eds_figure(
+        srcset="
+            ../images/content-block/content-block-slot-width-default.png 1x,
+            ../images/content-block/content-block-slot-width-default@2x.png 2x
+        ",
+        alt="An image of default slot widths.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="",
+        caption="Default slot widths",
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {{ library.eds_figure(
+        srcset="
+            ../images/content-block/content-block-slot-width-position.png 1x,
+            ../images/content-block/content-block-slot-width-position@2x.png 2x
+        ",
+        alt="An image depicting the overriding of max widths of the heading and default slots.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true ,
+        label="",
+        caption="The 'heading' and 'default' sections have max-widths. Apply the '...full-width' CSS modifier to the slotted content to override.",
+        sentiment="neutral"
+        ) 
+    }}
+
+  {{ library.eds_figure(
+        srcset="
+            ../images/content-block/content-block-slot-full-width.png 1x,
+            ../images/content-block/content-block-slot-full-width@2x.png 2x
+        ",
+        alt="An image depicting the overriding of max widths of the heading and default slots.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="Consider",
+        caption="whether overriding the max width makes sense for its content.",
+        sentiment="positive"
+        ) 
+    }}
+    
+    {{ library.eds_figure(
+        srcset="
+            ../images/content-block/content-block-slot-max-width-dont.png 1x,
+            ../images/content-block/content-block-slot-max-width-dont@2x.png 2x
+        ",
+        alt="An image of slotted web components being constrained by the default max-width.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="Avoid",
+        caption="constraining the width when using slotted web components.",
+        sentiment="negative"
+        ) 
+    }}
+  
+
+  {% filter markdown %}
+  ## Behavior
+  {% endfilter %}
+
+  {{ library.eds_figure(
+        srcset="
+            ../images/content-block/content-block-padding.png 1x,
+            ../images/content-block/content-block-padding@2x.png 2x
+        ",
+        alt="An image of default tile padding.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="",
+        caption="Default tile padding.",
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {{ library.eds_figure(
+        srcset="
+            ../images/content-block/content-block-padding-wide.png 1x,
+            ../images/content-block/content-block-padding-wide@2x.png 2x
+        ",
+        alt="An image of tile padding values at viewports of 768px and above.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="",
+        caption="Tile padding values change 'at-768'.",
+        sentiment="neutral"
+        ) 
+    }}
+    
+
+  {% filter markdown %}
+  ## Content
+  - Always be clear and concise when writing heading text.
+  - Always set heading text slotted in sentence case.
+  - Always set Button and Link text in sentence case.
+  - Never include non-image content in the `image` container.
+  - Always adhere to the content standards of the components slotted into the Content Block.
+    {% endfilter %}
+  {{ library.eds_editorial()}}
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+  | Attribute                         | Type    | Validation                                                                                                    | Default  | Description                                                                                                                                                                                                                                                                                |
+  | --------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | `eds-align`                       | string  | `left`, `center`, `right`                                                                                     | `center` | Sets the alignment for the entire component.<br><br>Does not apply when component is displayed inline.                                                                                                                                                                                     |
+  | `eds-action-align`                | string  | `left`, `center`, `right`                                                                                     | --       | Sets the alignment of the `action` slot, overriding the value of `eds-align-all`.<br><br>Does not apply when component is displayed inline.                                                                                                                                                |
+  | `eds-body-align`                  | string  | `left`, `center`, `right`                                                                                     | --       | Sets the alignment of the `default` (body) slot, overriding the value of `eds-align-all`.<br><br>Does not apply when component is displayed inline.                                                                                                                                        |
+  | `eds-body-full-width`             | boolean | Anything other than an empty string, `true`, or `eds-body-full-width` will be treated as false.               | `false`  | Removes the max-width of the `default` (body) slot.                                                                                                                                                                                                                                        |
+  | `eds-dense`                       | boolean | Anything other than an empty string, `true`, or `eds-dense` will be treated as false.                         | `false`  | Decreases the amount of spacing between slots.                                                                                                                                                                                                                                             |
+  | `eds-heading-align`               | string  | `left`, `center`, `right`                                                                                     | --       | Sets the alignment of the `heading` slot, overriding the value of `eds-align`.<br><br>Does not apply when component is displayed inline.<br><br>It will not affect the internal content of slotted web components like <eds-link eds-href="/components/title/title.html">Title</eds-link>. |
+  | `eds-heading-full-width`          | boolean | Anything other than an empty string, `true`, or `eds-heading-full-width` will be treated as false.            | `false`  | Removes the max-width of the `heading` slot.                                                                                                                                                                                                                                               |
+  | `eds-image-align`                 | string  | `left`, `center`, `right`                                                                                     | --       | Sets the alignment of the `image` slot, overriding the value of `eds-align`.<br><br>Does not apply when component is displayed inline.                                                                                                                                                     |
+  | `eds-inline`                      | string  | `never`, `always`, `at-512`, `at-768`, `at-960`, `at-1280`                                                    | `never`  | Determines at what point the image should be positioned inline.<br><br>For any breakpoint, if `eds-inline` is set to `never` the image will always be positioned at the top.                                                                                                               |
+  | `eds-inline-image-position-right` | boolean | Anything other than an empty string, `true`, or `eds-inline-image-position-right` will be treated as `false`. | `false`  | Positions the image to the right of the `default`, `heading`, and `action` slots when the image is displayed inline.<br><br>When `false`, the image is displayed to the left.                                                                                                              |
+  | `eds-tile-background`             | boolean | Anything other than an empty string, `true`, or `eds-tile-background` will be treated as `false`.             | `false`  | Adjusts the background and spacing to render the component in a tile-like container.                                                                                                                                                                                                       |
+
+  ## Slots
+
+  | Name      | Default content | Description                                                                                                                                                                                                                                                                                                                                                                                                  |
+  | --------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | `action`  | --              | Allows <eds-link eds-href="/components/button/button.html">Buttons</eds-link>, <eds-link eds-href="/components/link/link.html">Links</eds-link>, or other interactive elements to appear below the `default` slot.                                                                                                                                                                                           |
+  | `default` | --              | The body of the component.                                                                                                                                                                                                                                                                                                                                                                                   |
+  | `heading` | --              | Content that will render as the Content Block's heading above the `default` slot.                                                                                                                                                                                                                                                                                                                            |
+  | `image`   | --              | An image rendered at the top of the component by default. The position can be adjusted using the `eds-image-position` attribute.<br><br>The `image` slot does not limit the size of its contents. Refer to the <eds-link eds-href="/visual-style/illustration/illustration.html#spot-illustrations">illustration documentation</eds-link> for sizing guidelines or use one of the provided modifier classes. |
+
+  ## Events
+  The Content Block component does not emit any custom events.
+
+  ## Methods
+  The Content Block component does not implement any public methods.
+
+  ## CSS helper classes
+  CSS helper classes provide common styles needed for slotted content.
+
+  | Class name                    | Applies to                                   | Outcome                                                                               |
+  | ----------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------- |
+  | `.eds-content-block__image`   | An element slotted within the `image` slot   | Ensures proper alignment of the image.                                                |
+  | `.eds-content-block__heading` | An element slotted within the `heading` slot | Ensures proper alignment of the heading and applies default "Level 4" heading styles. |
+  | `.eds-content-block__body`    | An element slotted within the `default` slot | Ensures proper alignment of the body and applies default font styles.                 |
+  | `.eds-content-block__action`  | An element slotted within the `action` slot  | Ensures proper alignment of the action.                                               |
+
+  ## CSS modifier classes
+  CSS modifier classes that apply to `.eds-content-block-root` are only for consumers who cannot use the web component.
+
+  | Class name                                        | Applies to                    | Outcome                                                                                                                                                             |
+  | ------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | `.eds-content-block--align-left`                  | `.eds-content-block-root`     | Same as `eds-align` attribute.                                                                                                                                      |
+  | `.eds-content-block--align-right`                 | `.eds-content-block-root`     | Same as `eds-align` attribute.                                                                                                                                      |
+  | `.eds-content-block--action-align-left`           | `.eds-content-block-root`     | Same as `eds-action-align` attribute.                                                                                                                               |
+  | `.eds-content-block--action-align-right`          | `.eds-content-block-root`     | Same as `eds-action-align` attribute.                                                                                                                               |
+  | `.eds-content-block--action-align-center`         | `.eds-content-block-root`     | Same as `eds-action-align` attribute.                                                                                                                               |
+  | `.eds-content-block--body-align-left`             | `.eds-content-block-root`     | Same as `eds-body-align` attribute.                                                                                                                                 |
+  | `.eds-content-block--body-align-right`            | `.eds-content-block-root`     | Same as `eds-body-align` attribute.                                                                                                                                 |
+  | `.eds-content-block--body-align-center`           | `.eds-content-block-root`     | Same as `eds-body-align` attribute.                                                                                                                                 |
+  | `.eds-content-block--body-full-width`             | `.eds-content-block-root`     | Same as `eds-body-full-width` attribute.                                                                                                                            |
+  | `.eds-content-block--dense`                       | `.eds-content-block-root`     | Same as `eds-dense` attribute.                                                                                                                                      |
+  | `.eds-content-block--heading-align-left`          | `.eds-content-block-root`     | Same as `eds-heading-align` attribute.                                                                                                                              |
+  | `.eds-content-block--heading-align-right`         | `.eds-content-block-root`     | Same as `eds-heading-align` attribute.                                                                                                                              |
+  | `.eds-content-block--heading-align-center`        | `.eds-content-block-root`     | Same as `eds-heading-align` attribute.                                                                                                                              |
+  | `.eds-content-block--heading-full-width`          | `.eds-content-block-root`     | Same as `eds-heading-full-width` attribute.                                                                                                                         |
+  | `.eds-content-block--image-align-left`            | `.eds-content-block-root`     | Same as `eds-image-align` attribute.                                                                                                                                |
+  | `.eds-content-block--image-align-right`           | `.eds-content-block-root`     | Same as `eds-image-align` attribute.                                                                                                                                |
+  | `.eds-content-block--image-align-center`          | `.eds-content-block-root`     | Same as `eds-image-align` attribute.                                                                                                                                |
+  | `.eds-content-block--inline-always`               | `.eds-content-block-root`     | Same as `eds-inline` attribute.                                                                                                                                     |
+  | `.eds-content-block--inline-at-512`               | `.eds-content-block-root`     | Same as `eds-inline` attribute.                                                                                                                                     |
+  | `.eds-content-block--inline-at-768`               | `.eds-content-block-root`     | Same as `eds-inline` attribute.                                                                                                                                     |
+  | `.eds-content-block--inline-at-960`               | `.eds-content-block-root`     | Same as `eds-inline` attribute.                                                                                                                                     |
+  | `.eds-content-block--inline-at-1280`              | `.eds-content-block-root`     | Same as `eds-inline` attribute.                                                                                                                                     |
+  | `.eds-content-block--inline-image-position-right` | `.eds-content-block-root`     | Same as `eds-inline-image-position-right` attribute.                                                                                                                |
+  | `.eds-content-block--tile-background`             | `.eds-content-block-root`     | Same as `eds-tile-background` attribute.                                                                                                                            |
+  | `.eds-content-block__image--extra-large`          | `.eds-content-block__image`   | Sets the image width according to the <eds-link eds-href="/visual-style/illustration/illustration.html#spot-illustrations">illustration size guidelines</eds-link>. |
+  | `.eds-content-block__image--large`                | `.eds-content-block__image`   | Sets the image width according to the <eds-link eds-href="/visual-style/illustration/illustration.html#spot-illustrations">illustration size guidelines</eds-link>. |
+  | `.eds-content-block__image--medium`               | `.eds-content-block__image`   | Sets the image width according to the <eds-link eds-href="/visual-style/illustration/illustration.html#spot-illustrations">illustration size guidelines</eds-link>. |
+  | `.eds-content-block__image--small`                | `.eds-content-block__image`   | Sets the image width according to the <eds-link eds-href="/visual-style/illustration/illustration.html#spot-illustrations">illustration size guidelines</eds-link>. |
+  | `.eds-content-block__heading--level-1`            | `.eds-content-block__heading` | Sets the "Level 1" heading style                                                                                                                                       |
+  | `.eds-content-block__heading--level-2`            | `.eds-content-block__heading` | Sets the "Level 2" heading style                                                                                                                                       |
+  | `.eds-content-block__heading--level-3`            | `.eds-content-block__heading` | Sets the "Level 3" heading style                                                                                                                                       |
+  | `.eds-content-block__heading--level-5`            | `.eds-content-block__heading` | Sets the "Level 5" heading style                                                                                                                                       |
+  | `.eds-content-block__body--small`                 | `.eds-content-block__body`    | Renders the element with "small" responsive text.                                                                                                                    |
+  | `.eds-content-block__body--large`                 | `.eds-content-block__body`    | Renders the element with "large" responsive text.                                                                                                                    |
+
+  {% endfilter %}
+
+  {# NAMESPACING #}
+
+  {% set namespace_example_wc %}
+      <eds3-content-block>...</eds3-content-block>
+  {% endset %}
+
+  {% set namespace_example_html %}
+      <div class="eds3-content-block-root eds-content-block--align-left eds-content-block--inline-never">...</div>
+  {% endset %}
+
+  {{ library.namespacing(component_name="Content Block", root_class="content-block-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+  {# IMPORT REFERENCE #}
+
+  {% set js_import_table %}
+  | Import                                                         | Required            |
+  | -------------------------------------------------------------- | ------------------- |
+  | `import { edsContentBlock } from '@xyz-ap153177/apex-kit';`  | Yes                 |
+  {% endset %}
+
+  {{ library.import_reference(component_name="Content Block", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+  {% filter markdown %}
+  Always follow the accessibility guidelines for any components slotted within the Content Block.
+  {% endfilter %}
+  {{ library.eds_accessibility()}}
+{% endblock %}

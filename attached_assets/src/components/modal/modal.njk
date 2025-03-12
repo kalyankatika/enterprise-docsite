@@ -1,0 +1,499 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %} 
+  {% filter markdown %}
+  ##### Components
+  # Modal
+  A Modal presents supplementary information and actions in an overlay without losing the context of the underlying page.
+  {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+  {% filter markdown %}
+    ## Default
+    {% endfilter %}
+
+  {% set example %}
+  <eds-modal id="default-modal" eds-parent-el="body">
+    <h2 slot="heading" class="eds-modal__heading">Change Investments</h2>
+    You're leaving Automatic Withdrawals to go to Change Investments. Once changes are made, we'll bring you back to complete the rest of the checkout process.
+  </eds-modal>
+  <eds-link id="default-modal-trigger" eds-href="javascript:;" eds-trigger>Open Modal</eds-link>
+  <script defer>
+    let defaultModalTrigger = document.getElementById('default-modal-trigger');
+    let defaultModal = document.getElementById('default-modal');
+
+    defaultModalTrigger.addEventListener('click', function () {
+      defaultModal.edsOpen = true;
+    });
+  </script>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+        example=example,
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+  {% filter markdown %}
+    ## Sizes
+    - Three max-widths are provided. The Modal container will flex as needed based on the viewport width. 
+    - See the Responsive section for information about how the width changes at different breakpoints.
+    {% endfilter %}
+
+  {% macro modalWidthExample(size = '600') %}
+    <eds-modal eds-modal-width="{{size}}" id="modal-width-{{size}}" eds-parent-el="body">
+      <h2 slot="heading" class="eds-modal__heading">Change Investments</h2>
+      You're leaving Automatic Withdrawals to go to Change Investments. Once changes are made, we'll bring you back to complete the rest of the checkout process.
+    </eds-modal>
+    <eds-link id="modal-width-{{size}}-trigger" eds-href="javascript:;" eds-trigger>Open Modal</eds-link>
+    <script defer>
+      let modalWidth{{size}}Trigger = document.getElementById('modal-width-{{size}}-trigger');
+      let modalWidth{{size}} = document.getElementById('modal-width-{{size}}');
+
+      modalWidth{{size}}Trigger.addEventListener('click', function () {
+        modalWidth{{size}}.edsOpen = true;
+      });
+    </script>
+  {% endmacro %}
+
+  {{ library.eds_code_example_pair(
+                example=modalWidthExample('400'),
+                example_label='400px',
+                language='html',
+                generate_html=false
+    )}}
+
+  {{ library.eds_code_example_pair(
+                example=modalWidthExample(),
+                example_label='600px',
+                language='html',
+                generate_html=false
+    )}}
+
+  {{ library.eds_code_example_pair(
+                example=modalWidthExample('800'),
+                example_label='800px',
+                language='html',
+                generate_html=false
+    )}}
+
+  {% filter markdown %}
+    ## Scrolling
+  - The amount of content in the Modal will cause the height to increase. 
+  - At 512px and above, the Modal will increase in height until there is a 3rem (48px) margin between the top and bottom of the Modal and the viewport. At this point, the content will scroll. 
+  - Below 512px, the Modal will increase in height from the bottom of the viewport until there is 2rem (32px) margin between the top of the Modal and the top of the viewport. At this point, the body content below the title will scroll. 
+    {% endfilter %}
+
+  {% set example %}
+  <eds-modal id="scrolling-modal" eds-parent-el="body">
+    <h2 slot="heading" class="eds-modal__heading">Reasons and requirements</h2>
+    <p>You can only take a hardship withdrawal for one or more of these reasons. You'll be asked to enter details from supporting documents for each of your reasons.</p>
+    <p>Select a reason below to see the requirements.</p>
+
+    <h3>To prevent eviction or foreclosure on your principal residence</h3>
+    <p><b>Not available for a second home, vacation house, or rental property</b></p>
+    <p>You'll need proof of impending eviction or foreclosure dated within the last 3 months that includes your name and address such as:</p>
+      <ul class="eds-list-group-root eds-list-group--unordered" role="list">
+        <li class="eds-list-group__list-item">
+          <div class="eds-list-group__list-item-content">
+            <span class="eds-list-group__list-item-text">
+              Notice from landlord or mortgage holder threatening eviction with the address of the residence, name of landlord or mortgage holder, amount needed to prevent eviction or foreclosure, and total amount owed
+            </span>
+          </div>
+        </li>
+      </ul>
+      <p>Please note a notice of mortgage in default or past-due mortgage statements won't be accepted.</p>
+
+      <h3>Uninsurec and reimbursed medical expenses</h3>
+      <p><b>Includes eligible out-of-pocket and tax-deductible medical expenses for you, your spouse, child of dependent, or primary beneficiary</b></p>
+      <p>You'll need proof of eligible medical care expenses dated within the last 3 months that includes the patient's name such as: 
+      <ul class="eds-list-group-root eds-list-group--unordered" role="list">
+        <li class="eds-list-group__list-item">
+          <div class="eds-list-group__list-item-content">
+            <span class="eds-list-group__list-item-text">
+            Bills from medical providers, hospitals, laboratories, or ambulance services
+            </span>
+          </div>
+        </li>
+        <li class="eds-list-group__list-item">
+          <div class="eds-list-group__list-item-content">
+            <span class="eds-list-group__list-item-text">
+            Receipts from prescriptions, eyeglasses, medical supplies, or home improvements strictly for medical reasons
+            </span>
+          </div>
+        </li>
+        <li class="eds-list-group__list-item">
+          <div class="eds-list-group__list-item-content">
+            <span class="eds-list-group__list-item-text">
+            Documentation of amounts paid for medical insurance or reimbursed medical expenses
+            </span>
+          </div>
+        </li>
+        <li class="eds-list-group__list-item">
+          <div class="eds-list-group__list-item-content">
+            <span class="eds-list-group__list-item-text">
+            Estimate of ongoing treatment plans and costs from a licensed physican
+            </span>
+          </div>
+        </li>
+      </ul>
+
+      <h3>Purchase of your principal residence</h3>
+      <p><b>Includes down payment, closing costs, or title feeds, but not mortgage payments and is not available for a second home, vacation house, or rental property</b></p>
+      <p>You'll need proof of costs dated within the last 3 months that includes your name and address of principal residence such as:</p>
+      <ul class="eds-list-group-root eds-list-group--unordered" role="list">
+        <li class="eds-list-group__list-item">
+          <div class="eds-list-group__list-item-content">
+            <span class="eds-list-group__list-item-text">
+            Purchase and Sales Agreement with date, seller information, and property information (building name and address)
+            </span>
+          </div>
+        </li>
+        <li class="eds-list-group__list-item">
+          <div class="eds-list-group__list-item-content">
+            <span class="eds-list-group__list-item-text">
+            Construction contract with anticipated closing date or state date of construction
+            </span>
+          </div>
+        </li>
+      </ul>
+      <p>Please note a Good Faith Estimate may be required to confirm the withdrawal amount.</p>
+    </eds-modal>
+    <eds-link id="scrolling-modal-trigger" eds-href="javascript:;" eds-trigger>Open Modal</eds-link>
+    <script defer>
+      let scrollingModalTrigger = document.getElementById('scrolling-modal-trigger');
+      let scrollingModal = document.getElementById('scrolling-modal');
+
+      scrollingModalTrigger.addEventListener('click', function () {
+        scrollingModal.edsOpen = true;
+      });
+    </script>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+        example=example,
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+  {% filter markdown %}
+    ## No header
+    The inclusion of a header is optional but recommended. See the Accessibility tab for additional implementation information.  
+    {% endfilter %}
+
+  {% set example %}
+  <eds-modal id="modal-no-header" eds-modal-width="400" eds-aria-label="View Change Investments" eds-parent-el="body">
+    You're leaving Automatic Withdrawals to go to Change Investments. Once changes are made, we'll bring you back to complete the rest of the checkout process.
+  </eds-modal>
+  <eds-link id="modal-no-header-trigger" eds-href="javascript:;" eds-trigger>Open Modal</eds-link>
+  <script defer>
+    let modalNoHeaderTrigger = document.getElementById('modal-no-header-trigger');
+    let modalNoHeader = document.getElementById('modal-no-header');
+
+    modalNoHeaderTrigger.addEventListener('click', function () {
+      modalNoHeader.edsOpen = true;
+    });
+  </script>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+        example=example,
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+{% endblock %}
+
+{##
+ # Design Tab 
+ #}
+
+    {% block design_tab %}
+      <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/layout/modal/#visual-design-specifications">design guidance</eds-link> for this component.
+      </section>
+      
+      {% filter markdown %}
+        ## Use when
+        - Providing secondary/supplementary content.
+        - The secondary/supplementary content requires focused attention.
+
+        ## Don't use when
+        - The content or data entry could be incorporated into the underlying page. Consider using progressive disclosure within the page, for example the <eds-link eds-href="/components/expand-collapse/expand-collapse.html">Expand/Collapse</eds-link> component.
+        - The amount of content justifies the creation of a new page.
+        
+
+        {% include "src/templates/partials/layer_comparison.njk" %}
+
+
+        ## Visual style
+
+        ### Anatomy and construction
+        {% endfilter %}
+
+        {% set modal_anatomy_caption %} 
+          <ol class="eds-figure__figcaption-inline-list">
+            <li>Header</li>
+            <li>Close button (required)</li>
+            <li>Scrim (required)</li>
+            <li>Content (required)</li>
+          </ol>
+        {% endset %} 
+
+        {{ library.eds_figure(
+              srcset="
+                  ../images/modal/modal-anatomy.png 1x,
+                  ../images/modal/modal-anatomy@2x.png 2x
+              ",
+              alt="Modal anatomy diagram showing the header, close button, page overlay, and content area.  ",
+              width="full",
+              border=true,
+              padding="one-and-half-x",
+              background=false,
+              label="",
+              caption=modal_anatomy_caption,
+              sentiment="neutral"
+              ) 
+          }}
+    
+    {% filter markdown %}
+    ## Behavior
+    When the Modal is open, a person may only interact with the Modal layer. The Modal must be dismissed to interact with the underlying page.
+
+    ### Open
+    - Only open one Modal on the page at a time. 
+    - Open the Modal on all devices by touching/clicking a trigger.  
+
+    ### Close
+    Close the Modal on all devices by:
+    - Touching/clicking outside the container.
+    - Pressing the ESC key.
+    - Tabbing to the "close" icon and pressing the ENTER/RETURN key.
+    - Touching/clicking the "close" icon.
+    - Completing an action in the Modal.
+
+    ### Keyboard
+      - Guidelines for trapping focus within the Modal is built into the web component.
+      - Guidelines for closing the Modal is built into the Modal web component.
+      - When closing the Modal, focus should return to the last focusable element before the Modal was opened. This is built into the Modal web component.
+
+
+    ### Positioning in viewports up to 512px wide
+    - The Modal is positioned at the bottom of the viewport and fills the entire width.
+    - The Modal has no bottom padding when content scrolls to optimize the available height.
+
+    {% endfilter %}
+
+        {{ library.eds_figure(
+        srcset="
+            ../images/modal/modal-responsive.png 1x,
+            ../images/modal/modal-responsive@2x.png 2x
+        ",
+        alt="Diagram showing the Modal anchored to the bottom of a viewport below 512px.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+
+  {% filter markdown %}
+  ### Positioning in viewports 512px and wider
+  The Modal remains centered horizontally and vertically at all times.
+  {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/modal/modal-positioning.png 1x,
+            ../images/modal/modal-positioning@2x.png 2x
+        ",
+        alt="Diagram showing the Modal positioned vertically and horizontally on the screen at 512px.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {% filter markdown %}
+  
+    ## Content
+    - Keep header content as short as possible, ideally to one line regardless of the Modal size, to help mitigate accessibility problems that people may experience when zooming to resize Modal content.
+    - The header size is <eds-link eds-href="/visual-style/typography/typography.html#heading-text">Level 3</eds-link> by default, but may be changed. Do not use a <eds-link eds-href="/visual-style/typography/typography.html#heading-text">Level 1</eds-link> heading. 
+    - Always write headers in sentence case.
+  {% endfilter %}
+
+  {{ library.eds_editorial()}}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute                      | Type               | Validation                                                                                             | Default                                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | ------------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-describedby`         | string             | --                                                                                                     | Randomly generated `id` set on the wrapper for the default slot. | A string of `id`s separated by spaces that will be set as the `aria-describedby` attribute to the Modal dialog.                                                                                                                                                                                                                                                                                                      |
+    | `eds-aria-label`               | string             | --                                                                                                     | --                                                               | Use if Modal does not have a header. Assigns `aria-label` to the Modal dialog.                                                                                                                                                                                                                                                                                                                                       |
+    | `eds-aria-labelledby`          | string             | --                                                                                                     | Randomly generated `id` set on the wrapper for the heading slot. | A string of `id`s separated by spaces that will be set as the `aria-labelledby` attribute on the Modal dialog.                                                                                                                                                                                                                                                                                                       |
+    | `eds-close-button-a11y-text`   | string             | --                                                                                                     | Close dialog                                                     | Screen reader-only text for the close button within the Modal dialog.                                                                                                                                                                                                                                                                                                                                                |
+    | `eds-intercept-close`          | boolean            | Anything other than empty string, `true`, or `eds-intercept-close` will be treated as `false`          | `false`                                                          | Prevents the Modal from closing through the typical means of egress including clicking the close button, clicking the background overlay, or using the escape key. A custom event named `eds-modal-close-intercept` is then dispatched instead.                                                                                                                                                                      |
+    | `eds-modal-width`              | string             | `400`, `600`, `800`                                                                                    | `600`                                                            | The width of the Modal when viewport width is 512px and above.                                                                                                                                                                                                                                                                                                                                                       |
+    | `eds-open`                     | boolean            | Anything other than empty string, `true`, or `eds-open` will be treated as `false`                     | `false`                                                          | Triggers the open/close state of the Modal dialog.                                                                                                                                                                                                                                                                                                                                                                   |
+    | `eds-parent-el`                | string/HTMLElement | --                                                                                                     | --<br><br>(will default to `body` in version 4)                  | A CSS selector or HTMLElement reference representing the Modal's parent element.<br><br>When present, the Modal is repositioned within the DOM so that it is a child of this element. The use of this attribute can improve Modal's ability to trap focus when using a screen reader.<br><br>This attribute is most effective when specifying elements that are close to the root of the DOM (e.g., `document.body`) |
+    | `eds-return-focus-el`          | string/HTMLElement | --                                                                                                     | The element with focus prior to the Modal being opened.          | A CSS selector or HTMLElement reference representing the element to receive focus when the Modal is closed.<br><br>The use of this attribute can improve Modal's ability to return focus to the triggering element when using a screen reader on mobile devices.                                                                                                                                                     |
+    | `eds-z-index`                  | string             | --                                                                                                     | `100`                                                            | Overrides the z-index of the Modal when dealing with elements that have a higher index.                                                                                                                                                                                                                                                                                                                              |
+
+    ## Slots
+
+    | Name      | Default content | Description                                                                          |
+    | --------- | --------------- | ------------------------------------------------------------------------------------ |
+    | `default` | --              | Body content of the Modal.                                                           |
+    | `heading` | --              | Heading of the Modal.                                                                |
+
+    ## Events
+
+    | Event name                  | Description                                                                                                                                                                                                                               | Details                                          |
+    | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+    | `eds-modal-change`          | Emitted when the Modal changes its open/close state. Use to reflect what state the Modal is currently in while the Modal is animating opened/closed.  Possible values of `detail.state` include `closed`, `closing`, `opened`, `opening`. | `detail.open: boolean`<br>`detail.state: string` |
+    | `eds-modal-close-intercept` | Emitted when the `eds-intercept-close` attribute is true and the user attempts to close the modal by clicking the close button, clicking the background overlay, or pressing the escape key.                                              | `detail.modalRef: Element`                       |
+  
+    ## Methods
+    The Modal component does not implement any public methods.
+
+    ## Invoking the Modal
+    The Modal and trigger are not connected automatically. This connection must be done within the application. The following
+    is an example of how to connect them:
+  {% endfilter %}
+
+  {% set example %}
+  let modal = document.querySelector('#myCoolModal'); 
+  let trigger = document.queryselector('#myCoolModalTrigger'); 
+  
+  trigger.addEventListener('click', () => {  
+      modal.edsOpen = true; 
+  }); 
+  
+  modal.addEventListener('eds-modal-change', (e) => {  
+      // when the modal is closed, focus into the last active element on the page (which in most cases is the trigger that opened the modal) 
+      if (!e.detail.open) { trigger.focus(); } 
+  }); 
+  {% endset %}
+
+  {{ library.eds_code_snippet(source=example, show_copy_button=false, language='javascript', hide_line_numbers=true)}}
+
+  {% filter markdown %}
+    ## Shadow DOM support
+    If the trigger for the Modal is within a shadow root, you can open the Modal by doing the following:
+  {% endfilter %}
+
+  {% set example %}
+  let modal = document.querySelector('#myCoolModal'); 
+  let trigger = document.queryselector('web-component-name').shadowRoot.querySelector('#myCoolModalTrigger'); 
+  
+  trigger.addEventListener('click', () => {  
+      modal.edsOpen = true; 
+  }); 
+  
+  modal.addEventListener('eds-modal-change', (e) => {  
+      // when the modal is closed, focus into the last active element on the page (which in most cases is the trigger that opened the modal) 
+      if (!e.detail.open) { trigger.focus(); } 
+  }); 
+  {% endset %}
+
+  {{ library.eds_code_snippet(source=example, show_copy_button=false, language='javascript', hide_line_numbers=true)}}
+
+  {% filter markdown %}
+    ## CSS block classes
+
+    | Class name                                 | Description                                                                  |
+    | ------------------------------------------ | ---------------------------------------------------------------------------- |
+    | `.eds-modal-root`                          | The root `div` of the Modal to add modifiers that apply to the entire Modal. |
+
+    ## CSS element classes
+
+    | Class name                                 | Description                                                                                      |
+    | ------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+    | `.eds-modal__overlay`                      | The backdrop that obscures the content on the underlying page.                                   |
+    | `.eds-modal__dialog`                       | The dialog of the Modal.                                                                         |
+    | `.eds-modal__content`                      | The all content within the Modal dialog.                                                         |
+    | `.eds-modal__close-button`                 | The close button of the Modal.                                                                   |
+    | `.eds-modal__close-button-a11y-text`       | The screen reader-only text for the close button of the Modal.                                   |
+    | `.eds-modal__heading-wrapper`              | The wrapper for the Modal `heading` slot.                                                        |
+    | `.eds-modal__body-wrapper`                 | The wrapper for the Modal `default` slot.                                                        |
+
+    ## CSS helper classes
+    CSS helper classes provide common styles needed for slotted content.
+
+    | Class name                    | Applies to                                   | Outcome                                                                                                                                                                   |
+    | ----------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `.eds-modal__heading`         | An element slotted within the `heading` slot | Ensures proper alignment of the heading and applies default <eds-link eds-href="/visual-style/typography/typography.html#heading-text">level 4</eds-link> heading styles. |
+    | `.eds-modal__body`            | An element slotted within the `default` slot | Ensures proper alignment of the body and applies default font styles.                                                                                                     |
+
+
+    ## CSS modifier classes
+
+    | Class name                                        | Applies to                    | Outcome                                                           |
+    | ------------------------------------------------- | ----------------------------- | ----------------------------------------------------------------- |
+    | `.eds-modal--closed`                              | `.eds-modal-root`             | Provides styles when Modal is closed.                             |
+    | `.eds-modal--closing`                             | `.eds-modal-root`             | Provides animation when Modal is closing.                         |
+    | `.eds-modal--open`                                | `.eds-modal-root`             | Provides styles when Modal is opened.                             |
+    | `.eds-modal--opening`                             | `.eds-modal-root`             | Provides animation when Modal is opening.                         |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+      <eds3-modal>...</eds3-modal>
+    {% endset %}
+
+    {% set namespace_example_html %}
+      <div class="eds3-modal-root eds-modal--closed">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Modal", root_class="modal-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                   | Required                                    |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `import { edsModal } from '@xyz-ap153177/apex-kit';`                                   | Yes                                         |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                    | Yes                                         |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                          | Yes, unless using `injectCustomSpriteSheet` |
+| `import { injectCustomSpriteSheet, ICON_ACTION_CLOSE } from '@xyz-ap153177/apex-kit';` | Yes, unless using `injectSpriteSheet`       |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Modal", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+  {% filter markdown %}
+    ## Semantics
+    - When using a header, the Modal web component will add a `aria-labelledby` to the Modal dialog and generate an `id` to the heading slot wrapper. This can be overwritten using `eds-aria-labelledby`.
+    - When the Modal does not use a header, `eds-aria-label` should be used to add `aria-label` to the Modal dialog.
+    - The Modal web component will add a `aria-describedby` to the Modal dialog and generate an `id` to the default slot wrapper. This can be overwritten using `eds-aria-describedby`.
+  {% endfilter %}
+  <br><br>
+
+  {{ library.eds_accessibility(href="http://accessibility.xyz.com/guide/example/modals/")}}
+
+{% endblock %}

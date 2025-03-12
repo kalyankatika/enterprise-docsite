@@ -1,0 +1,10 @@
+{% extends "src/templates/layouts/documentation-page.njk" %}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Accordion
+
+    See <eds-link eds-href="/components/expand-collapse/expand-collapse.html">Expand-Collapse</eds-link>. 
+    {% endfilter %}
+{% endblock %}

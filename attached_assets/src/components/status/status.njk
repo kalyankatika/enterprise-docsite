@@ -1,0 +1,190 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{##
+ # TITLE
+ #}
+{% block page__title %}
+  {% filter markdown %}
+    ##### Components
+    # Status
+    The Status component provides a convenient way to alert or notify users of the result of an action taken or error that has occurred. There are four standard variants: Success, Failure, Info, and Warn. Status also supports custom images in place of the standard icons when passing an image path to the component.
+  {% endfilter %}
+{% endblock %}
+
+{##
+ # Examples Tab
+ #}
+{% block examples_tab %}
+  {% filter markdown %}
+    ## Default
+  {% endfilter %}
+  {{ library.eds_code_example_pair(
+      example = '<eds-status></eds-status>'
+  )}}
+
+  {% filter markdown %}
+    ## Variants
+
+    The Status component has four variants built in:
+
+    - Use "success" for a success or confirmation message
+    - Use "failure" for a case where there is a critical failure that prevents something from happening
+    - Use "warn" for a case when only a partial success occurred or the user should be cautioned in some way
+    - Use "info" for when important information needs to be highlighted
+  {% endfilter %}
+
+  {% set success_example %}
+    <eds-status
+     image-name="success"
+     heading-text="Congratulations!"
+     body-text"Your new account will be ready for funding in 2-3 business days"
+    ></eds-status>
+  {% endset %}
+
+  {% set failure_example %}
+    <eds-status></eds-status>
+  {% endset %}
+
+  {% set warn_example %}
+    <eds-status
+     image-name="warn"
+     heading-text="Hmm..."
+     body-text"We weren't able to verify your identity. You will receive an email at the address you provided with instructions on how to complete verification."
+    ></eds-status>
+  {% endset %}
+
+  {% set info_example %}
+    <eds-status
+     image-name="info"
+     heading-text="Taxable Event"
+     body-text"The trade you have placed may result in a taxable event. Please consult a financial professional to ensure you comply with the reporting laws of your state."
+    ></eds-status>
+  {% endset %}
+
+  {% set code_snippet_source %}
+    <!-- Success -->
+    {{ success_example | safe | trim }}
+
+    <!-- Failure (default) -->
+    {{ failure_example | safe | trim }}
+
+    <!-- Warn -->
+    {{ warn_example | safe | trim }}
+
+    <!-- Info -->
+    {{ info_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { 
+            example: success_example,
+            label: 'success'
+        },
+        { 
+            example: failure_example,
+            label: 'failure (default)'
+        },
+        { 
+            example: warn_example,
+            label: 'warn'
+        },
+        {
+            example: info_example,
+            label: 'info'
+        }
+      ],
+      code_snippet_source=code_snippet_source,
+      preformatted=true,
+      show_copy_button=false
+  )}}
+
+  {% filter markdown %}
+    ## Custom image
+
+    The Status component supports using a custom image for statuses:
+  {% endfilter %}
+
+  {{ library.eds_code_example_pair(
+      example = '<eds-status
+        image-name="https://providence.xyz.com/5.x/images/apex-logo.svg"
+        heading-text="Thanks for onboarding!"
+        body-text="Now think about how you are going to spend all the time you saved not having to write your own components."
+      ></eds-status>'
+  )}}
+{% endblock %}
+
+{##
+ # Design Tab
+ #}
+{% block design_tab %}
+  {% filter markdown %}
+    ## Use when
+    - An application needs to display a formatted status that is the only or main content on a page
+
+    ## Don't use when
+    - A status should be displayed inline within content or at the top of a page with content below
+
+    ## Content
+    - Always be clear and concise when writing heading text.
+    - Always set heading text in sentence case.
+    - Always adhere to the content standards of the text displayed in the body text.
+    {% endfilter %}
+  {{ library.eds_editorial()}}
+{% endblock %}
+
+{##
+ # Code Tab
+ #}
+{% block code_tab %}
+  {% filter markdown %}
+    ## Installation
+
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+
+    {% include "src/templates/partials/jsProps.njk" %}
+
+    | Attribute    | Type   | Validation | Default | Description |
+    |--------------|--------|------------|---------|-------------|
+    | body-text    | string | --         | Don't worry, it's nothing you did. We are working on it and hope to have it resolved soon. Please try again later. | More detailed error message to display |
+    | heading-text | string | --         | Sorry, we have run into a small problem. | Error heading to display in the component |
+    | image-name   | string | --         | failure | Controls icon or image to display. Valid values are: 'success', 'failure', 'warn', 'info', or an image path |
+  {% endfilter %}
+
+  {% set namespace_example_wc %}
+      <eds3-status></eds3-status>
+  {% endset %}
+
+  {% set namespace_example_html %}
+    <div class="eds3-status-root">...</div>
+  {% endset %}
+
+  {{ library.namespacing(component_name="Status", root_class="status-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+  {# IMPORT REFERENCE #}
+
+  {% set js_import_table %}
+| Import                                                                          | Required |
+| ------------------------------------------------------------------------------- | --- |
+| `import { edsStatus } from '@xyz-ap153177/apex-kit';`                              | Yes |
+| `import { edsContentBlock } from '@xyz-ap153177/apex-kit';`                     | Yes |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                             | Yes |
+| `import { edsTitle } from '@xyz-ap153177/apex-kit';`                            | Yes |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                   | Yes |
+  {% endset %}
+
+  {{ library.import_reference(component_name="Status", js_import_table=js_import_table) }}
+{% endblock %}
+
+{##
+ # A11y Tab
+ #}
+{% block a11y_tab %}
+  {{ library.eds_accessibility()}}
+{% endblock %}

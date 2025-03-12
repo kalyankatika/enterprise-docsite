@@ -1,0 +1,377 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{## 
+ # TITLE 
+ #}
+{% block page__title %}
+
+    {% filter markdown %}
+    ##### Component
+    # Page Header
+    The page header provides high level branding and titling to an experience.   
+    {% endfilter %}
+{% endblock %}
+
+{##
+ # Examples Tab 
+ #}
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Default
+    Define a top level heading.
+    {% endfilter %}
+
+    {% set Enterprise_logo %}
+    <svg class="eds-page-header__logo-img" aria-label="Enterprise Investments" viewBox="0 0 116 28" preserveAspectRatio="xMidYMid meet" focusable="false" role="img">
+        <g viewBox="0 0 116 28" fill="currentColor">
+            <rect width="116" height="28" fill="none"></rect>
+            <path d="M18.7,8.8H11l1-3.7h7.7L21.1,0H5.9L0,21.7h7.4l2.2-8.1h7.7L18.7,8.8"></path>
+            <path d="M30.4,0h-7.3l-1.2,4.3h7.3L30.4,0"></path>
+            <path d="M21.5,5.8l-4.3,15.8h7.3l4.3-15.8H21.5"></path>
+            <path d="M42,0l-2,7.6c-0.6-1.2-2.1-2.1-4.2-2.1c-2.4,0-4.5,1.1-5.6,3.2c-1.6,2.8-2.6,6.9-2.6,9.6 c0,2.5,1.5,3.6,3.9,3.6s3.8-0.9,5.3-2.1l-0.5,1.8h7.2l5.9-21.7L42,0L42,0L42,0z M37.7,16.4c-0.3,0.2-0.7,0.4-1.2,0.4 c-0.7,0-1.1-0.5-1.1-1.1c0-1.3,0.5-2.6,1-4c0.4-0.9,1-1.1,1.7-1.1c0.5,0,0.9,0.3,1.2,0.6L37.7,16.4L37.7,16.4z"></path>
+            <path d="M64.1,14.8c0.4-1.3,0.8-3.4,0.8-4.4c0-4-2.9-4.9-7.5-4.9c-2.9,0-6.2,0.9-8,3.4c-1.5,2.1-2.7,6-2.7,8.3 c0,4.3,3.4,4.9,7.7,4.9c3.2,0,8.4-1.5,9.3-6h-7.2c-0.3,1.5-0.7,1.9-1.8,1.9c-1,0-1.1-0.8-1.1-1.1c0-0.7,0.2-1.2,0.4-2.1H64.1 L64.1,14.8L64.1,14.8z M56.8,9.4c0.8,0,1.3,0.3,1.3,1.1c0,0.3-0.1,0.8-0.2,1.1h-3C55.2,10.1,55.8,9.4,56.8,9.4L56.8,9.4z"></path>
+            <path d="M70.1,0l-5.9,21.7h7.3L77.3,0H70.1"></path>
+            <path d="M87.1,0h-7.3l-1.2,4.3h7.3L87.1,0"></path>
+            <path d="M78.2,5.8l-4.4,15.9h7.3l4.3-15.8L78.2,5.8"></path>
+            <path d="M110.7,18.5c-1.1,0-2,0.9-2,2s0.9,2,2,2s2-0.9,2-2S111.8,18.5,110.7,18.5L110.7,18.5z M110.7,22.2 c-0.9,0-1.6-0.8-1.6-1.7s0.7-1.7,1.6-1.7s1.6,0.8,1.6,1.7C112.3,21.5,111.6,22.2,110.7,22.2L110.7,22.2z"></path>
+            <path d="M111.4,20.1c0-0.4-0.2-0.6-0.7-0.6h-0.8v2.1h0.4v-0.9h0.3l0.5,0.9h0.4l-0.6-0.9 C111.2,20.7,111.4,20.5,111.4,20.1L111.4,20.1z M110.3,20.4v-0.6h0.3c0.2,0,0.5,0,0.5,0.3c0,0.3-0.3,0.3-0.5,0.3H110.3L110.3,20.4 L110.3,20.4z"></path>
+            <path d="M108.8,5.8l-4,8.8l0.1-8.8h-10l1-3.5h-7.3l-4,14.4c-0.2,0.9-0.3,1.6-0.3,2.3c0,1.6,0.8,2.7,3,2.7h6.5l1.1-3.9 h-1.6c-1,0-1.3-0.2-1.3-0.9c0-0.4,0.1-1,0.3-1.4l1.6-6h4l1.1,12.3c-0.2,0.9-0.5,1.4-1,1.7c-0.6,0.3-2,0.2-2.5,0.2h-0.1L94.2,28h5 c2.9,0,4.4-1.5,6.5-4.9l10.7-17.2L108.8,5.8L108.8,5.8"></path>
+        </g>
+    </svg>
+    {% endset %}
+
+    {% set default_example %}
+    <header class="eds-page-header-root">
+        <h1 class="eds-page-header__title">Today's Financial News & Guidance</h1>
+        <div class="eds-page-header__logo">
+            <eds-link class="eds-page-header__link">{{Enterprise_logo | safe}}</eds-link>
+        </div>
+    </header>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: default_example,
+                label: "Heading level 1"
+            }
+            
+        ],
+        language='html',
+        preformatted=false,
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+    {% filter markdown %}
+    ## Action area
+    Provide a user action, such as _Log in_ or _Log out_, in the `eds-page-header__action` area.
+    {% endfilter %}
+
+    {% set action_example %}
+    <header class="eds-page-header-root">
+        <h1 class="eds-page-header__title">Today's Financial News & Guidance</h1>
+        <div class="eds-page-header__logo">
+            <eds-link class="eds-page-header__link">{{Enterprise_logo | safe}}</eds-link>
+        </div>
+        <div class="eds-page-header__action">
+            <eds-link class="eds-page-header__link" eds-icon-left="action__lock">Log in</eds-link>
+        </div>
+    </header>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: action_example,
+                label: "Action"
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+
+    {% filter markdown %}
+    ## Secondary heading level
+    Change the heading level element with the `eds-page-header__title` class to establish the appropriate document hierarchy for your page.
+    {% endfilter %}
+    
+    {% set secondary_example %}
+    <header class="eds-page-header-root">
+        <h2 class="eds-page-header__title">Get the most from every trade</h2>
+        <div class="eds-page-header__logo">
+            <eds-link class="eds-page-header__link">{{Enterprise_logo | safe}}</eds-link>
+        </div>
+    </header>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: secondary_example,
+                label: "Heading level 2"
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+
+    {% filter markdown %}
+    ## Links as buttons
+    Add `eds-trigger` attribute to the `<eds-link>` element to render the logo and action as buttons.
+    {% endfilter %}
+    {% set button_example %}
+    <header class="eds-page-header-root">
+        <h1 class="eds-page-header__title">Teaching teens about money</h1>
+        <div class="eds-page-header__action">
+            <eds-link class="eds-page-header__link" eds-icon-left="action__lock" eds-trigger>Log in</eds-link>
+        </div>
+        <div class="eds-page-header__logo">
+            <eds-link class="eds-page-header__link" eds-trigger>{{Enterprise_logo | safe}}</eds-link>
+        </div>
+    </header>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: button_example,
+                label: "With buttons"
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+
+    {% filter markdown %}
+    ## Legacy header
+    Add `eds-page-header--legacy-lockup` modifier class to force alignment with legacy standards.
+    {% endfilter %}
+    {% set legacy_example %}
+    <header class="eds-page-header-root eds-page-header--legacy-lockup">
+        <h1 class="eds-page-header__title">Financial basics</h1>
+        <div class="eds-page-header__action">
+            <eds-link class="eds-page-header__link" eds-icon-left="action__lock">Log in</eds-link>
+        </div>
+        <div class="eds-page-header__logo">
+            <eds-link class="eds-page-header__link">{{Enterprise_logo | safe}}</eds-link>
+        </div>
+    </header>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: legacy_example,
+                label: "Legacy experience"
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+
+    {% filter markdown %}
+    ## Static header
+    Remove links to prevent unwanted navigation from an experience.
+    {% endfilter %}
+    {% set static %}
+    <header class="eds-page-header-root eds-page-header--legacy">
+        <h1 class="eds-page-header__title">Add your bank information</h1>
+        <div class="eds-page-header__logo">{{Enterprise_logo | safe}}</div>
+    </header>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: static,
+                label: "Without links"
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+{% endblock %}
+
+
+{##
+ # Design Tab 
+ #}
+{% block design_tab %}
+    {% filter markdown %}
+    ## Use when 
+    - Putting together a basic page. 
+    - The user needs to perform a focused task in the parent browser window (e.g., a planning tool). 
+    - The user needs to perform a task in a child/secondary browser window. 
+
+    ## Don't use when 
+    Don't use on pages that require access to the full site navigation. Apex Kit for Web does not currently offer the full site navigation bar as a component. 
+
+    ## Visual style
+    ### Anatomy and construction
+    {% endfilter %}
+    
+    {% set page_header_anatomy_caption %} 
+    <ol class="eds-figure__figcaption-inline-list">
+        <li>Logo</li>
+        <li>Title</li>
+        <li>Action</li>
+    </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/page-header/page-header-anatomy.png 1x,
+                ../images/page-header/page-header-anatomy@2x.png 2x
+            ",
+            alt="Diagram describing the required elements",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=page_header_anatomy_caption,
+            sentiment="neutral"
+            ) 
+        }}
+
+    {% filter markdown %}
+    ### Placement 
+    - Place headers at the top of the page. 
+    - The header always spans the full width of the browser window. 
+    {% endfilter %}
+{% endblock %}
+
+{##
+ # Code Tab 
+ #}
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+    {% endfilter %}
+    
+    {% filter markdown%}
+    ## CSS block level classes
+
+    | Class name         | Applies to         | Outcome                                             |
+    | ------------------ | ------------------ | --------------------------------------------------- |
+    | `.eds-page-header-root` | `<header>` element | Defines the outermost container of the Page Header. |
+
+    
+    ## CSS Element classes
+    
+    | Class name                   | Applies to                                                  | Outcome                                                                           |
+    | ---------------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------- |
+    | `.eds-page-header__logo`     | `<div>` element                                             | Defines a container for the Logo                                                  |
+    | `.eds-page-header__title`    | Heading level element, such as `<h1>`, `<h2>`, `<h3>`, etc. | Defines a container for the page title                                            |
+    | `.eds-page-header__action`   | `<div>` element                                             | Defines a container for the "action" area, typically for a Log in or Log out link |
+    | `.eds-page-header__link`     | `<eds-link>` elements.                                      | Modifies link colors to accommodate the brand green background                    |
+    | `.eds-page-header__logo-img` | `<svg>` logo element                                        | Formats the Enterprise Logo svg element.                                            |
+
+
+    ## CSS Modifier classes
+    
+    | Class name                        | Applies to         | Outcome                                    |
+    | --------------------------------- | ------------------ | ------------------------------------------ |
+    | `.eds-page-header__legacy-lockup` | `<header>` element | Styles the component with _legacy_ styles. |
+        
+    {% endfilter %}
+
+    {% set namespace_example_html %}
+        <header class="eds3-page-header-root eds-page-header--legacy-lockup">
+            <h1 class="eds-page-header__title">My namespaced Header</h1>
+            ...
+        </header>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Page Header", root_class="page-header-root", namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {{ library.import_reference(component_name="Page Header") }}
+
+    
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Heading levels
+    Change the heading level element (h1, h2, h3, h4, h5, or h6) with the `eds-page-header__title` class to establish the appropriate document hierarchy for your page.
+    {% endfilter %}
+
+    
+    {% set a11y_example %}
+    <!-- heading level 1 -->
+    <header class="eds-page-header-root">
+        <h1 class="eds-page-header__title">Today's Financial News & Guidance</h1>
+        ...
+    </header>
+
+    <!-- heading level 2 -->
+    <header class="eds-page-header-root">
+        <h2 class="eds-page-header__title">Today's Financial News & Guidance</h2>
+        ...
+    </header>
+
+    <!-- heading level 3 -->
+    <header class="eds-page-header-root">
+        <h3 class="eds-page-header__title">Today's Financial News & Guidance</h3>
+        ...
+    </header>
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_example, show_copy_button=false, preformatted=true) }}
+
+    {% filter markdown %}
+    ## Enterprise logo SVG element
+    The SVG element for the Enterprise logo can be configured with different attribution, depending on how you expect a screen reader to read the element.  
+    {% endfilter %}
+
+    {% filter markdown %}
+    In most cases, use `role="image"` and `aria-label` with an appropriate value such as "Enterprise Investments".  
+    {% endfilter %}
+    
+    {% set a11y_example %}
+    <svg class="eds-page-header__logo-img" 
+        aria-label="Enterprise Investments" 
+        focusable="false" 
+        role="img">
+        ...
+    </svg>
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_example, show_copy_button=false, preformatted=true) }}
+
+
+    {% filter markdown %}
+    Alternatively, you can use `aria-hidden="true"` to hide the Logo from being read by a screen reader. 
+    {% endfilter %}
+    
+    {% set a11y_example %}
+    <svg class="eds-page-header__logo-img" 
+        aria-hidden="true" 
+        focusable="false">
+        ...
+    </svg>
+    {% endset %}
+    {{ library.eds_code_snippet(source=a11y_example, show_copy_button=false, preformatted=true) }}
+    
+{% endblock %}

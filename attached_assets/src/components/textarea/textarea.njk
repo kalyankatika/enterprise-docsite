@@ -1,0 +1,559 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% block head_assets %}
+    <style>
+        .eds-textarea--focus .eds-textarea__textarea {
+            border: 1px solid #fff;
+            box-shadow: 0 0 0 2px #000;
+        }
+
+        .eds-textarea--hover .eds-textarea__textarea {
+            border: 1px solid #fff;
+            box-shadow: 0 0 0 2px #7f7f7f;
+        }
+    </style>
+{% endblock %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+
+{% block page__title %}
+    {% filter markdown%}
+    ##### Components
+    # Textarea
+    Part of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>, a Textarea provides a way to enter multiple lines of text data into a Form. 
+        
+    Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>.
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Default
+    * Never use this component on its own. 
+    * Always accompany this component with a clear and concise [Label](/components/label/label.html) inside a [Field Group](/components/field-group/field-group.html) to meet accessibility guidelines.
+    {% endfilter %}
+
+    {% set default_example %}
+    <eds-textarea></eds-textarea>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: (default_example),
+                label: "Default"
+            },
+            {
+                example: (default_example),
+                label: "Hover",
+                class: "eds-textarea--hover",
+                generate_html: false
+            },
+            {
+                example: (default_example),
+                label: "Focus",
+                class: "eds-textarea--focus",
+                generate_html: false
+            },
+            {
+                example: '<eds-textarea eds-error></eds-textarea>',
+                label: "Error",
+                generate_html: false
+            },
+            {
+                example: '<eds-textarea eds-disabled></eds-textarea>',
+                label: "Disabled",
+                generate_html: false
+            }
+            
+        ],
+        code_snippet_source=(default_example),
+        language='html',
+        show_copy_button=true
+    )}}
+
+
+    {% filter markdown %}
+    ## With placeholder text
+    - Do not rely on placeholder text rather than a <eds-link eds-href="/components/label/label.html">Label</eds-link> to describe a Textarea.
+    - Use placeholder text only to add additional context, if necessary.
+    {% endfilter %}
+
+    {% set placeholder_example %}
+    <eds-textarea eds-placeholder="Tell us more"></eds-textarea>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: (placeholder_example),
+                label: "With placeholder"
+            }
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+
+
+    <h2 class="docsite__linkable-heading">With fixed width</h2>
+
+    {% set fixed_width_example %}
+    <eds-textarea eds-full-width="false"></eds-textarea>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: (fixed_width_example),
+                label: "With fixed width"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+
+    <h2 class="docsite__linkable-heading">In a Field Group</h2>
+
+    {% filter markdown %}
+    - Always accompany a Textarea with a clear and concise <eds-link eds-href="/components/label/label.html">Label</eds-link> and if necessary, <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> for added context.
+    - Always indicate when an entry is required by using the `eds-required` attribute.
+    - Never augment a poorly written <eds-link eds-href="/components/label/label.html">Label</eds-link> with placeholder text.
+    {% endfilter %}
+
+    {% set within_field_group_default_example %}
+    <eds-field-group> 
+        <eds-label eds-indicator="optional" eds-for="comments-default">Additional comments</eds-label>
+
+        <eds-microcopy eds-id="comments-microcopy-default">
+            Optional microcopy goes here.
+        </eds-microcopy> 
+
+        <eds-textarea
+            eds-id="comments-default"
+            eds-aria-describedby="comments-microcopy-default"
+        ></eds-textarea> 
+    </eds-field-group> 
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: (within_field_group_default_example),
+                label: "Default"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+    {% set within_field_group_error_example %}
+    <eds-field-group> 
+        <eds-label eds-indicator="required" eds-for="comments-error">Additional comments</eds-label> 
+
+        <eds-microcopy eds-id="comments-microcopy-error">
+            Optional microcopy goes here.
+        </eds-microcopy> 
+
+        <eds-textarea
+            eds-id="comments-error"
+            eds-aria-describedby="comments-microcopy-error comments-inline-error"
+            eds-error
+        ></eds-textarea> 
+
+        <eds-inline-alert
+            eds-id="comments-inline-error"
+            eds-variant="critical"
+        >
+            Provide additional comments.
+        </eds-inline-alert> 
+    </eds-field-group> 
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: (within_field_group_error_example),
+                label: "Error"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+
+    {% set size_example %}
+    <!-- Large -->
+    <eds-textarea eds-value="An example value." eds-size="large"></eds-textarea>
+
+    <!-- Medium (default) -->
+    <eds-textarea eds-value="An example value."></eds-textarea>
+
+    <!-- Small -->
+    <eds-textarea eds-value="An example value." eds-size="small"></eds-textarea>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: '<eds-textarea eds-value="An example value." eds-size="large"></eds-textarea>',
+                label: "Large"
+            },
+            {
+                example: '<eds-textarea eds-value="An example value."></eds-textarea>',
+                label: "Medium (default)"
+            },
+            {
+                example: '<eds-textarea eds-value="An example value." eds-size="small"></eds-textarea>',
+                label: "Small"
+            }
+        ],
+        code_snippet_source=(size_example),
+        show_copy_button=false,
+        preformatted=true
+    )}}
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/data-entry/text-area/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+
+    {% filter markdown %}
+    ## Use when
+    Capturing multiple lines of text is required.
+
+    ## Don't use when
+    Capturing names, street addresses, phone numbers, email addresses, etc.
+    Instead, use an <eds-link eds-href="/components/input/input.html">Input</eds-link>.
+
+    ## Behavior
+    - The actual size of "small", "medium", and "large" Textareas will change in response to browser width.
+    - Placeholder text disappears as soon the customer begins typing. This disappearance doesn't meet accessibility standards and is <eds-link eds-href="https://www.w3.org/WAI/GL/low-vision-a11y-tf/wiki/Placeholder_Research" eds-new-window>not widely endorsed</eds-link>.
+
+    ## Content
+    - Always begin placeholder text with a verb.
+    - Always set placeholder text in sentence case.
+    - Display data is presented in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> as styled text. Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+    {% endfilter %}
+
+    {{ library.eds_editorial()}}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+
+    {% include "src/templates/partials/jsProps.njk" %}
+    <table>
+        <thead>
+            <tr>
+                <th>Prop</th>
+                <th>Type</th>
+                <th>Validation</th>
+                <th>Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>eds-aria-describedby</code></td>
+                <td>string</td>
+                <td>--</td>
+                <td>--</td>
+                <td>A string of <code>id</code>s separated by spaces that will be set at the <code>aria-describedby</code> attribute on the <code>&lt;textarea&gt;</code> element.</td>
+            </tr>
+            <tr>
+                <td><code>eds-aria-label</code></td>
+                <td>string</td>
+                <td>--</td>
+                <td>--</td>
+                <td>A string that will be set on the <code>&lt;textarea&gt;</code> element. This is required if the consumer is not using the <code>eds-id</code> property to associate a <eds-link eds-href="/components/label/label.html">Label</eds-link> component with the <code>&lt;textarea&gt;</code> element.</td>
+            </tr>
+            <tr>
+                <td><code>eds-disabled</code></td>
+                <td>boolean</td>
+                <td>Anything other than an empty string, <code>true</code>, or <code>eds-disabled</code> will be treated as <code>false</code>.</td>
+                <td><code>false</code></td>
+                <td>
+                    <p>Sets the disabled state and adjusts the style on the <code>&lt;textarea&gt;</code> element.</p>
+                    <p>This will also set <code>aria-disabled="true"</code> on the <code>&lt;textarea&gt;</code> element.</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>eds-error</code></td>
+                <td>boolean</td>
+                <td>Anything other than an empty string, <code>true</code>, or <code>eds-error</code> will be treated as <code>false</code>.</td>
+                <td><code>false</code></td>
+                <td>
+                    <p>Sets the error state and adjusts the style on the <code>&lt;textarea&gt;</code> element.</p>
+                    <p>This will also set <code>aria-invalid="true"</code> on the <code>&lt;textarea&gt;</code> element.</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>eds-full-width</code></td>
+                <td>boolean</td>
+                <td>Anything other than an empty string, <code>true</code>, or <code>eds-full-width</code> will be treated as <code>false</code>.</td>
+                <td><code>true</code></td>
+                <td>Force the component to be displayed as full width.</td>
+            </tr>
+            <tr>
+                <td><code>eds-id</code></td>
+                <td>string</td>
+                <td>--</td>
+                <td>--</td>
+                <td>Sets an <code>id</code> to the native <code>&lt;textarea&gt;</code> element. Used to associate the native <code>&lt;textarea&gt;</code> element with the native <code>&lt;label&gt;</code> element.</td>
+            </tr>
+            <tr>
+                <td><code>eds-native-textarea-attributes</code></td>
+                <td>object</td>
+                <td>string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information.</td>
+                <td>--</td>
+                <td>Sets native or custom attributes on the native <code>&lt;textarea&gt;</code> element.</td>
+            </tr>
+            <tr>
+                <td><code>eds-placeholder</code></td>
+                <td>string</td>
+                <td>--</td>
+                <td>--</td>
+                <td>Sets the placeholder text of the <code>&lt;textarea&gt;</code> element.</td>
+            </tr>
+            <tr>
+                <td><code>eds-required</code></td>
+                <td>boolean</td>
+                <td>Anything other than an empty string, <code>true</code>, or <code>eds-required</code> will be treated as <code>false</code>.</td>
+                <td><code>false</code></td>
+                <td>
+                    <p>Indicates if user input is required.</p>
+                    <p>This will also set <code>aria-required="true"</code> on the <code>&lt;textarea&gt;</code> element.</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>eds-size</code></td>
+                <td>string</td>
+                <td><code>small</code>, <code>medium</code>, <code>large</code></td>
+                <td><code>medium</code></td>
+                <td>Determines the size of the <code>&lt;textarea&gt;</code> element and its containing text.</td>
+            </tr>
+            <tr>
+                <td><code>eds-value</code></td>
+                <td>string</td>
+                <td>--</td>
+                <td>--</td>
+                <td>Sets the value of the <code>&lt;textarea&gt;</code> element.</td>
+            </tr>
+        </tbody>
+    </table>
+    {% endfilter %}
+
+    {% include "src/templates/partials/two-way-data-binding.njk" %}
+
+    {{ library.native_attributes(nativeAttrProps=['eds-native-textarea-attributes']) }}
+
+    {% filter markdown %}
+    ### Usage examples
+
+    The following are different examples of how to add native or custom attributes.
+    Always check recommendations from your framework on best pratices when interacting with DOM elements.
+
+    Using `eds-native-textarea-attributes` as an attribute:
+    {% endfilter %}
+
+    {% set textarea_native_attribute_attr_example %}
+        <eds-textarea
+            id="nativeAttributesExampleTextarea"
+            eds-native-textarea-attributes='{"cols": 10, "rows": 5}'>
+        </eds-textarea>
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        source=textarea_native_attribute_attr_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    Using `eds-native-textarea-attributes` as a JavaScript property:
+    {% endfilter %}
+
+    {% set textarea_native_attribute_example %}
+        <eds-textarea id="nativeAttributesExampleTextarea"></eds-textarea>
+
+        <script>
+            let textarea = document.querySelector('#nativeAttributesExampleTextarea');
+            
+            textarea.edsNativeTextareaAttributes = {
+                cols: 10,
+                rows: 5
+            };
+        </script>
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        source=textarea_native_attribute_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    ## Slots
+    The Textarea component does not use slots.
+
+    ## Events
+    The Textarea component does not emit any custom events.
+
+    ## Methods
+    The Textarea component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% endfilter %}
+    
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Class name</th>
+                <th>Applies to</th>
+                <th>Outcome</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>.eds-textarea--small</code></td>
+                <td><code>.eds-textarea-root</code></td>
+                <td>Adjusts the style to render <code>&lt;textarea&gt;</code> element with small text.</td>
+            </tr>
+            <tr>
+                <td><code>.eds-textarea--large</code></td>
+                <td><code>.eds-textarea-root</code></td>
+                <td>Adjusts the style to render <code>&lt;textarea&gt;</code> element with large text.</td>
+            </tr>
+            <tr>
+                <td><code>.eds-textarea--error</code></td>
+                <td><code>.eds-textarea-root</code></td>
+                <td>Adjusts the style to render <code>&lt;textarea&gt;</code> element in its error state.</td>
+            </tr>
+            <tr>
+                <td><code>.eds-textarea--full-width</code></td>
+                <td><code>.eds-textarea-root</code></td>
+                <td>Adjusts the style to render <code>&lt;textarea&gt;</code> element the full width of its container.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-textarea></eds3-textarea>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-textarea-root eds-textarea--full-width eds-textarea--medium">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Textarea", root_class="textarea-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                      | Required      |
+| ----------------------------------------------------------- | ------------- |
+| `import { edsTextarea } from '@xyz-ap153177/apex-kit';`   | Yes           |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Textarea", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Textarea in Field Groups 
+    - Always have an associated `<eds-label>` as part of the <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>. 
+    - Use the `eds-id` attribute to associate the `<eds-label>` to the `<eds-textarea>`. 
+    - Alternatively, you can use the `eds-aria-label` attribute to associate a `<textarea>` element with a <eds-link eds-href="/components/label/label.html">Label</eds-link>. 
+
+
+    ## Associating the Textarea with a Label 
+    Using the `eds-id` attribute allows for consumers to associate a `<label>`  with the native `<textarea>` element that is used internally within `<eds-textarea>` component.
+
+    The following will be made possible by associating a `<label>` in this way: 
+    - The hover state of the `<textarea>` element will be triggered when hovering over the <eds-link eds-href="/components/label/label.html">Label</eds-link>.  
+    - The `<textarea>` element will be focused when clicking on the <eds-link eds-href="/components/label/label.html">Label</eds-link>. 
+    - A screen reader will read the <eds-link eds-href="/components/label/label.html">Label's</eds-link> text when they focus on the `<textarea>` element. 
+
+
+    ## Not associating the Textarea with a Label
+    Using the `eds-aria-label`  attribute allows for consumers to use a `<eds-textarea>` component without associating a `<label>` while still meeting accessibility guidelines.
+    
+    The following will be made possible by using `eds-aria-label` in this way: 
+    - A screen reader will read the Label's text when they focus on the `<textarea>` element. 
+    - `aria-label` will be placed on the native `<textarea>` element. 
+
+    ### Example of web component usage
+    {% endfilter %}
+
+    {% set aria_label_example %}
+    <eds-textarea eds-aria-label="This will be treated as a label"></eds-textarea>
+    {% endset %}
+
+    <br>{{ library.eds_code_snippet(
+        source=(aria_label_example),
+        hide_line_numbers=true,
+        show_copy_button=false,
+        preformatted=true
+    )}}
+
+    {% filter markdown %}
+    ## Required fields
+    - Use the `eds-required` attribute to configure the `aria-required` attribute.
+    - `aria-required="true"` will be placed on the native `<textarea>` element.
+    - If you are not using the web component, make sure to put `aria-required` on your native `<textarea>` element when input is required. 
+
+
+    ## Additional description text for Textarea
+    - Use `eds-aria-describedby` to reference additional content describing the `<textarea>` element that is not within its associated `<label>`.
+    - This will result in `aria-describedby` being placed on the native `<textarea>` element.
+    - If you are not using the web component, make sure to put `aria-describedby="DESCRIPTION_ELEMENT_ID"` on your native `<textarea>` when it is invalid. 
+    
+    **Note**: Using `aria-describedby` is preferred over `aria-label` when text is or can usefully be made visible on-screen. 
+
+    ### Example of web component usage
+    {% endfilter %}
+
+    {% set additional_description_example %}
+    <p id="textarea-description">
+        Additional content that describes what the Textarea is used for
+    </p>
+    <eds-textarea eds-aria-describedby="textarea-description"></eds-textarea> 
+    {% endset %}
+
+    <br>{{ library.eds_code_snippet(
+        source=(additional_description_example),
+        hide_line_numbers=true,
+        show_copy_button=false,
+        preformatted=true
+    )}}
+
+    {% filter markdown %}
+    ## Error indication
+    - Use the `eds-error` attribute to configure the `aria-invalid` attribute.
+    - `aria-invalid="true"` will be placed on the native `<textarea>` element.
+    - If you are not using the web component, make sure to put `aria-invalid="true"` on your native `<textarea>` when it is invalid.
+
+    ## Disabled Textarea
+    - Use the `eds-disabled` attribute to configure the `aria-disabled` attribute.
+    - `aria-disabled="true"` will be placed on the native `<textarea>` element.
+    - If you are not using the web component, make sure to put `aria-disabled="true"` on your native `<textarea>` when it is invalid.
+    {% endfilter %}
+{% endblock %}

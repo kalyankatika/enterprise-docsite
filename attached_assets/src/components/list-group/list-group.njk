@@ -1,0 +1,1079 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # List Group
+    A List Group presents a vertical or horizontal group of list items and other design elements that are used to display content and/or provide links to other content. 
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+
+
+    <h2 class="docsite__linkable-heading">Default</h2>
+    
+    {% set default_example %}
+        <eds-list-group eds-list-items='
+            [
+                "Mutual funds",
+                "ETFs",
+                "Bonds",
+                "Active Trader Pro"
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: default_example
+            }
+        ]
+    )}}
+
+    <h2 class="docsite__linkable-heading">List of links</h2>
+    
+    {% set links_example %}
+        <eds-list-group eds-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "ETFs",
+                    "href": "#"
+                },
+                {
+                    "text": "Bonds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#",
+                    "disabled": true,
+                    "newWindow": true,
+                    "nativeAnchorAttributes": {
+                        "rel": "noreferrer"
+                    }
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: links_example
+            }
+        ]
+    )}}
+
+    {% filter markdown %}
+    ## With borders
+    - Use to create more delineation between list items.
+    - Use to create additional grouping within the list.
+    {% endfilter %}
+
+    {% set group_designation_example %}
+        <eds-list-group eds-borders eds-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "ETFs",
+                    "href": "#"
+                },
+                {
+                    "text": "Bonds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: group_designation_example,
+                label: "Group-level designation"
+            }
+        ]
+    )}}
+
+    {% set item_designation_example %}
+        <eds-list-group eds-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "ETFs",
+                    "href": "#"
+                },
+                {
+                    "text": "Bonds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#",
+                    "border": true
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: item_designation_example,
+                label: "Item-level designation"
+            }
+        ]
+    )}}
+
+    <h2 class="docsite__linkable-heading">Inline list</h2>
+
+    {% set inline_example %}
+        <eds-list-group eds-inline="at-512" eds-list-items='
+            [
+                {
+                    "text": "Terms of use",
+                    "href": "#"
+                },
+                {
+                    "text": "Privacy",
+                    "href": "#"
+                },
+                {
+                    "text": "Security",
+                    "href": "#"
+                },
+                {
+                    "text": "Accessibility",
+                    "href": "#"
+                },
+                {
+                    "text": "Contact us",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set inline_borders_example %}
+        <eds-list-group eds-inline="at-512" eds-borders eds-list-items='
+            [
+                {
+                    "text": "Terms of use",
+                    "href": "#"
+                },
+                {
+                    "text": "Privacy",
+                    "href": "#"
+                },
+                {
+                    "text": "Security",
+                    "href": "#"
+                },
+                {
+                    "text": "Accessibility",
+                    "href": "#"
+                },
+                {
+                    "text": "Contact us",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set code_snippet_source %}
+        <eds-list-group eds-inline="at-512" ...></eds-list-group>
+        <eds-list-group eds-inline="at-512" eds-borders ...></eds-list-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: inline_example,
+                label: "Inline at-512"
+            },
+            {
+                example: inline_borders_example,
+                label: "With borders"
+            }
+        ],
+        preformatted=true,
+        show_copy_button=false,
+        code_snippet_source=code_snippet_source
+    )}}
+
+    {% filter markdown %}
+    ## Unordered list style
+    - Use to emulate an unordered list.
+    - Use a bullet list when the order of the items doesn't matter.
+    {% endfilter %}
+
+    {% set bulleted_example %}
+        <eds-list-group eds-list-style="unordered" eds-list-items='
+            [
+                "List item",
+                "List item",
+                "List item"
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set code_snippet_source %}
+        <eds-list-group eds-list-style="unordered" ...></eds-list-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: bulleted_example,
+                label: "Bulleted"
+            }
+        ],
+        preformatted=true,
+        show_copy_button=false,
+        code_snippet_source=code_snippet_source
+    )}}
+
+    {% filter markdown %}
+    ## Ordered list style
+    - Use to emulate an ordered list.
+    - Use a number list when sequence of the items is important.
+    {% endfilter %}
+
+    {% set numbered_example %}
+        <eds-list-group eds-list-style="ordered" eds-list-items='
+            [
+                "List item",
+                "List item",
+                "List item"
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set code_snippet_source %}
+        <eds-list-group eds-list-style="ordered" ...></eds-list-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: numbered_example,
+                label: "Numbered"
+            }
+        ],
+        preformatted=true,
+        show_copy_button=false,
+        code_snippet_source=code_snippet_source
+    )}}
+
+    {% filter markdown %}
+    ## Nested list
+    Use to create a second tier of list items.
+    {% endfilter %}
+
+    {% set nested_example %}
+        <eds-list-group eds-list-style="ordered" eds-list-items='
+            [
+                "List item",
+                "List item",
+                {
+                    "text": "List item",
+                    "listGroup": {
+                        "listStyle": "unordered",
+                        "listItems": [
+                            "List item",
+                            "List item"
+                        ]
+                    }
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: nested_example,
+                label: "Nested list"
+            }
+        ],
+        preformatted=true
+    )}}
+
+    {% filter markdown %}
+    ## Icon list style
+    - Use to add context to list items.
+    - Always provide an icon for each list item.
+    {% endfilter %}
+
+    {% set icon_left_example %}
+        <eds-list-group eds-icon-left="file__pdf" eds-list-items='
+            [
+                {
+                    "text": "Fiduciary adviser disclosure (PDF)",
+                    "href": "#"
+                },
+                {
+                    "text": "Key limitations and assumptions (PDF)",
+                    "href": "#"
+                },
+                {
+                    "text": "Important information about investment advice for retirement accounts (PDF)",
+                    "href": "#"
+                },
+                {
+                    "text": "Guide to Brokerage and Investment Advisory Services at Enterprise Investments (PDF)",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set icon_right_example %}
+        <eds-list-group eds-list-style="unordered" eds-icon-right="file__pdf" eds-list-items='
+            [
+                {
+                    "text": "Fiduciary adviser disclosure (PDF)",
+                    "href": "#"
+                },
+                {
+                    "text": "Key limitations and assumptions (PDF)",
+                    "href": "#"
+                },
+                {
+                    "text": "Important information about investment advice for retirement accounts (PDF)",
+                    "href": "#"
+                },
+                {
+                    "text": "Guide to Brokerage and Investment Advisory Services at Enterprise Investments (PDF)",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set code_snippet_source %}
+        <eds-list-group eds-icon-left="file__pdf" ...></eds-list-group>
+        <eds-list-group eds-icon-right="file__pdf" ...></eds-list-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: icon_left_example,
+                label: "On left"
+            },
+            {
+                example: icon_right_example,
+                label: "On right"
+            }
+        ],
+        preformatted=true,
+        show_copy_button=false,
+        code_snippet_source=code_snippet_source
+    )}}
+
+    {% filter markdown %}
+    ## Sizes
+    {% endfilter %}
+
+    {% set large_example %}
+        <eds-list-group eds-size="large" eds-icon-right="action__lock" eds-list-items='
+            [
+                {
+                    "text": "Portfolio",
+                    "href": "#"
+                },
+                {
+                    "text": "Account positions",
+                    "href": "#"
+                },
+                {
+                    "text": "Trade",
+                    "href": "#"
+                },
+                {
+                    "text": "Transfer",
+                    "href": "#"
+                },
+                {
+                    "text": "Cash management",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set medium_example %}
+        <eds-list-group eds-icon-right="action__lock" eds-list-items='
+            [
+                {
+                    "text": "Portfolio",
+                    "href": "#"
+                },
+                {
+                    "text": "Account positions",
+                    "href": "#"
+                },
+                {
+                    "text": "Trade",
+                    "href": "#"
+                },
+                {
+                    "text": "Transfer",
+                    "href": "#"
+                },
+                {
+                    "text": "Cash management",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set small_example %}
+        <eds-list-group eds-size="small" eds-icon-right="action__lock" eds-list-items='
+            [
+                {
+                    "text": "Portfolio",
+                    "href": "#"
+                },
+                {
+                    "text": "Account positions",
+                    "href": "#"
+                },
+                {
+                    "text": "Trade",
+                    "href": "#"
+                },
+                {
+                    "text": "Transfer",
+                    "href": "#"
+                },
+                {
+                    "text": "Cash management",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set code_snippet_source %}
+    <!-- Large -->
+    <eds-list-group eds-size="large" ...></eds-list-group>
+
+    <!-- Medium (default) -->
+    <eds-list-group eds-size="medium" ...></eds-list-group>
+
+    <!-- Small -->
+    <eds-list-group eds-size="small" ...></eds-list-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: large_example,
+                label: "Large"
+            },
+            {
+                example: medium_example,
+                label: "Medium (default)"
+            },
+            {
+                example: small_example,
+                label: "Small"
+            }
+        ],
+        preformatted=true,
+        show_copy_button=false,
+        code_snippet_source=code_snippet_source
+    )}}
+
+    {% filter markdown %}
+    ## In a Content Block
+    {% endfilter %}
+
+    {% set content_block_example %}
+        <eds-content-block eds-align="left">
+            <h3 slot="heading"
+                id="investment-products-heading"
+                class="eds-content-block__heading eds-content-block__heading--level-3"
+            >
+                Investment products
+            </h3>
+
+            <eds-list-group
+                eds-aria-labelledby="investment-products-heading"
+                eds-list-items='
+                    [
+                        {
+                            "text": "Mutual funds",
+                            "href": "#"
+                        },
+                        {
+                            "text": "ETFs",
+                            "href": "#"
+                        },
+                        {
+                            "text": "Bonds",
+                            "href": "#"
+                        },
+                        {
+                            "text": "Active Trader Pro",
+                            "href": "#",
+                            "border": true
+                        }
+                    ]
+                '
+            ></eds-list-group>
+
+            <eds-link slot="action" eds-href="#">See all products</eds-link>
+        </eds-content-block>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: content_block_example,
+                label: "With heading and action"
+            }
+        ],
+        preformatted=true
+    )}}
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/content/list/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+    
+    {% filter markdown %}
+    ## Use when
+    Presenting a set of vertically or horizontally arranged text items or text links.
+
+    ## Don't use when
+    - Only presenting one item.
+    - A view switcher is needed that uses an indicator to signify a selected state. Instead use <eds-link eds-href="/components/tab-group/tab-group.html">Tab Group</eds-link>. 
+    - Displaying tabular data. Instead use a <eds-link eds-href="/components/table/table.html">Table</eds-link>.
+
+    ## Visual style
+
+    ### Anatomy and construction
+    {% endfilter %}
+
+    {% set list_group_anatomy_caption %} 
+    <ol class="eds-figure__figcaption-inline-list">
+        <li>Left icon</li>
+        <li>List item text (required)</li>
+        <li>Border</li>
+        <li>Right icon</li>
+    </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/list-group/list-group-anatomy.png 1x,
+            ../images/list-group/list-group-anatomy@2x.png 2x
+        ",
+        alt="Anatomy of a List Group component.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=list_group_anatomy_caption,
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/list-group/list-group-parallel-format.png 1x,
+                ../images/list-group/list-group-parallel-format@2x.png 2x
+            ",
+            alt:"An image where every list item has a left icon.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Always",
+            caption:"format list items in parallel.",
+            sentiment:"positive"
+            },
+            { 
+            srcset:"
+                ../images/list-group/list-group-mixed-content.png 1x,
+                ../images/list-group/list-group-mixed-content@2x.png 2x
+            ",
+            alt:"An image where a list is unbalanced because a single list item was rendered without a left icon.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:"mix list types.",
+            sentiment:"negative"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+    
+    {% filter markdown %}
+    ### Design asset spacing
+    The pixel values shown are the defaults built into the component. 
+
+    {% endfilter %}
+
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/list-group/list-group-asset-spacing-no-border.png 1x,
+                ../images/list-group/list-group-asset-spacing-no-border@2x.png 2x
+            ",
+            alt:"An image of 8px of top margin between list items.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:"Top margin on items with no border.",
+            sentiment:"neutral"
+            },
+            { 
+            srcset:"
+                ../images/list-group/list-group-asset-spacing-top-border.png 1x,
+                ../images/list-group/list-group-asset-spacing-top-border@2x.png 2x
+            ",
+            alt:"An image of 8px of top margin between list items with borders.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:"Top margin on items with a top border.",
+            sentiment:"neutral"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+    
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/list-group/list-group-asset-spacing-inline-no-border.png 1x,
+                ../images/list-group/list-group-asset-spacing-inline-no-border@2x.png 2x
+            ",
+            alt:"An image of 24px of left margin between list items.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:"Left margin on inline items with no border.",
+            sentiment:"neutral"
+            },
+            { 
+            srcset:"
+                ../images/list-group/list-group-asset-spacing-inline-left-border.png 1x,
+                ../images/list-group/list-group-asset-spacing-inline-left-border@2x.png 2x
+            ",
+            alt:"An image of 16px of left margin between list items.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:"Left margin on inline items with a left border.",
+            sentiment:"neutral"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+    
+
+    {% filter markdown %}
+    ## Behavior
+
+    ### Responsive behavior
+    {% endfilter %}
+
+    {% set inline_never_example %}
+        <eds-list-group eds-list-items='
+            [
+                {
+                    "text": "Terms of use",
+                    "href": "#"
+                },
+                {
+                    "text": "Privacy",
+                    "href": "#"
+                },
+                {
+                    "text": "Security",
+                    "href": "#"
+                },
+                {
+                    "text": "Accessibility",
+                    "href": "#"
+                },
+                {
+                    "text": "Contact us",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set inline_at_1280_example %}
+        <eds-list-group eds-inline="at-1280" eds-list-items='
+            [
+                {
+                    "text": "Terms of use",
+                    "href": "#"
+                },
+                {
+                    "text": "Privacy",
+                    "href": "#"
+                },
+                {
+                    "text": "Security",
+                    "href": "#"
+                },
+                {
+                    "text": "Accessibility",
+                    "href": "#"
+                },
+                {
+                    "text": "Contact us",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set inline_at_960_example %}
+        <eds-list-group eds-inline="at-960" eds-list-items='
+            [
+                {
+                    "text": "Terms of use",
+                    "href": "#"
+                },
+                {
+                    "text": "Privacy",
+                    "href": "#"
+                },
+                {
+                    "text": "Security",
+                    "href": "#"
+                },
+                {
+                    "text": "Accessibility",
+                    "href": "#"
+                },
+                {
+                    "text": "Contact us",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set inline_at_768_example %}
+        <eds-list-group eds-inline="at-768" eds-list-items='
+            [
+                {
+                    "text": "Terms of use",
+                    "href": "#"
+                },
+                {
+                    "text": "Privacy",
+                    "href": "#"
+                },
+                {
+                    "text": "Security",
+                    "href": "#"
+                },
+                {
+                    "text": "Accessibility",
+                    "href": "#"
+                },
+                {
+                    "text": "Contact us",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set inline_at_512_example %}
+        <eds-list-group eds-inline="at-512" eds-list-items='
+            [
+                {
+                    "text": "Terms of use",
+                    "href": "#"
+                },
+                {
+                    "text": "Privacy",
+                    "href": "#"
+                },
+                {
+                    "text": "Security",
+                    "href": "#"
+                },
+                {
+                    "text": "Accessibility",
+                    "href": "#"
+                },
+                {
+                    "text": "Contact us",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set inline_always_example %}
+        <eds-list-group eds-inline="always" eds-list-items='
+            [
+                {
+                    "text": "Terms of use",
+                    "href": "#"
+                },
+                {
+                    "text": "Privacy",
+                    "href": "#"
+                },
+                {
+                    "text": "Security",
+                    "href": "#"
+                },
+                {
+                    "text": "Accessibility",
+                    "href": "#"
+                },
+                {
+                    "text": "Contact us",
+                    "href": "#"
+                }
+            ]
+        '></eds-list-group>
+    {% endset%}
+
+    {% set code_snippet_source %}
+        <eds-list-group eds-inline="never" ...></eds-list-group>
+        <eds-list-group eds-inline="at-1280" ...></eds-list-group>
+        <eds-list-group eds-inline="at-960" ...></eds-list-group>
+        <eds-list-group eds-inline="at-768" ...></eds-list-group>
+        <eds-list-group eds-inline="at-512" ...></eds-list-group>
+        <eds-list-group eds-inline="always" ...></eds-list-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: inline_never_example,
+                label: "Never inline (stacked)"
+            },
+            {
+                example: inline_at_1280_example,
+                label: "Inline at-1280"
+            },
+            {
+                example: inline_at_960_example,
+                label: "Inline at-960"
+            },
+            {
+                example: inline_at_768_example,
+                label: "Inline at-768"
+            },
+            {
+                example: inline_at_512_example,
+                label: "Inline at-512"
+            },
+            {
+                example: inline_always_example,
+                label: "Always inline"
+            }
+        ],
+        preformatted=true,
+        open_in_new_window=true,
+        show_copy_button=false,
+        code_snippet_source=code_snippet_source
+    )}}
+
+    {% filter markdown %}
+    ## Content
+
+    ### List items
+    - Always be clear and concise.
+    - Always set list item content in sentence case.
+    - Always use parallel construction, consistent use of nouns and phrases.
+
+    Visit the PWI Editorial Style Guide for more detailed information on
+    - <eds-link eds-href="http://uxdesignstandards.xyz.com/bulleted-lists/" eds-new-window>Bulleted and vertical list rules</eds-link>
+    - <eds-link eds-href="http://uxdesignstandards.xyz.com/bulleted-lists-with-or/" eds-new-window>Bulleted lists with "or"</eds-link>
+
+    ### List item links
+    Visit the PWI Editorial Style Guide for
+    - <eds-link eds-href="http://uxdesignstandards.xyz.com/best-practices-for-links/" eds-new-window>Best practices for links</eds-link>
+    - <eds-link eds-href="http://uxdesignstandards.xyz.com/links/" eds-new-window>Link format</eds-link>
+
+    {% endfilter %}
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute                | Type       | Validation                                                                                       | Default  | Description                                                                                                                                                                                                                                                                                                                                                    |
+    | ------------------------ | ---------- | ------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-labelledby`    | string     | --                                                                                               | --       | A string of `id`s separated by spaces that will be set as the `aria-labelledby` attribute on the native list element.<br><br>Reference the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.                                                                                                                              |
+    | `eds-borders`            | boolean    | Anything other than empty string, `true`, or `eds-borders` will be treated as `false`.           | `false`  | Applies a border to the top of each list item.                                                                                                                                                                                                                                                                                                                 |
+    | `eds-enable-unsafe-html` | boolean    | Anything other than empty string, `true`, or `eds-enable-unsafe-html` will be treated as `false`.| `false`  | Allows the component to render HTML. Set this attribute if you need to render anything other than plain text.<br><br>Using <eds-link eds-href="/components/link/link.html">Link</eds-link> properties defined in the `ListItemObject` interface is recommended. See <eds-link eds-href="#listitemobject">ListItemObject</eds-link> for additional information. |
+    | `eds-icon-left`          | string     | A valid <eds-link eds-href="/components/icon/icon.html#names">Icon</eds-link> name.              | --       | Renders an <eds-link eds-href="/components/icon/icon.html">Icon</eds-link> as the list style for each list item.                                                                                                                                                                                                                                               |
+    | `eds-icon-right`         | string     | A valid <eds-link eds-href="/components/icon/icon.html#names">Icon</eds-link> name.              | --       | Renders an <eds-link eds-href="/components/icon/icon.html">Icon</eds-link> to the right of the list item.                                                                                                                                                                                                                                                      |
+    | `eds-inline`             | string     | `never`, `at-1280`, `at-960`, `at-768`, `at-512`, `always`                                       | `never`  | Determines the point at which list items go from stacked to inline. For any breakpoint, if `eds-inline` is set to `never` the list items will stay stacked, while `always` will force them to stay inline.<br><br>Nested lists are only supported when `eds-inline` is `never`.                                                                                |
+    | `eds-list-items`         | ListItem[] | --                                                                                               | --       | An array of elements of type `ListItem` that are used to render list items and nested lists. See <eds-link eds-href="#listitem">ListItem</eds-link> for additional information.                                                                                                                                                                                |
+    | `eds-role`               | string     | `list`, `menu`                                                                                   | `list`   | Sets the role for the list to help assistive devices read the component properly. |
+    | `eds-size`               | string     | `small`, `medium`, `large`                                                                       | `medium` | Determines the font size and spacing of each list item.                                                                                                                                                                                                                                                                                                        |
+    | `eds-list-style`         | string     | `none`, `ordered`, `unordered`                                                                   | `none`   | Determines the list type along with the list style.<br><br>`none` renders a native `ul` element and removes the list style.<br><br>`ordered` renders a native `ol` element and sets list style to `decimal`.<br><br>`unordered` renders a native `ul` element and sets the list style to `square` or `circle` depdending on nesting.                           |
+
+    ## ListItem
+    Represents a string or a `ListItemObject`. If `ListItem` is a string it will be rendered as the innerHTML of the native `li` element. 
+
+    ## ListItemObject
+    An object representing a list item.
+
+    | Key                         | Type                  | Validation                                                                                     | Default | Description                                                                                                                                                                                                                                                                                                                                                                               |
+    | --------------------------- | --------------------- | ---------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `border`                    | boolean               | `true`, `false`                                                                                | --      | Adds or removes the top border from this list item.<br><br>Takes precedence over the top-level `eds-borders` attribute.                                                                                                                                                                                                                                                                   |
+    | `disabled`                  | boolean               | `true`, `false`                                                                                | `false` | Applies when the `href` property is set.<br><br>Renders the <eds-link eds-href="/components/link/link.html">Link</eds-link> component in its disabled state.                                                                                                                                                                                                                              |
+    | `href`                      | string                | --                                                                                             | --      | When set, the `text` of the list item will be set as the `eds-text` attribute of a <eds-link eds-href="/components/link/link.html">Link</eds-link> component.                                                                                                                                                                                                                             |
+    | `iconLeft`                  | string                | A valid <eds-link eds-href="/components/icon/icon.html#names">Icon</eds-link> name or `false`. | --      | Renders an <eds-link eds-href="/components/icon/icon.html">Icon</eds-link> as the list style for this list item.<br><br>This property takes precedence over the top-level `eds-icon-left` attribute. Setting to `false` will prevent an icon from being rendered.                                                                                                                         |
+    | `iconRight`                 | string &#124; boolean | A valid <eds-link eds-href="/components/icon/icon.html#names">Icon</eds-link> name or `false`. | --      | Renders an <eds-link eds-href="/components/icon/icon.html">Icon</eds-link> to the right of the list item.<br><br>This property takes precedence over the top-level `eds-icon-right` attribute. Setting to `false` will prevent an icon from being rendered.                                                                                                                               |
+    | `id`                        | string                | --                                                                                             | --      | An id to attach to the `eds-id` attribute for list items that are links or the `id` on a wrapper `<span>` for text list items.                                                                                                                                                                                                                                                            |
+    | `listGroup`                 | ListGroup             | --                                                                                             | --      | An object that represents a nested List Group component. Properties of the `ListGroup` object represent a 1:1 mapping to the properties of the List Group Component.<br><br>Reference the <eds-link eds-href="#attributes">attributes</eds-link> table above for additional information.<br><br>Note that `eds-aria-labelledby` and `eds-inline` attributes do not apply to nested lists. |
+    | `nativeAnchorAttributes`    | object                | --                                                                                             | --      | Applies when the `href` property is set.<br><br>Provides access to the <eds-link eds-href="/components/link/link.html?tab=code#native-attribute-support">native attribute support of the Link component</eds-link>.                                                                                                                                                                       |
+    | `nativeListItemAttributes ` | object                | --                                                                                             | --      | Applies native attributes to the generated `<li>` tag for the list item. |
+    | `newWindow`                 | boolean               | `true`, `false`                                                                                | `false` | Applies when the `href` property is set.<br><br>Sets the `eds-new-window` attribute on the <eds-link eds-href="/components/link/link.html">Link</eds-link> component.                                                                                                                                                                                                                     |
+    | `text`                      | string                | --                                                                                             | --      | String that will be rendered as the innerHTML of the native `li` element.                                                                                                                                                                                                                                                                                                                 |
+
+    ## Slots
+    The List Group component does not use slots.
+
+    ## Events
+    The List Group component doese not emit any events.
+
+    ## Methods
+    The List Group component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                                   | Applies to                   | Outcome                                                                                                          |
+    | -------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+    | `.eds-list-group--small`                     | `.eds-list-group-root`       | Renders a List Group with small text and spacing.                                                                |
+    | `.eds-list-group--large`                     | `.eds-list-group-root`       | Renders a List Group with large text and spacing.                                                                |
+    | `.eds-list-group--icon-left`                 | `.eds-list-group-root`       | Removes the default list style and updates spacing of all list items to allow for the use of icons on the left.  |
+    | `.eds-list-group--icon-right`                | `.eds-list-group-root`       | Removes the default list style and updates spacing of all list items to allow for the use of icons on the right. |
+    | `.eds-list-group--ordered`                   | `.eds-list-group-root`       | Sets the `list-style` to `decimal`.                                                                              |
+    | `.eds-list-group--unordered`                 | `.eds-list-group-root`       | Sets the `list-style` to `square` or `circle` (`circle` is used for nested unordered lists).                     |
+    | `.eds-list-group--borders`                   | `.eds-list-group-root`       | Renders all list items with a top border.                                                                        |
+    | `.eds-list-group__list-item--border`         | `.eds-list-group__list-item` | Renders a top border on the list item and adjusts vertical spacing.                                              |
+    | `.eds-list-group__list-item--disable-border` | `.eds-list-group__list-item` | Removes the top border from a list item.                                                                         |
+    | `.eds-list-group__list-item--icon-left`      | `.eds-list-group__list-item` | Removes the list style and updates spacing to allow for an icon on the left.                                     |
+    | `.eds-list-group__list-item--icon-right`     | `.eds-list-group__list-item` | Updates spacing to allow for an icon on the right.                                                               |
+    | `.eds-list-group__list-item--disabled`       | `.eds-list-group__list-item` | Renders a list item with the disabled text color.                                                                |
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-list-group eds-inline="at-512">...</eds3-list-group>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <ul class="eds3-list-group-root eds-list-group--inline-at-512">...</ul>
+    {% endset %}
+
+    {{ library.namespacing(component_name="List Group", root_class="list-group-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                               | Required |
+| ------------------------------------------------------------------------------------ | --- |
+| `import { edsListGroup } from '@xyz-ap153177/apex-kit';`                           | Yes |
+| `import { edsLink } from '@xyz-ap153177/apex-kit';`                                | Yes |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                | Yes |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                      | Yes |
+    {% endset %}
+
+    {{ library.import_reference(component_name="List Group", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## With a heading
+    A heading can be associated with the List Group via `eds-aria-labelledby` and used within a <eds-link eds-href="/components/content-block/content-block.html">Content Block</eds-link> in order to apply the appropriate spacing.
+    {% endfilter %}
+
+    {% set a11y_example %}
+        <eds-content-block eds-align="left">
+            <h3 slot="heading"
+                id="a11y-heading"
+                class="eds-content-block__heading eds-content-block__heading--level-3"
+            >
+                List Group heading
+            </h3>
+
+            <eds-list-group
+                eds-aria-labelledby="a11y-heading"
+                eds-list-items='["Alpha", "Bravo", "Charlie"]'
+            ></eds-list-group>
+        </eds-content-block>
+    {% endset%}
+
+    {{ library.eds_code_snippet
+        (
+            source=a11y_example,
+            show_copy_button=false,
+            preformatted=true
+        )
+    }}
+
+    {% filter markdown %}
+    ## Best practices
+    - <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#link_text" eds-new-window>Link text</eds-link>
+    - <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#link_instructions" eds-new-window>Link instructions</eds-link>
+    - <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#tech_link_context" eds-new-window>Link context</eds-link>
+    {% endfilter %}
+{% endblock %}

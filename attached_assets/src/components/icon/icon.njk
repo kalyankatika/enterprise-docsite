@@ -1,0 +1,269 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Icon
+    The Icon component provides a way to place specific icons on a page.
+
+    Visit <eds-link eds-href="/visual-style/iconography/iconography.html">Iconography</eds-link> for more information and guidance on the use of icons.
+
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+
+    {% set large_example %}
+    <eds-icon eds-name="action__settings" eds-size="large"></eds-icon>
+    {% endset %}
+
+    {% set medium_example %}
+    <eds-icon eds-name="action__settings"></eds-icon>
+    {% endset %}
+
+    {% set small_example %}
+    <eds-icon eds-name="action__settings" eds-size="small"></eds-icon>
+    {% endset %}
+
+    {% set extra_small_example %}
+    <eds-icon eds-name="action__settings" eds-size="extra-small"></eds-icon>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Large -->
+    {{ large_example | safe | trim }}
+
+    <!-- Medium (default) -->
+    {{ medium_example | safe | trim }}
+
+    <!-- Small -->
+    {{ small_example | safe | trim }}
+
+    <!-- Extra small -->
+    {{ extra_small_example | safe | trim }}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: large_example,
+                label: "Large"
+            },
+            {
+                example: medium_example,
+                label: "Medium (default)"
+            },
+            {
+                example: small_example,
+                label: "Small"
+            },
+            {
+                example: extra_small_example,
+                label: "Extra small"
+            }
+        ],
+        code_snippet_source=code_snippet_source,
+        show_copy_button=false,
+        preformatted=true
+
+    ) }}
+
+    <h2 class="docsite__linkable-heading">Names</h2>
+    <p>When applying names, use <code>eds-name="<em>icon__name</em>"</code> for web components and <code>href="<em>#eds-icon__name</em>"</code> for HTML. See the <eds-link eds-href="/components/icon/icon.html?tab=examples#sizes">example syntax</eds-link> above.</p>
+    <table class="eds-docsite-table">
+        <thead>
+            <tr>
+                <th>Icon</th>
+                <th>Web component icon name</th>
+                <th>JS import name</th>
+                <th>HTML SVG href</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for icon in iconsData | validIcons %}
+            <tr>
+                <td class="cell-1"><eds-icon eds-name="{{icon}}"></eds-icon></td>
+                <td class="cell-2"><code>{{icon}}</code></td>
+                <td class="cell-3"><code>{{icon | getJsIconName}}</code></td>
+                <td class="cell-4"><code>#eds-{{icon}}</code></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block design_tab %}
+    {% filter markdown %}
+    ## Use when
+
+    - Identifying UI interactions that a someone might take. (e.g., Get help)
+    - Notifying people of a change in status or process update.
+    - Navigation is needed.
+
+    ## Don't use when
+    - Designing product walk-throughs, in-page as a part of an article, next to summary text, or accompanying a text link that is not a "tertiary" <eds-link eds-href="/components/button/button.html">Button</eds-link>.
+    - Providing additional context for the content on overview or landing pages.
+    - Creating visual associations that guide people through a flow when a reoccurring content pattern exists (e.g., "next steps" or "retirement").
+
+    In these scenarios, refer to documentation about when to use <eds-link eds-href="/visual-style/illustration/illustration.html">illustration</eds-link>.
+
+    ## Use icons with purpose
+    Icons are categorized and named to help eliminate ambiguity when deciding which icon to use. With a variety of possible applications, names of icons might be:
+    - **Component-specific** – the icon is only to be used in the component specified in the category part of the name. (e.g., `alert__success`)
+    - **Specific** – the icon should only be used for a targeted purpose. (e.g., `action__print`)
+    - **General** – the icon may be used in contexts that aren't specifically defined. (e.g., `action__thumbs-up`)
+    {% endfilter %}
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+
+    | Attribute                   | Type   | Validation                                                                                                                                                                | Default       | Description                                                                                                                                         |
+    | --------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-a11y-label`            | string | --                                                                                                                                                                        | --            | Provides an accessible label for the icon when there is no accompanying text or label.                                                              |
+    | `eds-icon-class`            | string | --                                                                                                                                                                        | `false`       | A string of space separated classes that are rendered within the component's template on the `eds-icon` tag. (e.g., `my-special-icon-class`)        |
+    | `eds-name`                  | string | <eds-link eds-href="/components/icon/icon.html#names">Name</eds-link> of the icon to be used. Only a subset of icons can be used when `eds-size` is set to `extra-small`. | `action_chat` | The name of the icon to be rendered.                                                                                                                |
+    | `eds-native-svg-attributes` | object | string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information.                   | --            | Sets native or custom attributes on the native `<svg>` element.                                                                                     |
+    | `eds-size`                  | string | Must be one of `extra-small`, `small`, `medium`, `large`.<br><br>`extra-small` is only available with a subset of the entire Providence icon set.                         | `medium`      | Sets the height and width of the icon.                                                                                                              |
+    {% endfilter%}
+
+    {{ library.native_attributes(nativeAttrProps=['eds-native-svg-attributes']) }}
+
+    {% filter markdown %}
+    ### Usage examples
+
+    The following are different examples of how to add native or custom attributes.
+    Always check recommendations from your framework on best pratices when interacting with DOM elements.
+
+    Using `eds-native-svg-attributes` as an attribute:
+    {% endfilter %}
+
+    {% set icon_native_attribute_attr_example %}
+        <eds-icon
+            id="nativeAttributesExampleIcon"
+            eds-native-input-attributes='{"cursor": "crosshair"}'>
+        </eds-icon>
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=icon_native_attribute_attr_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    Using `eds-native-svg-attributes` as a JavaScript property:
+    {% endfilter %}
+
+    {% set icon_native_attribute_example %}
+        <eds-icon id="nativeAttributesExampleIcon"></eds-icon>
+
+        <script>
+            let icon = document.querySelector('#nativeAttributesExampleIcon');
+
+            icon.edsNativeSvgAttributes = {
+                cursor: 'crosshair'
+            };
+        </script>
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=icon_native_attribute_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+        ## Slots
+        The Icon component does not use slots.
+
+        ## Events
+        The Icon component does not emit any custom events.
+
+        ## Methods
+        The Icon component does not implement any public methods.
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-icon eds-name="action__settings" eds-size="large"></eds3-icon>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <svg aria-hidden="true" class="eds3-icon-root eds-icon--large" focusable="false" role="img">
+            <use href="#action__settings" xlink:href="#action__settings"></use>
+        </svg>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Icon", root_class="icon-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                | Required                                                                                                                                                                                                                                                                                       |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                 | Yes                                                                                                                                                                                                                                                                                            |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`       | Yes, unless using the `injectCustomSpriteSheet`                                                                                                                                                                                                                                                |
+| `import { injectCustomSpriteSheet } from '@xyz-ap153177/apex-kit';` | Yes, unless using the `injectSpriteSheet`                                                                                                                                                                                                                                                      |
+| `import { ICON_<icon  name> } from '@xyz-ap153177/apex-kit';`       | Only when using the `injectCustomSpriteSheet`.  For a list of available icons and their names, see the JS import name column of the Icon <eds-link eds-href="/components/icon/icon.html?tab=examples#names">Names table</eds-link>. For example, `ICON_ACTION_ADD_NOTE` or `ICON_ACTION_CHAT`. |
+
+
+
+    {% endset %}
+
+    {{ library.import_reference(component_name="Icon", js_import_table=js_import_table) }}
+
+    {# Additional Functionality #}
+
+    {% filter markdown %}
+    ## Additional Functionality
+    ### Injecting a Custom SpriteSheet
+    #### injectCustomSpriteSheet(svgArray: string[], namespace: string): void
+    inject a custom list of icons into the application (<eds-link eds-href="/getting-started-for-developers/general-guide.html?tab=installation#import-apex-kit-for-web-component-javascript">preferred</eds-link> over injecting all icons)
+      - `svgArray`: an array of <eds-link eds-href="/components/icon/icon.html?tab=examples#names">JS import names</eds-link> of the icons
+      - `namespace`: (optional) a string representing the namespace used by the application (default is 'eds')
+    {% endfilter %}
+
+    {% set injectCustomSpriteSheetExample %}
+        import { injectCustomSpriteSheet, ICON_UTILITY_CALENDAR, edsIcon } from '@xyz-ap153177/apex-kit';
+
+        const CUSTOM_NAMESPACE = 'my-app-namespace';
+
+        injectCustomSpriteSheet([ICON_UTILITY_CALENDAR], CUSTOM_NAMESPACE);
+        edsIcon.defineCustomElement(CUSTOM_NAMESPACE);
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=injectCustomSpriteSheetExample,
+        preformatted=true,
+        show_copy_button=false,
+        hide_line_numbers=true,
+        language='js'
+    ) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+  {% filter markdown %}
+    When an icon has no visible label, use the `eds-a11y-label` attribute to provide a label for screen readers.
+  {% endfilter %}
+
+  {{ library.eds_code_example_pair(
+      example='<eds-icon eds-name="action__cancel" eds-a11y-label="Cancel"></eds-icon>',
+      language='html',
+      show_copy_button=true,
+      preformatted=false
+  ) }}
+
+{% endblock %}

@@ -1,0 +1,566 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{##
+ # TITLE
+ #}
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Link
+    A Link provides a way to navigate to other web pages and content. It can also be configured to trigger in-page layer components like <eds-link eds-href="/components/modal/modal.html">Modals</eds-link>, <eds-link eds-href="/components/popover/popover.html">Popovers</eds-link>, and Tooltips. 
+    {% endfilter %}
+{% endblock %}
+
+{##
+ # Examples Tab
+ #}
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Default
+    Use within paragraphs and list items that are inside of body text, footnotes, and disclosures.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: '<eds-link class="">Text</eds-link>',
+                label: 'Default'
+            },
+            {
+                example: '<eds-link data-state="hover">Text</eds-link>',
+                label: 'Hover',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link data-state="focus">Text</eds-link>',
+                label: 'Focus',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link data-state="visited">Text</eds-link>',
+                label: 'Visited',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link eds-disabled>Text</eds-link>',
+                label: 'Disabled',
+                generate_html: false
+            }
+
+        ],
+        code_snippet_source = '<eds-link eds-href="http://example.com">Text</eds-link>'
+    )}}
+
+    {% filter markdown %}
+    ## Disabled underline
+    Use in headings, <eds-link eds-href="/components/table/table.html">Tables</eds-link>, and <eds-link eds-href="/components/list-group/list-group.html">List Groups</eds-link> when context and content imply interactive functionality.
+
+    {% endfilter %}
+
+     {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: '<eds-link eds-disable-underline class="">Text</eds-link>',
+                label: 'Default'
+            },
+            {
+                example: '<eds-link eds-disable-underline data-state="hover">Text</eds-link>',
+                label: 'Hover',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link eds-disable-underline data-state="focus">Text</eds-link>',
+                label: 'Focus',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link eds-disable-underline data-state="visited">Text</eds-link>',
+                label: 'Visited',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link eds-disable-underline eds-disabled>Text</eds-link>',
+                label: 'Disabled',
+                generate_html: false
+            }
+
+        ],
+        code_snippet_source = '<eds-link eds-disable-underline>Text</eds-link>'
+    )}}
+
+    {% filter markdown %}
+    ## New window
+    - Use a "new window" Link to for any link that opens a URL in a new browser tab/window.
+    - Refer to the attribute and modifier class tables for information about showing the `action__open-link` <eds-link eds-href="/components/icon/icon.html">Icon</eds-link> to indicate a Link to an external site.
+    - When enabling the new window functionality, presense of the attribute (no value set) will use the default accessibility text (recommended). To use custom accessibility text, pass a value in to the attribute.
+    {% endfilter %}
+
+    {# {{ library.eds_code_example_pair(
+        example='<eds-link eds-new-window eds-href="http://Enterprise-partner-site.com">Get a financial checkup now</eds-link>'
+    )}} #}
+    {% set new_window_example_source %}
+        <eds-link eds-new-window eds-href="http://Enterprise-partner-site.com">Get a financial checkup now</eds-link>
+        <eds-link eds-new-window="Clicking this link will open a new browser window not controlled by Enterprise" eds-href="http://Enterprise-partner-site.com">Get a financial checkup now</eds-link>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: '<eds-link eds-new-window eds-href="http://Enterprise-partner-site.com">Get a financial checkup now</eds-link>',
+                label: 'Link opens in a new window (default accessibility text)'
+            },
+            {
+                example: '<eds-link eds-new-window="Clicking this link will open a new browser window not controlled by Enterprise" eds-href="http://Enterprise-partner-site.com">Get a financial checkup now</eds-link>',
+                label: 'Link opens in a new window (custom accessibility text)'
+            }
+        ],
+        code_snippet_source=new_window_example_source,
+        preformatted=true
+    ) }}
+
+    {% filter markdown %}
+    ## Intra-page
+    Use an intra-page Link to navigate to a specific section of the current page.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        example='<eds-link eds-href="#section-1">Section title</eds-link>'
+    )}}
+
+    {% filter markdown %}
+    ## With icons
+    {% endfilter %}
+
+    {% set icon_example_source %}
+        <!-- Left icon -->
+        <eds-link eds-icon-left="action__chat" eds-disable-underline>Chat</eds-link>
+
+        <!-- Right icon-->  
+        <eds-link eds-icon-right="action__lock" eds-disable-underline>Secure chat</eds-link>
+        
+        <!-- Both sides-->  
+        <eds-link eds-icon-left="action__chat" eds-icon-right="action__lock" eds-disable-underline>Secure chat</eds-link>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: '<eds-link eds-icon-left="action__chat" eds-disable-underline>Chat</eds-link>',
+                label: 'Left icon'
+            },
+            {
+                example: '<eds-link eds-icon-right="action__lock" eds-disable-underline>Secure chat</eds-link>',
+                label: 'Right icon'
+            },
+            {
+                example: '<eds-link eds-icon-left="action__chat" eds-icon-right="action__lock" eds-disable-underline>Secure chat</eds-link>',
+                label: 'Icons on both sides'
+            }
+        ],
+        code_snippet_source=icon_example_source,
+        preformatted=true
+    ) }}
+
+
+    {% filter markdown %}
+    ## Trigger text to show layer components
+
+    Use when triggering in-page <eds-link eds-href="/components/modal/modal.html">Modals</eds-link>, <eds-link eds-href="/components/popover/popover.html">Popovers</eds-link>, and Tooltips from a Link within a heading or body text.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: '<eds-link eds-trigger>Traditional IRAs</eds-link>',
+                label: 'Default'
+            },
+            {
+                example: '<eds-link eds-trigger data-state="hover">Traditional IRAs</eds-link>',
+                label: 'Hover',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link eds-trigger data-state="focus">Traditional IRAs</eds-link>',
+                label: 'Focus',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link eds-trigger data-state="visited">Traditional IRAs</eds-link>',
+                label: 'Visited',
+                generate_html: false
+            },
+            
+            {
+                example: '<eds-link eds-trigger eds-disabled>Traditional IRAs</eds-link>',
+                label: 'Disabled',
+                generate_html: false
+            }
+
+        ],
+        code_snippet_source = '<eds-link eds-trigger>Text</eds-link>'
+    )}}
+
+    {% filter markdown %}
+    ## Trigger non-text to show layer components
+    Use when triggering in-page <eds-link eds-href="/components/modal/modal.html">Modals</eds-link>, <eds-link eds-href="/components/popover/popover.html">Popovers</eds-link>, and Tooltips from an <eds-link eds-href="/components/icon/icon.html">Icon</eds-link> or <eds-link eds-href="/components/button/button.html">Button</eds-link>.
+    {% endfilter %}
+
+    {% set non_text_example_label %}
+        <eds-label>Corporate Control Status<eds-link slot="annotation" eds-trigger eds-icon-left="action__help"></eds-link></eds-label>
+    {% endset%}
+
+    {% set non_text_example_heading %}
+        <eds-title>
+            <h4 slot="heading" class="eds-title__heading eds-title__heading--level-4">Primary beneficiaries</h4>
+            <eds-link slot="annotation" eds-trigger eds-icon-left="action__help"></eds-link>
+        </eds-title>
+    {% endset%}
+
+    {% set non_text_example_set %}
+        <!-- Label -->
+        {{ non_text_example_label | safe | trim }}
+
+        <!-- Heading -->
+        {{ non_text_example_heading | safe | trim }}
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: non_text_example_label,
+                label: 'Label'
+            },
+            {
+                example: non_text_example_heading,
+                label: 'Heading'
+            }
+        ],
+        show_copy_button=false,
+        preformatted=true,
+        code_snippet_source = non_text_example_set
+    )}}
+
+    {% filter markdown %}
+    ## Standalone
+
+    -   Use a "tertiary" <eds-link eds-href="/components/button/button.html">Button</eds-link> for in-page actions.
+    {% endfilter %}
+
+    {% set standalone_example_button %}
+    <eds-button eds-variant="tertiary">Learn more about what we offer</eds-button>
+    {% endset%}
+
+    {% set standalone_example_button_icon %}
+    <eds-button eds-variant="tertiary" eds-icon-left="action__download">Download prospectus</eds-button>
+    {% endset%}
+
+    {% set standalone_example_set %}
+    <!-- Tertiary button -->
+    {{ standalone_example_button | safe | trim }}
+
+    <!-- Tertiary button with icon -->
+    {{ standalone_example_button_icon | safe | trim }}
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: standalone_example_button,
+                label: 'Tertiary button'
+            },
+            {
+                example: standalone_example_button_icon,
+                label: 'Tertiary button with icon'
+            }
+        ],
+        show_copy_button=false,
+        preformatted=true,
+        code_snippet_source = standalone_example_set
+    )}}
+
+<script>
+  (() => {
+    const links = document.querySelectorAll('eds-link[data-state]');
+    if (links?.length) {
+      links.forEach(link => {
+        link.addEventListener('eds-component-ready', e => {
+          if (e.target instanceof customElements.get('eds-link')) {
+            console.log(e.target.querySelector('.eds-link-root').classList);
+            e.target
+              .querySelector('.eds-link-root')
+              ?.querySelector('.eds-link__link')
+              ?.classList?.add('eds-link--' + link.dataset.state);
+          }
+        });
+      });
+    }
+  })();
+</script>
+{% endblock %}
+
+
+{##
+ # Design Tab
+ #}
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/navigation/link/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+    
+    {% filter markdown %}
+    ## Use when
+    - A way to navigate to another local page is needed.
+    - A way to navigate to a page that is outside the bounds of the current site is needed.
+    - A way to quickly navigate to specific sections of long pages or
+        specific sources and footnotes is needed. (Refer to <eds-link eds-href="/components/footnotes/footnotes.html">Footnotes &amp; Disclosures</eds-link> for more information.)
+    - A way to invoke a <eds-link eds-href="/components/modal/modal.html">Modal</eds-link>, <eds-link eds-href="/components/popover/popover.html">Popover</eds-link>, or Tooltip is needed. 
+
+    ## Don't use when
+
+    An action needs to be initiated. Instead use a <eds-link eds-href="/components/button/button.html">Button</eds-link>.
+
+    ## Visual style
+    - According to <eds-link eds-href="https://www.w3.org/TR/WCAG20-TECHS/G183.html" eds-new-window>WCAG guidelines</eds-link>, a Link uses a non-color-based indicator (an underline) to clearly distinguish itself from the surrounding text.
+    - The <eds-link eds-href="/visual-style/color/color.html#text">design token</eds-link> `$eds-text-color-link` has a 3:86 contrast ratio with its surrounding text which meets the WCAG 3:1 minimum.
+    - A layer component trigger has a different non-color-based indicator (a dotted line) to distinguish it not only from surrounding text but to signal a different intent.
+
+    ### Underlines
+    {% endfilter %}
+    
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/link/Link-do-underlined.png 1x,
+                ../images/link/Link-do-underlined@2x.png 2x
+            ",
+            alt:"Example of an underlined link in a paragraph.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Always",
+            caption:"use the default Link with the underline indicator to distinguish itself from surrounding text.",
+            sentiment:"positive"
+            },
+            { 
+            srcset:"
+                ../images/link/Link-dont-underlined.png 1x,
+                ../images/link/Link-dont-underlined@2x.png 2x
+            ",
+            alt:"Example of a link with disabled underline in a paragraph.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:"disable the Link underline when surrounded by other non-linked text.",
+            sentiment:"negative"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+    
+
+     {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/link/Link-do-list-group.png 1x,
+                ../images/link/Link-do-list-group@2x.png 2x
+            ",
+            alt:"Example of an Link with diabled underline in a List Group.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Always",
+            caption:"use the 'eds-disable-underline' attribute on Links inside List Groups, or Tables, when their functionality is clearly implied.",
+            sentiment:"positive"
+            },
+            { 
+            srcset:"
+                ../images/link/Link-dont-list-group.png 1x,
+                ../images/link/Link-dont-list-group@2x.png 2x
+            ",
+            alt:"Example of an Link with underline incorrectly used in a List Group.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:"use underlined Links when the text is separated by borders.",
+            sentiment:"negative"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+    
+
+    {% filter markdown %}
+    ## Behavior
+
+    ### Opening new browser tabs/windows
+
+    Always target the existing browser window except when:
+    -   Navigating to an externally housed source like an article not hosted by Enterprise or a partner portal. 
+    -   A new browser window is needed so as not to interrupt a workflow.
+
+    ### Intra-page navigation
+    The page will automatically scroll to the element with the `id` referenced by the `eds-href` attribute.
+
+    ### Triggering layer components
+    The showing of a <eds-link eds-href="/components/modal/modal.html">Modal</eds-link>, <eds-link eds-href="/components/popover/popover.html">Popover</eds-link>, or Tooltip via a Link is done without leaving the existing page.
+
+    ## Content
+
+    Visit the PWI Editorial Style Guide for:
+    -   <eds-link eds-href="http://uxdesignstandards.xyz.com/best-practices-for-links/" eds-new-window eds-native-anchor-attributes='{"rel":"noreferrer","target":"_blank"}'>Best practices for links</a>
+    -   <eds-link eds-href="http://uxdesignstandards.xyz.com/linkss/" eds-new-window eds-native-anchor-attributes='{"rel":"noreferrer","target":"_blank"}'>Link format</a>
+
+    {% endfilter %}
+
+
+{% endblock %}
+
+{##
+ # Code Tab
+ #}
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+
+    {% endfilter %}
+    {% include "src/templates/partials/jsProps.njk" %}
+    {% filter markdown %}
+
+    | **Attribute**                  | **Type** | **Validation**                                                                                                                                          | **Default**         | **Description**                                                                                                                                                                                                                                                                                                                                                      |
+    | ------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |---------------------| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-describedby`         | string   | --                                                                                                                                                      | --                      | Sets the value of the `aria-describedby` attribute for the Link.                                                                                                                                                                                                                                                                                                     |
+    | `eds-aria-label`               | string   | --                                                                                                                                                      | --                      | Sets the value of the `aria-label` attribute for the Link.                                                                                                                                                                                                                                                                                                           |
+    | `eds-class`                    | string   | --                                                                                                                                                      | --                      | Sets the `class` attribute of the Link.                                                                                                                                                                                                                                                                                                                              |
+    | `eds-disable-underline`        | boolean  | --                                                                                                                                                      | --                      | Removes the underline style from the Link.                                                                                                                                                                                                                                                                                                                           |
+    | `eds-disabled`                 | boolean  | --                                                                                                                                                      | `false`                 | Disables the Link and pointer events.                                                                                                                                                                                                                                                                                                                                |
+    | `eds-href`                     | string   | --                                                                                                                                                      | `#`                     | Sets the `href` attribute value for the Link. Setting a value for `eds-trigger` invalidates this property.                                                                                                                                                                                                                                                           |
+    | `eds-icon-left`                | string   | --                                                                                                                                                      | --                      | A eds <eds-link eds-href="/components/icon/icon.html?tab=examples#names">Icon name</eds-link>. When provided, will render an icon to the left of the text.                                                                                                                                                                                                           |
+    | `eds-icon-right`               | string   | --                                                                                                                                                      | --                      | A eds <eds-link eds-href="/components/icon/icon.html?tab=examples#names">Icon name</eds-link>. When provided, will render an icon to the right of the text.                                                                                                                                                                                                          |
+    | `eds-id`                       | string   | --                                                                                                                                                      | --                      | Sets the `id` to the native `<a>` or `<button>` element.                                                                                                                                                                                                                                                                                                             |
+    | `eds-native-anchor-attributes` | string   | string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information. | --                      | Sets native or custom attributes on the native `<a>` element.                                                                                                                                                                                                                                                                                                        |
+    | `eds-native-button-attributes` | string   | string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information. | --                      | Sets native or custom attributes on the native `<button>` element.                                                                                                                                                                                                                                                                                                   |
+    | `eds-new-window`               | string   | --                                                                                                                                                      | --                      | If present, indicates the link will open a new window and adds the `action__open-link` icon in the right icon slot position. Adds the appropriate attribution to the anchor tag.  Note: setting `eds-new-window` will override the `eds-icon-right` or the `icon-right` slot value with the `action__open-link` <eds-link eds-href="/components/icon/icon.html">Icon</eds-link>. If no value is passed in (presence of the attribute alone will trigger the functionality), 'Opens in a new window' will be used as the accessibility text. |
+    | `eds-size`                     | string   | `small`, `medium`, `large`                                                                                                                              | Inherited font size     | Forces a size if defined. Defaults to the inherited `em` value.                                                                                                                                                                                                                                                                                                      |
+    | `eds-text`                     | string   | --                                                                                                                                                      | --                      | Text value for the link. If both the `eds-text` attribute and default slot content are set, the slot content will be rendered.                                                                                                                                                                                                                                       |
+    | `eds-trigger`                  | boolean  | --                                                                                                                                                      | --                      | Turns the underlying native element from an anchor element into a <eds-link eds-href="/components/button/button.html">Button</eds-link> element and applies the trigger styles.                                                                                                                                                                                      |
+    
+    {% endfilter %}
+    
+    {{ library.native_attributes(nativeAttrProps=['eds-native-anchor-attributes']) }}
+
+    {% filter markdown %}
+    ### Usage example
+    This is example shows how to add native or custom attributes. Always check recommendations from your framework on best pratices when interacting with DOM elements.
+    {% endfilter %}
+
+    {% set native_attr_example %}
+    <eds-link 
+        eds-native-anchor-attributes='{"rel":"noreferrer"}'
+    >No referrer link</eds-link>
+    {% endset %}
+
+    {{library.eds_code_snippet(
+        source=native_attr_example,
+        preformatted=true,
+        show_copy_button=false
+    )}}
+
+    
+    {% filter markdown %}
+    ## Slots
+
+    | **Name**     | **Default content**                             | **Description**                                                                                                                                                               |
+    | ------------ | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | default      | --                                              | Use in place of the `eds-text` attribute. If both the `eds-text` attribute and default slot content are set, the slot content will be rendered.                               |
+    | `icon-left`  | A `<eds-icon>` if the `icon-left` prop is set.  | Use in place of the `eds-icon-left` attribute. If both the `eds-icon-left` attribute and named slot content of `eds-icon-left` are set, the slot content will be rendered.    |
+    | `icon-right` | A `<eds-icon>` if the `icon-right` prop is set. | Use in place of the `eds-icon-right` attribute. If both the `eds-icon-right` attribute and named slot content of `eds-icon-right` are set, the slot content will be rendered. |
+
+    ## Events
+
+    The Link component does not emit any custom events.
+
+    ## Methods
+
+    The Link component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | **Class name**                 | **Applies to**   | **Outcome**                                                       |
+    | ------------------------------ | ---------------- | ----------------------------------------------------------------- |
+    | `.eds-link--large`             | `.eds-link-root` | Adjusts styling to render a "large" Link.                         |
+    | `.eds-link--small`             | `.eds-link-root` | Adjusts styling to render a "small" Link.                         |
+    | `.eds-link--medium`            | `.eds-link-root` | Adjusts styling to render a "medium" Link.                        |
+    | `.eds-link--disabled`          | `.eds-link-root` | Renders the disables styles of a Link.                            |
+    | `.eds-link--trigger`           | `.eds-link-root` | Renders the Link as a trigger.                                    |
+    | `.eds-link--disable-underline` | `.eds-link-root` | Disables the underline in a Link.                                 |
+    | `.eds-link--external`          | `.eds-link-root` | Adds an <eds-link eds-href="/components/icon/icon.html">Icon</eds-link> indicating the Link is external to the current site. |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-link eds-disable-underline>...</eds3-link>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <span class="eds3-link-root eds-link--disable-underline">...</span>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Link", root_class="link-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                  | Required |
+| --------------------------------------------------------------------------------------- | --- |
+| `import { edsLink } from '@xyz-ap153177/apex-kit';`                                   | Yes |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                   | Yes |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                         | Yes - unless using `injectCustomSpriteSheet` |
+| `import { injectCustomSpriteSheet, ICON_ACTION_OPEN_LINK } from '@xyz-ap153177/apex-kit';` | Yes - unless using `injectSpriteSheet` |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Link", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab
+ #}
+{% block a11y_tab %}
+    {% filter markdown %}
+
+    ## Attribution
+
+    Component exposes `eds-aria-describedby` and `eds-aria-label` for applying accessible attribution to links.
+
+    ## Best practices
+    -   <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#link_text" eds-new-window eds-native-anchor-attributes='{"rel":"noreferrer","target":"_blank"}'>Link text</a>
+    -   <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#link_instructions" eds-new-window eds-native-anchor-attributes='{"rel":"noreferrer","target":"_blank"}'>Link instructions</a>
+    -   <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#tech_link_context" eds-new-window eds-native-anchor-attributes='{"rel":"noreferrer","target":"_blank"}'>Link context</a>
+
+    {% endfilter %}
+{% endblock %}

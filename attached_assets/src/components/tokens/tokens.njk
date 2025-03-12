@@ -1,0 +1,404 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status="Available" %}
+
+{% set token_content %}
+    {% filter markdown %}
+    ## Design tokens in Apex Kit for Web components
+
+    The property-value pairs that represent color, typography, size,
+    spacing, and other attributes are managed in YAML. During the build
+    process, <span class="underline">SCSS variables and maps</span> are
+    generated, as is a JSON file used as data in JavaScript and other
+    applications.
+
+    ```scss
+    @mixin eds-heading-level-3() {
+        color: $eds-text-color-primary;
+        font-family: $eds-font-family-sans
+        font-size: $eds-font-size-heading-level-3;
+        font-weight: $eds-font-weight-bold;
+        line-height: $eds-font-line-height-heading;
+    }
+    ```
+
+    The <em>***Level*** 3 Heading</em> mixin relies on
+    color, family, size, weight, and line-height attributes.
+
+    ```scss
+        $eds-font-line-height-normal: 1.5;
+        $eds-font-line-height-heading: 1.25;
+    ```
+
+    Common styling attributes, like line-height, are “spec-ed” with a
+    limited range of values to promote visual alignment across pages. They
+    are named in descriptive terms to communicate clear design intent.
+
+
+    ## Using design tokens
+
+    When creating new components using Providence visual
+    style, When applying Providence visual style, use tokens for as
+    many style attributes as possible. If a visual standard must be tweaked,
+    the markup and CSS will remain untouched.
+
+    ### Styling with tokens
+
+    “Syntax callout” component with caption
+
+    ```scss
+    .tbd-component-container {
+    background-color: $eds-color-background-light-gray;
+    border-radius: $eds-radius-M;
+    padding: $eds-space-inset-squish-two-x;
+    }
+    ```
+
+    **Consider** using existing design tokens that are managed indirectly in
+    SCSS.
+
+    ### Styling without tokens
+
+    ```scss
+    .tbd-component-container {
+        background-color:\#F2F2F2;
+        border-radius: 0.1875rem;
+        padding: 1rem 2rem;
+    }
+    ```
+    **­Avoid** using values that are managed directly in CSS.
+
+
+    ## Contributing new tokens
+
+    Please follow the **<em>standard contribution
+    process</em>** for contributing new tokens or proposing changes to
+    existing ones.
+
+
+    {% endfilter %}
+{% endset %}
+
+
+{##
+ # TITLE
+ #}
+{% block page__title %}
+    <h1>Design Tokens</h1>
+    <p>Design tokens are commonly used property-value pairs used to maintain visual consistency during the creation of styles, classes, and mixins for eds componentry.
+</p>
+{% endblock %}
+
+{##
+ # Examples Tab
+ #}
+{% block examples_tab %}
+    {{token_content | safe}}
+{% endblock %}
+
+
+{##
+ # Design Tab
+ #}
+{% block design_tab %}
+    {{token_content | safe}}
+{% endblock %}
+
+{##
+ # Code Tab
+ #}
+{# {% block code_tab %}
+    {% filter markdown %}
+
+    ## Color
+
+    See more information on Color for guidance.
+
+    ### Base palettes
+
+    | **Token**                     | **Value** |
+    |-------------------------------|-----------|
+    | $eds-color-palette-white      | \#FFFFFF  |
+    | $eds-color-palette-black      | \#000000  |
+    | $eds-color-palette-neutral-40 | \#666666  |
+    | $eds-color-palette-neutral-50 | \#7F7F7F  |
+    | $eds-color-palette-neutral-73 | \#BBBBBB  |
+    | $eds-color-palette-neutral-80 | \#CCCCCC  |
+    | $eds-color-palette-neutral-88 | \#E0E0E0  |
+    | $eds-color-palette-neutral-95 | \#F2F2F2  |
+    | $eds-color-palette-blue-24    | \#024A7A  |
+    | $eds-color-palette-blue-40    | \#356F95  |
+    | $eds-color-palette-blue-80    | \#A5DFF4  |
+    | $eds-color-palette-red-39     | \#B41212  |
+    | $eds-color-palette-red-48     | \#E01616  |
+    | $eds-color-palette-red-95     | \#FCEBEB  |
+    | $eds-color-palette-yellow-50  | \#FFCD00  |
+    | $eds-color-palette-orange-53  | \#FB9914  |
+    | $eds-color-palette-green-24   | \#OD6F3F  |
+    | $eds-color-palette-green-25   | \#568200  |
+    | $eds-color-palette-purple-25  | \#5C0198  |
+
+    ### Alert color
+
+    | $eds-color-alert-color-success      | \#568200 |
+    |-------------------------------------|----------|
+    | $eds-color-alert-color-confirmation | \#568200 |
+    | $eds-color-alert-color-warning      | \#FFCD00 |
+    | $eds-color-alert-color-error        | \#E01616 |
+    | $eds-color-alert-color-info         | \#356F95 |
+    | $eds-color-alert-color-error-fill   | \#FCEBEB |
+
+    ### Interactive color
+
+    | $eds-color-interactive-color-primary    | \#024A7A |
+    |-----------------------------------------|----------|
+    | $eds-color-interactive-color-invitation | \#FB9914 |
+    | $eds-color-interactive-color-selected   | \#356F95 |
+    | $eds-color-interactive-color-disabled   | \#BBBBBB |
+
+    ### Background color
+
+    | $eds-color-background-color-white      | \#FFFFFF |
+    |----------------------------------------|----------|
+    | $eds-color-background-color-light-gray | \#F2F2F2 |
+
+    ### Border color
+
+    | $eds-color-border-color-primary              | \#000000 |
+    |----------------------------------------------|----------|
+    | $eds-color-border-color-tile                 | \#F2F2F2 |
+    | $eds-color-border-color-input                | \#7F7F7F |
+    | $eds-color-border-color-interactive          | \#356F95 |
+    | $eds-color-border-color-interactive-selected | \#356F95 |
+    | $eds-color-border-color-interactive focus    | \#A5DFF4 |
+    | $eds-color-border-color-interactive-hover    | \#A5DFF4 |
+    | $eds-color-border-color-table row            | \#CCCCCC |
+    | $eds-color-border-color-table-column         | \#CCCCCC |
+
+    ### Text color
+
+    | $eds-color-text-color-primary          | \#000000 |
+    |----------------------------------------|----------|
+    | $eds-color-text-color-secondary        | \#666666 |
+    | $eds-color-text-color-link             | \#356F95 |
+    | $eds-color-text-color-link-visited     | \#5C0198 |
+    | $eds-color-text-color-link-focus       | \#A5DFF4 |
+    | $eds-color-text-color-link-hover       | \#A5DFF4 |
+    | $eds-color-text-color-placeholder      | \#666666 |
+    | $eds-color-text-color-disabled         | \#BBBBBB |
+    | $eds-color-text-color-performance-gain | \#OD6F3F |
+    | $eds-color-text-color-performance-loss | \#B41212 |
+
+    ###
+
+    ###
+
+    ###
+
+    ###
+
+    ### Performance color
+
+    | $eds-color-performance-color-gain | \#OD6F3F |
+    |-----------------------------------|----------|
+    | $eds-color-performance-color-loss | \#B41212 |
+
+
+    ## Fonts
+
+    <span class="underline">See more information on Typography for
+    guidance.</span>
+
+    ### Font family
+
+    | $eds-font-family-sans      | 'Enterprise Sans', Helvetica, Arial, sans |
+    |----------------------------|-----------------------------------------|
+    | $eds-font-family-monospace | 'Inconsolata', Courier, monospace       |
+
+    ### Line-height
+
+    | $eds-font-line-height-normal  | 1.5  |
+    |-------------------------------|------|
+    | $eds-font-line-height-heading | 1.25 |
+
+    ### Weight
+
+    | $eds-font-weight-regular | 400 |
+    |--------------------------|-----|
+    | $eds-font-weight-bold    | 700 |
+
+    ### Size
+
+    | $eds-font-size-base                      | 16px |
+    |------------------------------------------|------|
+    | $eds-font-size-text-large-default        | 18px |
+    | $eds-font-size-text-large-at-512         | 20px |
+    | $eds-font-size-text-medium-default       | 14px |
+    | $eds-font-size-text-medium-at-512        | 16px |
+    | $eds-font-size-text-small-default        | 12px |
+    | $eds-font-size-text-small-at-512         | 14px |
+    | $eds-font-size-heading-level-1-default   | 38px |
+    | $eds-font-size-heading-level-1-at-512    | 44px |
+    | $eds-font-size-heading-level-2-default   | 26px |
+    | $eds-font-size-heading-level-2-at-512    | 30px |
+    | $eds-font-size-heading-level-3-default   | 22px |
+    | $eds-font-size-heading-level-3-at-512    | 26px |
+    | $eds-font-size-heading-level-4-default   | 18px |
+    | $eds-font-size-heading-level-4-at-512    | 22px |
+    | $eds-font-size-heading-level-5-default   | 16px |
+    | $eds-font-size-heading-level-5-at-512    | 18px |
+    | $eds-font-size-heading-eyebrow-default   | 12px |
+    | $eds-font-size-heading-eyebrow-at-512    | 12px |
+    | $eds-font-size-heading-timestamp-default | 12px |
+    | $eds-font-size-heading-timestamp-at-512  | 12px |
+
+
+    ## Space
+
+    <span class="underline">See more information on Space for</span> <span
+    class="underline">guidance.</span>
+
+    ### Utility
+
+    | $eds-space-utility-four-x          | 4rem     |
+    |------------------------------------|----------|
+    | $eds-space-utility-three-x         | 3rem     |
+    | $eds-space-utility-two-x           | 2rem     |
+    | $eds-space-utility-one-x           | 1rem     |
+    | $eds-space-utility-three-quarter-x | 0.75rem  |
+    | $eds-space-utility-half-x          | 0.5rem   |
+    | $eds-space-utility-quarter-x       | 0.25rem  |
+    | $eds-space-utility-eighth-x        | 0.125rem |
+
+    ### Padding (inset)
+
+    | $eds-space-inset-four-x          | 4rem     |
+    |----------------------------------|----------|
+    | $eds-space-inset-three-x         | 3rem     |
+    | $eds-space-inset-two-x           | 2rem     |
+    | $eds-space-inset-one-x           | 1rem     |
+    | $eds-space-inset-three-quarter-x | 0.75rem  |
+    | $eds-space-inset-half-x          | 0.5rem   |
+    | $eds-space-inset-quarter-x       | 0.25rem  |
+    | $eds-space-inset-eighth-x        | 0.125rem |
+
+    ### Padding (inset-stretch)
+
+    | $eds-space-inset-stretch-four-x         | 6rem 4rem        |
+    |-----------------------------------------|------------------|
+    | $eds-space-inset-stretch-two-x          | 3rem 2rem        |
+    | $eds-space-inset-stretch-one-and-half-x | 2.25rem 1.5rem   |
+    | $eds-space-inset-stretch-one-x          | 1.5rem 1rem      |
+    | $eds-space-inset-stretch-half-x         | 0.75rem 0.5rem   |
+    | $eds-space-inset-stretch-quarter-x      | 0.375rem 0.25rem |
+
+    ### Padding (inset-squish)
+
+    | $eds-space-inset-squish-four-x         | 2rem 4rem        |
+    |----------------------------------------|------------------|
+    | $eds-space-inset-squish-two-x          | 1rem 2rem        |
+    | $eds-space-inset-squish-one-and-half-x | 0.75rem 1.25rem  |
+    | $eds-space-inset-squish-one-x          | 0.5rem 1rem      |
+    | $eds-space-inset-squish-half-x         | 0.25rem 0.5rem   |
+    | $eds-space-inset-squish-quarter-x      | 0.125rem 0.25rem |
+
+    ###
+
+    ### Margin (stack)
+
+    | $eds-space-stack-four-x          | 4rem 0 0 0     |
+    |----------------------------------|----------------|
+    | $eds-space-stack-three-x         | 3rem 0 0 0     |
+    | $eds-space-stack-two-x           | 2rem 0 0 0     |
+    | $eds-space-stack-one-and-half-x  | 1.5rem 0 0 0   |
+    | $eds-space-stack-one-x           | 1rem 0 0 0     |
+    | $eds-space-stack-three-quarter-x | 0.75rem 0 0 0  |
+    | $eds-space-stack-half-x          | 0.5rem 0 0 0   |
+    | $eds-space-stack-quarter-x       | 0.25rem 0 0 0  |
+    | $eds-space-stack-eighth-x        | 0.125rem 0 0 0 |
+
+    ### Margin (inline)
+
+    | $eds-space-inline-four-x          | 0 0 0 4rem     |
+    |-----------------------------------|----------------|
+    | $eds-space-inline-three-x         | 0 0 0 3rem     |
+    | $eds-space-inline-two-x           | 0 0 0 2rem     |
+    | $eds-space-inline-one-and-half-x  | 0 0 0 1.5rem   |
+    | $eds-space-inline-one-x           | 0 0 0 1rem     |
+    | $eds-space-inline-three-quarter-x | 0 0 0 0.75rem  |
+    | $eds-space-inline-half-x          | 0 0 0 0.5rem   |
+    | $eds-space-inline-quarter-x       | 0 0 0 0.25rem  |
+    | $eds-space-inline-eighth-x        | 0 0 0 0.125rem |
+
+    ### Margin (inline-right)
+
+    | $eds-space-inline-right-four-x          | 0 4rem 0 0     |
+    |-----------------------------------------|----------------|
+    | $eds-space-inline-right-three-x         | 0 3rem 0 0     |
+    | $eds-space-inline-right-two-x           | 0 2rem 0 0     |
+    | $eds-space-inline-right-one-and-half-x  | 0 1.5rem 0 0   |
+    | $eds-space-inline-right-one-x           | 0 1rem 0 0     |
+    | $eds-space-inline-right-three-quarter-x | 0 0.75rem 0 0  |
+    | $eds-space-inline-right-half-x          | 0 0.5rem 0 0   |
+    | $eds-space-inline-right-quarter-x       | 0 0.25rem 0 0  |
+    | $eds-space-inline-right-eighth-x        | 0 0.125rem 0 0 |
+
+
+    ## Breakpoints
+
+    | $eds-breakpoints-at-512  | 32em |
+    |--------------------------|------|
+    | $eds-breakpoints-at-768  | 48em |
+    | $eds-breakpoints-at-960  | 60em |
+    | $eds-breakpoints-at-1280 | 80em |
+
+
+    ## Media queries
+
+    | $eds-media-queries-in-0-to-512    | max-width: 32em                 |
+    |-----------------------------------|---------------------------------|
+    | $eds-media-queries-at-512         | min-width: 32em                 |
+    | $eds-media-queries-in-512-to-768  | min-width: 32em max-width:48em  |
+    | $eds-media-queries-at-768         | min-width: 48em                 |
+    | $eds-media-queries-in-768-to-960  | min-width: 48em max-width:60em  |
+    | $eds-media-queries-at-960         | min-width: 60em                 |
+    | $eds-media-queries-in-960-to-1280 | min-width: 60em max-width: 80em |
+    | $eds-media-queries-at-1280        | min-width: 80em                 |
+
+    {% endfilter %}
+{% endblock %} #}
+
+{% block code_tab %}
+    {% for key,val in tokenData.eds %}
+        {% if key !== "color" %}
+        <h2 class="docsite__linkable-heading">{{key}}</h2>
+        <table>
+            <tbody>
+                {% for itemKey, itemVal in val %}
+                    {% if (itemVal | isstring) %}
+                        <tr>
+                            <td>{{itemKey}}</td>
+                            <td>{{itemVal}}</td>
+                        </tr>
+                    {% else %}
+                        {% for childKey, childVal in itemVal %}
+                        <tr>
+                            <td>{{itemKey}} - {{childKey}}</td>
+                            <td>{{childVal}}</td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{##
+ # A11y Tab
+ #}
+{% block a11y_tab %}
+
+{% endblock %}

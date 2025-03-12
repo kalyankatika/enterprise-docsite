@@ -1,0 +1,247 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs docsite-documentation-page--fds-only"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Chip
+    
+    Chips help users make selections, filter content, or trigger actions
+
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+
+    <h2 class="docsite__linkable-heading">Default</h2>
+    
+    {% filter markdown %}
+    - Clicking anywhere on the chip will select/unselect the option.
+    - _Chip is only available in the FDS theme._
+    {% endfilter %}
+
+    {% set unchecked_example %}
+    <eds-chip>Option A</eds-chip>
+    {% endset %}
+
+    {% set unchecked_hover_example %}
+    <eds-chip data-state="hover">Option A</eds-chip>
+    {% endset %}
+
+    {% set checked_example %}
+    <eds-chip eds-checked>Option A</eds-chip>
+    {% endset %}    
+    
+    {% set hover_checked_example %}
+    <eds-chip eds-checked data-state="hover-checked">Option A</eds-chip>
+    {% endset %}  
+
+    {% set unchecked_active_example %}
+    <eds-chip data-state="active">Option A</eds-chip>
+    {% endset %}
+
+    {% set active_checked_example %}
+    <eds-chip eds-checked data-state="active-checked">Option A</eds-chip>
+    {% endset %}
+
+    {% set unchecked_focus_example %}
+    <eds-chip data-state="focus">Option A</eds-chip>
+    {% endset %}
+
+    {% set focus_checked_example %}
+    <eds-chip eds-checked data-state="focus-checked">Option A</eds-chip>
+    {% endset %}                   
+
+    {% set code_snippet_source %}
+    <!-- Unchecked -->
+    {{unchecked_example | safe | trim}}
+
+    <!-- Unchecked Hover -->
+    {{unchecked_hover_example | safe | trim}}
+
+    <!-- Unchecked Focus -->
+    {{unchecked_focus_example | safe | trim}}    
+
+    <!-- Unchecked Active -->
+    {{unchecked_active_example | safe | trim}}    
+
+    <!-- Checked -->
+    {{checked_example | safe | trim}}
+    
+    <!-- Hover Checked -->
+    {{hover_checked_example | safe | trim}}   
+
+    <!-- Active Checked -->
+    {{active_checked_example | safe | trim}}      
+
+    <!-- Focus Checked-->
+    {{focus_checked_example | safe | trim}}          
+
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: unchecked_example,
+                label: "Unchecked"
+            },
+            {
+                example: unchecked_hover_example,
+                label: "Unchecked Hover",
+                class: 'docsite-eds-chip--hover'
+            },
+            {
+                example: unchecked_active_example,
+                label: "Unchecked Active",
+                class: 'docsite-eds-chip--active'
+            },
+            {
+                example: unchecked_focus_example,
+                label: "Unchecked Focus",
+                class: 'docsite-eds-chip--focus'
+            },
+            {
+                example: checked_example,
+                label: "Checked"
+            },
+            {
+                example: hover_checked_example,
+                label: "Checked Hover",
+                class: 'docsite-eds-chip--hover-checked'
+            },
+            {
+                example: active_checked_example,
+                label: "Checked Active",
+                class: 'docsite-eds-chip--active-checked'
+            },            
+            {
+                example: focus_checked_example,
+                label: "Checked Focus",
+                class: 'docsite-eds-chip--focus-checked'
+            }                                           
+        ],
+        code_snippet_source=code_snippet_source,
+        show_copy_button=false,
+        preformatted=true
+    )}}
+
+{% endblock %}
+
+{% block design_tab %}
+
+    {% filter markdown %}
+    You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/data-entry/chip/#visual-design-specifications">design guidance</eds-link> for this component.
+
+    ## Interaction guidelines
+
+    Clicking anywhere on the chip will select/unselect the option.
+
+    ### Usage guidelines
+    | Do | Don't |
+    | -- | ----- |
+    | Use in a group to achieve a certain purpose, e.g., data filtering or user selection.   | Use a toggle chip by itself. |
+    | Label the group of associated chips. | Change the label text when the state changes. |
+    | Provide information on how users should make selections, e.g., single or multiple selections. |  |
+
+    ## Content guidance
+
+    ### Usage
+    Chips are used to enable or disable a feature or setting on a website or tool, such as:
+    - Settings panels
+    - Preference toggles
+    - Feature enable/disable options
+    
+    ### Format
+    - Chip labels should be clear, concise, and sentence case.
+    - The chip should have a clear "on" and "off" state, represented alongside the selected option.
+        - The current state of the chip should be clearly recognizable.
+
+    ### Resources
+    [Basis Pill Indicator](https://basis.xyz.com/docs/explore/components/indicators/pill-indicator/)
+
+    {% endfilter %}
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute              | Type    | Validation | Default | Description |
+    | ---------------------- | ------- | ---------- | ------- | ----------- |
+    | `eds-aria-describedby` | string  | --         | --      | A string of `id`'s separated by spaces that will be set as the `aria-describedby` attribute on the native `<input>` element. |
+    | `eds-checked`          | boolean | --         | `false` | Indicates whether the Chip component should be checked. The value of `eds-checked` will be reflected to the native checked attribute of the native `<input>` element. |
+    | `eds-name`             | string  | --         | --      | Field name of the native `<input>` for your form data |
+    | `eds-value`            | string  | --         | --      | Sets the value of the `<input>` element. |
+
+    {% endfilter %}
+
+    {% filter markdown %}
+
+    ## Slots
+
+    | Name        | Default content | Description |
+    | ----------- | --------------- | ----------- |
+    | `default`   | --              | The text to be used for the label. |
+
+    {% endfilter %}
+
+    {% filter markdown %}
+
+    ## Events
+
+    Listen for the "eds-clicked" event to handle your app business. The "eds-clicked" emits a detail object with the alert ID, text, and value.
+
+    ## Methods
+
+    The Chip component does not implement any public methods.
+
+    ## CSS modifier classes
+
+    The Chip component does not expose any CSS modifier classes.
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-chip>Option A</eds3-chip>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-chip-root">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Chip", root_class="chip-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                      | Required |
+| --------------------------------------------------------------------------- | --- |
+| `import { edsChip } from '@xyz-ap153177/apex-kit';`                     | Yes |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Chip", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+
+    {% filter markdown %}
+
+    ## Accessibility considerations
+    - A group of chips should be considered like a group of form controls and should be placed in a parent with the role of group, using a visible label for the group. Otherwise, each chip's input will need to be programmatically associated with the label/heading through the described-by property attribute.
+    - Content changes that are tied to a chip or filter row should occur following the chip itself. Depending on the desired experience, a live region announcement might be needed to convey page changes to users in real time.
+
+    ## Implementation
+    {% endfilter %}
+    {{ library.eds_accessibility()}}
+
+{% endblock %}

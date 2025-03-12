@@ -1,0 +1,542 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Stepper
+    
+    When used inside a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>, the Stepper provides a way to present numeric data in a <eds-link eds-href="/components/form/form.html">Form</eds-link> that can then be edited either directly via its input or by using the accompanying buttons to increase/decrease the value. 
+
+    Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of forms. 
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Default
+    {% endfilter %}
+
+    {% set stepper_example %}
+        <eds-stepper></eds-stepper>
+    {% endset %}
+
+    {% set stepper_error_example %}
+        <eds-stepper eds-error eds-value="bananas"></eds-stepper>
+    {% endset %}
+
+    
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: stepper_example,
+                label: "Default",
+                generate_html: true
+            },
+            {
+                example: stepper_error_example,
+                label: "Error",
+                generate_html: false
+            }
+        ],
+        show_copy_button=true,
+        preformatted=true
+    )}}
+    
+    {% filter markdown %}
+        ## Step value
+        Increases or decreases the displayed value by the amount specified.
+    {% endfilter %}
+
+    {% set stepper_step_example %}
+        <eds-stepper eds-step="7"></eds-stepper> 
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: stepper_step_example,
+                label: "Step value of 7",
+                generate_html: true
+            } 
+        ],
+        show_copy_button=true,
+        preformatted=true
+    )}}
+    
+    {% filter markdown %}
+        ## Min and max values
+        Sets the lowest and/or highest value that can be submitted.
+    {% endfilter %}
+
+    {% set stepper_min_example %}
+        <eds-stepper eds-min="45" eds-value="45"></eds-stepper>
+    {% endset %}
+
+    {% set stepper_max_example %}
+        <eds-stepper eds-max="70" eds-value="70"></eds-stepper>
+    {% endset %}
+
+    {% set code_snippet_source %}
+        <!-- Min value -->
+        {{stepper_min_example | safe | trim}}
+
+        <!-- Max value -->
+        {{stepper_max_example | safe | trim}}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: stepper_min_example,
+                label: "Minimum value",
+                generate_html: false
+            },
+            {
+                example: stepper_max_example,
+                label: "Maximum value",
+                generate_html: false
+            }
+            
+        ],
+        code_snippet_source=code_snippet_source,
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+    {% filter markdown %}
+        ## Input value alignment
+    {% endfilter %}
+
+    {% set stepper_left_example %}
+        <eds-stepper eds-align="left"></eds-stepper>
+    {% endset %}
+
+    {% set stepper_center_example %}
+        <eds-stepper></eds-stepper>
+    {% endset %}
+
+    {% set stepper_right_example %}
+        <eds-stepper eds-align="right"></eds-stepper>
+    {% endset %}
+
+    {% set code_snippet_source %}
+        <!-- Left -->
+        {{stepper_left_example | safe | trim}}
+
+        <!-- Center (default) -->
+        {{stepper_center_example | safe | trim}}
+
+        <!-- Right -->
+        {{stepper_right_example | safe | trim}}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: stepper_left_example,
+                label: "Left",
+                generate_html: false
+            },
+            {
+                example: stepper_center_example,
+                label: "Center (Default)",
+                generate_html: false
+            },
+            {
+                example: stepper_right_example,
+                label: "Right",
+                generate_html: false
+            }
+            
+        ],
+        code_snippet_source=code_snippet_source,
+        show_copy_button=false,
+        preformatted=true
+    )}}
+
+    {% filter markdown %}
+        ## Input prefix and suffix
+        - Presents a "$" glyph on the left or a "%" glyph on right side of the Input.
+        - Relegates the value to the side of the Input opposite the glyph.
+    {% endfilter %}
+
+    {% set stepper_prefix_example %}
+        <eds-stepper eds-input-prefix="$"></eds-stepper>
+    {% endset %}
+
+    {% set stepper_suffix_example %}
+        <eds-stepper eds-input-suffix="%"></eds-stepper>
+    {% endset %}
+
+    {% set code_snippet_source %}
+        <!-- Prefix -->
+        {{stepper_prefix_example | safe | trim }}
+
+        <!-- Suffix -->
+        {{stepper_suffix_example | safe | trim }}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: stepper_prefix_example,
+                label: "Prefix",
+                generate_html: false
+            },
+            {
+                example: stepper_suffix_example,
+                label: "Suffix",
+                generate_html: false
+            }
+            
+        ],
+        code_snippet_source=code_snippet_source,
+        show_copy_button=false,
+        preformatted=true
+    )}}
+    
+
+    {% filter markdown %}
+        ## Sizes
+    {% endfilter %}
+
+    {% set sizes_example_source %}
+        <!-- Large -->
+        <eds-stepper eds-size="large"></eds-stepper>
+        
+        <!-- Medium (default) -->
+        <eds-stepper></eds-stepper>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: '<eds-stepper eds-size="large"></eds-stepper>',
+                label: "Large"
+            },
+            {
+                example: '<eds-stepper></eds-stepper>',
+                label: "Medium (default)"
+            }
+        ],
+        language='html',
+        preformatted=true,
+        show_copy_button=false,
+        code_snippet_source=sizes_example_source
+    )}}
+
+    {% filter markdown %}
+        ## In a Field Group
+        Always indicate when an entry is required by using the `eds-required` attribute.
+    {% endfilter %}
+
+    {% set stepper_field_group_example %}
+        <eds-field-group>
+            <eds-label eds-indicator="required" eds-for='stepper01-example' eds-id="stepper01-example-label">Retirement age</eds-label>
+            <eds-microcopy eds-id='stepper01-example-micro'>When do you want to retire?</eds-microcopy>
+            <eds-stepper  
+                eds-required  
+                eds-label-id="stepper01-example-label"
+                eds-aria-describedby='stepper01-example-micro'
+                eds-min="65" 
+                eds-value="65"
+                ></eds-stepper>
+        </eds-field-group>
+    {% endset%}
+
+    {% set in_field_in_error_group_example %}
+        <eds-field-group>
+            <eds-label eds-indicator="required" eds-for='stepper02-example' eds-id="stepper02-example-label">Retirement age</eds-label>
+            <eds-microcopy eds-id='stepper02-example-micro'>When do you want to retire?</eds-microcopy>
+            <eds-stepper 
+                eds-error
+                eds-required 
+                eds-label-id="stepper02-example-label"
+                eds-aria-describedby='error-msg stepper02-example-micro'
+                eds-min="65" 
+                eds-value="banana"
+                ></eds-stepper>
+            <eds-inline-alert eds-id='error-msg' eds-variant='critical'>Enter a valid age.</eds-inline-alert>
+        </eds-field-group>
+    {% endset %}
+
+    {% set in_field_group_examples %}
+        <!-- In field group -->
+        {{ stepper_field_group_example | safe | trim }}
+        <!-- In error -->
+        {{ in_field_in_error_group_example | safe | trim }}
+
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: stepper_field_group_example,
+                label: "In field group"
+            },
+            {
+                example: in_field_in_error_group_example,
+                label: "In error"
+            }
+        ],
+        language='html',
+        preformatted=true,
+        show_copy_button=false,
+        code_snippet_source=in_field_group_examples
+    ) }}
+
+    {% filter markdown%}
+        ## Display data
+        - The Stepper does not offer a "display" state.
+        - Display data is presented in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> as styled text. Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+    {% endfilter %}
+
+    {% set in_field_display_data_example %}
+        <eds-field-group>
+            <eds-label>Retirement age</eds-label>
+            <p class="eds-field-group__display-data">67</p>
+        </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_display_data_example,
+                label: "Display Data as a paragraph",
+                language: "html"
+            }
+        ]
+    ) }}
+
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/data-entry/stepper/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+    
+    {% filter markdown %}
+        ## Use when
+        - Adjusting values inside a <eds-link eds-href="/components/form/form.html">Form</eds-link> or tool.
+        - The possible adjusted value is close to the default value.
+        - Increments are standardized and follow a pattern (1, 2,10, thousands, millions, etc.)
+        - There is a default value.
+        - You have a fixed minimum and maximum values.
+
+        ## Don't use when
+        - Presenting text-based choices. Instead, use a <eds-link eds-href="/components/radio-group/radio-group.html">Radio Group</eds-link>, or <eds-link eds-href="/components/select/select.html">Select</eds-link>.
+        - The number of increments between the minimum and maximum values is vast and would inhibit the user's ability to adjust the values quickly.
+        - When increments change at non-standard intervals. Instead, use a use <eds-link eds-href="/components/radio-group/radio-group.html">Radio Group</eds-link>.
+        - There is no default value. Instead, use an <eds-link eds-href="/components/input/input.html">Input</eds-link>.
+        - There are no defined min/max values. Instead, use an <eds-link eds-href="/components/input/input.html">Input</eds-link>.
+
+        ## Visual style
+
+        ### Anatomy and construction
+    {% endfilter %}
+
+    {% set modal_anatomy_caption %} 
+        <ol class="eds-figure__figcaption-inline-list">
+        <li>Decrement Button (required)</li>
+        <li>Input (required)</li>
+        <li>Increment Button (required)</li>
+        </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/stepper/doc-stepper-anatomy.png 1x,
+                ../images/stepper/doc-stepper-anatomy@2x.png 2x
+            ",
+            alt="Stepper anatomy diagram.  ",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=modal_anatomy_caption,
+            sentiment="neutral"
+            ) 
+        }}
+     
+    {% filter markdown%}
+        ## Behavior
+        - The Input displays a default value.
+        - The Buttons increase or decrease the value by a specific amount.
+        - The default value can be overridden by typing directly into the Input.
+        - When manually entered, the Input value is not required to conform to the defined step pattern of the increment and decrement Buttons.
+        - When displaying the min or max value, the respective decrement or increment Buttons will be disabled.
+
+        ## Content
+        - The stepper's value is a string of characters representing a number formatted for commas. 
+        - The stepper should be accompanied by a <eds-link eds-href="/components/label/label.html">Label</eds-link> and, preferably, be contained in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+    {% endfilter %}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+        ## Installation
+        {% include "src/templates/partials/integration.njk" %}
+
+        ## Attributes
+        {% include "src/templates/partials/jsProps.njk" %}
+    
+        | Attribute              | Type    | Validation                                                                              | Default  | Description                                           |
+        | ---------------------- | ------- | --------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------- |
+        | `eds-align`            | string  | `left`, `center`, `right`                                                               | `center` | Aligns the value inside the input.                    |
+        | `eds-error`            | boolean | Anything other than empty string, `true`, or `eds-error` will be treated as `false`     | `false`  | Assigns the error state of the Stepper's input.       |
+        | `eds-step`             | number  | --                                                                                      | `1`      | The amount the value will increase or decrease.       |
+        | `eds-min`              | number  | --                                                                                      | `-100`   | The floor of the Stepper's incrementation.            |
+        | `eds-max`              | number  | --                                                                                      | `100`    | The ceiling of the Stepper's incrementation.          |
+        | `eds-aria-describedby` | string  | --                                                                                      | --       | ID(s) of additional descriptive text.                 |
+        | `eds-input-id`         | string  | --                                                                                      | --       | ID of the input.                                      |
+        | `eds-input-prefix`     | string  | --                                                                                      | --       | Given string appears to the left inside the input.    |
+        | `eds-input-suffix`     | string  | --                                                                                      | --       | Given string appears to the right inside the input.   |
+        | `eds-input-value`      | string  | --                                                                                      | `1`      | String-ified number that the Stepper displays.        |
+        | `eds-label-id`         | string  | --                                                                                      | --       | ID of the label by which the input is labelled.       |
+        | `eds-required`         | boolean | Anything other than empty string, `true`, or `eds-required` will be treated as `false`. | `false`  | Assigns required attributes to Stepper's input field. |
+        | `eds-size`             | string  | `medium`, `large`                                                                       | `medium` | Relative sizing of all the elements in the box.       |
+    {% endfilter %}
+
+    {# TWO-WAY DATA BINDING #}
+
+    {% include "src/templates/partials/two-way-data-binding.njk" %}
+
+    {{ library.native_attributes(nativeAttrProps=['eds-native-input-attributes']) }}
+    
+    {% filter markdown %}
+        ## Events
+        | Event name             | Description | Details |
+        |------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--|
+        | `eds-stepper-change`   | Emitted when the Stepper's input value has changed. Use to detect what has changed in the Stepper. <br><br>Max : number representing the edsMax attribute <br>Min : number representing the edsMin attribute<br>Step : number representing the edsStep attribute<br>Value : string representing the new value after the event<br>Previous value: string representing the value before the event<br>Triggered by: string representing the action taken to trigger the event <br><br>Possible values of `detail.triggeredBy` include `decrement`, `increment`, `manual`.      | `detail.max: number`<br>`detail.min: number`<br>`detail.step: number`<br>`detail.value: string `<br>`detail.previousValue: string`<br>`detail.triggererdBy: string` |
+        | `eds-stepper-error`    | Emitted when the stepper's input value has run through validation:<br><br>Value : string representing the value being validated <br>Message: string representing the validation's result. <br><br>Possible values of `detail.message` include `blank`, `not a number`, `no error`, `over max`, `under min`.  | `detail.message: string` |
+
+
+
+        ## Methods
+        The Stepper component does not implement any public methods.
+        
+        ## Other functionality
+        Keyboard entry on the input includes ARROW UP/DOWN to increment and decrement.
+
+        ## CSS helper classes
+
+        | Class name                               | Applies to                                                                  | Outcome                                                               |
+        | ---------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+        | `.eds-stepper__controls`                 | An element wrapping the buttons and input                                   | Ensures layout properties of interactive elements |
+        | `.eds-stepper__button`                   | An element wrapping the native eds-button increment or decrement buttons    | Ensures alignment of buttons with regard to containing `.eds-stepper__controls` element |
+        | `.eds-stepper__input`                    | An element wrapping the native eds-input                                    | Ensures alignment of input field with regard to containing `.eds-stepper__controls` element. |
+
+
+        ## CSS modifier classes
+    {% endfilter %}
+
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    {% filter markdown%}
+    | Class name             | Applies to          | Outcome                                                           |
+    | ---------------------- | ------------------- | ----------------------------------------------------------------- |
+    | `.eds-stepper--left`   | `.eds-stepper-root` | Aligns the content of the component to the left                   |
+    | `.eds-stepper--center` | `.eds-stepper-root` | Aligns the content of the component to the center (default)       |
+    | `.eds-stepper--right`  | `.eds-stepper-root` | Aligns the content of the component to the right                  |
+    | `.eds-stepper--small`  | `.eds-stepper-root` | Applies sizing to match `small` size of eds components            |
+    | `.eds-stepper--medium` | `.eds-stepper-root` | Applies sizing to match `medium` size of eds components (default) |
+    | `.eds-sterpper--large` | `.eds-stepper-root` | Applies sizing to match `large` size of eds components            |
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-stepper></eds3-stepper>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-stepper-root eds-stepper--medium eds-stepper--left">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Stepper", root_class="stepper-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                                        | Required                                       |
+| --------------------------------------------------------------------------------------------------------------| ---------------------------------------------- |
+| `import { edsButton } from '@xyz-ap153177/apex-kit';`                                                         | Yes                                            |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                                           | Yes                                            |
+| `import { edsInput } from '@xyz-ap153177/apex-kit';`                                                          | Yes                                            |
+| `import { edsStepper } from '@xyz-ap153177/apex-kit';`                                                        | Yes                                            |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                                                 | Yes, unless using `injectCustomSpriteSheet`    |
+| `import { injectCustomSpriteSheet, ICON_ACTION_ADD, ICON_ACTION_SUBTRACT } from '@xyz-ap153177/apex-kit';`    | Yes, unless using `injectSpriteSheet`          |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Stepper", js_import_table=js_import_table) }}
+
+    {% endblock %}
+
+{% block a11y_tab %}
+    
+    {% filter markdown %}
+        ## Input in Field Groups 
+        - Always have an associated `<eds-stepper>` as part of the Field Group. 
+        - Use the `eds-input-id` attribute to associate the `<eds-label>` to the `<eds-stepper>`. 
+        - Alternatively, you can use the `eds-aria-label` attribute to associate an`<input>` element with a label. 
+        
+        ## Associating the Input with a Label 
+        - Using the `eds-id` attribute allows for consumers to associate a `<label>` with the native `<input>` element that is used internally within `<eds-stepper>` component. 
+        - Use `eds-input-label-id` to reference the `id` of the Stepper's `<label>`. 
+        - The following will be made possible by associating a `<label>` in this way: 
+            - The hover state of the `<input>` element will be triggered when a user hovers over the Label. 
+            - The `<input>` element will be focused when a user clicks on the Label. 
+            - A screen reader will read the label's text to the user when they focus on the `<input>` element. 
+        
+        ## Required fields 
+        - Always use `aria-required` for fields that are required. 
+        - Use the `eds-required` attribute to configure the `aria-required` attribute. 
+        
+        ## Additional description text for Input element 
+        Use `eds-aria-describedby` to reference additional content describing the `<input>` element that is not within its associated `<label>`. This will result in adding the targeted element to the native `<input>` element's `aria-describedby` string of IDs. 
+    {% endfilter %}
+
+    {% set a11yExample1 %}
+        <eds-label 
+            eds-indicator="required" 
+            eds-for="stepper03-example" 
+            eds-id="stepper03-example-label" 
+            >Retirement age
+            </eds-label> 
+        <eds-microcopy 
+            eds-id="stepper03-example-micro" 
+            >When do you want to retire?
+            </eds-microcopy> 
+        <eds-stepper 
+            eds-input-id="stepper03-example" 
+            eds-label-id="stepper03-example-label" 
+            eds-aria-describedby="stepper03-example-micro" 
+            eds-required="true" 
+            >
+            </eds-stepper> 
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=a11yExample1,
+        preformatted=true,
+        show_copy_button=false,
+        hide_line_numbers=true
+    ) }}
+
+    {% filter markdown %}
+        Note: Using `aria-describedby` is preferred over `aria-label` when text is or can usefully be made visible on-screen. 
+
+        ## Error indication 
+        - Use the eds-error attribute to configure the aria-invalid attribute on the stepper's input. 
+        - Refer to the Accessibility Standards for more information. 
+    {% endfilter %}
+
+{% endblock %}

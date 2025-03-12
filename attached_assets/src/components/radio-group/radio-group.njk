@@ -1,0 +1,489 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Radio Group
+    A Radio Group contains multiple <eds-link eds-href="/components/radio-button/radio-button.html">Radio Buttons</eds-link> for use inside of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>. 
+
+    Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>.
+    {% endfilter %}
+{% endblock %}
+
+{% macro radio_group_example(
+    id="1",
+    inline="never"
+) %}
+    {% if inline != "never" %}
+        {% set edsInline %}
+        eds-inline="{{inline}}"
+        {% endset %}
+    {% endif %}
+
+    <eds-radio-group eds-aria-label="default-example-aria-label" {{edsInline | safe}}>
+        <eds-radio eds-name="group-{{id}}" eds-value="option-a">Option A</eds-radio>
+        <eds-radio eds-name="group-{{id}}" eds-value="option-b">Option B</eds-radio>
+        <eds-radio eds-name="group-{{id}}" eds-value="option-c">Option C</eds-radio>
+    </eds-radio-group>
+{% endmacro %}
+
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Default
+    * Never use this component on its own. 
+    * Always accompany this component with a clear and concise [Label](/components/label/label.html) inside a [Field Group](/components/field-group/field-group.html) to meet accessibility guidelines.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: radio_group_example(id="1"),
+                label: "Stacked Radio Group (default)"
+            }
+        ]
+    )}}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: radio_group_example(id="2", inline="at-512"),
+                label: "Inline Radio Group"
+            }
+        ]
+    )}}
+
+    {% filter markdown %}
+    ## In a Field Group
+    Always indicate when an entry is required by using the `eds-required` attribute.
+    {% endfilter %}
+
+    {% set in_field_group_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-3-label" eds-indicator="required">
+            What is your preference?
+        </eds-label>
+        <eds-microcopy eds-id="group-3-micro">Select one.</eds-microcopy>
+        <eds-radio-group
+            eds-aria-describedby="group-3-micro"
+            eds-aria-labelledby="group-3-label"
+            eds-required
+        >
+            <eds-radio eds-name="group-3" eds-value="option-a">Option A</eds-radio>
+            <eds-radio eds-name="group-3" eds-value="option-b">Option B</eds-radio>
+            <eds-radio eds-name="group-3" eds-value="option-c">Option C</eds-radio>
+        </eds-radio-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_group_example,
+                label: "Field Group with Label and Microcopy"
+            }
+        ],
+        preformatted=true
+    )}}
+
+    {% set in_field_group_error_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-4-label" eds-indicator="required">
+            What is your preference?
+        </eds-label>
+        <eds-microcopy eds-id="group-4-micro">Select one.</eds-microcopy>
+        <eds-radio-group
+            eds-aria-describedby="group-4-alert group-4-micro"
+            eds-aria-labelledby="group-4-label"
+            eds-required
+            eds-error
+        >
+            <eds-radio eds-name="group-4" eds-value="option-a">Option A</eds-radio>
+            <eds-radio eds-name="group-4" eds-value="option-b">Option B</eds-radio>
+            <eds-radio eds-name="group-4" eds-value="option-c">Option C</eds-radio>
+        </eds-radio-group>
+        <eds-inline-alert eds-id="group-4-alert">Select one of the above options.</eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_group_error_example,
+                label: "Error"
+            }
+        ],
+        preformatted=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">Display Data</h2>
+
+    {% filter markdown(includeWrapper=false) %}
+    - The Radio Group does not offer a "display" state.
+    - Display data is presented in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> as styled text. Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+    {% endfilter %}
+
+    {% set in_field_display_data_example %}
+    <eds-field-group>
+        <eds-label>Your preference</eds-label>
+        <p class='eds-field-group__display-data'>Option C</p>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_display_data_example,
+                label: "Display Data as a paragraph",
+                language: "html"
+            }
+        ]
+    ) }}
+
+    {% filter markdown %}
+    
+    ## Tiles modifier
+
+    Add the `eds-tiles` attribute to turn the radio buttons into larger interactive tiles.
+    {% endfilter %}
+
+    {% set in_field_group_error_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-5-label" eds-indicator="required">
+            What is your preference?
+        </eds-label>
+        <eds-microcopy eds-id="group-5-micro">Select one.</eds-microcopy>
+        <eds-radio-group
+            eds-aria-describedby="group-5-alert group-5-micro"
+            eds-aria-labelledby="group-5-label"
+            eds-required
+            eds-tiles
+        >
+            <eds-radio eds-name="group-5" eds-value="option-a" eds-aria-describedby="option-a-description">
+                Option A
+                <eds-microcopy eds-id="option-a-description">Description of Option A</eds-microcopy>
+            </eds-radio>
+            <eds-radio eds-name="group-5" eds-value="option-b" eds-aria-describedby="option-b-description">
+                Option B
+                <eds-microcopy eds-id="option-b-description">Description of Option A</eds-microcopy>
+            </eds-radio>
+            <eds-radio eds-name="group-5" eds-value="option-c" eds-aria-describedby="option-c-description">
+                Option C
+                <eds-microcopy eds-id="option-c-description">Description of Option A</eds-microcopy>
+            </eds-radio>
+        </eds-radio-group>
+        <eds-inline-alert eds-id="group-5-alert">Select one of the above options.</eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_group_error_example,
+                label: "Tiles modifier"
+            }
+        ],
+        preformatted=true
+    )}}
+
+    {% set in_field_group_error_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-6-label" eds-indicator="required">
+            What is your preference?
+        </eds-label>
+        <eds-microcopy eds-id="group-6-micro">Select one.</eds-microcopy>
+        <eds-radio-group
+            eds-aria-describedby="group-6-alert group-6-micro"
+            eds-aria-labelledby="group-6-label"
+            eds-required
+            eds-error
+            eds-tiles
+        >
+            <eds-radio eds-name="group-6" eds-value="option-a">Option A</eds-radio>
+            <eds-radio eds-name="group-6" eds-value="option-b">Option B</eds-radio>
+            <eds-radio eds-name="group-6" eds-value="option-c">Option C</eds-radio>
+        </eds-radio-group>
+        <eds-inline-alert eds-id="group-6-alert">Select one of the above options.</eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_group_error_example,
+                label: "Tiles with Error"
+            }
+        ],
+        preformatted=true
+    )}}
+
+{% endblock %}
+
+{% block design_tab %}
+    {% filter markdown %}
+    ## Use when
+    Presenting 2 or more <eds-link eds-href="/components/radio-button/radio-button.html">Radio Buttons</eds-link> as part of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+
+    ### Don't use when
+    Presenting multiple <eds-link eds-href="/components/checkbox/checkbox.html">Checkboxes</eds-link>. Instead, use a <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link>.
+
+    ### Anatomy and construction
+    {% endfilter %}
+
+    {% set radio_group_anatomy_caption %} 
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>Radio Button (required)</li>
+            <li>Microcopy</li>
+        </ol>
+    {% endset %} 
+
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/radio-group/radio-group-anatomy-stacked.png 1x,
+                ../images/radio-group/radio-group-anatomy-stacked@2x.png 2x
+            ",
+            alt:"Anatomy of a stacked Radio Group.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:radio_group_anatomy_caption,
+            sentiment:"neutral"
+            },
+            { 
+            srcset:"
+                ../images/radio-group/radio-group-anatomy-inline.png 1x,
+                ../images/radio-group/radio-group-anatomy-inline@2x.png 2x
+            ",
+            alt:"Anatomy of an inline Radio Group.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:radio_group_anatomy_caption,
+            sentiment:"neutral"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+    
+    
+    {% filter markdown %}
+
+    ## Behavior
+    ### Responsive behavior
+    Radio Buttons are stacked by default, but the breakpoint at which groups go from a stacked to an inline arrangement may be set in the code.
+    {% endfilter %}
+
+    {% set inline_example_source %}
+    <eds-radio-group eds-inline="never">...</eds-radio-group>
+    <eds-radio-group eds-inline="at-1280">...</eds-radio-group>
+    <eds-radio-group eds-inline="at-960">...</eds-radio-group>
+    <eds-radio-group eds-inline="at-768">...</eds-radio-group>
+    <eds-radio-group eds-inline="at-512">...</eds-radio-group>
+    <eds-radio-group eds-inline="always">...</eds-radio-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: radio_group_example(id="5", inline="never"),
+                label: "Never inline (Stacked)"
+            },
+            {
+                example: radio_group_example(id="6", inline="at-1280"),
+                label: "Inline at-1280"
+            },
+            {
+                example: radio_group_example(id="7", inline="at-960"),
+                label: "Inline at-960"
+            },
+            {
+                example: radio_group_example(id="8", inline="at-768"),
+                label: "Inline at-768"
+            },
+            {
+                example: radio_group_example(id="9", inline="at-512"),
+                label: "Inline at-512"
+            },
+            {
+                example: radio_group_example(id="10", inline="always"),
+                label: "Always inline"
+            }
+        ],
+        open_in_new_window=true,
+        preformatted=true,
+        code_snippet_source=inline_example_source
+    )}}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute              | Type    | Validation                                                                              | Default | Description                                                                                                                                                                                                                                                                       |
+    | ---------------------- | ------- | --------------------------------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-describedby` | string  | --                                                                                      | --      | A string that will be set as the `aria-describedby` attribute on the container.<br><br>Reference the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.                                                                                       |
+    | `eds-aria-label`       | string  | --                                                                                      | --      | A string that will be set as the `aria-label` attribute on the container.<br><br>Reference the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.                                                                                             |
+    | `eds-aria-labelledby`  | string  | --                                                                                      | --      | A string of `id`s separated by spaces that will be set as the `aria-labelledby` attribute on the container.<br><br>Reference the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.                                                           |
+    | `eds-error`            | boolean | Anything other than empty string, `true`, or `eds-error` will be treated as `false`.    | `false` | Indicates whether the Radio Group component should render in the error state.<br><br>Setting `eds-error` to `true` will set `aria-invalid="true"` on the native element.                                                                                                          |
+    | `eds-inline`           | string  | `never`, `at-1280`, `at-960`, `at-768`, `at-512`, `always`                              | `never` | Determines the point at which the Radio Button components within the Radio Group go from stacked to inline.<br><br>For any breakpoint, if `eds-inline` is set to `never`, the content in the Radio Group will stay stacked, while `always` will force the content to stay inline. |
+    | `eds-required`         | boolean | Anything other than empty string, `true`, or `eds-required` will be treated as `false`. | `false` | Indicates whether a selection is required. Must be used in conjunction with the `eds-required` attribute of the <eds-link eds-href="/components/radio-button/radio-button.html?tab=code#attributes">Radio Button</eds-link> component.                                            |
+    | `eds-tiles`            | boolean | Anything other than empty string, `true`, or `eds-tiles` will be treated as `false`.    | `false` | Renders the nested Radio button components as a "tile".                                                                                                                                                                                                                                |
+
+    ## Slots
+    | Slot name | Default content | Description                                                                                                                                                                                          |
+    | --------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `default` | --              | Use this slot to group related <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components and apply appropriate vertical or horizontal spacing between them. |
+
+    Refer to the <eds-link eds-href="?tab=examples">Examples tab</eds-link> for usage of the `default` slot.
+
+    ## Events
+    The Radio Group component does not emit any custom events.
+
+    ## Methods
+    The Radio Group component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                         | Applies to...           | Outcome                                                                                                                                                                                                          |
+    | ---------------------------------- | ----------------------  | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `.eds-radio-group--inline-at-1280` | `.eds-radio-group-root` | Nested <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components will be arranged horizontally at a screen width of 1280px and above, otherwise they will be stacked.   |
+    | `.eds-radio-group--inline-at-960`  | `.eds-radio-group-root` | Nested <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components will be arranged horizontally at a screen width of 960px and above, otherwise they will be stacked.    |
+    | `.eds-radio-group--inline-at-768`  | `.eds-radio-group-root` | Nested <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components will be arranged horizontally at a screen width of 768px and above, otherwise they will be stacked.    |
+    | `.eds-radio-group--inline-at-512`  | `.eds-radio-group-root` | Nested <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components will be arranged horizontally at a screen width of 512px and above, otherwise they will be stacked.    |
+    | `.eds-radio-group--inline-always`  | `.eds-radio-group-root` | Nested <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components will be arranged horizontally and will never stack.                                                    |
+    | `.eds-radio-group--error`          | `.eds-radio-group-root` | Adjusts the style to render the group in its error state.                                                                                                                                                        |
+
+    ### Error handling
+    The attribute `aria-invalid="true"` must be added on the element with the `.eds-radio-group__radio-group` class to ensure the error state is accessible to everyone.
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-radio-group eds-inline="at-512">...</eds3-radio-group>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-radio-group-root eds-radio-group--inline-at-512">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Radio Group", root_class="radio-group-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                           | Required            |
+| ---------------------------------------------------------------- | ------------------- |
+| `import { edsRadioGroup } from '@xyz-ap153177/apex-kit';`      | Yes                 |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Radio Group", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Label
+    A <eds-link eds-href="/components/label/label.html">Label</eds-link> should be associated with the Radio Group component via `eds-aria-labelledby` and used within a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> component in order to apply the appropriate spacing. The Radio Group component sets the `role="group"` attribute to allow screen readers to understand the relationship between the <eds-link eds-href="/components/label/label.html">Label</eds-link> and the group of <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components. `eds-aria-label` should only be used if the group has no visible Label.
+    {% endfilter %}
+
+    {% set a11y_label_example %}
+    <eds-field-group>
+        <eds-label eds-id="a11y-label">What is your preference?</eds-label>
+        <eds-radio-group eds-aria-labelledby="a11y-label">
+            ...
+        </eds-radio-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_label_example, show_copy_button=false) }}
+
+    {% filter markdown %}
+    ## Microcopy
+    - <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> is optional and should only be used when additional context is needed. 
+    - <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> can be applied at the group-level, option-level, or both. 
+    - <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> must be associated with the Radio Group component or <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> component via `eds-aria-describedby`.
+
+    ### Group-level Microcopy
+    {% endfilter %}
+
+    {% set a11y_group_microcopy_example %}
+    <eds-field-group>
+        <eds-microcopy eds-id="a11y-micro">Select one.</eds-microcopy>
+        <eds-radio-group eds-aria-describedby="a11y-micro">
+            ...
+        </eds-radio-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_group_microcopy_example, show_copy_button=false) }}
+
+    <br>
+    {% filter markdown %}
+    ### Option-level Microcopy
+    Refer to the <eds-link eds-href="/components/radio-button/radio-button.html#with-microcopy">Radio Button with microcopy</eds-link> documentation for examples of option-level <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link>.
+
+    ## Error indication
+    When multiple <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components are used within a group, error indication should be applied to the Radio Group via `eds-error` rather than to the individual <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link> components.
+    In the case where the Radio Group is the first error on the page, use the `focus()` method to bring attention to the error.
+    {% endfilter %}
+
+    {% set a11y_error_example_html %}
+    <eds-field-group>
+        <eds-radio-group eds-aria-describedby="a11y-alert" eds-error>
+            ...
+        </eds-radio-group>
+        <eds-inline-alert eds-id="a11y-alert">
+            Select one of the above options.
+        </eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {% set a11y_error_example_js %}
+    /**
+     * The following is an example of how to give focus to the Checkbox
+     * when it is the first error on the page. Always check
+     * recommendations from your framework on best pratices when interacting
+     * with DOM elements.
+     *
+     * Note that the `isFirstErrorOnPage` boolean is not provided by
+     * Apex Kit for Web and would need to be determined via logic in your
+     * application.
+     */
+    if (isFirstErrorOnPage) {
+        const radioGroup = document.querySelector('eds-radio-group');
+        radioGroup.focus();
+    }
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        sources=[
+            {
+                source: a11y_error_example_html,
+                language: "html",
+                label: "HTML"
+            },
+            {
+                source: a11y_error_example_js,
+                language: "javascript",
+                label: "JavaScript"
+            }
+        ],
+        show_copy_button=false,
+        preformatted=true
+    ) }}
+{% endblock %}

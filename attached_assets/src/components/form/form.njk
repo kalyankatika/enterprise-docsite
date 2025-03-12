@@ -1,0 +1,327 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Form
+    A Form presents all form-related groups and components so that people can enter and submit information.
+
+    {% endfilter %}
+{% endblock %}
+
+{% set examples_content_label="Examples" %}
+{% block examples_tab %}
+
+
+    {% filter markdown %}
+    ## Vertical spacing
+    Vertical space between content sections may be reduced using the dense option. Refer to the "Anatomy and construction" diagram under the Design tab for more information.
+    {% endfilter %}
+
+    {% macro form_composition_example(id="1", dense=false) %}
+        <eds-form eds-novalidate eds-id="form-composition-example-{{id}}" {{ "eds-dense" if dense }}>
+            <eds-field-key></eds-field-key>
+
+            {{ library.full_name_example(id=id, dense="true", inline="at-512") }}
+
+            <eds-field-group>
+                    <eds-label>Your address</eds-label>
+                    <p class="eds-field-group-display-data">1234 Main St.<br>Apt. 10<br>Boston, MA 02110-1234</p>
+            </eds-field-group>
+
+            <eds-field-group>
+                <eds-label eds-id="group-options-label">
+                    Does this family member have the same address as you?
+                </eds-label>
+
+                <eds-radio-group
+                    eds-aria-labelledby="group-options-label"
+                    eds-inline="at-512"
+                    eds-required
+                >
+                    <eds-radio eds-name="group-options" eds-value="option-a">Yes</eds-radio>
+                    <eds-radio eds-name="group-options" eds-value="option-b">No</eds-radio>
+                </eds-radio-group>
+            </eds-field-group>
+
+            {{ library.address_example(id=id, dense="true") }}
+
+            <eds-form-actions>
+                <eds-button slot="primary-action" eds-type="submit" eds-native-button-attributes='{"aria-label":"Continue to next step"}'>
+                    Continue
+                </eds-button>
+                <eds-button slot="secondary-action" eds-variant="secondary" eds-native-button-attributes='{"aria-label":"Go back to next step"}'>
+                    Go back
+                </eds-button>
+                <eds-button slot="tertiary-action" eds-variant="tertiary" eds-native-button-attributes='{"aria-label":"Return to homepage"}'>
+                    Exit
+                </eds-button>
+            </eds-form-actions>
+        </eds-form>
+    {% endmacro %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: form_composition_example(),
+                label: "Default spacing"
+            }
+        ],
+        language='html'
+    )}}
+
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: form_composition_example(id=2, dense=true),
+                label: "Dense spacing"
+            }
+        ],
+        language='html'
+    )}}
+
+{% endblock %}
+
+{% block design_tab %}
+    {% filter markdown %}
+    ## Use when
+
+    - Collecting data, including but not limited to personal, planning, and transactional information.
+    - Collecting search and screener criteria.
+    - Collecting sign-in credentials.
+
+    ## Visual style
+    - Use the Form to wrap all form-related groups and components.
+    - Use the <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> and <eds-link eds-href="/components/form-actions/form-actions.html">Form Actions</eds-link> to assemble the related elements that make up data entry, [display data](/patterns/display-data.html), and submission controls.
+    - Use the <eds-link eds-href="/components/field-key/field-key.html">Field Key</eds-link> to describe which fields are required.
+
+
+    ### Anatomy and construction
+{% endfilter %}
+{% set form_anatomy_caption %}
+    <ol class="eds-figure__figcaption-inline-list">
+        <li>Field Key (required)</li>
+        <li>Field Group – data entry (required)</li>
+        <li>Field Group – display data</li>
+        <li>Form Actions (required)</li>
+    </ol>
+
+<p class="eds-docsite-diagram-note"><strong>Note:</strong> Vertical space between content sections can be reduced using the dense option. See parathentical value.</p>
+{% endset %}
+
+{{ library.eds_figure(
+    srcset="
+        ../images/form/doc-form-anatomy.png 1x,
+        ../images/form/doc-form-anatomy@2x.png 2x
+    ",
+    alt="Content Block width example image",
+    width="full",
+    border=true,
+    padding="one-and-half-x",
+    background=false,
+    label="",
+    caption=form_anatomy_caption,
+    sentiment="neutral"
+    )
+}}
+
+
+
+{% filter markdown %}
+    ## Behavior
+
+    ### Distribution of child components
+    - The Form will space all child components uniformly (e.g., <eds-link eds-href="/components/field-key/field-key.html">Field Key</eds-link>, <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>, <eds-link eds-href="/components/form-actions/form-actions.html">Form Actions</eds-link>.)
+    - The spacing of elements within child components is not affected by the Form.
+
+    ### Width and responsive behavior
+    - The Form occupies 100% of its parent container width.
+    - As the parent container responds to changes in browser width, so too will the Form and its child components.
+
+    ## Submitting Forms
+    - Always use the primary action <eds-link eds-href="/components/button/button.html#primary-action">Button</eds-link> within the <eds-link eds-href="/components/form-actions/form-actions.html">Form Actions</eds-link> to submit Form data.
+    - Never submit Form data via a <eds-link eds-href="/components/select/select.html">Select</eds-link>, <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link>, or <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link>.
+
+    ## Multi-step forms
+    - Long forms may be broken up into multiple steps/pages.
+    - Consider using a <eds-link eds-href="http://providence.xyz.com/eds-components-progress-indicator" eds-new-window>Progress Indicator</eds-link> to reveal the overall workflow.
+    - Clearly indicate the next primary action.
+    {% endfilter %}
+
+   {{library.eds_figure_group(
+    figures=[
+        {
+        srcset:"
+            ../images/form/doc-form-multi-step1.png 1x,
+            ../images/form/doc-form-multi-step1@2x.png 2x
+        ",
+        alt:"An example image of the Form Actions showing 'Continue' as the primary action.",
+        width:"full",
+        border:true,
+        padding:"one-x",
+        background:false,
+        label:"Always",
+        caption:"clearly indicate at the end of each step that the flow continues.",
+        sentiment:"positive"
+        }
+        ,
+        {
+        srcset:"
+            ../images/form/doc-form-multi-step2.png 1x,
+            ../images/form/doc-form-multi-step2@2x.png 2x
+        ",
+        alt:"An example image of the Form Actions showing 'Submit' as the primary action.",
+        width:"full",
+        border:true,
+        padding:"one-x",
+        background:false,
+        label:"Always",
+        caption:"clearly indicate when the point of submission has been reached.",
+        sentiment:"positive"
+        }
+    ],
+    inline_at="at-512"
+)}}
+
+
+
+
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+
+    | Attribute                           | Type     | Validation                                                                                                                                                          | Default                          | Description                                                                                                            |
+    |-------------------------------------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
+    | `eds-action`                        | string   | --                                                                                                                                                                  | --                               | The url that processes the Form submission.                                                                            |
+    | `eds-dense`                         | boolean  | Anything other than empty string, `true`, or `eds-dense` will be treated as `false`.                                                                                | `false`                          | Decreases the amount of vertical spacing between elements within `<eds-form>`.                                         |
+    | `eds-id`                            | string   | --                                                                                                                                                                  | --                               | Sets the `id` to the native `<form>` element.                                                                          |
+    | `eds-method`                        | string   | --                                                                                                                                                                  | --                               | The HTTP method to submit the Form.                                                                                    |
+    | `eds-native-form-attributes`        | object   | string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information.             | --                               | Sets native or custom attributes on the native `<form>` element.                                                       |
+    | `eds-novalidate`                    | boolean  | Anything other than empty string, `true` or `eds-novalidate` will be treated as `false`.                                                                            | `false`                          | Sets the `novalidate` attribute on the native `<form>` element.                                                        |
+
+    {% endfilter %}
+
+    {{ library.native_attributes(nativeAttrProps=['eds-native-form-attributes']) }}
+
+    {% filter markdown %}
+    ### Usage examples
+
+    The following are different examples of how to add native or custom attributes.
+    Always check recommendations from your framework on best pratices when interacting with DOM elements.
+
+    Using `eds-native-form-attributes` as an attribute:
+    {% endfilter %}
+
+    {% set form_native_attribute_attr_example %}
+        <eds-form
+            id="nativeAttributesExampleForm"
+            eds-native-form-attributes='{"autocomplete": "off"}'>
+            ...
+        </eds-form>
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=form_native_attribute_attr_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    Using `eds-native-form-attributes` as a JavaScript property:
+    {% endfilter %}
+
+    {% set form_native_attribute_example %}
+        <eds-form id="nativeAttributesExampleForm">...</eds-form>
+
+        <script>
+            let form = document.querySelector('#nativeAttributesExampleForm');
+
+            form.edsNativeFormAttributes = {
+                autocomplete: 'off'
+            };
+        </script>
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=form_native_attribute_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+
+    ## Slots
+
+    | Name         | Default content      | Description                                                                 |
+    |--------------|----------------------|-----------------------------------------------------------------------------|
+    | `default`    | --                   | All Form elements should be placed using default slot.                      |
+
+    ## Events
+
+    The Form component does not emit any custom events.
+
+    ## Methods
+
+    The Form component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                       | Applies to           | Outcome                                                                                 |
+    |----------------------------------|----------------------|-----------------------------------------------------------------------------------------|
+    | `.eds-form--dense`                | `.eds-form-root`     | Reduces the spacing between form elements within the form.                              |
+
+
+    ## Submission of Form data
+    - Ideally, submission of a Form should be handled the same way regardless of how it was submitted. Clicking the "submit" <eds-link eds-href="/components/button/button.html">Button</eds-link> or pressing the "enter" key should trigger the same client-side validation and submission processes.
+    - Project teams must decide for themselves the best way to store and submit data collected in a Form.
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-form eds-dense>...</eds3-form>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-form-root eds-form--dense">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Form", root_class="form-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                 | Required                |
+| ------------------------------------------------------ | ----------------------- |
+| `import { edsForm } from '@xyz-ap153177/apex-kit';`  | Yes                     |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Form", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    For accessibility documentation on components related to Forms, refer to:
+    - <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link>
+    - <eds-link eds-href="/components/input/input.html">Input</eds-link>
+    - <eds-link eds-href="/components/label/label.html">Label</eds-link>
+    - <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link>
+    - <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link>
+    - <eds-link eds-href="/components/select/select.html">Select</eds-link>
+    - <eds-link eds-href="/components/textarea/textarea.html">Textarea</eds-link>
+    {% endfilter %}
+{% endblock %}

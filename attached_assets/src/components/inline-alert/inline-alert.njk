@@ -1,0 +1,269 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Inline Alert
+
+    An Inline Alert is a message displayed adjacent to its related content that communicates a status of critical, warning, success, or information.
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+
+    {% filter markdown %}
+    ## Critical Alert
+    - Indicates high priority or an error.
+    - Describes situations which may not allow someone to proceed.
+    - If the Inline Alert is due to an error, ensure that the content provides context for the error and any steps that may be taken to correct it.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(example='<eds-inline-alert>Select a valid amount.</eds-inline-alert>') }}
+
+    {% filter markdown %}
+    ## Warning Alert
+    - Indicates mid-priority, or warning.
+    - Describes situations or responses that may cause unexpected or undesirable results.
+    - A warning usually will not prevent someone from completing a transaction.
+    {% endfilter %}
+
+    {% set alert_warning_example %}
+        <eds-inline-alert eds-variant="warning">
+            Your money might only last until you're age 79.
+        </eds-inline-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_warning_example)}}
+
+
+    {% filter markdown %}
+    ## Informational Alert
+    - Indicates a message that is informational.
+    - Describes or explains a situation that is important but won't prevent someone from completing an action.
+    {% endfilter %}
+
+    {% set alert_info_example %}
+        <eds-inline-alert eds-variant="info">
+            This is more than your total expenses or the amount you entered above.
+            The additional money is intended to help you pay the taxes you will owe on this withdrawal.
+        </eds-inline-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_info_example)}}
+
+    {% filter markdown %}
+    ## Success Alert
+    Indicates that a transaction has been successfully completed.
+    {% endfilter %}
+
+    {% set alert_success_example %}
+        <eds-inline-alert eds-variant="success">Successfully saved.</eds-inline-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_success_example)}}
+
+
+    <h2 class="docsite__linkable-heading">Inline Alert with title</h2>
+
+    {% set alert_with_title_example %}
+        <eds-inline-alert eds-variant="warning" eds-title="Your active bank account is not set up for electronic funds transfer">
+            Please select one of the mailing options above. If you'd like to use electronic funds transfer, you'll need to cancel this transaction and set it up.
+        </eds-inline-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=alert_with_title_example)}}
+
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+
+    {% set sizes_example_source %}
+        <!-- Large -->
+        <eds-inline-alert eds-size="large" eds-variant="success">Successfully saved.</eds-inline-alert>
+
+        <!-- Medium (default) -->
+        <eds-inline-alert eds-variant="success">Successfully saved.</eds-inline-alert>
+
+        <!-- Small -->
+        <eds-inline-alert eds-size="small" eds-variant="success">Successfully saved.</eds-inline-alert>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: '<eds-inline-alert eds-size="large" eds-variant="success">Successfully saved.</eds-inline-alert>',
+                label: "Large"
+            },
+            {
+                example: '<eds-inline-alert eds-variant="success">Successfully saved.</eds-inline-alert>',
+                label: "Medium (default)"
+            },
+            {
+                example: '<eds-inline-alert eds-size="small" eds-variant="success">Successfully saved.</eds-inline-alert>',
+                label: "Small"
+            }
+        ],
+        language='html',
+        show_copy_button=false,
+        preformatted=true,
+        code_snippet_source=sizes_example_source
+    )}}
+
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/help-systems/message/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+    
+    {% filter markdown %}
+    ## Use when
+
+    Communicating information like errors associated with <eds-link eds-href="/components/form/form.html">Form</eds-link> inputs, and other messages specific to items within the content of the page.
+
+    ## Don't use when
+
+    - Communicating information specifically about the page, system, or section of the page that someone is currently experiencing. Instead use an <eds-link eds-href="/components/alert/alert.html">Alert</eds-link>.
+    - Informing someone of significant market and system events. Instead use an <eds-link eds-href="/components/alert/alert.html">Alert</eds-link>.
+
+    ## Placement
+
+    Position Inline Alerts adjacent to the content that they describe. When used in conjunction with other components like <eds-link eds-href="/components/form/form.html">Form</eds-link> inputs, refer to that documentation for information about proper placement.
+
+    ### Example
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/inline-alert/inline-alert-placement.png 1x,
+            ../images/inline-alert/inline-alert-placement@2x.png 2x
+        ",
+        alt="Default spacing of an inline alert to its content.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="Example of the default space between an Input and the associated Inline Alert.",
+        sentiment="neutral"
+        )
+    }}
+
+
+    {% filter markdown %}
+    ## Visual style
+
+    - <eds-link eds-href="/visual-style/color/color.html#alerts">Core palette colors</eds-link> and specific <eds-link eds-href="/components/icon/icon.html#names">icons</eds-link> visually indicate each type of Inline Alert.
+    - Critical Inline Alert text content uses red to add higher visual priority. The only exception are <eds-link eds-href="/components/link/link.html">Links</eds-link>.
+    - Always make Inline Alert titles bold.
+
+    ## Behavior
+
+    Critical Inline Alerts that indicate an error will remain displayed on the page until the error is corrected.
+
+    ## Content
+
+    - Write messages in an objective and factual tone that is concise and easy to understand.
+    - Content may contain links that are actions someone may take.
+    - Titles are optional, but may precede the message and must be followed by a colon. The colon is provided when using the web component.
+    - Avoid redundancy when writing titles and messages. If a title doesn't offer additional value, remove it.
+
+    {% endfilter %}
+
+    {{ library.eds_editorial(href="http://uxdesignstandards.xyz.com/general-error-messages")}}
+
+
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+
+    | Attribute                    | Type    | Validation                               | Default    | Description                                                                                                                |
+    | -----------------------------| ------- | ---------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-a11y-icon-text`         | string  | --                                       | --         | Specify an accessible title for the alert's svg icon.                                                            |
+    | `eds-enable-a11y-attributes` | boolean | --                                       | `false`    | Includes `aria-live` and `role` attributes <eds-link eds-href="?tab=accessibility">depending on type of alert</eds-link>.  |
+    | `eds-id`                     | string  | --                                       | --         | Sets the `id` to the root `<div>` of the Inline Alert.                                                                     |
+    | `eds-size`                   | string  | `small`, `medium`, `large`               | `medium`   | Defines the size of the icon and content.                                                                                  |
+    | `eds-text`                   | string  | --                                       | --         | Fallback content for message if slots can't be used.                                                                       |
+    | `eds-title`                  | string  | --                                       | --         | Puts a title within the alert.                                                                                             |
+    | `eds-variant`                | string  | `critical`, `info`, `warning`, `success` | `critical` | Defines what variant of alert needs to be used.                                                                            |
+
+    ## Slots
+
+    | Name         | Default content      | Description                                                                                                              |
+    |--------------|----------------------|--------------------------------------------------------------------------------------------------------------------------|
+    | `default`    | --                   | Content that is placed inside the `<eds-inline-alert>` will be added to the content section of the Inline Alert.         |
+
+    ## Events
+    The Inline Alert component does not emit any custom events.
+
+    ## Methods
+    The Inline Alert component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                    | Applies to               | Outcome                                                        |
+    | ----------------------------- | ------------------------ | -------------------------------------------------------------- |
+    | `.eds-inline-alert--critical` | `.eds-inline-alert-root` | Adds "critical" styles.                                        |
+    | `.eds-inline-alert--info`     | `.eds-inline-alert-root` | Adds "informational" styles.                                   |
+    | `.eds-inline-alert--success`  | `.eds-inline-alert-root` | Adds "success" styles.                                         |
+    | `.eds-inline-alert--warning`  | `.eds-inline-alert-root` | Adds "warning" styles.                                         |
+    | `.eds-inline-alert--large`    | `.eds-inline-alert-root` | Adjusts the style to render a "large" Inline Alert component.  |
+    | `.eds-inline-alert--medium`   | `.eds-inline-alert-root` | Adjusts the style to render a "medium" Inline Alert component. |
+    | `.eds-inline-alert--small`    | `.eds-inline-alert-root` | Adjusts the style to render an "small" Inline Alert component. |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-inline-alert>...</eds3-inline-alert>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-inline-alert-root eds-inline-alert--critical eds-inline-alert--medium">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Inline Alert", root_class="inline-alert-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                                                                                         | Required                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `import { edsInlineAlert } from '@xyz-ap153177/apex-kit';`                                                                                                   | Yes                                         |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                                                                                          | Yes                                         |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                                                                                                | Yes, unless using `injectCustomSpriteSheet` |
+| `import { injectCustomSpriteSheet, ICON_ALERT_CRITICAL, ICON_ALERT_INFO, ICON_STATUS_CONFIRM, ICON_ALERT_WARNING_FULL_COLOR } from '@xyz-ap153177/apex-kit';` | Yes, unless using `injectSpriteSheet`       |
+
+    {% endset %}
+
+    {{ library.import_reference(component_name="Inline Alert", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+
+    {% filter markdown %}
+    ## Semantics
+    - "Critical" Inline Alerts use `role="alert" aria-live="assertive"` (Safari requires both).
+    - "Warning", "informational", and "success" Inline Alerts use `role="status" aria-live="polite"`.
+
+    ## Groups
+    When Inline Alerts are grouped within the same container, apply `aria-live="polite"` to the parent container instead of each individual Inline Alert.
+    {% endfilter %}
+
+    <br><br>
+    {{ library.eds_accessibility(href="http://accessibility.xyz.com/guide/aria-role/alert/")}}
+
+
+{% endblock %}

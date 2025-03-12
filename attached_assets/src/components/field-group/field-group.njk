@@ -1,0 +1,755 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Field Group
+
+    A Field Group combines multiple components to construct a single entry within a <eds-link eds-href="/components/form/form.html">Form</eds-link>. 
+    
+    Visit  <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>. 
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}    
+    {% filter markdown %}
+    ## Typical data entry combinations
+    Wrap a data entry component in a Field Group to combine with other components.
+
+     {% endfilter %}
+{% set input_example_basic %}
+    <eds-field-group> 
+        <eds-label eds-for="input-example-basic">
+            Primary label
+        </eds-label> 
+
+        <eds-input
+            eds-id="input-example-basic"
+            eds-type="text"
+        ></eds-input> 
+    </eds-field-group> 
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: input_example_basic,
+                label: "Label and Input"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+{% set select_example_basic %}
+    <eds-field-group> 
+        <eds-label eds-for="select-example-basic">
+            Primary label
+        </eds-label> 
+
+        <eds-select eds-id="select-example-basic" eds-options='
+            [{"value":"default", "text":"Select an option"},{"value":"A","text":"Option A"},{"value":"B","text":"Option B"},
+            {"value":"C","text":"Option C"}]
+        '></eds-select>
+    </eds-field-group> 
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: select_example_basic,
+                label: "Label and Select"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+{% set input_example_combo %}
+    <eds-field-group> 
+        <eds-label eds-for="input-example-combo">
+            Primary label
+        </eds-label> 
+
+        <eds-microcopy eds-id="input-example-combo-microcopy">
+            Optional microcopy
+        </eds-microcopy>
+
+        <eds-input
+            eds-aria-describedby="input-example-combo-microcopy input-example-combo-inline-alert"
+            eds-id="input-example-combo"
+            eds-type="text"
+        ></eds-input>
+
+        <eds-inline-alert eds-variant="info" eds-id="input-example-combo-inline-alert">
+            This is an informational Inline Alert.
+        </eds-inline-alert>
+    </eds-field-group> 
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: input_example_combo,
+                label: "Label, Microcopy, Input, and Inline Alert"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+
+    {% set required_checkbox_example %}
+    <eds-field-group>
+        <eds-checkbox
+            eds-aria-describedby="agree-to-terms-error"
+            eds-name="agree-to-terms"
+            eds-value="yes"
+            eds-required
+            eds-error
+        >
+            I've read and understand the terms and conditions.
+        </eds-checkbox>
+
+        <eds-inline-alert eds-id="agree-to-terms-error">
+            You must acknowledge the terms and conditions.
+        </eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: required_checkbox_example,
+                label: "Single Checkbox with error validation"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+    {% set checkbox_group_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-3-label">
+            What are your preferences?
+        </eds-label>
+        
+        <eds-microcopy eds-id="group-3-micro">Select all that apply</eds-microcopy>
+        
+        <eds-checkbox-group
+            eds-aria-describedby="group-3-micro"
+            eds-aria-labelledby="group-3-label"
+            eds-required
+        >
+            <eds-checkbox eds-name="group-3" eds-value="option-a">Option A</eds-checkbox>
+            <eds-checkbox eds-name="group-3" eds-value="option-b">Option B</eds-checkbox>
+            <eds-checkbox eds-name="group-3" eds-value="option-c">Option C</eds-checkbox>
+        </eds-checkbox-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: checkbox_group_example,
+                label: "Label and Checkbox Group"
+            }
+        ],
+        preformatted=true
+    )}}
+    
+    {% set radio_group_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-options-label">
+            What is your preference?
+        </eds-label>
+
+        <eds-radio-group
+            eds-aria-labelledby="group-options-label"
+            eds-inline="at-512"
+            eds-required
+        >
+            <eds-radio eds-name="group-options" eds-value="option-a">Option A</eds-radio>
+            <eds-radio eds-name="group-options" eds-value="option-b">Option B</eds-radio>
+            <eds-radio eds-name="group-options" eds-value="option-c">Option C</eds-radio>
+            
+        </eds-radio-group> 
+    </eds-field-group> 
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: radio_group_example,
+                label: "Label and Radio Group"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">Nested Field Groups</h2>
+
+    {% filter markdown %}
+    Multiple child Field Groups may be distributed horizontally by wrapping them in a parent Field Group. 
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: library.date_of_birth_example(inline="at-768"),
+                label: "Multiple Field Groups with Secondary Labels"
+            }
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+
+
+    
+
+    {% set search_example %}
+    <eds-field-group>
+        <eds-label eds-for="search">Find your next big investment</eds-label>
+
+        <eds-microcopy eds-id="search-microcopy">
+            Search by name or symbol
+        </eds-microcopy>
+
+        <eds-field-group eds-inline="always">
+            <eds-field-group eds-fixed-width="true">
+                <eds-input
+                    eds-id="search"
+                    eds-aria-describedby="search-microcopy"
+                    eds-full-width="false"
+                    eds-placeholder="AAPL"
+                ></eds-input>
+            </eds-field-group>
+
+            <eds-field-group eds-fixed-width="true">
+                <eds-button>Search</eds-button>
+            </eds-field-group>
+
+        </eds-field-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: search_example,
+                label: "Input with Button"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">Vertical spacing (density)</h2>
+
+    {% filter markdown %}
+    - The parent Field Group component will distribute child Field Groups inside a form with a uniform amount of space between them.  
+    - See information on the <eds-link eds-href="?tab=design#behavior">responsive behavior</eds-link> of nested groups in the design guidelines. 
+    {% endfilter %}
+
+    {% macro spacing_example(dense=false) %}
+        {% set spacing=("dense" if dense else "default") %}
+
+        {{ library.address_example(id=spacing, dense=dense) }}
+    {% endmacro %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: spacing_example(),
+                label: "Default spacing"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true,
+        code_snippet_source="<eds-field-group>...</eds-field-group>"
+    )}}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: spacing_example(dense=true),
+                label: "Dense spacing"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true,
+        code_snippet_source="<eds-field-group eds-dense>...</eds-field-group>"
+    )}}
+
+<h2 class="docsite__linkable-heading">Display data</h2>
+
+    {% filter markdown %}
+    <eds-link eds-href="/patterns/display-data.html">Display data</eds-link> content is presented as styled text. 
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: '<eds-field-group> 
+            <eds-label>
+                Date of birth
+            </eds-label> 
+
+            <p class="eds-field-group__display-data eds-field-group__display-data--large">January 1, 1980</p>
+        </eds-field-group>',
+                label: "Large"
+            },
+            {
+                example: '<eds-field-group> 
+            <eds-label>
+                Date of birth
+            </eds-label> 
+
+            <p class="eds-field-group__display-data">January 1, 1980</p>
+        </eds-field-group>',
+                label: "Medium (Default)"
+            },
+            {
+                example: '<eds-field-group> 
+            <eds-label>
+                Date of birth
+            </eds-label> 
+
+            <p class="eds-field-group__display-data eds-field-group__display-data--small">January 1, 1980</p>
+        </eds-field-group>',
+                label: "Small"
+            },
+            {
+                example: '<eds-field-group> 
+            <eds-label>
+                Price change
+            </eds-label> 
+
+            <p class="eds-field-group__display-data eds-field-group__display-data--performance-gain">+5.32%</p>
+        </eds-field-group>',
+                label: "Performance – Gain"
+            },
+            {
+                example: '<eds-field-group> 
+            <eds-label>
+                Price change
+            </eds-label> 
+
+            <p class="eds-field-group__display-data eds-field-group__display-data--performance-loss">–5.32%</p>
+        </eds-field-group>',
+                label: "Performance – Loss"
+            }
+            
+        ],
+        code_snippet_source='<!-- Large -->
+        <eds-field-group> 
+            <eds-label>
+                Date of birth
+            </eds-label> 
+
+            <p class="eds-field-group__display-data eds-field-group__display-data--large">January 1, 1980</p>
+        </eds-field-group>
+        
+        <!-- Medium -->
+        <eds-field-group> 
+            <eds-label>
+                Date of birth
+            </eds-label> 
+
+            <p class="eds-field-group__display-data">January 1, 1980</p>
+        </eds-field-group>
+        
+        <!-- Small -->
+        <eds-field-group> 
+            <eds-label>
+                Date of birth
+            </eds-label> 
+
+            <p class="eds-field-group__display-data eds-field-group__display-data--small">January 1, 1980</p>
+        </eds-field-group>
+        
+        <!-- Gain -->
+        <eds-field-group> 
+            <eds-label>
+                Price change
+            </eds-label> 
+
+            <p class="eds-field-group__display-data eds-field-group__display-data--performance-gain">+5.32%</p>
+        </eds-field-group>
+        
+        <!-- Loss -->
+        <eds-field-group> 
+            <eds-label>
+                Price change
+            </eds-label> 
+
+            <p class="eds-field-group__display-data eds-field-group__display-data--performance-loss">–5.32%</p>
+        </eds-field-group>',
+        language='html',
+        show_copy_button=true
+    )}}
+
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/data-entry/field/#design">design guidance</eds-link> for this component.
+    </section>
+
+    {% filter markdown %}
+    ## Use when
+
+    Presenting a <eds-link eds-href="/components/form/form.html">Form</eds-link> entry or <eds-link eds-href="/patterns/display-data.html">display data</eds-link> that combines:
+    - <eds-link eds-href="/components/label/label.html">Label</eds-link> (required)
+    - <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link>
+    - <eds-link eds-href="/components/inline-alert/inline-alert.html">Inline Alert</eds-link>
+    
+    with one of the following:
+    - <eds-link eds-href="/components/input/input.html">Input</eds-link>
+    - <eds-link eds-href="/components/select/select.html">Select</eds-link>
+    - <eds-link eds-href="/components/textarea/textarea.html">Textarea</eds-link>
+    - A single <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link> with error validation
+    - <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link>
+    - <eds-link eds-href="/components/radio-group/radio-group.html">Radio Group</eds-link>
+    - <eds-link eds-href="/patterns/display-data.html">Display data</eds-link> text
+
+    ### Don't use when
+    Presenting a single <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link> with *no* error validation.
+
+    ## Visual style
+
+    ### Anatomy and construction
+    - Always include a Label as the first part of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>. 
+    - Optionally use <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> to provide additional context either above or below the data entry controls or data display text.
+    - Always wrap multiple <eds-link eds-href="/components/checkbox/checkbox.html">Checkboxes</eds-link> in a <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link> within a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>. 
+    - Always wrap multiple <eds-link eds-href="/components/radio-button/radio-button.html">Radio Buttons</eds-link> in a <eds-link eds-href="/components/radio-group/radio-group.html">Radio Group</eds-link> within a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>. 
+    - Always make an <eds-link eds-href="/components/inline-alert/inline-alert.html">Inline Alert</eds-link> the last component in the group if present. 
+    {% endfilter %}
+    
+    {% set field_group_anatomy_caption1 %}  
+
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>Primary Label (required)</li>
+            <li>Microcopy</li>
+            <li>Input, etc. (required)</li>
+            <li>Inline Alert</li>
+        </ol>
+    {% endset %}  
+
+    {% set field_group_anatomy_caption2 %}  
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>Primary Label (required)</li>
+            <li>Secondary Label</li>
+        </ol>
+    {% endset %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/field-group/field-group-entry-anatomy.png 1x,
+            ../images/field-group/field-group-entry-anatomy@2x.png 2x
+        ",
+        alt="Diagram identifying data entry components and anotating the space between them.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=field_group_anatomy_caption1,
+        sentiment="neutral"
+        ) 
+    }} 
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/field-group/field-group-inline.png 1x,
+            ../images/field-group/field-group-inline@2x.png 2x
+        ",
+        alt="Diagram identifying data entry components and anotating the space between them.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=field_group_anatomy_caption2,
+        sentiment="neutral"
+        ) 
+    }}
+
+
+    {% filter markdown %}
+    ### Primary and secondary labeling
+    - Use a primary <eds-link eds-href="/components/label/label.html">Label</eds-link> to identify a parent group. 
+    - Use the secondary <eds-link eds-href="/components/label/label.html">Label</eds-link> to identify child groups *only* if the parent is labeled. 
+    - *Never* use the secondary <eds-link eds-href="/components/label/label.html">Label</eds-link> to identify a parent group. 
+    {% endfilter %}
+
+
+    {% filter markdown %}
+    ## Display data
+
+    - Non-editable data is presented inside the <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> by using a `<div>` as the child element instead of an input or selection component. 
+    - Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+
+    {% endfilter %}
+
+    {% set field_group_anatomy_caption3 %}
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>Primary Label (required)</li>
+            <li>Paragraph text (required)</li>
+        </ol>
+        {% endset %}
+        
+    <p>
+    {{ library.eds_figure(
+        srcset="
+            ../images/field-group/field-group-display-anatomy.png,
+            ../images/field-group/field-group-display-anatomy@2x.png 2x
+        ",
+        alt="Diagram identifying display data components and anotating the space between them.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=field_group_anatomy_caption3,
+        sentiment="neutral"
+        ) 
+    }}
+    
+    </p>
+
+    {% filter markdown %}
+    ## Behavior
+
+    ### Responsive behavior of nested groups
+    {% endfilter %}
+
+    {% macro field_group_inline_example(inline) %}
+    <eds-field-group
+        eds-inline="{{inline}}"
+        eds-dense
+    > 
+        <eds-field-group> 
+            <eds-label eds-for="first-name-{{inline}}">First name</eds-label> 
+            <eds-input
+                eds-id="first-name-{{inline}}"
+                eds-value="John"
+            ></eds-input> 
+        </eds-field-group> 
+
+        <eds-field-group> 
+            <eds-label eds-for="middle-name-{{inline}}">Middle name</eds-label> 
+            <eds-input
+                eds-id="middle-name-{{inline}}"
+                eds-value="Jacob"
+            ></eds-input> 
+        </eds-field-group> 
+
+        <eds-field-group> 
+            <eds-label eds-for="last-name-{{inline}}">Last name</eds-label> 
+            <eds-input
+                eds-id="last-name-{{inline}}"
+                eds-value="Jingleheimer"
+            ></eds-input> 
+        </eds-field-group> 
+    </eds-field-group>
+    {% endmacro %}
+
+    {% set field_group_inline_examples %}
+    <eds-field-group eds-inline="never">...</eds-field-group>
+    <eds-field-group eds-inline="at-1280">...</eds-field-group>
+    <eds-field-group eds-inline="at-960">...</eds-field-group>
+    <eds-field-group eds-inline="at-768">...</eds-field-group>
+    <eds-field-group eds-inline="at-512">...</eds-field-group>
+    <eds-field-group eds-inline="always">...</eds-field-group>
+    {% endset %}
+
+    {# TODO allow open_in_new_window to open the full code_example_pair? #}
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: field_group_inline_example(inline="never"),
+                label: "Never inline (stacked)"
+            },
+            {
+                example: field_group_inline_example(inline="at-1280"),
+                label: "Inline at-1280"
+            },
+            {
+                example: field_group_inline_example(inline="at-960"),
+                label: "Inline at-960"
+            },
+            {
+                example: field_group_inline_example(inline="at-768"),
+                label: "Inline at-768"
+            },
+            {
+                example: field_group_inline_example(inline="at-512"),
+                label: "Inline at-512"
+            },
+            {
+                example: field_group_inline_example(inline="always"),
+                label: "Inline always"
+            }
+        ],
+        language='html',
+        open_in_new_window=true,
+        preformatted=true,
+        code_snippet_source=field_group_inline_examples
+    )}}
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute             | Type    | Validation                                                                                    | Default | Description                                                                                                                                                                                                                                                     |
+    | --------------------- | ------- | --------------------------------------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-label`      | string  | --                                                                                            | --      | A string that will be set as the `aria-label` attribute on the container. This will also set `role="group"`.<br><br>Refer to the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.                                         |
+    | `eds-aria-labelledby` | string  | --                                                                                            | --      | A string of `id`s separated by spaces that will be set as the `aria-labelledby` attribute on the container. This will also set `role="group"`.<br><br>Refer to the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.       |
+    | `eds-dense`           | boolean | Anything other than an empty string, `true`, or `eds-dense` will be treated as `false`.       | `false` | Decreases the amount of vertical spacing between nexted Field Group components.                                                                                                                                                                                 |
+    | `eds-fixed-width`     | boolean | Anything other than an empty string, `true`, or `eds-fixed-width` will be treated as `false`. | `false` | Allows the Field Group and its children to fill all available space. This value should be set to `true` if its children have a fixed width. (e.g., <eds-link eds-href="/components/input/input.html">Input</eds-link> component of type `ssn`)                  |
+    | `eds-inline`          | string  | `never`, `at-512`, `at-768`, `at-960`, `at-1280`                                              | `never` | Determines the point at which items slotted within the Field Group go from stacked to inline.<br><br>For any breakpoint, if `eds-inline` is set to never, the content in the Field Group will stay stacked, while always will force the content to stay inline. |
+    | `eds-vertical-align`  | string  | `top`, `center`, `bottom`                                                                     | `top`   | Determine how nested Field Groups are aligned vertically when `eds-inline` is used to display them an inline arrangement.                                                                                                                                       |
+
+    ## Slots
+    | Slot name     | Default content | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | ------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `default`     | --              | Use this slot to group related <eds-link eds-href="/components/form/form.html">Form</eds-link> components, and/or display data content,  and apply appropriate vertical or horizontal spacing between them.<br><br>Additionally, Field Groups can be nested within one another to compose unique <eds-link eds-href="/components/form/form.html">Forms</eds-link> with multiple <eds-link eds-href="/components/form/form.html">Form</eds-link> controls.     |
+    | `group-label` | --              | Use this slot to provide a <eds-link eds-href="/components/label/label.html">Label</eds-link> that applies to a group of related Field Group components.                                                                                                                                                                                                                                                                                                      |
+
+    Refer to the <eds-link eds-href="/components/field-group/field-group.html?tab=examples">Examples tab</eds-link> for usage of the `default` slot.
+
+    
+    
+    ## Events
+    The Field Group component does not emit any custom events.
+
+    ## Methods
+    The Field Group component does not implement any public methods.
+
+    ## CSS helper classes
+    CSS helper classes provide common styles needed for slotted content. 
+
+    | Class name                                         | Applies to | Outcome                                                                          |
+    | -------------------------------------------------- | ---------- | -------------------------------------------------------------------------------- |
+    | `.eds-field-group__display-data`                   | `<p>`      | Applies the default styling to display data text.                                |
+    | `.eds-field-group__display-data--small`            | `<p>`      | Applies the responsive font-size and line-height attributes for small text.      |
+    | `.eds-field-group__display-data--large`            | `<p>`      | Applies the responsive font-size and line-height attributes for large text.      |
+    | `.eds-field-group__display-data--performance-gain` | `<p>`      | Applies the color attribute for indicating a performance gain.                   |
+    | `.eds-field-group__display-data--performance-loss` | `<p>`      | Applies the color attribute for indicating a performance loss.                   |
+
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                                | Applies to              | Outcome                                                                                                                  |
+    | ----------------------------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+    | `.eds-field-group--standard`              | `.eds-field-group-root` | Applies the standard amount of spacing between nested Field Groups                                                       |
+    | `.eds-field-group--dense`                 | `.eds-field-group-root` | Applies a dense amount of vertical spacing between nested Field Groups                                                   |
+    | `.eds-field-group--fixed-width`           | `.eds-field-group-root` | Prevents the Field Group from growing horizontally to fill its container.                                                |
+    | `.eds-field-group--inline-always`         | `.eds-field-group-root` | Nested Field Groups will be arranged horizontally and will never stack.                                                  |
+    | `.eds-field-group--inline-at-512`         | `.eds-field-group-root` | Nested Field Groups will be arranged horizontally at a screen width of 512px and above, otherwise they will be stacked.  |
+    | `.eds-field-group--inline-at-768`         | `.eds-field-group-root` | Nested Field Groups will be arranged horizontally at a screen width of 768px and above, otherwise they will be stacked.  |
+    | `.eds-field-group--inline-at-960`         | `.eds-field-group-root` | Nested Field Groups will be arranged horizontally at a screen width of 960px and above, otherwise they will be stacked.  |
+    | `.eds-field-group--inline-at-1280`        | `.eds-field-group-root` | Nested Field Groups will be arranged horizontally at a screen width of 1280px and above, otherwise they will be stacked. |
+    | `.eds-field-group--vertical-align-top`    | `.eds-field-group-root` | Aligns elements to the top when the elements are being displayed inline.                                                 |
+    | `.eds-field-group--vertical-align-center` | `.eds-field-group-root` | Aligns elements to the center when the elements are being displayed inline.                                              |
+    | `.eds-field-group--vertical-align-bottom` | `.eds-field-group-root` | Aligns elements to the bottom when the elements are being displayed inline.                                              |
+        
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-field-group>...</eds3-field-group>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-field-group-root eds-field-group--full-width eds-field-group--vertical-align-top">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Field Group", root_class="field-group-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                         | Required            |
+| -------------------------------------------------------------- | ------------------- |
+| `import { edsFieldGroup } from '@xyz-ap153177/apex-kit';`    | Yes                 |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Field Group", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Group labels
+    - There is often a desire to <eds-link eds-href="/components/label/label.html">Label</eds-link> a group of related form controls. For example, when collecting a user’s date of birth, each individual form control may be labeled as "Month", "Day", or "Year" but the entire group is labeled as "Date of birth".  
+
+    - In order to build a <eds-link eds-href="/components/form/form.html">Form</eds-link> that is accessible to all users, you must slot a <eds-link eds-href="/components/label/label.html">Label</eds-link> using the `group-label` slot and you must use the `eds-aria-label` or `eds-aria-labelledby` attribute in order to associate the group label with the group of related form controls. The value of `eds-aria-labelledby` is the `id` of the associated <eds-link eds-href="/components/label/label.html">Label</eds-link>.
+
+    - `eds-aria-label` should only be used if the group has no visible <eds-link eds-href="/components/label/label.html">Label</eds-link>;
+    otherwise, it is recommended to use `eds-aria-labelledby` to associate the
+    visible <eds-link eds-href="/components/label/label.html">Label</eds-link> with the group. By providing a value to `eds-aria-label` or
+    `eds-aria-labelledby`, `role="group"` will be automatically added.
+
+    {% endfilter %}
+
+    {{ library.eds_code_snippet
+        (
+            source=library.date_of_birth_example(id="2"),
+            show_copy_button=false
+        )
+    }}
+
+    {% filter markdown %}
+    ## Error states
+    - <eds-link eds-href="/components/inline-alert/inline-alert.html">Inline Alert</eds-link> components
+    should be associated with the form control they are describing via the
+    `eds-id` and `eds-aria-describedby` attributes. 
+
+    - When a user action triggers an error in the <eds-link eds-href="/components/form/form.html">Form</eds-link>, the first form control
+    that has an error should be given focus. 
+    {% endfilter %}
+
+    {% set group_error_example %}
+    <eds-field-group>  
+        <eds-label eds-for="first-name">First name</eds-label>  
+        <eds-input
+            eds-id="first-name"
+            eds-aria-describedby="first-name-error"
+            eds-required
+        ></eds-input>  
+        <eds-inline-alert eds-id="first-name-error"> 
+            This field is required
+        </eds-inline-alert> 
+    </eds-field-group>  
+    {% endset %}
+
+    {{ library.eds_code_snippet
+        (
+            source=group_error_example,
+            show_copy_button=false,
+            preformatted=true
+        )
+    }}
+{% endblock %}

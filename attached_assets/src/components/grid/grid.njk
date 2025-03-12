@@ -1,0 +1,548 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{## 
+ # TITLE 
+ #}
+
+    {% block page__title %}
+
+        {% filter markdown %}
+            ##### Components
+            # Grid
+            
+            Grid is the invisible, 12-column-based layer that helps construct consistent page layouts across experiences.
+        {% endfilter %}
+        
+    {% endblock %}
+
+
+
+{##
+ # Examples Tab 
+ #}
+
+    {% block examples_tab %}
+    {# START SHARED SNIPPETS #}
+        {% set grid_overlay %}
+            <div class="eds-grid-root docsite-eds-grid--demo-overlay">
+                <div class="eds-grid__grid">
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"><span class="line-num">3</span></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                    <div class="eds-grid__item"></div>
+                </div>
+            </div>
+        {% endset %}
+
+    {# END SHARED SNIPPETS #}
+
+    {# START DEFAULT #}
+        {% filter markdown %}
+        ## Default
+
+        Grid is 12 columns wide with a [gap](/glossary/glossary.html#kl) spacing (sometimes
+        referred to as "gutter" spacing) of 12px (0.75rem) at the `default`
+        breakpoint and 24px (1.5rem) at the `at-512` breakpoint.
+
+        {% endfilter %}
+
+        {% set default_grid_example_source %}
+            <div class="eds-grid-root">
+                <div class="eds-grid__grid">
+                    <div class="eds-grid__item">Grid item 1</div>
+                    <div class="eds-grid__item">Grid item 2</div>
+                    <div class="eds-grid__item">Grid item 3</div>
+                    <div class="eds-grid__item">Grid item 4</div>
+                    <div class="eds-grid__item">Grid item 5</div>
+                    <div class="eds-grid__item">Grid item 6</div>
+                    <div class="eds-grid__item">Grid item 7</div>
+                    <div class="eds-grid__item">Grid item 8</div>
+                    <div class="eds-grid__item">Grid item 9</div>
+                    <div class="eds-grid__item">Grid item 10</div>
+                    <div class="eds-grid__item">Grid item 11</div>
+                    <div class="eds-grid__item">Grid item 12</div>
+                </div>
+            </div>
+        {% endset %}
+
+        {% set default_grid_example %}
+            {{ grid_overlay | safe }}
+            {{ default_grid_example_source | safe }}
+        {% endset %}
+
+
+        {{ library.eds_code_example_pair(
+            example=default_grid_example,
+            code_snippet_source=default_grid_example_source,
+            example_label="Default",
+            class='docsite-eds-grid--default-example docsite-eds-grid--show-overlay',
+            generate_html=false
+        )}}
+    {# END DEFAULT #}        
+    
+    {# START DEFAULT COLUMN SPANS #}
+        {% filter markdown %}
+        
+        ## Default column spans
+
+        Grid items span one column by default. This is configurable through the `eds-grid__grid--default-column-span-[1-12]` modifier class, for example `eds-grid__grid--default-column-span-4`.
+
+        {% endfilter %}
+
+        {% set default_column_width_grid_example_source %}
+            <div class="eds-grid-root">
+                <div class="eds-grid__grid 
+                            eds-grid__grid--default-column-span-4">
+                    <div class="eds-grid__item">Grid item 1</div>
+                    <div class="eds-grid__item">Grid item 2</div>
+                    <div class="eds-grid__item">Grid item 3</div>
+                </div>
+            </div>
+        {% endset %}
+
+        {% set default_column_width_grid_example %}
+            {{ grid_overlay | safe }}
+            {{ default_column_width_grid_example_source | safe}}
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=default_column_width_grid_example,
+            code_snippet_source=default_column_width_grid_example_source,
+            example_label= "Default column spans",
+            class='docsite-eds-grid--default-example docsite-eds-grid--show-overlay',
+            generate_html=false
+        )}}
+    {# END DEFAULT COLUMN SPANS #}
+
+    {# START COLUMN SPANS #}
+        {% filter markdown %}
+        ## Column spans for items
+
+        Grid items sometimes need a specific column span for achieving layout. Use the `eds-grid__item--column-span-[1-12]` modifier class to force a specific width for a grid item.
+
+        {% endfilter %}
+
+        {% set column_span_grid_source %}
+            <div class="eds-grid-root">
+                <div class="eds-grid__grid 
+                            eds-grid__grid--default-column-span-2">
+                    <div class="eds-grid__item eds-grid__item--column-span-8">Grid item 1, span 8</div>
+                    <div class="eds-grid__item">Grid item 2 (default span of 2)</div>
+                    <div class="eds-grid__item">Grid item 3 (default span of 2)</div>
+                </div>
+            </div>
+        {% endset %}
+
+        {% set column_span_grid_example %}
+            {{ grid_overlay | safe }}
+            {{ column_span_grid_source | safe }}
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=column_span_grid_example,
+            code_snippet_source=column_span_grid_source,
+            example_label= "Column spans",
+            class='docsite-eds-grid--default-example docsite-eds-grid--show-overlay',
+            generate_html=false
+        )}}
+    {# END COLUMN SPANS #}
+
+    {# START BREAKPOINT COLUMN SPANS #}
+        {% filter markdown %}
+        ## Breakpoint-specific column spans
+
+        In some cases, you may need to change the number of column spans across different [breakpoints](#breakpoints). Append a breakpoint suffix to any column span modifier to force a specific column span at a given breakpoint.
+
+        These modifiers can be combined with non-breakpoint suffixed class modifiers to cover changing layouts across multiple viewports.  In the below example, adjust the browser window size to demonstrate this feature.
+        {% endfilter %}
+
+        {% set column_span_grid_source %}
+            <div class="eds-grid-root">
+                <div class="eds-grid__grid">
+                    <div class="eds-grid__item 
+                                eds-grid__item--column-span-12
+                                eds-grid__item--column-span-6-at-1280">Grid item 1</div>
+                    <div class="eds-grid__item 
+                                eds-grid__item--column-span-12
+                                eds-grid__item--column-span-6-at-1280">Grid item 2</div>
+                    <div class="eds-grid__item 
+                                eds-grid__item--column-span-12">Grid item 3</div>
+                </div>
+            </div>
+        {% endset %}
+
+        {% set column_span_grid_example %}
+            {{ grid_overlay | safe }}
+            {{ column_span_grid_source | safe }}
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=column_span_grid_example,
+            code_snippet_source=column_span_grid_source,
+            example_label= "Breakpoint column spans",
+            class='docsite-eds-grid--default-example docsite-eds-grid--show-overlay',
+            generate_html=false
+        )}}
+    {# END BREAKPOINT COLUMN SPANS #}
+
+    {# START ROW SPANS #}
+        {% filter markdown %}
+        ## Row spans for items
+
+        Spanning rows can be achieved in modern browsers by simply applying a row span modifier to a grid item.
+
+        {% endfilter %}
+
+        {% set row_spans_grid_source %}
+            <div class="eds-grid-root">
+                <div class="eds-grid__grid
+                            eds-grid__grid--default-column-span-6">
+                    <div class="eds-grid__item 
+                                eds-grid__item--row-span-3">
+                        Grid item 1 (span 3 rows)
+                    </div>
+                    <div class="eds-grid__item">Grid item 2</div>
+                    <div class="eds-grid__item">Grid item 3</div>
+                    <div class="eds-grid__item">Grid item 4</div>
+                </div>
+            </div>
+        {% endset %}
+
+        {% set grid_row_overlay %}
+            <div class="eds-grid-root 
+                        eds-grid--disable-max-width 
+                        eds-grid--disable-padding 
+                        docsite-eds-grid--row-demo-overlay">
+                <div class="eds-grid__grid">
+                    <div class="eds-grid__item eds-grid__item--column-span-12"><span class="line-num">&nbsp;</span></div>
+                    <div class="eds-grid__item eds-grid__item--column-span-12"><span class="line-num">&nbsp;</span></div>
+                    <div class="eds-grid__item eds-grid__item--column-span-12"><span class="line-num">&nbsp;</span></div>
+                </div>
+            </div>
+        {% endset %}
+
+        {% set row_spans_grid_example %}
+            {{ row_spans_grid_source | safe }}
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=row_spans_grid_example,
+            code_snippet_source=row_spans_grid_source,
+            example_label= "Row span modifiers",
+            class='docsite-eds-grid--default-example',
+            generate_html=false
+        )}}
+    {# END ROW SPANS #}
+
+    {# START COLUMN STARTS #}
+        {% filter markdown %}
+        ## Column starts
+
+        Moving the location where a grid item begins can be achieved with the `eds-grid__item--column-start-[1-12]` modifier. The number
+        corresponds to the css-grid line number where you want the grid item to
+        “start”. These are occasionally necessary for creating space adjacent to
+        the grid item or moving a grid item without inserting empty grid
+        columns.
+        {% endfilter %}
+
+        {% set column_starts_grid_source %}
+        <div class="eds-grid-root">      
+            <div class="eds-grid__grid">
+                <div class="eds-grid__item 
+                            eds-grid__item--column-span-8   
+                            eds-grid__item--column-start-3">Grid item (column span 8, start at column 3)</div>     
+            </div>
+        </div>
+        {% endset %}
+
+        {% set column_starts_grid_example %}
+            {{ grid_overlay | safe }}
+            {{ column_starts_grid_source | safe }}
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=column_starts_grid_example,
+            code_snippet_source=column_starts_grid_source,
+            example_label= "Column start modifiers",
+            class='docsite-eds-grid--default-example docsite-eds-grid--show-overlay docsite-eds-grid--show-lines',
+            generate_html=false
+        )}}
+    {# END COLUMN STARTS #}
+
+    {# START .eds-container STUFF #}
+        {% filter markdown %}
+        ## Replacing .eds-container
+
+        Grid provides greater control and flexibility around page layout than was possible with `.eds-container`.
+
+        ### Normal layout
+
+        The example below is the Providence 3 equivalent to the typical use case for where the helper class `.eds-container` would have been used:
+
+        {% endfilter %}
+        
+        {% set replace_eds_container_normal %}
+            <div class="eds-grid-root">
+                <div class="eds-grid__grid eds-grid__grid--default-column-span-12">
+                    <div class="eds-grid__item">
+                        ...main page content goes here...
+                    </div>
+                </div>
+            </div>
+        {% endset %}
+
+        {% set replace_eds_container_normal_example %}
+            {{ replace_eds_container_normal | safe }}
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=replace_eds_container_normal_example,
+            code_snippet_source=replace_eds_container_normal,
+            example_label= "Normal layout with grid",
+            class='docsite-eds-grid--default-example',
+            generate_html=false
+        )}}
+
+        {% filter markdown %}
+        ### Narrow layout
+
+        Using grid enables applications to implement flexible, custom layouts, for example, a more narrow content area on larger screens:
+        {% endfilter %}
+
+        {% set replace_eds_container_narrow %}
+            <div class="eds-grid-root">
+                <div class="eds-grid__grid">
+                    <div class="eds-grid__item ta-experience
+                                eds-grid__item--column-span-12
+                                eds-grid__item--column-span-8-at-1280
+                                eds-grid__item--column-start-3-at-1280">
+                        ...main page content goes here...
+                    </div>
+                </div>
+            </div>
+        {% endset %}
+        
+        {% set replace_eds_container_narrow_example %}
+            {{ replace_eds_container_narrow | safe }}
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=replace_eds_container_narrow_example,
+            code_snippet_source=replace_eds_container_narrow,
+            example_label="Narrow layout with grid",
+            class='docsite-eds-grid--default-example docsite-eds-grid--show-overlay',
+            generate_html=false
+        )}}
+
+
+    {# END .eds-container STUFF #}
+        
+    {% endblock %}
+
+
+
+{##
+ # Design Tab 
+ #}
+
+    {% block design_tab %}
+        {% filter markdown %}
+        ## Application 
+        
+        Apply Grid to the main content container of a page, excluding navigation and footer areas.
+
+        {% endfilter %}
+
+        {{library.eds_figure_group(
+            figures=[
+                {
+                    srcset:"
+                        /images/grid/always.png 1x,
+                        /images/grid/always@2x.png 2x
+                    ",
+                    alt:"notional application showing the grid properly applied to layout",
+                    width:"full",
+                    border:true,
+                    padding:"one-and-half-x",
+                    background:false,
+                    label: "Always",
+                    caption: "apply Grid to the page-level content container allowing content
+        areas to span across columns.",
+                    sentiment: "positive"
+                },
+                {
+                    srcset:"
+                        /images/grid/never.png 1x,
+                        /images/grid/never@2x.png 2x
+                    ",
+                    alt:"notional application showing the grid improperly applied to layout",
+                    width:"full",
+                    border:true,
+                    padding:"one-and-half-x",
+                    background:false,
+                    label: "Never",
+                    caption: "apply Grid to individual content containers",
+                    sentiment: "negative"
+                }
+            ],
+            inline_at="at-512"
+        )}}
+        
+        {% filter markdown %}
+
+        ## Behavior
+
+        Grid does not have an opinion on the size of the individual columns within a page,
+        but provides prescribed gap values (sometimes referred to as “gutter
+        values”) to allow columns to scale on a percent-basis.
+
+        {# `eds_figure` macro not used here intentionally #}
+        
+        <img src="/images/grid/Fluidity_optimized_800.gif" 
+            class="docsite-animation-image"
+            alt="Animated demonstration of breakpoints">
+        
+        For page widths up to 511px:
+        -   Gap between columns is 12px (.75rem).
+        -   Padding on the left and right of the `.eds-grid-root` is 16px (1rem).
+        -   Column widths scale responsively maintaining consistent gap and
+            padding values.
+
+        For page widths of 512px to 1279px:
+        -   Gap between columns is 24px (1.5rem).
+        -   Padding on the left and right of the `.eds-grid-root` is 32px (2rem).
+        -   Column widths scale responsively maintaining consistent gap and
+            padding values.
+
+        For page widths of 1280px and larger:
+        -   Gap between columns is 24px (1.5rem).
+        -   Padding no longer applies.
+        -   Columns no longer scale.
+        -   Page contents will center as page-background scales outward equally.
+
+        Gap spacing applies between columns,
+        not between elements within composed components, like the [Field Group](/components/field-group/field-group.html)
+        or the [Content Block](/components/content-block/content-block.html). Neither the grid nor any row
+        spacing will affect the contents of group-components. Refer to
+        individual component documentation for inter-component space values.
+
+        ## Vertical spacing
+
+        No opinion is built into the eds Grid on the number of rows a page may
+        have, but it's recommended that a 12px (.75rem) gap for `default`
+        viewports and 24px (1.5rem) gap for `at-512` viewports be maintained
+        between rows to match the space model of the columns. If you need
+        alternative space values, it’s recommended you refer to the [Space
+        Tokens](/visual-style/space/space.html).
+
+        {% endfilter %}
+
+    {% endblock %}
+
+
+
+{##
+ # Code Tab 
+ #}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+
+    {% include "src/templates/partials/integration.njk" %}
+    
+
+    ## CSS block classes
+
+    | Class name       | Applies to                                                      | Outcome                                                                                                                                                                  |
+    | ---------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | `.eds-grid-root` | Any `block` display element you want to establish as a grid.     | Applies a max-width of 80rem (1280px) and adds predefined padding that adjusts from 1rem (16px) for the `default` breakpoint to 2rem (32px) for the `at-512` breakpoint. |
+
+
+    ## CSS element classes
+
+    | Class name        | Applies to                                                            | Outcome                                                                                                                                                                |
+    | ----------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `.eds-grid__grid` | Any block display type element you want to establish as a grid layout. | Applies CSS `display: grid;` with 12 explicit grid columns and a grid-gap width of .75rem (12px)/1.5rem (24px), `default`/`at-512`, respectively. |
+    | `.eds-grid__item` | Any block display type element you want to use as a grid item.         | Applies a default column span                                                                                                             |
+
+    ## CSS modifier classes
+
+    The breakpoints available for use with the classes noted below are 512, 768, 960, and 1280.
+
+    | Class name                                          | Applies to       | Outcome                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | --------------------------------------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `.eds-grid--disable-padding`                        | `.eds-grid-root`  | Removes default padding from the top-level grid container.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | `.eds-grid--disable-max-width`                      | `.eds-grid-root`  | Removes default max-width from the top-level grid container.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | `.eds-grid__item--default-column-span-[1-12]`       | `.eds-grid__grid` | Sets the default column span for all child `.eds-grid__item` elements to a given column span that do not have item modifier classes.                                                                                                                                                                                                                                                                                                                                                     |
+    | `.eds-grid__item--column-span-[1-12]`               | `.eds-grid__item` | Sets the column span to 1-12 columns for an individual grid item. This sets the default column span across all breakpoints when breakpoint specific modifier classes are not present.                                                                                                                                                                                                                                                                                                    |
+    | `.eds-grid__item--column-span-[1-12]-[breakpoint]`  | `.eds-grid__item` | Sets the column span to a given number at a screen width of a given `breakpoint` and above. This will override the `.eds-grid__item--column-span-[1-12]` class when the `breakpoint` applies. Accepted breakpoint values available via [Design tokens](/visual-style/design-tokens/design-tokens.html?tab=current-tokens#breakpoints).                                                                                                                                                               |
+    | `.eds-grid__item--column-start-[1-12]`              | `.eds-grid__item` | Sets the css value of `grid-column-start` for a grid item. Accepted `start` values range from 1-12 corresponding to the column where the grid item should start. This class is needed in addition to `.eds-grid__item--offset-[1-12]` for cross browser support.                                                                                                                                                                               |
+    | `.eds-grid__item--column-start-[1-12]-[breakpoint]` | `.eds-grid__item` | Sets the css value of `grid-column-start` for a grid item at a given `breakpoint`. Accepted `start` values range from 1-12 corresponding to the column where the grid item should start. Accepted breakpoint values available via [Design tokens](/visual-style/design-tokens/design-tokens.html?tab=current-tokens#breakpoints). This class is needed in addition to `.eds-grid__item--offset-[1-12]-[breakpoint]` for cross browser support. |
+    | `.eds-grid__item--row-span-[1-12]`                  | `.eds-grid__item` | Applies a given row span across all breakpoints. Accepted span values range from 1-12.                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | `.eds-grid__item--row-span-[1-12]-[breakpoint]`     | `.eds-grid__item` | Applies a given row span at a given breakpoint. Accepted span values range from 1-12.  Accepted breakpoint values available via [Design tokens](/visual-style/design-tokens/design-tokens.html?tab=current-tokens#breakpoints).                                                                                                                                                                                                                |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_html %}
+        <div class="eds3-grid-root eds-grid--no-max-width">
+            <div class="eds-grid__grid">
+                <div class="eds-grid__item">...</div>
+                <div class="eds-grid__item">...</div>
+                <div class="eds-grid__item">...</div>
+            </div>
+        </div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Grid", root_class="grid-root", namespace_example_wc=false, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {{ library.import_reference(component_name="Grid") }}
+
+    {% filter markdown %}
+    ## CSS Grid Resources
+    
+    eds Grid is a class-based implementation of a small set of features of CSS Grid.  Unfamiliar with CSS Grid?  The below links are great resources for getting started and understanding how CSS Grid works. 
+
+    - A definitive resource for understanding grid is the CSS Tricks post, <eds-link eds-href="https://css-tricks.com/snippets/css/complete-guide-grid/" eds-new-window>A Complete Guide to Grid</eds-link>.
+    - A team favorite reference for getting up to speed on CSS Grid is <eds-link eds-href="https://learncssgrid.com/" eds-new-window>Learn CSS Grid</eds-link>.
+
+    {% endfilter %}
+
+    
+
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+    {% block a11y_tab %}
+
+        {% filter markdown %}
+        ## Source order
+
+        While not provided explicitly through the Apex Kit for Web API, visual re-ordering of content can be a concern. Read more about [Grid Layout and Accessibility](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid_Layout_and_Accessibility) on MDN.
+
+        ## Best practices
+
+        Thoughtful guidance provided in this Smashing Magazine [article by Rachel Andrew](https://www.smashingmagazine.com/2018/04/best-practices-grid-layout/) including tips on source order and Accessibility, implicit vs. explicit grid, and auto layout.
+
+
+        {% endfilter %}
+
+    {% endblock %}

@@ -1,0 +1,1010 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components    
+    # Description List
+    A Description List presents a series of term/description pairs.
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    {% filter markdown %}
+        ## Default
+        Presents terms and descriptions by styling plain text.
+    {% endfilter %}
+
+    {% set default_example %}
+    <dl class="eds-description-list-root">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        example=default_example,
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=true
+    )}}
+
+    {% filter markdown %}
+        ## With a Link as term
+        Use the <eds-link eds-href="/components/link/link.html">Link</eds-link> component and its affordances to present a linked term.
+    {% endfilter %}
+
+    {% set with_link_example %}
+    <dl class="eds-description-list-root">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#">Customer Agreements and Important Disclosure Documents (PDF)</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                Documents that govern your account, including the IRA Custodial Agreement and Disclosure Statement, Brokerage Retirement Customer Account Agreement and important information about investment advice for retirement accounts, privacy, fees, commissions, and the FDIC-Insured Deposit Sweep Program. 
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#">Electronic Delivery Agreement (PDF)</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                The consent to receive certain financial documents for this account electronically rather than through the U.S. mail.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#" eds-new-window>SPAXX prospectus</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                Prospectus for Enterprise<sup>&reg;</sup> Government Money Market Fund
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set with_link_and_icon_example %}
+    <dl class="eds-description-list-root">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#" eds-icon-left="file__pdf">Customer Agreements and Important Disclosure Documents (PDF)</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                Documents that govern your account, including the IRA Custodial Agreement and Disclosure Statement, Brokerage Retirement Customer Account Agreement and important information about investment advice for retirement accounts, privacy, fees, commissions, and the FDIC-Insured Deposit Sweep Program. 
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#" eds-icon-left="file__pdf">Electronic Delivery Agreement (PDF)</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                The consent to receive certain financial documents for this account electronically rather than through the U.S. mail.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#" eds-new-window>SPAXX prospectus</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                Prospectus for Enterprise<sup>&reg;</sup> Government Money Market Fund
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Without icon -->
+    {{ with_link_example | safe | trim }}
+
+    <!-- With icon -->
+    {{ with_link_and_icon_example | safe | trim }}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+      examples = [
+            {
+                example: with_link_example, 
+                label: "Without icon"
+            },
+            {
+                example: with_link_and_icon_example, 
+                label: "With icon"
+            }
+        ],
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=true,
+        code_snippet_source=code_snippet_source
+    )}}
+
+    {% filter markdown %}
+        ## With a Label as term
+        - Use the <eds-link eds-href="/components/label/label.html">Label</eds-link> component and its affordances to present a Label as the term.
+        - Use the Label's large size variant to emulate standard term styling.
+    {% endfilter %}
+
+    {% set with_label_example_medium %}
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-eighth
+               eds-description-list--disable-border"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term"><eds-label>Name</eds-label></dt>
+            <dd class="eds-description-list__description">John Jacob Jingleheimer</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term"><eds-label>Date of birth</eds-label></dt>
+            <dd class="eds-description-list__description">January 1st, 1970</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-label>Address<eds-icon 
+                        slot="annotation"
+                        eds-name="action__help"
+                        eds-size="small"
+                    ></eds-icon>
+                </eds-label></dt>
+            <dd class="eds-description-list__description">
+                <address class="docsite-eds-description-list__address-example">
+                    Acme Rocket-Powered Products<br>
+                    123 Main St.<br>
+                    Apt. 10<br>
+                    Fairfield, NJ 07004-1234
+                </address>
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+    
+    {% set with_label_example_large %}
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-eighth
+               eds-description-list--disable-border"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term"><eds-label eds-size="large">Name</eds-label></dt>
+            <dd class="eds-description-list__description">John Jacob Jingleheimer</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term"><eds-label eds-size="large">Date of birth</eds-label></dt>
+            <dd class="eds-description-list__description">January 1st, 1970</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-label eds-size="large">Address<eds-icon 
+                        slot="annotation"
+                        eds-name="action__help"
+                        eds-size="small"
+                    ></eds-icon>
+                </eds-label></dt>
+            <dd class="eds-description-list__description">
+                <address class="docsite-eds-description-list__address-example">
+                    Acme Rocket-Powered Products<br>
+                    123 Main St.<br>
+                    Apt. 10<br>
+                    Fairfield, NJ 07004-1234
+                </address>
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Medium Label -->
+    {{ with_label_example_medium | safe | trim }}
+
+    <!-- Large Label -->
+    {{ with_label_example_large | safe | trim }}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples = [
+            {
+                example: with_label_example_medium, 
+                label: "Medium (Default) Label"
+            },
+            {
+                example: with_label_example_large, 
+                label: "Large Label"
+            }
+        ],
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=true,
+        code_snippet_source=code_snippet_source
+    )}}
+
+    {% filter markdown %}  
+        ## Inline presentation and term width
+        The breakpoint at which the content is displayed inline and the width of the term can both be controlled in the code.
+    {% endfilter %}
+
+    {% set term_width_half_example %}
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#">Customer Agreements and Important Disclosure Documents (PDF)</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                Documents that govern your account, including the IRA Custodial Agreement and Disclosure Statement, Brokerage Retirement Customer Account Agreement and important information about investment advice for retirement accounts, privacy, fees, commissions, and the FDIC-Insured Deposit Sweep Program. 
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#">Electronic Delivery Agreement (PDF)</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                The consent to receive certain financial documents for this account electronically rather than through the U.S. mail.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#">SPAXX prospectus</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                Prospectus for Enterprise<sup>&reg;</sup> Government Money Market Fund
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set term_width_third_example %}
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-third"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set term_width_quarter_example %}
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-quarter"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set term_width_eighth_example %}
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-eighth"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Name</dt>
+            <dd class="eds-description-list__description">John Jacob Jingleheimer</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Date of birth</dt>
+            <dd class="eds-description-list__description">January 1st, 1970</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Address</dt>
+            <dd class="eds-description-list__description">
+                <address class="docsite-eds-description-list__address-example">
+                    Acme Rocket-Powered Products<br>
+                    123 Main St.<br>
+                    Apt. 10<br>
+                    Fairfield, NJ 07004-1234
+                </address>
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Term width: Half (default) -->
+    <dl class="eds-description-list-root eds-description-list--inline-always">...</dl>
+
+    <!-- Term width: Third -->
+    <dl class="eds-description-list-root eds-description-list--inline-always eds-description-list--inline-term-width-third">...</dl>
+
+    <!-- Term width: Quarter -->
+    <dl class="eds-description-list-root eds-description-list--inline-always eds-description-list--inline-term-width-quarter">...</dl>
+
+    <!-- Term width: Eighth -->
+    <dl class="eds-description-list-root eds-description-list--inline-always eds-description-list--inline-term-width-eighth">...</dl>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples = [
+            {
+                example: term_width_half_example, 
+                label: "Term width: Half (default)" 
+            },
+            {
+                example: term_width_third_example, 
+                label: "Term width: Third" 
+            },
+            {
+                example: term_width_quarter_example, 
+                label: "Term width: Quarter" 
+            },
+            {
+                example: term_width_eighth_example, 
+                label: "Term width: Eighth" 
+            }
+        ],
+        code_snippet_source=code_snippet_source,
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=false
+    )}}
+
+    {% filter markdown %}
+        ## Borders
+    {% endfilter %}
+
+    {% set with_borders_example %}
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-eighth"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Name</dt>
+            <dd class="eds-description-list__description">John Jacob Jingleheimer</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Date of birth</dt>
+            <dd class="eds-description-list__description">January 1st, 1970</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Address</dt>
+            <dd class="eds-description-list__description">
+                <address class="docsite-eds-description-list__address-example">
+                    Acme Rocket-Powered Products<br>
+                    123 Main St.<br>
+                    Apt. 10<br>
+                    Fairfield, NJ 07004-1234
+                </address>
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set without_borders_example %}
+    <dl class="eds-description-list-root
+               eds-description-list--disable-border
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-eighth"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Name</dt>
+            <dd class="eds-description-list__description">John Jacob Jingleheimer</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Date of birth</dt>
+            <dd class="eds-description-list__description">January 1st, 1970</dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Address</dt>
+            <dd class="eds-description-list__description">
+                <address class="docsite-eds-description-list__address-example">
+                    Acme Rocket-Powered Products<br>
+                    123 Main St.<br>
+                    Apt. 10<br>
+                    Fairfield, NJ 07004-1234
+                </address>
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- With borders (default) -->
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-eighth"
+    >
+        ...
+    </dl>
+
+    <!-- Without borders -->
+    <dl class="eds-description-list-root
+               eds-description-list--disable-border
+               eds-description-list--inline-always
+               eds-description-list--inline-term-width-eighth"
+    >
+        ...
+    </dl>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+      examples = [
+            {
+                example: with_borders_example, 
+                label: "With borders (default)" 
+            },
+            {
+                example: without_borders_example, 
+                label: "Without borders" 
+            }
+        ],
+        code_snippet_source=code_snippet_source,
+        preformatted=true,
+        language="html",
+        generate_html=false,
+        show_copy_button=false
+    )}}
+
+
+    {% filter markdown %}
+        ## Striping
+    {% endfilter %}
+
+    {% set striping_example %}
+    <dl class="eds-description-list-root
+               eds-description-list--striped"
+    >
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#">Customer Agreements and Important Disclosure Documents (PDF)</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                Documents that govern your account, including the IRA Custodial Agreement and Disclosure Statement, Brokerage Retirement Customer Account Agreement and important information about investment advice for retirement accounts, privacy, fees, commissions, and the FDIC-Insured Deposit Sweep Program. 
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#">Electronic Delivery Agreement (PDF)</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                The consent to receive certain financial documents for this account electronically rather than through the U.S. mail.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">
+                <eds-link eds-href="#" eds-new-window>SPAXX prospectus</eds-link>
+            </dt>
+            <dd class="eds-description-list__description">
+                Prospectus for Enterprise<sup>&reg;</sup> Government Money Market Fund
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        example=striping_example, 
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=true
+    )}}
+
+    {% filter markdown %}
+        ## Sizes
+    {% endfilter %}
+
+    {% set large_example %}
+    <dl class="eds-description-list-root eds-description-list--large">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set medium_example %}
+    <dl class="eds-description-list-root">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set small_example %}
+    <dl class="eds-description-list-root eds-description-list--small">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Large -->
+    <dl class="eds-description-list-root
+               eds-description-list--large"
+    >
+        ...
+    </dl>
+
+    <!-- Medium (default) -->
+    <dl class="eds-description-list-root">
+        ...
+    </dl>
+
+    <!-- Small -->
+    <dl class="eds-description-list-root
+               eds-description-list--small"
+    >
+        ...
+    </dl>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples = [
+            {
+                example: large_example, 
+                label: "Large" 
+            },
+            {
+                example: medium_example, 
+                label: "Medium (default)" 
+            },
+            {
+                example: small_example, 
+                label: "Small" 
+            }
+        ],
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=false,
+        code_snippet_source=code_snippet_source
+    )}}
+
+{% endblock %}
+
+{% block design_tab %}
+    {% filter markdown %}
+        ## Use when
+        - Presenting a list of terms, or links paired with corresponding descriptions, like a glossary, or document list.
+        - Presenting a list of label/value pairs like Display Data or Form readback.
+        
+        ## Don't use when
+        - Presenting more than 2 columns of content that require column headings. Instead, use a <eds-link eds-href="/components/table/table.html">Table</eds-link>. 
+        - Presenting columns of data that need to be totalled. Instead, use a <eds-link eds-href="https://providence.xyz.com/components/table/table.html?tab=examples#table-footer">Table with a Table Footer</eds-link>. 
+        - Presenting a simple list of items. Instead, use a <eds-link eds-href="/components/list-group/list-group.html">List Group</eds-link>. 
+
+        ## Visual style
+        ### Anatomy and construction
+    {% endfilter %}
+
+    {% set anatomy_caption %} 
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>Border (optional)</li>
+            <li>Term</li>
+            <li>Description</li>
+            <li>Stripe (optional)</li>
+        </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/description-list/doc-dl-anatomy-default.png 1x,
+            ../images/description-list/doc-dl-anatomy-default@2x.png 2x
+        ",
+        alt="Diagram identifying the anatomy of the Description List component when stacked.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=anatomy_caption,
+        sentiment="neutral"
+        ) 
+    }}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/description-list/doc-dl-anatomy-inline.png 1x,
+            ../images/description-list/doc-dl-anatomy-inline@2x.png 2x
+        ",
+        alt="Diagram identifying the anatomy of the Description List component when inline.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=anatomy_caption,
+        sentiment="neutral"
+        ) 
+    }}
+
+    {% filter markdown %}
+        ### Width
+        - The Description List occupies 100% of the width of its parent container 
+        - When inline, the term occupies half of the width of the Description List. This may be adjusted in the code. 
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/description-list/doc-dl-widths.png 1x,
+            ../images/description-list/doc-dl-widths@2x.png 2x
+        ",
+        alt="Diagram showing the various widths of the Description List's term when inline.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+
+    {% filter markdown %}
+        ## Behavior
+        ### Responsive behavior
+        Term/description pairs are stacked by default, but the breakpoint at which pairs go from a stacked to an inline arrangement may be set in the code.
+    {% endfilter %}
+
+    {% set inline_never_example %}
+    <dl class="eds-description-list-root">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set inline_at_1280_example %}
+    <dl class="eds-description-list-root eds-description-list--inline-at-1280">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set inline_at_960_example %}
+    <dl class="eds-description-list-root eds-description-list--inline-at-960">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set inline_at_768_example %}
+    <dl class="eds-description-list-root eds-description-list--inline-at-768">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set inline_at_512_example %}
+    <dl class="eds-description-list-root eds-description-list--inline-at-512">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set inline_always_example %}
+    <dl class="eds-description-list-root eds-description-list--inline-always">
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Tax benefits</dt>
+            <dd class="eds-description-list__description">
+                If you are within the IRS income limits, you may be able to deduct all or part of your contributions from your federal taxes.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Access to your money</dt>
+            <dd class="eds-description-list__description">
+                You can take penalty-free withdrawals for certain expenses, such as a first home purchase, birth, adoption, or college expenses.
+            </dd>
+        </div>
+        <div class="eds-description-list__item">
+            <dt class="eds-description-list__term">Flexibility</dt>
+            <dd class="eds-description-list__description">
+                As long as you are still working, you never have to stop contributing to a traditional IRA, and you can contribute to an IRA in addition to your 401(k). 
+            </dd>
+        </div>
+    </dl>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Never inline (default) -->
+    <dl class="eds-description-list-root">
+        ...
+    </dl>
+
+    <!-- Inline at-1280 -->
+    <dl class="eds-description-list-root
+               eds-description-list--inline-at-1280"
+    >
+        ...
+    </dl>
+
+    <!-- Inline at-960 -->
+    <dl class="eds-description-list-root
+               eds-description-list--inline-at-960"
+    >
+        ...
+    </dl>
+
+    <!-- Inline at-768 -->
+    <dl class="eds-description-list-root
+               eds-description-list--inline-at-768"
+    >
+        ...
+    </dl>
+
+    <!-- Inline at-512 -->
+    <dl class="eds-description-list-root
+               eds-description-list--inline-at-512"
+    >
+        ...
+    </dl>
+
+    <!-- Inline always -->
+    <dl class="eds-description-list-root
+               eds-description-list--inline-always"
+    >
+        ...
+    </dl>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples = [
+            {
+                example: inline_never_example, 
+                label: "Never inline (default)" 
+            },
+            {
+                example: inline_at_1280_example, 
+                label: "Inline at-1280" 
+            },
+            {
+                example: inline_at_960_example, 
+                label: "Inline at-960" 
+            },
+            {
+                example: inline_at_768_example, 
+                label: "Inline at-768" 
+            },
+            {
+                example: inline_at_512_example, 
+                label: "Inline at-512" 
+            },
+            {
+                example: inline_always_example, 
+                label: "Always inline" 
+            }
+        ],
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=false,
+        code_snippet_source=code_snippet_source
+    )}}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+        ## Installation
+        {% include "src/templates/partials/integration.njk" %}
+
+        ## CSS block classes
+        | Class name                   | Applies to          | Description                                              |
+        | ---------------------------- | ------------------- | -------------------------------------------------------- |
+        | `.eds-description-list-root` | The `<dl>` element. | Defines the outermost container of the Description List. |
+
+
+        ## CSS element classes
+        | Class name                           | Applies to                                                                          | Description                                                     |
+        | ------------------------------------ | ----------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+        | `.eds-description-list__item`        | A `<div>` element that is the immediate parent of the `<dt>` and `<dd>` elements.   | Defines a container for styling the `<dt>` and `<dd>` elements. |
+        | `.eds-description-list__term`        | A `<dt>` element.                                                                   | Applies the desired typography and width to the term.           |
+        | `.eds-description-list__description` | A `<dd>` element.                                                                   | Applies the desired typography and width to the description.    |
+
+
+        ## CSS modifier classes
+        | Class name                                         | Applies to                   | Outcome                                                                                                                                                                                                                                                     |
+        | -------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `.eds-description-list--small`                     | `.eds-description-list-root` | Adjusts the style to render a "small" Description List.                                                                                                                                                                                                     |
+        | `.eds-description-list--medium`                    | `.eds-description-list-root` | Adjusts the style to render a "medium" Description List.<br><br>_This is the default behavior if no other size modifier is present._                                                                                                                        |
+        | `.eds-description-list--large`                     | `.eds-description-list-root` | Adjusts the style to render a "large" Description List.                                                                                                                                                                                                     |
+        | `.eds-description-list--striped`                   | `.eds-description-list-root` | Gives the term/description pairs within the Description List alternating background colors.                                                                                                                                                                 |
+        | `.eds-description-list--disable-border`            | `.eds-description-list-root` | Removes the borders between term/description pairs.                                                                                                                                                                                                         |
+        | `.eds-description-list--inline-never`              | `.eds-description-list-root` | Adjusts the style to render term/description pairs in a stacked orientation.<br><br>_This is the default behavior if no other inline modifier is present._                                                                                                  |
+        | `.eds-description-list--inline-at-1280`            | `.eds-description-list-root` | Adjusts the style to render term/description pairs in an inline orientation at 1280px and above.                                                                                                                                                            |
+        | `.eds-description-list--inline-at-960`             | `.eds-description-list-root` | Adjusts the style to render term/description pairs in an inline orientation at 960px and above.                                                                                                                                                             |
+        | `.eds-description-list--inline-at-768`             | `.eds-description-list-root` | Adjusts the style to render term/description pairs in an inline orientation at 768px and above.                                                                                                                                                             |
+        | `.eds-description-list--inline-at-512`             | `.eds-description-list-root` | Adjusts the style to render term/description pairs in an inline orientation at 512px and above.                                                                                                                                                             |
+        | `.eds-description-list--inline-always`             | `.eds-description-list-root` | Adjusts the style to render term/description pairs in an inline orientation at all breakpoints.                                                                                                                                                             |
+        | `.eds-description-list--inline-term-width-half`    | `.eds-description-list-root` | Adjusts the style of all `.eds-description-list__term` elements to span half of the available space.<br><br>Only applies when the Description List is rendered inline.<br><br>_This is the default behavior if no other inline term modifier is present._   |
+        | `.eds-description-list--inline-term-width-third`   | `.eds-description-list-root` | Adjusts the style of all `.eds-description-list__term` elements to span a third of the available space.<br><br>Only applies when the Description List is rendered inline.                                                                                   |
+        | `.eds-description-list--inline-term-width-quarter` | `.eds-description-list-root` | Adjusts the style of all `.eds-description-list__term` elements to span a quarter of the available space.<br><br>Only applies when the Description List is rendered inline.                                                                                 |
+        | `.eds-description-list--inline-term-width-eighth`  | `.eds-description-list-root` | Adjusts the style of all `.eds-description-list__term` elements to span an eighth of the available space.<br><br>Only applies when the Description List is rendered inline.                                                                                 |
+    {% endfilter %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-description-list-root eds-description-list--inline-at-512">
+            <div class="eds-description-list__item">
+                <dt class="eds-description-list__term">Term text</dt>
+                <dd class="eds-description-list__description">Description text</dd>
+            </div>
+        </div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Description List", root_class="description-list-root", namespace_example_html=namespace_example_html) }}
+
+
+    {{ library.import_reference(component_name="Description List") }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {{ library.eds_accessibility(href="http://accessibility.xyz.com/guide/example/lists#definition-lists-recipe")}}
+{% endblock %}

@@ -1,0 +1,390 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{##
+ # TITLE
+ #}
+{% block page__title %}
+  {% filter markdown %}
+    ##### Components
+    # Footnotes &amp; Disclosures
+
+    Footnotes &amp; Disclosures present legal disclosures, sources, and/or other additional relevant content in an area at the bottom of a page.
+  {% endfilter %}
+{% endblock %}
+
+{##
+ # Examples Tab
+ #}
+{% block examples_tab %}
+  {# TODO add anatomy section once designers have standardized on how this should look #}
+
+  {% filter markdown %}
+  ## On white background
+
+  This example shows a variety of notional styles used for emphasis. Verify with the appropriate governing body which styles are required for your application.
+
+  {% endfilter %}
+
+  {% macro full_footnote_example(background) %}
+    <eds-footnotes{{ ' eds-background=' + background if background }}>
+      <eds-footnote eds-title="Disclaimer">
+        <p class="eds-footnote__text">
+          <strong>
+            This is bold disclaimer content. Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur.
+          </strong>
+        </p>
+        <p class="eds-footnote__text">
+          <em>
+            This is italic disclaimer content. Lorem ipsum dolor, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </em>
+        </p>
+        <p class="eds-footnote__text">
+          <strong><em>
+            This is bold italic disclaimer content. Lorem ipsum dolor, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </em></strong>
+        </p>
+        <p class="eds-footnote__text">
+          This is regular disclaimer content. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+          qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation.
+        </p>
+      </eds-footnote>
+
+      <eds-footnote eds-title="Sources">
+        <eds-footnote-annotation eds-symbol="1.">
+          Lastname, Firstname, and Lastname, Firstname, "The Title of an Article"
+          Where it was published, Month 2016,
+          <eds-link eds-href="https://linklinklink.com/link/link/link/link"
+            >https://linklinklink.com/link/link/link/link</eds-link>.
+        </eds-footnote-annotation>
+        <eds-footnote-annotation eds-symbol="2.">
+          Lastname, Firstname, "The Publication."
+        </eds-footnote-annotation>
+      </eds-footnote>
+
+      <eds-footnote eds-title="Footnotes">
+        <eds-footnote-annotation eds-symbol="*">
+          There are times when numbers are not the best approach. This footnote symbol is called “Asterisk” for your information.
+        </eds-footnote-annotation>
+        <eds-footnote-annotation eds-symbol="dagger">
+          There are times when numbers are not the best approach. This footnote
+          symbol is called “Dagger” for your information.
+        </eds-footnote-annotation>
+        <eds-footnote-annotation eds-symbol="double dagger">
+          There are times when numbers are not the best approach. This footnote
+          symbol is called “Double dagger” for your information.
+        </eds-footnote-annotation>
+        <eds-footnote-annotation eds-symbol="section">
+          There are times when numbers are not the best approach. This footnote
+          symbol is called “Section for your information.
+        </eds-footnote-annotation>
+        <eds-footnote-annotation eds-symbol="parallels">
+          There are times when numbers are not the best approach. This footnote
+          symbol is called “Parallels” for your information.
+        </eds-footnote-annotation>
+        <eds-footnote-annotation eds-symbol="number">
+          There are times when numbers are not the best approach. This footnote
+          symbol is called “Number sign” for your information.
+        </eds-footnote-annotation>
+      </eds-footnote>
+
+      <eds-footnote>
+        <p class="eds-footnote__text">
+          <strong>This is additional bold content. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</strong>
+          This is additional regular content. Labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+          aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+          fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+          sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          nostrud exercitation.
+        </p>
+        <!-- Placeholder for optional Expand-collapse -->
+        <p class="eds-footnote__text">
+          Enterprise Brokerage Services LLC, Member NYSE, SIPC, 900 Salem Street,
+          Smithfield, RI 02917
+        </p>
+        <p class="eds-footnote__text">
+          000000.00.0 (e-review placeholder)
+        </p>
+      </eds-footnote>
+    </eds-footnotes>
+  {% endmacro %}
+
+  {{ library.eds_code_example_pair(
+      example = full_footnote_example(),
+      preformatted=true
+  )}}
+
+  {% filter markdown %}
+    ## On gray background
+
+    This example shows a variety of notional styles used for emphasis. Verify with the appropriate governing body which styles are required for your application.
+
+  {% endfilter %}
+  {{ library.eds_code_example_pair(
+      example = full_footnote_example(background='light-gray')
+  )}}
+{% endblock %}
+
+
+{##
+ # Design Tab
+ #}
+{% block design_tab %}
+  {% filter markdown %}
+    ## Use when
+    * You must provide additional clarity regarding content presented on the page.
+    * You must comply with a regulatory or legal requirement by presenting content.
+    * You must cite a published work quoted, paraphrased, or referenced in the content of the page.
+
+    ## Visual style
+    * The Footnotes &amp; Disclosure component offers both a white and a gray background:
+      * Use the white background when the footnotes amp; disclosures are contextually relevant to the content of that independent page.
+      * Use the gray background when the footnotes amp; disclosures pertain to the full experience or flow (this style is meant to visually join the footer and the Footnotes amp; Disclosures sections to appear as one).
+    * Consider using section titles to separate types of content.
+    * Never increase or decrease text size within the component.
+    * Never hide important disclosures in the optional Expand-collapse.
+      * You must check content intended to be contained within an Expand-collapse with Legal/Compliance.
+
+    ### Source and footnotes
+    Notes and citations that reference specific content on the page.
+    * Annotations within page body content should be wrapped in anchor tags that jump the user to the associated source or footnote at the bottom of the page.
+      * Add a "^" character to the end of the footnote content that links the user back to original content.
+      * This feature is optional, but it's recommended to leverage body content anchor tags to meet accessibility guidelines. See the <eds-link eds-href="#accessibility">Accessibility tab</eds-link> for details.
+
+    - Follow these PWI Editorial Style guidelines for formatting content within the component:
+
+      * <eds-link eds-href="http://uxdesignstandards.xyz.com/citation-guidelines-2/" eds-new-window>Citation guidelines</eds-link>
+      * <eds-link eds-href="http://uxdesignstandards.xyz.com/footnote-list-format/" eds-new-window>Footnote list format</eds-link>
+      * <eds-link eds-href="http://uxdesignstandards.xyz.com/footnotes-in-graphs-and-charts/" eds-new-window>Footnotes in charts and graphs</eds-link>
+      * <eds-link eds-href="http://uxdesignstandards.xyz.com/indicating-footnotes/" eds-new-window>Indicating footnotes</eds-link>
+      * <eds-link eds-href="http://uxdesignstandards.xyz.com/placement-and-format-of-footnote-numbers-in-text/" eds-new-window>Placement and format of footnote numbers in text</eds-link>
+      * <eds-link eds-href="http://uxdesignstandards.xyz.com/symbol-order/" eds-new-window>Symbol order</eds-link>
+
+    ### Disclosures
+    General disclaimers and legally required notices about the page and its content.
+    * The requirement of a disclosure is at the discretion of Legal Risk and Compliance (LRC). Always check with your squad leader, product owner, or content strategist.
+    * Bolding or italicizing may be required depending on the disclosure type.
+
+    ### The Offering Legend
+    * On pages that include this disclosure, the text should be **bold** and must appear first or last among the rest of the required footnotes & disclosures.
+    * The appropriate Offering Legend depends on the context of where the Footnotes &amp; Disclosures component is used. Check with LRC for guidance on which content is appropriate.
+
+    ## Content
+    * Always use sentence case for titles.
+
+    ### Placement
+    * The Footnotes & Disclosures component should appear between the main content and the page footer.
+
+    ### Collapsed or truncated content
+    * Long-form content can be collapsed or truncated if necessary.
+    * Always check with your squad leader, product owner, or content strategist to determine whether this is allowed and how it should be applied.
+
+    ### Organizational attribution
+    * Pages may attribute their content to a specific organization.
+    * Always check with your squad leader or product owner to determine whether this type of attribution is required.
+
+    ### eReview number
+    * The component may also include an eReview number(s) which signify content on the page has gone through the appropriate LRC reviews.
+    * Always check with your squad leader, product owner, or content strategist about inclusion of this number.
+  {% endfilter %}
+{% endblock %}
+
+{##
+ # Code Tab
+ #}
+{% block code_tab %}
+  {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## eds-footnotes
+    ### Attributes
+
+    | Attribute        | Type   | Validation            | Default | Description                                                                                                           |
+    | ---------------- | ------ | --------------------- | ------- | --------------------------------------------------------------------------------------------------------------------- |
+    | `eds-background` | string | `white`, `light-gray` | `white` | Sets the background color for the component. Also controls the presence and position of the horizontal dividing line. **Note, this property is deprecated and will be removed in future versions.** |
+
+    ### Slots
+    | Slot name | Default content | Description                                                                                |
+    |-----------|-----------------|--------------------------------------------------------------------------------------------|
+    | `default` | --              | Content to be displayed in the footnotes component. Typically `<eds-footnote>` components. |
+
+    ### Slot usage example
+  {% endfilter %}
+  {{ library.eds_code_example_pair(
+      example = '<eds-footnotes><eds-footnote eds-title="Disclaimer">Lorem ipsum</eds-footnote></eds-footnotes>',
+      generate_html=false
+  )}}
+
+  {% filter markdown %}
+
+    ## eds-footnote
+    ### Attributes
+    | Attribute            | Type   | Validation       | Default | Description                                                                                    |
+    | -------------------- | ------ | ---------------- | ------- | ---------------------------------------------------------------------------------------------- |
+    | `eds-content`        | string | --               | --      | Footnote content that appears below the title. Will be overridden by any default slot content. |
+    | `eds-heading-level ` | string | 1, 2, 3, 4, 5, 6 | 3       | Sets the heading tag level based on the value passed in (number is automatically converted to a string) |
+    | `eds-title`          | string | --               | --      | The title heading that appears above a section of footnote content.                            |
+
+    ### Slots
+    | Slot name | Default content | Description                                                                           |
+    |-----------|-----------------|---------------------------------------------------------------------------------------|
+    | `default` | --              | Content to be displayed below the footnote title. Overrides the `eds-content` prop.   |
+
+
+    ### Slot usage example
+  {% endfilter %}
+    {{ library.eds_code_example_pair(
+      example = '<eds-footnote eds-title="Disclaimer">Lorem ipsum</eds-footnote>',
+      generate_html=false
+  )}}
+  {% filter markdown %}
+    ## eds-footnote-annotation
+    ### Attributes
+    | Attribute           | Type   | Validation | Default           | Description                                                                                                                                                                                                                      |
+    |---------------------|--------|------------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | `eds-back-href`     | string | --         | --                | When provided, the annotation will feature a "back" link allowing a user to return to the in-page content referring to this annotation.                                                                                          |
+    | `eds-back-text`     | string | --         | 'Back to content' | Hidden screen-reader-only text that is added to the "back" link (see above).                                                                                                                                                     |
+    | `eds-text`          | string | --         | --                | Content displayed to the right of the annotation symbol. Overridden by the default slot.                                                                                                                                         |
+    | `eds-symbol`        | string | --         | --                | The symbol that appears to the right of the footnote annotation. Use the "*" symbol to render an asterisk. Special values of "dagger", "double dagger", "section mark", and "parallels" will trigger rendering of those symbols. |
+    | `eds-symbol-repeat` | number | --         | 1                 | The number of times an annotation's symbol should be repeated. Useful for things like repeating the "double dagger" (‡‡) symbol.                                                                                                 |
+
+    ### Slots
+    | Slot name | Default content | Description                                                                                     |
+    |-----------|-----------------|-------------------------------------------------------------------------------------------------|
+    | `default` | --              | Content to be displayed to the right of the annotation symbol. Overrides the content attribute. |
+
+    ### Slot usage example
+    {% endfilter %}
+    {{ library.eds_code_example_pair(
+        example = full_footnote_example(),
+        generate_html=false
+    )}}
+
+    {% filter markdown %}
+
+    ## Events
+    The Footnote components do not emit any custom events.
+
+    ## Methods
+    The Footnote components do not implement any public methods.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                              | Applies to       | Outcome                                                                                            |
+    |-----------------------------------------|------------------|----------------------------------------------------------------------------------------------------|
+    | `.eds-footnotes--background-white`      | `.eds-footnotes` | Applies a white background with a top border to the Footnotes &amp; Disclosures component.         |
+    | `.eds-footnotes--background-light-gray` | `.eds-footnotes` | Applies a light gray background with a bottom border to the Footnotes &amp; Disclosures component. |
+  {% endfilter %}
+
+  {# NAMESPACING #}
+
+  {% set namespace_example_wc %}
+     <eds3-footnotes>
+        <eds3-footnote>
+          <eds3-footnote-annotation>...</eds3-footnote-annotation>
+        </eds3-footnote>
+    </eds3-footnotes>
+  {% endset %}
+
+  {% set namespace_example_html %}
+      <div class="eds3-footnotes-root eds-footnotes--background-white">
+        <div class="eds3-footnote-root">
+          <div class="eds3-footnote-annotation-root">...</div>
+        </div>
+      </div>
+  {% endset %}
+
+  {{ library.namespacing(component_name="Footnotes", root_class="footnotes-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+  {# IMPORT REFERENCE #}
+
+  {% set js_import_table %}
+| Import                                                                   | Required                                                                                                |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| `import { edsFootnote } from '@xyz-ap153177/apex-kit';`                | Only needed if using <eds-link eds-href="#eds-footnote">eds-footnote</eds-link>.                        |
+| `import { edsFootnotes } from '@xyz-ap153177/apex-kit';`               | Only needed if using <eds-link eds-href="#eds-footnotes">eds-footnotes</eds-link>.                      |
+| `import { edsFootnoteAnnotation } from '@xyz-ap153177/apex-kit';`      | Only needed if using <eds-link eds-href="#eds-footnote-annotation">eds-footnote-annotation</eds-link>.  |
+  {% endset %}
+
+  {{ library.import_reference(component_name="Footnotes", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab
+ #}
+{% block a11y_tab %}
+  {% filter markdown %}
+    ## Annotation content links
+    When using source and/or footnote annotations it’s important to connect the in-page content to the corresponding annotation. Do this by:
+    <ol>
+      <li>Wrapping the superscript symbol in the page content with an in-page link to the corresponding source or footnote annotation.</li>
+      <li>Add an <code>aria-describedby</code> attribute to this in-page link that also points to the <code>id</code> attribute of the source or footnote annotation.</li>
+      <li>Add in <code>id</code> attribute to this in-page link so the source or footnote at the bottom of the page can include a link back to the page content.</li>
+      <li>Add in <code>id</code> attribute to the <code>&#60;eds-footnote-annotation&#62;</code> for the page content link to target.</li>
+      <li>Pass the <code>id</code> of the in-page link as the value of the <code>eds-back-href</code> attribute on the <code>&#60;eds-footnote-annotation&#62;</code>.</li>
+    </ol>
+    The end result will be a pair of in-page links that allow users to jump from the superscript symbol within the body content to the source or footnote annotation, and back.
+
+  ### Annotation example
+  {% endfilter %}
+
+  {{ library.eds_code_example_pair(
+      example = '
+<div class="sample-content">
+  <h2>Consectetur adipisicing elit</h2>
+  <p>
+    Enim expedita officia non necessitatibus, fugiat nemo,<sup><a id="content-annotation-1" href="#annotation-1" aria-describedby="annotation-1">[&dagger;]</a></sup>
+    repellat ipsam ea,<sup><a id="content-annotation-2" href="#annotation-2" aria-describedby="annotation-2">[&Dagger;]</a>
+    </sup> and molestiae dolores reprehenderit. <sup><a id="content-annotation-3" href="#annotation-3" aria-describedby="annotation-3">[&raquo;]</a></sup>
+  </p>
+  <br>
+  <h2>Lorem ipsum dolor sit</h2>
+  <p>Amet consectetur adipisicing elit. Dicta temporibus alias quos ullam animi aliquam magnam quia voluptates.<sup><a id="content-sources-1" href="#sources-1" aria-describedby="sources-1">1</a></sup></p>
+  <br>
+  <br>
+</div>
+<eds-footnotes>
+  <eds-footnote eds-title="Annotations">
+    <eds-footnote-annotation id="annotation-1" eds-back-href="#content-annotation-1" eds-symbol="dagger">
+      Eveniet quibusdam id inventore veniam velit odit.
+    </eds-footnote-annotation>
+    <eds-footnote-annotation id="annotation-2" eds-back-href="#content-annotation-2" eds-symbol="double dagger">
+      Sapiente, autem vero temporibus ipsa provident.
+    </eds-footnote-annotation>
+    <eds-footnote-annotation id="annotation-3" eds-back-href="#content-annotation-3" eds-symbol="parallels">
+      Ducimus nisi esse voluptas accusamus facere.
+    </eds-footnote-annotation>
+  </eds-footnote>
+  <eds-footnote eds-title="Sources">
+    <eds-footnote-annotation id="sources-1" eds-back-href="#content-sources-1" eds-symbol="1.">
+      Ducimus nisi esse voluptas accusamus.
+    </eds-footnote-annotation>
+  </eds-footnote>
+</eds-footnotes>'
+  )}}
+{% endblock %}

@@ -1,0 +1,594 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Checkbox Group
+    A Checkbox Group contains multiple <eds-link eds-href="/components/checkbox/checkbox.html">Checkboxes</eds-link> for use inside a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+
+    Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of Forms.
+    {% endfilter %}
+{% endblock %}
+
+{% macro checkbox_group_example(
+    id="1",
+    inline="never"
+) %}
+    {% if inline != "never" %}
+        {% set edsInline %}
+        eds-inline="{{inline}}"
+        {% endset %}
+    {% endif %}
+    <eds-field-group>
+        <eds-label eds-id="a11y-label">What are your preferences?</eds-label>
+        <eds-checkbox-group eds-aria-labelledby="a11y-label" {{edsInline | safe}}>
+            <eds-checkbox eds-name="group-{{id}}" eds-value="option-a">Option A</eds-checkbox>
+            <eds-checkbox eds-name="group-{{id}}" eds-value="option-b">Option B</eds-checkbox>
+            <eds-checkbox eds-name="group-{{id}}" eds-value="option-c">Option C</eds-checkbox>
+        </eds-checkbox-group>
+    </eds-field-group>
+{% endmacro %}
+
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Default
+
+    - Never use this component on its own.
+    - Always accompany this component with a clear and concise [Label](/components/label/label.html) inside a [Field Group](/components/field-group/field-group.html)
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: checkbox_group_example(id="1"),
+                label: "Stacked (default)"
+            }
+        ]
+    )}}
+    
+    {% filter markdown %}
+    ## Inline
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: checkbox_group_example(id="2", inline="at-512"),
+                label: "Inline"
+            }
+        ]
+    )}}
+
+    {% filter markdown %}
+    ## Microcopy
+
+    If you need to provide additional description text for the checkbox group, use a [Microcopy](/components/microcopy/microcopy.html) element with a unique `eds-id` attribute value and reference it from the checkbox group element using `eds-aria-describedby` with the same value
+    {% endfilter %}
+
+    {% set microcopy_example %}
+    <eds-field-group>
+        <eds-label eds-id="microcopy-group-label">
+            What are your preferences?
+        </eds-label>
+        <eds-microcopy eds-id="microcopy-group-id">Here's some additional context</eds-microcopy>
+        <eds-checkbox-group
+            eds-aria-describedby="microcopy-group-id"
+            eds-aria-labelledby="microcopy-group-label"
+        >
+            
+            <eds-checkbox eds-name="microcopy-group" eds-value="option-a">Option A</eds-checkbox>
+            <eds-checkbox eds-name="microcopy-group" eds-value="option-b">Option B</eds-checkbox>
+            <eds-checkbox eds-name="microcopy-group" eds-value="option-c">Option C</eds-checkbox>
+        </eds-checkbox-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: microcopy_example,
+                label: "Microcopy"
+            }
+        ]
+    )}}    
+
+    {% filter markdown %}
+    ## Marking as Required
+    See the [accessibility guidance on marking checkbox groups as required](/components/checkbox-group/checkbox-group.html?tab=accessibility#required-checkbox-groups)
+    {% endfilter %}
+
+    {% filter markdown %}
+    ## Error Indication
+    Use the `eds-error` attribute to indicate an error has occured. 
+    {% endfilter %}
+
+    {% set error_example%}
+    <eds-field-group>
+        <eds-label eds-id="error-group-label" eds-indicator="required">
+            What are your preferences?
+        </eds-label>
+        <eds-microcopy eds-id="error-group-micro">Select all that apply</eds-microcopy>
+        <eds-checkbox-group
+            eds-aria-describedby="error-group-alert error-group-micro"
+            eds-aria-labelledby="error-group-label"
+            eds-error
+        >
+            <eds-checkbox eds-name="error-group" eds-value="option-a">Option A</eds-checkbox>
+            <eds-checkbox eds-name="error-group" eds-value="option-b">Option B</eds-checkbox>
+            <eds-checkbox eds-name="error-group" eds-value="option-c">Option C</eds-checkbox>
+        </eds-checkbox-group>
+        <eds-inline-alert eds-id="error-group-alert">Select at least one of the above options.</eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: error_example,
+                label: "In error"
+            }
+        ],
+        preformatted=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">Display data</h2>
+
+    {% filter markdown(includeWrapper=false) %}
+    - The Checkbox Group does not offer a "display" state.
+    - Display data is presented in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> as styled text. Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+    {% endfilter %}
+
+    {% set in_field_display_data_example %}
+    <eds-field-group>
+        <eds-label>Your preferences</eds-label>
+        <eds-list-group class="eds-field-group__display-data" eds-list-items='["Option B", "Option C"]'></eds-list-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_display_data_example,
+                label: "Display Data as a List Group",
+                language: "html"
+            }
+        ]
+    ) }}
+
+    {% filter markdown %}
+    ## Select All
+    {% endfilter %}
+
+    {% set select_all_example %}
+    <eds-field-group>
+        <eds-label id="select-all-example-aria-label">Options</eds-label>
+        <eds-checkbox-group eds-aria-label="select-all-example-aria-label">
+            <eds-checkbox eds-select-all eds-name="select-all-group" eds-text="Select all"></eds-checkbox>
+            <eds-checkbox eds-name="select-all-group" eds-value="option-a">Option A</eds-checkbox>
+            <eds-checkbox eds-name="select-all-group" eds-value="option-b">Option B</eds-checkbox>
+            <eds-checkbox eds-name="select-all-group" eds-value="option-c">Option C</eds-checkbox>
+        </eds-checkbox-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: select_all_example,
+                label: "Select all",
+                language: "html"
+            }
+        ]
+    ) }}
+
+    {% filter markdown %}
+    
+    ## Tiles modifier
+
+    Add the `eds-tiles` attribute to turn the Checkboxes into larger interactive tiles.
+    {% endfilter %}
+
+    {% set tiles_example %}
+    <eds-field-group>
+        <eds-label id="tiles-example-aria-label">Tile Example Label</eds-label>
+        <eds-checkbox-group eds-tiles eds-aria-labelledby="tiles-example-aria-label">
+            <eds-checkbox eds-name="tiles-group" eds-value="option-a">
+                Option A
+                <eds-microcopy>Description of Option A</eds-microcopy>
+            </eds-checkbox>
+            <eds-checkbox eds-name="tiles-group" eds-value="option-b">
+                Option B
+                <eds-microcopy>Description of Option B</eds-microcopy>
+            </eds-checkbox>
+            <eds-checkbox eds-name="tiles-group" eds-value="option-c">
+                Option C
+                <eds-microcopy>Description of Option C</eds-microcopy>
+            </eds-checkbox>
+        </eds-checkbox-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: tiles_example,
+                label: "Tiles",
+                language: "html"
+            }
+        ]
+    ) }}
+
+    {% set tiles_error_example %}
+    <eds-field-group>
+        <eds-label id="tiles-error-example-aria-label">Tile Example Label</eds-label>
+        <eds-checkbox-group eds-tiles eds-error eds-aria-labelledby="tiles-error-example-aria-label">
+            <eds-checkbox eds-name="tiles-error-group" eds-value="option-a">
+                Option A
+                <eds-microcopy>Description of Option A</eds-microcopy>
+            </eds-checkbox>
+            <eds-checkbox eds-name="tiles-error-group" eds-value="option-b">
+                Option B
+                <eds-microcopy>Description of Option B</eds-microcopy>
+            </eds-checkbox>
+            <eds-checkbox eds-name="tiles-error-group" eds-value="option-c">
+                Option C
+                <eds-microcopy>Description of Option C</eds-microcopy>
+            </eds-checkbox>
+        </eds-checkbox-group>
+        <eds-inline-alert eds-text="Something's happening here. What it is ain't exactly clear."></eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: tiles_error_example,
+                label: "Tiles with Error",
+                language: "html"
+            }
+        ]
+    ) }}
+
+        {% set standalone_example %}
+        <eds-checkbox-group eds-aria-label="select-all-example-aria-label">
+            <eds-checkbox eds-select-all eds-name="standalone-group" eds-text="Select all"></eds-checkbox>
+            <eds-checkbox eds-name="standalone-group" eds-value="option-a">Option A</eds-checkbox>
+            <eds-checkbox eds-name="standalone-group" eds-value="option-b">Option B</eds-checkbox>
+            <eds-checkbox eds-name="standalone-group" eds-value="option-c">Option C</eds-checkbox>
+        </eds-checkbox-group>
+    {% endset %}
+
+    {% filter markdown %}
+    
+    ## Without Visible Group Label (Standalone)
+
+    If there is no visible group label, you can specify one on the checkbox group element using the `eds-aria-label` attribute (the value of the attribute becomes the group label).    {% endfilter %}
+
+        {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: standalone_example,
+                label: "Without Visible Group Label",
+                language: "html"
+            }
+        ]
+    ) }}
+{% endblock %}
+
+{% block design_tab %}  
+    {% filter markdown %}
+    ## Use when
+    Presenting 2 or more <eds-link eds-href="/components/checkbox/checkbox.html">Checkboxes</eds-link> as part of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+
+    ### Don't use when
+    - Presenting a single <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link>. Instead, use a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+    - Presenting multiple <eds-link eds-href="/components/radio-button/radio-button.html">Radio Buttons</eds-link>. Instead, use a <eds-link eds-href="/components/radio-group/radio-group.html">Radio Group</eds-link>.
+
+    ## Visual style
+
+    ### Anatomy and construction
+    {% endfilter %}
+    {% set checkbox_group_anatomy_caption %} 
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>Checkbox (required)</li>
+            <li>Microcopy</li>
+        </ol>
+    {% endset %} 
+    
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/checkbox-group/checkbox-group-anatomy-stacked.png 1x,
+                ../images/checkbox-group/checkbox-group-anatomy-stacked@2x.png 2x
+            ",
+            alt:"Examples of customer data.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:checkbox_group_anatomy_caption,
+            sentiment:"neutral"
+            },
+            { 
+            srcset:"
+                ../images/checkbox-group/checkbox-group-anatomy-inline.png 1x,
+                ../images/checkbox-group/checkbox-group-anatomy-inline@2x.png 2x
+            ",
+            alt:"Examples of non-tabular calculated data.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:checkbox_group_anatomy_caption,
+            sentiment:"neutral"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+    
+    {% filter markdown %}
+    ## Behavior
+    ### Responsive behavior
+    Checkboxes are stacked by default, but the breakpoint at which groups go from a stacked to an inline arrangement may be set in the code.
+    {% endfilter %}
+
+    {% set inline_example_source %}
+    <eds-checkbox-group eds-inline="never">...</eds-checkbox-group>
+    <eds-checkbox-group eds-inline="at-1280">...</eds-checkbox-group>
+    <eds-checkbox-group eds-inline="at-960">...</eds-checkbox-group>
+    <eds-checkbox-group eds-inline="at-768">...</eds-checkbox-group>
+    <eds-checkbox-group eds-inline="at-512">...</eds-checkbox-group>
+    <eds-checkbox-group eds-inline="always">...</eds-checkbox-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: checkbox_group_example(id="5", inline="never"),
+                label: "Never inline (Stacked)"
+            },
+            {
+                example: checkbox_group_example(id="6", inline="at-1280"),
+                label: "Inline at-1280"
+            },
+            {
+                example: checkbox_group_example(id="7", inline="at-960"),
+                label: "Inline at-960"
+            },
+            {
+                example: checkbox_group_example(id="8", inline="at-768"),
+                label: "Inline at-768"
+            },
+            {
+                example: checkbox_group_example(id="9", inline="at-512"),
+                label: "Inline at-512"
+            },
+            {
+                example: checkbox_group_example(id="10", inline="always"),
+                label: "Always inline"
+            }
+        ],
+        open_in_new_window=true,
+        preformatted=true,
+        code_snippet_source=inline_example_source
+    )}}
+    
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute              | Type    | Validation                                                                             | Default | Description                                                                                                                                                                                                                                                                                                                                           |
+    | ---------------------- | ------- | -------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-describedby` | string  | --                                                                                     | --      | A string that will be set as the `aria-describedby` attribute on the container.<br><br>Reference the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.                                                                                                                                                           |
+    | `eds-aria-label`       | string  | --                                                                                     | --      | A string that will be set as the `aria-label` attribute on the container.<br><br>Reference the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.                                                                                                                                                                |
+    | `eds-aria-labelledby`  | string  | --                                                                                     | --      | A string of `id`s separated by spaces that will be set as the `aria-labelledby` attribute on the container.<br><br>Reference the <eds-link eds-href="?tab=accessibility">Accessibility tab</eds-link> for more details.                                                                                                                               |
+    | `eds-error`            | boolean | Anything other than empty string, `true`, or `eds-error` will be treated as `false`    | `false` | Indicates whether the Checkbox Group component should render in the error state.<br><br>Setting `eds-error` to `true` will set `aria-invalid="true"` on the native element.                                                                                                                                                                           |
+    | `eds-inline`           | string  | `never`, `at-1280`, `at-960`, `at-768`, `at-512`, `always`                             | `never` | Determines the point at which the <eds-link eds-href="components/checkbox/checkbox.html">Checkbox</eds-link> components within the Checkbox Group go from stacked to inline.<br><br>For any breakpoint, if `eds-inline` is set to `never`, the content in the Checkbox Group will stay stacked, while `always` will force the content to stay inline. |
+    | `eds-required`         | boolean | Anything other than empty string, `true`, or `eds-required` will be treated as `false` | `false` | **Deprecated** See the [accessibility guidance on marking checkbox groups as required](/components/checkbox-group/checkbox-group.html?tab=accessibility#required-checkbox-groups) |
+    | `eds-tiles`            | boolean | Anything other than empty string, `true`, or `eds-tiles` will be treated as `false`.    | `false` | Renders the nested Checkbox components as a "tile".                                                                                                                                                                                                                                |
+
+    ## Slots
+    | Slot name | Default content | Description                                                                                                                                                                               |
+    | --------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `default` | --              | Use this slot to group related <eds-link eds-href="components/checkbox/checkbox.html">Checkbox</eds-link> components and apply appropriate vertical or horizontal spacing between them.   |
+
+    Refer to the <eds-link eds-href="/components/checkbox-group/checkbox-group.html?tab=examples">Examples tab</eds-link> for usage of the `default` slot.
+
+    ## Events
+    The Checkbox Group component does not emit any custom events.
+
+    ## Methods
+    The Checkbox Group component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% endfilter %}
+
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    {% filter markdown %}
+    | Class name                            | Applies to...              | Outcome                                                                                                                         |
+    | ------------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+    | `.eds-checkbox-group--inline-at-1280` | `.eds-checkbox-group-root` | Nested Checkbox components will be arranged horizontally at a screen width of 1280px and above, otherwise they will be stacked. |
+    | `.eds-checkbox-group--inline-at-960`  | `.eds-checkbox-group-root` | Nested Checkbox components will be arranged horizontally at a screen width of 960px and above, otherwise they will be stacked.  |
+    | `.eds-checkbox-group--inline-at-768`  | `.eds-checkbox-group-root` | Nested Checkbox components will be arranged horizontally at a screen width of 768px and above, otherwise they will be stacked.  |
+    | `.eds-checkbox-group--inline-at-512`  | `.eds-checkbox-group-root` | Nested Checkbox components will be arranged horizontally at a screen width of 512px and above, otherwise they will be stacked.  |
+    | `.eds-checkbox-group--inline-always`  | `.eds-checkbox-group-root` | Nested Checkbox components will be arranged horizontally and will never stack.                                                  |
+    | `.eds-checkbox-group--error`          | `.eds-checkbox-group-root` | Adjusts the style to render the group in its error state.                                                                       |
+
+    ### Error handling
+    The attribute `aria-invalid="true"` must be added on the element with the `.eds-checkbox-group__checkbox-group` class to ensure the error state is accessible to all users.
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-checkbox-group eds-inline="at-512">...</eds3-checkbox-group>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-checkbox-group-root eds-checkbox-group--inline-at-512">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Checkbox Group", root_class="checkbox-group-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                         | Required            |
+| -------------------------------------------------------------- | ------------------- |
+| `import { edsCheckboxGroup } from '@xyz-ap153177/apex-kit';` | Yes                 |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Checkbox Group", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Label
+    A <eds-link eds-href="/components/label/label.html">Label</eds-link> should be associated with the Checkbox Group component via `eds-aria-labelledby` and used within a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> component in order to apply the appropriate spacing. The Checkbox Group component sets the `role="group"` attribute to allow screen readers to understand the relationship between the Label and the group of <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link> components. `eds-aria-label` should only be used if the group has no visible label.
+    {% endfilter %}
+
+    {% set a11y_label_example %}
+    <eds-field-group>
+        <eds-label eds-id="a11y-label">What are your preferences?</eds-label>
+        <eds-checkbox-group eds-aria-labelledby="a11y-label">
+            ...
+        </eds-checkbox-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_label_example, show_copy_button=false) }}
+
+    {% filter markdown %}
+    ## Microcopy
+    <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> is optional and should only be used when additional context is needed. <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> can be applied at the group-level, option-level, or both. <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> must be associated with the Checkbox Group component or <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link> component via `eds-aria-describedby`.
+
+    ### Group-level Microcopy
+    {% endfilter %}
+
+    {% set a11y_group_microcopy_example %}
+    <eds-field-group>
+        <eds-microcopy eds-id="a11y-micro">Select all that apply.</eds-microcopy>
+        <eds-checkbox-group eds-aria-describedby="a11y-micro">
+            ...
+        </eds-checkbox-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_group_microcopy_example, show_copy_button=false) }}
+
+    {% filter markdown %}
+    ### Option-level Microcopy
+    Refer to the <eds-link eds-href="/components/checkbox/checkbox.html#with-microcopy">Checkbox with microcopy</eds-link> documentation for examples of option-level <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link>.
+
+    ## Error indication
+    When multiple <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link> components are used within a group, error indication should be applied to the Checkbox Group via `eds-error` rather than to the individual <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link> components.
+    In the case where the Checkbox Group is the first error on the page, use the `focus()` method to bring attention to the error.
+    {% endfilter %}
+
+    {% set a11y_error_example_html %}
+    <eds-field-group>
+        <eds-checkbox-group eds-aria-describedby="a11y-alert" eds-error>
+            ...
+        </eds-checkbox-group>
+        <eds-inline-alert eds-id="a11y-alert">
+            Select at least one of the above options.
+        </eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {% set a11y_error_example_js %}
+    /**
+     * The following is an example of how to give focus to the Checkbox
+     * when it is the first error on the page. Always check
+     * recommendations from your framework on best pratices when interacting
+     * with DOM elements.
+     *
+     * Note that the `isFirstErrorOnPage` boolean is not provided by
+     * Apex Kit for Web and would need to be determined via logic in your
+     * application.
+     */
+    if (isFirstErrorOnPage) {
+        const checkboxGroup = document.querySelector('eds-checkbox-group');
+        checkboxGroup.focus();
+    }
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        sources=[
+            {
+                source: a11y_error_example_html,
+                language: "html",
+                label: "HTML"
+            },
+            {
+                source: a11y_error_example_js,
+                language: "javascript",
+                label: "JavaScript"
+            }
+        ],
+        show_copy_button=false,
+        preformatted=true
+    ) }}
+
+    {% filter markdown %}
+    ## Required Checkbox Groups
+
+    ### You can't do it programmatically
+
+    There is no HTML or ARIA attribute available to mark a group of elements other than radio buttons as required.
+    * The HTML `required` attribute is not valid on a `<fieldset>` element
+    * The `aria-required="true"` attribute is not valid on a group element (element with `role="group"`), It is only on radio group elements (elements with `role="radiogroup"`)
+
+    #### Why can't I mark a group of elements other than radio buttons as required programmatically?
+
+    It's not clear what that means.
+
+    For a group of radio buttons the meaning of the word _required_ is clear:
+    * One radio button in the set must be selected
+
+    For a group of checkboxes the meaning of the word _required_ is not clear:
+    * If one checkbox in the group must be selected, you should use radio buttons for the task
+    * If x checkboxes from the group must be selected to pass, there is no programmatic way to communicate that
+
+    ### What do I do instead?
+
+    #### If you need one element in the set to be selected, use radio group
+
+    See [the radio group element](/components/radio-group/radio-group.html)
+
+    #### If it's more complex, use group label to communicate and error validation to verify
+
+    Your group label can be used to communicate expectations about selection.
+    e.g.
+    If selecting a certain number of checkboxes is required:
+    * Select pizza toppings (must select 2)
+
+    If selection up to a certain number is allowed:
+    * Select the account types you're interested in (max 3)
+
+    If user selects an invalid number of options from the group, use error messages to explain:
+    * If 2 selections are required
+        * user selects 3, error message = "Only 2 selections are permitted, please undo one of your selections"
+        * user selects 1, error message = "You must select 2, please add a selection"
+
+
+
+    (1 or 2 or 3) there is no way to programmatically communicae that
+
+    If one checkbox in the group needs to be selected, you should us a radio button
+    {% endfilter %}
+{% endblock %}

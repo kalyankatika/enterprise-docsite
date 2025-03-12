@@ -1,0 +1,1008 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components    
+    # Tile
+    A Tile provides a content container with visible boundaries. When combined with interactive elements it can also emulate the functionality of links, buttons, and selection controls.
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    {% filter markdown %}
+        ## Simple container
+    {% endfilter %}
+
+    {% set simple_cb_example %}
+    <section class="eds-tile-root">
+        <div class="eds-tile__tile">
+            <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                <eds-content-block 
+                    eds-align="left" 
+                    eds-body-full-width
+                >
+                    <img
+                        slot="image"
+                        src="/images/content-block/content-block-image.png"
+                        alt="A beautiful mountain range"
+                        class="eds-content-block__image eds-content-block__image--medium"
+                    />
+                    <h2
+                        slot="heading"
+                        class="eds-content-block__heading eds-content-block__heading--level-4"
+                    >
+                        Why choose Enterprise funds?
+                    </h2>
+                    <eds-link 
+                        slot="action" 
+                        eds-href="https://providence.xyz.com"
+                    >
+                        Learn more
+                    </eds-link>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis dapibus 
+                    et tristique ligula. In commodo pretium ligula ut euismod.
+                </eds-content-block>
+            </div>
+        </div>
+    </section>
+    {% endset %}
+
+    {% set simple_title_example %}
+    <section class="eds-tile-root">
+        <div class="eds-tile__tile">
+            <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                <eds-title eds-border="bottom">
+                    <h2 
+                        slot="heading" 
+                        class="eds-title__heading"
+                        >
+                        Balances
+                    </h2>
+                    <eds-button 
+                        slot="action" 
+                        eds-variant="tertiary" 
+                        eds-icon-left="nav__overflow-menu"
+                    ></eds-button>
+                </eds-title>
+
+                <p class="docsite-eds-tile__example--stack">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis
+                    dapibus et tristique ligula. In commodo pretium ligula ut euismod.
+                </p>
+            </div>
+        </div>
+    </section>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- With a Content Block -->
+    {{ simple_cb_example | safe | trim }}
+
+    <!-- With a Title and a paragraph -->
+    {{ simple_title_example | safe | trim }}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples = [
+            { example: simple_cb_example, 
+                class: "eds-html-example-list__item--gray-background",
+                label: "With a Content Block" 
+            },
+            { example: simple_title_example, 
+                class: "eds-html-example-list__item--gray-background",
+                label: "With a Title and a paragraph" 
+            }
+        ],
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=true,
+        code_snippet_source=code_snippet_source
+    )}}
+
+
+    {% filter markdown %}
+        ## Link emulation
+        - A Tile can act as a control that navigates to another page. 
+        - Never include additional interactive components or elements as content.
+    {% endfilter %}
+
+    {% set link_example %}
+    <section class="eds-tile-root">
+        <a class="eds-tile__tile" href="https://providence.xyz.com" target="_blank" rel="noopener">
+            <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                <eds-title 
+                    eds-border="bottom" 
+                    slot="heading"
+                >
+                    <h2 
+                        slot="heading" 
+                        class="eds-title__heading"
+                    >
+                        Balances
+                    </h2>
+                    <eds-icon 
+                        slot="action" 
+                        eds-name="action__caret-right"
+                    ></eds-icon>
+                </eds-title>
+
+                <p class="docsite-eds-tile__example--stack">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis
+                    dapibus et tristique ligula. In commodo pretium ligula ut euismod.
+                </p>
+            </div>
+        </a>
+    </section>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+      examples = [
+            { example: link_example, 
+                class: "eds-html-example-list__item--gray-background",
+                label: "With a Title, emulating a Link"
+            }
+        ],
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=true
+    )}}
+
+    {% filter markdown %}
+        ## Button emulation
+        - A Tile can act as a control that performs an action.
+        - Never include additional interactive components or elements as content.
+    {% endfilter %}
+
+    {% set button_example %}
+    <section class="eds-tile-root eds-tile--content-width">
+        <button class="eds-tile__tile">
+            <div class="eds-tile__content">
+                Lorem ipsum dolor
+            </div>
+        </button>
+    </section>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    {{ button_example | safe | trim }}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+      examples = [
+            { example: button_example, 
+                class: "eds-html-example-list__item--gray-background",
+                label: "emulating a Button" 
+            }
+        ],
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=true
+    )}}
+
+
+    {% filter markdown %}  
+        ## Group of containers or links
+        - A group of related non-interactive Tiles under a common heading.
+        - A group of related interactive Tiles under a common heading that act as controls that navigate to another pages.
+        - [Additional attribution is included](/components/tile/tile.html?tab=accessibility#group-affiliation) to aid assistive technology.
+    {% endfilter %}
+
+    {% set link_group_example %}
+
+    <eds-content-block>
+        <h2
+            slot="heading"
+            class="eds-content-block__heading eds-content-block__heading--level-2"
+        >
+            I'm investing for
+        </h2>
+        <div aria-labelledby="link-group-example-heading" role="list" class="docsite-eds-tile__example-list">
+            <section class="eds-tile-root" role="listitem">
+                <a class="eds-tile__tile" href="#" target="_blank" rel="noopener">
+                    <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                        <eds-content-block>
+                            <img
+                                slot="image"
+                                src="/images/content-block/content-block-image.png"
+                                alt="A beautiful mountain range"
+                                class="eds-content-block__image eds-content-block__image--medium"
+                            />
+                            <h3
+                                slot="heading"
+                                class="eds-content-block__heading eds-content-block__heading--level-4"
+                            >
+                                Retirement
+                            </h3>
+                            For income after you've stopped working.
+                        </eds-content-block>
+                    </div>
+                </a>
+            </section>
+        
+            <section class="eds-tile-root docsite-eds-tile__example--stack" role="listitem">
+                <a class="eds-tile__tile" href="#" target="_blank" rel="noopener">
+                    <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                        <eds-content-block>
+                            <img
+                                slot="image"
+                                src="/images/content-block/content-block-image.png"
+                                alt="A beautiful mountain range"
+                                class="eds-content-block__image eds-content-block__image--medium"
+                            />
+                            <h3
+                                slot="heading"
+                                class="eds-content-block__heading eds-content-block__heading--level-4"
+                            >
+                                Something else
+                            </h3>
+                            For something like a house or a car.
+                        </eds-content-block>
+                    </div>
+                </a>
+            </section>
+        </div>
+    </eds-content-block>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <eds-content-block>
+        <h2
+            slot="heading"
+            class="eds-content-block__heading eds-content-block__heading--level-2"
+        >
+            I'm investing for
+        </h2>
+        <div 
+            aria-labelledby="link-group-example-heading" 
+            role="list"
+        >
+            <section class="eds-tile-root" role="listitem">...</section> 
+            <section class="eds-tile-root" role="listitem">...</section> 
+        </div>
+    </eds-content-block>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples = [
+            { example: link_group_example, 
+                class: "eds-html-example-list__item--gray-background",
+                label: "A group of related Tile links" 
+            }
+        ],
+        code_snippet_source=code_snippet_source,
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=false
+    )}}
+
+    {% filter markdown %}
+        ## Group of selection controls
+    {% endfilter %}
+        
+        <eds-alert eds-variant="warning" eds-title="Feature Deprecated!">Consider using the <code>eds-tiles</code> feature of <eds-link eds-href="/components/radio-group/radio-group.html?tab=examples#tiles-modifier">Radio Group</eds-link> or <eds-link eds-href="/components/checkbox-group/checkbox-group.html?tab=examples#tiles-modifier">Checkbox Group</eds-link>.</eds-alert>
+
+    {% filter markdown %}
+        - The inclusion of checkbox or radio button elements allow a group of Tiles to emulate those controls.
+        - Never include interactive components or elements as content.
+    {% endfilter %}
+
+    {% set checkbox_group_example %}
+    <eds-content-block>
+        <h2
+            slot="heading"
+            class="eds-content-block__heading eds-content-block__heading--level-2"
+        >
+            I'm investing for
+        </h2>
+        <eds-checkbox-group
+            class="docsite-eds-tile__example--stack"
+            eds-aria-labelledby="checkbox-group-label"
+            eds-inline="never"
+            eds-required
+        >
+            <section class="eds-tile-root">
+                <input 
+                    id="tile-checkbox-retirement" 
+                    class="eds-tile__checkbox" 
+                    type="checkbox" 
+                    name="select-all-preferences" 
+                    value="retirement"
+                >
+                <label 
+                    for="tile-checkbox-retirement" 
+                    class="eds-tile__tile"
+                >
+                    <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                        <eds-content-block>
+                            <img
+                                slot="image"
+                                src="/images/content-block/content-block-image.png"
+                                alt="A beautiful mountain range"
+                                class="eds-content-block__image eds-content-block__image--medium"
+                            />
+                            <h3
+                                slot="heading"
+                                class="eds-content-block__heading eds-content-block__heading--level-4"
+                            >
+                                Retirement
+                            </h3>
+                            For income after you've stopped working.
+                        </eds-content-block>
+                    </div>
+                </label>
+            </section>
+
+            <section class="eds-tile-root">
+                <input 
+                    id="tile-checkbox-something-else" 
+                    class="eds-tile__checkbox" 
+                    type="checkbox" 
+                    name="select-all-preferences" 
+                    value="something-else"
+                >
+                <label 
+                    for="tile-checkbox-something-else" 
+                    class="eds-tile__tile"
+                >
+                    <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                        <eds-content-block>
+                            <img
+                                slot="image"
+                                src="/images/content-block/content-block-image.png"
+                                alt="A beautiful mountain range"
+                                class="eds-content-block__image eds-content-block__image--medium"
+                            />
+                            <h3
+                                slot="heading"
+                                class="eds-content-block__heading eds-content-block__heading--level-4"
+                            >
+                                Something else
+                            </h3>
+                            For something like a house or a car.
+                        </eds-content-block>
+                    </div>
+                </label>
+            </section>
+        </eds-checkbox-group>
+    </eds-content-block>
+    {% endset %}
+
+    {% set radio_group_example %}
+    <eds-content-block>
+         <h2
+            slot="heading"
+            class="eds-content-block__heading eds-content-block__heading--level-2"
+        >
+            I'm investing for
+        </h2>
+        <eds-radio-group
+            class="docsite-eds-tile__example--stack"
+            eds-aria-labelledby="radio-group-label"
+            eds-inline="never"
+            eds-required
+        >
+            <section class="eds-tile-root">
+                <input 
+                    id="tile-radio-retirement" 
+                    class="eds-tile__radio" 
+                    type="radio" 
+                    name="select-preference" 
+                    value="retirement"
+                >
+                <label 
+                    for="tile-radio-retirement" 
+                    class="eds-tile__tile"
+                >
+                    <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                        <eds-content-block>
+                            <img
+                                slot="image"
+                                src="/images/content-block/content-block-image.png"
+                                alt="A beautiful mountain range"
+                                class="eds-content-block__image eds-content-block__image--medium"
+                            />
+                            <h3
+                                slot="heading"
+                                class="eds-content-block__heading eds-content-block__heading--level-4"
+                            >
+                                Retirement
+                            </h3>
+                            For income after you've stopped working.
+                        </eds-content-block>
+                    </div>
+                </label>
+            </section>
+
+            <section class="eds-tile-root">
+                <input 
+                    id="tile-radio-something-else" 
+                    class="eds-tile__radio" 
+                    type="radio" 
+                    name="select-preference" 
+                    value="something-else"
+                >
+                <label 
+                    for="tile-radio-something-else" 
+                    class="eds-tile__tile"
+                >
+                    <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                        <eds-content-block>
+                            <img
+                                slot="image"
+                                src="/images/content-block/content-block-image.png"
+                                alt="A beautiful mountain range"
+                                class="eds-content-block__image eds-content-block__image--medium"
+                            />
+                            <h3
+                                slot="heading"
+                                class="eds-content-block__heading eds-content-block__heading--level-4"
+                            >
+                                Something else
+                            </h3>
+                            For something like a house or a car.
+                        </eds-content-block>
+                    </div>
+                </label>
+            </section>
+        </eds-radio-group>
+    </eds-content-block>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- In a Content Block, emulating a Checkbox Group -->
+    {{ checkbox_group_example | safe | trim }}
+
+    <!-- In a Content Block, emulating a Radio Group -->
+    {{ radio_group_example | safe | trim }}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+      examples = [
+            { example: checkbox_group_example, 
+                class: "eds-html-example-list__item--gray-background",
+                label: "In a Content Block, emulating a Checkbox Group" 
+            },
+            { example: radio_group_example, 
+                class: "eds-html-example-list__item--gray-background",
+                label: "In a Content Block, emulating a Radio Group" 
+            }
+        ],
+        code_snippet_source=code_snippet_source,
+        preformatted=true,
+        language="html",
+        generate_html=false,
+        show_copy_button=true
+    )}}
+
+
+    {% filter markdown %}
+        ## Width
+        - The Tile will occupy 100% of its parent container's width by default.
+        - The Tile can be set to conform to the width of its content.
+    {% endfilter %}
+
+    {% set width_example %}
+    <section class="eds-tile-root eds-tile--content-width">
+        <div class="eds-tile__tile">
+            <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                <eds-content-block eds-align="left">
+                    <img
+                        slot="image"
+                        src="/images/content-block/content-block-image.png"
+                        alt="A beautiful mountain range"
+                        class="eds-content-block__image eds-content-block__image--medium"
+                    />
+                    <h2
+                        slot="heading"
+                        class="eds-content-block__heading eds-content-block__heading--level-4"
+                    >
+                        Why choose Enterprise funds?
+                    </h2>
+                    <eds-link 
+                        slot="action" 
+                        eds-href="https://providence.xyz.com"
+                    >
+                        Learn more
+                    </eds-link>
+                    Lorem ipsum dolor sit amet.
+                </eds-content-block>
+            </div>
+        </div>
+    </section>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    {{ width_example | safe | trim }} 
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+      examples = [
+            { example: width_example, 
+                class: "eds-html-example-list__item--gray-background",
+                label: "With a Content Block, conforming to its width" 
+            }
+        ],
+        code_snippet_source='<section class="eds-tile-root eds-tile--content-width">...</section>',
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=false
+    )}}
+
+
+    {% filter markdown %}
+        ## Bottom weighting
+        Extra bottom padding may be optionally added to visually balance content inside a Tile that would otherwise appear top heavy.
+    {% endfilter %}
+
+    {% set ec_bottom_false_example %}
+    <section class="eds-tile-root">
+        <div class="eds-tile__tile">
+            <div class="eds-tile__content">
+                <eds-expand-collapse 
+                    eds-size="large"
+                >
+                    <span 
+                        slot="heading" 
+                        class="eds-expand-collapse__heading"
+                    >
+                        Why choose Enterprise funds?
+                    </span>
+                    <div class="eds-expand-collapse__content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis 
+                        dapibus et tristique ligula. In commodo pretium ligula ut euismod.
+                    </div>
+                </eds-expand-collapse>
+            </div>
+        </div>
+    </section>
+    {% endset %}
+
+    {% set ec_bottom_true_example %}
+    <section class="eds-tile-root">
+        <div class="eds-tile__tile">
+            <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                <eds-expand-collapse 
+                    eds-size="large"
+                >
+                    <span 
+                        slot="heading" 
+                        class="eds-expand-collapse__heading"
+                    >
+                        Why choose Enterprise funds?
+                    </span>
+                    <div class="eds-expand-collapse__content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis 
+                        dapibus et tristique ligula. In commodo pretium ligula ut euismod.
+                    </div>
+                </eds-expand-collapse>
+            </div>
+        </div>
+    </section>
+    {% endset %}
+
+    {% set cb_bottom_false_example %}
+    <section class="eds-tile-root">
+        <div class="eds-tile__tile">
+            <div class="eds-tile__content">
+                <eds-content-block 
+                    eds-align="left"
+                    eds-body-full-width
+                >
+                    <img
+                        slot="image"
+                        src="/images/content-block/content-block-image.png"
+                        alt="A beautiful mountain range"
+                        class="eds-content-block__image eds-content-block__image--medium"
+                    />
+                    <h2
+                        slot="heading"
+                        class="eds-content-block__heading eds-content-block__heading--level-4"
+                    >
+                        Why choose Enterprise funds?
+                    </h2>
+                    <eds-link slot="action" eds-href="https://providence.xyz.com">Learn more</eds-link>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis dapibus 
+                    et tristique ligula. In commodo pretium ligula ut euismod.
+                </eds-content-block>
+            </div>
+        </div>
+    </section>
+    {% endset %}
+
+    {% set cb_bottom_true_example %}
+    <section class="eds-tile-root">
+        <div class="eds-tile__tile">
+            <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                <eds-content-block 
+                    eds-align="left"
+                    eds-body-full-width
+                >
+                    <img
+                        slot="image"
+                        src="/images/content-block/content-block-image.png"
+                        alt="A beautiful mountain range"
+                        class="eds-content-block__image eds-content-block__image--medium"
+                    />
+                    <h2
+                        slot="heading"
+                        class="eds-content-block__heading eds-content-block__heading--level-4"
+                    >
+                        Why choose Enterprise funds?
+                    </h2>
+                    <eds-link slot="action" eds-href="https://providence.xyz.com">Learn more</eds-link>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis dapibus 
+                    et tristique ligula. In commodo pretium ligula ut euismod.
+                </eds-content-block>
+            </div>
+        </div>
+    </section>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples = [
+                
+                { example: ec_bottom_false_example, 
+                    class: "eds-html-example-list__item--gray-background",
+                    label: "Not bottom weighted" 
+                },
+                { example: ec_bottom_true_example, 
+                    class: "eds-html-example-list__item--gray-background",
+                    label: "Bottom weighted (for comparison)" 
+                },
+                { example: cb_bottom_false_example, 
+                    class: "eds-html-example-list__item--gray-background",
+                    label: "Not bottom weighted" 
+                },
+                { example: cb_bottom_true_example, 
+                    class: "eds-html-example-list__item--gray-background",
+                    label: "Bottom weighted (for comparison)" 
+                }
+            ],
+        code_snippet_source='
+            <section class="eds-tile-root">
+                <div class="eds-tile__tile">
+                    <div class="eds-tile__content eds-tile__content--bottom-weighted">...</div>
+                </div>
+            </section>',
+        language="html",
+        preformatted=true,
+        generate_html=false,
+        show_copy_button=false
+    )}}
+
+
+    {% filter markdown %}
+        ## Interactive display variants
+        Provided when a Tile emulates a Link, Button, or unselected Checkbox or Radio Button.
+    {% endfilter %}
+    
+    {% set unselected_example %}
+    <section class="eds-tile-root">
+        <button class="eds-tile__tile">
+            <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                <eds-content-block 
+                    eds-align="left"
+                    eds-body-full-width
+                >
+                    <h2
+                        slot="heading"
+                        class="eds-content-block__heading"
+                    >
+                        Why choose Enterprise funds?
+                    </h2>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis dapibus 
+                    et tristique ligula. In commodo pretium ligula ut euismod.
+                </eds-content-block>
+            </div>
+        </button>
+    </section>
+    {% endset %}
+
+    <br>
+
+    {{ library.eds_html_example_list(
+        examples = [
+            { example: unselected_example, 
+                label: "Default/Unselected",
+                class: "eds-html-example-list__item--gray-background" 
+            },
+            { example: unselected_example, 
+                label: "Hover state",
+                class: "eds-html-example-list__item--gray-background eds-html-example-list__tile--unselected-hover" 
+            },
+            { example: unselected_example, 
+                label: "Focus state",
+                class: "eds-html-example-list__item--gray-background eds-html-example-list__tile--unselected-focus" 
+            },
+            { example: unselected_example, 
+                label: "Active state",
+                class: "eds-html-example-list__item--gray-background eds-html-example-list__tile--unselected-active" 
+            }
+        ]
+    )}}
+
+    {% filter markdown %}    
+        ### Selected Tiles
+        Additional styling provided when a Tile emulates a selected Checkbox or Radio Button.
+    {% endfilter %}
+
+    {% set selected_example %}
+    <section class="eds-tile-root">
+        <input class="eds-tile__checkbox" type="checkbox" checked>
+        <label class="eds-tile__tile">
+            <div class="eds-tile__content eds-tile__content--bottom-weighted">
+                <eds-content-block 
+                    eds-align="left"
+                    eds-body-full-width
+                >
+                    <h2
+                        slot="heading"
+                        class="eds-content-block__heading"
+                    >
+                        Why choose Enterprise funds?
+                    </h2>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mi nec massa iaculis dapibus 
+                    et tristique ligula. In commodo pretium ligula ut euismod.
+                </eds-content-block>
+            </div>
+        </label>
+    </section>
+    {% endset %}
+
+    <br>
+
+    {{ library.eds_html_example_list(
+        examples = [
+            { example: selected_example, 
+                label: "Selected",
+                class: "eds-html-example-list__item--gray-background" 
+            },
+            { example: selected_example, 
+                label: "Selected-Hover state",
+                class: "eds-html-example-list__item--gray-background eds-html-example-list__tile--selected-hover" 
+            },
+            { example: selected_example, 
+                label: "Selected-Focus state",
+                class: "eds-html-example-list__item--gray-background eds-html-example-list__tile--selected-focus"
+            },
+            { example: selected_example, 
+                label: "Selected-Active state",
+                class: "eds-html-example-list__item--gray-background eds-html-example-list__tile--selected-active"
+            }
+        ]
+    )}}
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/layout/card/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+
+    {% filter markdown %}
+    ## Use when
+    - Presenting a single block of summary data
+    - Presenting a set of choices, each of which require additional primary content elements (e.g., a spot illustration, and/or supporting short-form content.)
+    
+
+    ## Don't use when
+    Presenting detailed, long-form content. (e.g., As a background for an entire section of a page.)
+
+
+    ## Visual style
+    ### Anatomy and construction
+    {% endfilter %}
+
+    {% set tile_anatomy_caption %} 
+        <ol class="eds-figure__figcaption-inline-list">
+        <li>Content area (required)</li>
+        <li>Bottom weighting</li>
+        </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/tile/doc-tile-anatomy.png 1x,
+            ../images/tile/doc-tile-anatomy@2x.png 2x
+        ",
+        alt="Diagram identifying the anatomy of the Tile component.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="",
+        caption=tile_anatomy_caption,
+        sentiment="neutral"
+        ) 
+    }}
+
+    {% filter markdown %}
+    ## Behavior
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/tile/doc-tile-padding.png 1x,
+            ../images/tile/doc-tile-padding@2x.png 2x
+        ",
+        alt="Diagram show the Tile's default padding.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="",
+        caption="Default padding",
+        sentiment="neutral"
+        ) 
+    }}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/tile/doc-tile-padding-wide.png 1x,
+            ../images/tile/doc-tile-padding-wide@2x.png 2x
+        ",
+        alt="Diagram showing the Tile's padding in viewports wider than 768px.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="",
+        caption="Padding values change in viewports wider than 768px.",
+        sentiment="neutral"
+        ) 
+    }}
+
+    {% filter markdown %}
+    ## Content
+    Consider using a heading. This can be achieved with a <eds-link eds-href="/components/content-block/content-block.html">Content Block</eds-link> or a <eds-link eds-href="/components/title/title.html">Title</eds-link>.
+
+    {% endfilter %}
+    {{ library.eds_figure(
+        srcset="
+            ../images/tile/doc-tile-parallel-do.png 1x,
+            ../images/tile/doc-tile-parallel-do@2x.png 2x
+        ",
+        alt="Diagram show a group of Tiles with different heading sizes and spot illustrations.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="Always ",
+        caption="practice parallel construction.",
+        sentiment="positive"
+        ) 
+    }}
+    
+    {{ library.eds_figure(
+        srcset="
+            ../images/tile/doc-tile-parallel-dont.png 1x,
+            ../images/tile/doc-tile-parallel-dont@2x.png 2x
+        ",
+        alt="Diagram show a group of Tiles with different heading sizes and spot illustrations.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="Never ",
+        caption="present an interactive group of Tiles with inconsistent sets of content elements.",
+        sentiment="negative"
+        ) 
+    }}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/tile/doc-tile-interactive-do.png 1x,
+            ../images/tile/doc-tile-interactive-do@2x.png 2x
+        ",
+        alt="Diagram show a group of Tiles with different heading sizes and spot illustrations.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="Always ",
+        caption="design an interactive Tile to perform a single function.",
+        sentiment="positive"
+        ) 
+    }}
+    
+    {{ library.eds_figure(
+        srcset="
+            ../images/tile/doc-tile-interactive-dont.png 1x,
+            ../images/tile/doc-tile-interactive-dont@2x.png 2x
+        ",
+        alt="Diagram show a group of Tiles with different heading sizes and spot illustrations.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=true,
+        label="Never ",
+        caption="present an interactive Tile that includes other interactive components or elements as content. This will introduce a conflict when the Tile is emulating a Link, Checkbox, Radio Button, or Button.",
+        sentiment="negative"
+        ) 
+    }}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## CSS block classes
+    | Class name          | Applies to                                                                      | Description                                  |
+    | ------------------- | ------------------------------------------------------------------------------- | -------------------------------------------- |
+    | `.eds-tile-root`    | Any "block" display element (e.g., `<section class="eds-tile-root"></section>`) | Defines the outermost container of the Tile. |
+
+
+    ## CSS element classes
+    | Class name            | Applies to                                                                                                                                                                                                        | Description                                                                                                                                                                                          |
+    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `.eds-tile__tile`     | Any "block" display element (e.g., `<div>`) to create a non-interactive Tile container, an `<a>` to create a Link Tile, a `<button>` to create a Button Tile, and a `<label>` to create a Checkbox or Radio Tile. | Defines the outermost container of the Tile.                                                                                                                                                         |
+    | `.eds-tile__checkbox` | An `<input>` element of type `checkbox` (e.g., `<input type="checkbox" class="eds-tile__checkbox">`).                                                                                                             | Ensures the native form control is visible only to screen readers.<br><br>Adds additional interactive states to `.eds-tile__tile` for selected, selected hover, selected focus, and selected active. |
+    | `.eds-tile__radio`    | An `<input>` element of type `radio` (e.g., `<input type="radio" class="eds-tile__radio">`).                                                                                                                      | Ensures the native form control is visible only to screen readers.<br><br>Adds additional interactive states to `.eds-tile__tile` for selected, selected hover, selected focus, and selected active. |
+    | `.eds-tile__content`  | Any element that wraps the Tile content (e.g., `<p class="eds-tile__content">My Tile content</p>`).                                                                                                               | Applies the Enterprise Sans font-family with "medium" responsive text.<br><br>This class can be ommitted depending on the use case.                                                                    |
+
+
+    ## CSS modifier classes
+    | Class name                              | Applies to           | Outcome                                                                                                                      |
+    | --------------------------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+    | `.eds-tile--content-width`              | `.eds-tile-root`     | Tile width will be determined by the width of its content.                                                                   |
+    | `.eds-tile__content--bottom-weighted`   | `.eds-tile__content` | Adds additional bottom padding. Consider using this class to improve visual balance when the content contains a heading. |
+    | `.eds-tile__content--small`             | `.eds-tile__content` | Adjusts the style to render a "small" Tile.                                                                                  |
+    | `.eds-tile__content--medium`            | `.eds-tile__content` | Adjusts the style to render a "medium" Tile.                                                                                 |
+    | `.eds-tile__content--large`             | `.eds-tile__content` | Adjusts the style to render a "large" Tile.                                                                                  |
+    {% endfilter %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-tile-root eds-tile--content-width">
+            <div class="eds-tile__tile">My namespaced Tile</div>
+        </div>
+    {% endset %}
+
+{{ library.namespacing(component_name="Tile", root_class="tile-root", namespace_example_html=namespace_example_html) }}
+
+{# IMPORT REFERENCE #}
+
+{{ library.import_reference(component_name="Tile") }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+        ## Interactive variants
+        ### Link
+        Tile uses the HTML anchor element (`<a>`) when functioning as a link. Refer to [Enterprise's Accessibility Standards for the anchor element](http://accessibility.xyz.com/guide/html-element/a/) for details on how to make links accessible. 
+
+        ### Button
+        Tile uses the HTML button element (`<button>`) when functioning as a button. Refer to [Enterprise's Accessibility Standards for the button element](http://accessibility.xyz.com/guide/html-element/button/) for details on how to make buttons accessible.
+
+        ### Checkbox
+        Tile uses the HTML input element (`<input type="checkbox">`) when functioning as a checkbox. Refer to [Enterprise's Accessibility Standards for checkboxes](http://accessibility.xyz.com/guide/html-element/input-type-checkbox/) for details on how to make checkboxes accessible.
+
+        ### Radio Button
+        Tile uses the HTML button element (`<input type="radio">`) when functioning as a radio button. Refer to [Enterprise's Accessibility Standards for radio buttons](http://accessibility.xyz.com/guide/html-element/input-type-radio/) for details on how to make radio buttons accessible.
+
+        ## Group affiliation
+        Groupings of three or more related Tiles require additional markup so they can be navigated as a list, improving the experience of someone using assistive technology. 
+
+        If the list does not have a visible label, consider adding an element that is visible only to assistive technology and associating it with the list using `aria-labelledby`. The [eds-screen-reader-only Sass mixin](/visual-style/mixins/mixins.html?tab=current-mixins#accessibility) makes it easy to define a new screen-reader-only CSS class in your application. 
+    {% endfilter %}
+
+    {% set code_example %}
+    <div class="screen-reader-only" id="tile-list-heading">Tile list heading</div>
+    <div aria-labelledby="tile-list-heading" role="list">
+        <section class="eds-tile-root" role="listitem">...</section>
+        <section class="eds-tile-root" role="listitem">...</section>
+        <section class="eds-tile-root" role="listitem">...</section>
+    </div>
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=code_example, show_copy_button=false) }}
+{% endblock %}

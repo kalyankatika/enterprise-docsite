@@ -1,0 +1,507 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Radio Button
+    A Radio Button provides a way to select a single option from a set of choices. 
+
+    Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>.
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Default
+    * Never use this component on its own. 
+    * Always accompany this component with a clear and concise [Label](/components/label/label.html) inside a [Field Group](/components/field-group/field-group.html) to meet accessibility guidelines.
+    * Always combine multiple Radio Buttons in a [Radio Group](/components/radio-group/radio-group.html).
+    {% endfilter %}
+
+    {% set unchecked_example %}
+    <eds-radio>Option A</eds-radio>
+    {% endset %}
+
+    {% set unchecked_disabled_example %}
+    <eds-radio eds-disabled>Option A</eds-radio>
+    {% endset %}
+
+    {% set checked_example %}
+    <eds-radio eds-checked>Option A</eds-radio>
+    {% endset %}
+
+    {% set checked_disabled_example %}
+    <eds-radio eds-checked eds-disabled>Option A</eds-radio>
+    {% endset %}
+
+    {% set default_examples %}
+    <!-- Unchecked -->
+    {{unchecked_example | safe | trim}}
+
+    <!-- Unchecked disabled -->
+    {{unchecked_disabled_example | safe | trim}}
+
+    <!-- Checked -->
+    {{checked_example | safe | trim}}
+
+    <!-- Checked disabled -->
+    {{checked_disabled_example | safe | trim}}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: unchecked_example,
+                label: "Unchecked"
+            },
+            {
+                example: unchecked_example,
+                label: "Unchecked hover",
+                class: "eds-radio--hover",
+                generate_html: false
+            },
+            {
+                example: unchecked_example,
+                label: "Unchecked focus",
+                class: "eds-radio--focus",
+                generate_html: false
+            },
+            {
+                example: unchecked_example,
+                label: "Unchecked active",
+                class: "eds-radio--active",
+                generate_html: false
+            },
+            {
+                example: unchecked_disabled_example,
+                label: "Unchecked disabled",
+                generate_html: false
+            },
+            {
+                example: checked_example,
+                label: "Checked",
+                generate_html: false
+            },
+            {
+                example: checked_example,
+                label: "Checked hover",
+                class: "eds-radio--checked-hover",
+                generate_html: false
+            },
+            {
+                example: checked_example,
+                label: "Checked focus",
+                class: "eds-radio--checked-focus",
+                generate_html: false
+            },
+            {
+                example: checked_example,
+                label: "Checked active",
+                class: "eds-radio--checked-active",
+                generate_html: false
+            },
+            {
+                example: checked_disabled_example,
+                label: "Checked disabled",
+                generate_html: false
+            }
+        ],
+        language='html',
+        show_copy_button=false,
+        preformatted=true,
+        code_snippet_source=default_examples
+    )}}
+
+    <h2 class="docsite__linkable-heading">With Microcopy</h2>
+
+    {% filter markdown %}
+    Use <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> to add additional context to a single option, if necessary.
+    {% endfilter %}
+
+    {% set with_microcopy_example %}
+    <eds-radio eds-aria-describedby="with-microcopy">
+        Option A
+        <eds-microcopy eds-id="with-microcopy" slot="microcopy">
+            This is microcopy about Option A.
+        </eds-microcopy>
+    </eds-radio>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(example=with_microcopy_example) }}
+
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+
+    {% set size_large_example %}
+    <eds-radio eds-size="large">Option A</eds-radio>
+    {% endset %}
+
+    {% set size_medium_example %}
+    <eds-radio>Option A</eds-radio>
+    {% endset %}
+
+    {% set size_small_example %}
+    <eds-radio eds-size="small">Option A</eds-radio>
+    {% endset %}
+
+
+    {% set size_examples %}
+    <!-- Large -->
+    {{size_large_example | safe | trim}}
+
+    <!-- Medium (default) -->
+    {{size_medium_example | safe | trim}}
+
+    <!-- Small -->
+    {{size_small_example | safe | trim}}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: size_large_example,
+                label: "Large"
+            },
+            {
+                example: size_medium_example,
+                label: "Medium (default)"
+            },
+            {
+                example: size_small_example,
+                label: "Small"
+            }
+        ],
+        language='html',
+        show_copy_button=false,
+        preformatted=true,
+        code_snippet_source=size_examples
+    )}}
+    
+    <h2 class="docsite__linkable-heading">Radio Groups and Field Groups</h2>
+
+    {% set stacked_group_example %}
+    <eds-field-group>
+        <eds-label eds-id="stacked-group-label">Choose one</eds-label>
+        <eds-radio-group eds-aria-labelledby="stacked-group-label">
+            <eds-radio eds-name="stacked-group-options" eds-value="option-a">
+                Option A
+            </eds-radio>
+
+            <eds-radio eds-name="stacked-group-options" eds-value="option-b">
+                Option B
+            </eds-radio>
+
+            <eds-radio eds-name="stacked-group-options" eds-value="option-c">
+                Option C
+            </eds-radio>
+
+            <eds-radio eds-name="stacked-group-options" eds-value="option-d">
+                Option D
+            </eds-radio>
+        </eds-radio-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: stacked_group_example,
+                label: "Stacked Radio Group (default)"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+    {% set inline_group_example %}
+    <eds-field-group>
+        <eds-label eds-id="inline-group-label">
+            Are you or an immediate family/household member a director,
+            corporate officer, or 10% shareholder of a publicly held company?
+        </eds-label>
+        <eds-radio-group
+            eds-aria-labelledby="inline-group-label"
+            eds-inline="at-512"
+        >
+            <eds-radio eds-name="shareholder" eds-value="yes">Yes</eds-radio>
+            <eds-radio eds-name="shareholder" eds-value="no">No</eds-radio>
+        </eds-radio-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: inline_group_example,
+                label: "Inline Radio Group"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">Display data</h2>
+
+    {% filter markdown(includeWrapper=false) %}
+    - The Radio Group does not offer a "display" state.
+    - Display data is presented in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> as styled text. Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+    {% endfilter %}
+
+    {% set in_field_display_data_example %}
+    <eds-field-group>
+        <eds-label>Your preference</eds-label>
+        <p class='eds-field-group__display-data'>Option C</p>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_display_data_example,
+                label: "Display Data as a paragraph",
+                language: "html"
+            }
+        ]
+    ) }}
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/data-entry/radio/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+    
+    {% filter markdown %}
+    ## Use when
+    - A person may need to select a single option from a set of choices.
+    - All of the options available need to be seen so they can be easily compared.
+
+    ## Don't use when
+    - There is a single binary choice to be made. Instead, use a <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link>.
+    - There are more than 5–7 options. Instead, use a  <eds-link eds-href="/components/select/select.html">Select</eds-link>.
+    - The options are easily predictable like a month or a state name. Instead, use a <eds-link eds-href="/components/select/select.html">Select</eds-link>.
+    - More than one choice may be. Instead, use a <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link>.
+
+    ## Behavior
+    - The actual size of "small", "medium", and "large" Radio Buttons will change in response to browser width.
+    - The touch target includes the control and the <eds-link eds-href="/components/label/label.html">Label</eds-link>.
+    - Only set a default choice when it makes sense from the perspective of someone making a selection.
+    - Include an item labeled "None" when there's an option to not select one of the items otherwise displayed.
+    - Selection data is submitted using a <eds-link eds-href="/components/button/button.html">Button</eds-link>.
+
+    ## Content
+    - Write the Radio Button text and <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> clearly and concisely.
+    - Always use sentence case.
+    {% endfilter %}
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute                     | Type    | Validation                                                                                                                                               | Default                       | Description                                                                                                                                                                                                                                                                                                                                         |
+    | ----------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-describedby`        | string  | --                                                                                                                                                       | --                            | A string of `id`'s separated by spaces that will be set as the `aria-describedby` attribute on the native `<input>` element.                                                                                                                                                                                                                        |
+    | `eds-checked`                 | boolean | Anything other than empty string, `true`, or `eds-checked` will be treated as `false`.                                                                   | `false`                       | Indicates whether the Radio Button component should be "checked".<br><br>The value of `eds-checked` will be reflected to the native checked attribute of the native `<input>` element.                                                                                                                                                              |
+    | `eds-disabled`                | boolean | Anything other than empty string, `true`, or `eds-disabled` will be treated as `false`.                                                                  | `false`                       | Indicates whether the Radio Button component should be disabled.<br><br>The value of `eds-disabled` will be reflected to the native disabled attribute of the native `<input>` element and will set `aria-disabled="true"`.                                                                                                                         |
+    | `eds-id`                      | string  | --                                                                                                                                                       | *A randomly generated number* | Sets the `id` to the native `<input>` element. Used to associate the native `<input>` element with the native `<label>` element.<br><br>A randomly generated value will be used if `eds-id` is not provided.                                                                                                                                        |
+    | `eds-name`                    | string  | --                                                                                                                                                       | --                            | Multiple Radio Button components will be associated with one another when given the same `eds-name`.<br><br>The value of `eds-name` will be reflected to the native name attribute of the native `<input>` element.                                                                                                                                 |
+    | `eds-native-input-attributes` | object  | string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information.  | --                            | Sets native or custom attributes on the native `<input>` element.                                                                                                                                                                                                                                                                                   |
+    | `eds-required`                | boolean | Anything other than empty string, `true`, or `eds-required` will be treated as `false`.                                                                  | `false`                       | Indicates whether a Radio Button within the same group is required. See the <eds-link eds-href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required" eds-new-window>MDN</eds-link> documentation on the `required` attribute for more details.<br><br>Setting `eds-required` will set `required` on the native `<input>` element. |
+    | `eds-size`                    | string  | `small`, `medium`, `large`                                                                                                                               | `medium`                      | Determines the size of the Radio Button component.                                                                                                                                                                                                                                                                                                  |
+    | `eds-text`                    | string  | --                                                                                                                                                       | --                            | The text used to label the Radio Button.                                                                                                                                                                                                                                                                                                            |
+    | `eds-value`                   | string  | --                                                                                                                                                       | --                            | `eds-value` is used to set the value attribute of the native `<input>` element. See <eds-link eds-href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#Value" eds-new-window>MDN's documentation</eds-link> for more details on how the value attribute is used in context of Radio Buttons.                                 |
+    {% endfilter %}
+
+    {% include "src/templates/partials/two-way-data-binding.njk" %}
+
+    {{ library.native_attributes(nativeAttrProps=['eds-native-input-attributes']) }}
+
+    {% filter markdown %}
+    ### Usage examples
+
+    The following are different examples of how to add native or custom attributes.
+    Always check recommendations from your framework on best pratices when interacting with DOM elements.
+
+    Using `eds-native-input-attributes` as an attribute:
+    {% endfilter %}
+
+    {% set radio_native_attribute_attr_example %}
+        <eds-radio
+            id="nativeAttributesExampleRadio"
+            eds-native-input-attributes='{"alt": "check to choose Option A"}'>
+        </eds-radio>
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        source=radio_native_attribute_attr_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    Using `eds-native-input-attributes` as a JavaScript property:
+    {% endfilter %}
+
+    {% set radio_native_attribute_example %}
+        <eds-radio id="nativeAttributesExampleRadio"></eds-radio>
+
+        <script>
+            let radio = document.querySelector('#nativeAttributesExampleRadio');
+            
+            radio.edsNativeInputAttributes = {
+                alt: 'check to choose Option A'
+            };
+        </script>
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        source=radio_native_attribute_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    ## Slots
+
+    | Slot name   | Default content | Description                                                                                                                                                                                                                                                                                            |
+    | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | `default`   | --              | If both the `eds-text` attribute and default slot are set, the slot content will be rendered.                                                                                                                                                |
+    | `microcopy` | --              | When additional context is necessary, use to properly position a <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> component with the Radio Button component.<br><br>Refer to the <eds-link eds-href="?tab=accessibility">Accessibility</eds-link> tab for more details.  |
+
+    ### Slot usage example
+    {% endfilter %}
+
+    {% set slot_usage_example %}
+    <eds-radio eds-aria-describedby="slotted-microcopy">
+        Slotted text
+        <eds-microcopy slot="microcopy" eds-id="slotted-microcopy">
+            Using the <code>microcopy</code> slot
+        </eds-microcopy>
+    </eds-radio>
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=slot_usage_example,
+        show_copy_button=false
+    )}}
+
+    {% filter markdown %}
+    ## Events
+    
+     The Radio Button component does not emit any custom events.
+
+    ## Methods
+    The Radio Button component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name           | Applies to        | Outcome                                                        |
+    | -------------------- | ----------------- | -------------------------------------------------------------- |
+    | `.eds-radio--small`  | `.eds-radio-root` | Adjusts the style to render a "small" Radio Button component.  |
+    | `.eds-radio--medium` | `.eds-radio-root` | Adjusts the style to render a "medium" Radio Button component. |
+    | `.eds-radio--large`  | `.eds-radio-root` | Adjusts the style to render a "large" Radio Button component.  |
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-radio>...</eds3-radio>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-radio-root eds-radio--medium">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Radio Button", root_class="radio-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                          | Required      |
+| ------------------------------------------------------------------------------- | ------------- |
+| `import { edsRadio } from '@xyz-ap153177/apex-kit';`                          | Yes           |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Radio Button", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Radio Buttons in Radio Groups
+
+    ### Required fields
+    - Always use `aria-required="true"` for fields that are required.
+    - Use the `eds-required` attribute of the web component to configure the `aria-required` attribute automatically.
+
+    ### Disabled fields
+    - Always use `aria-disabled="true"` for fields that are disabled.
+    - Use the `eds-disabled` attribute of the web component to configure the `aria-disabled` attribute automatically.
+
+    ### Radio with Microcopy
+    - <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> can be used to provide additional context to a Radio Button component when needed. This can be accomplished via the `microcopy` slot and `eds-aria-describedby`.
+    {% endfilter %}
+
+    {% set microcopy_a11y_example %}
+    <eds-radio eds-aria-describedby="a11y-microcopy">
+        Option A
+        <eds-microcopy slot="microcopy" eds-id="a11y-microcopy">
+            This is microcopy about Option A
+        </eds-microcopy>
+    </eds-radio>
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=microcopy_a11y_example,
+        show_copy_button=false
+    )}}
+
+    {% filter markdown %}
+    ## Error indication within Radio Groups
+    Radio Button components should be used within a group; therefore, error indication should be applied to the Radio Group rather than to the individual Radio Button components.
+    {% endfilter %}
+
+    {% set error_a11y_example %}
+    <eds-field-group>
+        <eds-label eds-id="error-a11y-label">Select all that apply</eds-label>
+
+        <eds-radio-group
+            eds-aria-labelledby="error-a11y-label"
+            eds-aria-describedby="error-a11y-alert"
+            eds-error
+        >
+            <eds-radio eds-name="preference" eds-value="phone">
+                Phone
+            </eds-radio>
+
+            <eds-radio eds-name="preference" eds-value="email">
+                Email
+            </eds-radio>
+
+            <eds-radio eds-name="preference" eds-value="smoke-signal">
+                Smoke signal
+            </eds-radio>
+        </eds-radio-group>
+
+        <eds-inline-alert eds-id="error-a11y-alert">
+            You must make a selection.
+        </eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        source=error_a11y_example,
+        show_copy_button=false,
+        preformatted=true
+    )}}
+{% endblock %}

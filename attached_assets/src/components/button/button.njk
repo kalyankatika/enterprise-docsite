@@ -1,0 +1,793 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+        ##### Components
+        # Button
+        A Button provides a way of initiating an action or task.
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    <h2 class="docsite__linkable-heading">Primary action</h2>
+        <ul class="docsite__list docsite__list--unordered" role="list">
+        <li class="docsite__list-item">Primary actions signify the most important thing the user needs to do to begin or advance the completion of a task.</li>
+        <li class="docsite__list-item">Limit the use of primary actions to one per page or layer.</li>
+        <li class="docsite__list-item">See the <abc-link abc-href="?tab=design#visual-style">Visual style</abc-link> section for usage information about "disabled" Buttons.</li>
+    </ul>
+
+
+    {{ library.abc_code_example_pair(
+        examples=[
+            {
+                example: '<abc-button>Primary action</abc-button>',
+                label: "Default"
+            },
+            {
+                example: '<abc-button data-state="hover">Primary action</abc-button>',
+                label: "Hover",
+                generate_html: false
+            },
+            {
+                example: '<abc-button data-state="focus">Primary action</abc-button>',
+                label: "Focus",
+                generate_html: false
+            },
+            {
+                example: '<abc-button data-state="active">Primary action</abc-button>',
+                label: "Active",
+                generate_html: false
+            }
+            
+        ],
+        code_snippet_source='<abc-button>Primary action</abc-button>',
+        language='html',
+        show_copy_button=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">Secondary action</h2>
+    <ul class="docsite__list docsite__list--unordered" role="list">
+        <li class="docsite__list-item">Use instead of a link for in-page actions.</li>
+        <li class="docsite__list-item">See the <abc-link abc-href="?tab=design#visual-style">Visual style</abc-link> section for usage information about "disabled" Buttons.</li>
+    </ul>
+    {{ library.abc_code_example_pair(
+        examples=[
+             {
+                example: '<abc-button abc-variant="secondary">Secondary action</abc-button>',
+                label: "Default"
+            },
+            {
+                example: '<abc-button abc-variant="secondary" data-state="hover">Secondary action</abc-button>',
+                label: "Hover",
+                generate_html: false
+            },
+            {
+                example: '<abc-button abc-variant="secondary" data-state="focus">Secondary action</abc-button>',
+                label: "Focus",
+                generate_html: false
+            },
+            {
+                example: '<abc-button abc-variant="secondary" data-state="active">Secondary action</abc-button>',
+                label: "Active",
+                generate_html: false
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+
+
+    <h2 class="docsite__linkable-heading">Tertiary action</h2>
+    <ul class="docsite__list docsite__list--unordered" role="list">
+        <li class="docsite__list-item">Use instead of a link for in-page actions.</li>
+        <li class="docsite__list-item">See the <abc-link abc-href="?tab=design#visual-style">Visual style</abc-link> section for usage information about "disabled" Buttons.</li>
+    </ul>
+
+    {{ library.abc_code_example_pair(
+        examples=[
+            {
+                example: '<abc-button abc-variant="tertiary">Tertiary action</abc-button>',
+                label: "Default"
+            },
+            {
+                example: '<abc-button abc-variant="tertiary" data-state="hover">Tertiary action</abc-button>',
+                label: "Hover",
+                generate_html: false
+            },
+            {
+                example: '<abc-button abc-variant="tertiary" data-state="focus">Tertiary action</abc-button>',
+                label: "Focus",
+                generate_html: false
+            },
+            {
+                example: '<abc-button abc-variant="tertiary" data-state="active">Tertiary action</abc-button>',
+                label: "Active",
+                generate_html: false
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+
+
+    <h2 class="docsite__linkable-heading">Invitation</h2>
+    <br>
+    <abc-alert abc-disable-a11y-attributes abc-variant="warning" abc-title="Deprecation warning">
+        Please note that the invitation button variants will no longer be supported after Apex Kit for Web v5.
+        Any instances of the invitation button in an application should be updated to use one of the variants above before upgrading to the next major version.
+    </abc-alert>
+    <ul class="docsite__list docsite__list--unordered" role="list">
+        <li class="docsite__list-item">Only use “invitation” actions to communicate “account opening” or benefits “enrollment.”</li>
+        <li class="docsite__list-item">Only the "large" size is available so that the Button meets accessibility color contrast specifications.</li>
+        <li class="docsite__list-item">See the <abc-link abc-href="?tab=design#visual-style">Visual style</abc-link> section for usage information about "invitation" and "disabled" Buttons.</li>
+    </ul>
+    {{ library.abc_code_example_pair(
+        examples=[
+            {
+                example: '<abc-button abc-variant="invitation" abc-size="large">Invitation</abc-button>',
+                label: "Default"
+            },
+            {
+                example: '<abc-button abc-variant="invitation" abc-size="large" data-state="hover">Invitation</abc-button>',
+                label: "Hover",
+                generate_html: false
+            },
+            {
+                example: '<abc-button abc-variant="invitation" abc-size="large" data-state="focus">Invitation</abc-button>',
+                label: "Focus",
+                generate_html: false
+            },
+            {
+                example: '<abc-button abc-variant="invitation" abc-size="large" data-state="active">Invitation</abc-button>',
+                label: "Active",
+                generate_html: false
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">With icons</h2>
+    <p>Use an icon to add additional context.</p>
+    
+    {% set icon_example_source %}
+        <!-- Left icon -->
+        <abc-button abc-icon-left="action__print">Primary action</abc-button>
+
+        <!-- Right icon-->  
+        <abc-button abc-icon-right="action__caret-right">Primary action</abc-button>
+        
+        <!-- Both sides-->  
+        <abc-button abc-icon-left="action__print" abc-icon-right="action__caret-right">Primary action</abc-button>
+    {% endset %}
+    
+    {{ library.abc_code_example_pair(
+        examples=[
+            {
+                example: '<abc-button abc-icon-left="action__print">Primary action</abc-button>',
+                label: "Left icon"
+            },
+            {
+                example: '<abc-button abc-icon-right="action__caret-right">Primary action</abc-button>',
+                label: "Right icon"
+            },
+            {
+                example: '<abc-button abc-icon-left="action__print" abc-icon-right="action__caret-right">Primary action</abc-button>',
+                label: "Icons on both sides"
+            }         
+        ],
+        code_snippet_source=icon_example_source,
+        preformatted=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">Icon-only</h2>
+    {% filter markdown %}
+    - Use "secondary" or "tertiary" Button styles. 
+    - Use for in-page actions when there is no mistaking its function.
+    - Consider using <abc-link abc-href="/components/button/button.html?tab=accessibility#icon-only-1">screen-reader-only text</abc-link> or a <abc-link abc-href="/components/tooltip/tooltip.html">Tooltip</abc-link> to add further context.
+    - In some cases, it can be placed inside a text field (e.g., search, get a quote, et al.).
+    {% endfilter %}
+
+    {% set icon_only_secondary_example %}
+    <abc-button abc-variant="secondary" abc-icon-left="action__chat" abc-icon-only>
+        Click to chat
+    </abc-button>
+    {% endset %}
+
+    {% set icon_only_tertiary_example %}
+    <abc-button abc-variant="tertiary" abc-icon-left="action__hide" abc-icon-only>
+        Hide
+    </abc-button>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Secondary -->
+    {{ icon_only_secondary_example | safe | trim }}
+
+    <!-- Tertiary -->
+    {{ icon_only_tertiary_example | safe | trim }}
+    {% endset %}
+
+    {{ library.abc_code_example_pair(
+        examples=[
+            {
+                example: icon_only_secondary_example,
+                label: "Secondary"
+            },
+            {
+                example: icon_only_tertiary_example,
+                label: "Tertiary"
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true,
+        code_snippet_source=code_snippet_source
+    )}}
+
+
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+    {% set size_example_source %}
+        <!-- Large -->
+        <abc-button abc-size="large">Primary action</abc-button>
+
+        <!-- Medium (Default)-->  
+        <abc-button>Primary action</abc-button>
+        
+        <!-- Small-->  
+        <abc-button abc-size="small">Primary action</abc-button>
+    {% endset %}
+    {{ library.abc_code_example_pair(
+        examples=[
+            {
+                example: '<abc-button abc-size="large">Primary action</abc-button>',
+                label: "Large"
+            },
+            {
+                example: '<abc-button>Primary action</abc-button>',
+                label: "Medium (Default)"
+            },
+            {
+                example: '<abc-button abc-size="small">Primary action</abc-button>',
+                label: "Small"
+            }
+            
+        ],
+        language='html',
+        show_copy_button=true,
+        preformatted=true,
+        code_snippet_source=size_example_source
+    )}}
+
+    <h2 class="docsite__linkable-heading">Width</h2>
+    {% filter markdown %}
+    - By default, a Button's width is determined by the length of its text and/or size of its icon.
+    - A "full width" Button conforms to the width of its parent container.
+    {% endfilter %}
+    {{ library.abc_code_example_pair(
+        examples=[
+            {
+                example: '<abc-button abc-icon-left="action__attach">Primary action</abc-button>',
+                label: "Variable width (Default)",
+                generate_html: false
+            },
+            {
+                example: '<div style="border: 3px dotted #A810DE; padding:1rem;">
+                                <abc-button abc-full-width abc-icon-left="action__attach">Primary action</abc-button>
+                              </div>',
+                label: "Full width in a parent container"
+            }
+        ],
+        code_snippet_source='<!-- Inline styles used for demonstration only --> <div style="border: 3px dotted #A810DE; padding:1rem;">
+    <abc-button abc-full-width abc-icon-left="action__attach">Primary action</abc-button>
+    </div>',
+        language='html',
+        show_copy_button=true
+    )}}
+    <br>
+    {% filter markdown %}
+    - Adjusting the parent's width will change the "full width" Button. Note the inclusion of a 16rem (256px) `max-width` to the parent `<div>` in the example code below.
+    {% endfilter %}
+    {{ library.abc_code_example_pair(
+            examples=[
+                {
+                    example: '<div style="border: 3px dotted #A810DE; padding:1rem; max-width:16rem;">
+                                <abc-button abc-full-width abc-icon-left="action__attach">Primary action</abc-button>
+                              </div>',
+                    label: "Full width in a shorter parent container"
+                }
+            ],
+            code_snippet_source='<!-- Inline styles used for demonstration only --> <div style="border: 3px dotted #A810DE; padding:1rem; max-width:16rem;">
+    <abc-button abc-full-width abc-icon-left="action__attach">Primary action</abc-button>
+    </div>',
+            language='html',
+            show_copy_button=true
+        )}}
+
+<script>
+  (() => {
+    const buttons = document.querySelectorAll('abc-button[data-state]');
+    if (buttons?.length) {
+      buttons.forEach(button => {
+        button.addEventListener('abc-component-ready', e => {
+          if (e.target instanceof customElements.get('abc-button')) {
+            e.target
+              .querySelector('.abc-button-root')?.classList?.add('abc-button--' + button.dataset.state);
+          }
+        });
+      });
+    }
+  })();
+</script>
+
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Entperise Design System (FDS) <abc-link abc-new-window abc-href="https://design.xyz.com/fds/web/data-entry/button/#visual-design-specifications">design guidance</abc-link> for this component.
+    </section>
+
+    {% filter markdown %}
+    ## Use when
+    - Initiating a task that uses a form, trade ticket, research or planning tool.
+    - Moving forward or backward through a multi-step process/workflow.
+    - Submitting data into a form, trade ticket, research or planning tool.
+    - Initiating an action that alters or edits an existing dataset.
+    - Acknowledging a dialog.
+    - Canceling a task.
+    - Closing a layer.
+    - Initiating an action that performs an operation outside of the browser like "Printing" or "Email."
+
+    ## Don't use when
+    Presenting an array of elements that navigate to other pages outside of a specific process/workflow. Instead, use a <abc-link abc-href="/components/link/link.html">Link</abc-link>.
+
+    ## Visual style 
+
+    ### Disabled Buttons
+    The use of "disabled" Buttons is strongly discouraged. They create accessibility challenges and cause confusion for people within an experience. When evaluating when to use a "disabled" Button, consider these scenarios: 
+    
+    - <b>Legacy experience: <span class="docsite_disabled-button-use">Only use</span></b> "disabled" Buttons if they already exist within the experience and are necessary to maintain consistency. 
+    - <b>New experience: <span class="docsite_disabled-button-dont-use">Don't use</span></b> "disabled" Buttons and rethink how the interaction could be presented in a better way. 
+
+    ### Spacing and width
+    {% endfilter %}
+        {% set button_width_caption %} 
+        By default, the width of Buttons are determined by their content. "Full width" Buttons are contrained by the width of their parent container.
+        {% endset %} 
+
+        {{library.abc_figure_group(
+            figures=[
+                {
+                srcset:"
+                /images/button/doc-Buttons-margin-do.png 1x,
+                /images/button/doc-Buttons-margin-do@2x.png 2x
+                ",
+                alt:"An example image of the correct amount of space existing between sets of buttons.",
+                width:"full",
+                border:true,
+                padding:"one-and-half-x",
+                background:false,
+                label:"Always",
+                caption:"use 1rem (16px) of margin between Buttons.",
+                sentiment:"positive"
+                },
+                { 
+                srcset:"
+                /images/button/doc-Buttons-width-do.png 1x,
+                /images/button/doc-Buttons-width-do@2x.png 2x
+                ",
+                alt:"An example image of the correct amount of space existing between sets of buttons.",
+                width:"full",
+                border:true,
+                padding:"one-and-half-x",
+                background:false,
+                caption:(button_width_caption | safe),
+                sentiment:"neutral"
+                }
+            ],
+            inline_at="at-512"
+        )}}
+
+    {% filter markdown %}
+    ### Application
+    {% endfilter %}
+
+    {% set button_invitation_caption %} 
+    Only use “invitation” actions to communicate “account opening” or benefits “enrollment.” Limit the number of these actions on the page even if the page is long and the message is repeated.
+    {% endset %} 
+
+    {% set button_primary_caption %} 
+    Only use one “primary” action on a page. Use “secondary” and “tertiary” actions for actions of lesser importance.    
+    {% endset %} 
+
+    {{library.abc_figure_group(
+            figures=[
+                {
+                srcset:"
+                /images/button/doc-Buttons-invitation-application.png 1x,
+                /images/button/doc-Buttons-invitation-application@2x.png 2x
+                ",
+                alt:"An example image of the correct application of invitation actions.",
+                width:"full",
+                border:true,
+                padding:"one-and-half-x",
+                background:false,
+                caption:(button_invitation_caption | safe),
+                sentiment:"neutral"
+                },
+                { 
+                srcset:"
+                    /images/button/doc-Buttons-primary-application.png 1x,
+                    /images/button/doc-Buttons-primary-application@2x.png 2x
+                ",
+                alt:"An example image of the correct application of a primary action.",
+                width:"full",
+                border:true,
+                padding:"one-and-half-x",
+                background:false,
+                caption:(button_primary_caption | safe),
+                sentiment:"neutral"
+                }
+            ],
+            inline_at="at-512"
+        )}}
+
+    {% set button_grouping_horizontal_do_caption %} 
+    place the "primary" action on the right in a horizontal Button group.
+    {% endset %} 
+
+    {% set button_grouping_horizontal_dont_caption %} 
+    place the "primary" action on the left in a horizontal Button group.    
+    {% endset %} 
+
+    {% filter markdown %}
+    ### Grouping
+    {% endfilter %}
+
+    {{library.abc_figure_group(
+            figures=[
+                {
+                srcset:"
+                    /images/button/doc-Buttons-order-horizontal-do.png 1x,
+                    /images/button/doc-Buttons-order-horizontal-do@2x.png 2x
+                ",
+                alt:"An example image of the primary action to the right of the secondary action.",
+                width:"full",
+                border:true,
+                padding:"one-and-half-x",
+                background:false,
+                label:"Always",
+                caption:(button_grouping_horizontal_do_caption | safe),
+                sentiment:"positive"
+                },
+                { 
+                srcset:"
+                    /images/button/doc-Buttons-order-horizontal-dont.png 1x,
+                    /images/button/doc-Buttons-order-horizontal-dont@2x.png 2x
+                ",
+                alt:"An example image of the primary action incorrectly positioned to the left of the secondary action.",
+                width:"full",
+                border:true,
+                padding:"one-and-half-x",
+                background:false,
+                label:"Never",
+                caption:(button_grouping_horizontal_dont_caption | safe),
+                sentiment:"negative"
+                }
+            ],
+            inline_at="at-512"
+        )}}
+    <br>
+
+    {% set button_grouping_vertical_do_caption %} 
+    place the "primary" action at the top of a vertical Button group.
+    {% endset %} 
+
+    {% set button_grouping_vertical_dont_caption %} 
+    place the "primary" action on the bottom a vertical Button group.    
+    {% endset %} 
+
+
+    {{library.abc_figure_group(
+        figures=[
+            {
+            srcset:"
+                /images/button/doc-Buttons-order-vertical-do.png 1x,
+                /images/button/doc-Buttons-order-vertical-do@2x.png 2x
+            ",
+            alt:"An example image of a primary action button positioned above a secondary action button.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Always",
+            caption:(button_grouping_vertical_do_caption | safe),
+            sentiment:"positive"
+            },
+            { 
+            srcset:"
+                /images/button/doc-Buttons-order-vertical-dont.png 1x,
+                /images/button/doc-Buttons-order-vertical-dont@2x.png 2x
+            ",
+            alt:"An example image of a primary action button incorrectly positioned beneath a secondary action button.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:(button_grouping_vertical_dont_caption | safe),
+            sentiment:"negative"
+            }
+        ],
+        inline_at="at-512"
+    )}}
+
+    <h3>Secondary Button background color</h3>
+    <p>The "secondary" variant of the Button has a transparent background.</p>
+
+    {% set button_secondary_white_caption %} 
+    The "secondary" action Button on white.
+    {% endset %} 
+
+    {% set button_secondary_gray_caption %} 
+    The "secondary" action Button on gray.    
+    {% endset %} 
+
+    {{library.abc_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/button/doc-buttons-secondary-background.png 1x,
+                ../images/button/doc-buttons-secondary-background@2x.png 2x
+            ",
+            alt:"An example image of a secondary action button on a white background.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:(button_secondary_white_caption | safe),
+            sentiment:"nurtral"
+            },
+            { 
+            srcset:"
+                ../images/button/doc-buttons-secondary-background.png 1x,
+                ../images/button/doc-buttons-secondary-background@2x.png 2x 
+            ",
+            alt:"An example image of a secondary action button on a gray background.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:true,
+            label:"",
+            caption:(button_secondary_gray_caption | safe),
+            sentiment:"neutral"
+            }
+        ],
+        inline_at="at-512"
+    )}}
+
+
+
+    {% filter markdown %}
+    ## Behavior
+    ### Keyboard access
+    - ENTER/RETURN activates the Button.
+    - SPACEBAR activates the Button.
+
+    ## Content
+    - Always give Buttons short, meaningful labels that make sense out of content. Generic labels violate an accessibility requirement that a screen reader should be able to clearly communicate intent. (e.g., "Edit profile" instead of "Profile")
+    - Always use sentence case for Button labels.
+    - Never include typographic symbols in Button labels. (e.g., &reg; or &trade;)
+    {% endfilter %}
+    
+    {{ library.abc_editorial(href="http://uxdesignstandards.xyz.com/buttons-and-labels/")}}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute                      | Type    | Validation                                                                                                                                              | Default   | Description                                                                                                                                                                                       |
+    | ------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `abc-disabled`                 | boolean | --                                                                                                                                                      | `false`   | Disables the Button when true.                                                                                                                                                                    |
+    | `abc-full-width`               | boolean | --                                                                                                                                                      | `false`   | If true, the Button width will stretch to 100% of the parent container.                                                                                                                           |
+    | `abc-gradient-background`    | boolean | Can only be used in combination with variant options `primary`, `secondary`, `invitation`.                                                          | `false` | If true, a gradient background design will be used. This property can be used to ease visual transition to the new abc 3.x design language. **Note, this property is deprecated and will be removed in future versions.** |
+    | `abc-href`                     | string  | --                                                                                                                                                      | --        | Renders a Button that functions as a link. When provided, the element in the template will switch from `<button>` to an `<a>`.                                                                    |
+    | `abc-id`                       | string  | --                                                                                                                                                      | --        | Sets the `id` to the native `<button>` or `<a>` element.                                                                                                                                          |
+    | `abc-icon-left`                | string  | --                                                                                                                                                      | --        | A abc <abc-link abc-href="/components/icon/icon.html?tab=examples#names">Icon name</abc-link>. When provided, will render an icon to the left of the text.                                        |
+    | `abc-icon-right`               | string  | --                                                                                                                                                      | --        | A abc <abc-link abc-href="/components/icon/icon.html?tab=examples#names">Icon name</abc-link>. When provided, will render an icon to the right of the text.                                       |
+    | `abc-icon-only`                | boolean | Anything other than an empty string, `true`, or `abc-icon-only` will be treated as `false`.                                                             | `false`   | Applies the <abc-link abc-href="/visual-style/mixins/mixins.html?tab=current-mixins#accessibility">abc-screen-reader-only</abc-link> mixin to the Button's text so that only the icon is visible. |
+    | `abc-native-anchor-attributes` | object  | string, boolean, number. See the <abc-link abc-href="#native-attribute-support">Native attribute support</abc-link> section for additional information. | --        | Sets native or custom attributes on the native `<a>` element. Use when you are using a Button that functions as a link.                                                                           |
+    | `abc-native-button-attributes` | object  | string, boolean, number. See the <abc-link abc-href="#native-attribute-support">Native attribute support</abc-link> section for additional information. | --        | Sets native or custom attributes on the native `<button>` element.                                                                                                                                |
+    | `abc-size`                     | string  | `small`, `medium`, `large`                                                                                                                              | --        | Determines the size of the Button.                                                                                                                                                                |
+    | `abc-text`                     | string  | --                                                                                                                                                      | --        | Sets in the internal text of the Button.                                                                                                                                                          |
+    | `abc-type`                     | string  | `button`, `submit`, `reset`                                                                                                                             | `button`  | Sets the `type` attribute of the native `<button>` element in the component template.                                                                                                             |
+    | `abc-variant`                  | string  | `primary`, `secondary`, `tertiary`, `invitation`                                                                                                        | `primary` | Determines which visual style the Button will use when rendered.                                                                                                                                  |
+    {% endfilter %}
+
+    {{ library.native_attributes(nativeAttrProps=['abc-native-anchor-attributes', 'abc-native-button-attributes']) }}
+
+    {% filter markdown %}
+    ### Usage examples
+
+    The following are different examples of how to add native or custom attributes.
+    Always check recommendations from your framework on best pratices when interacting with DOM elements.
+
+    Using `abc-native-button-attributes` as an attribute:
+    {% endfilter %}
+
+    {% set button_native_attribute_attr_example %}
+    <abc-button abc-native-button-attributes='{"formmethod": "post"}'>Submit</abc-button>
+    {% endset %}
+    
+    {{ library.abc_code_snippet(
+        source=button_native_attribute_attr_example,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+
+    Using `abc-native-button-attributes` as a JavaScript property:
+    {% endfilter %}
+
+    {% set button_native_attribute_example %}
+        <abc-button id="nativeAttributesExampleButton">Submit</abc-button>
+
+        <script>
+            let button = document.querySelector('#nativeAttributesExampleButton');
+            
+            button.abcNativeButtonAttributes = {
+                formmethod: 'post'
+            };
+        </script>
+    {% endset %}
+    
+    {{ library.abc_code_snippet(
+        source=button_native_attribute_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    If you are using the Button component as a link, use `abc-native-anchor-attributes` to add attributes to the `<a>` element.
+
+    ## Slots
+
+    | Name         | Default content                                 | Description                                                                                                                                                                   |
+    | ------------ | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `default`    | --                                              | Use in place of the `abc-text` attribute. If both the `abc-text` attribute and default slot content are set, the slot content will be rendered.                               |
+    | `icon-left`  | A `<abc-icon>` if the `icon-left` prop is set.  | Use in place of the `abc-icon-left` attribute. If both the `abc-icon-left` attribute and named slot content of `abc-icon-left` are set, the slot content will be rendered.    |
+    | `icon-right` | A `<abc-icon>` if the `icon-right` prop is set. | Use in place of the `abc-icon-right` attribute. If both the `abc-icon-right` attribute and named slot content of `abc-icon-right` are set, the slot content will be rendered. |
+
+    ### Slot examples
+    <p>This slot example can also be rendered using the props API.</p>
+    {% endfilter %}
+    
+    {% set button_slot_example %}
+    <abc-button>
+        <abc-icon abc-name="file__pdf" slot="icon-left"></abc-icon>
+        Download PDF
+        <abc-icon abc-name="action__download" slot="icon-right"></abc-icon>
+    </abc-button>
+    {% endset%}
+    
+    {{ library.abc_code_example_pair(example=button_slot_example, generate_html=false) }}
+
+    {% filter markdown %}
+
+    This example is functionally equivalent to the previous example.
+    
+    <b>Note:</b> The opening and closing `abc-button` tags must be placed with no whitespace in between. Otherwise, this will not work. You may consider using self-closing tags as this will achieve the same result.
+
+    {% set button_prop_example %}
+    <abc-button
+        abc-text="Download PDF"
+        abc-icon-left="file__pdf"
+        abc-icon-right="action__download"></abc-button>
+    {% endset%}
+
+    {% endfilter%}
+
+    {{ library.abc_code_example_pair(example=button_prop_example, beautify=false, generate_html=false) }}
+
+    {% filter markdown %}
+
+    ## Events
+    The Button component does not emit any custom events. 
+
+    ## Methods
+    The Button component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% endfilter %}
+    {% include "src/templates/partials/cssModifiers.njk" %}
+    {% filter markdown%}
+    | Class name                         | Applies to         | Outcome                                                                                                                                                                                           |
+    | ---------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `.abc-button--large`               | `.abc-button-root` | Adjusts styling to render a large Button.                                                                                                                                                         |
+    | `.abc-button--small`               | `.abc-button-root` | Adjusts styling to render a small Button.                                                                                                                                                         |
+    | `.abc-button--primary`             | `.abc-button-root` | Renders the primary variant of a Button.                                                                                                                                                          |
+    | `.abc-button--secondary`           | `.abc-button-root` | Renders the secondary variant of a Button.                                                                                                                                                        |
+    | `.abc-button--tertiary`            | `.abc-button-root` | Renders the tertiary variant of a Button.                                                                                                                                                         |
+    | `.abc-button--invitation`          | `.abc-button-root` | Renders the invitation variant of a Button.                                                                                                                                                       |
+    | `.abc-button--icon-only`           | `.abc-button-root` | Applies the <abc-link abc-href="/visual-style/mixins/mixins.html?tab=current-mixins#accessibility">abc-screen-reader-only</abc-link> mixin to the Button's text so that only the icon is visible. |
+    | `.abc-button--gradient-background` | `.abc-button-root` | Triggers the gradient background alternate display for primary, secondary, or invitation Buttons. **Note, this property is deprecated and will be removed in future versions.** |
+    | `.abc-button--full-width`          | `.abc-button-root` | Renders a Button that fills 100% of the width of the container it's placed in.                                                                                                                    |
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <abc3-button>...</abc3-button>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <button class="abc3-button-root abc-button--primary">...</button>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Button", root_class="button-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                      | Required |
+| --------------------------------------------------------------------------- | --- |
+| `import { abcButton } from '@xyz-ap153177/apex-kit';`                     | Yes |
+| `import { abcIcon } from '@xyz-ap153177/apex-kit';`                       | Yes |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`             | Yes |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Button", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Aria attributes
+    When adding `aria-*` attribution to button/anchor implementations, use the `abc-native-anchor-attributes` or `abc-native-button-attributes` to add aria attribution to the native elements within the `abc-button` component.
+    {% endfilter %}
+
+    {% set native_a11y_example %}
+    <abc-button
+        abc-native-button-attributes='{"aria-label":"Call to action"}'>Call to action</abc-button>
+    {% endset %}
+
+    {{ library.abc_code_example_pair(
+        example=native_a11y_example
+    ) }}
+    
+    {% filter markdown %}
+    ## Icon-only
+    For icon-only buttons, use `abc-icon-only` so that the Button's text is visible only to assistive technology.
+    {% endfilter %}
+
+    {% set icon_only_a11y_example %}
+    <abc-button abc-variant="secondary" abc-icon-left="action__chat" abc-icon-only>
+        Click to chat
+    </abc-button>
+    {% endset %}
+    
+    {{ library.abc_code_example_pair(
+        example=icon_only_a11y_example
+    ) }}
+
+    {% filter markdown %}
+    ## Implementation
+    {% endfilter %}
+    
+    {{ library.abc_accessibility()}}
+
+{% endblock %}

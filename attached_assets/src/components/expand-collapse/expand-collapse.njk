@@ -1,0 +1,710 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Expand-Collapse
+    An Expand-Collapse presents a heading along with indented content whose visibility can be controlled by the reader.
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+  
+  {% filter markdown %}
+    ## Simple text content
+   {% endfilter %}
+  
+  {% set simple_example %}<eds-expand-collapse eds-size="medium" eds-title-heading-size="3">
+    <span slot="heading" class="eds-expand-collapse__heading">Medium heading</span>
+    <div class="eds-expand-collapse__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Integer at semper ligula, ac euismod purus. Etiam faucibus metus vel nisi volutpat, eget tincidunt 
+      ante tincidunt.</div>
+  </eds-expand-collapse>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  {{ simple_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: simple_example }
+      ],
+      show_copy_button=true,
+      preformatted=true,
+      generate_html=false,
+      code_snippet_source=code_snippet_source
+  )}}
+  
+   {% filter markdown %}
+    ## With subheading
+  {% endfilter %}
+
+  {% set subheading_example %}<eds-expand-collapse eds-size="medium" eds-title-heading-size="3">
+    <span slot="heading" class="eds-expand-collapse__heading">Medium heading</span>
+    <span slot="subheading" class="eds-expand-collapse__subheading">This is a subheading</span>
+    <div class="eds-expand-collapse__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Integer at semper ligula, ac euismod purus. Etiam faucibus metus vel nisi volutpat, eget tincidunt 
+      ante tincidunt.</div>
+  </eds-expand-collapse>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  {{ subheading_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: subheading_example }
+      ],
+      show_copy_button=true,
+      preformatted=true,
+      generate_html=false,
+      code_snippet_source=code_snippet_source
+  )}}
+  
+
+  {% filter markdown %}
+    ## Complex content
+    Complex content, like a Table, should use its own afforded styling to maintain its intended presentation.
+  {% endfilter %}
+
+  {% set complex_content_example %}<eds-expand-collapse eds-size="large" eds-title-heading-size="3">
+    <span slot="heading" class="eds-expand-collapse__heading">Fund list</span>
+    <div class="eds-expand-collapse__content">
+      <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--striped eds-table--medium">
+        <div class="eds-table__container">
+          <table class="eds-table__table">
+            <thead class="eds-table__head">
+              <tr class="eds-table__row">
+                <th class="eds-table__column-header-cell" scope="col">
+                  <span class="eds-table__column-header-cell-content">Fund name </span>
+                </th>
+                <th class="eds-table__column-header-cell" scope="col">
+                  <span class="eds-table__column-header-cell-content"> Asset class </span>
+                </th>
+                <th class="eds-table__column-header-cell" scope="col">
+                  <span class="eds-table__column-header-cell-content"> Category </span>
+                </th>
+                <th class="eds-table__column-header-cell" scope="col">
+                  <span class="eds-table__column-header-cell-content"> 1 year </span>
+                </th>
+                <th class="eds-table__column-header-cell" scope="col">
+                  <span class="eds-table__column-header-cell-content"> 3 year </span>
+                </th>
+                <th class="eds-table__column-header-cell" scope="col">
+                  <span class="eds-table__column-header-cell-content"> 5 year </span>
+                </th>
+                <th class="eds-table__column-header-cell" scope="col">
+                  <span class="eds-table__column-header-cell-content"> 10 year/LOF </span>
+                </th>
+                <th class="eds-table__column-header-cell" scope="col">
+                  <span class="eds-table__column-header-cell-content">Returns as of</span>
+                </th>
+                <th class="eds-table__column-header-cell " scope="col">
+                  <span class="eds-table__column-header-cell-content"> Benchmark </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="eds-table__body">
+              <tr class="eds-table__row">
+                <th class="eds-table__row-header-cell" scope="row">
+                  <span class="eds-link-root eds-link--disable-underline">
+                    <a class="eds-link__link" href="javascript:void(0)">
+                      <span class="eds-link__text">PIMCO TOTAL RETURN FUND</span>
+                    </a>
+                  </span>
+                </th>
+                <td class="eds-table__data-cell">Fit Income</td>
+                <td class="eds-table__data-cell">Intermediate-Term Bond</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+0.73%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+1.13%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+3.52%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+5.76%</td>
+                <td class="eds-table__data-cell">Dec-31-2019</td>
+                <td class="eds-table__data-cell">
+                  <span class="eds-link-root eds-link--disable-underline">
+                    <a class="eds-link__link" href="javascript:void(0)">
+                      <span class="eds-link__text">Show</span>
+                    </a>
+                  </span>
+                </td>
+              </tr>
+
+              <tr class="eds-table__row">
+                <th class="eds-table__row-header-cell" scope="row">
+                  <span class="eds-link-root eds-link--disable-underline">
+                    <a class="eds-link__link" href="javascript:void(0)">
+                      <span class="eds-link__text">BLACKROCK INTERNATIONAL OPPORTUNITIES</span>
+                    </a>
+                  </span>
+                </th>
+                <td class="eds-table__data-cell">Equity</td>
+                <td class="eds-table__data-cell">Foreign Large Blend</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-loss">–0.66%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+2.64%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+1.90%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+4.09%</td>
+                <td class="eds-table__data-cell">Dec-31-2019</td>
+                <td class="eds-table__data-cell">
+                  <span class="eds-link-root eds-link--disable-underline">
+                    <a class="eds-link__link" href="javascript:void(0)">
+                      <span class="eds-link__text">Show</span>
+                    </a>
+                  </span>
+                </td>
+              </tr>
+              <tr class="eds-table__row">
+                <th class="eds-table__row-header-cell" scope="row">
+                  <span class="eds-link-root eds-link--disable-underline">
+                    <a class="eds-link__link" href="javascript:void(0)">
+                      <span class="eds-link__text">Enterprise GROWTH COMPANY</span>
+                    </a>
+                  </span>
+                </th>
+                <td class="eds-table__data-cell">Equity</td>
+                <td class="eds-table__data-cell">Large Growth</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+7.83%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+19.30%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+15.17%</td>
+                <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-gain">+10.34%</td>
+                <td class="eds-table__data-cell">Dec-31-2019</td>
+                <td class="eds-table__data-cell">
+                  <span class="eds-link-root eds-link--disable-underline">
+                    <a class="eds-link__link" href="javascript:void(0)">
+                      <span class="eds-link__text">Show</span>
+                    </a>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </eds-expand-collapse>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  {{ complex_content_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: complex_content_example, label: "Hidden Table content" }
+      ],
+      show_copy_button=true,
+      preformatted=true,
+      generate_html=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+
+  {% filter markdown %}
+    ## In a Footnote
+    Text content can inherit the styling of the page area where it resides. 
+  {% endfilter %}
+
+  {% set footnote_content_example %}<eds-footnotes>
+  <eds-footnote eds-title="Disclaimer">
+    <p class="eds-footnote__text">
+      <strong>
+        This is bold disclaimer content. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat.
+      </strong>
+    </p>
+  </eds-footnote>
+
+  <eds-footnote>
+    <p class="eds-footnote__text">
+      This is additional regular content. Labore et dolore magna aliqua. Ut enim 
+      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex 
+      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
+      esse cillum dolore eu fugiat nulla pariatur.
+    </p>
+   </eds-footnote>
+  
+    <eds-footnote>
+      <eds-expand-collapse eds-title-heading-size="3">
+        <span slot="heading" class="eds-expand-collapse__heading">Additional information</span>
+        This is regular disclaimer content. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation.
+      </eds-expand-collapse>
+    </eds-footnote>
+
+    <eds-footnote>
+    <p class="eds-footnote__text">
+      Enterprise Brokerage Services LLC, Member NYSE, SIPC, 900 Salem Street,
+      Smithfield, RI 02917
+    </p>
+    <p class="eds-footnote__text">
+      000000.00.0 (e-review placeholder)
+    </p>
+  </eds-footnote>
+</eds-footnotes>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  {{ footnote_content_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: footnote_content_example, label: "Additional information inside a footnote" }
+      ],
+      show_copy_button=true,
+      preformatted=true,
+      generate_html=false,
+      code_snippet_source=code_snippet_source
+  )}}
+  
+  
+  {% filter markdown %}
+    ## In a Tile
+   {% endfilter %}
+  
+  {% set cb_example %}
+  <section class="eds-tile-root">
+    <div class="eds-tile__tile">
+      <div class="eds-tile__content">
+        <eds-expand-collapse eds-size="large" eds-title-heading-size="3">
+          <span slot="heading" class="eds-expand-collapse__heading">Large heading</span>
+          <div class="eds-expand-collapse__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Integer at semper ligula, ac euismod purus. Etiam faucibus metus vel nisi volutpat, eget tincidunt 
+            ante tincidunt.</div>
+        </eds-expand-collapse>
+      </div>
+    </div>
+  </section>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  {{ cb_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: cb_example }
+      ],
+      show_copy_button=true,
+      preformatted=true,
+      generate_html=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+
+  {% filter markdown %}
+    ## Sizes
+    Size only defines the presentation of the heading.
+  {% endfilter %}
+
+
+  {% set size_1_example %}<eds-expand-collapse eds-size="large" eds-title-heading-size="3">
+    <span slot="heading" class="eds-expand-collapse__heading">Large heading</span>
+    <span slot="subheading" class="eds-expand-collapse__subheading">This is a subheading</span>
+    <div class="eds-expand-collapse__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Integer at semper ligula, ac euismod purus. Etiam faucibus metus vel nisi volutpat, eget tincidunt 
+      ante tincidunt.</div>
+  </eds-expand-collapse>
+  {% endset %}
+
+  {% set size_2_example %}<eds-expand-collapse eds-size="medium" eds-title-heading-size="3">
+    <span slot="heading" class="eds-expand-collapse__heading">Medium heading</span>
+    <span slot="subheading" class="eds-expand-collapse__subheading">This is a subheading</span>
+    <div class="eds-expand-collapse__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Integer at semper ligula, ac euismod purus. Etiam faucibus metus vel nisi volutpat, eget tincidunt 
+      ante tincidunt.</div>
+  </eds-expand-collapse>
+  {% endset %}
+
+  {% set size_3_example %}<eds-expand-collapse eds-size="small" eds-title-heading-size="3">
+    <span slot="heading" class="eds-expand-collapse__heading">Small heading</span>
+    <span slot="subheading" class="eds-expand-collapse__subheading">This is a subheading</span>
+    <div class="eds-expand-collapse__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Integer at semper ligula, ac euismod purus. Etiam faucibus metus vel nisi volutpat, eget tincidunt 
+      ante tincidunt.</div>
+  </eds-expand-collapse>
+  {% endset %}
+
+  {% set code_snippet_source %}<eds-expand-collapse eds-size="large"> ... </eds-expand-collapse>
+<eds-expand-collapse eds-size="medium"> ... </eds-expand-collapse>
+<eds-expand-collapse eds-size="small"> ... </eds-expand-collapse>
+  {# {{ size_1_example | safe | trim }} #}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: size_1_example, label: "Large" },
+        { example: size_2_example, label: "Medium (default)" },
+        { example: size_3_example, label: "Small" }
+      ],
+      show_copy_button=true,
+      preformatted=true,
+      generate_html=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+    ## Title Heading Level
+    Since version 3.19.0, `eds-title-heading-level` can be used to wrap the expand-collapse button in a heading element.  The value of the attribute should be set accordingly based on the existing semantic page structure.  See the <eds-link eds-href="/components/expand-collapse/expand-collapse.html?tab=accessibility#attributes-1">accessibility tab</eds-link> for more information.
+   {% endfilter %}
+  
+  {% set heading_level_example %}
+  <h3>Informative Heading</h3>
+  <eds-expand-collapse eds-size="medium" eds-title-heading-level="4">
+    <span slot="heading" class="eds-expand-collapse__heading">Medium heading</span>
+    <div class="eds-expand-collapse__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Integer at semper ligula, ac euismod purus. Etiam faucibus metus vel nisi volutpat, eget tincidunt 
+      ante tincidunt.</div>
+  </eds-expand-collapse>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  {{ heading_level_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: heading_level_example }
+      ],
+      show_copy_button=true,
+      preformatted=true,
+      generate_html=false,
+      code_snippet_source=code_snippet_source
+  )}}
+
+{% endblock %}
+
+
+{##
+ # Design Tab 
+ #}
+{% block design_tab %}
+  <section class="external-design-link">
+    You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/content/accordion/#visual-design-specifications">design guidance</eds-link> for this component.
+  </section>
+
+  {% filter markdown %}
+    ## Use when
+    - Organizing blocks of lengthy or dense content to mitigate excessive page scrolling.
+    - Progressively disclosing low priority content that is required but not crucial to the understanding of the page.
+  {% endfilter %}
+
+  {% filter markdown %}
+    ## Don't use when
+    - Presenting primary page content.
+    - Presenting a primary page action.
+    - Presenting content that may be accompanied by an Alert.
+    - View-switching between blocks of related content in a shared section of a page or inside a smaller container. Instead, use a Tab Group.
+    - Attempting to progressively disclose information within a Table. This presents accessibility issues that can't be overcome at this time.
+  {% endfilter %}
+
+  {% filter markdown %}
+    ## Visual style
+    ### Anatomy and construction
+    "Caret" icons are used system-wide to indicate direction, navigation, hiding, or showing.
+  {% endfilter %}
+  
+    {% set content_block_anatomy_caption %} 
+    <ol class="eds-figure__figcaption-inline-list">
+        <li>Control icon + heading (required)</li>
+        <li>Subheading </li>
+        <li>Content (required)</li>
+    </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/expand-collapse/doc-ec-anatomy.png 1x,
+                ../images/expand-collapse/doc-ec-anatomy@2x.png 2x
+            ",
+            alt="Diagram describing the slots and required elements",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=content_block_anatomy_caption,
+            sentiment="neutral"
+            ) 
+        }}
+
+    {% set ec_hierarchy_do_caption %} 
+    the information hierarchy on the page and design accordingly.
+    {% endset %} 
+
+    {% set ec_hierarchy_dont_caption %} 
+    awkward heading/content size relationships that might interfere with a reader's ability to parse content.    
+    {% endset %}
+    
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/expand-collapse/doc-ec-visual-hierarchy-dont.png 1x,
+                ../images/expand-collapse/doc-ec-visual-hierarchy-dont@2x.png 2x
+            ",
+            alt:"A diagram of a small heading above large body text.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Avoid",
+            caption:(ec_hierarchy_dont_caption | safe),
+            sentiment:"negative"
+            },
+            { 
+            srcset:"
+                ../images/expand-collapse/doc-ec-visual-hierarchy-do.png 1x,
+                ../images/expand-collapse/doc-ec-visual-hierarchy-do@2x.png 2x
+            ",
+            alt:"A diagram of a medium heading over medium body text.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Consider",
+            caption:(ec_hierarchy_do_caption | safe),
+            sentiment:"positive"
+            }
+        ],
+        inline_at="at-512"
+    )}}
+
+    {% filter markdown %}
+    ### Widths
+    The Expand-Collapse will occupy 100% of its parent container's width.
+    
+    ## Behavior
+    - The Expand-Collapse operates independently of other Expand-Collapses. 
+    - The component expands and collapses, showing and hiding its content, by interacting with the heading's interactive area.
+    {% endfilter %}
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/expand-collapse/doc-ec-heading-area.png 1x,
+                ../images/expand-collapse/doc-ec-heading-area@2x.png 2x
+            ",
+            alt="Diagram highlighting the heading area.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            ) 
+        }}
+    
+    {% filter markdown %}
+    ## Content
+    - The Expand-Collapse's heading must clearly describe its hidden content. 
+    - Use the optional subheading to add more context.
+    - Only the heading size and control icon are controlled by the component's `size` designation.
+    - Content is styled independent of the heading and subheading, and must be provided by the application.
+    - Unless otherwise indicated, the text content adopts the typography styling of its immediate surroundings (e.g., If the component resides in a footnotes area, the text content will appear as small and secondary when shown.)
+    - Content that has inherent or custom styling (tables, charts, etc.) will display normally.
+    {% endfilter %}
+
+    {% set ec_table_do_caption %} 
+    placing table data inside and Expand-Collapse.
+    {% endset %} 
+
+    {% set ec_table_dont_caption %} 
+    place an Expand-Collapse inside a table cell.   
+    {% endset %}
+    
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/expand-collapse/doc-ec-table-dont.png 1x,
+                ../images/expand-collapse/doc-ec-table-dont@2x.png 2x
+            ",
+            alt:"Diagram showing an Expand-Collapse component incorrectly placed into a col-spanned table row.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:(ec_table_dont_caption | safe),
+            sentiment:"negative"
+            },
+            { 
+            srcset:"
+                ../images/expand-collapse/doc-ec-table-do.png 1x,
+                ../images/expand-collapse/doc-ec-table-do@2x.png 2x
+            ",
+            alt:"Diagram showing a Table presented in the default slot.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Consider",
+            caption:(ec_table_do_caption | safe),
+            sentiment:"positive"
+            }
+        ],
+        inline_at="at-512"
+    )}}
+
+    {% set ec_nested_ec_dont_caption %} 
+    place an Expand-Collapse inside another Expand-Collapse.
+    {% endset %} 
+
+    {% set ec_nested_tabs_dont_caption %} 
+    place a Tab Group inside an Expand-Collapse.    
+    {% endset %}
+    
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/expand-collapse/doc-ec-nested-ec-dont.png 1x,
+                ../images/expand-collapse/doc-ec-nested-ec-dont@2x.png 2x
+            ",
+            alt:"",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:(ec_nested_ec_dont_caption | safe),
+            sentiment:"negative"
+            },
+            { 
+            srcset:"
+                ../images/expand-collapse/doc-ec-nested-tabs-dont.png 1x,
+                ../images/expand-collapse/doc-ec-nested-tabs-dont@2x.png 2x
+            ",
+            alt:"",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:(ec_nested_tabs_dont_caption | safe),
+            sentiment:"negative"
+            }
+        ],
+        inline_at="at-512"
+    )}}
+{% endblock %}
+
+{##
+ # Code Tab 
+ #}
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute                      | Type    | Validation                                                                                              | Default   | Description                                                                                                                                                                                                                                                                                      |
+    | ------------------------------ | ------- | ------------------------------------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | `eds-disable-animation`        | boolean | Anything other than empty string, `true`, or `eds-disable-animation` will be treated as `false`         | `false`   | Disables the animation when showing/hiding the content. This attribute should only be considered in large applications where performance is a concern.                                                                                                                                           |
+    | `eds-expand`                   | boolean | Anything other than empty string, `true`, or `eds-expand` will be treated as `false`                    | `false`   | Triggers the expand/collapse state of the default content.                                                                                                                                                                                                                                       |
+    | `eds-expand-on-print`          | boolean | Anything other than empty string, `true`, or `eds-expand-on-print` will be treated as `false`           | `false`   | Expands the Expand-Collapse when the document is about to be printed or previewed. When printing starts or the print preview is closed, the Expand-Collapse will return to its previous state. Consider using this attribute when the component contains important legal information.            |
+    | `eds-size`                     | string  | `small`, `medium`, or `large`                                                                           | `medium`  | Determines the size of the Expand-Collapse heading and icon.                                                                                                                                                                                                                                     |
+    | `eds-title-heading-level`      | string  | Must be `2`, `3`, `4`, `5`, or `6`.                                                                     | --        | If defined, wraps the Expand-Collapse button in a heading.                                                                                                                                                                                                                                       |
+    
+    
+    ## Slots
+
+    | Name          | Default content    | Description                                                                                    |
+    | ------------- | ------------------ | ---------------------------------------------------------------------------------------------- |
+    | `heading`     | --                 | Content for the heading of the Expand-Collapse.                                                |
+    | `subheading`  | --                 | Optional subheading content that is placed under the interactive area of the Expand-Collapse.  |
+    | `default`     | --                 | Default content of the Expand-Collapse that is shown/hidden.                                   |
+
+
+    ## Events
+    
+    | Name                                | Description                                                                                                                                                                                                                                                                                                              |
+    | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | `eds-expand-collapse-collapsed`     | Dispatched once the Expand-Collapse animation is completed and the content is collapsed.                                                                                                                                                                                                                                 |
+    | `eds-expand-collapse-expanded`      | Dispatched once the Expand-Collapse animation is completed and the content is expanded.                                                                                                                                                                                                                                  |
+    | `eds-expand-collapse-change`        | Identifies the current state the Expand-Collapse is in its animation. <br><br>`details.expand`: The current value of `eds-expand`. <br><br>`details.state`: The current state the Expand-Collapse is in with animation which can be one of the following: `expanded`, `expanding`, `collapsed`, `collapsing`.            |
+
+
+    ## Methods
+    The Expand-Collapse component does not implement any public methods.
+
+
+    ## CSS helper classes
+    
+    | Class name                         | Applies to                               | Outcome                                                         |
+    | ---------------------------------- | ---------------------------------------- | --------------------------------------------------------------- |
+    | `.eds-expand-collapse__heading`    | An element within the `heading` slot.    | Ensures proper color and font size of the heading.              |
+    | `.eds-expand-collapse__subheading` | An element within the `subheading` slot. | Ensures proper color and font size of the subheading.           |
+    | `.eds-expand-collapse__content`    | Elements within the `default` slot.      | Applies typography reset to the content of the Expand-Collapse. |
+    
+
+    ## CSS modifier classes
+
+    | Class name                         | Applies to                      | Outcome                                                                                                           |
+    | ---------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+    | `.eds-expand-collapse--expanded`   | `.eds-expand-collapse-root`     | Makes the content of the Expand-Collapse visible and applies proper margin. Adjusts the direction of the Icon.    |
+    | `.eds-expand-collapse--expanding`  | `.eds-expand-collapse-root`     | Prepares the content of the Expand-Collapse for the animation to open.                                            |
+    | `.eds-expand-collapse--collapsed`  | `.eds-expand-collapse-root`     | Makes the content of the Expand-Collapse `display: none` and removes margin. Adjusts the direction of the Icon.   |
+    | `.eds-expand-collapse--collapsing` | `.eds-expand-collapse-root`     | Prepares the content of the Expand-Collapse for the animation to close.                                           |
+    | `.eds-expand-collapse--small`      | `.eds-expand-collapse-root`     | Applies the “small” text size to the Expand-Collapse heading.                                                     |
+    | `.eds-expand-collapse--medium`     | `.eds-expand-collapse-root`     | Applies the “medium” text size to the Expand-Collapse heading.                                                    |
+    | `.eds-expand-collapse--large`      | `.eds-expand-collapse-root`     | Applies the “large” text size to the Expand-Collapse heading.                                                     |
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+      <eds3-expand-collapse>...</eds3-expand-collapse>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Expand-Collapse", root_class="expand-collapse-root", namespace_example_wc=namespace_example_wc) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                         | Required |
+| ---------------------------------------------------------------------------------------------- | -------- |
+| `import { edsExpandCollapse } from '@xyz-ap153177/apex-kit';`                                | Yes      |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                          | Yes      |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                                | Yes      |
+| `import { injectCustomSpriteSheet, ICON_ACTION_CARET_RIGHT } from '@xyz-ap153177/apex-kit';` | Yes      |
+
+    {% endset %}
+
+    {{ library.import_reference(component_name="Expand-Collapse", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+{% block a11y_tab %}
+
+  {% filter markdown %}
+  ## Attributes
+  ### eds-title-heading-level
+  <p>Whenever possible, this attribute should be used to build a semantic page structure that is easier to navigate for assistive technology users.</p>
+  <p>Do not use this attribute if you are also slotting a <code>&lt;h#&gt;</code> attribute.</p>
+  <p>In future versions, this attribute will be set to 3 by default.</p>
+
+  ## Implementation
+  {% endfilter %}
+  {{ library.eds_accessibility()}}
+{% endblock %}

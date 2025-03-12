@@ -1,0 +1,408 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}
+
+{% block page__title %}
+  {% filter markdown %}
+    ##### Components
+    # Title
+    A Title establishes visual hierarchy on a page by identifying content regions. 
+
+  {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+  
+
+  {% filter markdown %}
+    ## Heading content
+    - Always place heading text content into the `heading` slot.
+    - The HTML `<h#>` element and its visual style are mutually exclusive.
+    - The `eds-title__heading` CSS helper class will render the heading element's style as a "<eds-link eds-href="/visual-style/typography/typography.html#heading-text">Level-4</eds-link>" by default.
+    - Use CSS modifiers classes to change the heading style to suit your design.
+  {% endfilter %}
+
+  {% set size_1_example %}
+  <eds-title>
+    <h1 slot="heading" class="eds-title__heading eds-title__heading--level-1">
+      Enterprise Rewards Visa Signature Card
+    </h1>
+  </eds-title>
+  {% endset %}
+
+  {% set size_2_example %}
+  <eds-title>
+    <h2 slot="heading" class="eds-title__heading eds-title__heading--level-2">
+      Credit card features
+    </h2>
+  </eds-title>
+  {% endset %}
+
+  {% set size_3_example %}
+  <eds-title>
+    <h2 slot="heading" class="eds-title__heading eds-title__heading--level-3">
+      Enjoy valuable card benefits
+    </h2>
+  </eds-title>
+  {% endset %}
+
+  {% set size_4_example %}
+  <eds-title>
+    <h2 slot="heading" class="eds-title__heading">
+      No annual fee
+    </h2>
+  </eds-title>
+  {% endset %}
+
+  {% set size_5_example %}
+  <eds-title>
+    <h2 slot="heading" class="eds-title__heading eds-title__heading--level-5">
+      Enterprise Cash Management Account vs. your bank
+    </h2>
+  </eds-title>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Level 1 -->
+  {{ size_1_example | safe | trim }}
+
+  <!-- Level 2 -->
+  {{ size_2_example | safe | trim }}
+
+  <!-- Level 3 -->
+  {{ size_3_example | safe | trim }}
+
+  <!-- Level 4 -->
+  {{ size_4_example | safe | trim }}
+
+  <!-- Level 5 -->
+  {{ size_5_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: size_1_example, label: "Level 1" },
+        { example: size_2_example, label: "Level 2" },
+        { example: size_3_example, label: "Level 3" },
+        { example: size_4_example, label: "Level 4" },
+        { example: size_5_example, label: "Level 5" }
+      ],
+      show_copy_button=false,
+      preformatted=true,
+      code_snippet_source=code_snippet_source
+  )}}
+
+  {% filter markdown %}
+    ## With border
+  {% endfilter %}
+
+  {% set border_top_example %}
+  <eds-title eds-border="top">
+    <h3 slot="heading" class="eds-title__heading eds-title__heading--level-5">By topic</h3>
+  </eds-title>
+  {% endset %}
+
+  {% set border_bottom_example %}
+  <eds-title eds-border="bottom">
+    <h3 slot="heading" class="eds-title__heading eds-title__heading--level-3">Scenario summary</h3>
+  </eds-title>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Top border -->
+  {{ border_top_example | safe | trim }}
+
+  <!-- Bottom border -->
+  {{ border_bottom_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: border_top_example, label: "Top Border" },
+        { example: border_bottom_example, label: "Bottom Border" }
+      ],
+      code_snippet_source=code_snippet_source,
+      preformatted=true,
+      show_copy_button=false
+  )}}
+
+  {% filter markdown %}
+    ## Annotation content
+    Place the `action__help` icon into the `annotation` slot to trigger addition contextual information in a Tooltip, <eds-link eds-href="/components/popover/popover.html">Popover</eds-link>, or <eds-link eds-href="/components/modal/modal.html">Modal</eds-link> component.
+  {% endfilter %}
+
+  {% set annotation_example %}
+  <!-- inline styles used for demonstration only -->
+  <!-- in practice, change the color using the $eds-text-color-link token -->
+  <eds-title>
+    <h3 slot="heading" class="eds-title__heading eds-title__heading--level-5">
+      Title text
+    </h3>
+
+    <eds-icon
+      slot="annotation"
+      eds-a11y-label="Title annotation"
+      eds-name="action__help"
+      eds-size="small"
+      style="color: #356f95;"
+    ></eds-icon>
+  </eds-title>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      example=annotation_example,
+      preformatted=true
+  )}}
+
+  {% filter markdown %}
+  ## Metadata and subheading content
+  {% endfilter %}
+
+  {% set metadata_subheading_example %}
+  <eds-title eds-border="bottom">
+    <h3 slot="heading" class="eds-title__heading eds-title__heading--level-3">
+      Earnings metrics
+    </h3>
+    <span slot="metadata">AAPL</span>
+    <span slot="subheading">
+      vs. Industry: <a href="#">Technology, Hardware, Storage & Peripherals</a>
+    </span>
+  </eds-title>
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      example=metadata_subheading_example,
+      preformatted=true
+  )}}
+
+  {% filter markdown %}
+    ## Action content
+  {% endfilter %}
+
+  {% set with_actions_example_1 %}
+  <eds-title>
+    <h2 slot="heading" class="eds-title__heading">
+      Martial status
+    </h2>
+    <eds-button slot="action" eds-variant="secondary">Edit</eds-button>
+  </eds-title>
+  {% endset %}
+
+  {% set with_actions_example_2 %}
+  <eds-title>
+    <h2 slot="heading" class="eds-title__heading eds-title__heading--level-5">
+      Your balance history
+    </h2>
+    <eds-button slot="action" eds-variant="tertiary" eds-icon-left="nav__overflow-menu"></eds-button>
+  </eds-title>
+  {% endset %}
+
+  {% set with_actions_example_3 %}
+  <eds-title>
+    <h2 slot="heading" class="eds-title__heading eds-title__heading--level-5">
+      Matching Enterprise funds
+    </h2>
+    <eds-list-group
+      slot="action"
+      eds-inline="always"
+      eds-borders
+      eds-list-items='
+        [
+          {
+            "text": "Help me read this table",
+            "href": "#"
+          },
+          {
+            "text": "Download results",
+            "href": "#",
+            "iconRight": "action__download"
+          }
+        ]
+      '
+    ></eds-list-group>
+  </eds-title>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Secondary action -->
+  {{with_actions_example_1 | safe | trim}}
+
+  <!-- Tertiary button with icon -->
+  {{with_actions_example_2 | safe | trim}}
+
+  <!-- Inline list group -->
+  {{with_actions_example_3 | safe | trim}}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: with_actions_example_1, label:"Secondary action" },
+        { example: with_actions_example_2, label:"Tertiary button with icon" },
+        { example: with_actions_example_3, label:"Inline list group" }
+      ],
+      code_snippet_source=code_snippet_source,
+      preformatted=true,
+      show_copy_button=false
+  )}}
+{% endblock %}
+
+{% block design_tab %}
+  {% filter markdown %}
+    ## Use when
+    - You must provide a heading to a region of a page. 
+    - You must augment a section heading with additional contextual information or controls. 
+
+    ## Visual style
+    - Use the `eds-title__heading` and `eds-title__heading--level-*` helper classes to visually size the Title's heading text. See <eds-link eds-href="?tab=examples#heading-content">Size examples</eds-link>, and <eds-link eds-href="/visual-style/typography/typography.html#using-mixins-to-create-hierarchy">Designing with levels of hierarchy</eds-link>. 
+    - Use `eds-border="top"` to aid in the visual delineation of page sections. 
+    - Use `eds-border="bottom"` to add structure within a section that may include dense content or nested Titles. 
+
+    ### Anatomy and construction
+    {% endfilter %}
+
+    {% set title_anatomy_caption %} 
+      <ol class="eds-figure__figcaption-inline-list">
+        <li>Heading (required)</li>
+        <li>Metadata</li>
+        <li>Annotation</li>
+        <li>Action</li>
+        <li>Subheading</li>
+        <li>Border</li>
+      </ol>
+{% endset %} 
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/title/title-anatomy.png 1x,
+            ../images/title/title-anatomy@2x.png 2x
+        ",
+        alt="Illustration of the title component's internal parts.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=title_anatomy_caption,
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {% filter markdown %}
+    ### Spacing
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/title/title-asset-spacing.png 1x,
+            ../images/title/title-asset-spacing@2x.png 2x
+        ",
+        alt="An image of spacing between elements of the Title component.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {% filter markdown %}
+    ## Behavior
+    - The Title's width is 100% of its parent container. 
+    - Text content will wrap when necessary. 
+    - Content in the `metadata` slot will trail the heading if it wraps to another line. 
+
+    ## Content
+    - The Title's heading should be clear and concise. 
+    - Set all text in sentence case. 
+    - Use the `annotation`, `metadata`, and `subheading` affordances to provide additional context.
+  {% endfilter %}
+
+  {{ library.eds_editorial(href="http://uxdesignstandards.xyz.com/page-titles-tabs-field-names-and-subheads/")}}
+
+{% endblock %}
+
+{% block code_tab %}
+  {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% endfilter %}
+    {% include "src/templates/partials/jsProps.njk" %}
+    {% filter markdown %}
+    | Attribute           | Type   | Validation                   | Default | Description                                                                                       |
+    |---------------------|--------|------------------------------|---------|---------------------------------------------------------------------------------------------------|
+    | `eds-border`        | string | `top`, `bottom`              | --      | If `top` or `bottom` is specified as a value, a border will be rendered above or below the Title. |
+
+    ## Slots
+
+    | Name         | Default content | Description                                                                                                                                                                                                                           |
+    | ------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `action`     | --              | Allows <eds-link eds-href="/components/button/button.html">Buttons</eds-link>, <eds-link eds-href="/components/link/link.html">Links</eds-link>, or other interactive elements to appear to the far right of the `heading` slot.      |
+    | `annotation` | --              | Space reserved inline after the `metadata` slot. Typically used for a tooltip or other progressively revealed information about the Title.                                                                                            |
+    | `heading`    | --              | Content that will render as the Title's heading.                                                                                                                                                                                      |
+    | `metadata`   | --              | Text that appears inline after the `heading` slot.                                                                                                                                                                                    |
+    | `subheading` | --              | Content that will appear below the `heading` slot.                                                                                                                                                                                    |
+
+    ## Events
+    The Title component does not emit any custom events.
+
+    ## Methods
+    The Title component does not implement any public methods.
+
+    ## CSS helper classes
+    CSS helper classes provide common styles needed for slotted content.
+
+    | Class name               | Applies to                                      | Outcome                                                                     |
+    | ------------------------ | ----------------------------------------------- | --------------------------------------------------------------------------- |
+    | `.eds-title__annotation` | An element slotted within the `annotation` slot | Ensures proper alignment of the annotation.                                 |
+    | `.eds-title__heading`    | An element slotted within the `heading` slot    | Ensures proper alignment of the heading and applies default heading styles. |
+    | `.eds-title__metadata`   | An element slotted within the `metadata` slot   | Ensures proper alignment of the metadata.                                   |
+    | `.eds-title__subheading` | An element slotted within the `subheading` slot | Ensures proper alignment of the subheading.                                 |
+
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                     | Applies to            | Outcome                                |
+    | ------------------------------ | --------------------- | -------------------------------------  |
+    | `.eds-title--border-bottom`    | `.eds-title-root`     | Adds a bottom border to the component. |
+    | `.eds-title--border-top`       | `.eds-title-root`     | Adds a top border to the component.    |
+    | `.eds-title__heading--level-1` | `.eds-title__heading` | Sets the "Level 1" heading style.      |
+    | `.eds-title__heading--level-2` | `.eds-title__heading` | Sets the "Level 2" heading style.      |
+    | `.eds-title__heading--level-3` | `.eds-title__heading` | Sets the "Level 3" heading style.      |
+    | `.eds-title__heading--level-5` | `.eds-title__heading` | Sets the "Level 5" heading style.      |
+
+  {% endfilter %}
+
+  {# NAMESPACING #}
+
+  {% set namespace_example_wc %}
+    <eds3-title eds-border="top">...</eds3-title>
+  {% endset %}
+
+  {% set namespace_example_html %}
+    <div class="eds3-title-root eds-title--border-top">...</div>
+  {% endset %}
+
+  {# IMPORT REFERENCE #}
+
+  {{ library.namespacing(component_name="Title", root_class="title-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+  {% set js_import_table %}
+| Import                                                      | Required      |
+| ----------------------------------------------------------- | ------------- |
+| `import { edsTitle } from '@xyz-ap153177/apex-kit';`      | Yes           |
+  {% endset %}
+
+  {{ library.import_reference(component_name="Title", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+  {% filter markdown %}
+  {{ library.eds_accessibility()}}
+  {% endfilter %}
+{% endblock %}

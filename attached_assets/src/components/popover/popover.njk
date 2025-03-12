@@ -1,0 +1,562 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{# CODE EXAMPLES #}
+
+{% set standard_content_example %}
+    {% set unique_id %}{{ uniqueId() }}{%endset%}
+    <eds-popover eds-disable-trigger-slot-button eds-aria-describedby="popover-content-{{unique_id}}" eds-aria-labelledby="popover-title-{{unique_id}}">
+        <div class="eds-popover__popover-content-reset">
+            <h3 class="docsite-eds-popover__heading" id="popover-title-{{unique_id}}">Help resolving this error</h3>
+            <p id="popover-content-{{unique_id}}">The participant wasn't included in the submitted contributions. But, they're eligible to contribute and have a contribution election in our system. If you need help resolving this error, please click on View details for more information.</p>
+            <eds-link eds-href="#" eds-new-window>View details</eds-link>
+        </div>
+        <eds-link slot="trigger" eds-icon-right="action__help" eds-trigger></eds-link>
+    </eds-popover>
+{% endset %}
+
+{% set scrolling_content_example %}
+    {% set unique_id %}{{ uniqueId() }}{%endset%}
+    <eds-popover eds-placement="top" eds-disable-trigger-slot-button eds-aria-labelledby="popover-title-{{unique_id}}">
+        <div class="eds-popover__popover-content-reset">
+            <h3 class="docsite-eds-popover__heading" id="popover-title-{{unique_id}}">Risk profile</h3>
+            <p>Your risk profile is based on the information you’ve provided us about yourself and represents the risk tolerance of peple who are similar to you. Your risk tolerance is an important component of the investment strategy we suggest. In general, a higher comfort with risk translates into a more aggressive strategy, with a greater portion of your assets in stocks. </p>
+            <p>While a more aggressive strategy may deliver higher returns over the long term, it also means that the value of your investment could fluctuate more, particularly over the short term. If you decide to update your risk profile, remember to consider how comfortable you are with short-term fluctions in the value of your investments, as well as your longer-term investment goals.</p>
+            <p>While a more aggressive strategy may deliver higher returns over the long term, it also means that the value of your investment could fluctuate more, particularly over the short term. If you decide to update your risk profile, remember to consider how comfortable you are with short-term fluctions in the value of your investments, as well as your longer-term investment goals.</p>
+        </div>
+        <eds-link slot="trigger" eds-icon-right="action__help" eds-trigger></eds-link>
+    </eds-popover>
+{% endset %}
+
+{% set slotted_content_example %}
+    {% set unique_id %}{{ uniqueId() }}{%endset%}
+    <eds-popover eds-disable-trigger-slot-button eds-aria-labelledby="popover-title-{{unique_id}}">
+        <div class="eds-popover__popover-content-reset docsite-eds-popover__slotted-content">
+            <eds-content-block eds-align="left" class="eds-popover__popover-content-reset">
+                <h4 slot="heading" class="eds-content-block__heading" id="popover-title-{{unique_id}}">Enterprise<sup>&reg;</sup> International Growth Fund</h4>
+                <eds-microcopy>X098646684</eds-microcopy>
+                <div> 
+                    <ul>
+                    <li><span>Securities priced today</span><span>+$279,530.68</span></li>
+                    <li><span>Securities priced today</span><span>+$98.33</span></li>
+                    </ul>
+                    <p>Some securities, such as mutual funds, are not priced until after the market closes.</p>
+                </div>
+                <div class="popover-actions" slot="action">
+                    <eds-link eds-new-window>Balances</eds-link>
+                    <eds-link eds-new-window>History</eds-link>
+                </div>
+            </eds-content-block>
+        </div>
+        <eds-link slot="trigger" eds-icon-right="action__help" eds-trigger></eds-link>
+    </eds-popover>
+{% endset %}
+
+{% set detached_content_example %}
+    {% set unique_id %}{{ uniqueId() }}{%endset%}
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function(){
+            var popover = document.querySelector("#eds-popover-{{unique_id}}");
+            var trigger = document.querySelector("#popover-trigger-{{unique_id}}");
+            
+            trigger.addEventListener("click", function(){
+                // tell the popover which element to point at
+                popover.edsTarget = trigger;
+                // show the popover
+                popover.edsOpen = true;
+            }.bind(this));
+        });
+    </script>
+    <eds-popover  
+        id="eds-popover-{{unique_id}}"
+        eds-aria-labelledby="popover-title-{{unique_id}}"
+    >
+        <div class="eds-popover__popover-content-reset">
+            <eds-content-block eds-align="left">
+                <h2 id="popover-title-{{unique_id}}" slot="heading" class="eds-content-block__heading">Why choose Enterprise funds?</h2>
+                <eds-link slot="action" eds-href="#">Learn more</eds-link>
+                There's a reason we're a world leader in mutual funds—our rich history,
+                global research, and dedication to innovation create more choices for you.
+            </eds-content-block>
+        </div>
+    </eds-popover>
+
+    <!-- Elsewhere in the DOM -->
+    <eds-link id="popover-trigger-{{unique_id}}" eds-icon-right="action__help" eds-trigger></eds-link>
+{% endset %}
+
+{% set boundary_content_example %}
+    {% set unique_id %}{{ uniqueId() }}{%endset%}
+    <div id="docsite-scroll-boundary">
+        <eds-popover 
+            eds-boundary="#docsite-scroll-boundary"
+            eds-disable-trigger-slot-button>
+            <div class="eds-popover__popover-content-reset">
+                <span>Small bit of content goes here</span>
+            </div>
+            <eds-link slot="trigger" eds-icon-right="action__help" id="docsite-boundary-trigger" eds-trigger></eds-link>
+        </eds-popover>
+    </div>
+{% endset %}
+
+{% set z_index_content_example %}
+    <div id="docsite-z-index">
+        {% set unique_id %}{{ uniqueId() }}{%endset%}
+        <eds-popover eds-z-index="11" eds-placement="bottom" eds-disable-trigger-slot-button eds-aria-labelledby="popover-title-{{unique_id}}">
+            <div class="eds-popover__popover-content-reset">
+                <h3 class="docsite-eds-popover__heading" id="popover-title-{{unique_id}}">z-index change</h3>
+                <p id="popover-content-{{unique_id}}"><code>eds-z-index</code> has been set to make the z-index 11 instead of the default of 10</p>
+            </div>
+            <eds-link slot="trigger" eds-icon-right="action__help" eds-trigger></eds-link>
+        </eds-popover>
+        <div style="z-index: 10;" id="docsite-z-index-item">This box is set to <code>z-index: 10</code></div>
+    </div>
+{% endset %}
+
+{## 
+ # TITLE 
+ #}
+
+    {% block page__title %}
+
+        {% filter markdown %}
+            ##### Components
+            # Popover
+            
+            A Popover provides additional information or other content in a container that is positioned adjacent to its trigger.
+        {% endfilter %}
+        
+    {% endblock %}
+
+
+
+{##
+ # Examples Tab 
+ #}
+
+    {% block examples_tab %}
+
+        {% filter markdown %}
+        ## Default
+        {% endfilter %}
+
+        <div class="docsite-eds-popover__example-container">
+            {{standard_content_example | safe}}
+        </div>
+        {{library.eds_code_snippet(
+           source=standard_content_example
+        )}}
+
+        {% filter markdown %}
+        ## Overflow and scrolling
+        Once the Popover has reached its maximum width and height, the content area will scroll to accomodate overflow. See <eds-link eds-href="?tab=design#behavior">Behavior</eds-link> for more information. 
+        {% endfilter %}
+
+        <div class="docsite-eds-popover__example-container">
+            {{scrolling_content_example | safe}}
+        </div>
+        {{library.eds_code_snippet(
+           source=scrolling_content_example
+        )}}
+        
+
+        {% filter markdown %}
+        ## Slotted content 
+        Popovers may contain any content including text and HTML elements that don’t accommodate data entry.          
+        {% endfilter %}
+
+        <div class="docsite-eds-popover__example-container">
+            {{slotted_content_example | safe}}
+        </div>
+        {{library.eds_code_snippet(
+           source=slotted_content_example
+        )}}
+
+        {% filter markdown %}
+        ## Controlling z-index
+        Changing the z-index is necessary in some cases to layer elements on the page.  When using the web component, refer to the attributes table for more information. 
+        {% endfilter %}
+        <div class="docsite-eds-popover__example-container">
+            {{ z_index_content_example | safe}}
+        </div>
+        {{library.eds_code_snippet(
+           source=z_index_content_example
+        )}}
+
+    {% endblock %}
+
+
+
+{##
+ # Design Tab 
+ #}
+
+    {% block design_tab %}
+        <section class="external-design-link">
+            You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/layout/popover/#visual-design-specifications">design guidance</eds-link> for this component.
+        </section>
+
+        {% filter markdown %}
+        ## Use when
+        Presenting additional information or other content without leaving the page.
+
+        ## Don't use when
+        - The content is short text-only information. Instead, use a Tooltip. 
+        - The content is supplemental. Instead, use <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link>. 
+        - Data entry is required. Instead, display <eds-link eds-href="/components/form/form.html">Form</eds-link> elements on the page or in a <eds-link eds-href="/components/modal/modal.html">Modal</eds-link>.   
+
+        {% include "src/templates/partials/layer_comparison.njk" %}
+        
+        ## Visual style 
+        - <eds-link eds-href="/visual-style/typography/typography.html#heading-text">Level 3</eds-link> headings are recommended for "primary" titles.  
+        - Use "medium" size text for body text below the header.  
+
+        ### Anatomy and construction
+        {% endfilter %}
+
+        {% set popover_anatomy_caption %} 
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>Content (required)</li>
+            <li>Close button (required)</li>
+            <li>Pointer (required)</li>
+        </ol>
+        {% endset %} 
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/popover/popover-anatomy.png 1x,
+                ../images/popover/popover-anatomy@2x.png 2x
+            ",
+            alt="Anatomy of a Popover.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=popover_anatomy_caption,
+            sentiment="neutral"
+            ) 
+        }}
+
+        {# {{ library.eds_do_dont(items=[{
+            caption: (popover_anatomy_caption | safe),
+            imagepath:"/images/popover/popover-anatomy.png",
+            alt:"Anatomy of a Popover."
+            }], scale='full')
+        }} #}
+
+        {% filter markdown%}
+        ## Behavior 
+        - A Popover is hidden by default and should only be evoked by interacting with a trigger.  
+        - A Popover may be evoked by a <eds-link eds-href="/link/link.html#trigger-text-to-show-layer-components">Link</eds-link> trigger or an <eds-link eds-href="/components/link/link.html#trigger-non-text-to-show-layer-components">Icon</eds-link> trigger. 
+
+        ### Open 
+        Open a Popover on all devices by touching/clicking the trigger.  
+
+        ### Close 
+        Close a Popover on all devices by:  
+        - Touching/clicking outside the container. 
+        - Pressing the ESC key. 
+        - Tabbing to the "close" icon and pressing the ENTER/RETURN key. 
+        - Tabbing to an element outside of the Popover. 
+        - Touching/clicking the "close" icon. 
+
+        ### Sizing
+        - The Popover container has a minimum width of 300px, and a maximum width of 500px. The width will increase relative to the amount of content it contains until it reaches its maximum width, at which point the content will wrap.  
+        - The Popover container height will increase relative to the amount of content it contains until it reaches its maximum height of 400px, at which point the content will scroll. 
+        {% endfilter %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/popover/popover-dimensions.png 1x,
+                ../images/popover/popover-dimensions@2x.png 2x
+            ",
+            alt="Minimum and maximum dimensions of a Popover.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            ) 
+        }}
+
+        {% filter markdown %}
+        ### Keyboard 
+        - When the Popover appears, focus is moved to the Popover element itself so that screen readers can read the entire contents of the Popover.  
+        - When the ESC key is pressed to close the Popover, focus returns to the triggering element.
+        - Focus is not trapped within the Popover element.  Tabbing away closes the Popover and returns focus to the triggering element.
+
+        ### Order of position priority
+        - A Popover will initially open in the position that allows it to be fully visible within the bounds of the viewport. The order of priority moves clockwise from top, right, bottom, and left. 
+        - If a Popover is open and the viewport size changes causing it not to fit the space, it will attempt to change position beginning at the top proceeding clockwise.  
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/popover/popover-position-priority.png 1x,
+            ../images/popover/popover-position-priority@2x.png 2x
+        ",
+        alt="Diagram showing the clockwise position priority.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+        
+
+    {% filter markdown %}
+        ### Position in the viewport
+        If the pointer is less than 12px from the edge of the viewport edge the Popover will open in a different position.
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/popover/popover-viewport-edge.png 1x,
+            ../images/popover/popover-viewport-edge@2x.png 2x
+        ",
+        alt="Diagram showing the minimum space between a Popover and the viewport before it repositions.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+
+    {% filter markdown %}
+        ### Alignment and space to the trigger
+        - The Popover pointer always remains centered over the trigger.
+        - The tip of the pointer should touch the edge of an icon trigger but not overlap it.
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/popover/popover-trigger-spacing.png 1x,
+            ../images/popover/popover-trigger-spacing@2x.png 2x
+        ",
+        alt="Diagram showing the tip of the pointer positioned zero pixels from the icon trigger.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+        
+    {% filter markdown %}
+        ## Responsive 
+        - Text size will automatically change according to the <eds-link eds-href="/typography/typography.html#responsive-text-sizing">responsive typography</eds-link> rules. 
+        - At breakpoints below 512px, only the top and bottom position orientations are available.  
+    {% endfilter %}
+    
+    {% filter markdown %}
+        ## Content 
+        Titles are required for accessibility but may be hidden.  
+    {% endfilter %}
+
+    {% endblock %}
+
+
+
+{##
+ # Code Tab 
+ #}
+
+    {% block code_tab %}
+        {% filter markdown %}
+        ## Installation
+        {% include "src/templates/partials/integration.njk" %}
+
+        
+
+        ## Attributes
+        {% include "src/templates/partials/jsProps.njk" %}
+
+        | Attribute                         | Type               | Validation                       | Default            | Description                                                                                                                                                                                                                |
+        | --------------------------------- | ------------------ | -------------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `eds-aria-describedby`            | string             | --                               | --                 | Sets the `aria-describedby` attribute on the dialog element with a space separated list of one or more ID values referencing the content elements of the popover.                                                          |
+        | `eds-aria-label`                  | string             | --                               | "more information" | Sets the `aria-label` value for the dialog element. Will not be set if `eds-aria-labelledby` is set.                                                                                                                       |
+        | `eds-aria-labelledby`             | string             | --                               | --                 | Sets the `aria-labelledby` attribute on the dialog element with a space separated list of one or more ID values referencing the heading elements of the popover.                                                           |
+        | `eds-boundary`                    | string             | --                               | viewport           | A string selector that defines the boundary that the Popover should respect while determining its position.  See <eds-link eds-href="https://popper.js.org/docs/v2/constructors/">PopperJS</eds-link> for further details. |
+        | `eds-close-button-a11y-text`      | string             | --                               | "Close"            | Screen reader-only text that is set to the "close" button title for accessibility.                                                                                                                                         |
+        | `eds-disable-focus`               | boolean            | --                               | --                 | Prevents the focus being forced onto the Popover when opened.                                                                                                                                                              |
+        | `eds-disable-return-focus`        | boolean            | --                               | --                 | Prevents the focus from returning to the trigger when the Popover closes.                                                                                                                                                  |
+        | `eds-disable-overflow`            | boolean            | --                               | false              | Prevents the overflow observer from closing the Popover automatically.                                                                                                                                                     |
+        | `eds-disable-trigger-slot-button` | boolean            | --                               | false              | Prevents the trigger slot from being wrapped in a button.  Add this attribute when slotting an interactive element as the Popover trigger, such as `eds-link` or `eds-button`.                                             |
+        | `eds-open`                        | boolean            | --                               | --                 | Boolean that controls opening and closing the Popover.  If you don’t slot a trigger, use this attribute/property to control showing and hiding the Popover instance.                                                       |
+        | `eds-trigger-button-a11y-text`    | string             | --                               | "more information" | This attribute is provided for API compatibility and has no functionality.                                                                                                                                                 |
+        | `eds-placement`                   | string             | `top`, `left`, `right`, `bottom` | `top`              | A string indicating the default placement of the Popover.                                                                                                                                                                  |
+        | `eds-id`                          | string             | --                               | Generated `id`     | Sets the `id` attribute of the Popover wrapper element.  If not provided a custom unique `id` is generated.                                                                                                                |
+        | `eds-target`                      | string/HTMLElement | --                               | --                 | `id` or element reference that the Popover element is attached to.                                                                                                                                                         |
+        | `eds-z-index`                     | number             | --                               | --                 | Sets the `z-index` of the Popover element.                                                                                                                                                                                 |
+
+        <br>
+
+        ### Detached target 
+        Separating the Popover `trigger` from the `eds-popover` is necessary in some cases to avoid difficulties with nested stacking contexts.
+        - Use the `eds-target` attribute or `edsTarget` property instead of the `trigger` slot.  
+        - The attribute accepts any valid CSS selector, while the `edsTarget` property accepts either a string selector or an element reference.
+        {% endfilter %}
+
+        <div class="docsite-eds-popover__example-container">
+            {{detached_content_example | safe}}
+        </div>
+        
+        {{library.eds_code_snippet(
+           source=detached_content_example,
+           preformatted=true
+        )}}
+
+        <br>
+
+        {% filter markdown %}
+        ### Popover boundary
+        The `eds-boundary` attribute and `edsBoundary`property are used to constrain the overflow properties of the Popover by a specified element.  The Popover will change placement and adjust positioning with respect to the given boundary instead of the default viewport boundary.
+
+        {% endfilter %}
+        <div class="docsite-eds-popover__example-container">
+            {{boundary_content_example | safe}}
+        </div>
+        {{library.eds_code_snippet(
+           source=boundary_content_example
+        )}}
+        <script defer>
+        ;(function(){
+            var boundary = document.querySelector("#docsite-scroll-boundary");
+            boundary.scrollTop = 480;
+        })();
+        </script>
+
+
+        {% filter markdown %}
+        ## Slots
+        | Slot name | Default content | Description                                                                        |
+        | --------- | --------------- | ---------------------------------------------------------------------------------- |
+        | `default` | --              | Places the context within the Popover element.                                     |
+        | `trigger` | --              | Wraps the slotted element and creates a trigger for the Popover to open and close. |
+
+
+        ## Events 
+        | Event name                     | Description                                                                                                                                   |
+        | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `eds-popover-change`           | Emitted when the Popover has opened or closed.  Current `edsOpen` state is made available as the `details.open` boolean property of the event |
+        | `eds-popover-reference-hidden` | Emitted when the Popover has disappeared from the defined boundary.                                                                           |
+  
+        ## Methods 
+        The Popover component does not implement any public methods.
+
+        ## Properties 
+        - `onClickOutside(e: MouseEvent)` - function called when clicking outside the Popover while the Popover is open. 
+
+        ## Other functionality 
+
+        ### Override "click outside" behavior
+        The component exposes a method named `onClickOutside` that is called when the Popover is open and someone clicks anywhere outside the Popover or triggering element.  Override this method as an empty function or set it equal to `undefined` to disable the default functionality or implement your own function.
+
+        Disabling the `onClickOutside` handler is useful when the trigger is a different element than the target element, or the element the Popover is pointing at.
+        {% endfilter %}
+
+        {% set callback_override_example %}
+        let popover_component = document.querySelector("eds-popover");
+        // override clickOutside with something cool
+        popover_component.onClickOutside = function(){
+            // do something cool
+            // ...
+        }
+
+        // OR disable clickOutside
+        popover_component.onClickOutside = undefined;
+        {% endset %}
+
+        {{library.eds_code_snippet(
+           source=callback_override_example,
+           language="javascript"
+        )}}
+
+
+    {% filter markdown %}
+    ## CSS helper classes
+    Use these classes on default slotted content to help apply standard styles. 
+
+    | Class name                           | Outcome                                                                                                             |
+    | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+    | `eds-popover__popover-content-reset` | Leverages the `eds-typography-reset` mixin to prevent inherited type styles from bleeding into the Popover content. |
+
+    ## CSS modifier classes 
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                      | Applies to         | Outcome                                              |
+    | ------------------------------- | ------------------ | ---------------------------------------------------- |
+    | `eds-popover--open`             | `eds-popover-root` | "shows" the Popover element.                         |
+    | `eds-popover--placement-top`    | `eds-popover-root` | Places the Popover element at the "top" position.    |
+    | `eds-popover--placement-right`  | `eds-popover-root` | Places the Popover element at the "right" position.  |
+    | `eds-popover--placement-bottom` | `eds-popover-root` | Places the Popover element at the "bottom" position. |
+    | `eds-popover--placement-left`   | `eds-popover-root` | Places the Popover element at the "left" position.   |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+      <eds3-popover>...</eds3-popover>
+    {% endset %}
+
+    {% set namespace_example_html %}
+      <div class="eds3-popover-root eds-popover--placement-top">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Popover", root_class="popover-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                   | Required                                    |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `import { edsPopover } from '@xyz-ap153177/apex-kit';`                                 | Yes                                         |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                    | Yes                                         |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                          | Yes, unless using `injectCustomSpriteSheet` |
+| `import { injectCustomSpriteSheet, ICON_ACTION_CLOSE } from '@xyz-ap153177/apex-kit';` | Yes, unless using `injectSpriteSheet`       |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Popover", js_import_table=js_import_table) }}
+
+    {% include "src/templates/partials/autoprefixer.njk" %}
+    
+    {% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+    {% block a11y_tab %}
+
+    {% filter markdown %}
+
+        ## Recent changes
+        - For versions greater than 3.16.4, when the Popover is open, tab focus will be trapped within the Popover layer until the Popover is closed.
+        
+        - Starting with version 3.28.0, the a11y helper text for the trigger should be placed on the trigger element when using an icon-only button or link (see <eds-link eds-href="/components/popover/popover.html?tab=accessibility#semantics">Semantics</eds-link> section). The attribute `eds-trigger-button-a11y-text` is still provided for continued API compatibility but is no longer used internally in the component.
+
+        ## Important properties
+        - `eds-disable-return-focus` should be `false` or omitted in almost every case. There are very few exceptions to this so please speak with your accessibility expert before enabling this option.
+
+        - `eds-disable-overflow` is disabled by default but be cognisant of the popover sizing relative to the viewport as if the popover is too large it will automatically close when it opens and appear to never open. This would introduce an accessibility violation. 
+        
+        ## Semantics
+        - It is important that the `eds-disable-trigger-slot-button` attribute be provided when the trigger slot is used with an interactive element such as a link or button.
+
+    {% endfilter %}
+
+    {% endblock %}

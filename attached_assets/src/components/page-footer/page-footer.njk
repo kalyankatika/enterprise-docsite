@@ -1,0 +1,389 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{##
+ # TITLE
+ #}
+{% block page__title %}
+
+    {% filter markdown %}
+    ##### Component
+    # Page Footer
+    The footer provides a means of presenting copyright, terms of use, and corporate policy information.
+    {% endfilter %}
+{% endblock %}
+
+{##
+ # Examples Tab
+ #}
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Default
+    Present standard links for copyright, terms of use, and corporate policy.
+    {% endfilter %}
+
+    {% set Enterprise_logo %}
+    <svg class="eds-page-footer__logo-img" viewBox="0 0 256 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <title>Enterprise Investments</title>
+        <g id="Fid_Logo_Blk" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <path d="M29.96,55.84 C43.964,55.84 55.311,44.489 55.311,30.486 C55.311,16.487 43.964,5.138 29.96,5.138 C15.959,5.138 4.61,16.487 4.61,30.486 C4.61,44.489 15.959,55.84 29.96,55.84" id="Fill-1" fill="#FFFFFE"></path>
+            <path d="M26.063,34.713 L35.393,34.713 L38.118,36.479 L25.652,36.479 L20.058,53.775 C13.875,51.379 8.153,45.824 5.754,39.582 C3.196,33.533 3.196,25.934 5.81,19.86 C8.262,13.615 14.147,7.977 20.413,5.66 C25.343,3.618 31.939,3.401 37.169,5.008 C43.168,6.727 48.833,11.027 52.127,16.641 C55.811,22.797 56.844,30.619 54.605,37.646 C53.192,42.308 50.276,46.773 46.267,49.967 L39.38,38.492 L48.966,43.839 C49.02,43.839 49.048,43.778 49.02,43.723 L36.464,32.882 L52.703,35.36 C52.758,35.36 52.781,35.334 52.781,35.307 L52.676,35.225 L37.362,29.855 L53.275,26.013 C53.329,26.013 53.329,25.963 53.302,25.934 L36.979,26.996 L49.76,17.32 C49.787,17.267 49.676,17.241 49.649,17.296 L35.291,24.575 L43.218,10.592 C43.218,10.57 43.218,10.512 43.168,10.54 L32.812,22.693 L34.8,6.727 C34.8,6.697 34.743,6.669 34.689,6.697 L29.926,22.2 L25.756,6.232 C25.729,6.206 25.672,6.178 25.644,6.232 L26.792,22.797 L16.957,9.997 C16.926,9.967 16.9,9.997 16.873,10.022 L24.312,24.188 L10.249,16.503 C10.224,16.503 10.169,16.534 10.169,16.559 L22.675,26.829 L6.711,25.144 C6.653,25.174 6.653,25.222 6.711,25.248 L22.188,29.775 L6.793,34.298 C6.764,34.322 6.764,34.379 6.793,34.404 L22.675,32.553 L10.195,43.152 C10.169,43.152 10.142,43.207 10.195,43.237 L10.362,43.182 L20.357,37.949 L22.703,34.218 L25.371,34.218 L23.521,32.91 L29.703,22.988 L26.057,34.707 L26.063,34.713" id="Fill-2" fill="#1A1919"></path>
+            <polyline id="Fill-3" class="svg-fill" fill="#000000" points="72.11 47.773 59.652 47.773 69.628 12.162 95.165 12.162 92.731 20.611 79.7 20.611 78.029 26.674 91.061 26.674 88.864 34.453 75.833 34.453 72.11 47.773"></polyline>
+            <path d="M108.911,19.275 L96.597,19.275 L98.602,12.162 L110.916,12.162 L108.911,19.275 Z M100.94,47.773 L88.625,47.773 L95.928,21.757 L108.243,21.757 L100.94,47.773 L100.94,47.773 Z" id="Fill-4" class="svg-fill" fill="#000000"></path>
+            <path d="M123.628,29.488 C122.529,29.488 121.432,29.825 120.812,31.351 C119.904,33.546 119.093,35.694 119.093,37.842 C119.093,38.846 119.809,39.704 121.002,39.704 C121.957,39.704 122.577,39.418 123.102,39.085 L125.585,30.539 C125.155,29.919 124.391,29.488 123.628,29.488 Z M132.888,47.773 L120.812,47.773 L121.67,44.86 C119.235,46.913 116.754,48.392 112.792,48.392 C108.782,48.392 106.253,46.482 106.253,42.425 C106.253,37.939 108.02,31.255 110.645,26.578 C112.554,23.094 115.99,21.28 120.048,21.28 C123.531,21.28 126.109,22.807 127.112,24.716 L130.549,12.162 L142.864,12.162 L132.888,47.773 L132.888,47.773 Z" id="Fill-5" class="svg-fill" fill="#000000"></path>
+            <path d="M155.345,27.677 C153.818,27.677 152.768,28.727 152.099,31.351 L157.159,31.351 C157.303,30.826 157.493,30.015 157.493,29.536 C157.493,28.105 156.634,27.677 155.345,27.677 Z M167.66,36.411 L150.668,36.411 C150.333,37.794 150,38.75 150,39.847 C150,40.372 150.095,41.709 151.813,41.709 C153.531,41.709 154.295,41.04 155.011,38.511 L167.087,38.511 C165.56,45.91 156.777,48.438 151.384,48.438 C144.08,48.438 138.4,47.389 138.4,40.372 C138.4,36.506 140.356,30.109 142.935,26.722 C146.037,22.663 151.431,21.138 156.396,21.138 C164.033,21.138 168.997,22.712 168.997,29.203 C168.997,30.779 168.329,34.263 167.66,36.411 L167.66,36.411 Z" id="Fill-6" class="svg-fill" fill="#000000"></path>
+            <polyline id="Fill-7" class="svg-fill" fill="#000000" points="180.037 47.773 167.721 47.773 177.697 12.162 190.013 12.162 180.037 47.773"></polyline>
+            <path d="M204.278,19.275 L191.963,19.275 L193.968,12.162 L206.283,12.162 L204.278,19.275 Z M196.308,47.773 L183.991,47.773 L191.295,21.757 L203.61,21.757 L196.308,47.773 L196.308,47.773 Z" id="Fill-8" class="svg-fill" fill="#000000"></path>
+            <path d="M226.418,21.757 L227.49,27.628 L218.064,27.628 L215.297,37.509 C215.058,38.273 214.866,39.227 214.866,39.847 C214.866,40.992 215.344,41.376 217.014,41.376 L219.64,41.376 L217.825,47.773 L206.847,47.773 C203.219,47.773 201.835,46.006 201.835,43.331 C201.835,42.235 201.979,41.04 202.361,39.704 L209.043,15.98 L221.358,15.98 L219.734,21.757 L226.418,21.757" id="Fill-9" class="svg-fill" fill="#000000"></path>
+            <polyline id="Fill-10" class="svg-fill" fill="#000000" points="59.4 51.773 62.469 51.77 60.515 58.174 57.454 58.176 59.4 51.773"></polyline>
+            <polyline id="Fill-11" class="svg-fill" fill="#000000" points="70.114 51.777 74.604 51.774 75.756 56.045 75.787 56.045 77.087 51.773 79.751 51.77 77.782 58.16 73.485 58.176 72.24 53.611 72.22 53.611 70.856 58.166 68.191 58.168 70.114 51.777"></polyline>
+            <polyline id="Fill-12" class="svg-fill" fill="#000000" points="85.571 51.78 88.951 51.778 89.543 55.804 92.634 51.774 95.762 51.772 90.605 58.164 86.853 58.168 85.571 51.78"></polyline>
+            <polyline id="Fill-13" class="svg-fill" fill="#000000" points="101.647 51.782 108.631 51.776 108.237 53.072 104.222 53.076 103.833 54.389 107.597 54.386 107.221 55.619 103.457 55.622 103.069 56.89 107.125 56.887 106.716 58.182 99.695 58.188 101.647 51.782"></polyline>
+            <polyline id="Fill-14" class="svg-fill" fill="#000000" points="131.638 53.342 129.247 53.344 129.72 51.791 137.569 51.783 137.097 53.337 134.705 53.34 133.24 58.158 130.174 58.161 131.638 53.342"></polyline>
+            <polyline id="Fill-15" class="svg-fill" fill="#000000" points="143.919 51.774 148.57 51.771 148.794 56.044 148.814 56.044 151.588 51.769 156.258 51.764 154.319 58.169 151.475 58.172 152.933 53.348 152.911 53.348 149.456 58.174 146.491 58.176 146.07 53.354 146.041 53.354 144.584 58.162 141.98 58.164 143.919 51.774"></polyline>
+            <polyline id="Fill-16" class="svg-fill" fill="#000000" points="175.8 51.777 180.286 51.774 181.442 56.045 181.472 56.045 182.771 51.772 185.434 51.77 183.485 58.176 179.133 58.163 177.925 53.611 177.905 53.611 176.511 58.165 173.845 58.168 175.8 51.777"></polyline>
+            <polyline id="Fill-17" class="svg-fill" fill="#000000" points="192.794 53.332 190.401 53.334 190.874 51.779 198.724 51.773 198.252 53.327 195.86 53.33 194.396 58.164 191.326 58.168 192.794 53.332"></polyline>
+            <path d="M246.119,48.642 C244.598,48.642 243.365,47.409 243.365,45.888 C243.365,44.367 244.598,43.134 246.119,43.134 C247.64,43.134 248.873,44.367 248.873,45.888 C248.873,47.409 247.64,48.642 246.119,48.642 Z M246.119,42.54 C244.274,42.54 242.771,44.043 242.771,45.888 C242.771,47.733 244.274,49.236 246.119,49.236 C247.964,49.236 249.467,47.733 249.467,45.888 C249.467,44.043 247.964,42.54 246.119,42.54 L246.119,42.54 Z" id="Fill-18" class="svg-fill" fill="#000000"></path>
+            <path d="M245.545,45.658 L245.545,44.691 L246.007,44.691 C246.397,44.683 246.828,44.708 246.828,45.17 C246.828,45.633 246.397,45.658 246.007,45.658 L245.545,45.658 Z M247.461,45.195 C247.461,44.529 247.072,44.155 246.244,44.155 L244.942,44.155 L244.942,47.608 L245.545,47.608 L245.545,46.194 L246.007,46.194 L246.869,47.608 L247.535,47.608 L246.633,46.145 C247.104,46.088 247.461,45.795 247.461,45.195 L247.461,45.195 Z" id="Fill-19" class="svg-fill" fill="#000000"></path>
+            <path d="M118.039,53.718 C117.971,53.646 117.968,53.524 117.996,53.427 C118.096,53.101 118.502,52.887 119.15,52.887 C119.532,52.886 120.12,52.929 120.289,53.064 C120.467,53.192 120.525,53.39 120.462,53.582 L123.181,53.582 C123.501,52.44 122.781,51.702 119.711,51.7049909 C116.795,51.708 115.141,52.333 114.716,53.729 C114.607,54.092 114.592,54.541 114.894,54.842 C115.645,55.59 119.036,55.888 119.323,56.291 C119.38,56.371 119.402,56.469 119.368,56.584 C119.212,57.098 118.484,57.229 117.848,57.229 C117.444,57.229 116.918,57.143 116.767,56.976 C116.625,56.808 116.625,56.551 116.707,56.386 L113.861,56.39 C113.576,57.383 113.453,58.415 117.409,58.4120065 C120.728,58.408 122.248,57.597 122.63,56.333 C122.819,55.715 122.632,55.372 122.416,55.152 C121.679,54.395 118.395,54.114 118.039,53.718" id="Fill-20" class="svg-fill" fill="#000000"></path>
+            <polyline id="Fill-21" class="svg-fill" fill="#000000" points="162.507 51.784 169.49 51.778 169.097 53.074 165.081 53.078 164.692 54.391 168.456 54.388 168.08 55.621 164.316 55.624 163.929 56.893 167.984 56.889 167.575 58.184 160.555 58.189 162.507 51.784"></polyline>
+            <path d="M243.043,21.757 L236.36,36.173 L236.551,21.757 L224.093,21.757 L226.479,47.773 C226.174,49.296 225.67,50.153 224.715,50.578 C223.669,51.044 221.305,50.96 220.474,50.914 L220.322,50.922 L218.358,57.991 L226.765,57.999 C231.729,57.999 234.164,55.504 237.696,49.968 L255.644,21.757 L243.043,21.757" id="Fill-22" class="svg-fill" fill="#000000"></path>
+            <path d="M206.687,53.702 C206.62,53.63 206.617,53.508 206.644,53.411 C206.745,53.085 207.151,52.871 207.798,52.871 C208.18,52.87 208.768,52.913 208.937,53.048 C209.116,53.176 209.174,53.375 209.111,53.566 L211.829,53.566 C212.15,52.424 211.429,51.687 208.36,51.6899909 C205.444,51.692 203.79,52.317 203.365,53.713 C203.255,54.076 203.241,54.525 203.542,54.826 C204.293,55.574 207.684,55.872 207.971,56.275 C208.029,56.356 208.05,56.453 208.016,56.568 C207.861,57.082 207.132,57.213 206.497,57.214 C206.092,57.214 205.567,57.127 205.416,56.96 C205.274,56.792 205.274,56.535 205.355,56.37 L202.509,56.374 C202.224,57.367 202.101,58.399 206.057,58.3960065 C209.376,58.393 210.896,57.581 211.279,56.317 C211.467,55.699 211.281,55.356 211.064,55.137 C210.328,54.379 207.043,54.099 206.687,53.702" id="Fill-23" class="svg-fill" fill="#000000"></path>
+        </g>
+    </svg>
+    {% endset %}
+
+    {% set default_example %}
+    <footer class="eds-page-footer-root">
+        <div class="eds-page-footer__logo" aria-hidden="true">
+            {{ Enterprise_logo | safe }}
+        </div>
+        <div class="eds-page-footer__content">
+            <p class="eds-page-footer__copyright">Copyright 1998-<script>document.write(new Date().getFullYear())</script> xyz LLC. All rights reserved.</p>
+            <div class="eds-page-footer__links">
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/terms-of-use" eds-size="small">Terms of Use</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/privacy-policy" eds-size="small">Privacy Policy</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/security/overview" eds-size="small">Security</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/sitemap/overview" eds-size="small">Site Map</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/accessibility/overview" eds-size="small">Accessibility</eds-link>
+                <eds-link eds-href="https://www.Enterprise.com/customer-service/contact-us" eds-size="small">Contact Us</eds-link>
+            </div>
+            <p class="eds-page-footer__user-reference">
+                <eds-link eds-href="https://www.Enterprise.com/terms-of-use#For" eds-size="small">This is for persons in the U.S. only.</eds-link>
+            </p>
+        </div>
+    </footer>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: default_example,
+                label: "Default example"
+            }
+
+        ],
+        language='html',
+        preformatted=false,
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+    {% filter markdown %}
+    ## U.S. Only Content
+    Content intended only for U.S. audiences can be hidden by applying the `eds-page-footer__us-only` CSS modifier class.
+
+    {% endfilter %}
+
+    {% set us_only_example %}
+    <footer class="eds-page-footer-root">
+        <div class="eds-page-footer__logo" aria-hidden="true">
+            {{ Enterprise_logo | safe }}
+        </div>
+        <div class="eds-page-footer__content">
+            <p class="eds-page-footer__copyright">Copyright 1998-<script>document.write(new Date().getFullYear())</script> xyz LLC. All rights reserved.</p>
+            <div class="eds-page-footer__links">
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/terms-of-use" eds-size="small">Terms of Use</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/privacy-policy" eds-size="small">Privacy Policy</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/security/overview" eds-size="small">Security</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/sitemap/overview" eds-size="small">Site Map</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/accessibility/overview" eds-size="small">Accessibility</eds-link>
+                <eds-link eds-href="https://www.Enterprise.com/customer-service/contact-us" eds-size="small">Contact Us</eds-link>
+            </div>
+            <p class="eds-page-footer__user-reference">
+                <eds-link class="eds-page-footer__us-only" eds-href="https://www.Enterprise.com/terms-of-use#For" eds-size="small">This is for persons in the U.S. only.</eds-link>
+            </p>
+        </div>
+    </footer>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: us_only_example,
+                label: "US only"
+            }
+
+        ],
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+
+    {% filter markdown %}
+    ## Custom Links
+    Links can be added or removed from the footer simply by composing `eds-link` components inside the `<div>` with `class="eds-page-footer__links">`.  Here "Security" and "Site map" have been removed from the default example by excluding them from the `<div>`.
+    {% endfilter %}
+    {% set custom_links_example %}
+    <footer class="eds-page-footer-root">
+        <div class="eds-page-footer__logo" aria-hidden="true">
+            {{ Enterprise_logo | safe }}
+        </div>
+        <div class="eds-page-footer__content">
+            <p class="eds-page-footer__copyright">Copyright 1998-<script>document.write(new Date().getFullYear())</script> xyz LLC. All rights reserved.</p>
+            <div class="eds-page-footer__links">
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/terms-of-use" eds-size="small">Terms of Use</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/privacy-policy" eds-size="small">Privacy Policy</eds-link>
+                <eds-link class="eds-page-footer__link-spacer" eds-href="https://www.Enterprise.com/accessibility/overview" eds-size="small">Accessibility</eds-link>
+                <eds-link eds-href="https://www.Enterprise.com/customer-service/contact-us" eds-size="small">Contact Us</eds-link>
+            </div>
+            <p class="eds-page-footer__user-reference">
+                <eds-link eds-href="https://www.Enterprise.com/terms-of-use#For" eds-size="small">This is for persons in the U.S. only.</eds-link>
+            </p>
+        </div>
+    </footer>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: custom_links_example,
+                label: "With custom links"
+            }
+
+        ],
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+
+    {% filter markdown %}
+    ## Glance CoBrowse Configuration
+    The implementation for Glance CoBrowse is unique for each consuming application and framework.  A basic algorithm is:
+    - Initialize a GLANCE_ID variable like `const GLANCE_ID = 'cobrowsescript';`
+    - In a function
+        - Check that Glance will be available
+        - Check for the existence of Glance on the window object and if present,
+        - Initiate a Glance session by initializing a session key
+    - Bind the function to an element via an event listener
+
+    A vanilla JavaScript example is provided in the `<script>` tag in the code example below.
+    {% endfilter %}
+
+    {% set cobrowse_example %}
+    <footer class="eds-page-footer-root">
+        <div class="eds-page-footer__logo" aria-hidden="true">
+            {{ Enterprise_logo | safe }}
+        </div>
+        <div class="eds-page-footer__content">
+            <p class="eds-page-footer__copyright">Copyright 1998-<script>document.write(new Date().getFullYear())</script> xyz LLC. All rights reserved.</p>
+            <div class="eds-page-footer__links">
+                <eds-link eds-id="eds3-glance-share-your-screen" class="eds-page-footer__link-spacer" eds-href="javascript:void(null);" eds-size="small">Share your Screen</eds-link>
+                <eds-link eds-href="https://www.Enterprise.com/customer-service/contact-us" eds-size="small">Contact Us</eds-link>
+            </div>
+            <p class="eds-page-footer__user-reference">
+                <eds-link eds-href="https://www.Enterprise.com/terms-of-use#For" eds-size="small">This is for persons in the U.S. only.</eds-link>
+            </p>
+        </div>
+    </footer>
+    <script>
+        // initialize a GLANCE_ID variable
+        const GLANCE_ID = 'cobrowsescript';
+
+        // define a function that checks for Glance and if present initiates a session
+        function shareScreen() {
+            if (
+                /*
+                * returns true if GLANCE will be available. This does not guarantee
+                * that GLANCE is ready, only that it will be loaded eventually.
+                */
+                !!document.getElementById(GLANCE_ID) &&
+
+                // check for Glance on the window object
+                window.GLANCE &&
+                window.GLANCE.Cobrowse &&
+                window.GLANCE.Cobrowse.Visitor &&
+                typeof window.GLANCE.Cobrowse.Visitor.showTerms === "function"
+            ) {
+                // Glance is present so initiate a session
+                window.GLANCE.Cobrowse.Visitor.showTerms({
+                    sessionKey: "GLANCE_KEYTYPE_RANDOM"
+                });
+            }
+        };
+
+        // find the element to bind the 'shareScreen' function to and bind the function to that element
+        const anchor = document.querySelector("#eds3-glance-share-your-screen");
+        anchor.addEventListener('click', shareScreen);
+    </script>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: cobrowse_example,
+                label: "Glance Cobrowse configuration"
+            }
+
+        ],
+        language='html',
+        show_copy_button=true,
+        generate_html=false
+    )}}
+{% endblock %}
+
+
+{##
+ # Design Tab
+ #}
+{% block design_tab %}
+    {% filter markdown %}
+    ## Use when
+    - Part of the basic page shell.
+    - Immediately following Footnotes & Disclosures component.
+
+
+    ## Don't use when
+    - Inside of a modal layer
+    - The containing page already provides a footer
+
+    ## Visual style
+    ### Anatomy and construction
+    {% endfilter %}
+
+    {% set page_footer_anatomy_caption %}
+    <ol class="eds-figure__figcaption-inline-list">
+        <li>Logo area</li>
+        <li>Copyright</li>
+        <li>Links area</li>
+        <li>User reference area</li>
+    </ol>
+    {% endset %}
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/page-footer/page-footer-anatomy.png 1x,
+                ../images/page-footer/page-footer-anatomy@2x.png 2x
+            ",
+            alt="Diagram describing the required elements",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=page_footer_anatomy_caption,
+            sentiment="neutral"
+            )
+        }}
+
+    {% filter markdown %}
+    ### Placement
+    - Place footers at the bottom of the page.
+    - The footer always spans the full width of the browser window.
+
+    ### Content
+    - Do not place legal information or other footnotes within this component.  Use <eds-link eds-href="/components/footnotes/footnotes.html">Footnotes & Disclosures</eds-link> instead.
+    {% endfilter %}
+{% endblock %}
+
+{##
+ # Code Tab
+ #}
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+    {% endfilter %}
+
+    {% filter markdown%}
+    ## CSS block level classes
+
+    | Class name         | Applies to         | Outcome                                             |
+    | ------------------ | ------------------ | --------------------------------------------------- |
+    | `.eds-page-footer-root` | `<footer>` element | Defines the outermost container of the Page Footer. |
+
+
+    ## CSS Element classes
+
+    | Class name                          | Applies to            | Outcome                                                                   |
+    | ----------------------------------- | --------------------- | ------------------------------------------------------------------------- |
+    | `.eds-page-footer__content`         | `<div>` element       | Defines a container for the copyright, links, and user reference areas    |
+    | `.eds-page-footer__copyright`       | `<p>` element         | Defines a container for the copyright area                                |
+    | `.eds-page-footer__links`           | `<p>` element         | Defines a container for the links area                                    |
+    | `.eds-page-footer__logo`            | `<div>` element       | Defines a container for the Logo                                          |
+    | `.eds-page-footer__user-reference`  | `<p>` element         | Defines a container for the user reference area                           |
+
+
+    ## CSS Modifier classes
+
+    | Class name                        | Applies to           | Outcome                                     |
+    | --------------------------------- | -------------------- | ------------------------------------------- |
+    | `.eds-page-footer__link-spacer`   | `<eds-link>` element | Exclude to remove the `\|` after a link      |
+    | `.eds-page-footer__us-only`       | `<eds-link>` element | Apply to remove the element from the layout |
+
+    {% endfilter %}
+
+    {% set namespace_example_html %}
+        <footer class="eds3-page-footer-root">
+            ...
+        </footer>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Page Footer", root_class="page-footer-root", namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {{ library.import_reference(component_name="Page Footer") }}
+
+
+{% endblock %}
+
+{##
+ # A11y Tab
+ #}
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Enterprise logo SVG element
+    The SVG element for the Enterprise logo can be configured with different attribution, depending on how you expect a screen reader to read the element.
+    {% endfilter %}
+
+    {% filter markdown %}
+    In most cases, use `role="image"` and `aria-label` with an appropriate value such as "Enterprise Investments".
+    {% endfilter %}
+
+    {% set a11y_example %}
+    <svg class="eds-page-footer__logo-img"
+        aria-label="Enterprise Investments"
+        focusable="false"
+        role="img">
+        ...
+    </svg>
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_example, show_copy_button=false, preformatted=true) }}
+
+
+    {% filter markdown %}
+    Alternatively, you can use `aria-hidden="true"` to hide the Logo from being read by a screen reader.
+    {% endfilter %}
+
+    {% set a11y_example %}
+    <svg class="eds-page-footer__logo-img"
+        aria-hidden="true"
+        focusable="false">
+        ...
+    </svg>
+    {% endset %}
+    {{ library.eds_code_snippet(source=a11y_example, show_copy_button=false, preformatted=true) }}
+
+{% endblock %}

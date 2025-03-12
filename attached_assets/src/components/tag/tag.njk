@@ -1,0 +1,280 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status="In progress" %}
+{% set body_class="docsite-documentation-page--with-tabs docsite-documentation-page--fds-only"%}
+
+{% set component_example_simple %}
+<eds-tag>Tag</eds-tag>
+{% endset %}
+
+{% macro tag(text) %}
+<eds-tag>{{ text }}</eds-tag>
+{% endmacro %}
+
+{##
+ # TITLE
+ #}
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Tag
+    Tags are used to label, organize, or categorize information.
+    {% endfilter %}
+{% endblock %}
+
+{##
+ # Examples Tab
+ #}
+{% block examples_tab %}
+    {% filter markdown %}
+
+    ## Default
+    A tag is used to visually highlight words or phrases that are part of a semantic list describing neighboring content, such as categories for an article or card.
+
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: component_example_simple|safe,
+                label: 'Default'
+            }
+        ],
+        code_snippet_source = component_example_simple|safe
+    )}}
+
+    {% filter markdown %}
+
+    ## Multiple tags
+    Multiple tags that are closely related should be children of the same parent element.
+    It's best to present multiple tags as a list.
+
+    {% endfilter %}
+
+    {% set multiple_tags %}
+        <p id="article-categories" role="list" aria-label="categories">
+            <eds-tag aria-describedby="article-categories" role="listitem">Category 1</eds-tag>
+            <eds-tag aria-describedby="article-categories" role="listitem">Category 2</eds-tag>
+            <eds-tag aria-describedby="article-categories" role="listitem">Category 3</eds-tag>
+        </p>
+    {% endset %}
+
+    {% set in_context_example %}
+    <eds-card>
+        <div>
+          <p class="eds-text--overline">Investing</p>
+          <h2 class="eds-text--title">Why choose Enterprise funds?</h2>
+          <p class="eds-text--paragraph-lede">
+            There's a reason we're a world leader in mutual funds—our rich history, global research, and dedication to innovation create more choices for you.
+          </p>
+          {{ multiple_tags | safe }}
+        </div>
+        <p class="eds-text--paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, justo vel aliquet
+          aliquet, libero nunc hendrerit justo, nec tincidunt libero nunc vel justo.
+          <eds-link href="#">Read more</eds-link>
+        </p>
+      </eds-card>
+    {% endset %}
+
+     {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: multiple_tags|safe,
+                label: 'Multiple tags'
+            },
+            {
+                example: in_context_example|safe,
+                label: 'In context'
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        code_snippet_source = multiple_tags|safe|trim
+    )}}
+
+
+{% endblock %}
+
+
+{##
+ # Design Tab
+ #}
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/content/tag/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+
+    {% filter markdown %}
+
+    ## Interaction guidelines
+
+    A tag is a static component that is placed inside or in close proximity to other UI elements to show helpful details or attributes.
+
+    - Use a tag to show the number of unread messages.
+   - Use a tag to show an article's category
+
+    ## Usage guidelines
+
+    | Do                                 | Don't                      |
+    | ---------------------------------- | -------------------------- |
+    | Use concise, sentence case labels. | Use tags for interactions. |
+
+
+    ## Accessibility considerations
+
+    ### Placement
+
+    Tag placement ensures that the pattern is accessible.
+    Put tags in close proximity to title/header in a content trunk.
+
+    - If a tag is close to the content that it describes, make sure it follows in the DOM.
+    - If there is other content in between the tag and what it describes visually, then the tag should be programmatically associated with the content, especially if they are meant to represent status.
+
+    ## Content guidance
+
+    ### Usage
+
+    - Tags can be used to define categories or group information that is repeatable.
+    - Check to see what tags exist before creating new ones.
+
+    ### Format
+
+    - Use direct, simple, concise language for tag labels.
+    - Tag labels are sentence case.
+
+    {% endfilter %}
+
+    {% filter markdown %}
+    ## Behavior
+
+    A tag is static, so there should be no interactivity assigned to it.
+
+    {% endfilter %}
+
+
+{% endblock %}
+
+{##
+ # Code Tab
+ #}
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+
+    {% endfilter %}
+
+    Component has no custom attributes or properties.
+
+    {% filter markdown %}
+    ### Usage example
+    This example shows how to add `aria-describedby` attributes to a tag and designate it as a list.
+
+
+    {% endfilter %}
+
+    {% set native_attr_example %}
+            {{ multiple_tags }}
+    {% endset %}
+
+    {{library.eds_code_snippet(
+        source=native_attr_example,
+        preformatted=true,
+        show_copy_button=false
+    )}}
+
+
+    {% filter markdown %}
+    ## Slots
+
+    | **Name** | **Default content** | **Description** |
+    | -------- | ------------------- | --------------- |
+    | default  | -- | Any (simple) html content in between the tags will render |
+
+    ## Events
+
+    The Tag component does not emit any custom events.
+
+    ## Methods
+
+    The Tag component does not implement any public methods.
+
+    ## CSS modifier classes
+    The Tag component does not implement any CSS modifier classes.
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-tag>...</eds3-tag>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <span class="eds3-tag-root">...</span>
+    {% endset %}
+
+    {{ library.namespacing(component_name="tag", root_class="tag-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                  | Required |
+| --------------------------------------------------------------------------------------- | --- |
+| `import { edsTag } from '@xyz-ap153177/apex-kit';`                                   | Yes |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Tag", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab
+ #}
+{% block a11y_tab %}
+    {% filter markdown %}
+
+    ## Attribution
+
+    Component is a simple inline element that wraps text. It can take advantage of native HTML attributes for accessibility.
+
+    - A tag or group of tags should have a description.
+    - More than one tag should be in a list.
+
+    In the following example, we show a paragraph designated as a list with each eds-tag as a list-item described by the paragraph's accessible label.
+
+    {% endfilter %}
+
+    {% set a11y_example %}
+        <p id="a11y-example-1" role="list" aria-label="categories">
+            <eds-tag aria-describedby="a11y-example-1" role="listitem">Category 1</eds-tag>
+            <eds-tag aria-describedby="a11y-example-1" role="listitem">Category 2</eds-tag>
+            <eds-tag aria-describedby="a11y-example-1" role="listitem">Category 3</eds-tag>
+        </p>
+    {% endset %}
+
+        {{ library.eds_code_example_pair(
+        examples= [
+            {
+                example: a11y_example|safe,
+                label: 'Multiple tags'
+            }
+        ],
+        language='html',
+        show_copy_button=true,
+        code_snippet_source = a11y_example|safe|trim
+    )}}
+
+    {# {% filter markdown %} #}
+
+    {# ## Best practices #}
+    {# -   <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#link_text" eds-new-window eds-native-anchor-attributes='{"rel":"noreferrer","target":"_blank"}'>Link text</a>
+    -   <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#link_instructions" eds-new-window eds-native-anchor-attributes='{"rel":"noreferrer","target":"_blank"}'>Link instructions</a>
+    -   <eds-link eds-href="http://a11y.xyz.com/guide/buildingblock.html?id=03640b1c48901b36#tech_link_context" eds-new-window eds-native-anchor-attributes='{"rel":"noreferrer","target":"_blank"}'>Link context</a> #}
+
+    {# {% endfilter %} #}
+
+{% endblock %}

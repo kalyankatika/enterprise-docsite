@@ -1,0 +1,419 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{##
+# Title
+#}
+
+    {% block page__title %}
+
+        {% filter markdown %}
+        ##### Components
+        # [Deprecated] File Upload
+
+        File Upload provides a visual interface for uploading one or more files.
+        {% endfilter %}
+
+    {% endblock %}
+
+{##
+# Examples Tab
+#}
+
+    {% block examples_tab %}
+        <eds-alert eds-title="Component Deprecated!">  
+            <div>Please use <eds-link eds-href="https://apex-extensions-docs.static.aws.xyzcloud.com/components/enterprise-document-upload/" eds-new-window>Enterprise Document Upload</eds-link>.</div>
+            <div>Enterprise Document Upload is a modular cross-BU capability to upload documents to the Vault.</div>
+        </eds-alert>
+        <br/>
+        {% filter markdown %}
+            ## States
+            ### Default
+            Allows one or more files to be uploaded. For the purposes of this documentation, we have set an increased individual file size.
+        {% endfilter %}
+
+        {% set mock_fetch_script %}
+            <eds-file-upload id="success-example" eds-max-file-size="10485760"></eds-file-upload>
+
+            <script>
+                const uploader = document.getElementById('success-example');
+
+                // Attach an event listener
+                uploader.addEventListener('eds-file-input-change', async (event) => {
+                    console.log(event.detail.length + ' item(s) to upload...');
+                    const uploadPromises = event.detail.map(d => uploadToApi(d))
+                    try {
+                        await Promise.all(uploadPromises);
+                        console.log('all files uploaded');
+                    } catch(err) {
+                        console.error('error uploading files', err);
+                        // TODO reflect in UI
+                    }
+                });
+
+                // Mocks a call to an API
+                async function uploadToApi(detail) {
+                    try {
+                        const data = new FormData();
+                        data.append('file', detail.fileBlob);
+                        data.append('name', detail.edsFileId);
+
+                        // you would do something like this in your app
+                        // await fetch('/upload', { method: 'POST', body: data });
+
+                        // mock upload wait time
+                        await new Promise(resolve => setTimeout(resolve, 1500));
+
+                        detail.edsSetFileItemStatus('success');
+                    } catch (err) {
+                        console.error(err);
+                        detail.edsSetFileItemStatus('error');
+                        throw err;
+                    }
+                }
+                </script>
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=mock_fetch_script,
+            generate_html=false
+        )}}
+
+        {% filter markdown %}
+            ## File status types
+            Files are listed in a specific order depending on their status type. See the <eds-link eds-href="file-upload.html?tab=design#behavior">Hierarchy</eds-link> section for more information.
+            <br />
+            ### Setting status type
+            The `eds-file-input-change` <eds-link eds-href="/components/file-upload/file-upload.html?tab=code#events">event</eds-link> contains a `detail` object with functions that can be used to update the status type.  Accepted status types are `success`, `warning`, `error`, and `loading`.
+        {% endfilter %}
+    {% endblock %}
+
+{##
+# Design Tab
+#}
+
+    {% block design_tab %}
+        <eds-alert eds-title="Component Deprecated!">  
+            <div>Please use <eds-link eds-href="https://apex-extensions-docs.static.aws.xyzcloud.com/components/enterprise-document-upload/" eds-new-window>Enterprise Document Upload</eds-link>.</div>
+            <div>Enterprise Document Upload is a modular cross-BU capability to upload documents to the Vault.</div>
+        </eds-alert>
+        <br/>
+        {% filter markdown %}
+        ## Use when
+        Files such as .jpg, .png, .pdf, or others need to be collected independently or within a Form.
+
+        ## Visual style
+        - Use a “secondary” <eds-link eds-href="/components/button/button.html?tab=examples#secondary-action">Button</eds-link> by default.
+        - Use a “primary” <eds-link eds-href="/components/button/button.html?tab=examples#primary-action">Button</eds-link> if uploading a file is the main action on the page.
+
+        ### Anatomy and construction
+        {% endfilter %}
+
+        {% set tile_anatomy_caption %}
+            <ol class="eds-figure__figcaption-inline-list">
+                <li>File types (required)</li>
+                <li>Upload capacity (required)</li>
+                <li>Upload action (required)</li>
+                <li>File action (required)</li>
+                <li>File status (required)</li>
+                <li>File size (required)</li>
+                <li>Date uploaded (required)</li>
+            </ol>
+        {% endset %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/file-upload/doc-file-upload-anatomy.png 1x,
+                ../images/file-upload/doc-file-upload-anatomy@2x.png 2x
+            ",
+            alt="Diagram identifying the anatomy of the File Upload component.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=tile_anatomy_caption,
+            sentiment="neutral"
+            )
+        }}
+
+        {% filter markdown %}
+        ## Behavior
+        - Files are initially uploaded to the browser cache. To complete the upload, the component must be linked to an application that supplies logic. (e.g., FidSafe)
+        - If the “cancel” button is clicked mid-upload, the line item will disappear, and the file will not be uploaded.
+        - The total file size limit automatically updates as files are uploaded.
+        - Filenames longer than the 45-character maximum for file names will truncate.
+        - Hovering over a truncated file name will display the entire name.
+
+        ### Width and Height
+        - The component will fill 100% of the parent container width.
+        - The height of the component will grow, or contract dynamically as additional files are uploaded or deleted. Content below the file list will adjust position based on the length of the file list.
+
+        ### Hierarchy
+        {% endfilter %}
+        <ul>
+            <li>Files are always displayed in this order:
+                <ol>
+                    <li>Error</li>
+                    <li>Warning</li>
+                    <li>Loading</li>
+                    <li>Success</li>
+                </ol>
+            </li>
+            <li>Files uploaded successfully will display in descending order.</li>
+            <li>When the “delete” button removes a file, any items in the list below it will shift up.</li>
+        </ul>
+
+    {% filter markdown %}
+        ## File list
+
+        ### Error
+        The “critical” <eds-link eds-href="/components/inline-alert/inline-alert.html?tab=examples#critical-alert">Inline Alert</eds-link> is used for files that cannot be uploaded. Clicking “X” dismisses the notification.
+    {% endfilter %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/file-upload/doc-file-upload-error.png 1x,
+                ../images/file-upload/doc-file-upload-error@2x.png 2x
+            ",
+            alt="Example showing the file upload error state.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            )
+        }}
+
+        {% filter markdown %}
+        ### Warning
+        The “warning” <eds-link eds-href="/components/inline-alert/inline-alert.html?tab=examples#warning-alert">Inline Alert</eds-link> is used for files that may need to be uploaded again. Clicking the "delete" button removes the file prior to submission.
+          - For use with FidScan only.
+        {% endfilter %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/file-upload/doc-file-upload-warning.png 1x,
+                ../images/file-upload/doc-file-upload-warning@2x.png 2x
+            ",
+            alt="Example showing the file upload warning state.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            )
+        }}
+
+        {% filter markdown %}
+        ### Loading
+        A <eds-link eds-href="/components/spinner/spinner.html?tab=examples">Spinner</eds-link> is used while file is uploading. Clicking the “cancel” button stops the upload.
+        {% endfilter %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/file-upload/doc-file-upload-loading.png 1x,
+                ../images/file-upload/doc-file-upload-loading@2x.png 2x
+            ",
+            alt="Example showing the file upload loading state.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            )
+        }}
+
+        {% filter markdown %}
+        ### Success
+        The “success” <eds-link eds-href="/components/inline-alert/inline-alert.html?tab=examples#success-alert">Inline Alert</eds-link> is used for files successfully uploaded. Clicking the “delete” button removes file prior to submission.
+        {% endfilter %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/file-upload/doc-file-upload-success.png 1x,
+                ../images/file-upload/doc-file-upload-success@2x.png 2x
+            ",
+            alt="Example showing the file upload success state.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            )
+        }}
+
+        {% filter markdown %}
+        ## Content
+        {% endfilter %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/file-upload/doc-file-upload-content.png 1x,
+                ../images/file-upload/doc-file-upload-content@2x.png 2x
+            ",
+            alt="Diagram of File Upload content regions.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=true,
+            label="",
+            caption="",
+            sentiment="neutral"
+            )
+        }}
+
+        {% filter markdown %}
+        - A heading and introductory text are not included as a part of the component but may be added by the application. A <eds-link eds-href="/visual-style/typography/typography.html#heading-text">Level 3 heading</eds-link> and <eds-link eds-href="/visual-style/typography/typography.html#body-text">medium text</eds-link> is recommended.
+        - Acceptable file types and remaining file size are determined by the application being used for file submission.
+        - The file name, file type, date, and size will dynamically populate based on information gathered from the uploaded file.
+        - Select measurement units for file size upload capacity based on the application requirements. (e.g., bytes, GB, MB)
+        - Customize Inline Alert content as needed. Default content included is:
+            - Success: “Ready to submit”
+            - Critical: “Upload files no larger than 5MB”
+        {% endfilter %}
+
+    {% endblock %}
+
+{##
+# Code Tab
+#}
+    {% block code_tab %}
+        <eds-alert eds-title="Component Deprecated!">  
+            <div>Please use <eds-link eds-href="https://apex-extensions-docs.static.aws.xyzcloud.com/components/enterprise-document-upload/" eds-new-window>Enterprise Document Upload</eds-link>.</div>
+            <div>Enterprise Document Upload is a modular cross-BU capability to upload documents to the Vault.</div>
+        </eds-alert>
+        <br/>
+        {% filter markdown %}
+        ## Installation
+        {% include "src/templates/partials/integration.njk" %}
+
+        ## Attributes
+        | Prop                           | Type      | Validation       | Default                                                                                 | Description                                                                                                                                                                                 |
+        | ------------------------------ | --------- | ----------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `eds-a11y-labels`              | object    | --          | See <eds-link eds-href="#default-attribute-values">Default Attribute Values</eds-link> table | Accessibility labels displayed based on status of file upload.  Allowed properties are `cancel`, `close`, and `delete`.                                                                     |
+        | `eds-accepted-file-types`      | string[]  | --          | See <eds-link eds-href="#default-attribute-values">Default Attribute Values</eds-link> table | An array of file types permitted for upload.                                                                                                                                                |
+        | `eds-date-format`              | object    | --          | See <eds-link eds-href="#default-attribute-values">Default Attribute Values</eds-link> table | Allows specifying a custom `Intl.DateTimeFormat` date format with the structure `{locale: localeString, options: {...}}` Expects standard `Intl.DateTimeFormat` arguments.                  |
+        | `eds-enable-file-reader`       | boolean   | --          | true                                                                                         | Setting this value to `false` disables the built-in File Reader API from reading the selected files via the specified File Reader API method.                                               |
+        | `eds-file-reader-method`       | string    | --          | readAsArrayBuffer                                                                            | The File Reader API method to be used for reading selected files. <b>Only used when `eds-enable-file-reader` is set to “true.”</b>.                                                         |
+        | `eds-file-types-label`         | string    | --          | Acceptable file types:                                                                       | Sets the text preceding the list of acceptable file types.                                                                                                                                  |
+        | `eds-max-file-size`            | number    | --          | 241172 bytes (241KB)                                                                         | The maximum file size allowed for an individual file to upload.  Value must be in bytes.                                                                                                    |
+        | `eds-MIME-types`               | object    | --          | See <eds-link eds-href="#default-attribute-values">Default Attribute Values</eds-link> table | Allows customizing the accepted MIME types with a structure `{[key: string]: string}` where the key is the file extension and the value is the MIME type. e.g. `{ png: 'image/png', ... }`  |
+        | `eds-months`                   | string[]  | --          | See <eds-link eds-href="#default-attribute-values">Default Attribute Values</eds-link> table | Sets the list of months.                                                                                                                                                                    |
+        | `eds-status-messages`          | object    | --          | See <eds-link eds-href="#default-attribute-values">Default Attribute Values</eds-link> table | Status messages displayed based on status of file upload.  Allowed properties are `loading`, `success`, `warning`, `error`, `fileSizeError`, and `fileTypeError`.                           |
+        | `eds-upload-button-attributes` | object    | --          | See <eds-link eds-href="#default-attribute-values">Default Attribute Values</eds-link> table | See the <eds-link eds-href="/components/button/button.html?tab=examples">eds-button documentation</eds-link> for all supported button properties.                                           |
+        | `eds-upload-capacity`          | number    | --          | 20971520 bytes (20MB)                                                                        | The total space available for uploaded files.  Value must be in bytes.                                                                                                                      |
+
+        ## Slots
+        The File Upload component doesn’t provide any slotted content.
+
+        ## Events
+        | Event name                     | Description                                                                                                    |
+        | ------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+        | `eds-file-input-change`        | Dispatched when the list of files to be uploaded has changed. Each file object within the event data provides metadata for each file as well as `edsSetFileItemStatus()` and `edsSetFileFormattedDate()` methods for directly setting the “status” and “formatted date” of each file individually.<br><br>`event.detail`: An array of file item objects to be uploaded<br><br>Properties include: <ul><li>`fileBlob`</li><li>`fileReaderResults`: result from reading the file with the File Reader API (only applicable if eds-enable-file-reader is set to `true`)</li><li>`edsFileId`: unique id assigned to the file item.</li><li>`edsFileFormattedDate`: file date</li><li>`edsFileUploadStatus`: upload status</li><li>`edsSetFileItemStatus(status: string)`: callback function for setting the status of the file object. Accepted status types are one of `error`, `warning`, `success`, or `loading`.</li><li>`edsSetFileFormattedDate(date: string)`: callback function for setting a custom, pre-formatted date on each file in the files list.</li></ul>             |
+        | `eds-cancel-file`              | Dispatched when a file’s "close" button is clicked, causing the file reading operation to be cancelled.        |
+        | `eds-delete-file`              | Dispatched when a file’s “delete” button is clicked, causing the file to be removed from the local Files list. |
+
+        ## Methods
+        ### Setters
+        #### setFileFormattedDate(fileId: string, date: string)
+        set the “created” date of an individual file within the list of files to be uploaded.
+          - `fileId`: the ID of the file to set the formatted date on
+          - `date`: a pre-formatted date string to be used as the file’s “created” date within the UI
+
+        #### setFileItemStatus(id: string, status: string)
+        set or update the status of a file item within the list of files to be uploaded
+          - `id`: the unique id of the file item to be updated (provided within `eds-file-input-change.detail` event data)
+          - `status`: ‘loading’, ‘success’ or ‘error’
+
+        ## Properties
+        #### remainingUploadCapacity()
+        get the total remaining file storage space based on the specified `edsUploadCapacity` and the total file size of the currently selected list of files
+          - returns number representing total remaining storage space in bytes
+
+        #### renderRemainingCapacityMessage(capacity: string)
+        sets a message with the given remaining `capacity` value.
+          - `capacity`: string representation of the remaining capacity, formatted with the appropriate units such as "100.7 KB"
+
+        `renderRemainingCapacityMessage` can be overriden to provide a different string value that is composed in the rendered template.
+
+        ## Additional functionality
+        ### File Reader API
+        This component utilizes the native <eds-link eds-href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader">HTML5 DOM File Reader API</eds-link> in order to read the contents of selected files into memory, ready for uploading to an end-point.
+
+        You can specify the method with which to read selected files via the `eds-file-reader-method` attribute, providing one of the following values supported by the File Reader API:
+          - readAsArrayBuffer
+          - readAsBinaryString
+          - readAsDataURL
+          - readAsText
+
+        Each file object returned within the eds-file-input-change event data provides a `fileReaderResults` property which contains the File Reader API instance for that file. See the <eds-link eds-href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader">MDN File Reader API documentation</eds-link> for more details on specific File Reader API properties & events available within the fileReaderResults object.
+
+        ## Default Attribute Values
+        | Attribute                      | Default Value                                                                                                                                                                                                                                                     |
+        | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `eds-a11y-labels`              | <code>{<br>&nbsp;&nbsp;cancel: 'Cancel loading [FILENAME].',<br>&nbsp;&nbsp;close: 'Remove [FILENAME] from files to upload.',<br>&nbsp;&nbsp;delete: 'Remove [FILENAME] from files to upload.'<br>}</code> |
+        | `eds-accepted-file-types`      | <code>[<br>&nbsp;&nbsp;'.jpg',<br>&nbsp;&nbsp;'.jpeg',<br>&nbsp;&nbsp;'.gif',<br>&nbsp;&nbsp;'.png',<br>&nbsp;&nbsp;'.pdf'<br>]</code> |
+        | `eds-date-format`              | <code>{<br>&nbsp;&nbsp;locale: 'en-US',<br>&nbsp;&nbsp;options: {<br>&nbsp;&nbsp;&nbsp;&nbsp;'year': 'numeric',<br>&nbsp;&nbsp;&nbsp;&nbsp;'month': 'numeric',<br>&nbsp;&nbsp;&nbsp;&nbsp;'day': 'numeric',<br>&nbsp;&nbsp;&nbsp;&nbsp;'timeZone': 'UTC'<br>&nbsp;&nbsp;}<br>}</code> |
+        | `eds-MIME-types`               | <code>{<br>&nbsp;&nbsp;aac: 'audio/aac',<br>&nbsp;&nbsp;abw: 'application/x-abiword',<br>&nbsp;&nbsp;arc: 'application/x-freearc',<br>&nbsp;&nbsp;avif: 'image/avif',<br>&nbsp;&nbsp;avi: 'video/x-msvideo',<br>&nbsp;&nbsp;azw: 'application/vnd.amazon.ebook',<br>&nbsp;&nbsp;bin: 'application/octet-stream',<br>&nbsp;&nbsp;bmp: 'image/bmp',<br>&nbsp;&nbsp;bz: 'application/x-bzip',<br>&nbsp;&nbsp;bz2: 'application/x-bzip2',<br>&nbsp;&nbsp;cda: 'application/x-cdf',<br>&nbsp;&nbsp;csh: 'application/x-csh',<br>&nbsp;&nbsp;csv: 'text/csv',<br>&nbsp;&nbsp;doc: 'application/msword',<br>&nbsp;&nbsp;docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',<br>&nbsp;&nbsp;eot: 'application/vnd.ms-fontobject',<br>&nbsp;&nbsp;epub: 'application/epub+zip',<br>&nbsp;&nbsp;gz: 'application/gzip',<br>&nbsp;&nbsp;gif: 'image/gif',<br>&nbsp;&nbsp;ico: 'image/vnd.microsoft.icon',<br>&nbsp;&nbsp;ics: 'text/calendar',<br>&nbsp;&nbsp;jpg: 'image/jpeg',<br>&nbsp;&nbsp;jpeg: 'image/jpeg',<br>&nbsp;&nbsp;json: 'application/json',<br>&nbsp;&nbsp;jsonld: 'application/ld+json',<br>&nbsp;&nbsp;mp3: 'audio/mpeg',<br>&nbsp;&nbsp;mp4: 'video/mp4',<br>&nbsp;&nbsp;mpeg: 'video/mpeg',<br>&nbsp;&nbsp;mpkg: 'application/vnd.apple.installer+xml',<br>&nbsp;&nbsp;odp: 'application/vnd.oasis.opendocument.presentation',<br>&nbsp;&nbsp;ods: 'application/vnd.oasis.opendocument.spreadsheet',<br>&nbsp;&nbsp;odt: 'application/vnd.oasis.opendocument.text',<br>&nbsp;&nbsp;oga: 'audio/ogg',<br>&nbsp;&nbsp;ogv: 'video/ogg',<br>&nbsp;&nbsp;ogx: 'application/ogg',<br>&nbsp;&nbsp;opus: 'audio/opus',<br>&nbsp;&nbsp;otf: 'font/otf',<br>&nbsp;&nbsp;png: 'image/png',<br>&nbsp;&nbsp;pdf: 'application/pdf',<br>&nbsp;&nbsp;ppt: 'application/vnd.ms-powerpoint',<br>&nbsp;&nbsp;pptx: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',<br>&nbsp;&nbsp;rtf: 'application/rtf',<br>&nbsp;&nbsp;svg: 'image/svg+xml',<br>&nbsp;&nbsp;tar: 'application/x-tar',<br>&nbsp;&nbsp;tif: 'image/tiff',<br>&nbsp;&nbsp;tiff: 'image/tiff',<br>&nbsp;&nbsp;ts: 'video/mp2t',<br>&nbsp;&nbsp;ttf: 'font/ttf',<br>&nbsp;&nbsp;txt: 'text/plain',<br>&nbsp;&nbsp;wav: 'audio/wav',<br>&nbsp;&nbsp;weba: 'audio/webm',<br>&nbsp;&nbsp;webm: 'video/webm',<br>&nbsp;&nbsp;webp: 'image/webp',<br>&nbsp;&nbsp;woff: 'font/woff',<br>&nbsp;&nbsp;woff2: 'font/woff2',<br>&nbsp;&nbsp;xls: 'application/vnd.ms-excel',<br>&nbsp;&nbsp;xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',<br>&nbsp;&nbsp;xml: 'application/xml',<br>&nbsp;&nbsp;xul: 'application.vnd.mozilla.xul+xml',<br>&nbsp;&nbsp;zip: 'application/zip'<br>};</code> |
+        | `eds-months`                   | <code>[<br>&nbsp;&nbsp;'January',<br>&nbsp;&nbsp;'February',<br>&nbsp;&nbsp;'March',<br>&nbsp;&nbsp;'April',<br>&nbsp;&nbsp;'May',<br>&nbsp;&nbsp;'June',<br>&nbsp;&nbsp;'July',<br>&nbsp;&nbsp;'August',<br>&nbsp;&nbsp;'September',<br>&nbsp;&nbsp;'October',<br>&nbsp;&nbsp;'November',<br>&nbsp;&nbsp;'December'<br>]</code>
+        | `eds-status-messages`          | <code>{<br>&nbsp;&nbsp;loading: 'Loading...',<br>&nbsp;&nbsp;success: 'Ready to submit',<br>&nbsp;&nbsp;warning: 'Poor image quality',<br>&nbsp;&nbsp;error: 'Error uploading image',<br>&nbsp;&nbsp;fileSizeError: 'Upload files no larger than [FILE_SIZE]',<br>&nbsp;&nbsp;fileTypeError: 'Choose an acceptable file-type'<br>}</code> |
+        | `eds-upload-button-attributes` | <code>{<br>&nbsp;&nbsp;"eds-text": "Upload a file",<br>&nbsp;&nbsp;"eds-variant": "secondary"<br />}</code> |
+
+        {% endfilter %}
+
+        {# IMPORT REFERENCE #}
+
+        {% set js_import_table %}
+| Import                                                     | Required |
+| ---------------------------------------------------------- | -------- |
+| `import { edsFileUpload } from '@xyz-ap153177/apex-kit';`  | Yes      |
+| `import { edsButton } from '@xyz-ap153177/apex-kit';`      | Yes      |
+| `import { edsLink } from '@xyz-ap153177/apex-kit';`        | Yes      |
+| `import { edsInlineAlert } from '@xyz-ap153177/apex-kit';` | Yes      |
+| `import { edsSpinner } from '@xyz-ap153177/apex-kit';`     | Yes      |
+        {% endset %}
+
+        {{ library.import_reference(component_name="File Upload", js_import_table=js_import_table) }}
+    {% endblock %}
+
+{##
+# A11y Tab
+#}
+
+    {% block a11y_tab %}
+        <eds-alert eds-title="Component Deprecated!">  
+            <div>Please use <eds-link eds-href="https://apex-extensions-docs.static.aws.xyzcloud.com/components/enterprise-document-upload/" eds-new-window>Enterprise Document Upload</eds-link>.</div>
+            <div>Enterprise Document Upload is a modular cross-BU capability to upload documents to the Vault.</div>
+        </eds-alert>
+        <br/>
+        {% filter markdown %}
+        ## Upload button
+        The main "Upload" button is provided internally by the file-upload component. The justification for doing so is to ensure that other necessary internal content is associated with the button and announced by screen readers for accessibility.
+
+        While the "Upload" button is provided for you, it’s still possible to pass all the usual `eds-button` properties for configuring it the way you need to. See the <eds-link eds-href="/components/button/button.html?tab=examples">eds-button documentation</eds-link> for all supported button properties.
+        {% endfilter %}
+
+        {% set button_attributes_example %}
+            <eds-file-upload eds-upload-button-attributes=’{“eds-text”: “My upload button”, “eds-variant”: “secondary”, ...}’>
+            </eds-file-upload>
+        {% endset %}
+
+        {{
+            library.eds_code_snippet(
+                show_copy_button=false,
+                source=button_attributes_example
+            )
+        }}
+
+    {% endblock %}

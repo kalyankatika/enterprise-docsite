@@ -1,0 +1,182 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{## 
+ # TITLE 
+ #}
+
+    {% block page__title %}
+
+        {% filter markdown %}
+            ##### Components
+            # Microcopy
+            
+            Microcopy adds additional context or instructions when paired with other components including <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>, <eds-link eds-href="/components/radio-group/radio-group.html">Radio Group</eds-link>, <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link>, or <eds-link eds-href="/components/table/table.html">Table</eds-link>.  
+
+            Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>.
+        {% endfilter %}
+        
+    {% endblock %}
+
+
+
+{##
+ # Examples Tab 
+ #}
+
+    {% block examples_tab %}
+
+        <h2 class="docsite__linkable-heading">Default</h2>
+
+        {{ library.eds_code_example_pair(
+            example='<eds-microcopy>If you don’t have this information you may still cover this family member, but you need to return and add it later to ensure continued coverage.</eds-microcopy>',
+            example_label= "Default"
+        )}}
+
+        {% filter markdown %}
+        ## In a Field Group
+        - Always combine Microcopy with other <eds-link eds-href="/components/form/form.html">Form</eds-link> elements inside of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> to construct a single entry.
+        - Visit the <eds-link eds-href="/components/form/form.html">Form</eds-link> design guidelines for more information on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>.
+        {% endfilter %}
+
+        {% set in_field_group_example %}
+        <eds-field-group>
+            <eds-label eds-for="ssn">Social Security number</eds-label>
+            <eds-microcopy eds-id="ssn-helper-text">If you don’t have this information you may still cover this family member, but you need to return and add it later to ensure continued coverage.</eds-microcopy>
+            <eds-input eds-id="ssn" eds-type="ssn" eds-aria-describedby="ssn-helper-text"></eds-input>
+        </eds-field-group>
+        {% endset %}
+        
+        {{ library.eds_code_example_pair(
+            example=in_field_group_example
+        )}}
+
+    {% endblock %}
+
+
+
+{##
+ # Design Tab 
+ #}
+
+    {% block design_tab %}
+        {% filter markdown %}
+        ## Use when
+        - The <eds-link eds-href="/components/label/label.html">Label</eds-link> for a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>, or group label for a <eds-link eds-href="/components/radio-button/radio-button.html">Radio Button</eds-link>, or <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link> cannot clearly describe the entry on its own.
+        - There are further instructions or auxiliary text-based content/data that will aid in the entry of data.
+
+        ## Don't use when
+        Providing additional content/data in a format other than a text string.
+
+
+        ## Content
+        - Always be clear and concise.
+        - Always set Microcopy text in sentence case.
+        - Never use Microcopy in lieu of a <eds-link eds-href="/components/label/label.html">Label</eds-link>.
+        {% endfilter %}
+
+        {{ library.eds_editorial()}}
+    {% endblock %}
+
+
+
+{##
+ # Code Tab 
+ #}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    {% endfilter %}
+
+    {% filter markdown %}
+
+    | Attribute  | Type   | Validation | Default | Description                                                                                                                                                                                                          |
+    | ---------- | ------ | ---------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-id`   | string | -          | -       | Sets the `id` to the root `<div>` of the Microcopy. This is required for accessibility when associating it to a form element.                                                                                        |
+    | `eds-text` | string | -          | -       | The Microcopy text.                                                                                                                                                                                                  |
+
+
+    ## Slots
+    | Slot name | Default content | Description                                                                                                                                     |
+    | --------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `default` | -               | Use in place of the `eds-text` attribute. If both the `eds-text` attribute and default slot content are set, the slot content will be rendered. |
+
+    ### Example
+    {% endfilter %}
+    
+    {{ library.eds_code_example_pair(
+        example='<eds-microcopy>Helper text</eds-microcopy>',
+        generate_html=false
+    )}}
+        
+    {% filter markdown %}
+
+    ## Events
+    The Microcopy component does not emit any custom events.
+
+
+    ## Methods
+    The Microcopy component does not implement any public methods.
+
+
+    ## CSS modifier classes
+    The Microcopy component does not expose any CSS modifier classes.
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-microcopy>...</eds3-microcopy>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-microcopy-root">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Microcopy", root_class="microcopy-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                     | Required                   |
+| ---------------------------------------------------------- | -------------------------- |
+| `import { edsMicrocopy } from '@xyz-ap153177/apex-kit';` | Yes                        |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Microcopy", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+    {% block a11y_tab %}
+
+        {% filter markdown %}
+        ## Microcopy in Field, Radio, and Checkbox Groups
+        If used improperly, Microcopy doesn't add any clarifying context for screen readers. You must associate Microcopy with the entry it describes by setting the `eds-aria-describedby` attribute of the entry component.
+        {% endfilter %}
+        
+        {% set microcopy_aria_example %}
+        <eds-field-group>
+            <eds-label eds-for="entry">Social Security Number</eds-label>
+            <eds-microcopy eds-id="entry-helper-text">...some helper text...</eds-microcopy>
+            <eds-input eds-id="entry" eds-aria-describedby="entry-helper-text" eds-type="ssn"></eds-input>
+        </eds-field-group>
+        {% endset %}
+        
+        {{ library.eds_code_example_pair(
+            example=microcopy_aria_example 
+        )}}
+
+
+    {% endblock %}

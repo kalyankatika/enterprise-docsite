@@ -1,0 +1,499 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{##
+ # TITLE
+ #}
+{% block page__title %}
+  {% filter markdown %}
+    ##### Components
+    # Spinner
+    A Spinner indicates that a process may take an indeterminate amount of time to finish loading. 
+  {% endfilter %}
+{% endblock %}
+
+{##
+ # Examples Tab
+ #}
+{% block examples_tab %}
+  {% filter markdown %}
+    ## Default
+  {% endfilter %}
+  {{ library.eds_code_example_pair(
+      example = '<eds-spinner></eds-spinner>'
+  )}}
+
+  {% filter markdown %}
+    ## Spinner with icon
+    Only use icons when additional visual emphasis is needed to support the "primary" message. (e.g., Lock icon for secure login.)
+
+  {% endfilter %}
+  {{ library.eds_code_example_pair(
+      example = '<eds-spinner eds-icon="action__lock"></eds-spinner>'
+  )}}
+
+  {% filter markdown %}
+    
+    ## Spinner with custom message
+  {% endfilter %}
+  {{ library.eds_code_example_pair(
+      example = '<eds-spinner
+                    eds-primary-text="Sobreprima"
+                    eds-secondary-text="Esto podría tomar un momento."
+                  ></eds-spinner>'
+  )}}
+  {% filter markdown %}
+    
+    ## Colors
+    Ensure a 4.5:1 color contrast ratio for accessibility when placing the Spinner over a background color other than white.
+
+  {% endfilter %}
+
+  {% set spinner_neutral_example %}
+  <eds-spinner eds-color="neutral"></eds-spinner>
+  {% endset %}
+
+  {% set spinner_white_example %}
+  <eds-spinner eds-color="white"></eds-spinner>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Neutral (default) -->
+  {{ spinner_neutral_example | safe | trim }}
+
+  <!-- White -->
+  {{ spinner_white_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: spinner_neutral_example,
+          label: 'Neutral (default)'
+        },
+        { example: spinner_white_example,
+          label: 'White',
+          class: 'eds-html-example-list__item--dark-background'
+        }
+      ],
+      code_snippet_source=code_snippet_source,
+      preformatted=true
+  )}}
+
+  {% filter markdown %}
+    
+    ## Sizes
+    - Use the "large" size when loading a full-page, or section of a page. Typically only one "large" Spinner would be visible at a time.
+    - Use the "medium" size for components that takes up more than 25% of the page width. (Ex. Tile or <eds-link eds-href="/components/modal/modal.html">Modal</eds-link>) There may be situations where multiple "medium" Spinners are visible at the same time. 
+    - Use the "small" size for components where space is constrained and the Spinner needs to be displayed inline. (e.g., <eds-link eds-href="/components/button/button.html">Button</eds-link> or <eds-link eds-href="/components/input/input.html">Input</eds-link>)
+    - Spinners do not scale in size based on breakpoints. 
+    - See the Content section for guidelines on primary and secondary messages for each size.
+    {% endfilter %}
+
+  {% set large_example %}
+  <eds-spinner eds-size="large"></eds-spinner>
+  {% endset %}
+
+  {% set medium_example %}
+  <eds-spinner></eds-spinner>
+  {% endset %}
+
+  {% set small_example %}
+  <eds-spinner eds-size="small"></eds-spinner>
+  {% endset %}
+
+  {% set code_snippet_source %}
+  <!-- Large -->
+  {{ large_example | safe | trim }}
+
+  <!-- Medium (default) -->
+  {{ medium_example | safe | trim }}
+
+  <!-- Small -->
+  {{ small_example | safe | trim }}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: large_example,
+          label: 'Large'
+        },
+        { example: medium_example,
+          label: 'Medium (default)'
+        },
+        { example: small_example,
+          label: 'Small'
+        }
+      ],
+      code_snippet_source=code_snippet_source,
+      preformatted=true,
+      show_copy_button=false
+  )}}
+
+  {% filter markdown %}
+    
+    ## Disable Background
+    
+    This is a page level loading spinner that blocks interactions with the background.
+
+    {% endfilter %}
+
+    {% set disable_background_example %}
+    <spinner-disable-background-demo eds-disable-background="true"></spinner-disable-background-demo>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <eds-spinner eds-disable-background></eds-spinner>
+    {% endset %}
+
+      {{ library.eds_code_example_pair(
+      examples = [
+        { example: disable_background_example,
+          label: 'Disable Background'
+        }
+      ],
+      code_snippet_source=code_snippet_source,
+      preformatted=true,
+      show_copy_button=false,
+      generate_html=false
+  )}}
+{% endblock %}
+
+
+{##
+ # Design Tab
+ #}
+{% block design_tab %}
+  <section class="external-design-link">
+    You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/help-systems/loading-indicator/#visual-design-specifications">design guidance</eds-link> for this component.
+  </section>
+  
+  {% filter markdown %}
+    ## Use when
+    - An application makes a request that requires a response from the server that may take time to load.
+    - Indicating the transition between steps of a process if there's a processing delay.
+
+    ## Visual style
+
+    ### Anatomy and construction
+  {% endfilter %}
+  {% set spinner_anatomy_caption %} 
+    <ol class="eds-figure__figcaption-inline-list">
+      <li>Spinner (required)</li>
+      <li>Primary message (required)</li>
+      <li>Secondary message</li>
+      <li>Icon</li>
+    </ol>
+  {% endset %} 
+
+  {{ library.eds_figure(
+      srcset="
+          ../images/spinner/spinner-anatomy.png 1x,
+          ../images/spinner/spinner-anatomy@2x.png 2x
+      ",
+      alt="Anatomy of a Spinner.",
+      width="full",
+      border=true,
+      padding="one-and-half-x",
+      background=false,
+      label="",
+      caption=spinner_anatomy_caption,
+      sentiment="neutral"
+      ) 
+  }}
+    
+  {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/spinner/spinner-content-do.png 1x,
+                ../images/spinner/spinner-content-do@2x.png 2x
+            ",
+            alt:"An example of a Spinner without any content behind it.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Always",
+            caption:"leave the content area blank behind 'medium' and 'large' Spinners.",
+            sentiment:"positive"
+            },
+            { 
+            srcset:"
+                ../images/spinner/spinner-content-dont.png 1x,
+                ../images/spinner/spinner-content-dont@2x.png 2x
+            ",
+            alt:"An example of a Spinner with partially visible content behind it.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"Never",
+            caption:"display content behind 'medium' and 'large' Spinners, even if that content is obscured by opacity or other means.",
+            sentiment:"negative"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+
+  {% filter markdown %}
+    ## Behavior
+    * The primary message will appear when the Spinner is displayed. After five seconds, the secondary message will appear.
+    * The Spinner disappears immediately once the content has loaded. The application is responsible for removing/hiding the Spinner once the content has loaded.
+
+    ## Placement
+    ### Large
+    Center "large" Spinners over the area of content that they represent.
+  {% endfilter %}
+
+  {{ library.eds_figure(
+      srcset="
+          ../images/spinner/spinner-placement-large.png 1x,
+          ../images/spinner/spinner-placement-large@2x.png 2x
+      ",
+      alt="Large Spinner Placement.",
+      width="full",
+      border=true,
+      padding="one-and-half-x",
+      background=false,
+      label="",
+      caption="",
+      sentiment="neutral"
+      ) 
+  }}
+  
+  {% filter markdown %}
+    ### Medium
+    Center "medium" Spinners over the area of content that they represent.
+  {% endfilter %}
+
+  {{ library.eds_figure(
+      srcset="
+          ../images/spinner/spinner-placement-medium.png 1x,
+          ../images/spinner/spinner-placement-medium@2x.png 2x
+      ",
+      alt="Medium Spinner Placement.",
+      width="full",
+      border=true,
+      padding="one-and-half-x",
+      background=false,
+      label="",
+      caption="",
+      sentiment="neutral"
+      ) 
+  }}
+  
+  {% filter markdown %}
+    ### Small 
+    Place "small" Spinners adjacent to the label or content that they represent.
+  {% endfilter %}
+
+  {{ library.eds_figure(
+      srcset="
+          ../images/spinner/spinner-placement-small.png 1x,
+          ../images/spinner/spinner-placement-small@2x.png 2x
+      ",
+      alt="Small Spinner Placement.",
+      width="full",
+      border=true,
+      padding="one-and-half-x",
+      background=false,
+      label="",
+      caption="",
+      sentiment="neutral"
+      ) 
+  }}
+
+  {% filter markdown %}
+
+    ## Content
+    
+    ### Primary messages
+    This message is the text that says "Loading" by default. 
+    - Always include a primary message for "large" Spinners. 
+    - Always include a primary message for "medium" Spinners except when multiple "medium" Spinners will appear in the same space at the same time. (e.g., The primary message may be omitted if content in multiple tiles is being loaded at the same time.)
+    - Never include a primary message for "small" Spinners. 
+    
+    ### Secondary messages
+    The secondary message gives people additional context for why the experience hasn't loaded.  
+    - For content that loads in less than 5 seconds, secondary message will not display. 
+    - For content that loads in 5 seconds or more, a default secondary message that reads "This could take a moment" will display. 
+    - The secondary message may be customized to help people understand the reason for the delay. Consider referencing: 
+      - The related action. (e.g., Processing the file may take a few moments.)
+      - A possible timeframe. (e.g., Files with a large number of records may take up to a minute to process.)
+      - Implications if they leave before the content loads. (e.g., Please stay on the page or the download will not complete.)
+    - "Secondary" messages are optional, but recommended for "medium" and "large" Spinners when appropriate. 
+    - Never include a secondary message for "small" Spinners. 
+
+    ### General guidelines
+    - Short messages are best.
+    - Never use an ellipsis (...) at the end of the primary or secondary messages.
+    - Secondary messages that are written as a complete sentence should end in a period. For guidance on use of periods, refer to the <eds-link eds-href="http://uxdesignstandards.xyz.com/periods/" eds-new-window>PWI Editorial Style Guide</eds-link>.
+    - Avoid redundancy between the primary and secondary messages.
+    - Manage expectations by using details about the content that is loading.
+    - Accurately represent the state of the action using words like "Submitting" or "Processing."
+    - Always provide appropriate screen reader-only content. See the Accessibility tab for more. 
+    {% endfilter %}
+
+
+{% endblock %}
+
+{##
+ # Code Tab
+ #}
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+
+    | Attribute                      | Type    | Validation                                                                             | Default                                                            | Description                                                                                                                                                                                                                                                                                                                                   |
+    |--------------------------------|---------|----------------------------------------------------------------------------------------|--------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | `eds-class`                    | string  | --                                                                                     | --                                                                 | A string of space separated classes that are rendered within the component template on the `.eds-spinner-root` tag. (e.g., `my-special-spinner-class`)                                                                                                                                                                                        |
+    | `eds-color`                    | string  | `neutral`, `white`                                                                     | `neutral`                                                          | Determines the color of the Spinner, icon, and text. The color "white" is to be used on dark backgrounds.                                                                                                                                                                                                                                     |
+    | `eds-hidden`                   | boolean | Anything other than empty string, `true`, or `eds-hidden` will be treated as `false`.  | `false`                                                            | Prevents the Spinner from being displayed.                                                                                                                                                                                                                                                                                                    |
+    | `eds-icon`                     | string  | Must be a valid `<eds-icon>` name.                                                     | --                                                                 | The name of an icon to render immediately to the left of the primary message. If `eds-icon` is not given, no icon will be rendered.                                                                                                                                                                                                           |
+    | `eds-id`                       | string  | --                                                                                     | --                                                                 | An `id` that is rendered within the component template on the `.eds-spinner-root` tag. (e.g., `my-special-spinner`)                                                                                                                                                                                                                           |
+    | `eds-inline`                   | boolean | `true`, `false`                                                                        | Size "small" defaults to `true`, otherwise the default is `false`. | Determines whether the component will be rendered inline or as a block element.                                                                                                                                                                                                                                                               |
+    | `eds-primary-text`             | string  | --                                                                                     | Loading                                                            | Sets the content of the primary message text that is rendered immediately below the spinner. In order to best support international customers that require a screen reader, you must provide `eds-primary-text` and `eds-secondary-text` even when `eds-size` is set to "small" so that they are read the loading message in their language.  |
+    | `eds-secondary-text`           | string  | --                                                                                     | This could take a moment                                           | Sets the content of the secondary message text that is rendered below the primary message text. Secondary text will appear 5 seconds after the spinner is rendered. To disable secondary message text, set `eds-secondary-text` to an empty string (e.g., "").                                                                                |
+    | `eds-size`                     | string  | `small`, `medium`, `large`                                                             | `medium`                                                           | Determines the size of the Spinner, icon, and text. Size "small" will not display any `eds-icon`, `eds-primary-text`, or `eds-secondary-text`.                                                                                                                                                                                                |
+    | `eds-triggered-by-interaction` | boolean | `true`, `false`                                                                        | `true`                                                             | When the Spinner is triggered by customer interaction on the page (`eds-triggered-by-interaction=true`), the Spinner will grab focus when it is displayed and return focus when it is removed / hidden.                                                                                                                                       |
+    | `eds-disable-background`       | boolean | `true`, `false`                                                                        | `false`                                                            | Disables background interactions by rendering an overlay.
+
+    ### Spinner visibility
+    There are two options for showing and hiding the Spinner component when your application is transitioning into, or out of, a loading state. Both options allow for the same functionality and accessibility, and the option that you should choose is likely the one that best aligns with the conventions of your frontend framework.
+
+    ### Option 1
+    Add the Spinner component to the DOM when loading begins and remove it from the DOM when loading is complete. In the Handlebars example below, the Spinner component will be added or removed from the DOM based on the value of the `isLoading` variable.
+
+  {% endfilter %}
+
+  {{ library.eds_code_snippet(source='<eds-spinner *ngIf="isLoading"></eds-spinner>') }}
+
+  <br>
+
+  {% filter markdown %}
+    ### Option 2
+    Bind a variable to the `eds-hidden` attribute of the Spinner component which will set the `display` CSS property accordingly. In the Angular example below the Spinner component will have its `display` CSS property set to `none` when `isLoading` is `false`.
+
+    ### Toggle the Display Property
+  {% endfilter %}
+
+  {% set toggleSource %}
+    <eds-spinner [attr.eds-hidden]="!isLoading"></eds-spinner>
+  {% endset %}
+
+  {{ library.eds_code_snippet(source=toggleSource) }}
+
+  {% filter markdown %}
+    ## Slots
+    | Name   | Default content                            | Description                                                                                                                                |
+    |--------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+    | `icon` | A \<eds-icon\> if the `icon` prop is set.  | Use in place of the `icon` prop. If both the `icon` prop and named slot content of `icon` are set, the slot content will be rendered.      |
+
+    ### Slot examples
+  {% endfilter %}
+
+  {% set slotUsage1 %}
+    <eds-spinner>
+      <eds-icon
+        slot="icon"
+        name="action__lock"
+        size="small">
+      </eds-icon>
+    </eds-spinner>
+  {% endset %}
+
+  {{ library.eds_code_snippet(source=slotUsage1) }}
+
+  {% filter markdown %}
+    The previous slot example can also be rendered using the props API. This example is functionally equivalent to the previous example:
+  {% endfilter %}
+
+  {% set slotUsage2 %}
+    <eds-spinner eds-icon="action__lock"></eds-spinner>
+  {% endset %}
+
+  {{ library.eds_code_snippet(source=slotUsage2) }}
+
+  {% filter markdown %}
+    ## Additional functionality
+    ### Spinner only
+    When the `eds-size` attribute of `<eds-spinner>` is set to "small", `<eds-spinner>` will be rendered inline and without any text.
+
+    ### No secondary text
+    When the `eds-secondary-text` attribute of `<eds-spinner>` is set to empty string (e.g. ""), `<eds-spinner>` will be rendered without any secondary text.
+
+    ## CSS modifier classes
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                                     | Applies To              | Outcome                                                                                                          |
+    |------------------------------------------------|-------------------------|----------------------------------------------------------------------------------------------------------------- |
+    | `.eds-spinner--hidden`                         | .eds-spinner-root       | Adjusts the style to prevent the Spinner from displaying.                                                        |
+    | `.eds-spinner--small`                          | .eds-spinner-root       | Adjusts the style to render a "small" Spinner.                                                                   |
+    | `.eds-spinner--medium`                         | .eds-spinner-root       | Adjusts the style to render a "medium" Spinner.                                                                  |
+    | `.eds-spinner--large`                          | .eds-spinner-root       | Adjusts the style to render a "large" Spinner.                                                                   |
+    | `.eds-spinner--neutral`                        | .eds-spinner-root       | Adjusts the style to render a white Spinner with neutral text and a neutral icon.                                |
+    | `.eds-spinner--white`                          | .eds-spinner-root       | Adjusts the style to render a white Spinner with white text and a white icon.                                    |
+    | `.eds-spinner--force-inline`                   | .eds-spinner-root       | Adjusts the style to render a Spinner that can be displayed inline.                                              |
+    | `.eds-spinner--force-block`                    | .eds-spinner-root       | Adjusts the style to render a Spinner that will be displayed as a block element.                                 |
+    | `.eds-spinner__microcopy--screen-reader-only`  | .eds-spinner__microcopy | Makes the <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> text screen reader-only.|
+  {% endfilter %}
+
+  {# NAMESPACING #}
+
+  {% set namespace_example_wc %}
+      <eds3-spinner></eds3-spinner>
+  {% endset %}
+
+  {% set namespace_example_html %}
+    <div class="eds3-spinner-root eds-spinner--neutral eds-spinner--medium">...</div>
+  {% endset %}
+
+  {{ library.namespacing(component_name="Spinner", root_class="spinner-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+  {# IMPORT REFERENCE #}
+
+  {% set js_import_table %}
+| Import                                                                          | Required |
+| ------------------------------------------------------------------------------- | --- |
+| `import { edsSpinner } from '@xyz-ap153177/apex-kit';`                        | Yes |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                           | Yes |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                 | Yes |
+  {% endset %}
+
+  {{ library.import_reference(component_name="Spinner", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab
+ #}
+{% block a11y_tab %}
+  {% filter markdown %}
+
+  ## Triggering
+    If the Spinner is triggered by an action on the page (e.g., a <eds-link eds-href="/components/button/button.html">Button</eds-link> press), `eds-triggered-by-interaction` is required to be set to `true` (`true` is the default value). When `eds-triggered-by-interaction=true`, the Spinner component will automatically grab focus when it is displayed and will return focus to the triggering element when it is removed or hidden. This behavior is required in order to best support screen readers.
+
+    If the Spinner is _not_ trigged by an action on the page (e.g., the Spinner is shown while the initial page is loading), `eds-triggered-by-interaction` is required to be set to `false`.
+
+    ## Semantics
+    When an application is loading, set `aria-busy="true"` on the area of the page that is loading in order to better support screen readers. When loading is complete, set `aria-busy="false"`.
+
+    ## Implementation
+  {% endfilter %}
+  {{ library.eds_accessibility(href="http://a11y.xyz.com/guide/example/loading-indicator/")}}
+
+{% endblock %}
+
+{# {% set spinner_always_caption %} 
+leave the content area blank behind "medium" and "large" Spinners.
+{% endset %} 
+{% set spinner_never_caption %} 
+display content behind "medium" and "large" Spinners, even if that content is obscured by opacity or other means.
+{% endset %}  #}

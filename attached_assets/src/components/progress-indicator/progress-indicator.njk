@@ -1,0 +1,380 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS
+{% set component_status = "Available" %} #}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{## 
+ # TITLE 
+ #}
+{% block page__title %}
+
+    {% filter markdown %}
+    ##### Components
+    # Progress Indicator
+    The Progress Indicator provides a way to monitor the steps within a workflow prior to submission.   
+    {% endfilter %}
+
+{% endblock %}
+
+{##
+ # Examples Tab 
+ #}
+{% block examples_tab %}
+
+    {% filter markdown %}
+        ## Default
+    {% endfilter %}
+
+    {% set default_example %}
+        <eds-progress-indicator 
+            eds-steps='["Personal info","Account info","Review","Fund"]'
+        ></eds-progress-indicator>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+            example=default_example,
+            preformatted=true
+        )}}
+
+    {% filter markdown %}
+        ## With completed step
+    {% endfilter %}
+
+    {% set default_example %}
+        <eds-progress-indicator 
+            eds-active-step-index='1' 
+            eds-steps='["Personal info","Account info","Review","Fund"]'
+        ></eds-progress-indicator>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+            example=default_example,
+            preformatted=true
+    )}}
+
+    {% filter markdown %}
+        ## With icon steps
+    {% endfilter %}
+
+    {% set default_example %}
+        <eds-progress-indicator 
+            eds-active-step-index='1' 
+            eds-steps='[{"label":"Notification submitted","supplementalText":"Today","icon":"action__pay-bills"},{"label":"Account(s) are reviewed"},"Forms are generated",{"label":"An associate will contact you","supplementalText":"This will take 2-3 business days","icon":"action__call"}]'
+        ></eds-progress-indicator>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+            example=default_example,
+            preformatted=true
+    )}}
+{% endblock %}
+
+{##
+ # Design Tab 
+ #}
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/help-systems/progress-status/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+    
+    {% filter markdown %}
+        ## Use when
+        Presenting all the major steps of a set single linear workflow at the top of a page.
+        
+        ## Don't use when
+        - Presenting a way to navigate a non-linear workflow.
+        - Presenting a workflow in which the steps may change in name or number along the way.
+        - Presenting a way to track the status of a process after the submission of information.
+        - Presenting pages introducing a workflow or summarizing the results of a workflow.
+    {% endfilter %}
+
+    
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/progress-indicator/doc-pi-flow.png 1x,
+            ../images/progress-indicator/doc-pi-flow@2x.png 2x
+        ",
+        alt="Diagram identifying the pages in a workflow that require a Progress Indicator.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="Only use the Progress Indicator on pages that represent actual steps in the workflow prior to submission.",
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {% filter markdown %}
+
+        ## Visual style
+        ### Anatomy and construction
+    {% endfilter %}
+
+    {% set pi_anatomy_caption %} 
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>"Complete" step</li>
+            <li>Progress line</li>
+            <li>Step label</li>
+            <li>"Active" step</li>
+            <li>"Inactive" step</li>
+        </ol>
+    {% endset %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/progress-indicator/doc-pi-anatomy.png 1x,
+            ../images/progress-indicator/doc-pi-anatomy@2x.png 2x
+        ",
+        alt="Diagram identifying Progress Indicator components.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=pi_anatomy_caption,
+        sentiment="neutral"
+        ) 
+    }}
+
+    {% filter markdown %}
+        ### Width
+        - The Progress Indicator occupies 100% of the width of its parent container.
+        - The width of each individual step is equal to the overall component width divided by the total number of steps.
+
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/progress-indicator/doc-pi-step-width.png 1x,
+            ../images/progress-indicator/doc-pi-step-width@2x.png 2x
+        ",
+        alt="Diagram identifying Progress Indicator component widths.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="In this example the Progress Indicator is tracking 4 steps that each occupy 25% of its given width. Note that the width of the start and end steps includes the empty space otherwise occupied by the progress line.",
+        sentiment="neutral"
+        ) 
+    }}
+
+    {% filter markdown %}
+        ## Behavior
+
+        ### Step progression
+        - Workflow progress is tracked horizontally from left to right.
+        - At the beginning of a workflow, the first step is indicated as "active."
+        - Subsequent steps progress from "inactive" to "active" to "complete."
+        - Only 1 step may be "active" at a time.
+
+        ### Responsive behavior
+        - In small viewports, less than 512px wide, the labels for steps that are not "active" are suppressed.
+        - When the viewport reaches the <code>at-512</code> breakpoint, the surrounding labels are revealed.
+        - The step label will wrap as its width narrows.
+
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/progress-indicator/doc-pi-responsive.png 1x,
+            ../images/progress-indicator/doc-pi-responsive@2x.png 2x
+        ",
+        alt="Diagram showing how the display of labels differs based on browser width.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        sentiment="neutral"
+        ) 
+    }}
+
+    {% filter markdown %}
+        ## Content
+        The appearance, usability and accessibility of the Progress Indicator is directly affected by the design of the workflow itself and the format of its content.
+
+        ### Workflow page titles as they relate to Progress Indicator step labels
+        - The content used for the label of each step must match content used within the page title.
+        - Consider concise page titles to mitigate the need to wrap the Progress Indicator labels.
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/progress-indicator/doc-pi-labels.png 1x,
+            ../images/progress-indicator/doc-pi-labels@2x.png 2x
+        ",
+        alt="Diagram identifying the part of the page title that becomes the step label.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+    
+    {% filter markdown %}
+    ### The number of steps in a workflow
+    Use the Progress Indicator as a check against overly complex workflows.
+    {% endfilter %}
+
+{{library.eds_figure_group(
+            figures=[
+                {
+                srcset:"
+                    /images/progress-indicator/doc-pi-steps-do.png 1x,
+                    /images/progress-indicator/doc-pi-steps-do@2x.png 2x
+                ",
+                alt:"An example image of the a simple workflow as tracked by the Progress Indicator.",
+                width:"full",
+                border:true,
+                padding:"one-and-half-x",
+                background:false,
+                label:"Consider",
+                caption:"designing flows with a few broad steps.",
+                sentiment:"positive"
+                },
+                { 
+                srcset:"
+                    /images/progress-indicator/doc-pi-steps-dont.png 1x,
+                    /images/progress-indicator/doc-pi-steps-dont@2x.png 2x
+                ",
+                alt:"An example image of the an overly complex workflow as tracked by the Progress Indicator.",
+                width:"full",
+                border:true,
+                padding:"one-and-half-x",
+                background:false,
+                label:"Avoid",
+                caption:"designing flows with too many specific steps.",
+                sentiment:"negative"
+                }
+            ],
+            inline_at="at-512"
+        )}}
+    <br>
+
+
+{% endblock %}
+
+{##
+ # Code Tab 
+ #}
+{% block code_tab %}
+    {% filter markdown %}
+        ## Installation
+        {% include "src/templates/partials/integration.njk" %}
+
+        ## Attributes
+        {% include "src/templates/partials/jsProps.njk" %}
+
+        | Attribute                        | Type   | Validation | Default                                                                                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                           |
+        | -------------------------------- | ------ | ---------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `eds-active-step-index`          | number | --         | 0                                                                                                                       | Determines which step is `active`. This index is zero-based and correlates to the index of the array of steps in the eds-steps attribute. To have all steps 'inactive', set the index to `-1`. If all steps are complete, set the index to `index + 1`.                                                                                                                                               |
+        | `eds-a11y-prefix-text`           | string | --         | "Step"                                                                                                                  | Within each step of the Progress Indicator, there is `screen-reader-only` text that is in the following format: "Step [index], [step name], [current state]". For example, "Step 1, Personal information, complete".<br><br>This attribute replaces "Step" in the format above to support multiple languages. Use `eds-a11y-step-state-object` to replace the possible states the step can be in.     |
+        | `eds-a11y-step-state-object`     | object | --         | {<br>&nbsp;&nbsp;active:'active', <br>&nbsp;&nbsp;complete:'complete', <br>&nbsp;&nbsp;inactive:'inactive'<br>}         | Within each step of the Progress Indicator, there is `screen-reader-only` text that is in the following format: "Step [index], [step name], [current state]". For example, "Step 1, Personal information, complete".<br><br>This attribute replaces the [current state] in the format above to support multiple languages. Use `eds-a11y-prefix-text` to replace the "state" text.                    |
+        | `eds-steps`                      | array  | --         | []                                                                                                                      | An array of strings used as the labels for each node of the progress indicator.<br><br>To display an icon for any step(s), replace the string with an object containing the required properties 'icon' and 'label' for each step that should contain an icon. An optional 'supplementalText' property may be included to display supplemental text below the label. The icon value should match an icon name used in the eds-icon component. If any step contains an icon, all step nodes will be sized larger. |
+
+        ## Slots
+        The Progress Indicator component does not use slots.
+
+        ## Events
+        The Progress Indicator component does not emit any custom events.
+
+        ## Methods
+        The Progress Indicator component does not implement any public methods.
+
+        ## CSS modifier classes
+        | Class name                                      | Applies to                       | Outcome                                                                                          |
+        | ----------------------------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------ |
+        | `.eds-progress-indicator__step--active`         | `.eds-progress-indicator__step`  | Adds the `active` stylings to the bars and node of that specific step.                           |
+        | `.eds-progress-indicator__step--complete`       | `.eds-progress-indicator__step`  | Adds the `complete` stylings to the bars and switches the node to use the confirmation icon.     |
+        | `.eds-progress-indicator__step--inactive`       | `.eds-progress-indicator__step`  | Adds the `inactive` stylings to the bars and node of that specific step.                         |
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-progress-indicator>...</eds3-progress-indicator>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-progress-indicator-root">
+            <div class="eds-progress-indicator__step eds-progress-indicator__step--active">...</div>
+        </div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Progress Indicator", root_class="progress-indicator-root", namespace_example_html=namespace_example_html, namespace_example_wc=namespace_example_wc) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                           | Required |
+| ---------------------------------------------------------------- | -------- |
+| `import { edsProgressIndicator } from '@xyz-ap153177/apex-kit';` | Yes      |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`              | Yes      |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Progress Indicator", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+{% block a11y_tab %}
+
+{% filter markdown %}
+## "Screen-reader-only" text
+- For each step of the Progress Indicator, there is `screen-reader-only` text that reads out in the following format – Step [index], [step name], [current state], and it would read the following: <em>"Step 1, Personal information, complete".</em>
+
+- For any step that contains the `supplementalText` property, the text is read in the following format – Step [index], [step name] - [supplemental text], [current state], and it would read the following: <em>"Step 2, Account information - bank account linking, active".
+
+- This functionality is built into the web component of the Progress Indicator.
+
+## "Screen-reader-only" heading
+An additional heading that uses `screen-reader-only` text is recommended to be added directly before the Progress Indicator. For example:
+{% endfilter %}
+
+{% set default_example %}
+    <h2 class="screen-reader-only">Personal info, step 1 of 4</h2>
+    <eds-progress-indicator 
+        eds-active-step-index='1' 
+        eds-steps='["Personal info","Account info","Review","Fund"]'
+    ></eds-progress-indicator>
+{% endset%}
+
+{{ library.eds_code_snippet(
+        source=default_example,
+        preformatted=true
+)}}
+
+{% filter markdown %}
+## Single page applications
+If your flow utilizes routes instead of navigating to new 'pages' per step, it is recommended that the Progress Indicator takes focus when the user triggers the next step in a flow.
+
+## Page title and Progress Indicator steps
+- Appending the name of the current step to the page title is recommended. 
+- As the user continues in the flow, the title should update.
+{% endfilter %}
+
+{{ library.eds_figure(
+        srcset="
+            ../images/progress-indicator/doc-pi-labels.png 1x,
+            ../images/progress-indicator/doc-pi-labels@2x.png 2x
+        ",
+        alt="Diagram identifying the part of the page title that becomes the step label.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        ) 
+    }}
+{% endblock %}

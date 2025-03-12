@@ -1,0 +1,519 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{# CODE EXAMPLES #}
+
+    {% set standard_content_example %}
+        <eds-tooltip eds-text="When answering this question, think about how much time you've spent investing." eds-disable-trigger-slot-button><eds-link slot="trigger" eds-icon-left="action__help" eds-trigger eds-aria-label="Investing advice"></eds-link></eds-tooltip>
+    {% endset %}
+
+    
+
+
+{## 
+ # TITLE 
+ #}
+
+    {% block page__title %}
+
+        {% filter markdown %}
+            ##### Components
+            # Tooltip
+            A Tooltip provides a brief text-only description of a page element in a container that is positioned adjacent to its trigger.   
+        {% endfilter %}
+        
+    {% endblock %}
+
+{##
+ # Examples Tab 
+ #}
+
+    {% block examples_tab %}
+
+        {% filter markdown %}
+        ## Default
+        Tooltip supports simple text strings for tooltip content.
+        {% endfilter %}
+
+        {{library.eds_code_example_pair(
+            example=standard_content_example,
+            example_label="eds-text prop",
+            class="docsite-eds-tooltip__code-example-pair",
+            generate_html=false
+        )}}
+
+
+
+        {% filter markdown %}
+        ## Slotted content
+        Tooltip supports lightly html formatted strings for tooltip content.
+        {% endfilter %}
+
+        {% set slotted_content_example %}
+            <eds-tooltip eds-disable-trigger-slot-button>
+                <p class="eds-tooltip__tooltip-content-reset"><strong>Secure login:</strong> Sign in to access this information.</p>
+                <eds-link slot="trigger" eds-icon-left="action__lock" eds-trigger eds-aria-label="Secure login"></eds-link>
+            </eds-tooltip>
+        {% endset %}
+
+        {{library.eds_code_example_pair(
+            example=slotted_content_example,
+            example_label="Slotted content",
+            class="docsite-eds-tooltip__code-example-pair",
+            generate_html=false
+        )}}
+
+
+
+        {% filter markdown %} 
+        ## Trigger types
+        - Tooltips are hidden by default and should only be evoked by interacting with a trigger through mouse hover or keyboard focus.  
+        - A Tooltip may be triggered by a <eds-link eds-href="/components/link/link.html?tab=examples#trigger-text-to-show-layer-components">Link trigger</eds-link> or an <eds-link eds-href="/
+        components/link/link.html?tab=examples#trigger-non-text-to-show-layer-components">Icon trigger</eds-link>. 
+        {% endfilter %}
+
+        {% set link_text_trigger_example %}
+                <p><strong>College type:</strong> Public 4-year
+                    <eds-tooltip eds-disable-trigger-slot-button>
+                        <span class="eds-tooltip__tooltip-content-reset">Data provided by the state of Massachusetts averages</span>
+                        <eds-link slot="trigger" eds-trigger eds-aria-label="Data source">In-state</eds-link>
+                    </eds-tooltip>
+                </p>
+        {% endset %}
+
+        {{library.eds_code_example_pair(
+            example=link_text_trigger_example,
+            example_label="Link text trigger",
+            class="docsite-eds-tooltip__link-trigger-example",
+            generate_html=false
+        )}}
+
+
+        
+        
+        {% set link_icon_trigger_example %}
+            <ul class="eds-list-group-root eds-list-group--inline-at-512" role="list">
+                <li class="eds-list-group__list-item">
+                    <span class="eds-list-group__list-item-text">
+                        <eds-tooltip eds-disable-trigger-slot-button>
+                            <span class="eds-tooltip__tooltip-content-reset">Refresh</span>
+                            <eds-link slot="trigger" eds-trigger eds-icon-left="action__refresh" eds-aria-label="Refresh"></eds-link>
+                        </eds-tooltip>
+                    </span>
+                </li>
+                <li class="eds-list-group__list-item eds-list-group__list-item--border">
+                    <span class="eds-list-group__list-item-text">
+                        <eds-tooltip eds-disable-trigger-slot-button>
+                            <span class="eds-tooltip__tooltip-content-reset">Settings</span>
+                            <eds-link slot="trigger" eds-trigger eds-icon-left="action__settings" eds-aria-label="Settings"></eds-link>
+                        </eds-tooltip>
+                    </span>
+                </li>
+                <li class="eds-list-group__list-item eds-list-group__list-item--border">
+                    <span class="eds-list-group__list-item-text">
+                        <eds-tooltip eds-disable-trigger-slot-button>
+                            <span class="eds-tooltip__tooltip-content-reset">Print</span>
+                            <eds-link slot="trigger" eds-trigger eds-icon-left="action__print" eds-aria-label="Print"></eds-link>
+                        </eds-tooltip>   
+                    </span>
+                </li>
+            </ul>
+
+
+        {% endset %}
+        
+
+        {{library.eds_code_example_pair(
+            example=link_icon_trigger_example,
+            example_label="Link icon-only trigger",
+            class="docsite-eds-tooltip__list-group-example",
+            generate_html=false
+        )}}
+
+        {% set link_icon_text_trigger_example %}
+            <eds-tooltip eds-disable-trigger-slot-button>
+                <span class="eds-tooltip__tooltip-content-reset">Based on your monthly withdrawal, your funds will run out by age 79.</span>
+                <eds-link slot="trigger" eds-trigger eds-icon-right="action__help" eds-aria-label="More info">Your balance at age 93</eds-link>
+            </eds-tooltip>
+        {% endset %}
+
+        {{library.eds_code_example_pair(
+            example=link_icon_text_trigger_example,
+            example_label="Link icon with text trigger",
+            class="docsite-eds-tooltip__code-example-pair",
+            generate_html=false
+        )}}
+        
+        {% filter markdown %}
+        ## In table header annotation
+        {% endfilter %}
+
+        {% set table_tooltip_example %}
+        <div class="eds-table-root eds-table--medium">
+            <div class="eds-table__container">
+                <table class="eds-table__table" role="table">
+                    <thead class="eds-table__head">
+                        <tr class="eds-table__row">
+                            <th class="eds-table__column-header-cell eds-table__column-header-cell--left" scope="col" role="columnheader">
+                                <span class="eds-table__column-header-cell-content">Grant details</span>
+                            </th>
+                            <th class="eds-table__column-header-cell eds-table__column-header-cell--left" scope="col" role="columnheader">
+                                <span class="eds-table__column-header-cell-content">
+                                    Target shares 
+                                    <eds-tooltip eds-disable-trigger-slot-button>
+                                        <span>The number of shares/units granted to you in a performance award grant.</span>
+                                        <eds-link slot="trigger" eds-trigger eds-icon-left="action__help" eds-size="extra-small" eds-aria-label="More info"></eds-link>
+                                    </eds-tooltip>
+                                </span>
+                            </th>
+                            <th class="eds-table__column-header-cell eds-table__column-header-cell--left" scope="col" role="columnheader">
+                                <span class="eds-table__column-header-cell-content">
+                                    Vesting date
+                                </span>
+                            </th>
+                            <th class="eds-table__column-header-cell eds-table__column-header-cell--left" scope="col" role="columnheader">
+                                <span class="eds-table__column-header-cell-content">
+                                    Payment date
+                                </span>
+                            </th>
+                            <th class="eds-table__column-header-cell eds-table__column-header-cell--left" scope="col" role="columnheader">
+                                <span class="eds-table__column-header-cell-content">
+                                    Adjusted awards
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="eds-table__body">
+                        <tr class="eds-table__row">
+                            <td class="eds-table__data-cell" scope="row" role="rowheader">
+                                THTAPERF20
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                60,000.000
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                Mar-15-2022
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                May-01-2022
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                Unaccepted
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="eds-table__caption">
+                    <span aria-live="polite" class="screen-reader-only">Table sorted by 'Return as of' in 'ascending' order.</span>
+                </p>
+            </div>
+        </div>
+        {% endset %}
+
+        {{library.eds_code_example_pair(
+            example=table_tooltip_example,
+            example_label="Tooltip in a table",
+            class="docsite-eds-tooltip__code-example-pair",
+            generate_html=false
+        )}}
+
+
+        {% filter markdown %}
+        ## Controlling z-index
+        Changing the z-index is necessary in some cases to layer elements on the page. When using the web component, refer to the attributes table for more information. 
+        {% endfilter %}
+
+        {% set z_index_content_example %}
+            <eds-tooltip eds-z-index="11" eds-placement="bottom" eds-disable-trigger-slot-button>
+                <span class="eds-tooltip__tooltip-content-reset"><code>eds-z-index</code> has been set to make the z-index of this Tooltip 11 instead of the default of 10</span>
+                <eds-link slot="trigger" eds-icon-left="action__help" eds-aria-label="More info"></eds-link>             
+            </eds-tooltip>
+            <div style="z-index: 10;" id="docsite-z-index-item">This box has a z-index of 10</div>
+        {% endset %}
+
+        {{library.eds_code_example_pair(
+            example=z_index_content_example,
+            example_label="Controlling z-index",
+            class="docsite-eds-tooltip__code-example-pair docsite-eds-tooltip__code-example-pair--z-index",
+            generate_html=false
+        )}}
+        
+{% endblock %}
+
+{##
+ # Design Tab 
+ #}
+
+    {% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/help-systems/tooltip/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+        
+        {% filter markdown %}
+        ## Use when 
+        Adding context or clarity to an element such as a form <eds-link eds-href="/components/label/label.html">Label</eds-link> or inline text.  
+
+        ## Don’t use when 
+        - The content is not text-only.  
+        - Long-form text content is necessary. Consider using a <eds-link eds-href="/components/modal/modal.html">Modal</eds-link> or <eds-link eds-href="/components/popover/popover.html">Popover</eds-link> instead.  
+        - Data entry is required. Instead of placing <eds-link eds-href="/components/form/form.html">Form</eds-link> elements in a Tooltip, place them directly on the page.  
+
+
+        {% include "src/templates/partials/layer_comparison.njk" %} 
+
+        ## Visual style 
+        - All content is text-based, using the “medium” text size. 
+        - Only decorative text markup is allowed. (e.g., italics, bold, etc.)  
+        - Never put interactive elements like <eds-link eds-href="/components/link/link.html">Links</eds-link> or <eds-link eds-href="/components/button/button.html">Buttons</eds-link> in a Tooltip.  
+
+        ### Anatomy and construction 
+        {% endfilter %}
+
+        {% set tooltip_anatomy_caption %} 
+        <ol class="eds-figure__figcaption-inline-list">
+            <li>Content (required)</li>
+            <li>Pointer (required)</li>
+        </ol>
+        {% endset %} 
+
+        {{library.eds_figure(
+            srcset="
+                /images/tooltip/tooltip-anatomy.png 1x,
+                /images/tooltip/tooltip-anatomy@2x.png 2x
+            ",
+            alt="Anatomy diagram of a Tooltip.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            caption=tooltip_anatomy_caption,
+            sentiment="neutral"
+            ) 
+        }}
+
+    {% filter markdown%}
+    ## Behavior 
+    - A Tooltip is hidden by default and should only be evoked by interacting with a trigger.  
+    - A Tooltip may be evoked by a <eds-link eds-href="/components/link/link.html#trigger-text-to-show-layer-components">Link trigger</eds-link> or an <eds-link eds-href="/components/link/link.html#trigger-non-text-to-show-layer-components">Icon trigger</eds-link>. 
+
+    ### Open 
+    Open a Tooltip by:  
+    - Touching the trigger on touchscreen devices.  
+    - Hovering over the trigger on non-touchscreen devices. 
+
+
+    ### Close 
+    Close a Tooltip by:  
+    - Touching outside the container and trigger on touchscreen devices. 
+    - Hovering outside the trigger on non-touchscreen devices.
+    - Pressing the ESC key. 
+    - Tabbing to the "close" icon and pressing the ENTER/RETURN key. 
+    - Tabbing to an element outside of the Tooltip. 
+
+    
+
+    ### Sizing 
+    - The width of a Tooltip will increase relative to the amount of content it contains up to 250px, at which point the content will wrap. 
+    - There is no maximum height, but follow <eds-link eds-href="?tab=design#content">content guidelines</eds-link> below to keep the height to a minimum. 
+    {% endfilter%}
+
+    {{library.eds_figure(
+            srcset="
+                /images/tooltip/tooltip-dimensions.png 1x,
+                /images/tooltip/tooltip-dimensions@2x.png 2x
+            ",
+            alt="Image showing the maximum width of a Tooltip at 250px.",
+            width="half",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            sentiment="neutral"
+            ) 
+        }}
+
+   {#
+    ### Keyboard 
+    #}
+    {% filter markdown %}
+    ### Order of position priority 
+    - A Tooltip will initially open in the position that allows it to be fully visible within the bounds of the viewport. The order of priority moves clockwise from top, right, bottom, and left. 
+    - If a Tooltip is open and the viewport size changes causing it not to fit the space, it will attempt to change position beginning at the top proceeding clockwise. 
+    {% endfilter %}
+
+    {{library.eds_figure(
+            srcset="
+                /images/tooltip/tooltip-position-priority.png 1x,
+                /images/tooltip/tooltip-position-priority@2x.png 2x
+            ",
+            alt="Image showing the order in which the Tooltip will change position based on the space available to it.",
+            width="half",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            sentiment="neutral"
+            ) 
+    }}
+
+    {% filter markdown%}
+    ### Position in the viewport 
+    If the pointer is less than 12px from the edge of the viewport edge the Popover will open in a different position. 
+    {% endfilter %}
+
+    {{library.eds_figure(
+            srcset="
+                /images/tooltip/tooltip-viewport-edge.png 1x,
+                /images/tooltip/tooltip-viewport-edge@2x.png 2x
+            ",
+            alt="Image showing the spacing between the edge of the Tooltip and the viewport before it will change position.",
+            width="half",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            sentiment="neutral"
+            ) 
+    }}
+
+    {% filter markdown%}
+    ### Alignment and space to the trigger 
+    - The Tooltip pointer always remains centered over the trigger. 
+    - The tip of the pointer should touch the edge of an icon trigger but not overlap it.  
+    {% endfilter %}
+
+    {{library.eds_figure(
+            srcset="
+                /images/tooltip/tooltip-trigger-spacing.png 1x,
+                /images/tooltip/tooltip-trigger-spacing@2x.png 2x
+            ",
+            alt="Image showing the space between the trigger and the Tooltip pointer.",
+            width="half",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            sentiment="neutral"
+            ) 
+    }}
+
+    {% filter markdown %}
+    ### Responsive 
+    Text size will automatically change according to the <eds-link eds-href="/visual-style/typography/typography.html#responsive-font-sizing">responsive typography rules</eds-link>. 
+    
+    ## Content 
+    A maximum of 144 characters is recommended. If longer text is needed, consider a <eds-link eds-href="/components/popover/popover.html">Popover</eds-link> instead. 
+    {% endfilter %}
+
+
+    {% endblock %}
+
+
+
+{##
+ # Code Tab 
+ #}
+
+    {% block code_tab %}
+        {% filter markdown %}
+        ## Installation
+        {% include "src/templates/partials/integration.njk" %}
+
+        ## Attributes
+        {% include "src/templates/partials/jsProps.njk" %}
+
+        | Attribute                         | Type               | Validation                       | Default | Description                                                                                                                                                                                                                                  |
+        | --------------------------------- | ------------------ | -------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `eds-a11y-announce-trigger`       | boolean            | --                               | `false` | Enables screen readers to announce the trigger text prior to reading the Tooltip text.                                                                                                                                                       |
+        | `eds-boundary`                    | string             | --                               | --      | A string selector that defines the boundary that the Tooltip should respect while determining its position.  See <eds-link eds-href="https://popper.js.org/docs/v2/utils/detect-overflow/#boundary">PopperJS</eds-link> for further details. |
+        | `eds-disable-overflow`            | boolean            | --                               | `false` | Boolean controlling the closing of the Tooltip when the trigger element overflows the boundary. If the Tooltip should remain open regardless of scrolling off-screen or switching views, set the value to `true`.                            |
+        | `eds-disable-trigger-slot-button` | boolean            | --                               | false   | Prevents the trigger slot from being wrapped in a button.  Add this attribute when slotting an interactive element as the Popover trigger, such as `eds-link` or `eds-button`.                                                               |
+        | `eds-id`                          | string             | --                               | --      | Sets the `id` of the Tooltip element.                                                                                                                                                                                                        |
+        | `eds-open`                        | boolean            | --                               | `false` | Boolean that controls opening and closing the Tooltip.  If you don’t slot a trigger, use this attribute/property to control showing and hiding the Tooltip instance.                                                                         |
+        | `eds-placement`                   | string             | `top`, `left`, `right`, `bottom` | `top`   | A string indicating the default placement of the Tooltip.                                                                                                                                                                                    |
+        | `eds-target`                      | string/HTMLElement | --                               | --      | `id` or element reference that the Tooltip element is visually attached to.                                                                                                                                                                  |
+        | `eds-text`                        | string             | --                               | --      | String to use for the Tooltip text.                                                                                                                                                                                                          |
+        | `eds-trigger-button-a11y-text`    | string             | --                               | --      | Sets the `aria-label` of the Tooltip trigger element.                                                                                                                                                                                        |
+        | `eds-z-index`                     | number             | --                               | --      | Sets the `z-index` of the Tooltip element.                                                                                                                                                                                                   |
+       
+
+        ## Slots
+        | Slot name | Default content | Description                                                                                                                                     |
+        | --------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `default` | --              | Use in place of the `eds-text` attribute. If both the `eds-text` attribute and default slot content are set, the slot content will be rendered. |
+        | `trigger` | --              | Wraps the slotted element and creates a trigger for the Tooltip to open and close.                                                              |
+    
+
+        ## Events 
+        | Event name                     | Description                                                                                                                                                                                                  |
+        | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+        | `eds-tooltip-change`           | Emitted when the Tooltip has opened or closed.  Current `edsOpen` state is made available as the `details.open` boolean property of the event.                                                               |
+        | `eds-tooltip-reference-hidden` | Emitted when the Tooltip has disappeared from the defined boundary.  This is useful when you want to listen for when the tooltip is closed because the trigger is obscured by scrolling or a hidden element. |
+                
+        ## Methods 
+        The Tooltip component does not implement any public methods.
+
+        ## Properties 
+        - `onClickOutside(e: MouseEvent)` - function called when clicking outside the Tooltip while the Tooltip is open. 
+
+        ## Other functionality 
+        
+        ### Override "click outside" behavior
+        The component exposes a method named `onClickOutside` that is called when the Tooltip is open and someone clicks anywhere outside the Tooltip or triggering element.  Override this method as an empty function or set it to `undefined` to disable the default functionality or implement your own function.
+
+        Disabling the `onClickOutside` handler is useful when the trigger is a different element than the target element.
+        {% endfilter %}
+
+        {% include "src/templates/partials/autoprefixer.njk" %}
+        
+        {# IMPORT REFERENCE #}
+        
+{% set js_import_table %}
+| Import                                                                                   | Required                                    |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `import { edsTooltip } from '@xyz-ap153177/apex-kit';`                                 | Yes                                         |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                    | Yes                                         |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                          | Yes, unless using `injectCustomSpriteSheet` |
+| `import { injectCustomSpriteSheet, ICON_ACTION_CLOSE } from '@xyz-ap153177/apex-kit';` | Yes, unless using `injectSpriteSheet`       |
+{% endset %}
+
+{{ library.import_reference(component_name="Tooltip", js_import_table=js_import_table) }}
+
+    {% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+    {% block a11y_tab %}
+
+    {% filter markdown %}
+    ## Announce trigger
+    Use `eds-a11y-announce-trigger` to allow screen readers to announce the trigger text prior to the Tooltip text.  By default Tooltip leverages `aria-labelledby` to associate the trigger with the Tooltip text.  Adding `eds-a11y-announce-trigger` attribute changes the component to leverage `aria-describedby` instead. When the association is made with `aria-describedby` screen readers will read the trigger text prior to reading the Tooltip text.  
+    {% endfilter %}
+
+    {% set a11y_labelledby_example %}
+        <!-- Uses `aria-labelledby` by default -->
+        <eds-tooltip>
+            <p>Investment knowledge can be acquired in a number of different ways. When answering this question, think about investing publications you read, how much time you've spent investing.</p>
+            <span slot="trigger">What's this?</span>
+        </eds-tooltip>
+    {% endset %}
+
+    {{library.eds_code_snippet(
+        show_copy_button=false,
+        source=a11y_labelledby_example
+    )}}
+
+    
+    {% set a11y_describedby_example %}
+        <!-- Uses `aria-describedby` -->
+        <eds-tooltip eds-a11y-announce-trigger>
+            <p>Investment knowledge can be acquired in a number of different ways. When answering this question, think about investing publications you read, how much time you've spent investing.</p>
+            <span slot="trigger">What's this?</span>
+        </eds-tooltip>
+    {% endset %}
+    
+    {{library.eds_code_snippet(
+        show_copy_button=false,
+        source=a11y_describedby_example
+    )}}
+
+    {% endblock %}

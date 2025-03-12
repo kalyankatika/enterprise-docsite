@@ -1,0 +1,406 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{## 
+ # TITLE 
+ #}
+
+    {% block page__title %}
+
+        {% filter markdown %}
+            ##### Components
+            # Truncated Text
+            
+            Truncated Text presents a string of text that is displayed up to a predetermined length. The remaining content is shown and hidden by a trailing control.  
+        {% endfilter %}
+        
+    {% endblock %}
+
+
+
+{##
+ # Examples Tab 
+ #}
+
+    {% block examples_tab %}
+
+        {% filter markdown %}
+        ## Default
+        Truncate a long string of text content.  Use `eds-aria-describedby` to provide an accessible description.
+        {% endfilter %}
+
+        {% set tt_example %}
+        <h4 id="loan-deets">Loan details</h4>
+        <eds-truncate-text
+            eds-aria-describedby="loan-deets" 
+            eds-text="Includes down payment, closing costs, or title feeds, but not mortgage payments and is not available for a second home, vacation house, or rental property"></eds-truncate-text>
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=tt_example,
+            generate_html=false
+        )}}
+        
+        {% filter markdown %}
+        ## Inherited text styles
+        All styling is inherited from the parent container.
+        {% endfilter %}
+
+        {% set tt_example %}
+            <!-- Inline styles used for demonstration only -->
+            <p style="font-size:0.8rem;">
+                <eds-truncate-text eds-text="Includes down payment, closing costs, or title feeds, but not mortgage payments and is not available for a second home, vacation house, or rental property"></eds-truncate-text>
+            </p>
+
+            <p style="font-size:1.2rem;">
+                <eds-truncate-text eds-text="Includes down payment, closing costs, or title feeds, but not mortgage payments and is not available for a second home, vacation house, or rental property"></eds-truncate-text>
+            </p>
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=tt_example,
+            example_label="Inherited text styles",
+            generate_html=false
+        )}}
+         
+         
+        {% filter markdown %}
+        ## Trigger text override
+        Change the default label of the "Read more" button with the `eds-more-text` attribute.
+        {% endfilter %}
+
+        {% set tt_override_example %}
+            <!-- Inline styles used for demonstration only -->
+            <eds-truncate-text eds-more-text="Mostrar más" eds-less-text="Muestra menos" eds-text="Con estas razones perdía el pobre caballero el juicio, y desvelábase por entenderlas y desentrañarles el sentido, que no se lo sacara ni las entendiera el mesmo Aristóteles, si resucitara para sólo ello. No estaba muy bien con las heridas que don Belianís daba y recebía, porque se imaginaba que, por grandes maestros que le hubiesen curado, no dejaría de tener el rostro y todo el cuerpo lleno de cicatrices y señales. Pero, con todo, alababa en su autor aquel acabar su libro con la promesa de aquella inacabable aventura, y muchas veces le vino deseo de tomar la pluma y dalle fin al pie de la letra, como allí se promete; y sin duda alguna lo hiciera, y aun saliera con ello, si otros mayores y continuos pensamientos no se lo estorbaran. Tuvo muchas veces competencia con el cura de su lugar —que era hombre docto, graduado en Sigüenza—, sobre cuál había sido mejor caballero: Palmerín de Ingalaterra o Amadís de Gaula; mas maese Nicolás, barbero del mesmo pueblo, decía que ninguno llegaba al Caballero del Febo, y que si alguno se le podía comparar, era don Galaor, hermano de Amadís de Gaula, porque tenía muy acomodada condición para todo; que no era caballero melindroso, ni tan llorón como su hermano, y que en lo de la valentía no le iba en zaga."></eds-truncate-text>
+        {% endset %}
+        
+        {{ library.eds_code_example_pair(
+            example=tt_override_example,
+            example_label="Trigger text override",
+            language='html',
+            show_copy_button=true
+        )}}
+
+        {% filter markdown %}
+        ## In Footnotes and Disclosures
+        {% endfilter %}
+
+
+        {% set tt_disclosure_example %}
+            <eds-footnotes>
+                <eds-footnote>
+                    <p class="eds-footnote__text">
+                        <eds-truncate-text eds-text="This is truncated content. Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        This is additional regular content. Labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+                        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        nostrud exercitation."></eds-truncate-text>
+                    </p>
+                    <p class="eds-footnote__text">
+                    Enterprise Brokerage Services LLC, Member NYSE, SIPC, 900 Salem Street,
+                    Smithfield, RI 02917
+                    </p>
+                    <p class="eds-footnote__text">
+                    000000.00.0 (e-review placeholder)
+                    </p>
+                </eds-footnote>
+            </eds-footnotes>
+        {% endset %}
+
+        {{ library.eds_code_example_pair(
+            example=tt_disclosure_example,
+            example_label="In footnotes & disclosures",
+            language='html',
+            show_copy_button=true
+        )}} 
+
+
+        {% filter markdown %}
+        ## Slotted content
+        Use the default slot when "light" HTML content, like `<em>` or `<strong>`, must be included in the truncated text.  For more complicated markup, see <eds-link eds-href="?tab=design#use-when">these recommondations</eds-link>.
+        {% endfilter %}
+
+
+        {% set tt_slotted_example %}
+            <!-- Inline styles used for demonstration only -->
+            <eds-truncate-text><em>Includes</em> down payment, closing costs, or title feeds, but <strong>not</strong> mortgage payments and is not available for a second home, vacation house, or rental property.</eds-truncate-text>
+        {% endset %}
+        
+        {{ library.eds_code_example_pair(
+            example=tt_slotted_example,
+            example_label="Slotted example",
+            language='html',
+            show_copy_button=true)
+        }}
+
+        <br/>
+        <eds-alert eds-variant="warning" eds-title="Data binding the default slot">Dynamic content within the default slot of <code>eds-truncate-text</code>, may require an additional call to <code>requestUpdate()</code> on the `eds-truncate-text` element to force a re-rendering of the component.  Read more on the <eds-link eds-href="?tab=code#import-reference">Code tab</eds-link></eds-alert>
+        
+    {% endblock %}
+
+
+
+{##
+ # Design Tab 
+ #}
+
+    {% block design_tab %}
+        {% filter markdown %}
+        ## Use when
+        - The necessary text content is considered not appropriate to display in full due to its length.
+        - The necessary supplemental text content is legally required but has limited use for the user to justify showing all of it.
+
+
+        ## Don't use when
+        - Showing the content in full is required.
+        - The content could be written in a more concise way.
+        - The content contains multiple levels of text hierarchy. Instead use an <eds-link eds-href="/components/expand-collapse/expand-collapse.html">Expand-Collapse</eds-link>, <eds-link eds-href="/components/popover/popover.html">Popover</eds-link> or a <eds-link eds-href="/components/modal/modal.html">Modal</eds-link>.
+        - The content contains Tables, charts, or other images. Instead use an Expand-Collapse, Popover or a Modal.
+
+
+        ## Visual style
+        ### Anatomy and construction
+        {% endfilter %}
+
+        {% set tt_anatomy_caption %} 
+            <ol class="eds-figure__figcaption-inline-list">
+            <li>Text</li>
+            <li>Ellipsis</li>
+            <li>Trigger</li>
+            </ol>
+        {% endset %} 
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/truncated-text/doc_tt_anatomy.png 1x,
+                ../images/truncated-text/doc_tt_anatomy@2x.png 2x
+            ",
+            alt="Anatomy of Truncated Text.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=tt_anatomy_caption,
+            sentiment="neutral"
+            ) 
+        }}
+        
+        {% filter markdown %}
+
+        ## Behavior
+        Pressing the "Show more" control triggers the reveal of hidden content inline.
+
+        ## Content
+        - The number of characters initially in the truncated state is approximately 100 but can be further defined by the project's requirements.
+        - Truncated Text tries to break only at word boundaries, so words don't get clipped halfway.
+        - The "Read more/Read less" control text can be overridden. For instance, if the text must appear in another language.
+        - The ellipsis will not show if the last character of the truncated text is punctuation.
+        - Refer to the <eds-link eds-href="http://uxdesignstandards.xyz.com/truncation-guidelines/" eds-new-window>Editorial Style Guide</eds-link> for additional Truncation guidelines.
+
+        {% endfilter %}
+
+    {% endblock %}
+
+
+
+{##
+ # Code Tab 
+ #}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    {% endfilter %}
+
+    {% filter markdown %}
+
+| Attribute                      | Type    | Validation | Default     | Description                                                                                                                                                                                                                                    |
+| ------------------------------ | ------- | ---------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `eds-aria-describedby`         | string  | --         | --          | Sets the value of the `aria-describedby` attribute for the Button.                                                                                                                                                                             |
+| `eds-href`                     | string  | --         | --          | Specifies a URL for the "Show more" button to navigate instead of expanding inline.                                                                                                                                                            |
+| `eds-limit`                    | number  | --         | `100`       | Specifies the number of characters (including spaces) shown before truncation.                                                                                                                                                                 |
+| `eds-less-text`                | string  | --         | `Read less` | Specifies the label of the button when `eds-truncate` state is `false`.                                                                                                                                                                        |
+| `eds-more-text`                | string  | --         | `Read more` | Specifies the label of the button when `eds-truncate` state is `true`.                                                                                                                                                                         |
+| `eds-truncate`                 | boolean | --         | `true`      | Boolean indicating whether the content is truncated.                                                                                                                                                                                           |
+| `eds-text`                     | string  | --         | --          | Sets the text of the content to be truncated.                                                                                                                                                                                                  |
+| `eds-link-attributes`          | --      | --         | --          | Sets the `eds-link`'s attributes within the component. This is a pass-through attribute to allow full configuration of the `eds-link` nested within the `truncated-text` component. [Link API](/components/link/link.html?tab=code#attributes) |
+| `eds-native-anchor-attributes` | object  | --         | --          | Sets the native anchor’s attributes within the `eds-link` component.                                                                                                                                                                           |
+
+
+## Link attribute support
+
+This Web Component contains a nested eds Web Component. If there is a eds-link attribute that [the API](/components/link/link.html?tab=code#attributes) supports, or you need to add an app-specific custom attribute,
+the `eds-link-attributes` property will provide you with this flexiblity.
+By using this property you will be able to add custom attributes to the web component element.
+When setting `eds-link-attributes` as an HTML attribute, be sure the value is valid JSON and not a JavaScript object.
+
+The following are valid value types:
+
+| Type     | Validation                                                                      | Type usage example      |
+|----------|---------------------------------------------------------------------------------|-------------------------|
+| string   | --                                                                              | `"form": "formId"`      |
+| boolean  | If value is `false`, the attribute will be removed.                             | `"multiple": true`      |
+| number   | --                                                                              | `"rows": 10`            |
+
+### Attribute validation
+
+Attribute validation is NOT provided for pass-through attributes like `eds-link-attributes`
+
+    {% endfilter %}
+
+{{ library.native_attributes(nativeAttrProps=['eds-native-anchor-attributes']) }}
+
+    {% filter markdown %}
+## Slots
+| Slot name | Default content | Description                                                                                                                                     |
+| --------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `default` | -               | Use in place of the `eds-text` attribute. If both the `eds-text` attribute and default slot content are set, the slot content will be rendered. |
+
+### Example
+    {% endfilter %}
+    
+    {{ library.eds_code_example_pair(
+        example='<eds-truncate-text>Helper text</eds-truncate-text>',
+        generate_html=false
+    )}}
+        
+    {% filter markdown %}
+
+## Events
+The Truncated Text component does not emit any custom events.
+
+
+## Methods
+The Truncated Text component does not implement any public methods.
+
+
+## CSS modifier classes
+{% include "src/templates/partials/cssModifiers.njk" %}
+
+| Class name                     | Applies to...                                                 | Outcome                                                                                                                                                                       |
+| ------------------------------ | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `eds-truncate-text__paragraph` | Any element nested inside the eds-truncate-text default slot. | Applies the following CSS: <br> - box-sizing reset (border box) <br> - Typography reset <br> - Sets the display property to `inline` <br> - Sets margins and padding to zero. |
+
+
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-truncated-text>...</eds3-truncated-text>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-truncated-text-root">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Truncated Text", root_class="truncated-text-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                         | Required |
+| -------------------------------------------------------------- | -------- |
+| `import { edsTruncatedText } from '@xyz-ap153177/apex-kit';`   | Yes      |
+| `import { edsLink } from '@xyz-ap153177/apex-kit';`            | Yes      |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Truncated Text", js_import_table=js_import_table) }}
+
+{% filter markdown %}
+    
+## Known issues
+
+### Accessible truncate text
+Truncate text is primarily a _visual_ affordance.  It is highly encouraged to provide a value for `eds-aria-describedby` to aid assistive technology in providing context for the component.  Example provided on [A11y tab](?tab=accessibility#accessible-description).
+
+### Dynamic content
+Dynamic content that changes within the default slot, may require an additional call to request a re-render of the component.  This is NOT an issue when using the `eds-text` attribute, however, `eds-text` attribute does not support HTML content.
+{% endfilter %}
+
+    {% set ng_data_bound_variable = "{{truncatedStuff}}" %}
+    {% set dynamic_content_template_example %}
+    <!-- default slot content bound to `truncatedStuff` variable -->
+    <eds-truncate-text #trunc id="truncate">{{ng_data_bound_variable}}</eds-truncate-text>
+    <!-- button click changes the content -->
+    <eds-button (click)="onClick()">Change truncated text</eds-button>
+    {% endset %}
+
+    {% set dynamic_content_component_example %}
+    export class AppComponent {
+        //@ts-ignore
+        @ViewChild('trunc', { static: false }) trunc: ElementRef;
+
+        truncatedStuff = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dolorem accusamus maxime nihil, quasi voluptatibus assumenda, molestiae labore asperiores, laudantium corrupti veniam pariatur adipisci et recusandae cumque architecto enim similique.  "
+        otherStuff = "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment."
+
+        onClick(){
+            // dynamicly change the content of the component
+            this.truncatedStuff = this.otherStuff;
+            
+            // the below may be necessary to re-render the component after the content has changed
+            setTimeout(() => {
+                this.trunc.nativeElement.requestUpdate(); 
+            });
+        }
+
+    }
+
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        sources=[
+          {
+              source: dynamic_content_template_example,
+              language: "html",
+              label: "app.component.html"
+          },
+          {
+              source: dynamic_content_component_example,
+              language: "typescript",
+              label: "app.component.ts"
+          }
+        ],
+        show_copy_button=false,
+        preformatted=true
+      ) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+    {% block a11y_tab %}
+
+    {% filter markdown %}
+    ## Accessible description
+    Use the `eds-aria-describedby` attribute to help assistive technology supply context for the truncated content.
+    {% endfilter %}
+
+
+    {% set tt_example %}
+        <h4 id="loan-deets">Loan details</h4>
+        <eds-truncate-text eds-aria-describedby="loan-deets" eds-text="Includes down payment, closing costs, or title feeds, but not mortgage payments and is not available for a second home, vacation house, or rental property"></eds-truncate-text>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        example=tt_example,
+        example_label="Inherited text styles",
+        generate_html=false
+    )}}
+
+    {% endblock %}

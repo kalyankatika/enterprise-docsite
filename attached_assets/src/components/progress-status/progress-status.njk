@@ -1,0 +1,10 @@
+{% extends "src/templates/layouts/documentation-page.njk" %}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Progress Status
+    
+    See <eds-link eds-href="/components/progress-indicator/progress-indicator.html">Progress Indicator</eds-link>. 
+    {% endfilter %}
+{% endblock %}

@@ -1,0 +1,2266 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{##
+ # TITLE
+ #}
+{% block page__title %}
+
+    {% filter markdown %}
+    ##### Components
+    # Table
+    A Table displays data in an organized grid that is easy to scan and analyze.
+    {% endfilter %}
+{% endblock %}
+
+{% block page__documentation %}
+
+    {##
+    # Examples Tab
+    #}
+    {% set examples_tab %}
+
+    {% macro tableSizeExample(size = 'medium') %}
+        <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--{{ size }}">
+            <div class="eds-table__container">
+                <table class="eds-table__table">
+                    <tbody class="eds-table__body">
+                        <tr class="eds-table__row">
+                            <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">CHIS</span>
+                                </a>
+                            </span>
+                            </th>
+                            <td class="eds-table__data-cell">
+                            CSOP FTSE CHINA A50 ETF
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                                +9.95%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                --
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                1.03%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                1.33%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                $1.92M
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                0.65%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                0.48%
+                            </td>
+                            <td class="eds-table__data-cell">
+                                Equity
+                            </td>
+                        </tr>
+
+                        <tr class="eds-table__row">
+                            <th class="eds-table__row-header-cell" scope="row">
+                                <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">KFYP</span>
+                                </a>
+                            </span>
+                            </th>
+                            <td class="eds-table__data-cell">
+                            GLOBAL X MSCI CONSUMER STAPLES ETF
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                                +7.79%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                2.25%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                2.24%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                4.11%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                $2.87M
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                0.71%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                                –0.29%
+                            </td>
+                            <td class="eds-table__data-cell">
+                                Equity
+                            </td>
+                        </tr>
+
+                        <tr class="eds-table__row">
+                            <th class="eds-table__row-header-cell" scope="row">
+                                <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">CNXT</span>
+                                </a>
+                            </span>
+                            </th>
+                            <td class="eds-table__data-cell">
+                            KRANESHARES CSI CHINA FIVE YEAR PLAN ETF
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                                +7.58%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                0.00%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                0.15%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                0.24%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                                $37.97M
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                                –0.16%
+                            </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                                –0.29%
+                            </td>
+                            <td class="eds-table__data-cell">
+                                Equity
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endmacro %}
+
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+    {{ library.eds_code_example_pair(
+                example=tableSizeExample('large'),
+                example_label='Large',
+                code_snippet_source=tableSizeExample('large'),
+                language='html',
+                preformatted=true,
+                generate_html=false
+    )}}
+
+    {{ library.eds_code_example_pair(
+                example=tableSizeExample('medium'),
+                example_label='Medium (Default)',
+                code_snippet_source=tableSizeExample('medium'),
+                language='html',
+                preformatted=true,
+                generate_html=false
+    )}}
+
+    {{ library.eds_code_example_pair(
+                example=tableSizeExample('small'),
+                example_label='Small',
+                code_snippet_source=tableSizeExample('small'),
+                language='html',
+                preformatted=true,
+                generate_html=false
+    )}}
+
+    {% macro tableDensityExample(size = 'medium') %}
+        <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--dense eds-table--{{ size }}">
+            <div class="eds-table__container">
+                <table class="eds-table__table">
+                    <thead class="eds-table__head">
+                        <tr class="eds-table__row">
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">Symbol</span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">Fund Name</span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">
+                                Price Performance (5 Days)
+                            </span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">
+                                Distribution Yield (TTM)
+                            </span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">
+                                30-Day SEC Yield (TTM)
+                            </span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">
+                                Bid/Ask Spread (1 Month Avg)
+                            </span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">
+                                Net Assets
+                            </span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">
+                                Net Expense Ratio
+                            </span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">
+                                Premium/Discount (1 Mon Rolling Avg)
+                            </span>
+                            </th>
+                            <th class="eds-table__column-header-cell"
+                            scope="col">
+                                <span class="eds-table__column-header-cell-content">
+                                Asset Class
+                            </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="eds-table__body">
+                        <tr class="eds-table__row">
+                            <th class="eds-table__row-header-cell" scope="row">
+                                <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">CHIS</span>
+                                </a>
+                            </span>
+                            </th>
+                            <td class="eds-table__data-cell">
+                            CSOP FTSE CHINA A50 ETF
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +9.95%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            --
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.03%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.33%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $1.92M
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.65%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.48%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Equity
+                        </td>
+                        </tr>
+                        <tr class="eds-table__row">
+                            <th class="eds-table__row-header-cell" scope="row">
+                                <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">KYFP</span>
+                                </a>
+                            </span>
+                            </th>
+                            <td class="eds-table__data-cell">
+                            GLOBAL X MSCI CONSUMER STAPLES ETF
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +7.79%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.25%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.24%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            4.11%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $2.87M
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.71%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.29%
+                        </td>
+                            <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        </tr>
+                        <tr class="eds-table__row">
+                            <th class="eds-table__row-header-cell" scope="row">
+                                <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">CNXT</span>
+                                </a>
+                            </span>
+                            </th>
+                            <td class="eds-table__data-cell">
+                            KRANESHARES CSI CHINA FIVE YEAR PLAN ETF
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +7.58%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.00%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.15%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.24%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $37.97M
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.16%
+                        </td>
+                            <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.29%
+                        </td>
+                            <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endmacro %}
+
+    <h2 class="docsite__linkable-heading">Density</h2>
+    <p>Use the CSS modifier class <code>.eds-table--dense</code> on all Table sizes to apply tighter spacing within the cells. This will not affect the text sizes of the content within the Table.</p>
+
+    {{ library.eds_code_example_pair(
+                example=tableDensityExample('large'),
+                example_label='Large',
+                code_snippet_source=tableDensityExample('large'),
+                language='html',
+                preformatted=true,
+                generate_html=false
+    )}}
+
+    {{ library.eds_code_example_pair(
+                example=tableDensityExample('medium'),
+                example_label='Medium (Default)',
+                code_snippet_source=tableDensityExample('medium'),
+                language='html',
+                preformatted=true,
+                generate_html=false
+    )}}
+
+    {{ library.eds_code_example_pair(
+                example=tableDensityExample('small'),
+                example_label='Small',
+                code_snippet_source=tableDensityExample('small'),
+                language='html',
+                preformatted=true,
+                generate_html=false
+    )}}
+
+    {% set table_sortable_example %}
+    <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--medium">
+        <div class="eds-table__container">
+            <table id="sortableTableExample" aria-labelledby="tableDocSiteSortableTableCaption" class="eds-table__table" role="table">
+                <thead class="eds-table__head">
+                    <tr class="eds-table__row">
+                        <th aria-sort="none"
+                        onclick="sortTable(this)"
+                            class="eds-table__column-header-cell eds-table__column-header-cell--sortable eds-table__column-header-cell--unsorted"
+                            scope="col" role="columnheader">
+                            <button
+                                class="eds-table__column-header-cell-sort-button">
+                                Name/Inception Date
+                                <eds-icon eds-icon-class="eds-table__unsorted-icon" eds-name="action__unsorted-arrow" eds-size="extra-small"></eds-icon>
+                                <eds-icon eds-icon-class="eds-table__sort-icon" eds-name="action__sort-arrow" eds-size="extra-small"></eds-icon>
+                            </button>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col" role="columnheader">
+                            <span class="eds-table__column-header-cell-content">
+                                Asset Class
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col" role="columnheader">
+                            <span class="eds-table__column-header-cell-content">
+                                Category
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col" role="columnheader">
+                            <span class="eds-table__column-header-cell-content">
+                                1 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col" role="columnheader">
+                            <span class="eds-table__column-header-cell-content">
+                                3 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col" role="columnheader">
+                            <span class="eds-table__column-header-cell-content">
+                                5 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col" role="columnheader">
+                            <span class="eds-table__column-header-cell-content">
+                                10 Year/LOF*
+                            </span>
+                        </th>
+                        <th aria-sort="ascending"
+                            onclick="sortTable(this)"
+                            class="eds-table__column-header-cell eds-table__column-header-cell--right eds-table__column-header-cell--sortable eds-table__column-header-cell--sort-active eds-table__column-header-cell--sort-ascending"
+                            scope="col" role="columnheader">
+                            <button
+                                class="eds-table__column-header-cell-sort-button">
+                                Returns As Of
+                                <eds-icon eds-icon-class="eds-table__unsorted-icon" eds-name="action__unsorted-arrow" eds-size="extra-small"></eds-icon>
+                                <eds-icon eds-icon-class="eds-table__sort-icon" eds-name="action__sort-arrow" eds-size="extra-small"></eds-icon>
+                            </button>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col" role="columnheader">
+                            <span class="eds-table__column-header-cell-content">
+                                Benchmark
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="eds-table__body">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row" role="rowheader">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">PIMCO TOTAL RETURN FUND</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Fit Income
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Intermediate-Term Bond
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.73%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.13%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            3.52%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            5.76%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row" role="rowheader">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">BLACKROCK INTERNATIONAL OPPORTUNITIES</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Foreign Large Blend
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.66%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.64%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.90%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            4.09%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row" role="rowheader">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Enterprise GROWTH COMPANY</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Large Growth
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            7.83%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            19.30%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            15.17%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            10.34%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="tableDocSiteSortableTableCaption" class="eds-table__caption">
+                <span id="tableDocSiteSortableTableSRCaption" aria-live="polite" class="screen-reader-only">Table sorted by 'Return as of' in 'ascending' order.</span>
+            </p>
+        </div>
+    </div>
+    {% endset %}
+
+    <h2 class="docsite__linkable-heading">Sortable Tables</h2>
+    {% filter markdown %}
+            - Vertical and horizontal dividers are required.
+            - A single arrow indicates the column currently being sorted.
+            - A double arrow indicates columns that are sortable, but are not currently being sorted.
+            - To visually balance the text and arrow icon sizes, we recommend pairing:
+
+                | Table size                | Icon size            |
+                |---------------------------|----------------------|
+                | small                     | extra small          |
+                | medium                    | extra small          |
+                | large                     | small                |
+
+            - Only one column should be sorted at a time to allow screen readers to read the data accurately.
+            - A column may only be sorted if all cells within it do not span multiple columns.
+            - Add `.eds-table__column-header-cell--sortable` to table header cells `<th>` that are sortable.
+            - To add a button directly into the header cell, use the CSS modifier class: `.eds-table__column-header-cell-sort-button`.
+            - Import and connect the `sort-column` JavaScript (see <eds-link eds-href="?tab=code">Code</eds-link> tab) to add additonal functionality needed for a sortable Table.
+            - See Accessibility section for additonal DOM requirements when creating a sortable Table.
+            - See the <eds-link eds-href="/components/table/table.html?tab=design#behavior">Behavior</eds-link> section for more.
+        {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+            example=table_sortable_example,
+            language='html',
+            preformatted=true,
+            generate_html=false
+        )}}
+
+    {% set table_non_sortable_example %}
+    <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--disable-column-dividers eds-table--medium">
+        <div class="eds-table__container">
+            <table class="eds-table__table">
+                <thead class="eds-table__head">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">Name/Inception Date</span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Asset Class
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Category
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell eds-table__column-header-cell--right"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                1 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell eds-table__column-header-cell--right"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                3 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell eds-table__column-header-cell--right"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                5 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell eds-table__column-header-cell--right"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                10 Year/LOF*
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell eds-table__column-header-cell--right"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">Returns As Of</span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Benchmark
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="eds-table__body">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">PIMCO TOTAL RETURN FUND</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Fit Income
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Intermediate-Term Bond
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.73%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.13%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            3.52%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            5.76%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">BLACKROCK INTERNATIONAL OPPORTUNITIES</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Foreign Large Blend
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-loss">
+                            –0.66%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.64%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.90%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            4.09%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Enterprise GROWTH COMPANY</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Large Growth
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            7.83%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            19.30%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            15.17%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            10.34%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endset %}
+
+    <h2 class="docsite__linkable-heading">Non-sortable Tables</h2>
+    {% filter markdown %}
+            - Vertical dividers are optional.
+            - Horizontal dividers are required.
+            - Match text alignment of column headers and data when column dividers are hidden.
+        {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+            example = table_non_sortable_example,
+            language='html',
+            preformatted=true,
+            generate_html=false
+        )}}
+
+    {% set table_striped_example %}
+    <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--striped eds-table--medium">
+        <div class="eds-table__container">
+            <table class="eds-table__table">
+                <thead class="eds-table__head">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">Name/Inception Date</span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Asset Class
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Category
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                1 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                3 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                5 Year
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                10 Year/LOF*
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">Returns As Of</span>
+                        </th>
+                        <th class="eds-table__column-header-cell "
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Benchmark
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="eds-table__body">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">PIMCO TOTAL RETURN FUND</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Fit Income
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Intermediate-Term Bond
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.73%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.13%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            3.52%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            5.76%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">BLACKROCK INTERNATIONAL OPPORTUNITIES</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Foreign Large Blend
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right eds-table__data-cell--performance-loss">
+                            –0.66%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.64%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.90%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            4.09%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Enterprise GROWTH COMPANY</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Large Growth
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            7.83%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            19.30%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            15.17%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            10.34%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Dec-31-2019
+                        </td>
+                        <td class="eds-table__data-cell">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">Show</span>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endset %}
+
+    <h2 class="docsite__linkable-heading">Row striping</h2>
+    {% filter markdown %}
+            - Use alternating row striping to ease scanning, especially in a data-dense Table.
+            - Always begin row striping in the first row.
+            - The row striping background color is <eds-link eds-href="/visual-style/color/color.html#backgrounds">"Background Color Light Gray"</eds-link>. Apply the CSS modifier class `.eds-table--striped` to the containing `div`.
+            - The Table background color is set to <eds-link eds-href="/visual-style/color/color.html#backgrounds">"Background Color White"</eds-link> by default for cases when a Table overlays a gray background.
+            - The header and footer of the Table always have a background set to <eds-link eds-href="/visual-style/color/color.html#backgrounds">"Background Color White"</eds-link>.
+        {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+            example = table_striped_example,
+            language='html',
+            preformatted=true,
+            generate_html=false
+        )}}
+
+    {% set table_fixed_column_example %}
+    <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--medium">
+        <div id="fixedColumnTableExampleContainer" class="eds-table__container">
+            <table id="fixedColumnTableExample" class="eds-table__table">
+                <thead class="eds-table__head">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__column-header-cell eds-table__column-header-cell--fixed eds-table__column-header-cell--fixed-first"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content eds-table__column-header-cell-content--fixed">Symbol</span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">Fund Name</span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Price Performance (5 Days)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Distribution Yield (TTM)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                30-Day SEC Yield (TTM)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Bid/Ask Spread (1 Month Avg)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Net Assets
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Net Expense Ratio
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Premium/Discount (1 Mon Rolling Avg)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Asset Class
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Recorded
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="eds-table__body">
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--fixed eds-table__data-cell--fixed-first">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">APPL</span>
+                                </a>
+                            </span>
+                        </td>
+                        <th class="eds-table__row-header-cell" scope="row">
+                            APPLE INCORPORATED
+                            </th>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +9.95%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            --
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.03%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.33%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $1.92M
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.65%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.48%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Required
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--fixed eds-table__data-cell--fixed-first">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">AMZN</span>
+                                </a>
+                            </span>
+                        </td>
+                        <th class="eds-table__row-header-cell" scope="row">
+                                AMAZON.COM INCORPORATED
+                            </th>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +7.79%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.25%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.24%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            4.11%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $2.87M
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.71%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.29%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Optional
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--fixed eds-table__data-cell--fixed-first">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">B</span>
+                                </a>
+                            </span>
+                        </td>
+                        <th class="eds-table__row-header-cell" scope="row">
+                                BARNES GROUP INCORPORATED
+                            </th>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +7.58%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.00%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.15%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.24%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $37.97M
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.16%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.29%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Optional
+                        </td>
+                    </tr>
+                </tbody>
+            </Table>
+        </div>
+    </div>
+    {% endset %}
+
+    <h2 class="docsite__linkable-heading">Fixed column</h2>
+    {% filter markdown %}
+        Locking a column may be useful in cases when a row header is needed to understand the data in a wide Table that scrolls horizontally.
+
+        - Only the first or last column in the Table may be fixed.
+        - Only one column may be fixed at a time.
+        - If the width of the column evokes a horizontal scroll, a drop shadow will appear on the right (first column) or left (last column) of the column.
+        - The width of a fixed column should not exceed 50% of the Table width.
+        - Keep content length in fixed columns to a minimum to avoid obstructing users from getting the most value from the Table data.
+        - Never use subheaders when using a fixed column.
+        - Cells used in a fixed column should not span multiple columns.
+        - Add `.eds-table__column-header-cell--fixed` and `.eds-table__column-header-cell--fixed-[first|last]` CSS modifier classes to header cells `<th>` to have fixed styles.
+        - Add `.eds-table__data-cell--fixed` and `.eds-table__data-cell--fixed-[first|last]` CSS modifier classes to data cells `<td>` to have fixed styles.
+        - Import and connect the `fixed-column` JavaScript (see <eds-link eds-href="?tab=code">Code</eds-link> tab) to add additonal functionality needed for a fixed column.
+        - See Accessibility section for restrictions when using a fixed column.
+        {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+            example = table_fixed_column_example,
+            language='html',
+            preformatted=true,
+            generate_html=false
+        )}}
+
+    {% set table_footer_example %}
+    <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--medium">
+        <div class="eds-table__container">
+            <table class="eds-table__table">
+                <thead class="eds-table__head">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Vesting date
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Status
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Rights
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="eds-table__body">
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Jan-02-2024
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Vested
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1,000.000
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Jan-02-2024
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Unvested
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            250.000
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Jan-02-2024
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Unvested
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            250.000
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="eds-table__foot">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            Total
+                        </th>
+                        <td class="eds-table__data-cell">n/a</td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $1500.000
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    {% endset %}
+
+    <h2 class="docsite__linkable-heading">Table footer</h2>
+    {% filter markdown %}
+    Allows content to be grouped in a single row at the bottom of the Table.
+    - Use for showing total values of column data.
+    - Content is bold for increased visibility.
+        {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+            example = table_footer_example,
+            language='html',
+            preformatted=true,
+            generate_html=false
+        )}}
+
+    {% set table_caption_example %}
+    <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--medium">
+        <div class="eds-table__container">
+            <table aria-labelledby="tableWithCaptionExampleCaption" class="eds-table__table">
+                <thead class="eds-table__head">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Vesting date
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Status
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Rights
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="eds-table__body">
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Jan-02-2024
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Vested
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1,000.000
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Jan-02-2024
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Unvested
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            250.000
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Jan-02-2024
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Unvested
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            250.000
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="eds-table__foot">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell"
+                            scope="row">
+                            Total
+                        </th>
+                        <td class="eds-table__data-cell">n/a</td>
+                        <td class="eds-table__data-cell">
+                            $1500.000
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div id="tableWithCaptionExampleCaption" class="eds-table__caption">
+                <div class="eds-table__caption-microcopy">
+                    <!-- Microcopy -->
+                    <div class="eds-microcopy-root">
+                        Here is where we want an accurate description about the data displayed and/or the Table.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endset %}
+
+    <h2 class="docsite__linkable-heading">Table caption</h2>
+    {% filter markdown %}
+            - Always use the [Microcopy](/components/microcopy/microcopy.html) component to style caption content related to a Table data.
+            - Position captions above or below a Table.
+            - See Accessibility section for caption guidelines.
+        {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+            example = table_caption_example,
+            language='html',
+            preformatted=true,
+            generate_html=false
+        )}}
+
+    {% set table_responsive_example %}
+    <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--medium">
+        <div class="eds-table__container">
+            <table class="eds-table__table">
+                <thead class="eds-table__head">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">Symbol</span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">Fund Name</span>
+                        </th>
+                        <th class="eds-table__column-header-cell eds-table__column-header-cell--right"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Price Performance (5 Days)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell eds-table__column-header-cell--right"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Distribution Yield (TTM)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                30-Day SEC Yield (TTM)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Bid/Ask Spread (1 Month Avg)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Net Assets
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Net Expense Ratio
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Premium/Discount (1 Mon Rolling Avg)
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Asset Class
+                            </span>
+                        </th>
+                        <th class="eds-table__column-header-cell"
+                            scope="col">
+                            <span class="eds-table__column-header-cell-content">
+                                Recorded
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="eds-table__body">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">APPL</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                                APPLE INCORPORATED
+                            </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +9.95%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            --
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.03%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            1.33%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $1.92M
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.65%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.48%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Required
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">AMZN</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                                AMAZON.COM INCORPORATED
+                            </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +7.79%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.25%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            2.24%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            4.11%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $2.87M
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.71%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.29%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Optional
+                        </td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" scope="row">
+                            <span class="eds-link-root eds-link--disable-underline">
+                                <a class="eds-link__link" href="javascript:void(0)">
+                                    <span class="eds-link__text">B</span>
+                                </a>
+                            </span>
+                        </th>
+                        <td class="eds-table__data-cell">
+                                BARNES GROUP INCORPORATED
+                            </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-gain eds-table__data-cell--right">
+                            +7.58%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.00%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.15%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            0.24%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right">
+                            $37.97M
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.16%
+                        </td>
+                        <td class="eds-table__data-cell eds-table__data-cell--performance-loss eds-table__data-cell--right">
+                            –0.29%
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Equity
+                        </td>
+                        <td class="eds-table__data-cell">
+                            Optional
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endset %}
+
+    <h2 class="docsite__linkable-heading">Responsive scrolling</h2>
+    {% filter markdown %}
+            - When the width of the Table exceeds the width of the viewport, a horizontal scroll is invoked.
+            - Cell data will respond according to responsive text rules.
+        {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+            example = table_responsive_example,
+            language='html',
+            preformatted=true,
+            generate_html=false
+    )}}
+
+    {% set table_merged_header_example %}
+    <div class="eds-table-root eds-table--disable-body-text-wrap eds-table--medium">
+        <div class="eds-table__container">
+            <table class="eds-table__table">
+                <thead class="eds-table__head">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__column-header-cell" id="account-info" colspan="2">Account Info</th>
+                        <th class="eds-table__column-header-cell" id="cash" colspan="1" rowspan="2">Available cash</th>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__column-header-cell" headers="account-info" id="account-number">Account #</th>
+                        <th class="eds-table__column-header-cell" headers="account-info" id="account-name">Account Name</th>
+                    </tr>
+                </thead>
+                <tbody class="eds-table__body">
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" id="rh1" headers="account-info account-number">12121212</th>
+                        <td class="eds-table__data-cell" headers="account-info account-name rh1">John Smith</td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right" headers="cash rh1">$2,221.34</td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" id="rh2" headers="account-info account-number">34343434</th>
+                        <td class="eds-table__data-cell" headers="account-info account-name rh2">Rebecca Thomas</td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right" headers="cash rh2">$1,794.06</td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" id="rh3" headers="account-info account-number">56565656</th>
+                        <td class="eds-table__data-cell" headers="account-info account-name rh3">James Frank</td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right" headers="cash rh3">$4,265.12</td>
+                    </tr>
+                    <tr class="eds-table__row">
+                        <th class="eds-table__row-header-cell" class="eds-table__row-header-cell" id="rh4" headers="account-info account-number">78787878</th>
+                        <td class="eds-table__data-cell" headers="account-info account-name rh4">Lydia Fogg</td>
+                        <td class="eds-table__data-cell eds-table__data-cell--right" headers="cash rh4">$2,991.56</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endset %}
+
+    <h2 class="docsite__linkable-heading">Merged header cells</h2>
+    {% filter markdown %}
+            - Refer to the <eds-link eds-href="#fixed-column">fixed column</eds-link> and <eds-link eds-href="#sortable-tables">sortable</eds-link> examples on constraints when using merged cells.
+            - See Accessibility section for merged cell guidelines.
+        {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+            example = table_merged_header_example,
+            language='html',
+            preformatted=true,
+            generate_html=false
+    )}}
+
+    {% endset %}
+
+    {##
+    # Design Tab
+    #}
+    {% set design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/content/table/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+
+    {% filter markdown %}
+        ## Use when
+        - Displaying and comparing tabular data.
+        - Displaying more than one column of data.
+
+        ## Don't use when
+        - Layout is needed for content presentation.
+        - Displaying a single row or column of data. Instead, use the <eds-link eds-href="/components/list-group/list-group.html">List Group</eds-link> component.
+        - Displaying lists separated by dividers. Instead, use the <eds-link eds-href="/components/list-group/list-group.html">List Group</eds-link> component.
+
+        ## Visual style
+
+        ### Anatomy and construction
+        {% endfilter %}
+
+        {% set table_anatomy_caption %}
+            <ol class="eds-figure__figcaption-inline-list">
+                <li>Head (required)</li>
+                <li>Row (required)</li>
+                <li>Data cell (required)</li>
+                <li>Column header cell (required)</li>
+                <li>Table body (required)</li>
+                <li>Table foot</li>
+                <li>Sort arrow</li>
+            </ol>
+        {% endset %}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/table/table-anatomy.png 1x,
+                ../images/table/table-anatomy@2x.png 2x
+            ",
+            alt="Anatomy of a data table.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=table_anatomy_caption,
+            sentiment="neutral"
+            )
+        }}
+
+        {% filter markdown %}
+        ## Headers
+        - Always include Table headers `<th>` in data Tables.
+        - Column headers alone are sufficient for short Tables with self explanatory data.
+        - Column headers and row headers should be used for long Tables where data may be confusing.
+        - See the Accessibility tab for more information about headers.
+
+        ## Data cells
+        Avoid merged data cells `rowspan` and `colspan` as they are problematic for screen readers. Instead, consider refactoring the Table into a simplified display of the data.
+
+        ## Alignment
+        - All cells are left-aligned by default.
+        - The alignment of an entire column may be set independently of other columns.
+        - The alignment of individual cells may be set independently. This setting will override both the default and column alignment.
+
+        ### General
+        - Always top-align cell data.
+        - Text may wrap if necessary.
+        - Data may be truncated with a linked ellipsis trigger that reveals the full text.
+
+        ### Column header
+        - Bottom-align all column headers, including those that wrap.
+        - Left-align column headers when column dividers are visible.
+        - Align headers to match column data when column dividers are hidden.
+        {% endfilter %}
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/table/table-column-header-alignment.png 1x,
+                ../images/table/table-column-header-alignment@2x.png 2x
+            ",
+            alt="Example showing column header alignment.",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            )
+        }}
+
+    {% filter markdown %}
+        ### Left-align
+        - Descriptive numeric values, or a combination of text and numbers. (e.g., Plan numbers or ID numbers)
+        - Alphanumeric text
+        {% endfilter %}
+
+    {% set table_secure_data_caption %}
+        <b>Note:</b> The functionality for masking Social Security numbers as shown is not built into the Table component and would be the responsibility of the product team. Refer to the <eds-link eds-href="/patterns/display-data.html#secure-customer-data">Data Display</eds-link> pattern for more information about masking secure customer data.
+    {% endset %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/table/table-left-alignment.png 1x,
+            ../images/table/table-left-alignment@2x.png 2x
+        ",
+        alt="Example showing left content alignment.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption=table_secure_data_caption,
+        sentiment="neutral"
+        )
+    }}
+
+    {% filter markdown %}
+        ### Right-align
+        - Quantifiable numbers
+        - Numbers with a decimal point
+        - Time
+        - Date (e.g., Oct-25-2019)
+        - Year only
+        {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/table/table-right-alignment.png 1x,
+            ../images/table/table-right-alignment@2x.png 2x
+        ",
+        alt="Example showing right content alignment.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        )
+    }}
+
+    {% filter markdown %}
+        ### Center-align
+        Standalone icons (e.g., Action icon button)
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/table/table-center-alignment.png 1x,
+            ../images/table/table-center-alignment@2x.png 2x
+        ",
+        alt="Example showing centered content alignment.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        )
+    }}
+
+    {% filter markdown %}
+        ## Actions
+        Actions that apply to a row are commonly placed in the last column of a Table. Functionality for actions is not built into the Table component, and would be the responsibility of the product team.
+
+        ### 1 or 2 actions
+        When 1 or 2 actions are present, consider using "primary" <eds-link eds-href="/components/button/button.html">Buttons</eds-link> or a "tertiary" <eds-link eds-href="/components/button/button.html">Button</eds-link> with only an <eds-link eds-href="/components/icon/icon.html">Icon</eds-link>.
+    {% endfilter %}
+    {{library.eds_figure_group(
+        figures=[
+            {
+            srcset:"
+                ../images/table/table-actions-button.png 1x,
+                ../images/table/table-actions-button@2x.png 2x
+            ",
+            alt:"Example showing a primary button.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:"Actions column using Buttons.",
+            sentiment:"neutral"
+            },
+            {
+            srcset:"
+                ../images/table/table-actions-icon.png 1x,
+                ../images/table/table-actions-icon@2x.png 2x
+            ",
+            alt:"Example showing an icon button.",
+            width:"full",
+            border:true,
+            padding:"one-and-half-x",
+            background:false,
+            label:"",
+            caption:"Actions column using 'tertiary' Buttons with only an Icon.",
+            sentiment:"neutral"
+            }
+        ],
+        inline_at="at-768"
+    )}}
+
+    {% filter markdown %}
+    ### 2 or more actions
+    Use a <eds-link eds-href="/components/select/select.html">Select</eds-link> with a <eds-link eds-href="/components/button/button.html">Button</eds-link> when there are more than 2 actions that invoke an immediate action when the option is selected (using `onchange` event). (e.g., Download, Delete, etc.)
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/table/table-actions-select.png 1x,
+            ../images/table/table-actions-select@2x.png 2x
+        ",
+        alt="Example showing a select and button.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="Actions column using a Select with a Button.",
+        sentiment="neutral"
+        )
+    }}
+
+    {% filter markdown %}
+        ### Batch operations
+        Batch operations may use a <eds-link eds-href="/components/select/select.html">Select</eds-link> or <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link> with a "primary" <eds-link eds-href="/components/button/button.html">Button</eds-link>. An example might include allowing someone to take action on multiple rows.
+    {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/table/table-actions-batch.png 1x,
+            ../images/table/table-actions-batch@2x.png 2x
+        ",
+        alt="Example showing a table with batch actions..",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="",
+        sentiment="neutral"
+        )
+    }}
+
+    {% filter markdown %}
+        ## Blank data cells
+        Avoid leaving cells blank when a value doesn't exist so that people understand that it is intentionally excluded. It's also helpful for people using screen readers to understand the intent of the cell in the context of the rest of the data.
+
+        Refer to the Data Display pattern for information about values that:
+        - <eds-link eds-href="/patterns/display-data.html#not-applicable">Are not applicable</eds-link>
+        - <eds-link eds-href="/patterns/display-data.html#not-available">Are not available</eds-link>
+        - <eds-link eds-href="/patterns/display-data.html#no-change">Have no change</eds-link>
+
+
+        ## Content
+        - Arrange columns with the most important data on the left, and less important data on the right to reduce the need for scrolling horizontally.
+        - Precede data with a plus symbol (+) for gain/positive values or a minus symbol (–) for loss/negative values. This is more distinguishable than arrows for people with sight impairments.
+        - Use Enterprise Sans “Mathematics” glyphs for plus (+) and minus (–) performance values.
+        - When using special characters like asterisks, daggers, and double daggers, the first occurrence should include screen reader-only text that explains the meaning and an anchor link to a footnote where the symbol is explained. See <eds-link eds-href="/components/footnotes/footnotes.html">Footnotes &amp; Disclosures</eds-link>.
+        - Use "<eds-link eds-href="/visual-style/color/color.html#performance">Performance Color Gain</eds-link>" for increases in value and "<eds-link eds-href="/visual-style/color/color.html#performance">Performance Color Loss</eds-link>" for decreases in value. If a value is neutral without a gain or loss, use "<eds-link eds-href="/visual-style/color/color.html#text">Text Color Primary</eds-link>".
+        - Performance colors are designated for use on numerical values only, not with associated text.
+
+        {% endfilter %}
+
+    {{ library.eds_figure(
+        srcset="
+            ../images/table/table-performance.png 1x,
+            ../images/table/table-performance@2x.png 2x
+        ",
+        alt="Example showing performance colors.",
+        width="full",
+        border=true,
+        padding="one-and-half-x",
+        background=false,
+        label="",
+        caption="Performance data",
+        sentiment="neutral"
+        )
+    }}
+
+    {% filter markdown %}
+        ## Behavior
+        - Tables don't have inherent outside padding or margin, but will stretch to fill 100% of the width of the parent container. If padding is required around the Table, apply it to the parent container.
+        - Table cell and header content will wrap by default. To force content to not wrap, use the CSS modifier class `.eds-table--disable-all-text-wrap`.
+
+        ### Column sorting
+        Sorting functionality is done by the application team. Apex Kit for Web currently only supports sorting event emitters and style.
+
+        - Sort columns in ascending order by default.
+        - Sort order can be changed when the column header is clicked a second time.
+        - Column headers of sortable Tables are always left-aligned.
+        - See the <eds-link eds-href="/components/table/table.html?tab=examples#sortable-tables">Sortable Tables</eds-link> example for more.
+
+        ### Column widths
+        - Columns auto-size to match the width of the content provided.
+        - Individual column may have a fixed-width set.
+        {% endfilter %}
+
+    {% endset %}
+
+    {##
+    # HTML Code Tab
+    #}
+    {% set html_code_tab %}
+    {% filter markdown %}
+        ## Installation
+        {% include "src/templates/partials/integration.njk" %}
+
+        ## CSS block classes
+        | Class name                                 | Description                                                                  |
+        | ------------------------------------------ | ---------------------------------------------------------------------------- |
+        | `.eds-table-root`                          | The root `div` of the Table to add modifiers that apply to the entire Table. |
+
+        ## CSS element classes
+        | Class name                                    | Description                                                                                                          |
+        | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+        | `.eds-table__container`                       | A wrapper `div` of the Table that controls the horizontal scroll of the Table.                                       |
+        | `.eds-table__table`                           | The Table `<table>` element.                                                                                         |
+        | `.eds-table__caption`                         | Optional caption for the Table.                                                                                      |
+        | `.eds-table__caption-microcopy`               | The <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> within the caption of the Table.  |
+        | `.eds-table__caption-a11y-sorted-by-text`     | The screen reader-only text used for the current table sort within the caption of the Table.                         |
+        | `.eds-table__head`                            | A Table head `<thead>`.                                                                                              |
+        | `.eds-table__body`                            | A Table body `<tbody>`.                                                                                              |
+        | `.eds-table__foot`                            | The Table foot `<tfoot>`.                                                                                            |
+        | `.eds-table__row`                             | A Table row `<tr>`.                                                                                                  |
+        | `.eds-table__data-cell`                       | A data cell `<td>`.                                                                                                  |
+        | `.eds-table__column-header-cell`              | A header cell within the Table head `<th scope="col">`.                                                              |
+        | `.eds-table__row-header-cell`                 | A header cell within the Table body `<th scope="row">`.                                                              |
+        | `.eds-table__column-header-cell-content`      | The wrapper for the content within a column header cell `<th scope="col">`.                                          |
+        | `.eds-table__column-header-cell-sort-button`  | The button within a sortable column header cell `<th scope="col">`.                                                  |
+        | `.eds-table__sort-icon`                       | Sort icon used with a column header cell to indicate sorting exists for that column.                                 |
+
+
+        ## CSS modifier classes
+        | Class name                                          | Applies To                                         | Outcome                                                                                                                                     |
+        |---------------------------------------------------- | ---------------------------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
+        | `.eds-table--dense`                                 | `.eds-table-root`                                  | Reduces the spacing within the cells of the Table `<table>`.                                                                                |
+        | `.eds-table--disable-all-text-wrap`                 | `.eds-table-root`                                  | Prevents all text within the cells of the Table from wrapping.                                                                              |
+        | `.eds-table--disable-body-text-wrap`                | `.eds-table-root`                                  | Prevents text within the cells in the body `<tbody>` of the Table from wrapping.                                                            |
+        | `.eds-table--disable-foot-text-wrap`                | `.eds-table-root`                                  | Prevents text within the cells in the foot `<tfoot>` of the Table from wrapping.                                                            |
+        | `.eds-table--disable-head-text-wrap`                | `.eds-table-root`                                  | Prevents text within the cells in the head `<thead>` of the Table from wrapping.                                                            |
+        | `.eds-table--disable-column-dividers`               | `.eds-table-root`                                  | Removes styles that give the Table column (vertical) dividers.                                                                              |
+        | `.eds-table--fit-content`                           | `.eds-table-root`                                  | Allows the Table to take the width of the content within it, up to the width of the parent container.                                       |
+        | `.eds-table--small`                                 | `.eds-table-root`                                  | Adjusts the style to render a "small" Table.                                                                                                |
+        | `.eds-table--medium`                                | `.eds-table-root`                                  | Adjusts the style to render a "medium" Table.                                                                                               |
+        | `.eds-table--large`                                 | `.eds-table-root`                                  | Adjusts the style to render a "large" Table.                                                                                                |
+        | `.eds-table--striped`                               | `.eds-table-root`                                  | Gives the rows within the body `<tbody>` of the Table alternating background colors.                                                        |
+        | `.eds-table__data-cell--left`                       | `.eds-table__data-cell`                            | Left aligns the text within the data cell.                                                                                                  |
+        | `.eds-table__data-cell--right`                      | `.eds-table__data-cell`                            | Right aligns the text within the data cell.                                                                                                 |
+        | `.eds-table__data-cell--center`                     | `.eds-table__data-cell`                            | Center aligns the text within the data cell.                                                                                                |
+        | `.eds-table__data-cell--fixed`                      | `.eds-table__data-cell`                            | Gives the foundational styles when a data cell needs to be fixed on a Table.                                                                |
+        | `.eds-table__data-cell-—fixed-first`                | `.eds-table__data-cell`                            | Works along-side `.eds-table__data-cell—fixed`. Used to add additional styles given the cells are on the far left of the Table.             |
+        | `.eds-table__data-cell—-fixed-last`                 | `.eds-table__data-cell`                            | Works along-side `.eds-table__data-cell—fixed`. Used to add additional styles given the cells are on the far right of the Table.            |
+        | `.eds-table__data-cell--performance-gain`           | `.eds-table__data-cell`                            | Styles the text within the data cell with the ['performance gain'](/visual-style/color/color.html#performance) color.                       |
+        | `.eds-table__data-cell--performance-loss`           | `.eds-table__data-cell`                            | Styles the text within the data cell with the ['performance loss'](/visual-style/color/color.html#performance) color.                       |
+        | `.eds-table__column-header-cell--left`              | `.eds-table__column-header-cell`                   | Left aligns the text within the column header cell.                                                                                         |
+        | `.eds-table__column-header-cell--right`             | `.eds-table__column-header-cell`                   | Right aligns the text within the column header cell.                                                                                        |
+        | `.eds-table__column-header-cell--center`            | `.eds-table__column-header-cell`                   | Center aligns the text within the column header cell.                                                                                       |
+        | `.eds-table__column-header-cell--fixed`             | `.eds-table__column-header-cell`                   | Gives the foundational styles when a column header cell needs to be fixed on a Table.                                                       |
+        | `.eds-table__column-header-cell-—fixed-first`       | `.eds-table__column-header-cell`                   | Works alongside `.eds-table__column-header-cell—fixed`. Used to add additional styles given the cells are on the far left of the Table.     |
+        | `.eds-table__column-header-cell—-fixed-last`        | `.eds-table__column-header-cell`                   | Works alongside `.eds-table__column-header-cell—fixed`. Used to add additional styles given the cells are on the far right of the Table.    |
+        | `.eds-table__column-header-cell--sortable`          | `.eds-table__column-header-cell`                   | Adds styles to indicate the column is sortable.                                                                                             |
+        | `.eds-table__column-header-cell--sort-active`       | `.eds-table__column-header-cell`                   | Adds styles to indicate the column is sortable and currently sorted. Must be used with `.eds-table__column-header-cell--sortable`.          |
+        | `.eds-table__column-header-cell--unsorted`          | `.eds-table__column-header-cell`                   | Adds styles to indicate the column is sortable but currently unsorted. Must be used with `.eds-table__column-header-cell--sortable`.        |
+        | `.eds-table__column-header-cell--sort-descending`   | `.eds-table__column-header-cell`                   | Adds styles to indicate the sortable header cell is in descending order. Must be used with `.eds-table__column-header-cell--sortable`.      |
+        | `.eds-table__column-header-cell--sort-ascending`    | `.eds-table__column-header-cell`                   | Adds styles to indicate the sortable header cell is in ascending order. Must be used with `.eds-table__column-header-cell--sortable`.       |
+        | `.eds-table__row-header-cell--left`                 | `.eds-table__row-header-cell`                      | Left aligns the text within the row header cell.                                                                                            |
+        | `.eds-table__row-header-cell--right`                | `.eds-table__row-header-cell`                      | Right aligns the text within the row header cell.                                                                                           |
+        | `.eds-table__row-header-cell--center`               | `.eds-table__row-header-cell`                      | Center aligns the text within the row header cell.                                                                                          |
+        | `.eds-table__row-header-cell--fixed`                | `.eds-table__row-header-cell`                      | Gives the foundational styles when a row header cell needs to be fixed on a Table.                                                          |
+        | `.eds-table__row-header-cell-—fixed-first`          | `.eds-table__row-header-cell`                      | Works alongside `.eds-table__row-header-cell—fixed`. Used to add additional styles given the cells are on the far left of the Table.        |
+        | `.eds-table__row-header-cell—-fixed-last`           | `.eds-table__row-header-cell`                      | Works alongside `.eds-table__row-header-cell—fixed`. Used to add additional styles given the cells are on the far right of the Table.       |
+        | `.eds-table__column-header-cell-content--fixed`     | `.eds-table__column-header-cell-content`           | Adds styles for the content of a fixed column header cell.                                                                                  |
+    {% endfilter %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-table-root eds-table--disable-body-text-wrap eds-table--large">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Table", root_class="table-root", namespace_example_html=namespace_example_html) }}
+
+    {% filter markdown %}
+        ## Additional functionality
+        The following external scripts can be used with HTML/CSS variants of Table to provide functionality that is already built into the web component version:
+
+        ### Fixed column
+        `fixed-column`: provides the functionality to create a fixed first or last column.
+
+        To include this script, add the following to your application:
+    {% endfilter %}
+
+    {% filter markdown %}
+        ### Usage Example:
+    {% endfilter %}
+
+    {% set example %}
+        import { edsTableFixedColumn, TableFixedColumnPosition } from '@xyz-ap153177/apex-kit';
+
+        // the outer div of the table <table> with the `eds-table__container` class
+        const fixedColumnTableContainer = document.getElementById('fixedColumnTableExampleContainer');
+        // the actual table <table> element
+        const fixedColumnTable = document.getElementById('fixedColumnTableExample');
+
+        // initialize
+        const edsTableFixedColumn = new edsTableFixedColumn(fixedColumnTableContainer, fixedColumnTable, TableFixedColumnPosition.first);
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=example, show_copy_button=false, language='javascript', hide_line_numbers=true)}}
+
+    {% filter markdown %}
+        ### Public methods:
+        * `adjustFixedColumn()`: Initial adjustment of the fixed cell's width and height.
+        * `bindFixedColumnEventListeners()`: Adds event listeners needed for fixed columns.
+        * `removeFixedColumnEventListeners()`: Removes the fixed column event listeners.
+
+        ### Pretty print
+        `pretty-print`: provides the functionality to print wide Tables by splitting the Table into partials.
+
+        To include this script, add the following to your application:
+    {% endfilter %}
+
+    {% filter markdown %}
+        ### Usage Example:
+    {% endfilter %}
+
+    {% set example %}
+        import { edsTablePrettyPrint } from '@xyz-ap153177/apex-kit';
+
+        // the table <table> element
+        let prettyPrintTable = document.getElementById('prettyPrintTableExample');
+        edsPrettyPrint = new edsTablePrettyPrint(prettyPrintTable);
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=example, show_copy_button=false, language='javascript', hide_line_numbers=true)}}
+
+    {% filter markdown %}
+        ### Public methods:
+        * `bindPrettyPrintEventListeners()`: Adds event listeners needed for pretty print.
+        * `removePrettyPrintEventListeners()`: Removes the pretty print event listeners.
+        * `createPrintableTablePartials()`: Creates the partials needed to create a Table that can be broken apart for printing.
+
+        ### Sort column
+        `sort-column`: provides event listeners to notify an application when a sortable cell has been selected. This also updates Table classes and `aria-sort` within the Table.
+        **This script does not provide the sorting functionality. Sorting should be done by your application.**
+
+        To include this script, add the following to your application:
+    {% endfilter %}
+
+    {% filter markdown %}
+        ### Usage Example:
+    {% endfilter %}
+
+    {% set example %}
+        import { edsTableSortColumn } from '@xyz-ap153177/apex-kit';
+
+        // the table <table> element
+        let sortableTable = document.getElementById('sortableTableExample');
+        let edsTableSortColumn = new edsTableSortColumn(sortableTable);
+
+        // adds event listener to do things when a new sortable column is selected
+        sortableTable.addEventListener('eds-table-sorted', (e) => {
+            const activeSortedColumn = e.detail.el.innerText;
+            const currentSortOrder = e.detail.sortOrder;
+
+            document.getElementById('tableDocSiteSortableTableSRCaption').innerText = `Table sorted by '${activeSortedColumn}' in '${currentSortOrder}' order.`;
+        });
+
+        // function used to initiate the addition/removal of classes, attributes, etc. for the sortable cell
+        function sortTable(e) {
+            edsTableSortColumn.setActiveSort(e);
+        }
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=example, show_copy_button=false, language='javascript', hide_line_numbers=true)}}
+
+    {% filter markdown %}
+        ### Public methods:
+        * `setActiveSort(newCell: HTMLTableCellElement)`: as a header to a sortable column is selected, this method is used to add/remove neccessary classes/attributes to change sorted columns. `newCell` must be a reference to the `<th>` element.
+        * `getDefaultCaptionA11yText()`: gets the inital screen reader-only text for a caption.
+        * `getSortButtonA11yText(headerCellText: string, sortOrder: string)`: returns default text for the `aria-label` of the button of a sortable header cell.
+        * `getSortCaptionA11yText(headerCellText: string, sortOrder: string)`: returns default text for the screen reader-only text when sorting is enabled.
+        * `getSortOrder(cell: HTMLElement)`: gets the current sort order of a sortable header cell.
+        * `setSortableButtonAriaLabels()`: for every sortable column header, this adds `aria-label` attribute to the <eds-link eds-href="/components/button/button.html">Buttons</eds-link> within them if the respective column header does not have `aria-sort` set.
+    {% endfilter %}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                                                    | Required                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `import { edsTableFixedColumn } from '@xyz-ap153177/apex-kit';`                                                         | Only needed if using <eds-link eds-href="?tab=examples#fixed-column">a fixed column</eds-link>.     |
+| `import { edsTablePrettyPrint } from '@xyz-ap153177/apex-kit';`                                                         | Only needed if a wide Table needs to be printed                                                    |
+| `import { edsTableSortColumn } from '@xyz-ap153177/apex-kit';`                                                          | Only needed if using <eds-link eds-href="?tab=examples#sortable-tables">sortable tables</eds-link>. |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                                                           | Yes, unless using `injectCustomSpriteSheet`                                                         |
+| `import { injectCustomSpriteSheet, ICON_ACTION_SORT_ARROW, ICON_ACTION_UNSORTED_ARROW } from '@xyz-ap153177/apex-kit';` | Yes, unless using `injectSpriteSheet`                                                               |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Table", js_import_table=js_import_table) }}
+
+{% endset %}
+
+    {##
+    # A11y Tab
+    #}
+    {% set a11y_tab %}
+            {% filter markdown %}
+            ## Semantics
+            - Mark all header cells with `<th>`.
+            - Add `scope="row"` and/or `scope="col"` to all `<th>` elements.
+
+            ## Form Controls in Table cells
+            Header rows/columns provide a visual label and context to data within Table cells. When using <eds-link eds-href="/components/form/form.html">Form</eds-link> controls within Table cells, it's important to programmatically associate the form control to the header row/column to ensure context and relationship for assistive technologies. To add additional context to the <eds-link eds-href="/components/form/form.html">Form</eds-link> control, use one of the following:
+            - Point to the IDs of row and column headers with `aria-labelledby`.
+            - Clearly identify the context of the action with `aria-label`.
+
+            ## Table captions
+            The Table component doesn't use `<caption>` for captions because the horizontal scrollbar hides it. An accessible alternative way to add a caption:
+
+            - Place the caption adjacent to the `<table>`.
+            - Place the caption within a paragraph `<p>` with an `id`.
+            - Add `aria-labelledby` to the `<table>` to reference to the caption's `id`.
+
+            ## Fixed columns
+            - When using fixed columns in your Table, the cells within a fixed column should not be a row header cell `<th scope="row">`. By using row header cells in a fixed column,
+            NVDA+Firefox will not be able to navigate the fixed column properly.
+            - When using fixed columns, designate the cells in the second column of each row into the `<th scope="row">` for the row.
+
+            ## Sortable Tables
+            - `aria-sort` should be put on column header cells `<th>` that are sortable (<eds-link eds-href="https://www.w3.org/TR/wai-aria-1.1/#aria-sort" eds-new-window>See valid aria-sort values</eds-link>).
+            - Sortable column header cells `<th>` that are not currently sorted should use `aria-sort="none"`.
+            - Sortable column header cells `<th>` should use a <eds-link eds-href="/components/button/button.html">Button</eds-link> within the cell to support keyboard-only sorting.
+            - The following elements within the Table should have an additional `role` attribute:
+                - `<table>` should have `role="table"`.
+                - Column header cells `<th>` should have `role="columnheader"`.
+                - Row header cells `<th>` should have `role="rowheader"`.
+            - Use screen reader-only text within the caption of the Table to inform screen readers what column the Table is sorted by. Use `aria-live="polite"` on the screen reader-only text to inform users when a Table is sorted.
+            - No more than one column can have an `aria-sort` attribute with a value other than "none" to allow screen readers to read the data accurately.
+
+            ## Merged cells
+            - When using merged cells to create complex Tables, handle cell association using `ids` and `headers` rather than just `scope`.
+            - The number of cells in each row, including its `colspan` value, should be the same when using merged data cells.
+            - Refer to the "Merged header cell" example on how to associate data cells to multiple row/column header cells.
+            {% endfilter %}
+    {% endset %}
+
+    {{ library.eds_tabs(tabs=[
+                {
+                    tabName: "Examples",
+                    tabContent: (examples_tab| safe)
+                },
+                {
+                    tabName: "Design",
+                    tabContent: (design_tab| safe)
+                },
+                {
+                    tabName: "Code",
+                    tabContent: (html_code_tab| safe)
+                },
+                {
+                    tabName: "Accessibility",
+                    tabContent: (a11y_tab| safe)
+                }
+
+            ]) }}
+
+{% endblock %}
+
+
+{% block body_scripts %}
+    {{ super() }}
+
+    <script defer>
+        // sortable table example script
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let sortableTable = document.getElementById('sortableTableExample');
+                edsTableSortColumn = new eds.edsTableSortColumn(sortableTable);
+
+            sortableTable.addEventListener('eds-table-sorted', (e) => {
+                const activeSortedColumn = e.detail.el.innerText;
+                const currentSortOrder = e.detail.sortOrder;
+
+                document.getElementById('tableDocSiteSortableTableSRCaption').innerText = `Table sorted by '${activeSortedColumn}' in '${currentSortOrder}' order.`;
+            });
+        });
+
+        function sortTable(e) {
+            edsTableSortColumn.setActiveSort(e);
+        }
+    </script>
+
+    <script defer>
+        // fixed column example
+        window.addEventListener('DOMContentLoaded', (event) => {
+            let fixedColumnTableContainer = document.getElementById('fixedColumnTableExampleContainer');
+            let fixedColumnTable = document.getElementById('fixedColumnTableExample');
+            edsTableFixedColumn = new eds.edsTableFixedColumn(fixedColumnTableContainer, fixedColumnTable, eds.TableFixedColumnPosition.first);
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,572 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Select
+    Part of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>, a Select provides a way to make a single selection from a predetermined set of options.
+    
+    Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>. 
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+
+    {% filter markdown %}
+    ## Default
+    - Always accompany this component with a clear and concise [Label](/components/label/label.html) when used inside a [Field Group](/components/field-group/field-group.html) to meet accessibility guidelines.
+    - Set the value of the first option to an empty string if it provides direction.
+    {% endfilter %}
+
+    {% set select_default_example %}
+    <eds-select eds-options='{{ library.states_variable }}'></eds-select>
+    {% endset %}
+
+    {% set select_default_error_example %}
+    <eds-select eds-error eds-options='{{ library.states_variable }}'></eds-select>
+    {% endset %}
+
+    {% set select_default_disabled_example %}
+    <eds-select eds-disabled eds-options='{{ library.states_variable }}'></eds-select>
+    {% endset %}
+
+    {% set select_default_example_source %}
+    <eds-select eds-options='{{ library.states_variable | stringify | safe }}'></eds-select>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: select_default_example,
+                label: "Default"
+            },
+            {
+                example: select_default_example,
+                label: "Hover",
+                class: "docsite-eds-select--hover",
+                generate_html: false
+            },
+            {
+                example: select_default_example,
+                label: "Focus",
+                class: "docsite-eds-select--focus",
+                generate_html: false
+            },
+            {
+                example: select_default_error_example,
+                label: "Error",
+                generate_html: false
+            },
+            {
+                example: select_default_error_example,
+                label: "Error hover",
+                class: "docsite-eds-select--error-hover",
+                generate_html: false
+            },
+            {
+                example: select_default_error_example,
+                label: "Error focus",
+                class: "docsite-eds-select--error-focus",
+                generate_html: false
+            },
+            {
+                example: select_default_disabled_example,
+                label: "Disabled",
+                generate_html: false
+            }
+        ],
+        code_snippet_source=select_default_example_source,
+        language='html',
+        preformatted=false,
+        show_copy_button=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">In a Field Group</h2>
+
+    {% set select_field_group_example %}
+    <eds-field-group>
+        <eds-label eds-for="select-fg-example-1">State</eds-label>
+        <eds-microcopy eds-id="select-fg-example-microcopy-1">Optional microcopy describing the field group</eds-microcopy>
+        <eds-select eds-id="select-fg-example-1" eds-aria-describedby="select-fg-example-microcopy-1" eds-options='{{ library.states_variable }}'></eds-select>
+    </eds-field-group>
+    {% endset %}
+
+    {% set select_field_group_example_source %}
+    <eds-field-group>
+        <eds-label eds-for="select-fg-example-1">State</eds-label>
+        <eds-microcopy eds-id="select-fg-example-microcopy-1">Optional microcopy describing the field group</eds-microcopy>
+        <eds-select eds-id="select-fg-example-1" eds-aria-describedby="select-fg-example-microcopy-1" eds-options='{{ library.states_variable | stringify | safe }}'></eds-select>
+    </eds-field-group>
+    {% endset %}
+
+    {% set select_field_group_error_example %}
+    <eds-field-group>
+        <eds-label eds-for="select-fg-example-2">State</eds-label>
+        <eds-microcopy eds-id="select-fg-example-microcopy-2">Optional microcopy describing the field group</eds-microcopy>
+        <eds-select eds-error eds-id="select-fg-example-2" eds-aria-describedby="select-fg-example-micro-2 select-fg-example-error-2" eds-options='{{ library.states_variable }}'></eds-select>
+        <eds-inline-alert eds-id="select-fg-example-error-2">Select a state.</eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {% set select_field_group_error_example_source %}
+    <eds-field-group>
+        <eds-label eds-for="select-fg-example-2">State</eds-label>
+        <eds-microcopy eds-id="select-fg-example-microcopy-2">Optional microcopy describing the field group</eds-microcopy>
+        <eds-select eds-error eds-id="select-fg-example-2" eds-aria-describedby="select-fg-example-micro-2 select-fg-example-error-2" eds-options='{{ library.states_variable | stringify | safe }}'></eds-select>
+        <eds-inline-alert eds-id="select-fg-example-error-2">Select a state.</eds-inline-alert>
+    </eds-field-group>
+    {% endset %}
+
+    {% filter markdown %}
+    Always indicate when an entry is required by using the `eds-required` attribute.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(examples=[
+        {
+            example: select_field_group_example,
+            label: "Default"
+        }
+        ],
+        code_snippet_source=select_field_group_example_source,
+        language='html',
+        preformatted=false,
+        show_copy_button=true
+    ) }}
+
+    {{ library.eds_code_example_pair(examples=[
+        {
+            example: select_field_group_error_example,
+            label: "Error"
+        }
+        ],
+        code_snippet_source=select_field_group_error_example_source,
+        language='html',
+        preformatted=false,
+        show_copy_button=true
+    ) }}
+
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+
+    {% set select_large_example %}
+    <eds-select eds-size="large" eds-options="{{ library.states_variable }}"></eds-select>
+    {% endset %}
+
+    {% set select_small_example %}
+    <eds-select eds-size="small" eds-options="{{ library.states_variable }}"></eds-select>
+    {% endset %}
+
+    {% set sizes_example_source %}
+    <!-- Large -->
+    <eds-select eds-size="large" eds-options='{{ library.states_variable | stringify | safe }}'></eds-select>
+
+    <!-- Medium -->
+    <eds-select eds-options='{{ library.states_variable | stringify | safe }}'></eds-select>
+
+    <!-- Small -->
+    <eds-select eds-size="small" eds-options='{{ library.states_variable | stringify | safe }}'></eds-select>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: select_large_example,
+                label: "Large"
+            },
+            {
+                example: select_default_example,
+                label: "Medium (default)"
+            },
+            {
+                example: select_small_example,
+                label: "Small"
+            }
+        ],
+        language='html',
+        preformatted=false,
+        show_copy_button=false,
+        code_snippet_source=sizes_example_source
+    )}}
+
+    <h2 class="docsite__linkable-heading">Display Data</h2>
+
+    {% filter markdown(includeWrapper = false) %}
+    - The Select does not offer a "display" state.
+    - Display data is presented in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> as styled text. Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+    {% endfilter %}
+
+    {% set in_field_display_data_example %}
+    <eds-field-group>
+        <eds-label>Mailing address</eds-label>
+        <address class='eds-field-group__display-data'>1234 Main St.<br>Apt. 10<br>Boston, MA 02110-1234</address>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_display_data_example,
+                label: "Display Data as an address",
+                language: "html"
+            }
+        ]
+    ) }}
+
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/data-entry/select/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+
+    {% filter markdown %}
+    ## Use when
+
+    - There are more than 5–7 options for a person to choose from.
+    - The options are easily predictable, like a list of months or states.
+
+    ## Don't use when
+    - There are known to be less than 3–5 options. Instead use <eds-link eds-href="/components/radio-button/radio-button.html">Radio Buttons</eds-link>.
+
+    ## Behavior
+
+    - The selected option will display inside the Select.
+    - `onchange` events should not move focus away from the Select.
+    - The actual size of "small", "medium", and "large" Selects will change in response to browser width.
+    - Selection data is submitted using a <eds-link eds-href="/components/button/button.html">Button</eds-link>.
+
+    ## Content
+
+    - Options should be written clearly and concisely.
+    - Always set options in sentence case. 
+    - Always make a default selection the first option.
+    - Always set the value of the first option to an empty string if it provides direction. (e.g., "Select a state".)
+    - Never use a direction-based option instead of a <eds-link eds-href="/components/label/label.html">Label</eds-link>.
+    - Always mask account numbers with asterisks on all but the last 4 characters. Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+    - Use parentheses to separate an account number from a preceding account name.   
+    {% endfilter %}
+
+    {{ library.eds_editorial()}}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+
+    | Attribute                       | Type     | Validation                                                                                                                                                | Default                       | Description                                                                                                                                                                                                                                      |
+    |---------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | `eds-aria-describedby`          | string   | --                                                                                                                                                        | --                            | A string of `id`s separated by spaces that will be set at the `aria-describedby` attribute on the `<select>` element.                                                                                                                            |
+    | `eds-aria-label`                | string   | --                                                                                                                                                        | --                            | A string that will be set on the `<select>` element. This is required if you are not using the `eds-id` attribute to associate a <eds-link eds-href="/components/label/label.html">Label</eds-link> component with the `<select>` element.       |
+    | `eds-disabled`                  | boolean  | Anything other than empty string, `true`, or `eds-disabled` will be treated as `false`.                                                                   | `false`                       | Indicates whether the Select component should be disabled. The value of `eds-disabled` will be reflected to the native disabled attribute of the native `<select>` element and will set `aria-disabled="true"`.                                  |
+    | `eds-error`                     | boolean  | Anything other than empty string, `true`, or `eds-error` will be treated as `false`.                                                                      | `false`                       | Indicates whether the Select component should render in the error state. Setting `eds-error`  to true will set `aria-invalid="true"` on the native `<select>` element.                                                                           |
+    | `eds-full-width`                | boolean  | Anything other than empty string, `true`, or `eds-full-width` will be treated as `false`.                                                                 | `false`                       | Force the component to be displayed as full width.                                                                                                                                                                                               |
+    | `eds-id`                        | string   | --                                                                                                                                                        | --                            | Sets the `id` to the native `<select>` element. Used to associate the native `<select>` element with the native `<label>` element.                                                                                                               |
+    | `eds-native-select-attributes`  | object   | string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information.   | --                            | Sets native or custom attributes on the native `<select>` element.                                                                                                                                                                               |
+    | `eds-options`                   | array    | --                                                                                                                                                        | --                            | An array of objects that are used for the options within the Select. See <eds-link eds-href="#select-options">Select options</eds-link> for additional information.                                                                              |
+    | `eds-required`                  | boolean  | Anything other than empty string, `true`, or `eds-required` will be treated as `false`.                                                                   | `false`                       | Indicates if user input is required. This will also set `required` and `aria-required=true`.                                                                                                                                                     |
+    | `eds-selected-value`            | string   | --                                                                                                                                                        | --                            | Corresponds to the `value` attribute of the option that should be selected.                                                                                                                                                                      |
+    | `eds-size`                      | string   | `large`, `medium`, `small`                                                                                                                                | `medium`                      | Determines the size of the Select and its containing text.                                                                                                                                                                                       |
+
+    ## Select options
+    The following are valid keys for adding an option via `eds-options`:
+
+    | Key                  | Type     | Validation                       | Default                            | Description                                                              |
+    |----------------------|----------|----------------------------------|------------------------------------|--------------------------------------------------------------------------|
+    | `disabled`           | boolean  | --                               | `false`                            | Determines if the option is disabled.                                    |
+    | `text`               | string   | --                               | --                                 | The text of the option.                                                  |
+    | `value`              | string   | --                               | The text of the option.            | Sets the `value` attribute of the option.                                |
+    
+    If you're using Typescript, you can import the `SelectOption` interface.
+
+    ### Option groups
+    The following are valid keys for adding an option group via `eds-options`:
+
+    | Key                  | Type     | Validation                       | Default                          | Description                                                                                         |
+    |----------------------|----------|----------------------------------|----------------------------------|-----------------------------------------------------------------------------------------------------|
+    | `label`              | string   | --                               | --                               | The name of the group of options.                                                                   |
+    | `options`            | array    | --                               | --                               | An array of option objects for the specific group, use the table above to see valid keys.           |
+    
+    If you're using Typescript, you can import the `SelectOptionGroup` interface.
+
+    ### Usage examples
+    {% endfilter %}
+
+                                        {% set select_valid_option_array_example %}
+        let statesStartingWithA = [
+            { text: "Select a state that starts with 'A'", value: "" },
+            { value: "AL", text: "Alabama" },
+            { value: "AK", text: "Alaska" }, { value: "AZ", text: "Arizona" },
+            { value: "AR", text: "Arkansas" }
+        ];
+    {% endset %}
+
+                                        {% set select_valid_option_array_attr_example %}
+                                        <eds-select eds-selected-value="Select a state that starts with 'A'"
+            eds-options='[{"text": "Select a state that starts with 'A'", "value": ""},
+            {"text": "Alabama", "value": "AL"},{"text": "Alaska", "value": "AK"},
+            {"text": "Arizona", "value": "AZ"},{"text": "Arkansas", "value": "AR"}]'></eds-select>
+                                        {% endset %}
+
+                                        {% set select_valid_option_array_prop_example %}
+                                        <eds-select eds-id="a-states-select"></eds-select>
+
+                                        <script>
+                                            let statesStartingWithA = [
+                                                {
+                                                    text: "Select a state that starts with 'A'",
+                                                    value: ""
+                                                }, {
+                                                    value: "AL",
+                                                    text: "Alabama"
+                                                }, {
+                                                    value: "AK",
+                                                    text: "Alaska"
+                                                }, {
+                                                    value: "AZ",
+                                                    text: "Arizona"
+                                                }, {
+                                                    value: "AR",
+                                                    text: "Arkansas"
+                                                }
+                                            ];
+
+                                            document
+                                                .querySelector("#a-states-select")
+                                                .edsOptions = statesStartingWithA;
+                                        </script>
+                                        {% endset %}
+
+                                        {% set select_valid_option_group_array_example %}
+        let nestedGroups = [{
+            label: "Group 1",
+            options: [
+                { text: "Option 1.1" },
+                { text: "Option 1.2" }
+            ]
+            }, {
+            label: "Group 2",
+            options: [
+                { text: "Option 2.1" },
+                { text: "Option 2.2" }
+        ] }];
+    {% endset %}
+
+                                        {% filter markdown %}
+    The following is a valid example of an array of single options that can be passed into `eds-options`:
+    {% endfilter %}
+
+                                        {{ library.eds_code_snippet(
+        source=select_valid_option_array_example,
+        language="javascript",
+        show_copy_button=false
+    ) }}
+
+                                        {% filter markdown %}
+    Using `eds-options` as an attribute:
+    {% endfilter %}
+
+                                        {{ library.eds_code_snippet(
+        source=select_valid_option_array_attr_example,
+        language="html",
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+                                        {% filter markdown %}
+    Using `eds-options` as a JavaScript property:
+    {% endfilter %}
+
+                                        {{ library.eds_code_snippet(
+        source=select_valid_option_array_prop_example,
+        language="html",
+        show_copy_button=false
+    ) }}
+
+                                        {% filter markdown %}
+    The following is a valid example of an array of option groups that can be passed into `eds-options`:
+    {% endfilter %}
+
+                                        {{ library.eds_code_snippet(
+        source=select_valid_option_group_array_example,
+        language="javascript",
+        show_copy_button=false
+    ) }}
+
+                                        {% include "src/templates/partials/two-way-data-binding.njk" %}
+
+                                        {{ library.native_attributes(nativeAttrProps=['eds-native-select-attributes']) }}
+
+                                        {% filter markdown %}
+    ### Usage examples
+
+    The following are different examples of how to add native or custom attributes.
+    Always check recommendations from your framework on best pratices when interacting with DOM elements.
+
+    Using `eds-native-select-attributes` as an attribute:
+    {% endfilter %}
+
+                                        {% set select_native_attribute_attr_example %}
+                                        <eds-select
+            id="nativeAttributesExampleSelect"
+            eds-native-select-attributes='{"multiple": true}'></eds-select>
+                                        {% endset %}
+
+                                        {{ library.eds_code_snippet(
+        source=select_native_attribute_attr_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+                                        {% filter markdown %}
+    Using `eds-native-select-attributes` as a JavaScript property:
+    {% endfilter %}
+
+                                        {% set select_native_attribute_example %}
+                                        <eds-select id="nativeAttributesExampleSelect"></eds-select>
+
+                                        <script>
+                                            let select = document.querySelector('#nativeAttributesExampleSelect');
+
+                                            select.edsNativeSelectAttributes = {
+                                                multiple: true
+                                            };
+                                        </script>
+                                        {% endset %}
+
+                                        {{ library.eds_code_snippet(
+        source=select_native_attribute_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+                                        {% filter markdown %}
+    ## Slots
+
+    Select component does not use slots.
+
+    ## Events
+
+     The Select component does not emit any custom events.
+
+    ## Methods
+
+    Select component does not implement any public methods.
+
+    ## CSS modifier classes
+
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name                       | Applies to           | Outcome                                                                                                                                          |
+    |----------------------------------|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+    | `.eds-select__select`            | `<select>`           | Adjusts the style of the native `<select>` element to look like a Apex Kit for Web Select.                                                             |
+    | `.eds-select--small`              | `.eds-select-root`   | Adjusts the style to render a "small" Select component.                                                                                          |
+    | `.eds-select--medium`             | `.eds-select-root`   | Adjusts the style to render a "medium" Select component.                                                                                         |
+    | `.eds-select--large`              | `.eds-select-root`   | Adjusts the style to render a "large" Select component.                                                                                          |
+    | `.eds-select--disabled`           | `.eds-select-root`   | Adjusts the fill color of the caret <eds-link eds-href="/components/icon/icon.html">Icon</eds-link> during different `<select>` element states.  |
+    | `.eds-select--error`              | `.eds-select-root`   | Adjusts the style to render `<select>` element in its error state.                                                                               |
+    | `.eds-select--full-width`        | `.eds-select-root`   | Adjusts the style to render `<select>` element the full width of its container.                                                                  |
+
+    {% endfilter %}
+
+                                                            {# NAMESPACING #}
+
+                                                            {% set namespace_example_wc %}
+                                                            <eds3-select></eds3-select>
+                                                            {% endset %}
+
+                                                            {% set namespace_example_html %}
+                                                            <div class="eds3-select-root eds-select--medium">...</div>
+                                                            {% endset %}
+
+                                                            {{ library.namespacing(component_name="Select", root_class="select-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+                                                            {# IMPORT REFERENCE #}
+
+                                                            {% set js_import_table %}
+| Import                                                                                        | Required                                    |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `import { edsSelect } from '@xyz-ap153177/apex-kit';`                                       | Yes                                         |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                         | Yes                                         |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                               | Yes, unless using `injectCustomSpriteSheet` |
+| `import { injectCustomSpriteSheet, ICON_ACTION_CARET_DOWN } from '@xyz-ap153177/apex-kit';` | Yes, unless using `injectSpriteSheet`       |
+    {% endset %}
+
+                                                            {{ library.import_reference(component_name="Select", js_import_table=js_import_table) }}
+
+                                                        {% endblock %}
+
+                                                        {% block a11y_tab %}
+
+                                                            {% filter markdown %}
+    ## Selects in Field Groups
+    - Always have an associated `<eds-label>` as part of the <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+    - Use the `eds-id` attribute to associate the `<eds-label>` to the `<eds-select>`.
+    - Alternatively, you can use the `eds-aria-label` attribute to associate a `<select>` element with a <eds-link eds-href="/components/label/label.html">Label</eds-link>.
+    
+    ## Associating the Select with a Label
+    Using the `eds-id` attribute allows the `<label>` to be associated with the native `<select>` element that is used internally within `<eds-select>` component.
+
+    The following will be made possible by associating a `<label>` in this way: 
+    - The hover state of the `<select>` element will be triggered when hovering over the <eds-link eds-href="/components/label/label.html">Label</eds-link>.
+    - The `<select>` element will be focused when a the <eds-link eds-href="/components/label/label.html">Label</eds-link> is clicked.
+    - A screen reader will read the label's text when they focus is on the `<select>` element.
+    
+    ## Not associating the Select element with a Label
+    - Using the `eds-aria-label` property allows use of a `<eds-select>` component without associating a `<label>` while still meeting accessibility guidelines.
+    - By using `eds-aria-label` in this way, a screen reader will read the <eds-link eds-href="/components/label/label.html">Label</eds-link> text when focus is on the `<select>` element.
+    - `aria-label` will be added to the native `<select>` element.
+
+    ### Example
+    {% endfilter %}
+
+                                                                                                                        {{ library.eds_code_snippet(
+        source='<eds-select eds-aria-label="This will be treated as a label">
+        </eds-select>',
+        show_copy_button=false
+    ) }}
+
+                                                                                                                        {% filter markdown %}
+    ## Required fields
+    - Always use `required` and `aria-required="true"` for fields that are required.
+    - Use the `eds-required` attribute to configure the `required` and `aria-required` attributes.
+
+    ## Additional description text for Select element
+    Use `eds-aria-describedby` to reference additional content describing the `<select>` element that is not within its associated `<label>`. This will result in adding `aria-describedby` to the native `<select>` element.
+
+    **Note:** Using `aria-describedby` is preferred over `aria-label` when text is or can usefully be made visible on-screen.
+
+    ### Example
+    {% endfilter %}
+
+                                                                                                                                    {% set select_a11y_additional_text_example %}
+                                                                                                                                    <eds-microcopy eds-id="select-description">
+            Additional content that describes what the Select is used for
+        </eds-microcopy>
+                                                                                                                                    <eds-select eds-aria-describedby="select-description"></eds-select>
+                                                                                                                                    {% endset %}
+
+                                                                                                                                    {{ library.eds_code_snippet(
+        source=select_a11y_additional_text_example,
+        show_copy_button=false
+    ) }}
+
+                                                                                                                                    {% filter markdown %}
+    ## Error indication
+    - Always use `aria-invalid="true"` for `<select>` elements that are in error.
+    - Use the `eds-error` attribute to configure the `aria-invalid` attribute.
+
+    ## Disabled indication
+    - Always use `aria-disabled=”true”` for `<select>` elements that are disabled.
+    - Use the `eds-disabled` attribute to configure the `aria-disabled` attribute.
+
+    {% endfilter %}
+
+                                                                                                                                        {% endblock %}

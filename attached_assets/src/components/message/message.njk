@@ -1,0 +1,10 @@
+{% extends "src/templates/layouts/documentation-page.njk" %}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Message
+    
+    See <eds-link eds-href="/components/alert/alert.html">Alert</eds-link> for page level messages and <eds-link eds-href="/components/inline-alert/inline-alert.html">Inline Alert</eds-link> for inline messages. 
+    {% endfilter %}
+{% endblock %}

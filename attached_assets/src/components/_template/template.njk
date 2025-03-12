@@ -1,0 +1,38 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{## 
+ # TITLE 
+ #}
+{% block page__title %}
+
+    {% filter markdown %}
+    ##### Eyebrow
+    # Title
+    Lede paragraph.   
+    {% endfilter %}
+{% endblock %}
+
+{##
+ # Examples Tab 
+ #}
+{% block examples_tab %}
+{% endblock %}
+
+
+{##
+ # Design Tab 
+ #}
+{% block design_tab %}
+{% endblock %}
+
+{##
+ # Code Tab 
+ #}
+{% block code_tab %}
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+{% block a11y_tab %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "src/templates/layouts/documentation-page.njk" %}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Card
+    
+    See <eds-link eds-href="/components/tile/tile.html">Tile</eds-link>. 
+    {% endfilter %}
+{% endblock %}

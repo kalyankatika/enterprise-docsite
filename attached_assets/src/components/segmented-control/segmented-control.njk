@@ -1,0 +1,486 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{% set component_status = "Available" %}    
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Segmented Control
+    A Segmented Control is a more visually prominent implementation of an inline <eds-link eds-href="/components/radio-group/radio-group.html?tab=examples">Radio Group</eds-link> for use inside a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+    
+    <br>Visit <eds-link eds-href="/components/form/form.html?tab=examples">Form</eds-link> for more information and guidance on the construction of forms.
+
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+  
+  {% filter markdown %}
+    ## Default
+    - Allows for the selection of one option, similar to a Radio Group.
+    - Never use this component on its own.
+    - Always accompany this component with a clear and concise <eds-link eds-href="/components/label/label.html">Label</eds-link> inside a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> to meet accessibility guidelines.
+   {% endfilter %}
+  
+    {% set default_example %}
+    <eds-segmented-control>
+        <eds-segment eds-name="group-1" eds-value="option-a" eds-checked>Option A</eds-segment>
+        <eds-segment eds-name="group-1" eds-value="option-b">Option B</eds-segment>
+        <eds-segment eds-name="group-1" eds-value="option-c">Option C</eds-segment>
+    </eds-segmented-control>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples = [
+            { example: default_example }
+        ],
+        show_copy_button=true,
+        preformatted=true,
+        generate_html=true
+    )}}
+  
+  {% filter markdown %}
+    ## In a Field Group
+    {% endfilter %}
+
+    {% set in_field_group_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-2-label" eds-indicator="required">
+            What is your preference?
+        </eds-label>
+        <eds-microcopy eds-id="group-2-micro">Select one.</eds-microcopy>
+        <eds-segmented-control
+        eds-aria-describedby="group-2-micro"
+        eds-aria-labelledby="group-2-label"
+        eds-required>
+            <eds-segment eds-name="group-2" eds-required eds-value="option-a" eds-checked>Option A</eds-segment>
+            <eds-segment eds-name="group-2" eds-required eds-value="option-b">Option B</eds-segment>
+            <eds-segment eds-name="group-2" eds-required eds-value="option-c">Option C</eds-segment>
+        </eds-segmented-control>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_group_example,
+                label: "Field Group with Label and Microcopy"
+            }
+        ],
+        preformatted=true
+    )}}
+
+    {% set in_field_group_error_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-3-label" eds-indicator="required">
+            What is your preference?
+        </eds-label>
+        <eds-microcopy eds-id="group-3-micro">Select one.</eds-microcopy>
+        <eds-segmented-control
+        eds-aria-describedby="group-3-micro"
+        eds-aria-labelledby="group-3-label"
+        eds-required
+        eds-error>
+            <eds-segment eds-name="group-3" eds-required eds-value="option-a">Option A</eds-segment>
+            <eds-segment eds-name="group-3" eds-required eds-value="option-b">Option B</eds-segment>
+            <eds-segment eds-name="group-3" eds-required eds-value="option-c">Option C</eds-segment>
+        </eds-segmented-control>
+        <eds-inline-alert eds-id="group-3-alert">Select one of the above options.</eds-inline-alert>
+    </eds-field-group>  
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_group_error_example,
+                label: "Error"
+            }
+        ],
+        preformatted=true
+    )}}
+
+  {% filter markdown %}
+    ## Sizes
+  {% endfilter %}
+
+  {% set size_1_example %}
+  <eds-segmented-control eds-size="large">
+        <eds-segment eds-name="group-4" eds-value="option-a" eds-checked>Option A</eds-segment>
+        <eds-segment eds-name="group-4" eds-value="option-b">Option B</eds-segment>
+        <eds-segment eds-name="group-4" eds-value="option-c">Option C</eds-segment>
+    </eds-segmented-control>
+  {% endset %}
+
+  {% set size_2_example %}
+  <eds-segmented-control>
+        <eds-segment eds-name="group-5" eds-value="option-a" eds-checked>Option A</eds-segment>
+        <eds-segment eds-name="group-5" eds-value="option-b">Option B</eds-segment>
+        <eds-segment eds-name="group-5" eds-value="option-c">Option C</eds-segment>
+    </eds-segmented-control>
+  {% endset %}
+
+  {% set size_3_example %}
+  <eds-segmented-control eds-size="small">
+        <eds-segment eds-name="group-6" eds-value="option-a" eds-checked>Option A</eds-segment>
+        <eds-segment eds-name="group-6" eds-value="option-b">Option B</eds-segment>
+        <eds-segment eds-name="group-6" eds-value="option-c">Option C</eds-segment>
+    </eds-segmented-control>
+  {% endset %}
+
+  {% set code_snippet_source %}<eds-segmented-control eds-size="large">...</eds-segmented-control>
+<eds-segmented-control eds-size="medium">...</eds-segmented-control>
+<eds-segmented-control eds-size="small">...</eds-segmented-control>
+  {# {{ size_1_example | safe | trim }} #}
+  {% endset %}
+
+  {{ library.eds_code_example_pair(
+      examples = [
+        { example: size_1_example, label: "Large" },
+        { example: size_2_example, label: "Medium (default)" },
+        { example: size_3_example, label: "Small" }
+      ],
+      show_copy_button=false,
+      preformatted=true,
+      generate_html=true,
+      code_snippet_source=code_snippet_source
+  )}}
+
+{% endblock %}
+
+
+{##
+ # Design Tab 
+ #}
+{% block design_tab %}
+
+  {% filter markdown %}
+    ## Use when
+    - Presenting a set of choices in a <eds-link eds-href="/components/form/form.html?tab=examples">Form</eds-link> with short labels that require more visual prominence than conventional selection components.
+    - Presenting options that require submission to complete the form.
+
+  {% endfilter %}
+
+  {% filter markdown %}
+    ## Don't use when
+    - Presenting two mutually exclusive options, "off" and "on," that initiate an action immediately upon selection. Instead use a <eds-link eds-href="/components/switch/switch.html?tab=examples">Switch.</eds-link>
+    - Presenting a long set of options. Instead use a <eds-link eds-href="/components/select/select.html?tab=examples">Select.</eds-link>
+    - Presenting a verbose set of options. Instead use a <eds-link eds-href="/components/checkbox-group/checkbox-group.html?tab=examples">Checkbox Group</eds-link>, <eds-link eds-href="/components/radio-group/radio-group.html?tab=examples">Radio Group</eds-link>, or <eds-link eds-href="/components/select/select.html?tab=examples">Select.</eds-link>
+    - Presenting a way to initiate an action. Instead use a <eds-link eds-href="/components/button/button.html?tab=examples">Button</eds-link>, <eds-link eds-href="/components/form-actions/form-actions.html?tab=examples">Form Actions</eds-link>, or <eds-link eds-href="/components/switch/switch.html?tab=examples">Switch</eds-link>.
+    - Presenting a way to switch views between blocks of related content in a shared section of a page or inside a smaller container. Instead use a <eds-link eds-href="/components/tab-group/tab-group.html?tab=examples">Tab Group</eds-link>.
+ 
+  {% endfilter %}
+
+
+  {% filter markdown %}
+    ## Visual style
+    ### Anatomy and construction
+    
+  {% endfilter %}
+  
+    {% set sc_anatomy_caption %} 
+    <ol class="eds-figure__figcaption-inline-list">
+        <li>Selected segment</li>
+        <li>Unselected segment</li>
+        <li>Segment label</li>
+        <li>Track</li>
+        <li>Divider</li>
+    </ol>
+    {% endset %} 
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/segmented-control/doc-sc-anatomy.png 1x,
+                ../images/segmented-control/doc-sc-anatomy@2x.png 2x
+            ",
+            alt="Diagram describing the required elements",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption=sc_anatomy_caption,
+            sentiment="neutral"
+            ) 
+        }}
+
+    {% filter markdown %}
+    ### Width
+    - The Segmented Control will occupy 100% of the parent container width.
+    - Segment widths are equal and are determined by the overall component width
+    
+    {{ library.eds_figure(
+            srcset="
+                ../images/segmented-control/doc-sc-width.png 1x,
+                ../images/segmented-control/doc-sc-width@2x.png 2x
+            ",
+            alt="Diagram describing the required elements",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="",
+            caption="",
+            sentiment="neutral"
+            ) 
+        }}
+    
+    
+    ## Behavior
+    ### Responsive Behavior
+    - The segment label will wrap as the width narrows.
+    - Use different components at different viewports to mitigate wrapping labels due to segment label length and/or the number of options.
+
+    {% endfilter %}
+
+    {{ library.eds_figure(
+            srcset="
+                ../images/segmented-control/doc-sc-pattern-behavior-do.png 1x,
+                ../images/segmented-control/doc-sc-pattern-behavior-do@2x.png 2x
+            ",
+            alt="",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="Consider",
+            caption="adapting the presentation of components at the page level to provide clear and legible options.",
+            sentiment="positive"
+            ) 
+        }}
+
+        {{ library.eds_figure(
+            srcset="
+                ../images/segmented-control/doc-sc-pattern-behavior-dont.png 1x,
+                ../images/segmented-control/doc-sc-pattern-behavior-dont@2x.png 2x
+            ",
+            alt="",
+            width="full",
+            border=true,
+            padding="one-and-half-x",
+            background=false,
+            label="Avoid",
+            caption="using the Segmented Control in narrow viewports where the label length and/or number of options cause the labels to wrap, making them difficult to read.",
+            sentiment="negative"
+            ) 
+        }}
+    
+    {% filter markdown %}
+    ## Content
+    - Write segment labels clearly and concisely.
+    - Consider limiting the number of segments to an amount that does not introduce label wrapping.
+    - Rely on <eds-link eds-href="/components/label/label.html?tab=examples">Label</eds-link> and <eds-link eds-href="/components/microcopy/microcopy.html?tab=examples">Microcopy</eds-link> to provide context to mitigate segment label length.
+    - Refer to the <eds-link eds-new-window eds-href="http://uxdesignstandards.xyz.com/buttons-and-labels/">PWI Editorial Style Guide</eds-link> for more information. 
+    - To prevent the page from scrolling while the component is selected, add `position: relative` to the css for the component.
+
+
+    {% endfilter %}
+    
+{% endblock %}
+
+{##
+ # Code Tab 
+ #}
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    ### Segmented Control
+    | Attribute                 | Type      | Validation                                                                                | Default    | Description                                                                                                                                                                                                                          |
+    | ------------------------- | ----------| ------------------------------------------------------------------------------------------| -----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-describedby`    | string    | --                                                                                        | --         | A string of `id`s separated by spaces that will be set as the `aria-describedby` attribute on the container.<br><br>Reference the Accessibility tab for more details.                                                                |
+    | `eds-aria-labelledby`	    | string	| --	                                                                                    | --         | A string of `id`s separated by spaces that will be set as the aria-labelledby attribute on the container.<br><br>Reference the Accessibility tab for more details.                                                                   |
+    | `eds-disabled`	        | boolean	| Anything other than an empty string, `true`, or `eds-disabled` will be treated as `false`.| `false`    | Indicates whether the Segmented Control component should be disabled.<br><br>The value of `eds-disabled` will be reflected to the native disabled attribute of the native `<input>` elements and will set `aria-disabled="true"`.    |
+    | `eds-error`	            | boolean	| Anything other than an empty string, `true`, or `eds-error` will be treated as `false`.	| `false`    | Indicates whether the Segmented Control component should render in the error state.<br><br>Setting `eds-error` to `true` will set `aria-invalid="true"` on the native element.                                                       |
+    | `eds-required`	        | boolean	| Anything other than an empty string, `true`, or `eds-required` will be treated as `false`.| `false`    | Indicates whether a selection is required. Should be used in conjunction with the `eds-required` attribute of the Segment component.                                                                                                 |
+    | `eds-size`	            | string	| `small`, `medium`, `large`                                                            	| `medium`   | Determines the size of the Segmented Control component.                                                                                                                                                                              |
+    
+    ### Segment
+    | Attribute                      | Type      | Validation                                                                                                                                                                                                             | Default                       | Description                                                                                                                                                                                                                                                                                                                                |
+    | -------------------------------| ----------| -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-checked`	                 | boolean	 | Anything other than an empty string, `true`, or `eds-checked` will be treated as `false`.	                                                                                                                          | `false`	                      | Indicates whether the Segment component should be checked. The value of eds-checked will be reflected to the native checked attribute of the native `<input>` element.                                                                                                                                                                     |
+    | `eds-id`	                     | string	 | --	                                                                                                                                                                                                                  | A randomly generated number   | Sets the id to the native `<input>` element. Used to associate the native `<input>` element with the native `<label>` element. A randomly generated value will be used if eds-id is not provided.                                                                                                                                          |   
+    | `eds-name`	                 | string	 | --	                                                                                                                                                                                                                  | --	                          | Multiple Segment components will be associated with one another when given the same eds-name. The value of eds-name will be reflected to the native name attribute of the native `<input>` element.                                                                                                                                        |
+    | `eds-native-input-attributes`	 | object	 | String, boolean, or number. See the <eds-link eds-href="/components/segmented-control/segmented-control.html?tab=code#native-attribute-support">Native attribute support</eds-link> section for additional information.| --	                          | Sets native or custom attributes on the native `<input>` element.                                                                                                                                                                                                                                                                          |
+    | `eds-required`	             | boolean	 | Anything other than an empty string, `true`, or `eds-required` will be treated as `false`.	                                                                                                                          | `false`	                      | Indicates whether a Segment within the same group is required. See the <eds-link eds-href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/required" eds-new-window>MDN</eds-link> documentation on the `required` attribute for more details.<br><br>Setting eds-required will set required on the native `<input>` element. |
+    | `eds-text`	                 | string	 | --	                                                                                                                                                                                                                  | --	                          | The text used to label the Segment.                                                                                                                                                                                                                                                                                                        |
+    | `eds-value`	                 | string	 | --	                                                                                                                                                                                                                  | --	                          | eds-value is used to set the value attribute of the native `<input>` element. See <eds-link eds-href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#Value" eds-new-window>MDN's documentation</eds-link> for more details on how the `value` attribute is used in context of radio inputs.                         |
+    {% endfilter %}
+
+    {{ library.native_attributes(nativeAttrProps=['eds-native-input-attributes']) }}
+
+    {% filter markdown %}
+    ## Slots
+    ### Segmented Control
+    | Slot name | Default content   | Description                                                                                     |
+    |-----------|-------------------| ------------------------------------------------------------------------------------------------|
+    | Default   | --                | Use this slot to group related Segment components and apply appropriate spacing between them.   |
+
+    <br><strong>Slot usage examples</strong>
+    <br>Refer to the <eds-link eds-href="/components/segmented-control/segmented-control.html?tab=examples">Examples</eds-link> tab for usage of the default slot.
+
+
+    ### Segment
+    | Slot name | Default content   | Description                                                                                     |
+    |-----------|-------------------| ------------------------------------------------------------------------------------------------|
+    | Default   | --                | If both the `eds-text` attribute and default slot are set, the slot content will be rendered.   |
+
+    <br><strong>Slot usage examples</strong>
+    <br>Refer to the <eds-link eds-href="/components/segmented-control/segmented-control.html?tab=examples">Examples</eds-link> tab for usage of the default slot.
+
+    
+    ## Events
+    The Segmented Control component does not emit any custom events.
+
+ 
+    ## Methods
+    The Segmented Control component does not implement any public methods.
+
+
+    ## CSS modifier classes
+    CSS modifier classes should only be used if you cannot use the web component. When using web components, refer to the attributes table.
+
+    ### Segmented Control
+    | Class name                              | Applies to                        | Outcome                                                                                                           |
+    | --------------------------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+    | `.eds-segmented-control--error` 	      | `.eds-segmented-control-root`	  | Adjusts the style to render the error state.                                                          |
+    | `.eds-segmented-control--disabled` 	  | `.eds-segmented-control-root`	  | Adjusts the style to render the disabled state.                                                         |
+    
+
+    ### Segment
+    | Class name                | Applies to              | Outcome                                                                                                           |
+    | ------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
+    | `.eds-segment--small`	    | `.eds-segment-root`	  | Adjusts the style to render a "small" Segment component.                                                          |
+    | `.eds-segment--medium`	| `.eds-segment-root`	  | Adjusts the style to render a "medium" Segment component.                                                         |
+    | `.eds-segment--large`	    | `.eds-segment-root`	  | Adjusts the style to render a "large" Segment component.                                                          |
+    
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+      <eds3-segmented-control>...</eds3-segmented-control>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Segmented Control", root_class="segmented-control-root", namespace_example_wc=namespace_example_wc) }}
+
+    {# IMPORT REFERENCE #}
+
+{% set js_import_table %}
+| Import                                                                 | Required            |
+| ---------------------------------------------------------------------- | ------------------- |
+| `import { edsSegmentedControl } from '@xyz-ap153177/apex-kit';`      | Yes                 |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Segmented Control", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{##
+ # A11y Tab 
+ #}
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Label
+    A <eds-link eds-href="/components/label/label.html">Label</eds-link> should be associated with the Segmented Control component via `eds-aria-labelledby` and used within a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> component in order to apply the appropriate spacing. The Segmented Control component sets the `role="group"` attribute to allow screen readers to understand the relationship between the <eds-link eds-href="/components/label/label.html">Label</eds-link> and the group of Segment components.
+    {% endfilter %}
+
+    {% set a11y_label_example %}
+    <eds-field-group> 
+        <eds-label eds-id="a11y-label">What is your preference?</eds-label> 
+        <eds-segmented-control eds-aria-labelledby="a11y-label">
+        ... 
+        </eds-segmented-control>
+    </eds-field-group>
+
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_label_example, show_copy_button=false) }}
+
+    {% filter markdown %}
+    ## Microcopy
+    - <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> is optional and should only be used when additional context is needed. 
+    - <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> must be associated with the Segmented Control component via `eds-aria-describedby`.
+
+    ### Group-level Microcopy
+    {% endfilter %}
+
+    {% set a11y_group_microcopy_example %}
+    <eds-field-group>
+        <eds-label eds-id="group-1-label">What is your preference?</eds-label>
+        <eds-microcopy eds-id="group-1-micro">Select one.</eds-microcopy> 
+        <eds-segmented-control eds-aria-describedby="group-1-micro"
+        eds-aria-labelledby="group-1-label"> 
+        ... 
+        </eds-segmented-control> 
+    </eds-field-group>
+
+    {% endset %}
+
+    {{ library.eds_code_snippet(source=a11y_group_microcopy_example, show_copy_button=false) }}
+
+    {% filter markdown %}   
+    ## Error indication
+    When multiple Segment components are used within a group, error indication should be applied to the Segmented Control via `eds-error` rather than to the individual Segment components.
+    In the case where the Segmented Control is the first error on the page, use the `focus()` method to bring attention to the error.
+    {% endfilter %}
+
+    {% set a11y_error_example_html %}
+    <eds-field-group>
+        <eds-label eds-id="group-2-label" eds-indicator="required">
+            What is your preference?
+        </eds-label>
+        <eds-microcopy eds-id="group-2-micro">Select one.</eds-microcopy>
+        <eds-segmented-control
+            eds-aria-describedby="group-2-micro,group-2-alert"
+            eds-aria-labelledby="group-2-label"
+            eds-required
+            eds-error="true">
+            ... 
+        </eds-segmented-control>
+        <eds-inline-alert eds-id="group-2-alert">
+            Select one of the above options.
+        </eds-inline-alert>
+    </eds-field-group>
+
+
+    {% endset %}
+
+    {% set a11y_error_example_js %}
+    /**
+     * The following is an example of how to give focus to the Checkbox
+     * when it is the first error on the page. Always check
+     * recommendations from your framework on best pratices when interacting
+     * with DOM elements.
+     *
+     * Note that the `isFirstErrorOnPage` boolean is not provided by
+     * Apex Kit for Web and would need to be determined via logic in your
+     * application.
+     */
+    if (isFirstErrorOnPage) {
+        const radioGroup = document.querySelector('eds-radio-group');
+        radioGroup.focus();
+    }
+    {% endset %}
+
+    {{ library.eds_code_snippet(
+        sources=[
+            {
+                source: a11y_error_example_html,
+                language: "html",
+                label: "HTML"
+            },
+            {
+                source: a11y_error_example_js,
+                language: "javascript",
+                label: "JavaScript"
+            }
+        ],
+        show_copy_button=false,
+        preformatted=true
+    ) }}
+{% endblock %}

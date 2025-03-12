@@ -1,0 +1,695 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Checkbox
+    
+    A Checkbox provides a way to make one or more selections from a set of choices. 
+
+    Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of Forms. 
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+
+    <h2 class="docsite__linkable-heading">Default</h2>
+    
+    {% filter markdown %}
+    - A single Checkbox is used to present a binary choice.
+    - Multiple Checkboxes combined make up a <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link>.
+    {% endfilter %}
+
+    {% set unchecked_example %}
+    <eds-checkbox>Option A</eds-checkbox>
+    {% endset %}
+
+    {% set unchecked_hover_example %}
+    <eds-checkbox data-state="hover">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set unchecked_focus_example %}
+    <eds-checkbox data-state="focus">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set unchecked_active_example %}
+    <eds-checkbox data-state="active">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set unchecked_error_example %}
+    <eds-checkbox eds-error>Option A</eds-checkbox>
+    {% endset %}
+
+    {% set unchecked_error_hover_example %}
+    <eds-checkbox eds-error data-state="error-hover">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set unchecked_error_focus_example %}
+    <eds-checkbox eds-error data-state="error-focus">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set unchecked_error_active_example %}
+    <eds-checkbox eds-error data-state="error-active">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set unchecked_disabled_example %}
+    <eds-checkbox eds-disabled>Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_example %}
+    <eds-checkbox eds-checked>Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_hover_example %}
+    <eds-checkbox eds-checked data-state="hover">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_focus_example %}
+    <eds-checkbox eds-checked data-state="focus">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_active_example %}
+    <eds-checkbox eds-checked data-state="active">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_error_example %}
+    <eds-checkbox eds-checked eds-error>Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_error_hover_example %}
+    <eds-checkbox eds-checked eds-error data-state="error-hover">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_error_focus_example %}
+    <eds-checkbox eds-checked eds-error data-state="error-focus">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_error_active_example %}
+    <eds-checkbox eds-checked eds-error data-state="error-active">Option A</eds-checkbox>
+    {% endset %}
+
+    {% set checked_disabled_example %}
+    <eds-checkbox eds-checked eds-disabled>Option A</eds-checkbox>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Unchecked -->
+    {{unchecked_example | safe | trim}}
+
+    <!-- Unchecked hover -->
+    {{unchecked_hover_example | safe | trim}}
+
+    <!-- Unchecked focus -->
+    {{unchecked_focus_example | safe | trim}}
+
+    <!-- Unchecked active -->
+    {{unchecked_active_example | safe | trim}}
+
+    <!-- Unchecked error -->
+    {{unchecked_error_example | safe | trim}}
+
+    <!-- Unchecked error hover -->
+    {{unchecked_error_hover_example | safe | trim}}
+
+    <!-- Unchecked error focus -->
+    {{unchecked_error_focus_example | safe | trim}}
+
+    <!-- Unchecked error active -->
+    {{unchecked_error_active_example | safe | trim}}
+
+    <!-- Unchecked disabled -->
+    {{unchecked_disabled_example | safe | trim}}
+
+    <!-- Checked -->
+    {{checked_example | safe | trim}}
+
+    <!-- Checked hover -->
+    {{checked_hover_example | safe | trim}}
+
+    <!-- Checked focus -->
+    {{checked_focus_example | safe | trim}}
+
+    <!-- Checked active -->
+    {{checked_active_example | safe | trim}}
+
+    <!-- Checked error -->
+    {{checked_error_example | safe | trim}}
+
+    <!-- Checked error hover -->
+    {{checked_error_hover_example | safe | trim}}
+
+    <!-- Checked error focus -->
+    {{checked_error_focus_example | safe | trim}}
+
+    <!-- Checked error active -->
+    {{checked_error_active_example | safe | trim}}
+
+    <!-- Checked disabled -->
+    {{checked_disabled_example | safe | trim}}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: unchecked_example,
+                label: "Unchecked"
+            },
+            {
+                example: unchecked_hover_example,
+                label: "Unchecked hover",
+                generate_html: false
+            },
+            {
+                example: unchecked_focus_example,
+                label: "Unchecked focus",
+                generate_html: false
+            },
+            {
+                example: unchecked_active_example,
+                label: "Unchecked active",
+                generate_html: false
+            },
+            {
+                example: unchecked_error_example,
+                label: "Unchecked error"
+            },
+            {
+                example: unchecked_error_hover_example,
+                label: "Unchecked error hover",
+                generate_html: false
+            },
+            {
+                example: unchecked_error_focus_example,
+                label: "Unchecked error focus",
+                generate_html: false
+            },
+            {
+                example: unchecked_error_active_example,
+                label: "Unchecked error active",
+                generate_html: false
+            },
+            {
+                example: unchecked_disabled_example,
+                label: "Unchecked disabled"
+            },
+            {
+                example: checked_example,
+                label: "Checked"
+            },
+            {
+                example: checked_hover_example,
+                label: "Checked hover",
+                generate_html: false
+            },
+            {
+                example: checked_focus_example,
+                label: "Checked focus",
+                generate_html: false
+            },
+            {
+                example: checked_active_example,
+                label: "Checked active",
+                generate_html: false
+            },
+            {
+                example: checked_error_example,
+                label: "Checked error"
+            },
+            {
+                example: checked_error_hover_example,
+                label: "Checked error hover",
+                generate_html: false
+            },
+            {
+                example: checked_error_focus_example,
+                label: "Checked error focus",
+                generate_html: false
+            },
+            {
+                example: checked_error_active_example,
+                label: "Checked error active",
+                generate_html: false
+            },
+            {
+                example: checked_disabled_example,
+                label: "Checked disabled"
+            }
+        ],
+        code_snippet_source=code_snippet_source,
+        show_copy_button=false,
+        preformatted=true
+    )}}
+
+    <h2 class="docsite__linkable-heading">Indeterminate</h2>
+
+    {% set indeterminate_example %}
+    <eds-checkbox eds-text="Select all" eds-indeterminate></eds-checkbox>
+    {% endset %}
+
+    {% set indeterminate_disabled_example %}
+    <eds-checkbox eds-text="Select all" eds-indeterminate eds-disabled></eds-checkbox>
+    {% endset %}
+
+    {% set code_snippet_source %}
+    <!-- Indeterminate -->
+    {{ indeterminate_example | safe | trim }}
+
+    <!-- Indeterminate disabled -->
+    {{ indeterminate_disabled_example | safe | trim }}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: indeterminate_example,
+                label: "Indeterminate"
+            },
+            {
+                example: indeterminate_disabled_example,
+                label: "Indeterminate disabled"
+            }
+        ],
+        code_snippet_source=code_snippet_source,
+        show_copy_button=false,
+        preformatted=true
+    )}}
+
+    <p>
+        {{ library.eds_do_dont(items=[{
+                caption: "Use in cases involving a 'Select all' function.",
+                imagepath:"/images/checkbox/checkbox-select-all@2x.png",
+                alt:"An example image of a 'Select all' functionalty using checkboxes"
+            },{
+                caption: "The indeterminate state is invoked when one choice is subsequently deselected.",
+                imagepath:"/images/checkbox/checkbox-indeterminate@2x.png",
+                alt:"An example image of a 'Select all' functionalty using the inderterminate state on a checkbox"
+            }])
+        }}
+        
+    </p>
+
+    <h2 class="docsite__linkable-heading">With Microcopy</h2>
+
+    {% filter markdown %}
+    Use <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> to add additional context to a single option if necessary.
+    {% endfilter %}
+
+    {% set checkbox_with_microcopy_example %}
+        <eds-checkbox eds-aria-describedby="checkbox-microcopy" eds-text="Option A"><eds-microcopy eds-id="checkbox-microcopy" slot="microcopy">This is microcopy about Option A.</eds-microcopy></eds-checkbox>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=checkbox_with_microcopy_example) }}
+
+    <h2 class="docsite__linkable-heading">Hidden Label</h2>
+
+    {% filter markdown %}
+    - Use a hidden label when part of a larger selectable component.
+    - Always include a descriptive label. While not shown, it can be read by a screen reader to assist users.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: '<eds-checkbox eds-text="Card option A" eds-label-hidden></eds-checkbox>'
+            }
+        ],
+        language='html',
+        show_copy_button=true
+    )}}
+
+    <p>
+        {{ library.eds_do_dont(items=[{
+                caption: "Example of a Checkbox used to select a Table row.",
+                imagepath:"/images/checkbox/checkbox-hidden-label@2x.png",
+                alt:"An example image of a checkbox with a hidden label inside a table"
+            }])
+        }}
+    </p>
+
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+
+    {% set sizes_example_source %}
+        <!-- Large -->
+        <eds-checkbox eds-size="large" eds-text="Card option A"></eds-checkbox>
+        
+        <!-- Medium (default) -->
+        <eds-checkbox eds-text="Card option A"></eds-checkbox>
+        
+        <!-- Small -->
+        <eds-checkbox eds-size="small" eds-text="Card option A"></eds-checkbox>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: '<eds-checkbox eds-size="large" eds-text="Card option A"></eds-checkbox>',
+                label: "Large"
+            },
+            {
+                example: '<eds-checkbox eds-text="Card option A"></eds-checkbox>',
+                label: "Medium (default)"
+            },
+            {
+                example: '<eds-checkbox eds-size="small" eds-text="Card option A"></eds-checkbox>',
+                label: "Small"
+            }
+        ],
+        language='html',
+        preformatted=true,
+        show_copy_button=false,
+        code_snippet_source=sizes_example_source
+    )}}
+
+    <h2 class="docsite__linkable-heading">Checkbox Groups and Field Groups</h2>
+
+    {% filter markdown %}
+    - Always wrap a single <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link> with error validation in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> to control the spacing between the <eds-link eds-href="/components/checkbox/checkbox.html">Checkbox</eds-link> and the <eds-link eds-href="/components/inline-alert/inline-alert.html">Inline Alert</eds-link>.
+    - Always wrap multiple <eds-link eds-href="/components/checkbox/checkbox.html">Checkboxes</eds-link> in a <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link>.
+    - Always wrap the <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link> with a <eds-link eds-href="/components/label/label.html">Label</eds-link> and <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> (optional) in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+    - Visit the <eds-link eds-href="/components/form/form.html">Form</eds-link> design guidelines for more information on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>.
+    {% endfilter %}
+
+    {% set checkbox_field_group_error_validation_example %}
+        <eds-field-group>
+            <eds-checkbox eds-name="agree-to-terms" eds-value="yes">I've read and understand the terms and conditions.</eds-checkbox>
+        </eds-field-group>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=checkbox_field_group_error_validation_example) }}
+
+    {% set checkbox_field_group_stacked_checkboxes_example %}
+        <eds-field-group>
+            <eds-label eds-id="group-micro-options-label">Choose one or more</eds-label>
+            <eds-checkbox-group
+                eds-aria-labelledby="group-micro-options-label"> 
+                <eds-checkbox eds-name="group-micro-options" eds-value="option-a">Option A</eds-checkbox> 
+                <eds-checkbox eds-name="group-micro-options" eds-value="option-b">Option B</eds-checkbox> 
+                <eds-checkbox eds-name="group-micro-options" eds-value="option-c">Option C</eds-checkbox> 
+                <eds-checkbox eds-name="group-micro-options" eds-value="option-d">Option D</eds-checkbox> 
+            </eds-checkbox-group>
+        </eds-field-group>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=checkbox_field_group_stacked_checkboxes_example) }}
+
+    {% set checkbox_field_group_inline_example %}
+        <eds-field-group>
+            <eds-label eds-id="inline-options-label">Choose one or more</eds-label>
+            <eds-checkbox-group
+                eds-aria-labelledby="inline-options-label" 
+                eds-inline="at-512"> 
+                <eds-checkbox eds-name="inline-options" eds-value="option-a">Option A</eds-checkbox> 
+                <eds-checkbox eds-name="inline-options" eds-value="option-b">Option B</eds-checkbox> 
+                <eds-checkbox eds-name="inline-options" eds-value="option-c">Option C</eds-checkbox> 
+            </eds-checkbox-group> 
+        </eds-field-group>
+    {% endset%}
+
+    {{ library.eds_code_example_pair(example=checkbox_field_group_inline_example) }}
+
+    <h2 class="docsite__linkable-heading">Display data</h2>
+
+    {% filter markdown(includeWrapper=false) %}
+    - The Checkbox Group does not offer a "display" state.
+    - Display data is presented in a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> as styled text. Refer to the <eds-link eds-href="/patterns/display-data.html">Display Data</eds-link> pattern for more information on how to format and style different types of data.
+
+    {% endfilter %}
+
+    {% set in_field_display_data_example %}
+    <eds-field-group>
+        <eds-label>Your preferences</eds-label>
+        <eds-list-group class="eds-field-group__display-data" eds-list-items='["Option B", "Option C"]'></eds-list-group>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: in_field_display_data_example,
+                label: "Display Data as a List Group",
+                language: "html"
+            }
+        ]
+    ) }}
+
+<script>
+  (() => {
+    const checkboxes = document.querySelectorAll('eds-checkbox[data-state]');
+    if (checkboxes?.length) {
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('eds-component-ready', e => {
+          if (e.target instanceof customElements.get('eds-checkbox')) {
+            e.target
+              .querySelector('.eds-checkbox__checkbox-wrap')?.classList?.add('eds-checkbox__checkbox-wrap--' + checkbox.dataset.state);
+          }
+        });
+      });
+    }
+  })();
+</script>
+
+{% endblock %}
+
+{% block design_tab %}
+    <section class="external-design-link">
+        You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/data-entry/checkbox/#visual-design-specifications">design guidance</eds-link> for this component.
+    </section>
+
+    {% filter markdown %}
+    ## Use when
+
+    - Making one or more selections from a <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link>.
+    - Requesting acknowledgement of terms or conditions.
+    - Presenting system instructions (e.g., "Don't show this again").
+    - Selecting a row in a <eds-link eds-href="/components/table/table.html">Table</eds-link>.
+
+    ## Don't use when
+
+    Only a single option may be selected from a group. Instead, use <eds-link eds-href="/components/radio-button/radio-button.html">Radio Buttons</eds-link> in a <eds-link eds-href="/components/radio-group/radio-group.html">Radio Group</eds-link>, or a <eds-link eds-href="/components/select/select.html">Select</eds-link>.
+
+    ## Behavior
+
+    - The actual size of "small", "medium", and "large" Checkboxes will change in response to browser width.
+    - The touch target includes the control and the label.
+    - The checked-state represents "yes" or "true".
+    - Selection data is submitted using a <eds-link eds-href="/components/button/button.html">Button</eds-link>.
+
+    ## Content
+
+    - Write the Checkbox label and <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> clearly and concisely.
+    - Use sentence case.
+     
+    {% endfilter %}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute                     | Type    | Validation                                                                                                                                              | Default                       | Description                                                                                                                                                                                                                                                                                                                                                            |
+    | ----------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-aria-describedby`        | string  | --                                                                                                                                                      | --                            | A string of `id`s separated by spaces that will be set at the `aria-describedby` attribute on the input element.                                                                                                                                                                                                                                                       |
+    | `eds-checked`                 | boolean | Anything other than an empty string, `true`, or `eds-checked` will be treated as `false`.                                                               | `false`                       | Indicates whether the Checkbox component should be checked. The value of `eds-checked` will be reflected to the native checked attribute of the native `<input>` element.                                                                                                                                                                                              |
+    | `eds-disabled`                | boolean | Anything other than an empty string, `true`, or `eds-disabled` will be treated as `false`.                                                              | `false`                       | Indicates whether the Checkbox component should be disabled. The value of `eds-disabled` will be reflected to the native disabled attribute of the native `<input>` element and will set `aria-disabled="true"`.                                                                                                                                                       |
+    | `eds-error`                   | boolean | Anything other than an empty string, `true`, or `eds-error` will be treated as `false`.                                                                 | `false`                       | Indicates whether the Checkbox component should render in the error state. Setting `eds-error`  to `true` will set `aria-invalid="true"` on the native `<input>` element.                                                                                                                                                                                              |
+    | `eds-id`                      | string  | --                                                                                                                                                      | *A randomly generated number* | Sets the `id` to the native `<input>` element. Used to associate the native `<input>` element with the native `<label>` element. A randomly generated value will be used if `eds-id` is not provided.                                                                                                                                                                  |
+    | `eds-indeterminate`           | boolean | Anything other than an empty string, `true`, or `eds-indeterminate` will be treated as `false`.                                                         | `false`                       | Indicates whether the Checkbox component is in an indeterminate state. The value of `eds-indeterminate` will be reflected to the native indeterminate property of the native `<input>` element.                                                                                                                                                                        |
+    | `eds-label-hidden`            | boolean | Anything other than an empty string, `true`, or `eds-label-hidden` will be treated as `false`.                                                          | `false`                       | Indicates whether the Checkbox's `<label>` should be hidden. `<label>`s set via `eds-text` or the default slot are always visible to screen readers and are therefore required for accessibility even if the `<label>` is hidden.                                                                                                                                      |
+    | `eds-name`                    | string  | --                                                                                                                                                      | --                            | Multiple Checkbox components will be associated with one another when given the same `eds-name`. The value of `eds-name` will be reflected to the native `name` attribute of the native `<input>` element.                                                                                                                                                             |
+    | `eds-native-input-attributes` | object  | string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information. | --                            | Sets native or custom attributes on the native `<input>` element.                                                                                                                                                                                                                                                                                                      |
+    | `eds-required`                | boolean | Anything other than an empty string, `true`, or `eds-required` will be treated as `false`.                                                              | `false`                       | Indicates whether the Checkbox component is required. The value of `eds-required` will be reflected to the native required attribute of the native `<input>` element and will set `aria-required="true"`.                                                                                                                                                              |
+    | `eds-select-all`              | boolean |                                                                                                                                                         | false                         | Indicates whether this Checkbox can be used to select all of the checkboxes in this Checkbox Group.                                                                                                                                                                                                                                                                    |
+    | `eds-size`                    | string  | `small`, `medium`, or `large`                                                                                                                           | `medium`                      | Determines the size of the Checkbox component.                                                                                                                                                                                                                                                                                                                         |
+    | `eds-text`                    | string  | --                                                                                                                                                      | --                            | The text used to `<label>` the Checkbox.                                                                                                                                                                                                                                                                                                                               |
+    | `eds-value`                   | string  | --                                                                                                                                                      | --                            | `eds-value` is used to set the value attribute of the native `<label>` element. See <eds-link eds-href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Value" eds-new-window>MDN for more details</eds-link> on how the value attribute is used in context of <eds-link eds-href="/components/checkbox/checkbox.html">Checkboxes</eds-link>. |
+
+    {% endfilter %}
+
+    {% include "src/templates/partials/two-way-data-binding.njk" %}
+
+    {{ library.native_attributes(nativeAttrProps=['eds-native-input-attributes']) }}
+    
+    {% filter markdown %}
+    ### Usage examples
+
+    The following are different examples of how to add native or custom attributes.
+    Always check recommendations from your framework on best pratices when interacting with DOM elements.
+
+    Using `eds-native-input-attributes` as an attribute:
+    {% endfilter %}
+
+    {% set checkbox_native_attribute_attr_example %}
+        <eds-checkbox
+            id="nativeAttributesExampleCheckbox"
+            eds-native-input-attributes='{"alt": "check this to agree to the terms and conditions"}'>
+        </eds-checkbox>
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        source=checkbox_native_attribute_attr_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    Using `eds-native-input-attributes` as a JavaScript property:
+    {% endfilter %}
+
+    {% set checkbox_native_attribute_example %}
+        <eds-checkbox id="nativeAttributesExampleCheckbox"></eds-checkbox>
+
+        <script>
+            let checkbox = document.querySelector('#nativeAttributesExampleCheckbox');
+            
+            checkbox.edsNativeInputAttributes = {
+                alt: 'check this to agree to the terms and conditions'
+            };
+        </script>
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        source=checkbox_native_attribute_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    ## Slots
+
+    | Name        | Default content | Description                                                                                                                                                        |
+    | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | `default`   | --              | Use in place of the `eds-text` attribute. If both the `eds-text` attribute and default slot are set, the slot content will be rendered.                            |
+    | `microcopy` | --              | When additional context is necessary, use to properly position <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> with the Checkbox component. Refer to the accessibility tab for more details.          |
+
+
+    ### Slot examples
+
+    {% endfilter %}
+
+    {% set checkbox_slot_example %}
+    <eds-checkbox eds-name="slot-example">Slotted item</eds-checkbox>
+    {% endset %}
+    
+    {{ library.eds_code_example_pair(example=checkbox_slot_example, generate_html=false) }}
+
+    {% filter markdown %}
+
+    ## Events
+
+    The Checkbox component does not emit any custom events.
+
+    ## Methods
+
+    The Checkbox component does not implement any public methods.
+
+    ## CSS modifier classes
+    {% endfilter %}
+
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    {% filter markdown%}
+    | Class name                    | Applies to           | Outcome                                                               |
+    | ----------------------------- | -------------------- | --------------------------------------------------------------------- |
+    | `.eds-checkbox--small`        | `.eds-checkbox-root` | Adjusts the style to render a "small" Checkbox component.             |
+    | `.eds-checkbox--medium`       | `.eds-checkbox-root` | Adjusts the style to render a "medium" Checkbox component.            |
+    | `.eds-checkbox--large`        | `.eds-checkbox-root` | Adjusts the style to render a "large" Checkbox component.             |
+    | `.eds-checkbox--label-hidden` | `.eds-checkbox-root` | Adjusts the style to render a Checkbox component with a hidden label. |
+    | `.eds-checkbox--error`        | `.eds-checkbox-root` | Adjusts the style to render a Checkbox component in its error state.  |
+
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-checkbox>Option A</eds3-checkbox>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-checkbox-root eds-checkbox--medium">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Checkbox", root_class="checkbox-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                                   | Required                                    |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `import { edsCheckbox } from '@xyz-ap153177/apex-kit';`                                | Yes                                         |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                                    | Yes                                         |
+| `import { injectSpriteSheet } from '@xyz-ap153177/apex-kit';`                          | Yes, unless using `injectCustomSpriteSheet` |
+| `import { injectCustomSpriteSheet, ICON_ACTION_CHECK, ICON_ACTION_SUBTRACT } from '@xyz-ap153177/apex-kit';` | Yes, unless using `injectSpriteSheet`       |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Checkbox", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+
+    {% set checkbox_microcopy_a11y_example %}
+        <eds-checkbox eds-aria-describedby="a11y-1-microcopy">Option A
+            <eds-microcopy eds-id="a11y-1-microcopy" slot="microcopy">
+                This is microcopy about Option A.
+            </eds-microcopy>
+        </eds-checkbox>
+    {% endset%}
+
+    {% set checkbox_error_indication_a11y_example %}
+        <eds-field-group>
+            <eds-label eds-id="a11y-2-label">Select all that apply</eds-label>
+            <eds-checkbox-group
+                eds-aria-describedby="a11y-2-alert"
+                eds-aria-labelledby="a11y-2-label"
+                eds-error>
+                <eds-checkbox eds-name="preference" eds-value="phone">
+                    Phone
+                </eds-checkbox>
+        
+                <eds-checkbox eds-name="preference" eds-value="email">
+                    Email
+                </eds-checkbox>
+        
+                <eds-checkbox eds-name="preference" eds-value="smoke-signal">
+                    Smoke signal
+                </eds-checkbox>
+            </eds-checkbox-group>
+            <eds-inline-alert eds-id="a11y-2-alert">A selection is required.</eds-inline-alert>
+        </eds-field-group>
+    {% endset%}
+
+    {% filter markdown %}
+    ## Required fields
+    - Always use `aria-required="true"` for fields that are required.
+    - Use the `eds-required` attribute of the web component to configure the `aria-required` attribute automatically.
+    
+    ## Disabled fields
+    - Always use `aria-disabled="true"` for fields that are disabled.
+    - Use the `eds-disabled` attribute of the web component to configure the `aria-disabled` attribute automatically.
+    
+    ## Error indication
+    - Always use `aria-invalid="true"` for fields that are in error.
+    - Use the `eds-error` attribute of the web component to configure the `aria-invalid` attribute automatically.
+
+    ## Checkbox with Microcopy
+    <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link> can be used to provide additional context to a Checkbox component when needed. This can be accomplished via the `microcopy` slot and `eds-aria-describedby`.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(example=checkbox_microcopy_a11y_example) }}
+
+    {% filter markdown %}
+    ## Error indication within Checkbox groups
+    When multiple Checkbox components are used within a group, error indication should be applied to the <eds-link eds-href="/components/checkbox-group/checkbox-group.html">Checkbox Group</eds-link> rather than to the individual Checkbox components within that group.
+    {% endfilter %}
+
+    {{ library.eds_code_example_pair(example=checkbox_error_indication_a11y_example) }}
+{% endblock %}

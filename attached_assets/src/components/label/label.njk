@@ -1,0 +1,400 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status="Available" %}
+{% set body_class="docsite-documentation-page--with-tabs"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Label
+    Part of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>, a <eds-link eds-href="/components/label/label.html">Label</eds-link> describes the groups nested components and indicates whether they’re required or optional. 
+
+    Visit <eds-link eds-href="/components/form/form.html">Form</eds-link> for more information and guidance on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>. 
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    <h2 class="docsite__linkable-heading">Default</h2>
+
+    {% set default_example %}
+    <eds-label>Address line 1</eds-label>
+    {% endset %}
+
+    {% set secondary_example %}
+    <eds-label eds-variant="secondary">Month</eds-label>
+    {% endset %}
+
+    {% set required_example %}
+    <eds-label eds-indicator="required">Address line 1</eds-label>
+    {% endset %}
+
+    {% set optional_example %}
+    <eds-label eds-indicator="optional">Address line 2</eds-label>
+    {% endset %}
+
+    {% set optional_override_example %}
+    <eds-label
+        eds-indicator="optional"
+        eds-indicator-optional-text="opcional"
+    >Línea de dirección 2</eds-label>
+    {% endset %}
+    
+
+    {% set with_icon_example %}
+    <eds-label>
+        Address line 1
+        <eds-icon
+            slot="annotation"
+            eds-name="action__help"
+            eds-size="small"
+        ></eds-icon>
+    </eds-label>
+    {% endset %}
+
+    {% set standard_examples %}
+    <!-- Default -->
+    {{default_example | safe | trim}}
+
+    <!-- Secondary -->
+    {{secondary_example | safe | trim}}
+
+    <!-- Required -->
+    {{required_example | safe | trim}}
+
+    <!-- Optional -->
+    {{optional_example | safe | trim}}
+
+    <!-- Optional with indicator text override -->
+    {{optional_override_example | safe | trim}}
+
+    <!-- With annotation -->
+    {{with_icon_example | safe | trim}}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: default_example,
+                label: "Default"
+            },
+            {
+                example: secondary_example,
+                label: "Secondary"
+            },
+            {
+                example: required_example,
+                label: "Required"
+            },
+            {
+                example: optional_example,
+                label: "Optional"
+            },
+            {
+                example: optional_override_example,
+                label: "Optional with indicator text override"
+            },
+            {
+                example: with_icon_example,
+                label: "With annotation"
+            }
+        ],
+        language='html',
+        show_copy_button=false,
+        preformatted=true,
+        code_snippet_source=standard_examples
+    )}}
+    <p><eds-microcopy>Example above shows a common override for internationalization.</eds-microcopy></p>
+
+    <h2 class="docsite__linkable-heading">In a Field Group</h2>
+
+    {% filter markdown %}
+    - Always combine the Label with other <eds-link eds-href="/components/form/form.html">Form</eds-link> elements inside of a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> to construct a single entry.
+    - Visit the <eds-link eds-href="/components/form/form.html">Form</eds-link> design guidelines for more information on the construction of <eds-link eds-href="/components/form/form.html">Forms</eds-link>.
+    {% endfilter %}
+
+    {% set within_field_group_default_example %}
+    <eds-field-group>
+        <eds-label eds-for="addr-line-1">Address line 1</eds-label>
+        <eds-input
+            eds-id="addr-line-1"
+            eds-value="123 Main St."
+        ></eds-input>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: within_field_group_default_example,
+                label: "Default"
+            }
+        ],
+        language='html',
+        preformatted=true
+    )}}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: library.date_of_birth_example(inline="at-768"),
+                label: "Default and secondary labels"
+            }
+        ],
+        language='html'
+    )}}
+
+    <h2 class="docsite__linkable-heading">Sizes</h2>
+
+    {% set size_large_example %}
+    <eds-label eds-size="large">Address line 1</eds-label>
+    {% endset %}
+
+    {% set size_medium_example %}
+    <eds-label>Address line 1</eds-label>
+    {% endset %}
+
+    {% set sizes_example %}
+    <!-- Large -->
+    {{size_large_example | safe | trim}}
+
+    <!-- Medium (default) -->
+    {{size_medium_example | safe | trim}}
+    {% endset %}
+
+    {{ library.eds_code_example_pair(
+        examples=[
+            {
+                example: size_large_example,
+                label: "Large"
+            },
+            {
+                example: size_medium_example,
+                label: "Medium (default)"
+            }
+        ],
+        language='html',
+        show_copy_button=false,
+        preformatted=true,
+        code_snippet_source=sizes_example
+    )}}
+{% endblock %}
+
+{% block design_tab %}
+    {% filter markdown %}
+    ## Use when
+    Describing a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+
+    ## Don't use when
+    Providing lengthy contextual information about the group. Instead, use <eds-link eds-href="/components/microcopy/microcopy.html">Microcopy</eds-link>.
+
+    ## Visual styles
+    - Always use the "medium" size with "small" and "medium" <eds-link eds-href="/components/form/form.html">Form</eds-link> components.
+    - Always use the "large" size with "large" <eds-link eds-href="/components/form/form.html">Form</eds-link> components.
+    - Use the "primary" variant to identify a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> or the parent of a nested <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+    - Use the "secondary" variant to identify child groups inside a parent <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>.
+
+    ## Content
+    - Always be clear and concise.
+    - Always set Label text in sentence case.
+    - Never use placeholder <eds-link eds-href="/components/input/input.html">Input</eds-link> text or a default <eds-link eds-href="/components/select/select.html">Select</eds-link> option in lieu of a Label.
+    {% endfilter %}
+    {{ library.eds_editorial(href="http://uxdesignstandards.xyz.com/general-error-messages")}}
+
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute                     | Type   | Validation                                                                                                                                                | Default                | Description                                                                                                                                                                                                                                                                                                                                             |
+    | ----------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `eds-for`                     | string | --                                                                                                                                                        | --                     | Should be set based on the value of the `id` attribute of the form control that is being labeled. This property is equivalent to the native `for` attribute and is required for accessibility when `eds-label` is used to label a form control. (e.g., `eds-input` or `eds-select`). This attribute cannot be used with `eds-id`.                       |
+    | `eds-id`                      | string | --                                                                                                                                                        | --                     | Sets the `id` to `.eds-label__label` element. This is used when you need to label a group of form elements. This attribute cannot be used with `eds-for`.                                                                                                                                                                                               |
+    | `eds-indicator`               | string | `optional`, `required`                                                                                                                                    | --                     | Should be set based on the value of the `required` attribute of the <eds-link eds-href="/components/form/form.html">Form</eds-link> control that is being labeled. The `optional` value will render "(optional)" text next to the Label, and the `required` value will render a red asterisk next to the Label.                                         |
+    | `eds-indicator-optional-text` | string | --                                                                                                                                                        | `optional`             | Changes the text rendered within parentheses to the right of the Label when `eds-indicator` is set to `optional`.                                                                                                                                                                                                                                       |
+    | `eds-native-label-attributes` | object | string, boolean, number. See the <eds-link eds-href="#native-attribute-support">Native attribute support</eds-link> section for additional information.   | --                     | Sets native or custom attributes on the native `<label>` element.                                                                                                                                                                                                                                                                                       |
+    | `eds-size`                    | string | `medium`, `large`                                                                                                                                         | `medium`               | Determines the size of the Label.                                                                                                                                                                                                                                                                                                                       |
+    | `eds-text`                    | string | --                                                                                                                                                        | --                     | The Label's text.                                                                                                                                                                                                                                                                                                                                       |
+    | `eds-variant`                 | string | `primary`, `secondary`                                                                                                                                    | `primary`              | Adjusts the style to render a "primary" or "secondary" Label.                                                                                                                                                                                                                                                                                           |
+    {% endfilter %}
+
+    {{ library.native_attributes(nativeAttrProps=['eds-native-label-attributes']) }}
+    
+    {% filter markdown %}
+    ### Usage examples
+
+    The following are different examples of how to add native or custom attributes.
+    Always check recommendations from your framework on best pratices when interacting with DOM elements.
+
+    Using `eds-native-label-attributes` as an attribute:
+    {% endfilter %}
+
+    {% set label_native_attribute_attr_example %}
+        <eds-label
+            id="nativeAttributesExampleLabel"
+            eds-native-label-attributes='{"data-foo": "bar"}'>
+        </eds-label>
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        source=label_native_attribute_attr_example,
+        preformatted=true
+    ) }}
+
+    {% filter markdown %}
+    Using `eds-native-label-attributes` as a JavaScript property:
+    {% endfilter %}
+
+    {% set label_native_attribute_example %}
+        <eds-label id="nativeAttributesExampleLabel"></eds-label>
+
+        <script>
+            let label = document.querySelector('#nativeAttributesExampleLabel');
+            
+            label.edsNativeLabelAttributes = {
+                'data-foo': 'bar'
+            };
+        </script>
+    {% endset %}
+    
+    {{ library.eds_code_snippet(
+        source=label_native_attribute_example,
+        preformatted=true,
+        show_copy_button=false
+    ) }}
+
+    {% filter markdown %}
+    ## Slots
+
+    | Slot name    | Default content | Description                                                                                                                                                     |
+    | ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `default`    | --              | Use in place of the `eds-text` attribute. If both the `eds-text` attribute and default slot content are set, the `eds-text` attribute content will be rendered. |
+    | `annotation` | --              | Use to align an annotation with the label (e.g., useful for aligning a tooltip or an icon).                                                                      |
+    {% endfilter %}
+
+    <h3>Slot usage example</h3>
+
+    {% set slot_usage_example %}
+    <eds-label>
+        Label + info icon
+        <eds-icon
+            slot="annotation"
+            eds-name="alert__info--outline"
+            eds-size="small"
+        ></eds-icon>
+    </eds-label>
+    {% endset %}
+
+    {{ library.eds_code_snippet
+        (
+            source=slot_usage_example,
+            show_copy_button=false,
+            preformatted=true
+        )
+    }}
+
+    {% filter markdown %}
+    ## Events
+    The Label component does not emit any custom events.
+
+    ## Methods
+    The Label component does not implement any public methods.
+
+    ## CSS modifier classes
+    
+    {% include "src/templates/partials/cssModifiers.njk" %}
+
+    | Class name              | Applies to        | Outcome                                                                                       |
+    | ----------------------- | ----------------- | --------------------------------------------------------------------------------------------- |
+    | `.eds-label--primary`   | `.eds-label-root` | Adjusts the style to render a "primary" Label.                                                |
+    | `.eds-label--secondary` | `.eds-label-root` | Adjusts the style to render a "secondary" Label.                                              |
+    | `.eds-label--medium`    | `.eds-label-root` | Adjusts the style to render a `<label>` element with "small" text.                            |
+    | `.eds-label--large`     | `.eds-label-root` | Adjusts the style to render a `<label>` element with "medium" text.                           |
+    | `.eds-label--icon`      | `.eds-label-root` | Adjusts the style to render a `<label>` element with additional styling to support an icon.   |
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-label>...</eds3-label>
+    {% endset %}
+
+    {% set namespace_example_html %}
+        <div class="eds3-label-root eds-label--medium eds-label--primary">...</div>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Label", root_class="label-root", namespace_example_wc=namespace_example_wc, namespace_example_html=namespace_example_html) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                     | Required                                                                                               |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `import { edsLabel } from '@xyz-ap153177/apex-kit';`     | Yes                                                                                                    |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Label", js_import_table=js_import_table) }}
+
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Labels in Field Groups
+
+    The <eds-link eds-href="/components/label/label.html">Label</eds-link> component will render using the HTML `<label>` element if the
+    `eds-for` attribute is provided. This field is equivalent to the native `for`
+    attribute and is required for accessibility when a <eds-link eds-href="/components/label/label.html">Label</eds-link> is used to directly
+    label a form control.
+    {% endfilter %}
+
+    {% set form_control_label_example %}
+    <eds-field-group>
+        <eds-label eds-for="first-name-1">First name</eds-label>
+        <eds-input eds-id="first-name-1"></eds-input>
+    </eds-field-group>
+    {% endset %}
+
+    {{ library.eds_code_snippet
+        (
+            source=form_control_label_example,
+            show_copy_button=false,
+            preformatted=true
+        )
+    }}
+
+    {% filter markdown %}
+    If `eds-for` is not provided, the <eds-link eds-href="/components/label/label.html">Label</eds-link> component will render using the HTML
+    `div` element. This allows you to use the <eds-link eds-href="/components/label/label.html">Label</eds-link> component to label a <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link> of related form controls where it would not be semantically correct to use a `<label>` element. (e.g., a group of elements to capture a
+    customer's full name.)
+    {% endfilter %}
+
+    {{ library.eds_code_snippet
+        (
+            source=library.full_name_example(id="2"),
+            show_copy_button=false
+        )
+    }}
+
+    {% filter markdown %}
+    ## Required field indication
+    Setting the `eds-indicator` attribute provides a visual aid only. You must also set the `eds-required` attribute on the relevant form control to indicate that a field is required.
+    {% endfilter %}
+
+    {% set required_field_example %}
+    <eds-label eds-for="my-required-input" eds-indicator="required">Label</eds-label>
+    <eds-input eds-id="my-required-input" eds-required></eds-input>
+    {% endset %}
+
+    {{ library.eds_code_snippet
+        (
+            source=required_field_example,
+            show_copy_button=false,
+            preformatted=true
+        )
+    }}
+{% endblock %}

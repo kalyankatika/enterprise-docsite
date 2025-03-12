@@ -1,0 +1,10 @@
+{% extends "src/templates/layouts/documentation-page.njk" %}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Field
+    
+    See <eds-link eds-href="/components/field-group/field-group.html">Field Group</eds-link>. 
+    {% endfilter %}
+{% endblock %}

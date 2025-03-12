@@ -1,0 +1,307 @@
+{% extends "src/templates/layouts/component-page.njk" %}
+
+{# SET THE COMPONENT STATUS #}
+{% set component_status = "Available" %}
+{% set body_class="docsite-documentation-page--with-tabs docsite-documentation-page--fds-only"%}
+
+{% block page__title %}
+    {% filter markdown %}
+    ##### Components
+    # Menu
+    
+    Menu is a navigational component that provides a trigger button and drop-down with a list of given links.
+
+    {% endfilter %}
+{% endblock %}
+
+{% block examples_tab %}
+    {% filter markdown %}
+    ## Basic usage
+
+    At a minimum, the component takes a list of links that follows the <eds-link eds-href="/components/list-group/list-group.html?tab=code#listitemobject">ListItemObject</eds-link> API from the <eds-link eds-href="/components/list-group/list-group.html">List group</eds-link> component.
+    {% endfilter %}
+
+    {% set default_example %}
+        <eds-menu eds-menu-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "ETFs",
+                    "href": "#"
+                },
+                {
+                    "text": "Bonds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#",
+                    "disabled": true,
+                    "newWindow": true
+                }
+            ]
+        '></eds-menu>
+    {% endset %}
+
+    <div class="docsite-eds-menu__example-container">
+        {{default_example | safe}}
+    </div>
+    {{library.eds_code_snippet(
+        source=default_example
+    )}}
+
+    {% filter markdown %}
+    ## Positioning
+
+    The menu component can be aligned to the left of the trigger button or the right of the trigger button to align with the design of the consuming application.
+    {% endfilter %}
+
+    {% set position_example %}
+        <eds-menu eds-position="right" eds-menu-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "ETFs",
+                    "href": "#"
+                },
+                {
+                    "text": "Bonds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#",
+                    "disabled": true,
+                    "newWindow": true
+                }
+            ]
+        '></eds-menu>
+    {% endset %}
+
+    <div class="docsite-eds-menu__example-container position-right">
+        {{position_example | safe}}
+    </div>
+    {{library.eds_code_snippet(
+        source=position_example
+    )}}
+
+    {% filter markdown %}
+    ## Configurable trigger button
+
+    The trigger button can be configured with having an icon on either side of the text, an icon only, or custom text.
+    When using the icon only variant, the text is used for the accessible label used by screen reader technologies.
+    {% endfilter %}
+
+    {% set icon_left_example %}
+        <eds-menu eds-button-icon-left="menu" eds-menu-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#",
+                    "disabled": true,
+                    "newWindow": true
+                }
+            ]
+        ' eds-button-text="Left icon"></eds-menu>
+    {% endset %}
+    {% set icon_right_example %}
+        <eds-menu eds-button-icon-right="menu" eds-menu-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#",
+                    "disabled": true,
+                    "newWindow": true
+                }
+            ]
+        ' eds-button-text="Right icon"></eds-menu>
+    {% endset %}
+    {% set icon_only_example %}
+        <eds-menu eds-button-icon-right="nav__overflow-vertical" eds-button-icon-only eds-menu-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#",
+                    "disabled": true,
+                    "newWindow": true
+                }
+            ]
+        '></eds-menu>
+    {% endset %}
+    {% set button_text_example %}
+        <eds-menu eds-button-text="Manage" eds-button-icon-right="nav__overflow-vertical" eds-menu-list-items='
+            [
+                {
+                    "text": "Mutual funds",
+                    "href": "#"
+                },
+                {
+                    "text": "Active Trader Pro",
+                    "href": "#",
+                    "disabled": true,
+                    "newWindow": true
+                }
+            ]
+        '></eds-menu>
+    {% endset %}
+
+    <div class="docsite-eds-menu__example-container">
+        {{icon_left_example | safe}}
+    </div>
+    <div class="docsite-eds-menu__example-container stacked">
+        {{icon_right_example | safe}}
+    </div>
+    <div class="docsite-eds-menu__example-container stacked">
+        {{icon_only_example | safe}}
+    </div>
+    <div class="docsite-eds-menu__example-container stacked">
+        {{button_text_example | safe}}
+    </div>
+    {{library.eds_code_snippet(
+        sources=[
+            {
+                source: icon_left_example,
+                language: "html",
+                label: "Icon left",
+                beautify: false
+            },
+            {
+                source: icon_right_example,
+                language: "html",
+                label: "Icon right",
+                beautify: false
+            },
+            {
+                source: icon_only_example,
+                language: "html",
+                label: "Icon only",
+                beautify: false
+            },
+            {
+                source: button_text_example,
+                language: "html",
+                label: "Custom text",
+                beautify: false
+            }
+        ]
+    )}}
+{% endblock %}
+
+{% block design_tab %}
+    {% filter markdown %}
+    You can view the Enterprise Design System (FDS) <eds-link eds-new-window eds-href="https://design.xyz.com/fds/web/content/menu/#visual-design-specifications">design guidance</eds-link> for this component.
+
+    ## Interaction guidelines
+    
+    Clicking the trigger button will toggle the menu open and closed. When the menu is open, clicking outside of the menu or an item within the menu will automatically close the menu.
+
+    ### Usage guidelines
+
+    | Do | Don't |
+    | -- | ----- |
+    | Use the `eds-position` attribute to set the alignment of the drop-down. | Manipulate the positioning of the menu with custom CSS. |
+    | Only open the menu downward. | Change the direction the menu will open with custom CSS. |
+    | Use the <eds-link eds-href="/components/list-group/list-group.html?tab=code#listitemobject">ListItemObject</eds-link> API from the <eds-link eds-href="/components/list-group/list-group.html">List group</eds-link> component for defining menu options. | Inject other HTML element or components into the menu. |
+    | Use in the built-in trigger button and the given configuration options | Hide or override the built-in trigger button for a different trigger. |
+
+    ## Content guidance
+
+    ### Usage
+
+    The menu uses the ListItemObject API to add links to the menu.
+
+    ### Format
+
+    - The menu trigger button can be aligned by the consuming application with the positioning set to match the position of the associated menu.
+    - The component has a max width of 512px on large screens and 100% on small screens.
+    {% endfilter %}
+{% endblock %}
+
+{% block code_tab %}
+    {% filter markdown %}
+    ## Installation
+    {% include "src/templates/partials/integration.njk" %}
+
+    ## Attributes
+    {% include "src/templates/partials/jsProps.njk" %}
+    
+    | Attribute               | Type             | Validation                                                                                      | Default   | Description |
+    | ----------------------- | ---------------- | ----------------------------------------------------------------------------------------------- | --------- | ----------- |
+    | `eds-button-icon-left`  | string           | --                                                                                              | --        | An icon to display on the left side of the trigger button. |
+    | `eds-button-icon-only`  | boolean          | Anything other than empty string, `true`, or `eds-button-icon-only` will be treated as `false.` | `false`   | Whether or not to show the trigger button as icon only. |
+    | `eds-button-icon-right` | string           | --                                                                                              | --        | An icon to display on the right side of the trigger button |
+    | `eds-button-text`       | string           | --                                                                                              | `Menu`    | The text to display on the trigger button or used for accessibility labelling when `eds-button-icon-only` is `true`. |
+    | `eds-button-variant`    | string           | `primary`, `secondary`, `tertiary`                                                              | `primary` | Button variant type to use for the trigger button. |
+    | `eds-menu-list-items`   | ListItemObject[] | --                                                                                              | []        | List of menu items to render in the menu. The <eds-link eds-href="/components/list-group/list-group.html?tab=code#listitemobject">ListItemObject</eds-link> API from the <eds-link eds-href="/components/list-group/list-group.html">List group</eds-link> is used for the structure of the menu items. |
+    | `eds-open`              | boolean          | Anything other than empty string, `true`, or `eds-open` will be treated as `false.`             | `false`   | Whether or not the menu is open. |
+    | `eds-position`          | string           | `left`, `right`                                                                                 | `left`    | Position for placing the menu aligned to the left or right of the trigger button. |
+
+    ## Slots
+
+    The Menu component does not have any slots.
+
+    ## Events
+
+    The Menu component does not dispatch any events.
+
+    ## Methods
+
+    The Menu component does not implement any public methods.
+
+    ## CSS modifier classes
+
+    The Menu component does not expose any CSS modifier classes.
+    {% endfilter %}
+
+    {# NAMESPACING #}
+
+    {% set namespace_example_wc %}
+        <eds3-menu>Option A</eds3-menu>
+    {% endset %}
+
+    {{ library.namespacing(component_name="Menu", root_class="menu-root", namespace_example_wc=namespace_example_wc) }}
+
+    {# IMPORT REFERENCE #}
+
+    {% set js_import_table %}
+| Import                                                                      | Required |
+| --------------------------------------------------------------------------- | --- |
+| `import { edsButton } from '@xyz-ap153177/apex-kit';`                       | Yes |
+| `import { edsIcon } from '@xyz-ap153177/apex-kit';`                         | Yes |
+| `import { edsLink } from '@xyz-ap153177/apex-kit';`                         | Yes |
+| `import { edsListGroup } from '@xyz-ap153177/apex-kit';`                    | Yes |
+| `import { edsMenu } from '@xyz-ap153177/apex-kit';`                         | Yes |
+    {% endset %}
+
+    {{ library.import_reference(component_name="Menu", js_import_table=js_import_table) }}
+{% endblock %}
+
+{% block a11y_tab %}
+    {% filter markdown %}
+    ## Accessibility considerations
+
+    - Ensure that the component's links are not altered by the consuming application so that they conform to accessibility standards
+    - Allow the component to manage focus when opening/closing the menu to allow assistive technologies to be in the right place based on user interactions
+
+    ## Implementation
+    {% endfilter %}
+    {{ library.eds_accessibility()}}
+{% endblock %}
