@@ -9,16 +9,24 @@ A Button provides a way of initiating an action or task.
 - See the [Visual style](#visual-style) section for usage information about "disabled" Buttons.
 
 ### Default
-<eds-button>Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button>Primary action</eds-button>
+</div>
 
 ### Hover
-<eds-button data-state="hover">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button data-state="hover">Primary action</eds-button>
+</div>
 
 ### Focus
-<eds-button data-state="focus">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button data-state="focus">Primary action</eds-button>
+</div>
 
 ### Active
-<eds-button data-state="active">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button data-state="active">Primary action</eds-button>
+</div>
 
 Code example:
 ```html
@@ -31,16 +39,24 @@ Code example:
 - See the [Visual style](#visual-style) section for usage information about "disabled" Buttons.
 
 ### Default
-<eds-button eds-variant="secondary">Secondary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="secondary">Secondary action</eds-button>
+</div>
 
 ### Hover
-<eds-button eds-variant="secondary" data-state="hover">Secondary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="secondary" data-state="hover">Secondary action</eds-button>
+</div>
 
 ### Focus
-<eds-button eds-variant="secondary" data-state="focus">Secondary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="secondary" data-state="focus">Secondary action</eds-button>
+</div>
 
 ### Active
-<eds-button eds-variant="secondary" data-state="active">Secondary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="secondary" data-state="active">Secondary action</eds-button>
+</div>
 
 Code example:
 ```html
@@ -53,16 +69,24 @@ Code example:
 - See the [Visual style](#visual-style) section for usage information about "disabled" Buttons.
 
 ### Default
-<eds-button eds-variant="tertiary">Tertiary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="tertiary">Tertiary action</eds-button>
+</div>
 
 ### Hover
-<eds-button eds-variant="tertiary" data-state="hover">Tertiary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="tertiary" data-state="hover">Tertiary action</eds-button>
+</div>
 
 ### Focus
-<eds-button eds-variant="tertiary" data-state="focus">Tertiary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="tertiary" data-state="focus">Tertiary action</eds-button>
+</div>
 
 ### Active
-<eds-button eds-variant="tertiary" data-state="active">Tertiary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="tertiary" data-state="active">Tertiary action</eds-button>
+</div>
 
 Code example:
 ```html
@@ -71,23 +95,36 @@ Code example:
 
 ## Invitation
 
-> ⚠️ **Deprecation warning**: The invitation button variants will no longer be supported after Apex Kit for Web v5. Any instances of the invitation button in an application should be updated to use one of the variants above before upgrading to the next major version.
+<div class="apex-kit-fds-theme">
+  <eds-alert eds-disable-a11y-attributes eds-variant="warning" eds-title="Deprecation warning">
+    Please note that the invitation button variants will no longer be supported after Apex Kit for Web v5.
+    Any instances of the invitation button in an application should be updated to use one of the variants above before upgrading to the next major version.
+  </eds-alert>
+</div>
 
 - Only use "invitation" actions to communicate "account opening" or benefits "enrollment."
 - Only the "large" size is available so that the Button meets accessibility color contrast specifications.
 - See the [Visual style](#visual-style) section for usage information about "invitation" and "disabled" Buttons.
 
 ### Default
-<eds-button eds-variant="invitation" eds-size="large">Invitation</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="invitation" eds-size="large">Invitation</eds-button>
+</div>
 
 ### Hover
-<eds-button eds-variant="invitation" eds-size="large" data-state="hover">Invitation</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="invitation" eds-size="large" data-state="hover">Invitation</eds-button>
+</div>
 
 ### Focus
-<eds-button eds-variant="invitation" eds-size="large" data-state="focus">Invitation</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="invitation" eds-size="large" data-state="focus">Invitation</eds-button>
+</div>
 
 ### Active
-<eds-button eds-variant="invitation" eds-size="large" data-state="active">Invitation</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="invitation" eds-size="large" data-state="active">Invitation</eds-button>
+</div>
 
 Code example:
 ```html
@@ -99,13 +136,19 @@ Code example:
 Use an icon to add additional context.
 
 ### Left icon
-<eds-button eds-icon-left="action__print">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-icon-left="action__print">Primary action</eds-button>
+</div>
 
 ### Right icon
-<eds-button eds-icon-right="action__caret-right">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-icon-right="action__caret-right">Primary action</eds-button>
+</div>
 
 ### Icons on both sides
-<eds-button eds-icon-left="action__print" eds-icon-right="action__caret-right">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-icon-left="action__print" eds-icon-right="action__caret-right">Primary action</eds-button>
+</div>
 
 Code examples:
 ```html
@@ -127,14 +170,18 @@ Code examples:
 - In some cases, it can be placed inside a text field (e.g., search, get a quote, et al.).
 
 ### Secondary
-<eds-button eds-variant="secondary" eds-icon-left="action__chat" eds-icon-only>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="secondary" eds-icon-left="action__chat" eds-icon-only>
     Click to chat
-</eds-button>
+  </eds-button>
+</div>
 
 ### Tertiary
-<eds-button eds-variant="tertiary" eds-icon-left="action__hide" eds-icon-only>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-variant="tertiary" eds-icon-left="action__hide" eds-icon-only>
     Hide
-</eds-button>
+  </eds-button>
+</div>
 
 Code examples:
 ```html
@@ -152,13 +199,19 @@ Code examples:
 ## Sizes
 
 ### Large
-<eds-button eds-size="large">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-size="large">Primary action</eds-button>
+</div>
 
 ### Medium (Default)
-<eds-button>Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button>Primary action</eds-button>
+</div>
 
 ### Small
-<eds-button eds-size="small">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-size="small">Primary action</eds-button>
+</div>
 
 Code examples:
 ```html
@@ -178,11 +231,15 @@ Code examples:
 - A "full width" Button conforms to the width of its parent container.
 
 ### Variable width (Default)
-<eds-button eds-icon-left="action__attach">Primary action</eds-button>
+<div class="apex-kit-fds-theme">
+  <eds-button eds-icon-left="action__attach">Primary action</eds-button>
+</div>
 
 ### Full width in a parent container
-<div style="border: 3px dotted #A810DE; padding:1rem;">
+<div class="apex-kit-fds-theme">
+  <div style="border: 3px dotted #A810DE; padding:1rem;">
     <eds-button eds-full-width eds-icon-left="action__attach">Primary action</eds-button>
+  </div>
 </div>
 
 Code example:
@@ -196,8 +253,10 @@ Code example:
 - Adjusting the parent's width will change the "full width" Button. Note the inclusion of a 16rem (256px) `max-width` to the parent `<div>` in the example code below.
 
 ### Full width in a shorter parent container
-<div style="border: 3px dotted #A810DE; padding:1rem; max-width:16rem;">
+<div class="apex-kit-fds-theme">
+  <div style="border: 3px dotted #A810DE; padding:1rem; max-width:16rem;">
     <eds-button eds-full-width eds-icon-left="action__attach">Primary action</eds-button>
+  </div>
 </div>
 
 Code example:
@@ -206,4 +265,21 @@ Code example:
 <div style="border: 3px dotted #A810DE; padding:1rem; max-width:16rem;">
     <eds-button eds-full-width eds-icon-left="action__attach">Primary action</eds-button>
 </div>
+```
+
+<!-- JavaScript for handling state classes in the examples -->
+```javascript
+(() => {
+  const buttons = document.querySelectorAll('eds-button[data-state]');
+  if (buttons?.length) {
+    buttons.forEach(button => {
+      button.addEventListener('eds-component-ready', e => {
+        if (e.target instanceof customElements.get('eds-button')) {
+          e.target
+            .querySelector('.eds-button-root')?.classList?.add('eds-button--' + button.dataset.state);
+        }
+      });
+    });
+  }
+})();
 ```
