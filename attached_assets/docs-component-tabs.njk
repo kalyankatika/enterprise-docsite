@@ -1,0 +1,222 @@
+---
+layout: assets/layouts/wrapper.njk
+title: Docs
+---
+
+<div class="eds-global-layout__nav">
+  <div class="eds-stack-layout--scroll">
+    <div class="eds-pad--top eds-pad--sides">
+      <form name="tocChannelSelect" class="eds-form-layout">
+        <label for="channelSelect" class="eds-vis--visually-hidden">Select Channel to filter by</label>
+        <div class="eds-select">
+          <select name="state" id="channelSelect" class="eds-select__select" style="opacity: 1;">
+            <option value="web">Web</option>
+            <option value="ios">iOS</option>
+            <option value="android">Android</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="eds-pad--bottom eds-pad--sides">
+      {% set navPages = collections.all | eleventyNavigation("design-system") | navSectionSort %}
+      {% include "tree-menu.njk" %}
+    </div>
+  </div>
+</div>
+<main class="eds-global-layout__main" id="globalMain">
+  <div class="eds-page-layout">
+    <div class="eds-page-layout__section eds-accent--solid eds-text--with-margins eds-text--reading-width">
+      <div class="eds-page-layout__content">
+        <div class="eds-html-content">
+          <h1 class="eds-text--headline-page" id="componentName">{{ eleventyNavigation.title }}</h1>
+          <p class="eds-text--paragraph-lede">{{ description }}</p>
+        </div>
+      </div>
+    </div>
+    {%- if status == 'Development' or status == 'Draft' %}
+      <div class="eds-page-layout__section eds-accent--solid eds-text--reading-width">
+        <div class="eds-page-layout__content">
+          <eds-message severity="{%- if status == 'Development' %}information{%- elseif status == 'Draft' -%}warning{%- endif -%}" heading-text="{%- if status == 'Development' %}Component In Development{%- elseif status == 'Draft' -%}Draft Document{%- endif -%}" content-text="More information on component status can be found <a class='eds-link' href='/resources/system-architecture/component-status/'>Here</a>"></eds-message>
+        </div>
+      </div>
+    {%- endif %}
+    <div class="eds-page-layout__section eds-accent--solid eds-text--reading-width">
+      <article class="eds-page-layout__content eds-article-layout">
+        <aside class="eds-article-layout__aside--sticky">
+          <div class="eds-stack-layout--two">
+            <edsd-nav-toc heading="Overview" l1="h2" l2="h3"></edsd-nav-toc>
+            <div class="eds-stack-layout--half">
+              <h4 class="eds-text--label-legend">Resources</h4>
+              {% if resources.figma %}
+                <eds-link href="{{ resources.figma }}" target="_blank">
+                  Figma
+                </eds-link>
+              {% endif %}
+            </div>
+          </div>
+        </aside>
+        <div class="eds-article-layout__main eds-text--with-margins eds-stack-layout">
+          <div class="eds-html-content">
+            {% if tabsEnabled and tabContent %}
+              <div class="component-tabs">
+                <div class="tab-header">
+                  <button class="tab-button active" data-tab="examples">Examples</button>
+                  <button class="tab-button" data-tab="design">Design</button>
+                  <button class="tab-button" data-tab="code">Code</button>
+                  <button class="tab-button" data-tab="accessibility">Accessibility</button>
+                </div>
+
+                <div class="tab-content active" id="examples">
+                  {% if tabContent.examples %}
+                    {{ tabContent.examples | safe }}
+                  {% else %}
+                    <!-- Default content for Examples tab -->
+                    {{ content | safe }}
+                  {% endif %}
+                </div>
+
+                <div class="tab-content" id="design">
+                  {% if tabContent.design %}
+                    {{ tabContent.design | safe }}
+                  {% else %}
+                    <!-- Design tab content placeholder -->
+                    <p>Design content not provided</p>
+                  {% endif %}
+                </div>
+
+                <div class="tab-content" id="code">
+                  {% if tabContent.code %}
+                    {{ tabContent.code | safe }}
+                  {% else %}
+                    <!-- Code tab content placeholder -->
+                    <p>Code content not provided</p>
+                    {%- if storybook %}
+                      {%- if storybook.name %}
+                        <h2>Code</h2>
+                        {%- if (akfw5) or (apex)%}
+                        <h3>Apex Kit for Web 5</h3>
+                        <eds-message
+                          severity="warning"
+                          heading-text="Apex{%- if akfw5 %}&nbsp;Kit for Web 5{%- endif %} is now the eds{%- if akfw5 %}&nbsp;web component{%- endif %} library of record."
+                          headling-level="3"
+                          content-text="Please refer to the Code tab of&nbsp;{%-if akfw5 %}{%- for item in akfw5 %}{%- if loop.index > 1 %} and&nbsp;{%- endif %}<eds-link 
+                            opens-new-window
+                            href='https://providence.fmr.com/5.x/components/{{ item }}/{{ item }}.html?tab=code'
+                            >{{ item }}</eds-link>{%- endfor %} on the Apex Kit for Web 5 documentation site.{%- endif %}{%-if apex %}{%- for item in apex %}{%- if loop.index > 1 %} and&nbsp;{%- endif %}<eds-link 
+                            opens-new-window
+                            href='https://apex.fmr.com/components/{{ item }}'
+                            >{{ item }}</eds-link>{%- endfor %} on the Apex documentation site.{%- endif %}"></eds-message>
+                        {%- endif %}
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                </div>
+
+                <div class="tab-content" id="accessibility">
+                  {% if tabContent.accessibility %}
+                    {{ tabContent.accessibility | safe }}
+                  {% else %}
+                    <!-- Accessibility tab content placeholder -->
+                    <p>Accessibility content not provided</p>
+                  {% endif %}
+                </div>
+              </div>
+            {% else %}
+              <!-- Regular content without tabs -->
+              {{ content | safe }}
+              {%- if storybook %}
+                {%- if storybook.name %}
+                  <h2>Code</h2>
+                  {%- if (akfw5) or (apex)%}
+                  <h3>Apex Kit for Web 5</h3>
+                  <eds-message
+                    severity="warning"
+                    heading-text="Apex{%- if akfw5 %}&nbsp;Kit for Web 5{%- endif %} is now the eds{%- if akfw5 %}&nbsp;web component{%- endif %} library of record."
+                    headling-level="3"
+                    content-text="Please refer to the Code tab of&nbsp;{%-if akfw5 %}{%- for item in akfw5 %}{%- if loop.index > 1 %} and&nbsp;{%- endif %}<eds-link 
+                      opens-new-window
+                      href='https://providence.fmr.com/5.x/components/{{ item }}/{{ item }}.html?tab=code'
+                      >{{ item }}</eds-link>{%- endfor %} on the Apex Kit for Web 5 documentation site.{%- endif %}{%-if apex %}{%- for item in apex %}{%- if loop.index > 1 %} and&nbsp;{%- endif %}<eds-link 
+                      opens-new-window
+                      href='https://apex.fmr.com/components/{{ item }}'
+                      >{{ item }}</eds-link>{%- endfor %} on the Apex documentation site.{%- endif %}"></eds-message>
+                  {%- endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+<style>
+  /* Component Tabs styles */
+  .component-tabs {
+    margin: 2rem 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .tab-header {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    padding: 0;
+  }
+  
+  .tab-button {
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #000000;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    margin: 0;
+    position: relative;
+    border-radius: 0px;
+  }
+  
+  .tab-button:hover {
+    background-color: #f5f5f5;
+    border-bottom-color: #000000;
+  }
+  
+  .tab-button.active {
+    color: #000000;
+    border-bottom-color: #368727;
+    font-weight: 700;
+  }
+  
+  .tab-content {
+    display: none;
+    padding: 1.5rem;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+
+  /* Example styles */
+  .example {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.25rem;
+    background-color: #f9fafb;
+  }
+
+  /* Alert styles */
+  .alert {
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+    color: #664d03;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.25rem;
+  }
+</style>
