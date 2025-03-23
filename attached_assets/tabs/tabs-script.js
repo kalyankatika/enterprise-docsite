@@ -1,28 +1,25 @@
-// Add section extraction filter to your existing .eleventy.js file
-eleventyConfig.addFilter('extractSections', function(content, sectionNames) {
-  if (!content) return {};
+// Component Tabs JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all tab buttons
+  const tabButtons = document.querySelectorAll('.tab-button');
   
-  const sections = {};
-  
-  // Initialize all requested sections with null
-  sectionNames.forEach(name => {
-    sections[name] = null;
+  // Add click event listeners to each tab button
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabName = button.getAttribute('data-tab');
+      const tabsContainer = button.closest('.component-tabs');
+      
+      // Update active tab button
+      tabsContainer.querySelectorAll('.tab-button').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      button.classList.add('active');
+      
+      // Update active content
+      tabsContainer.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      tabsContainer.querySelector(`#${tabName}`).classList.add('active');
+    });
   });
-  
-  // Regular expression to find sections
-  // Using non-greedy matching to prevent overlapping sections
-  const sectionRegex = /<!-- SECTION: (\w+) -->([\s\S]*?)<!-- ENDSECTION -->/g;
-  
-  let match;
-  while ((match = sectionRegex.exec(content)) !== null) {
-    const sectionName = match[1].toLowerCase();
-    const sectionContent = match[2].trim();
-    
-    // Only store sections that were requested
-    if (sectionNames.includes(sectionName)) {
-      sections[sectionName] = sectionContent;
-    }
-  }
-  
-  return sections;
 });
