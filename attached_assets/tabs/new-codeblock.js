@@ -254,18 +254,18 @@ document.addEventListener('DOMContentLoaded', function() {
 5. //markdown
 ```code-tabs
 <div class="example">
-  <eds-breadcrumbs
+  <fds-breadcrumbs
     breadcrumbs-links='[
         {"text":"Home","href":"#1"},
         {"text":"Category","href":"#2"},
         {"text":"Paints","href":"#3"}
-    ]'></eds-breadcrumbs>
+    ]'></fds-breadcrumbs>
 </div>
 <!-- tab-separator -->
-import { edsBreadcrumbs } from '@xyz-ap153177/apex-kit';
+import { fdsBreadcrumbs } from '@xyz-ap153177/apex-kit';
 
 // Register the component if needed
-if (!customElements.get('eds-breadcrumbs')) {
-  customElements.define('eds-breadcrumbs', edsBreadcrumbs);
+if (!customElements.get('fds-breadcrumbs')) {
+  customElements.define('fds-breadcrumbs', fdsBreadcrumbs);
 }
 ```
