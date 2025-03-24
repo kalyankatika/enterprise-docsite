@@ -69,3 +69,49 @@ document.addEventListener('DOMContentLoaded', function() {
   // This needs to run after the page has fully loaded
   setTimeout(updateTabHeadingsVisibility, 100);
 });
+
+
+
+function updateTOCContent() {
+  // Get the active tab
+  const activeTab = document.querySelector('.tab-content.active');
+  if (!activeTab) return;
+  
+  // Get the TOC content container
+  const tocContent = document.getElementById('toc-content');
+  if (!tocContent) return;
+  
+  // Clear existing content
+  tocContent.innerHTML = '';
+  
+  // Clone headings from active tab to TOC content
+  const headings = activeTab.querySelectorAll('h2, h3');
+  headings.forEach(heading => {
+    const clone = heading.cloneNode(true);
+    tocContent.appendChild(clone);
+  });
+  
+  // Force TOC to refresh
+  // This depends on how your TOC component initializes
+  // Option 1: Dispatch a custom event that might trigger TOC refresh
+  document.dispatchEvent(new CustomEvent('DOMContentLoaded'));
+  
+  // Option 2: Try to trigger a window resize which often causes components to recalculate
+  window.dispatchEvent(new Event('resize'));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Existing tab button code...
+  
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Existing tab switching code...
+      
+      // Update TOC content
+      updateTOCContent();
+    });
+  });
+  
+  // Initialize on page load
+  setTimeout(updateTOCContent, 300);
+});
