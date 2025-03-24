@@ -120,6 +120,12 @@ title: Docs
                   {% endif %}
                 </div>
               </div>
+              
+              <!-- Add this hidden content for TOC -->
+              <div id="toc-content" style="position: absolute; left: -9999px; height: 0; overflow: hidden;">
+                <!-- This will be populated by JavaScript -->
+              </div>
+
             {% else %}
               <!-- Regular content without tabs -->
               {{ content | safe }}
