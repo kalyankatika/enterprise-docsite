@@ -11,10 +11,11 @@ module.exports = function(md) {
     const info = token.info.trim();
     
     // Check if this is a tabbed code block
-    if (info.startsWith('html-web')) {
-      // Split the content by a separator (e.g., '<!-- web-component -->')
-      const parts = token.content.split('<!-- web-component -->');
+    if (info === 'code-tabs') {
+      // Split the content by the separators
+      const parts = token.content.split('<!-- tab-separator -->');
       
+      // First part is HTML, second part is Web Component
       const htmlContent = parts[0].trim();
       const webComponentContent = parts.length > 1 ? parts[1].trim() : '';
       
@@ -52,12 +53,142 @@ module.exports = function(md) {
     return defaultFenceRenderer(tokens, idx, options, env, self);
   };
 };
-2. Add the plugin to your Eleventy config
-// In your .eleventy.js file
+
+
+
+2. /* Code block styling */
+.code-block {
+  margin: 2rem 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.code-block-header {
+  display: flex;
+  background-color: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 0;
+}
+
+.code-block-tabs {
+  display: flex;
+  flex-grow: 1;
+  margin: 0;
+}
+
+.code-block-tab {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-right: 1px solid #e5e7eb;
+  margin: 0;
+}
+
+.code-block-tab.active {
+  background-color: white;
+  font-weight: bold;
+  border-bottom: 2px solid #368727;
+  margin: 0;
+}
+
+.code-block-actions {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  color: #1f2937;
+}
+
+.copy-button:hover {
+  color: #2563eb;
+}
+
+.code-block-content {
+  position: relative;
+}
+
+.code-block-content .language-html,
+.code-block-content .language-javascript {
+  margin-bottom: 0 !important;
+}
+
+.code-block-pane {
+  display: none;
+}
+
+.code-block-pane.active {
+  display: block;
+}
+
+pre[class*="language-"] {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  overflow-x: auto;
+}
+
+.copy-success {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #368727;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.copy-success.show {
+  opacity: 1;
+}
+
+
+
+3. //eleventy.js
 const markdownIt = require('markdown-it');
 const markdownItCodeTabs = require('./markdown-it-code-tabs.js');
 
 module.exports = function(eleventyConfig) {
+  // Your existing configuration...
+  
+  // Add the section extraction filter
+  eleventyConfig.addFilter('extractSections', function(content, sectionNames) {
+    if (!content) return {};
+    
+    const sections = {};
+    
+    // Initialize all requested sections with null
+    sectionNames.forEach(name => {
+      sections[name] = null;
+    });
+    
+    // Regular expression to find sections
+    // Using non-greedy matching to prevent overlapping sections
+    const sectionRegex = /<!-- SECTION: (\w+) -->([\s\S]*?)<!-- ENDSECTION -->/g;
+    
+    let match;
+    while ((match = sectionRegex.exec(content)) !== null) {
+      const sectionName = match[1].toLowerCase();
+      const sectionContent = match[2].trim();
+      
+      // Only store sections that were requested
+      if (sectionNames.includes(sectionName)) {
+        sections[sectionName] = sectionContent;
+      }
+    }
+    
+    return sections;
+  });
+  
   // Create a markdown library with the custom plugin
   const markdownLibrary = markdownIt({
     html: true,
@@ -68,40 +199,19 @@ module.exports = function(eleventyConfig) {
   // Set the library for .md files
   eleventyConfig.setLibrary("md", markdownLibrary);
   
-  // Rest of your config
-  // ...
+  // Return your configuration object
+  return {
+    dir: {
+      input: "src",  // adjust as needed
+      output: "_site",  // adjust as needed
+      includes: "_includes",
+      layouts: "_layouts"
+    }
+  };
 };
-3. Use in your markdown files
-Now in your markdown files, you can use this much cleaner syntax:
-```html-web
-<div class="example">
-  <eds-breadcrumbs
-    breadcrumbs-links='[
-        {"text":"Home","href":"#1"},
-        {"text":"Category","href":"#2"},
-        {"text":"Paints","href":"#3"}
-    ]'></eds-breadcrumbs>
-</div>
 
-<!-- web-component -->
-import { edsBreadcrumbs } from '@xyz-ap153177/apex-kit';
-
-// Register the component if needed
-if (!customElements.get('eds-breadcrumbs')) {
-  customElements.define('eds-breadcrumbs', edsBreadcrumbs);
-}
-```
-This approach has several advantages:
-
-Uses standard markdown fenced code blocks
-Supports multi-line code properly
-Easy to read and edit in markdown
-Uses syntax highlighting in most markdown editors
-The separator (<!-- web-component -->) is clear and visible
-No need to escape special characters
-
-4. Update your JavaScript for tab switching and copy functionality
-The JavaScript you're currently using should work fine with this new approach, just make sure it's targeting the right elements:
+4. //main.js
+// Code block functionality
 document.addEventListener('DOMContentLoaded', function() {
   // Tab switching
   document.querySelectorAll('.code-block-tab').forEach(tab => {
@@ -140,3 +250,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+5. //markdown
+```code-tabs
+<div class="example">
+  <eds-breadcrumbs
+    breadcrumbs-links='[
+        {"text":"Home","href":"#1"},
+        {"text":"Category","href":"#2"},
+        {"text":"Paints","href":"#3"}
+    ]'></eds-breadcrumbs>
+</div>
+<!-- tab-separator -->
+import { edsBreadcrumbs } from '@xyz-ap153177/apex-kit';
+
+// Register the component if needed
+if (!customElements.get('eds-breadcrumbs')) {
+  customElements.define('eds-breadcrumbs', edsBreadcrumbs);
+}
+```
