@@ -1,6 +1,6 @@
 1. Create a custom markdown-it plugin
 This plugin will transform specially annotated code blocks into your tabbed interface:
-javascriptCopy// markdown-it-code-tabs.js
+// markdown-it-code-tabs.js
 module.exports = function(md) {
   // Store the original fence renderer
   const defaultFenceRenderer = md.renderer.rules.fence;
@@ -53,7 +53,7 @@ module.exports = function(md) {
   };
 };
 2. Add the plugin to your Eleventy config
-javascriptCopy// In your .eleventy.js file
+// In your .eleventy.js file
 const markdownIt = require('markdown-it');
 const markdownItCodeTabs = require('./markdown-it-code-tabs.js');
 
@@ -73,7 +73,7 @@ module.exports = function(eleventyConfig) {
 };
 3. Use in your markdown files
 Now in your markdown files, you can use this much cleaner syntax:
-markdownCopy```html-web
+```html-web
 <div class="example">
   <eds-breadcrumbs
     breadcrumbs-links='[
@@ -102,7 +102,7 @@ No need to escape special characters
 
 4. Update your JavaScript for tab switching and copy functionality
 The JavaScript you're currently using should work fine with this new approach, just make sure it's targeting the right elements:
-javascriptCopydocument.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   // Tab switching
   document.querySelectorAll('.code-block-tab').forEach(tab => {
     tab.addEventListener('click', () => {
