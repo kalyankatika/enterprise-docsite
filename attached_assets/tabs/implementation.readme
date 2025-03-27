@@ -1,0 +1,128 @@
+# Component Documentation Tabs Implementation
+
+This README documents the implementation of the component documentation tabs system that extends the existing 11ty-based documentation site while porting components from the ABC documentation site, translating them from nunjucks to markdown and ensuring seamless integration.
+
+## Overview
+
+This implementation enhances the existing 11ty documentation architecture to:
+- Build seamlessly on top of the current 11ty-based documentation infrastructure
+- Translate nunjucks-based components from ABC to markdown-based components
+- Preserve the tabbed interface from the original ABC documentation
+- Provide an accessible, keyboard-navigable experience
+- Dynamically update the Table of Contents based on the active tab content
+- Apply TOC filtering specifically for components using the tabbed layout
+- Facilitate the migration of eight new components with minimal disruption to existing content
+
+## Leveraging the Existing 11ty Structure
+
+- **Extends Without Replacing**: Builds on top of the existing 11ty-based documentation site without disrupting current components
+- **Consistent Navigation**: Maintains the same navigation structure and user experience
+- **Shared Templates**: Leverages and extends existing template infrastructure
+- **Unified Build Process**: Integrates with the current 11ty build pipeline
+
+## Files Modified/Created
+
+### Core Files
+- **Package.json**: Updated dependencies while maintaining compatibility with existing 11ty setup
+- **eleventy.js**: Enhanced configuration to support both existing components and translated ABC components
+- **js/app.js**: Added tab functionality while preserving existing site behavior
+- **js/@xyz-ap153177**: Updated for live ABC component code integration
+
+### Layouts & Templates
+- **New: layouts/docs-component-tabs.njk**: Specialized template that extends the existing 11ty layout system
+- **layouts/wrapper.njk**: Updated to support both traditional and tabbed component layouts
+- **New: scripts/markdown-it-code-tabs.js**: Parser plugin that works within the existing markdown processing pipeline
+
+### Styling
+- **scss/_code-block.scss**: Added styles that complement the existing design system
+- **scss/style.scss**: Updated to include code-block.scss while maintaining design consistency
+
+### Translated Components
+- Eight new components translated from ABC and created at: **web/content/tab-component/**, following existing content organization patterns
+
+## Key Functionality
+
+### Seamless 11ty Integration
+- Builds on top of the current 11ty architecture without disrupting existing content
+- Maintains consistent URL structure and navigation patterns
+- Preserves all existing 11ty functionality while adding tab-based components
+
+### Nunjucks to Markdown Translation
+- Converts ABC's nunjucks-based component documentation to markdown format compatible with 11ty
+- Preserves structured content across Examples, Design, Code, and Accessibility tabs
+- Maintains the integrity of embedded code samples and interactive elements
+
+### Section Filtering for TOC
+The implementation includes JavaScript that:
+- Only activates for components using the docs-component-tabs.njk template
+- Filters headings based on the currently active tab
+- Updates the Table of Contents dynamically when tabs change
+- Preserves TOC functionality for traditional components
+
+```javascript
+// Detection of tabbed components and TOC filtering
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if the page has component tabs
+  const hasComponentTabs = document.querySelector('.component-tabs') !== null;
+  
+  // Only apply filtering for tabbed components
+  if (hasComponentTabs) {
+    // TOC filtering functionality...
+  }
+});
+```
+
+### Feature Parity with ABC Documentation
+- Maintains consistent tab structure (Examples, Design, Code, Accessibility)
+- Preserves content organization patterns from the original ABC documentation
+- Ensures a seamless transition for users familiar with the ABC format
+
+### Accessibility Enhancements
+- Proper ARIA roles: `tablist`, `tab`, and `tabpanel`
+- Keyboard navigation (arrow keys, Home, End)
+- Focus management
+- Appropriate ARIA states (selected, hidden)
+
+### Toggle Functionality
+- Translated components can be conditionally included/excluded using `eleventyExcludeFromCollections`
+- Allows for phased migration and testing before public release
+
+## Translating Components from ABC to 11ty
+
+1. Create a new markdown file in `web/content/tab-component/` following existing 11ty content patterns
+2. Use the following frontmatter format that extends the current 11ty metadata approach:
+
+```yaml
+---
+title: Component Name
+eleventyNavigation:
+  key: component-name
+  title: Component Name
+  parent: components
+description: Brief description of the component
+layout: assets/layouts/docs-component-tabs.njk
+useTabs: true
+---
+
+## Examples
+Examples content here...
+
+## Design
+Design guidance here...
+
+## Code
+Implementation code here...
+
+## Accessibility
+Accessibility guidelines here...
+```
+
+3. The nunjucks content from ABC is translated to markdown while preserving section organization
+4. The markdown content is automatically parsed into tabs, maintaining parity with the ABC format while integrating with the 11ty build process
+
+## Implementation Notes
+
+- The TOC filtering specifically targets the components translated from ABC while preserving behavior for existing 11ty components
+- Tab behavior and appearance match the original ABC documentation site within the context of the 11ty design system
+- The implementation provides a foundation for eight initial translated components and future additions
+- The system maintains complete backward compatibility with the existing 11ty documentation architecture
