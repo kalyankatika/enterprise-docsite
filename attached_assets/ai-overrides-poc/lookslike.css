@@ -1,0 +1,120 @@
+/* Updated Styles for Fidelity Fixed Income Pre-Login Page */
+
+/* 
+ * This CSS targets elements on the Fidelity Fixed Income pre-login page
+ * Based on visual inspection of the page structure
+ */
+
+/* Change page background color */
+body {
+  background-color: #f7f9fc !important; /* Light blue-gray background */
+}
+
+/* Update max width for main content container */
+body > div:not([class]):not([id]),
+#content, .content,
+#main-content, .main-content,
+#container, .container {
+  max-width: 1280px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 
+ * PRIMARY BUTTONS
+ * Based on screenshot, the "View Bid Requests" button is dark blue
+ */
+a:contains("View Bid"),    /* Target View Bid Requests button by text */
+a[href*="ViewBid"],       /* Target View Bid Requests button by href */
+a.view-bid,               /* Possible class name */
+.search-button,           /* Search button */
+button[type="submit"],    /* Form submit buttons */
+.btn-primary, .primary,   /* Standard primary button classes */
+.action-button, .action   /* Action buttons */
+{
+  background-color: #0075eb !important; /* Bright blue */
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+  text-align: center !important;
+  transition: background-color 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+/* Hover effect for primary buttons */
+a:contains("View Bid"):hover,
+a[href*="ViewBid"]:hover,
+a.view-bid:hover,
+.search-button:hover,
+button[type="submit"]:hover,
+.btn-primary:hover, .primary:hover,
+.action-button:hover, .action:hover {
+  background-color: #005db8 !important; /* Darker blue on hover */
+  cursor: pointer !important;
+}
+
+/* 
+ * TERTIARY BUTTONS 
+ * These are outlined buttons
+ */
+.tertiary, .btn-tertiary,
+.secondary, .btn-secondary,
+.outline, .outlined,
+.ghost, .btn-ghost {
+  background-color: transparent !important;
+  color: #0075eb !important; /* Match primary button color */
+  border: 1px solid #0075eb !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  padding: 7px 15px !important;
+  text-align: center !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+}
+
+/* Hover effect for tertiary buttons */
+.tertiary:hover, .btn-tertiary:hover,
+.secondary:hover, .btn-secondary:hover,
+.outline:hover, .outlined:hover,
+.ghost:hover, .btn-ghost:hover {
+  background-color: rgba(0, 117, 235, 0.1) !important; /* Light blue background on hover */
+  color: #005db8 !important; /* Darker blue text on hover */
+  cursor: pointer !important;
+}
+
+/* 
+ * LINKS
+ * Based on screenshot, content links are blue 
+ * Preserve the original color of navigation links
+ */
+a:not([class*="nav"]):not([class*="header"]):not([class*="button"]):not([class*="btn"]) {
+  color: #0075eb !important; /* Bright blue */
+  transition: color 0.2s ease !important;
+}
+
+/* Hover effect for links */
+a:not([class*="nav"]):not([class*="header"]):not([class*="button"]):not([class*="btn"]):hover {
+  color: #005db8 !important; /* Darker blue on hover */
+  text-decoration: underline !important;
+}
+
+/* Special styling for "Click here" link seen in the webinar box */
+a:contains("Click here") {
+  color: #0075eb !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+}
+
+/* Optional: Keep nav links in their original styling */
+.nav a, #nav a,
+header a, #header a,
+#mainNav a, .mainNav a {
+  color: inherit !important; /* Keep original color */
+}
+
+/* "Research & Markets", "Bond Tools", etc. navigation tabs */
+a[href*="Research"], a[href*="Tools"], a[href*="Service"], a[href*="Understanding"] {
+  /* Keep original styling or customize if needed */
+}

@@ -1,0 +1,329 @@
+/* EDS (Enterprise Design System) Look-and-Feel Standards
+ * This CSS file implements the EDS visual standards for the FILanding.html page
+ */
+
+/* Import EDS tokens if not already imported in the HTML */
+@import url('eds-tokens.css');
+
+/* Core EDS color palette */
+:root {
+  --eds-neutral-0: #FFFFFF;
+  --eds-green-600: #368727;
+  --eds-green-900: #044014;
+  --eds-lime-500: #6AD539;
+  --eds-neutral-50: #F9F7F5;
+  --eds-radius-100: 12px;
+  --eds-radius-200: 24px;
+}
+
+/* Global background color */
+body {
+  background-color: var(--eds-neutral-50) !important; /* Neutral background as required */
+}
+
+/* Main container styling - targeting the actual containers in FILanding.html */
+body #page-container,
+#wrapper,
+#mainContentArea, 
+#FindBondsCDs,
+#searchBonds,
+#subTabs,
+.ui-tabs,
+.ui-widget,
+.ui-widget-content {
+  background-color: var(--eds-neutral-50) !important;
+  max-width: 1272px !important;
+  width: 1272px !important;
+  margin: 0 auto;
+}
+
+/* Content containers, panels, and tiles */
+.ui-tabs-panel,
+.ui-widget-content,
+.ui-corner-bottom,
+#tbcurrent-yields,
+#tbindividual-bonds,
+#tbnewissues,
+#tbcds,
+#tbannuities,
+#tbbondfund,
+#tbetfs,
+#tbmanagedaccts,
+#yields-div-panel,
+#introtext,
+#selectGroup,
+#buttonSpace,
+#rightRail {
+  border-radius: var(--eds-radius-100) !important; /* 12px radius for containers */
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+/* Major content containers */
+#mainContentArea {
+  border-radius: var(--eds-radius-200) !important; /* 24px radius for major containers */
+  overflow: hidden;
+}
+
+/* EDS Link styling - targeting links in the document */
+a,
+a:link,
+/* .pnlogout a,
+.pnlogin a, */
+/* .pntl a,
+.pnl1 a,
+.pnl2 a, */
+#tbcurrent-yields a, #annuitiesLinks a {
+  color: var(--eds-link-foreground, var(--eds-green-600)) !important;
+  line-height: var(--eds-link-line, 1.5);
+  font-weight: var(--eds-link-weight, 500);
+  /* font-size: var(--eds-link-size, inherit); */
+  text-decoration: underline !important;
+  border-radius: var(--eds-radius-25, 4px);
+}
+
+/* Link hover state */
+a:hover {
+  color: var(--eds-link-foreground--hover, var(--eds-green-900)) !important;
+}
+
+/* Link focus state */
+a:focus {
+  color: var(--eds-navigate-foreground--focus, var(--eds-green-900)) !important;
+  outline-color: var(--eds-outline-fill, #000000);
+  outline-offset: var(--eds-outline-margin, 2px);
+  outline-style: solid;
+  outline-width: var(--eds-outline-stroke, 2px);
+  transition: outline .125s linear;
+}
+
+/* Primary Button styling - targeting buttons in the document */
+button,
+.button,
+input[type="button"],
+input[type="submit"],
+.va-option,
+.va-button-default,
+.pvd-5-search-button-root {
+  align-items: center;
+  background-color: var(--eds-submit-background, var(--eds-green-600)) !important;
+  border-color: var(--eds-submit-fill, var(--eds-green-600)) !important;
+  border-radius: var(--eds-input-radius--round, var(--eds-radius-100)) !important;
+  border-style: solid;
+  border-width: var(--eds-input-stroke, 1px);
+  color: var(--eds-submit-foreground, #FFFFFF) !important;
+  cursor: pointer;
+  display: inline-flex;
+  line-height: var(--eds-input-line, 1.2);
+  font-size: var(--eds-input-size, 0.875rem);
+  font-weight: var(--eds-submit-weight, 700);
+  gap: var(--eds-input-gap, 8px);
+  justify-content: center;
+  min-height: var(--eds-input-height, 2.325em);
+  padding-left: var(--eds-input-padding, 1em);
+  padding-right: var(--eds-input-padding, 1em);
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Button hover state */
+button:hover,
+.button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+.va-option:hover,
+.va-button-default:hover,
+.pvd-5-search-button-root:hover {
+  background-color: var(--eds-submit-background--hover, var(--eds-green-900)) !important;
+  color: var(--eds-submit-foreground--hover, #FFFFFF) !important;
+}
+
+/* Button focus state */
+button:focus,
+.button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+.va-option:focus,
+.va-button-default:focus,
+.pvd-5-search-button-root:focus {
+  background-color: var(--eds-submit-background--focus, var(--eds-green-900)) !important;
+  border-color: var(--eds-submit-background--focus, var(--eds-green-900)) !important;
+  box-shadow: none;
+  color: var(--eds-submit-foreground--focus, #FFFFFF) !important;
+  outline-color: var(--eds-outline-fill, #000000);
+  outline-offset: var(--eds-outline-margin, 2px);
+  outline-style: solid;
+  outline-width: var(--eds-outline-stroke, 2px);
+  transition: outline .125s linear;
+}
+
+/* Secondary/Tertiary Button styling */
+.pvd-5-search-button--tertiary,
+.fa-assistant-button {
+  align-items: center;
+  background-color: var(--eds-navigate-background, transparent) !important;
+  border-color: var(--eds-navigate-fill, var(--eds-green-600)) !important;
+  border-radius: var(--eds-input-radius--round, var(--eds-radius-100)) !important;
+  border-style: solid;
+  border-width: var(--eds-input-stroke, 1px);
+  color: var(--eds-navigate-foreground, var(--eds-green-600)) !important;
+  cursor: pointer;
+  display: inline-flex;
+  line-height: var(--eds-input-line, 1.2);
+  font-size: var(--eds-input-size, 0.875rem);
+  font-weight: var(--eds-navigate-weight, 700);
+  gap: var(--eds-input-gap, 8px);
+  justify-content: center;
+  min-height: var(--eds-input-height, 2.325em);
+  padding-left: var(--eds-input-padding, 1em);
+  padding-right: var(--eds-input-padding, 1em);
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Secondary/Tertiary Button hover state */
+.pvd-5-search-button--tertiary:hover,
+.fa-assistant-button:hover {
+  background-color: var(--eds-navigate-background--hover, rgba(54, 135, 39, 0.1)) !important;
+  color: var(--eds-navigate-foreground--hover, var(--eds-green-600)) !important;
+}
+
+/* Override for .action-button--generic */
+.action-button--generic {
+  /* Reset existing styles */
+  background-image: none !important;
+  filter: none !important;
+  -ms-filter: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  
+  /* Apply EDS button styling */
+  align-items: center;
+  background-color: var(--eds-submit-background, var(--eds-green-600)) !important;
+  border-color: var(--eds-submit-fill, var(--eds-green-600)) !important;
+  border-radius: var(--eds-input-radius--round, var(--eds-radius-100)) !important;
+  border-style: solid;
+  border-width: var(--eds-input-stroke, 1px);
+  color: var(--eds-submit-foreground, #FFFFFF) !important;
+  cursor: pointer;
+  display: inline-flex;
+  line-height: var(--eds-input-line, 1.2);
+  font-size: var(--eds-input-size, 0.875rem);
+  font-weight: var(--eds-submit-weight, 700);
+  gap: var(--eds-input-gap, 8px);
+  justify-content: center;
+  min-height: var(--eds-input-height, 2.325em);
+  padding-left: var(--eds-input-padding, 1em);
+  padding-right: var(--eds-input-padding, 1em);
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Button hover state */
+.action-button--generic:hover {
+  background-color: var(--eds-submit-background--hover, var(--eds-green-900)) !important;
+  color: var(--eds-submit-foreground--hover, #FFFFFF) !important;
+}
+
+/* Button focus state */
+.action-button--generic:focus {
+  background-color: var(--eds-submit-background--focus, var(--eds-green-900)) !important;
+  border-color: var(--eds-submit-background--focus, var(--eds-green-900)) !important;
+  box-shadow: none;
+  color: var(--eds-submit-foreground--focus, #FFFFFF) !important;
+  outline-color: var(--eds-outline-fill, #000000);
+  outline-offset: var(--eds-outline-margin, 2px);
+  outline-style: solid;
+  outline-width: var(--eds-outline-stroke, 2px);
+  transition: outline .125s linear;
+}
+
+/* Ensure search button icons remain visible */
+.pvd-5-search-button-root .pvd-5-search-button__icon,
+.fa-assistant-button .pvd-5-search-button__icon,
+.pvd-5-search-button__icon--left,
+.pvd-5-search-icon-root,
+.fa-chat-icon {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure SVG icons are properly sized and visible */
+.pvd-5-search-button-root svg,
+.fa-assistant-button svg {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
+/* Preserve button contents for icon buttons */
+.pvd-5-search-button__contents,
+.fa-search-action--chat {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Adjust padding for icon-only buttons */
+.pvd-5-search-button--icon-only {
+  padding: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Table styling */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table th, 
+table td {
+  padding: 8px 12px;
+}
+
+/* Form elements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+select,
+textarea,
+.fa-input-box,
+.pvd-input__input {
+  border-radius: var(--eds-radius-25, 4px);
+  border: 1px solid var(--eds-neutral-300, #D9D8D5);
+  padding: 8px 12px;
+}
+
+/* White sections styling */
+.ui-widget-content,
+.ui-corner-all,
+#mask,
+#overlay {
+  background-color: var(--eds-neutral-0) !important;
+  border-radius: var(--eds-radius-100) !important;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* Apply EDS styling to existing elements */
+#onetrust-pc-sdk .ot-tgl input:checked+.ot-switch .ot-switch-nob:before {
+  background-color: var(--eds-green-600) !important;
+}
+
+/* Fix any existing styling issues */
+.expDefault,
+.mboxDefault {
+  visibility: visible !important;
+}
