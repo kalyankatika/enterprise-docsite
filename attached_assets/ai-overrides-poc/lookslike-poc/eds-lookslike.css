@@ -1,0 +1,670 @@
+/* EDS Container Styles */
+/* Import EDS tokens if not already imported in the HTML */x
+@import url('eds-tokens.css');
+
+/* Main container styling - targeting the actual containers in FILanding.html */
+/* body #page-container,
+#wrapper,
+#mainContentArea, 
+#FindBondsCDs,
+#searchBonds,
+#subTabs,
+.ui-tabs,
+.ui-widget,
+.ui-widget-content {
+  background-color: var(--eds-neutral-50) !important;
+  max-width: 1272px !important;
+  width: 1272px !important;
+  margin: 0 auto;
+} */
+
+
+/* Styling for the webinar announcement */
+
+#FindBondsCDs > .messaging.new{
+    background-color: red ;
+}
+
+.messaging.new {
+  position: relative;
+  border: 1px solid #1D2986;
+  background: #F5FAFF;
+  border-radius: 12px;
+}
+
+/* Style for the webinar title */
+.messaging.new h3 p strong font[color="#13ba1c;"] {
+  color: var(--eds-cobalt-700) !important;
+  font-weight: var(--eds-weight-600);
+}
+
+/* Style for the webinar text */
+.messaging.new h3 p {
+  margin-bottom: var(--eds-space-50);
+  color: var(--eds-neutral-800);
+}
+
+/* Style for the link */
+.messaging.new h3 p a {
+  color: var(--eds-cobalt-700);
+  text-decoration: underline;
+  font-weight: var(--eds-weight-600);
+}
+
+.messaging.new h3 p a:hover {
+  color: var(--eds-cobalt-800);
+}
+
+/* Tab Bar Styling */
+
+.horizontal-navigation-component--list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  /* border-bottom: 4px solid #1a1a1a; */
+}
+
+.horizontal-navigation-component--list li {
+  padding: 15px 20px;
+  position: relative;
+  color: black;
+  font-weight: var(--eds-weight-500);
+  cursor: pointer;
+}
+
+.horizontal-navigation-component--list li a {
+  color: black;
+  text-decoration: none;
+}
+
+/* Style for the active tab (first tab) */
+.horizontal-navigation-component--list li:first-child {
+  border-bottom: 4px solid #368727;
+  margin-bottom: -4px;
+  font-weight: bold;
+  
+}
+
+/* Hover effect for tabs */
+.horizontal-navigation-component--list li:hover {
+  background-color: #white;
+  border-bottom: 4px solid black;
+}
+
+/* Tab Bar Styling - Second Tab Bar */
+.eds-tab-bar {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+.eds-tab-bar li {
+  padding: 15px 20px;
+  position: relative;
+  color: #333333;
+  font-weight: var(--eds-weight-500);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.eds-tab-bar li a {
+  color: #333333;
+  text-decoration: none;
+}
+
+/* Style for the active tab (first tab) */
+.eds-tab-bar li:first-child {
+  border-bottom: 4px solid #4caf50;
+  margin-bottom: -1px;
+  font-weight: var(--eds-weight-600);
+  color: #000000;
+}
+
+.eds-tab-bar li:first-child a {
+  color: #000000;
+}
+
+/* Hover effect for tabs */
+.eds-tab-bar li:hover {
+  color: #000000;
+}
+
+.eds-tab-bar li:hover a {
+  color: #000000;
+}
+
+/* Apply this class to the tab container in the HTML */
+.eds-tab-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* For smaller screens, allow horizontal scrolling */
+@media (max-width: 768px) {
+  .eds-tab-bar {
+    width: max-content;
+    min-width: 100%;
+  }
+  
+  .eds-tab-container {
+    overflow-x: auto;
+  }
+}
+
+/* EDS Link overrides */
+#horz_content a,
+#horz_content a:link,
+#vert_content a,
+#vert_content a:link,
+.mainTextAlt1 a,
+.mainTextAlt1 a:link,
+.titleLinkSection a,
+.titleLinkSection a:link,
+table a,
+table a:link {
+  color: var(--eds-link-foreground) !important;
+  line-height: var(--eds-link-line);
+  font-weight: var(--eds-link-weight);
+  font-size: var(--eds-link-size);
+  text-decoration: underline !important;
+  border-radius: var(--eds-radius-25);
+}
+
+/* Link hover state */
+#horz_content a:hover,
+#vert_content a:hover,
+.mainTextAlt1 a:hover,
+.titleLinkSection a:hover,
+table a:hover {
+  color: var(--eds-link-foreground--hover) !important;
+}
+
+/* Link focus state */
+#horz_content a:focus,
+#vert_content a:focus,
+.mainTextAlt1 a:focus,
+.titleLinkSection a:focus,
+table a:focus {
+  color: var(--eds-navigate-foreground--focus) !important;
+  outline-color: var(--eds-outline-fill);
+  outline-offset: var(--eds-outline-margin);
+  outline-style: solid;
+  outline-width: var(--eds-outline-stroke);
+  transition: outline .125s linear;
+}
+
+/* Primary Button Styling */
+.pvd3-button-root,
+.action-button--primary,
+.pvd-button--primary,
+button[type="submit"],
+input[type="submit"],
+.pvd3-button-root,
+.bidRequestButton {
+  align-items: center;
+  background-color: #368727;
+  border-color: #368727;
+  border-radius: 25px !important;
+  border-style: solid;
+  border-width: 1px;
+  color: white !important;
+  cursor: pointer;
+  display: inline-flex;
+  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 8px;
+  justify-content: center;
+  /* min-height: 2.5em; */
+  min-width: 2.5em;
+  padding: 8px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: none;
+  background-image: none;
+  text-shadow: none; 
+}
+
+/* Primary Button Hover State */
+.pvd3-button-root:hover,
+.action-button--primary:hover,
+.pvd-button--primary:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover,
+.abc3-button-root:hover {
+  background-color: #2a6b1e;
+  color: white !important;
+  text-decoration: none;
+}
+
+/* Primary Button Focus State */
+.pvd3-button-root:focus,
+.action-button--primary:focus,
+.pvd-button--primary:focus,
+button[type="submit"]:focus,
+input[type="submit"]:focus,
+.abc3-button-root:focus {
+  background-color: #2a6b1e;
+  border-color: #2a6b1e;
+  box-shadow: none;
+  color: white !important;
+  outline-color: #000;
+  outline-offset: 3px;
+  outline-style: solid;
+  outline-width: 2px;
+  transition: outline .125s linear;
+  text-decoration: none;
+}
+
+/* Secondary/Tertiary Button Styling */
+.pvd3-button-secondary,
+.action-button--secondary,
+.pvd-button--secondary,
+.action-button--tertiary,
+.pvd-button--tertiary {
+  align-items: center;
+  background-color: var(--eds-navigate-background);
+  border-color: var(--eds-navigate-fill);
+  border-radius: var(--eds-input-radius--round, var(--eds-radius-50));
+  border-style: solid;
+  border-width: var(--eds-input-stroke);
+  color: var(--eds-navigate-foreground);
+  cursor: pointer;
+  display: inline-flex;
+  line-height: var(--eds-input-line);
+  font-size: var(--eds-input-size);
+  font-weight: var(--eds-navigate-weight);
+  gap: var(--eds-input-gap);
+  justify-content: center;
+  min-height: var(--eds-input-height);
+  min-width: var(--eds-input-height);
+  padding-left: var(--eds-input-padding);
+  padding-right: var(--eds-input-padding);
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Secondary/Tertiary Button Hover State */
+.pvd3-button-secondary:hover,
+.action-button--secondary:hover,
+.pvd-button--secondary:hover,
+.action-button--tertiary:hover,
+.pvd-button--tertiary:hover {
+  background-color: var(--eds-navigate-background--hover);
+  color: var(--eds-navigate-foreground--hover);
+}
+
+/* Page Layout Styling */
+body {
+  background-color: #F5F3F0;
+}
+
+.main-container,
+#main-container,
+.container,
+.content-container,
+#content {
+  max-width: 1272px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Container Corner Radius */
+.card,
+.panel,
+.box,
+.container-box,
+.content-box {
+  border-radius: var(--eds-radius-50);
+  overflow: hidden;
+}
+
+/* Fidelity Bond Tabs Styling */
+
+/* Direct targeting of the tabs structure from the HTML */
+ul.tabs.ui-tabs-nav {
+  background-color: white !important;
+  border: none !important;
+  border-bottom: 4px solid white !important;
+}
+
+/* Reset all tab list items */
+ul.tabs.ui-tabs-nav li.primarytabs {
+  background-color: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+#subTabs .ui-tabs-nav li {
+background-image:none
+}
+
+/* Adding styling for fmr-horizontal-component */
+#fmr-horizontal-component ul {
+  background-color: white !important;
+  border: none !important;
+  border-bottom: 4px solid white !important;
+}
+
+#fmr-horizontal-component ul li {
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  margin: 0 !important;
+}
+
+#fmr-horizontal-component ul li.active {
+  border-bottom: 4px solid #4caf50 !important;
+  margin-bottom: -4px !important;
+  font-weight: 600 !important;
+}
+
+#fmr-horizontal-component ul li:hover:not(.active) {
+  border-bottom: 4px solid #000000 !important;
+  margin-bottom: -4px !important;
+}
+
+#fmr-horizontal-component ul li a {
+  display: block !important;
+  color: #333333 !important;
+  text-decoration: none !important;
+  border: none !important;
+  padding: 15px 20px !important;
+}
+
+#fmr-horizontal-component ul li.active a {
+  color: #000000 !important;
+}
+
+/* Base tab link styling */
+ul.tabs.ui-tabs-nav li.primarytabs a {
+  /* padding: 15px 20px !important; */
+  display: block !important;
+  color: #333333 !important;
+  text-decoration: none !important;
+  border: none !important;
+}
+
+/* Active tab styling with green underline */
+ul.tabs.ui-tabs-nav li.primarytabs.ui-tabs-active {
+  border-bottom: 4px solid #4caf50 !important;
+  margin-bottom: -4px !important;
+}
+
+ul.tabs.ui-tabs-nav li.primarytabs.ui-tabs-active a {
+  font-weight: 600 !important;
+  color: #000000 !important;
+}
+
+/* Hover styling with black underline */
+ul.tabs.ui-tabs-nav li.primarytabs:hover:not(.ui-tabs-active) {
+  border-bottom: 4px solid #000000 !important;
+  margin-bottom: -4px !important;
+}
+
+/* Timestamp styling */
+ul.tabs.ui-tabs-nav li.primarytabs a span.timeStamp {
+  font-size: 12px !important;
+  color: #757473 !important;
+  margin-left: 4px !important;
+}
+
+/* Add bottom border to the entire tab container */
+.income-products {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-bottom: none;
+}
+
+/* Search Bonds container styling */
+#searchBonds {
+  border: none !important;
+  background: #fff !important;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#searchBonds .toggle {
+  background: transparent !important;
+  border: none !important;
+  margin-bottom: 15px;
+}
+
+/* #searchBonds label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+#searchBonds li {
+  margin-right: 5px;
+}
+
+#searchBonds li a {
+  padding: 8px 15px !important;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+#searchBonds li.ui-tabs-active a {
+  background-color: #4c9e45;
+  color: #fff;
+}
+
+#searchBonds .cusip-input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#searchBonds .search-button {
+  background-color: #4c9e45;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#searchBonds .search-links {
+  margin-top: 10px;
+}
+
+#searchBonds .search-links a {
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 14px;
+} */
+
+/* Right Sidebar Containers Styling */
+#rightRail {
+  padding: 0 15px;
+}
+
+/* Common styling for all sidebar containers */
+#rightRail .contact-us,
+#rightRail .right-rail-carousel,
+#rightRail .learn-more {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Contact Us Container */
+#rightRail .contact-us {
+  padding-bottom: 15px;
+}
+
+#rightRail .contact-us--headline {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#rightRail .contact-us--list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#rightRail .contact-us--list-items {
+  margin-bottom: 10px;
+}
+
+#rightRail .contact-us--contact-number,
+#rightRail .contact-us--number-link {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  text-decoration: none;
+  display: block;
+}
+
+#rightRail .secure-lock-icon {
+  color: #0066cc;
+  text-decoration: none;
+  position: relative;
+  padding-right: 20px;
+}
+
+#rightRail .secure-lock-icon::after {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z'/%3E%3C/svg%3E");
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Resources Container (Carousel) */
+#rightRail .right-rail-carousel {
+  position: relative;
+}
+
+#rightRail .right-rail-carousel h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#rightRail .right-rail-carousel--inner-slider {
+  padding: 10px 0;
+}
+
+#rightRail .right-rail-carousel--padded {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#rightRail .right-rail-carousel--padded h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+#rightRail .right-rail-carousel--padded a {
+  color: #0066cc;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+#rightRail .right-rail-carousel--pager {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+#rightRail .right-rail-carousel--item {
+  margin: 0 3px;
+}
+
+#rightRail .right-rail-carousel--dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ccc;
+  text-indent: -9999px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#rightRail .right-rail-carousel--dot.active {
+  background-color: #4c9e45; /* Green color from the tabs */
+}
+
+/* Learn More Container */
+#rightRail .learn-more {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#rightRail .learn-more-heading {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#rightRail .learn-more li {
+  margin-bottom: 10px;
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+#rightRail .learn-more a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+/* Add styling for the investment image in the carousel */
+#rightRail .right-rail-carousel img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 15px;
+}
+/* Legal Text Disclaimer Styling */
+.legalTextDisclaimer {
+    background-color: #fff;
+  }
+  
+/* Background color  */
+#wrapper,
+#mainContentArea,
+#rightRail {
+  background-color: #F5F3F0;
+}

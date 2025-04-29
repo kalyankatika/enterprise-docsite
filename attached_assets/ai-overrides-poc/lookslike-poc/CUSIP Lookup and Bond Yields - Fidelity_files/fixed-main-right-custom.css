@@ -1,0 +1,151 @@
+/* CS for Fixed Income Page */
+
+#ip-ma-gray-mini-container {
+    background: #FFF url(/bin-public/060_www_fidelity_com/images/managed-accounts/ma_gray-bg_L.jpg) bottom left no-repeat;
+    background-size: cover;
+    height: 13.1875em;
+}
+#ip-ma-mini-container, #ip-ma-service-mini-container, #ip-ma-how-mini-container, #ip-ma-team-mini-container, #ip-ma-price-mini-container, #ip-ma-mini-container2, #ip-ma-green-mini-container, #ip-ma-blue-mini-container, #ip-ma-gray-mini-container {
+    font-family: "Fidelity Sans",Helvetica,Sans-serif;
+    font-size: 1rem;
+    max-width: 71.25em;
+    margin: 0 auto;
+}
+#ip-ma-mini-content, #ip-ma-service-mini-content, #ip-ma-how-mini-content, #ip-ma-team-mini-content, #ip-ma-price-mini-content, #ip-ma-mini-content2, #ip-ma-green-mini-content, #ip-ma-blue-mini-content, #ip-ma-gray-mini-content {
+    margin-left: 5%;
+}
+#ip-ma-gray-mini-container table {
+    width: 80%;
+    margin-left: 7.5%;
+    text-align: center;
+    background: none;
+}
+
+#ip-ma-gray-mini-content tr {
+    border: none;
+}
+#ip-ma-gray-mini-content td {
+    height: 17.1875em;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0px;
+}
+#ip-ma-gray-mini-container h1 {
+    color: #FFF;
+}
+#ip-ma-gray-mini-container p {
+    color: #FFF;
+}
+#ip-ma-mini-container p, #ip-ma-service-mini-container p, #ip-ma-how-mini-container p, #ip-ma-team-mini-container p, #ip-ma-price-mini-container p, #ip-ma-green-mini-container p, #ip-ma-blue-mini-container p, #ip-ma-gray-mini-container p {
+    font-size: 1.125em;
+    line-height: 1.375;
+    font-weight: 400;
+    margin: 0;
+}
+#ip-ma-gray-button-box {
+    margin-top: 1.75em;
+    color: #FFF;
+    font-size: 1.125em;
+}
+.ip-ma-gray-button-text-left {
+    padding-right: 1.5em;
+    border-right: solid 1px #FFF;
+    margin-right: 1.5em;
+}
+.ip-ma-gray-strong {
+    font-weight: 600;
+}
+.ip-ma-gray-small-display {
+    display: none;
+}
+.ip-ma-gray-button-text-right {
+    font-weight: bold;
+    padding-top: 0.5em;
+    color: #FFF;
+}
+.ip-ma-gray-button-text-right a {
+    text-decoration: underline !important;
+    color: #FFF;
+}
+
+
+@charset "UTF-8";
+/* CSS Document */
+
+.horizontal-navigation-component.inpage {
+    font-family: "Fidelity Sans";
+    margin: 0 0 .5em;
+    padding: 0 5% !important;
+    text-align: center;
+}
+.horizontal-navigation-component--list.inpage {
+    margin: 0;
+    display: inline-block;
+}
+.horizontal-navigation-component--list.inpage > li {
+    padding-top: 1.125em; padding-bottom: 1.125em;
+    font-family: "Fidelity Sans", Helvetica,sans-serif;
+    font-weight: 700;
+    font-size: 1.125em;
+    float: none;
+    line-height: 1.25;
+    text-transform: none;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-right: 0;
+}
+.horizontal-navigation-component--list.inpage > li a {
+    font-weight: 400;
+}
+.horizontal-navigation-component--list.inpage > li + li {
+    padding-left: 2.1875em;
+    padding-top: 1.125em;
+    padding-bottom: 1.125em;
+}
+@media (max-width:49.625em) {
+	#responsive-main .horizontal-navigation-component.inpage,
+	#responsive-main-right .horizontal-navigation-component.inpage,
+	#responsive-toc-main .horizontal-navigation-component,
+	#responsive-toc-right .horizontal-navigation-component.inpage {
+		padding: 1.125em 5%;
+	}
+}
+
+#tbmanagedaccts .scl-flex-card--grpDesc {
+  padding-bottom: 0;
+}
+#tbmanagedaccts .scl-flexible-images-with-column--header h3, #tbmanagedaccts .scl-flexible-images-with-column--group-headline h3, #tbmanagedaccts .scl-flexible-layout-multi-column--header h3{
+	font-size: 1.25em;
+
+}
+#tbmanagedaccts .scl-flexible-layout-multi-column--description{
+	font-family: Helvetica,Arial,sans-serif;
+   	font-size: 1em;
+    	line-height: 1.375;
+}
+
+#tbmanagedaccts .scl-flexible-layout-multi-column--description p{
+	margin-bottom:3px;
+	padding-left:0;
+	padding-right:0;
+}
+#tbmanagedaccts .below-disclosure {
+  padding-top: 16px;
+}
+#tbmanagedaccts .scl-flex-card--header p {
+  padding-bottom: 0;
+}  
+#tbmanagedaccts .scl-flexible-single-column--pads{
+	padding-top: 1.875em;
+    padding-bottom: 1.875em;
+}
+#tbmanagedaccts .scl-flexible-images-with-column--description h3{
+	font-size: 1.25em;
+    line-height: 1.3125;
+    font-weight: 400;
+}
+#tbmanagedaccts .scl-flexible-images-with-column--description, #tbmanagedaccts .scl-flexible-images-with-column--group-description{
+	font-size:100%;	
+}
+
