@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI in UX - The Complete Transformation</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.16/framer-motion.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      const progressBar = document.getElementById('progressBar');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const currentSlideNumber = document.getElementById('currentSlideNumber');
+      const totalSlideNumber = document.getElementById('totalSlideNumber');
+      
+      let currentSlide = 1;
+      
+      // Create slide indicators
+      const slideIndicatorsContainer = document.createElement('div');
+      slideIndicatorsContainer.className = 'slide-indicators';
+      
+      for (let i = 1; i <= totalSlides; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = i === 1 ? 'indicator active' : 'indicator';
+        indicator.addEventListener('click', () => goToSlide(i));
+        slideIndicatorsContainer.appendChild(indicator);
+      }
+      
+      document.body.appendChild(slideIndicatorsContainer);
+      
+      // Update progress bar and slide numbers
+      function updateProgress() {
+        const progress = (currentSlide / totalSlides) * 100;
+        progressBar.style.width = `${progress}%`;
+        currentSlideNumber.textContent = currentSlide;
+        totalSlideNumber.textContent = totalSlides;
+      }
+      
+      // Update slide indicators
+      function updateIndicators() {
+        document.querySelectorAll('.indicator').forEach((indicator, index) => {
+          if (index + 1 === currentSlide) {
+            indicator.classList.add('active');
+          } else {
+            indicator.classList.remove('active');
+          }
+        });
+      }
+      
+      // Show a specific slide
+      function goToSlide(slideNumber) {
+        // Hide all slides
+        slides.forEach(slide => {
+          slide.classList.remove('active');
+        });
+        
+        // Show the requested slide
+        document.querySelector(`[data-slide="${slideNumber}"]`).classList.add('active');
+        
+        // Update current slide
+        currentSlide = slideNumber;
+        
+        // Update progress and indicators
+        updateProgress();
+        updateIndicators();
+      }
+      
+      // Navigate to next slide
+      function nextSlide() {
+        if (currentSlide < totalSlides) {
+          goToSlide(currentSlide + 1);
+        }
+      }
+      
+      // Navigate to previous slide
+      function prevSlide() {
+        if (currentSlide > 1) {
+          goToSlide(currentSlide - 1);
+        }
+      }
+      
+      // Event listeners for navigation buttons
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'Home') {
+          goToSlide(1);
+        } else if (e.key === 'End') {
+          goToSlide(totalSlides);
+        }
+      });
+      
+      // Initial setup
+      updateProgress();
+    });
+  </script>
+  <style>
+    /* Presentation core styles */
+    body {
+      overflow: hidden;
+      background-color: #f8fafc;
+      color: #1e293b;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .slide.active {
+      display: flex;
+    }
+    
+    .progress-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .slide-content {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    
+    /* Navigation controls */
+    .nav-button {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      background-color: rgba(59, 130, 246, 0.1);
+      border: 2px solid rgba(59, 130, 246, 0.3);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .nav-button:hover {
+      background-color: rgba(59, 130, 246, 0.2);
+      border-color: rgba(59, 130, 246, 0.5);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .prev-button {
+      left: 20px;
+    }
+    
+    .next-button {
+      right: 20px;
+    }
+    
+    /* Slide counter */
+    .slide-counter {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748b;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.8s forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .slide-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideUp 0.6s forwards;
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.9);
+      animation: scaleIn 0.5s forwards;
+    }
+    
+    @keyframes scaleIn {
+      from { 
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to { 
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Staggered animation delays */
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 200ms; }
+    .delay-300 { animation-delay: 300ms; }
+    .delay-400 { animation-delay: 400ms; }
+    .delay-500 { animation-delay: 500ms; }
+    .delay-600 { animation-delay: 600ms; }
+    
+    /* Slide indicators */
+    .slide-indicators {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+    }
+    
+    .indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: rgba(148, 163, 184, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .indicator.active {
+      background-color: #3b82f6;
+      transform: scale(1.2);
+    }
+    
+    /* Custom gradient backgrounds */
+    .bg-ux-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .bg-ux-secondary {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .bg-ux-accent {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    /* Card hover effects */
+    .hover-card {
+      transition: all 0.3s ease;
+    }
+    
+    .hover-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    /* Icon styling */
+    .ux-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    
+    /* Quote styling */
+    .ux-quote {
+      position: relative;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+    
+    .ux-quote::before {
+      content: '"';
+      font-size: 4rem;
+      color: #3b82f6;
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      opacity: 0.3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation buttons -->
+  <button class="nav-button prev-button" id="prevBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="nav-button next-button" id="nextBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+  
+  <!-- Progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
+  
+  <!-- Slide counter -->
+  <div class="slide-counter">
+    <span id="currentSlideNumber">1</span> / <span id="totalSlideNumber">15</span>
+  </div>
+  
+  <!-- Slide 1: Title -->
+  <div class="slide active bg-ux-primary" data-slide="1">
+    <div class="flex flex-col items-center justify-center h-full w-full px-8 text-center text-white">
+      <div class="scale-in">
+        <h1 class="text-6xl font-bold mb-6">AI in UX</h1>
+        <h2 class="text-3xl mb-12 opacity-90">The Complete Transformation</h2>
+        <div class="w-24 h-1 bg-white mb-8 mx-auto"></div>
+        <p class="text-xl max-w-3xl opacity-80">From design to development, research to content - how artificial intelligence is revolutionizing every aspect of user experience</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 2: The UX Revolution -->
+  <div class="slide bg-white" data-slide="2">
+    <div class="flex flex-col items-center justify-center h-full w-full px-8">
+      <div class="slide-content max-w-6xl">
+        <h2 class="text-5xl font-bold text-center mb-16 slide-up">The UX Revolution</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div class="hover-card bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-lg slide-up delay-100">
+            <div class="ux-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-blue-800 mb-4">Automation Era</h3>
+            <p class="text-blue-700">AI handles repetitive tasks, freeing UXers for strategic thinking</p>
+          </div>
+          
+          <div class="hover-card bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl shadow-lg slide-up delay-200">
+            <div class="ux-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-purple-800 mb-4">Intelligence Layer</h3>
+            <p class="text-purple-700">Smart insights driving personalized user experiences</p>
+          </div>
+          
+          <div class="hover-card bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl shadow-lg slide-up delay-300">
+            <div class="ux-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-green-800 mb-4">Human-Centered AI</h3>
+            <p class="text-green-700">Technology amplifying human creativity and empathy</p>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-indigo-500 to-purple-600 p-8 rounded-2xl text-white text-center slide-up delay-400">
+          <p class="ux-quote text-2xl">"AI doesn't replace the UX professional - it transforms them into a superhuman designer."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 3: The UX AI Ecosystem -->
+  <div class="slide bg-gradient-to-br from-gray-50 to-gray-100" data-slide="3">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-7xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16 slide-up">The UX AI Ecosystem</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12">
+          <div class="hover-card bg-white p-6 rounded-xl shadow-md slide-up delay-100">
+            <div class="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-center text-gray-800">UX Design</h3>
+            <p class="text-sm text-center text-gray-600 mt-2">Generative design, wireframing, prototyping</p>
+          </div>
+          
+          <div class="hover-card bg-white p-6 rounded-xl shadow-md slide-up delay-200">
+            <div class="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-center text-gray-800">UX Development</h3>
+            <p class="text-sm text-center text-gray-600 mt-2">Code generation, component building</p>
+          </div>
+          
+          <div class="hover-card bg-white p-6 rounded-xl shadow-md slide-up delay-300">
+            <div class="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M9 11H5a2 2 0 00-2 2v3a2 2 0 002 2h4l-7 7"></path>
+                <path d="M11 20a15.3 15.3 0 004.2-2.2c.67-.67 1.8-.67 2.5 0L20 20"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-center text-gray-800">UX Research</h3>
+            <p class="text-sm text-center text-gray-600 mt-2">User insights, data analysis, testing</p>
+          </div>
+          
+          <div class="hover-card bg-white p-6 rounded-xl shadow-md slide-up delay-400">
+            <div class="w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-center text-gray-800">UX Content</h3>
+            <p class="text-sm text-center text-gray-600 mt-2">Copy generation, voice & tone</p>
+          </div>
+          
+          <div class="hover-card bg-white p-6 rounded-xl shadow-md slide-up delay-500">
+            <div class="w-16 h-16 bg-red-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-center text-gray-800">UX Strategy</h3>
+            <p class="text-sm text-center text-gray-600 mt-2">Market analysis, roadmapping</p>
+          </div>
+          
+          <div class="hover-card bg-white p-6 rounded-xl shadow-md slide-up delay-600">
+            <div class="w-16 h-16 bg-indigo-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-center text-gray-800">UX Quality</h3>
+            <p class="text-sm text-center text-gray-600 mt-2">Accessibility, performance testing</p>
+          </div>
+        </div>
+        
+        <div class="bg-indigo-900 p-8 rounded-2xl text-white text-center slide-up delay-600">
+          <h3 class="text-2xl font-bold mb-4">Interconnected Intelligence</h3>
+          <p class="text-lg opacity-90">Each domain feeds insights into the others, creating a holistic AI-powered UX practice</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 4: AI in UX Design -->
+  <div class="slide bg-white" data-slide="4">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-6xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16 text-blue-900 slide-up">AI in UX Design</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="slide-up delay-100">
+            <h3 class="text-3xl font-bold text-blue-800 mb-6">Visual Generation</h3>
+            <div class="space-y-4">
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-blue-700">Automated Wireframing</h4>
+                <p class="text-sm text-gray-600">Generate wireframes from requirements and user stories</p>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-blue-700">Style Exploration</h4>
+                <p class="text-sm text-gray-600">Create multiple design variations instantly</p>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-blue-700">Asset Generation</h4>
+                <p class="text-sm text-gray-600">Icons, illustrations, and imagery on-demand</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="slide-up delay-200">
+            <h3 class="text-3xl font-bold text-blue-800 mb-6">Design Intelligence</h3>
+            <div class="space-y-4">
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-blue-700">Pattern Recognition</h4>
+                <p class="text-sm text-gray-600">Identify and suggest proven UI patterns</p>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-blue-700">Accessibility Optimization</h4>
+                <p class="text-sm text-gray-600">Real-time accessibility checks and improvements</p>
+              </div>
+              <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold text-blue-700">Responsive Adaptation</h4>
+                <p class="text-sm text-gray-600">Auto-generate responsive layouts</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-12 bg-gradient-to-r from-blue-500 to-purple-600 p-8 rounded-2xl text-white slide-up delay-300">
+          <h3 class="text-2xl font-bold mb-4">Tools Leading the Way</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="text-center">
+              <div class="font-bold">Figma AI</div>
+              <div class="text-sm opacity-80">Design generation</div>
+            </div>
+            <div class="text-center">
+              <div class="font-bold">Midjourney</div>
+              <div class="text-sm opacity-80">Visual concepts</div>
+            </div>
+            <div class="text-center">
+              <div class="font-bold">Uizard</div>
+              <div class="text-sm opacity-80">Sketch to design</div>
+            </div>
+            <div class="text-center">
+              <div class="font-bold">Framer AI</div>
+              <div class="text-sm opacity-80">Copy & layout</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Slide 5: The Design Process Revolution (Continued) -->
+<div class="slide bg-gradient-to-br from-blue-50 to-indigo-100" data-slide="5">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-6xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16 text-indigo-900 slide-up">The Design Process Revolution</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div class="bg-white p-8 rounded-2xl shadow-lg slide-up delay-100">
+            <h3 class="text-2xl font-bold text-red-600 mb-6">Traditional Process</h3>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                <span>Research → Ideate → Design → Prototype → Test</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                <span>Linear, sequential workflow</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                <span>Weeks to months per iteration</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                <span>Manual creation of assets</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-red-500 rounded-full mr-3"></div>
+                <span>Limited exploration of alternatives</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-8 rounded-2xl shadow-lg slide-up delay-200">
+            <h3 class="text-2xl font-bold text-green-600 mb-6">AI-Enhanced Process</h3>
+            <div class="space-y-4">
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                <span>Concurrent, iterative exploration</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                <span>Real-time feedback loops</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                <span>Hours to days per iteration</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                <span>Automated asset generation</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                <span>Infinite design variations</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-700 p-8 rounded-2xl text-white text-center slide-up delay-300">
+          <h3 class="text-3xl font-bold mb-4">10x Faster Design Cycles</h3>
+          <p class="text-xl opacity-90">What used to take weeks now happens in hours</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 6: AI in UX Development -->
+  <div class="slide bg-white" data-slide="6">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-6xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16 text-green-900 slide-up">AI in UX Development</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="hover-card bg-green-50 p-6 rounded-xl shadow-md slide-up delay-100">
+            <h3 class="text-2xl font-bold text-green-800 mb-4">Design-to-Code</h3>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Figma to React/Vue</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Component generation</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Style system integration</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hover-card bg-green-50 p-6 rounded-xl shadow-md slide-up delay-200">
+            <h3 class="text-2xl font-bold text-green-800 mb-4">Code Intelligence</h3>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Auto-complete features</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Bug detection & fixes</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Performance optimization</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hover-card bg-green-50 p-6 rounded-xl shadow-md slide-up delay-300">
+            <h3 class="text-2xl font-bold text-green-800 mb-4">Testing Automation</h3>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Visual regression tests</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Accessibility audits</span>
+              </div>
+              <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span class="text-sm">Cross-browser compatibility</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-green-600 to-teal-600 p-8 rounded-2xl text-white slide-up delay-400">
+          <h3 class="text-2xl font-bold mb-4 text-center">Popular AI Development Tools</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="text-center">
+              <div class="font-bold text-lg">GitHub Copilot</div>
+              <div class="text-sm opacity-80">Code completion & generation</div>
+            </div>
+            <div class="text-center">
+              <div class="font-bold text-lg">Replit AI</div>
+              <div class="text-sm opacity-80">Full-stack development</div>
+            </div>
+            <div class="text-center">
+              <div class="font-bold text-lg">Anima</div>
+              <div class="text-sm opacity-80">Design to code</div>
+            </div>
+            <div class="text-center">
+              <div class="font-bold text-lg">Tabnine</div>
+              <div class="text-sm opacity-80">AI code assistant</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: AI in UX Research -->
+  <div class="slide bg-gradient-to-br from-purple-50 to-indigo-100" data-slide="7">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-6xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16 text-purple-900 slide-up">AI in UX Research</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div class="bg-white p-8 rounded-2xl shadow-lg slide-up delay-100">
+            <h3 class="text-3xl font-bold text-purple-800 mb-6">Data Collection & Analysis</h3>
+            <div class="space-y-4">
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-700">Automated Surveys</h4>
+                <p class="text-sm text-gray-600">Dynamic questionnaires that adapt based on responses</p>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-700">Sentiment Analysis</h4>
+                <p class="text-sm text-gray-600">Real-time emotion detection from user feedback</p>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-700">Behavioral Pattern Recognition</h4>
+                <p class="text-sm text-gray-600">Identify user journey patterns automatically</p>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-700">Predictive Analytics</h4>
+                <p class="text-sm text-gray-600">Forecast user behavior and preferences</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white p-8 rounded-2xl shadow-lg slide-up delay-200">
+            <h3 class="text-3xl font-bold text-purple-800 mb-6">User Testing Revolution</h3>
+            <div class="space-y-4">
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-700">AI Moderators</h4>
+                <p class="text-sm text-gray-600">Autonomous user interview guidance</p>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-700">Real-time Insights</h4>
+                <p class="text-sm text-gray-600">Instant analysis during testing sessions</p>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-700">Synthetic Users</h4>
+                <p class="text-sm text-gray-600">AI personas for rapid validation</p>
+              </div>
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-bold text-purple-700">Accessibility Testing</h4>
+                <p class="text-sm text-gray-600">Automated compliance checking</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-purple-600 to-pink-600 p-8 rounded-2xl text-white text-center slide-up delay-300">
+          <h3 class="text-2xl font-bold mb-4">From Weeks to Hours</h3>
+          <p class="text-lg opacity-90">Traditional research cycles compressed into real-time insights</p>
+          <div class="grid grid-cols-3 gap-4 mt-6">
+            <div>
+              <div class="text-3xl font-bold">90%</div>
+              <div class="text-sm">Faster analysis</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold">10x</div>
+              <div class="text-sm">More participants</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold">24/7</div>
+              <div class="text-sm">Continuous testing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: Research Tools & Methods -->
+  <div class="slide bg-white" data-slide="8">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-6xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16 text-purple-900 slide-up">AI Research Tools & Methods</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="hover-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md slide-up delay-100">
+            <div class="w-16 h-16 bg-blue-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M9 11H5a2 2 0 00-2 2v3a2 2 0 002 2h4l-7 7"></path>
+                <path d="M11 20a15.3 15.3 0 004.2-2.2c.67-.67 1.8-.67 2.5 0L20 20"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-blue-800 mb-3">Voice of Customer</h3>
+            <ul class="text-sm space-y-2">
+              <li>• Social media sentiment analysis</li>
+              <li>• Support ticket categorization</li>
+              <li>• Review mining & insights</li>
+              <li>• Conversation analysis</li>
+            </ul>
+          </div>
+          
+          <div class="hover-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-md slide-up delay-200">
+            <div class="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-green-800 mb-3">Behavioral Analytics</h3>
+            <ul class="text-sm space-y-2">
+              <li>• Heatmap analysis</li>
+              <li>• User journey mapping</li>
+              <li>• A/B test optimization</li>
+              <li>• Conversion funnel analysis</li>
+            </ul>
+          </div>
+          
+          <div class="hover-card bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl shadow-md slide-up delay-300">
+            <div class="w-16 h-16 bg-purple-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-purple-800 mb-3">Survey Intelligence</h3>
+            <ul class="text-sm space-y-2">
+              <li>• Dynamic question branching</li>
+              <li>• Response quality scoring</li>
+              <li>• Bias detection & correction</li>
+              <li>• Cross-cultural adaptation</li>
+            </ul>
+          </div>
+          
+          <div class="hover-card bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl shadow-md slide-up delay-400">
+            <div class="w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-orange-800 mb-3">Real-time Testing</h3>
+            <ul class="text-sm space-y-2">
+              <li>• Live prototype testing</li>
+              <li>• Emotional response tracking</li>
+              <li>• Eye-tracking automation</li>
+              <li>• Cognitive load measurement</li>
+            </ul>
+          </div>
+          
+          <div class="hover-card bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-xl shadow-md slide-up delay-500">
+            <div class="w-16 h-16 bg-pink-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                <circle cx="8.5" cy="7" r="4"></circle>
+                <path d="M20 8v6M23 11h-6"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-pink-800 mb-3">User Personas</h3>
+            <ul class="text-sm space-y-2">
+              <li>• AI-generated personas</li>
+              <li>• Behavioral clustering</li>
+              <li>• Dynamic persona updates</li>
+              <li>• Persona validation testing</li>
+            </ul>
+          </div>
+          
+          <div class="hover-card bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 rounded-xl shadow-md slide-up delay-600">
+            <div class="w-16 h-16 bg-indigo-500 rounded-lg flex items-center justify-center mb-4 mx-auto">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-indigo-800 mb-3">Predictive Research</h3>
+            <ul class="text-sm space-y-2">
+              <li>• Future trend identification</li>
+              <li>• Market opportunity mapping</li>
+              <li>• Risk assessment modeling</li>
+              <li>• Competitive intelligence</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <!-- Slide 9: AI in UX Content (Fixed Layout) -->
+    <div class="slide bg-gradient-to-br from-orange-50 to-red-100" data-slide="9">
+        <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content max-w-7xl w-full">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-orange-900 slide-up">AI in UX Content</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white p-6 rounded-2xl shadow-lg slide-up delay-100">
+                <h3 class="text-2xl font-bold text-orange-800 mb-4">Content Generation</h3>
+                <div class="space-y-3">
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-orange-700 text-sm">Microcopy Creation</h4>
+                    <p class="text-xs text-gray-600">Button labels, error messages, tooltips</p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-orange-700 text-sm">Contextual Help</h4>
+                    <p class="text-xs text-gray-600">Dynamic assistance based on user behavior</p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-orange-700 text-sm">Onboarding Copy</h4>
+                    <p class="text-xs text-gray-600">Personalized welcome flows</p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-orange-700 text-sm">Error Handling</h4>
+                    <p class="text-xs text-gray-600">Empathetic, actionable error messages</p>
+                </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-lg slide-up delay-200">
+                <h3 class="text-2xl font-bold text-orange-800 mb-4">Voice & Tone Optimization</h3>
+                <div class="space-y-3">
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-orange-700 text-sm">Brand Voice Consistency</h4>
+                    <p class="text-xs text-gray-600">Maintain tone across all touchpoints</p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-orange-700 text-sm">Audience Adaptation</h4>
+                    <p class="text-xs text-gray-600">Adjust language for different user segments</p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-orange-700 text-sm">Cultural Localization</h4>
+                    <p class="text-xs text-gray-600">Culturally appropriate messaging</p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-orange-700 text-sm">Emotional Intelligence</h4>
+                    <p class="text-xs text-gray-600">Context-aware emotional responses</p>
+                </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-orange-600 to-red-600 p-6 rounded-2xl text-white slide-up delay-300">
+            <h3 class="text-xl font-bold mb-4 text-center">Content AI Success Metrics</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                <div class="text-3xl font-bold mb-1">85%</div>
+                <div class="text-base">Faster content creation</div>
+                <div class="text-sm opacity-80">vs. manual writing</div>
+                </div>
+                <div class="text-center">
+                <div class="text-3xl font-bold mb-1">40%</div>
+                <div class="text-base">Higher engagement</div>
+                <div class="text-sm opacity-80">with AI-optimized copy</div>
+                </div>
+                <div class="text-center">
+                <div class="text-3xl font-bold mb-1">95%</div>
+                <div class="text-base">Brand consistency</div>
+                <div class="text-sm opacity-80">across all channels</div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Slide 10: Content Strategy & Personalization -->
+    <div class="slide bg-white" data-slide="10">
+      <div class="flex flex-col h-full w-full px-8 py-16">
+        <div class="slide-content max-w-6xl mx-auto">
+          <h2 class="text-5xl font-bold text-center mb-16 text-orange-900 slide-up">Content Strategy & Personalization</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="hover-card bg-orange-50 p-6 rounded-xl shadow-md slide-up delay-100">
+              <h3 class="text-2xl font-bold text-orange-800 mb-4">Dynamic Content</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">1</div>
+                  <div>
+                    <div class="font-semibold">Real-time Adaptation</div>
+                    <div class="text-sm text-gray-600">Content adjusts based on user context</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">2</div>
+                  <div>
+                    <div class="font-semibold">A/B Test Integration</div>
+                    <div class="text-sm text-gray-600">Automatic content optimization</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">3</div>
+                  <div>
+                    <div class="font-semibold">Behavioral Triggers</div>
+                    <div class="text-sm text-gray-600">Content responds to user actions</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="hover-card bg-orange-50 p-6 rounded-xl shadow-md slide-up delay-200">
+              <h3 class="text-2xl font-bold text-orange-800 mb-4">Smart Recommendations</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">1</div>
+                  <div>
+                    <div class="font-semibold">Content Suggestions</div>
+                    <div class="text-sm text-gray-600">AI recommends next best content</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">2</div>
+                  <div>
+                    <div class="font-semibold">Journey Optimization</div>
+                    <div class="text-sm text-gray-600">Guides users through optimal paths</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">3</div>
+                  <div>
+                    <div class="font-semibold">Predictive Content</div>
+                    <div class="text-sm text-gray-600">Anticipates user needs</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="hover-card bg-orange-50 p-6 rounded-xl shadow-md slide-up delay-300">
+              <h3 class="text-2xl font-bold text-orange-800 mb-4">Accessibility Focus</h3>
+              <div class="space-y-3">
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">1</div>
+                  <div>
+                    <div class="font-semibold">Alt Text Generation</div>
+                    <div class="text-sm text-gray-600">Automatic image descriptions</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">2</div>
+                  <div>
+                    <div class="font-semibold">Plain Language</div>
+                    <div class="text-sm text-gray-600">Simplified, clear messaging</div>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-6 h-6 bg-orange-500 rounded-full mr-3 mt-1 flex items-center justify-center text-white text-xs font-bold">3</div>
+                  <div>
+                    <div class="font-semibold">Multi-modal Support</div>
+                    <div class="text-sm text-gray-600">Audio, visual, tactile content</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-r from-orange-500 to-pink-500 p-8 rounded-2xl text-white text-center slide-up delay-400">
+            <h3 class="text-2xl font-bold mb-4">Content AI Tools Ecosystem</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="text-center">
+                <div class="font-bold">GPT-4</div>
+                <div class="text-sm opacity-80">Content generation</div>
+              </div>
+              <div class="text-center">
+                <div class="font-bold">Grammarly</div>
+                <div class="text-sm opacity-80">Writing assistance</div>
+              </div>
+              <div class="text-center">
+                <div class="font-bold">Jasper</div>
+                <div class="text-sm opacity-80">Brand voice training</div>
+              </div>
+              <div class="text-center">
+                <div class="font-bold">Copy.ai</div>
+                <div class="text-sm opacity-80">Marketing copy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Slide 11: AI in UX Strategy -->
+    <div class="slide bg-gradient-to-br from-indigo-50 to-purple-100" data-slide="11">
+      <div class="flex flex-col h-full w-full px-8 py-16">
+        <div class="slide-content max-w-6xl mx-auto">
+          <h2 class="text-5xl font-bold text-center mb-16 text-indigo-900 slide-up">AI in UX Strategy</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+            <div class="bg-white p-8 rounded-2xl shadow-lg slide-up delay-100">
+              <h3 class="text-3xl font-bold text-indigo-800 mb-6">Strategic Intelligence</h3>
+              <div class="space-y-4">
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-bold text-indigo-700">Market Analysis</h4>
+                  <p class="text-sm text-gray-600">Competitive landscape insights and positioning</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-bold text-indigo-700">Trend Prediction</h4>
+                  <p class="text-sm text-gray-600">Anticipate design and technology shifts</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-bold text-indigo-700">Opportunity Mapping</h4>
+                  <p class="text-sm text-gray-600">Identify untapped user needs and markets</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-bold text-indigo-700">ROI Prediction</h4>
+                  <p class="text-sm text-gray-600">Forecast impact of UX investments</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-2xl shadow-lg slide-up delay-200">
+              <h3 class="text-3xl font-bold text-indigo-800 mb-6">Decision Support</h3>
+              <div class="space-y-4">
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-bold text-indigo-700">Feature Prioritization</h4>
+                  <p class="text-sm text-gray-600">AI-driven roadmap recommendations</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-bold text-indigo-700">Resource Allocation</h4>
+                  <p class="text-sm text-gray-600">Optimize team capacity and skills</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-bold text-indigo-700">Risk Assessment</h4>
+                  <p class="text-sm text-gray-600">Identify potential UX challenges early</p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-bold text-indigo-700">Performance Tracking</h4>
+                  <p class="text-sm text-gray-600">Real-time strategy effectiveness monitoring</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-8 rounded-2xl text-white slide-up delay-300">
+            <h3 class="text-2xl font-bold mb-6 text-center">Strategic AI Impact</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="text-center">
+                <div class="text-4xl font-bold mb-2">60%</div>
+                <div class="text-lg">Faster strategy development</div>
+                <div class="text-sm opacity-80">from months to weeks</div>
+              </div>
+              <div class="text-center">
+                <div class="text-4xl font-bold mb-2">3x</div>
+                <div class="text-lg">More informed decisions</div>
+                <div class="text-sm opacity-80">data-driven insights</div>
+              </div>
+              <div class="text-center">
+                <div class="text-4xl font-bold mb-2">45%</div>
+                <div class="text-lg">Better ROI prediction</div>
+                <div class="text-sm opacity-80">accuracy improvement</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Slide 12: AI in UX Quality & Accessibility -->
+    <div class="slide bg-white" data-slide="12">
+      <div class="flex flex-col h-full w-full px-8 py-16">
+        <div class="slide-content max-w-6xl mx-auto">
+          <h2 class="text-5xl font-bold text-center mb-16 text-gray-900 slide-up">AI in UX Quality & Accessibility</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div class="hover-card bg-green-50 p-6 rounded-xl shadow-md slide-up delay-100">
+              <h3 class="text-2xl font-bold text-green-800 mb-4">Automated Testing</h3>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Cross-browser compatibility</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Performance optimization</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Visual regression detection</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Usability heuristics checking</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="hover-card bg-blue-50 p-6 rounded-xl shadow-md slide-up delay-200">
+              <h3 class="text-2xl font-bold text-blue-800 mb-4">Accessibility Intelligence</h3>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">WCAG compliance scanning</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Color contrast optimization</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Screen reader compatibility</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Keyboard navigation testing</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="hover-card bg-purple-50 p-6 rounded-xl shadow-md slide-up delay-300">
+              <h3 class="text-2xl font-bold text-purple-800 mb-4">Quality Assurance</h3>
+              <div class="space-y-3">
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Design consistency checking</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Content quality monitoring</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Brand guideline adherence</span>
+                </div>
+                <div class="flex items-center">
+                  <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span class="text-sm">Real-time error detection</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-r from-gray-700 to-gray-900 p-8 rounded-2xl text-white slide-up delay-400">
+            <h3 class="text-2xl font-bold mb-6 text-center">Quality AI Tools</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div class="text-center">
+                <div class="font-bold text-lg">Axe DevTools</div>
+                <div class="text-sm opacity-80">Accessibility testing</div>
+              </div>
+              <div class="text-center">
+                <div class="font-bold text-lg">Percy</div>
+                <div class="text-sm opacity-80">Visual testing</div>
+              </div>
+              <div class="text-center">
+                <div class="font-bold text-lg">Lighthouse</div>
+                <div class="text-sm opacity-80">Performance audits</div>
+              </div>
+              <div class="text-center">
+                <div class="font-bold text-lg">Applitools</div>
+                <div class="text-sm opacity-80">Visual AI testing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 13: The Future UX Team (Fixed Layout) -->
+    <div class="slide bg-gradient-to-br from-emerald-50 to-teal-100" data-slide="13">
+        <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content max-w-7xl w-full">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-emerald-900 slide-up">The Future UX Team</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white p-6 rounded-2xl shadow-lg slide-up delay-100">
+                <h3 class="text-2xl font-bold text-emerald-800 mb-4">AI-Human Collaboration Model</h3>
+                <div class="space-y-3">
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-emerald-700 text-sm">AI as Creative Partner</h4>
+                    <p class="text-xs text-gray-600">Not replacement, but amplification of human creativity</p>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-emerald-700 text-sm">Humans as AI Strategists</h4>
+                    <p class="text-xs text-gray-600">Directing AI capabilities toward meaningful outcomes</p>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-emerald-700 text-sm">Continuous Learning Loop</h4>
+                    <p class="text-xs text-gray-600">AI learns from human decisions, humans learn from AI insights</p>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-emerald-700 text-sm">Shared Intelligence</h4>
+                    <p class="text-xs text-gray-600">Combined human intuition and AI analytical power</p>
+                </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-2xl shadow-lg slide-up delay-200">
+                <h3 class="text-2xl font-bold text-emerald-800 mb-4">New UX Roles Emerging</h3>
+                <div class="space-y-3">
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-emerald-700 text-sm">AI UX Orchestrator</h4>
+                    <p class="text-xs text-gray-600">Coordinates AI tools across the UX workflow</p>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-emerald-700 text-sm">Ethical AI Designer</h4>
+                    <p class="text-xs text-gray-600">Ensures responsible AI implementation in UX</p>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-emerald-700 text-sm">Human-AI Interaction Specialist</h4>
+                    <p class="text-xs text-gray-600">Optimizes collaboration between humans and AI systems</p>
+                </div>
+                <div class="bg-emerald-50 p-3 rounded-lg">
+                    <h4 class="font-bold text-emerald-700 text-sm">AI Training Curator</h4>
+                    <p class="text-xs text-gray-600">Manages and refines AI model training data</p>
+                </div>
+                </div>
+            </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-emerald-600 to-teal-600 p-6 rounded-2xl text-white text-center slide-up delay-300">
+            <h3 class="text-xl font-bold mb-3">The Human-Centric Future</h3>
+            <p class="text-base opacity-90 mb-4">"AI amplifies human empathy and creativity in UX design"</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                <div class="text-xl font-bold">More Time</div>
+                <div class="text-sm">for strategic thinking</div>
+                </div>
+                <div>
+                <div class="text-xl font-bold">Better Insights</div>
+                <div class="text-sm">from data-driven decisions</div>
+                </div>
+                <div>
+                <div class="text-xl font-bold">Faster Delivery</div>
+                <div class="text-sm">without sacrificing quality</div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Slide 14: Implementation Roadmap (Fixed Layout) -->
+    <div class="slide bg-white" data-slide="14">
+        <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content max-w-6xl w-full">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10 text-gray-900 slide-up">Your AI-UX Implementation Roadmap</h2>
+            
+            <div class="relative max-w-5xl mx-auto">
+            <div class="absolute left-6 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 to-purple-600 rounded-full hidden md:block"></div>
+            
+            <div class="space-y-8 md:ml-16">
+                <div class="slide-up delay-100">
+                <div class="flex items-center mb-3">
+                    <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3 md:-ml-20">1</div>
+                    <h3 class="text-xl font-bold text-blue-800">Assess & Audit (Weeks 1-2)</h3>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <ul class="space-y-1 text-sm">
+                    <li>• Evaluate current UX processes and tools</li>
+                    <li>• Identify repetitive tasks suitable for AI automation</li>
+                    <li>• Assess team's AI readiness and skill gaps</li>
+                    <li>• Define success metrics and KPIs</li>
+                    </ul>
+                </div>
+                </div>
+                
+                <div class="slide-up delay-200">
+                <div class="flex items-center mb-3">
+                    <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3 md:-ml-20">2</div>
+                    <h3 class="text-xl font-bold text-purple-800">Pilot Project (Weeks 3-6)</h3>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <ul class="space-y-1 text-sm">
+                    <li>• Select one UX domain for initial AI integration</li>
+                    <li>• Train team on chosen AI tools and workflows</li>
+                    <li>• Run small-scale experiment with clear objectives</li>
+                    <li>• Document learnings and iterate quickly</li>
+                    </ul>
+                </div>
+                </div>
+                
+                <div class="slide-up delay-300">
+                <div class="flex items-center mb-3">
+                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3 md:-ml-20">3</div>
+                    <h3 class="text-xl font-bold text-green-800">Scale & Expand (Weeks 7-12)</h3>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <ul class="space-y-1 text-sm">
+                    <li>• Expand successful AI implementations to other domains</li>
+                    <li>• Develop internal AI-UX best practices and guidelines</li>
+                    <li>• Create cross-functional AI-human workflows</li>
+                    <li>• Establish continuous learning and improvement cycles</li>
+                    </ul>
+                </div>
+                </div>
+                
+                <div class="slide-up delay-400">
+                <div class="flex items-center mb-3">
+                    <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3 md:-ml-20">4</div>
+                    <h3 class="text-xl font-bold text-orange-800">Optimize & Evolve (Ongoing)</h3>
+                </div>
+                <div class="bg-orange-50 p-4 rounded-lg">
+                    <ul class="space-y-1 text-sm">
+                    <li>• Continuously monitor and optimize AI performance</li>
+                    <li>• Stay updated with emerging AI-UX tools and techniques</li>
+                    <li>• Foster a culture of experimentation and innovation</li>
+                    <li>• Share learnings and best practices across the organization</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<!-- Slide 15: Success Stories & Impact (Continued) -->
+  <div class="slide bg-gradient-to-br from-purple-50 to-indigo-100" data-slide="15">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-6xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16 text-purple-900 slide-up">Real-World Impact</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="hover-card bg-white p-6 rounded-xl shadow-lg slide-up delay-100">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M3 3h18v18H3zM9 9h6v6H9z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-blue-800">Airbnb</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="text-3xl font-bold text-blue-600">70%</div>
+              <div class="text-sm text-gray-600">Faster design iteration with AI-generated mockups</div>
+              <div class="text-xs text-gray-500">Automated A/B testing of interface variants</div>
+            </div>
+          </div>
+          
+          <div class="hover-card bg-white p-6 rounded-xl shadow-lg slide-up delay-200">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-green-800">Netflix</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="text-3xl font-bold text-green-600">40%</div>
+              <div class="text-sm text-gray-600">Improvement in content personalization</div>
+              <div class="text-xs text-gray-500">AI-driven interface adaptation per user</div>
+            </div>
+          </div>
+          
+          <div class="hover-card bg-white p-6 rounded-xl shadow-lg slide-up delay-300">
+            <div class="text-center mb-4">
+              <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                  <circle cx="8.5" cy="7" r="4"></circle>
+                  <path d="M20 8v6M23 11h-6"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-purple-800">Spotify</h3>
+            </div>
+            <div class="space-y-3">
+              <div class="text-3xl font-bold text-purple-600">85%</div>
+              <div class="text-sm text-gray-600">Automated accessibility compliance</div>
+              <div class="text-xs text-gray-500">Real-time accessibility scanning and fixes</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-8 rounded-2xl text-white text-center slide-up delay-400">
+          <h3 class="text-2xl font-bold mb-4">Industry Transformation Metrics</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+              <div class="text-3xl font-bold">60%</div>
+              <div class="text-sm opacity-80">Faster time-to-market</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold">45%</div>
+              <div class="text-sm opacity-80">Reduced development costs</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold">3x</div>
+              <div class="text-sm opacity-80">More design iterations</div>
+            </div>
+            <div>
+              <div class="text-3xl font-bold">90%</div>
+              <div class="text-sm opacity-80">User satisfaction improvement</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 16: Key Takeaways -->
+  <div class="slide bg-white" data-slide="16">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-6xl mx-auto">
+        <h2 class="text-5xl font-bold text-center mb-16 text-gray-900 slide-up">Key Takeaways</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div class="slide-up delay-100">
+            <h3 class="text-3xl font-bold text-blue-800 mb-8">What We've Learned</h3>
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4 mt-1">1</div>
+                <div>
+                  <h4 class="font-bold text-lg">AI Amplifies, Not Replaces</h4>
+                  <p class="text-gray-600">Human creativity and empathy remain at the core of great UX</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4 mt-1">2</div>
+                <div>
+                  <h4 class="font-bold text-lg">Speed Without Sacrifice</h4>
+                  <p class="text-gray-600">Faster delivery doesn't mean compromising on quality</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4 mt-1">3</div>
+                <div>
+                  <h4 class="font-bold text-lg">Holistic Integration</h4>
+                  <p class="text-gray-600">AI works best when integrated across all UX domains</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4 mt-1">4</div>
+                <div>
+                  <h4 class="font-bold text-lg">Continuous Evolution</h4>
+                  <p class="text-gray-600">AI capabilities grow exponentially - stay adaptable</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="slide-up delay-200">
+            <h3 class="text-3xl font-bold text-green-800 mb-8">Action Items</h3>
+            <div class="space-y-6">
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-bold text-green-700 mb-2">Start Small, Think Big</h4>
+                <p class="text-sm text-gray-600">Begin with one AI tool in one domain, then expand systematically</p>
+              </div>
+              
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-bold text-green-700 mb-2">Invest in Training</h4>
+                <p class="text-sm text-gray-600">Upskill your team on AI tools and human-AI collaboration</p>
+              </div>
+              
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-bold text-green-700 mb-2">Measure Everything</h4>
+                <p class="text-sm text-gray-600">Track speed, quality, satisfaction, and ROI metrics</p>
+              </div>
+              
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-bold text-green-700 mb-2">Stay User-Centered</h4>
+                <p class="text-sm text-gray-600">Never lose sight of human needs in pursuit of efficiency</p>
+              </div>
+              
+              <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-bold text-green-700 mb-2">Build AI Ethics</h4>
+                <p class="text-sm text-gray-600">Establish guidelines for responsible AI use in UX</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 17: The UX Revolution Continues -->
+  <div class="slide bg-gradient-to-br from-indigo-100 to-purple-200" data-slide="17">
+    <div class="flex flex-col items-center justify-center h-full w-full px-8 text-center">
+      <div class="slide-content max-w-4xl">
+        <h1 class="text-6xl font-bold text-indigo-900 mb-8 slide-up">The UX Revolution Continues</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-white p-6 rounded-xl shadow-lg slide-up delay-100">
+            <div class="text-4xl font-bold text-blue-600 mb-4">Today</div>
+            <p class="text-gray-700">AI-assisted UX workflows</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg slide-up delay-200">
+            <div class="text-4xl font-bold text-purple-600 mb-4">Tomorrow</div>
+            <p class="text-gray-700">AI-native design systems</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg slide-up delay-300">
+            <div class="text-4xl font-bold text-indigo-600 mb-4">Future</div>
+            <p class="text-gray-700">Human-AI creative symbiosis</p>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 p-8 rounded-2xl text-white slide-up delay-400">
+          <p class="text-2xl font-bold mb-4">"The future of UX is not about choosing between human creativity and AI efficiency."</p>
+          <p class="text-xl opacity-90">"It's about creating a seamless partnership that amplifies both."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 18: Thank You -->
+  <div class="slide bg-white" data-slide="18">
+    <div class="flex flex-col items-center justify-center h-full w-full px-8 text-center">
+      <div class="slide-content max-w-4xl">
+        <h1 class="text-6xl font-bold text-gray-900 mb-8 slide-up">Thank You</h1>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mb-12 mx-auto slide-up delay-100"></div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="slide-up delay-200">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Questions?</h3>
+            <p class="text-gray-600">Let's discuss your AI-UX journey</p>
+          </div>
+          
+          <div class="slide-up delay-300">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Connect</h3>
+            <p class="text-gray-600">Share your experiences and learnings</p>
+          </div>
+          
+          <div class="slide-up delay-400">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Collaborate</h3>
+            <p class="text-gray-600">Build the future of UX together</p>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-2xl slide-up delay-500">
+          <p class="text-lg text-gray-700 italic">"The best UX happens when human empathy meets artificial intelligence."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
