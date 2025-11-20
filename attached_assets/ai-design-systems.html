@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI for Design Systems - Interactive Presentation</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.16/framer-motion.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
+      const progressBar = document.getElementById('progressBar');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      let currentSlide = 1;
+      
+      // Create slide indicators
+      const slideIndicatorsContainer = document.createElement('div');
+      slideIndicatorsContainer.className = 'slide-indicators';
+      
+      for (let i = 1; i <= totalSlides; i++) {
+        const indicator = document.createElement('div');
+        indicator.className = i === 1 ? 'indicator active' : 'indicator';
+        indicator.addEventListener('click', () => goToSlide(i));
+        slideIndicatorsContainer.appendChild(indicator);
+      }
+      
+      document.body.appendChild(slideIndicatorsContainer);
+      
+      // Update progress bar
+      function updateProgressBar() {
+        const progress = (currentSlide / totalSlides) * 100;
+        progressBar.style.width = `${progress}%`;
+      }
+      
+      // Update slide indicators
+      function updateIndicators() {
+        document.querySelectorAll('.indicator').forEach((indicator, index) => {
+          if (index + 1 === currentSlide) {
+            indicator.classList.add('active');
+          } else {
+            indicator.classList.remove('active');
+          }
+        });
+      }
+      
+      // Show a specific slide
+      function goToSlide(slideNumber) {
+        // Hide all slides
+        slides.forEach(slide => {
+          slide.classList.remove('active');
+        });
+        
+        // Show the requested slide
+        document.querySelector(`[data-slide="${slideNumber}"]`).classList.add('active');
+        
+        // Update current slide
+        currentSlide = slideNumber;
+        
+        // Update progress bar
+        updateProgressBar();
+        
+        // Update indicators
+        updateIndicators();
+      }
+      
+      // Navigate to next slide
+      function nextSlide() {
+        if (currentSlide < totalSlides) {
+          goToSlide(currentSlide + 1);
+        }
+      }
+      
+      // Navigate to previous slide
+      function prevSlide() {
+        if (currentSlide > 1) {
+          goToSlide(currentSlide - 1);
+        }
+      }
+      
+      // Event listeners for navigation buttons
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+          prevSlide();
+        }
+      });
+      
+      // Initial setup
+      updateProgressBar();
+    });
+  </script>
+  <style>
+    /* Presentation styles */
+    body {
+      overflow: hidden;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    .slide.active {
+      display: flex;
+    }
+    
+    .progress-bar {
+      height: 5px;
+      background-color: #368727;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+    
+    .slide-content {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+    
+    .slide-image {
+      max-height: 60vh;
+      object-fit: contain;
+    }
+    
+    /* Navigation controls */
+    .nav-button {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      background-color: rgba(54, 135, 39, 0.2);
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .nav-button:hover {
+      background-color: rgba(54, 135, 39, 0.4);
+    }
+    
+    .prev-button {
+      left: 20px;
+    }
+    
+    .next-button {
+      right: 20px;
+    }
+    
+    /* Table styles */
+    .slide-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    
+    .slide-table th,
+    .slide-table td {
+      border: 1px solid #d1d5db;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    
+    .slide-table th {
+      background-color: #f3f4f6;
+      font-weight: bold;
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .slide-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUp 0.5s forwards;
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Staggered animation delays */
+    .delay-100 { animation-delay: 100ms; }
+    .delay-200 { animation-delay: 200ms; }
+    .delay-300 { animation-delay: 300ms; }
+    .delay-400 { animation-delay: 400ms; }
+    .delay-500 { animation-delay: 500ms; }
+    
+    /* Slide indicators */
+    .slide-indicators {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 100;
+    }
+    
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #d1d5db;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .indicator.active {
+      background-color: #368727;
+    }
+    
+    /* Key navigation hint */
+    .nav-hint {
+      position: fixed;
+      bottom: 10px;
+      right: 20px;
+      font-size: 0.75rem;
+      color: #6b7280;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-50">
+  <!-- Navigation buttons -->
+  <button class="nav-button prev-button" id="prevBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="nav-button next-button" id="nextBtn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+  
+  <!-- Progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
+  
+  <!-- Navigation hint -->
+  <div class="nav-hint">Use arrow keys or click navigation buttons</div>
+  
+  <!-- Slide 1: Title -->
+  <div class="slide active bg-gradient-to-br from-green-50 to-emerald-100" data-slide="1">
+    <div class="flex flex-col items-center justify-center h-full w-full px-8 text-center">
+      <h1 class="text-5xl font-bold text-green-900 mb-4 slide-up">AI for Design Systems</h1>
+      <h2 class="text-3xl text-green-800 mb-12 slide-up delay-200">The Evolution of Enterprise Teams</h2>
+      <div class="w-20 h-1 bg-green-600 mb-8 slide-up delay-300"></div>
+      <p class="text-xl text-gray-700 max-w-2xl slide-up delay-400">A new paradigm for building, maintaining, and evolving design systems in the age of AI</p>
+    </div>
+  </div>
+  
+  <!-- Slide 2: The Great Shift -->
+  <div class="slide bg-white" data-slide="2">
+    <div class="flex flex-col items-center justify-center h-full w-full px-8">
+      <div class="slide-content">
+        <h2 class="text-4xl font-bold text-green-900 mb-10 text-center slide-up">The Great Shift</h2>
+        
+        <div class="grid grid-cols-3 gap-8 mb-12">
+          <div class="bg-gray-50 p-6 rounded-xl shadow-md slide-up delay-100">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Then</h3>
+            <p class="text-gray-600">Human-centered design systems</p>
+          </div>
+          
+          <div class="bg-green-50 p-6 rounded-xl shadow-md slide-up delay-200">
+            <h3 class="text-2xl font-semibold text-green-800 mb-3">Now</h3>
+            <p class="text-green-600">AI-augmented design teams</p>
+          </div>
+          
+          <div class="bg-emerald-50 p-6 rounded-xl shadow-md slide-up delay-300">
+            <h3 class="text-2xl font-semibold text-emerald-800 mb-3">Next</h3>
+            <p class="text-emerald-600">Human-AI collaborative crews</p>
+          </div>
+        </div>
+        
+        <div class="bg-green-100 p-6 rounded-xl slide-up delay-400">
+          <blockquote class="text-lg text-green-800 italic">
+            "AI isn't replacing designers. It's transforming how design teams operate, collaborate, and deliver value."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 3: The AI Pirate Crew -->
+  <div class="slide bg-gradient-to-br from-green-50 to-emerald-100" data-slide="3">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content">
+        <h2 class="text-4xl font-bold text-green-900 mb-6 text-center slide-up">The AI Pirate Crew</h2>
+        
+        <div class="flex flex-col md:flex-row gap-8 mb-8">
+          <!-- <div class="flex-1 slide-up delay-100">
+            <img src="/api/placeholder/800/600" alt="AI Pirate Crew Structure" class="rounded-xl shadow-lg slide-image mx-auto mb-4">
+          </div> -->
+          
+          <div class="flex-1 slide-up delay-200">
+            <ul class="space-y-3 text-lg mb-6">
+              <li class="flex items-center">
+                <span class="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+                <span>Small (3-5 members)</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+                <span>Cross-functional</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+                <span>Autonomous</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+                <span>AI-fluent</span>
+              </li>
+              <li class="flex items-center">
+                <span class="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+                <span>End-to-end ownership</span>
+              </li>
+            </ul>
+            
+            <h3 class="text-2xl font-semibold text-green-800 mb-3">Roles</h3>
+            <ul class="space-y-4">
+              <li>
+                <div class="font-semibold text-green-700">AI Wrangler</div>
+                <div class="text-gray-600 text-sm">Masters AI tools, prompt engineering, ensures quality outputs</div>
+              </li>
+              <li>
+                <div class="font-semibold text-green-700">AI Strategist</div>
+                <div class="text-gray-600 text-sm">Sets vision, prioritizes work, aligns with business needs</div>
+              </li>
+              <li>
+                <div class="font-semibold text-green-700">AI Shipper</div>
+                <div class="text-gray-600 text-sm">Integrates outputs, ensures technical quality, deploys</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 4: Stingray Innovation -->
+  <div class="slide bg-white" data-slide="4">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content">
+        <h2 class="text-4xl font-bold text-cyan-900 mb-6 text-center slide-up">Stingray Innovation</h2>
+        <p class="text-lg text-center text-cyan-800 mb-8 slide-up delay-100">Sleek, responsive, precise - like the sea creature</p>
+        
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="flex-1 slide-up delay-200">
+            <img src="https://www.boardofinnovation.com/wp-content/uploads/2024/01/Stingray-AI-powered-Design-and-Innovation-Model.png" alt="Stingray Innovation Model" class="rounded-xl shadow-lg slide-image mx-auto">
+          </div>
+          
+          <!-- <div class="flex-1 slide-up delay-300">
+            <h3 class="text-2xl font-semibold text-cyan-800 mb-5">Principles</h3>
+            
+            <div class="space-y-4">
+              <div class="bg-cyan-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-cyan-700">Speed</h4>
+                <p class="text-sm text-gray-600">Swift, decisive movements</p>
+              </div>
+              
+              <div class="bg-cyan-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-cyan-700">Precision</h4>
+                <p class="text-sm text-gray-600">Targeted solutions, not sprawling systems</p>
+              </div>
+              
+              <div class="bg-cyan-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-cyan-700">Adaptation</h4>
+                <p class="text-sm text-gray-600">Sensing and responding to changing needs</p>
+              </div>
+              
+              <div class="bg-cyan-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-cyan-700">Efficiency</h4>
+                <p class="text-sm text-gray-600">Minimal waste, maximum impact</p>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 5: The Lion Method -->
+  <div class="slide bg-gradient-to-br from-amber-50 to-yellow-100" data-slide="5">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content">
+        <h2 class="text-4xl font-bold text-amber-900 mb-6 text-center slide-up">The Lion Method</h2>
+        
+        <div class="bg-white rounded-xl p-6 shadow-md mb-8 slide-up delay-100">
+          <h3 class="text-2xl font-semibold text-amber-800 text-center mb-4">Pounce → Eat → Rest</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="border border-amber-200 rounded-lg p-4">
+              <h4 class="font-bold text-amber-700 mb-2">Pounce</h4>
+              <p class="text-sm text-gray-600">Intense focus on specific design challenges (hours not weeks)</p>
+            </div>
+            
+            <div class="border border-amber-200 rounded-lg p-4">
+              <h4 class="font-bold text-amber-700 mb-2">Eat</h4>
+              <p class="text-sm text-gray-600">Ship the work decisively</p>
+            </div>
+            
+            <div class="border border-amber-200 rounded-lg p-4">
+              <h4 class="font-bold text-amber-700 mb-2">Rest</h4>
+              <p class="text-sm text-gray-600">Reflect, learn, prepare for next challenge</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-amber-100 p-6 rounded-xl slide-up delay-200">
+          <blockquote class="text-lg text-amber-800 italic text-center">
+            "Design teams shouldn't constantly sprint. They should pounce, deliver, and recover."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 6: From Sprints to Missions -->
+  <div class="slide bg-white" data-slide="6">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content">
+        <h2 class="text-4xl font-bold text-green-900 mb-8 text-center slide-up">From Sprints to Missions</h2>
+        
+        <table class="slide-table slide-up delay-100">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="bg-gray-100">Traditional Sprints</th>
+              <th class="bg-green-100">AI Design Missions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-semibold">Duration</td>
+              <td>2 weeks</td>
+              <td class="text-green-700">1-3 days</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Focus</td>
+              <td>Multiple components</td>
+              <td class="text-green-700">Single problem</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Team Size</td>
+              <td>5-10 people</td>
+              <td class="text-green-700">3-5 people</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Process</td>
+              <td>Linear</td>
+              <td class="text-green-700">Fluid</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Feedback</td>
+              <td>At completion</td>
+              <td class="text-green-700">Continuous</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 7: Just-in-Time UI Delivery -->
+  <div class="slide bg-gradient-to-br from-green-50 to-emerald-100" data-slide="7">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content">
+        <h2 class="text-4xl font-bold text-green-900 mb-6 text-center slide-up">Just-in-Time UI Delivery</h2>
+        
+        <div class="bg-white rounded-xl p-6 shadow-md mb-8 slide-up delay-100">
+          <ol class="space-y-4">
+            <li class="flex items-center">
+              <span class="w-6 h-6 bg-green-500 rounded-full mr-3 flex items-center justify-center text-white font-semibold">1</span>
+              <span>Request emerges</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-6 h-6 bg-green-500 rounded-full mr-3 flex items-center justify-center text-white font-semibold">2</span>
+              <span>AI generates alternatives</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-6 h-6 bg-green-500 rounded-full mr-3 flex items-center justify-center text-white font-semibold">3</span>
+              <span>Designer curates and refines</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-6 h-6 bg-green-500 rounded-full mr-3 flex items-center justify-center text-white font-semibold">4</span>
+              <span>Developer integrates and ships</span>
+            </li>
+            <li class="flex items-center">
+              <span class="w-6 h-6 bg-green-500 rounded-full mr-3 flex items-center justify-center text-white font-semibold">5</span>
+              <span>User feedback informs AI models</span>
+            </li>
+          </ol>
+        </div>
+        
+        <div class="bg-green-700 text-white p-6 rounded-xl text-center text-2xl font-bold slide-up delay-200">
+          48 hours from request to production
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Slide 8: Just-in-Time UI Delivery 2 -->
+    <div class="slide bg-white" data-slide="8">
+        <div class="flex flex-col h-full w-full px-8 py-16">
+          <div class="slide-content">
+            <h2 class="text-4xl font-bold text-green-900 mb-6 text-center slide-up">Just-in-Time UI Delivery</h2>     
+            <div class="flex flex-col md:flex-row gap-8">
+              <div class="flex-1 slide-up delay-200">
+                <img src="just-in-ui.png" alt="Design System Evolution" class="rounded-xl shadow-lg slide-image mx-auto">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  <!-- Slide 9: AI-Generated Design Assets -->
+  <div class="slide bg-white" data-slide="9">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content">
+        <h2 class="text-4xl font-bold text-green-900 mb-8 text-center slide-up">AI-Generated Design Assets</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-green-50 p-6 rounded-xl shadow-md slide-up delay-100">
+            <h3 class="text-2xl font-semibold text-green-800 mb-4">Components</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Instantly generate variants within brand guidelines
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Auto-adapt for different contexts and platforms
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Self-document and self-test
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-green-50 p-6 rounded-xl shadow-md slide-up delay-200">
+            <h3 class="text-2xl font-semibold text-green-800 mb-4">Design Tokens</h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                AI-optimized color systems
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Contextual spacing algorithms
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Accessibility first typography
+              </li>
+            </ul>
+          </div>
+        </div>          
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 10: The Evolving Design System -->
+  <div class="slide bg-gradient-to-br from-green-50 to-emerald-100" data-slide="10">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-7xl mx-auto w-full">
+        <h2 class="text-4xl font-bold text-green-900 mb-12 text-center slide-up">The Evolving Design System</h2>
+        
+        <div class="flex flex-col md:flex-row gap-12 items-center justify-center">
+          <!-- <div class="flex-1 slide-up delay-100 max-w-xl">
+            <img src="/api/placeholder/800/600" alt="Design System Evolution" class="rounded-xl shadow-lg w-full h-auto object-cover">
+          </div> -->
+          
+          <div class="flex-1 slide-up delay-200 max-w-xl">
+            <div class="space-y-8">
+              <div class="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg">
+                <h3 class="text-2xl font-semibold text-green-800 mb-3">Phase 1: AI-Assisted</h3>
+                <p class="text-gray-700 font-medium">Human designs, AI accelerates</p>
+                <p class="text-gray-600 mt-3">Designers create mockups; developers write code; AI automates repetitive tasks</p>
+              </div>
+              
+              <div class="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg">
+                <h3 class="text-2xl font-semibold text-green-800 mb-3">Phase 2: AI-Augmented</h3>
+                <p class="text-gray-700 font-medium">AI generates, humans curate</p>
+                <p class="text-gray-600 mt-3">AI produces design variants and code; designers and developers refine and integrate</p>
+              </div>
+              
+              <div class="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg">
+                <h3 class="text-2xl font-semibold text-green-800 mb-3">Phase 3: AI-Native</h3>
+                <p class="text-gray-700 font-medium">AI evolves system based on usage patterns</p>
+                <p class="text-gray-600 mt-3">Full design-to-code automation with continuous learning and adaptation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 11: The Evolving Design System 2 -->
+  <div class="slide bg-white" data-slide="11">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content">
+        <h2 class="text-4xl font-bold text-green-900 mb-6 text-center slide-up">The Evolving Design System</h2>     
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="flex-1 slide-up delay-200">
+            <img src="ds-evolution.png" alt="Design System Evolution" class="rounded-xl shadow-lg slide-image mx-auto">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 12: Starting the Journey -->
+  <div class="slide bg-white" data-slide="12">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-7xl mx-auto w-full">
+        <h2 class="text-4xl font-bold text-green-900 mb-12 text-center slide-up">Starting the Journey</h2>
+        
+        <div class="max-w-3xl mx-auto slide-up delay-100">
+          <ol class="space-y-6">
+            <li class="bg-green-50 p-2 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg flex">
+              <span class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold mr-4 flex-shrink-0">1</span>
+              <div>
+                <h3 class="font-semibold text-green-800 text-lg">Identify AI champions across roles</h3>
+                <p class="text-gray-700">Look for designers and developers already experimenting with AI tools</p>
+                <p class="text-gray-600 mt-2"><span class="text-green-700 font-medium">Tech tip:</span> Start with tools like GitHub Copilot, Figma AI, or Replit</p>
+              </div>
+            </li>
+            
+            <li class="bg-green-50 p-2 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg flex">
+              <span class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold mr-4 flex-shrink-0">2</span>
+              <div>
+                <h3 class="font-semibold text-green-800 text-lg">Master prompt engineering for design & code</h3>
+                <p class="text-gray-700">Develop skills to communicate effectively with AI for both visual assets and implementation</p>
+                <p class="text-gray-600 mt-2"><span class="text-green-700 font-medium">Dev focus:</span> Code generation, refactoring, documentation automation</p>
+              </div>
+            </li>
+            
+            <li class="bg-green-50 p-2 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg flex">
+              <span class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold mr-4 flex-shrink-0">3</span>
+              <div>
+                <h3 class="font-semibold text-green-800 text-lg">Form your first pirate crew</h3>
+                <p class="text-gray-700">Blend designers, developers, and researchers in a tight cross-functional team</p>
+                <p class="text-gray-600 mt-2"><span class="text-green-700 font-medium">Collaboration:</span> Shared AI tools, prompts, and workflows</p>
+              </div>
+            </li>
+            
+            <li class="bg-green-50 p-2 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg flex">
+              <span class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold mr-4 flex-shrink-0">4</span>
+              <div>
+                <h3 class="font-semibold text-green-800 text-lg">Run a 3-day end-to-end mission</h3>
+                <p class="text-gray-700">From component design to implementation in production</p>
+                <p class="text-gray-600 mt-2"><span class="text-green-700 font-medium">Technical goal:</span> Reduce design-to-code handoff friction</p>
+              </div>
+            </li>
+            
+            <li class="bg-green-50 p-2 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg flex">
+              <span class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold mr-4 flex-shrink-0">5</span>
+              <div>
+                <h3 class="font-semibold text-green-800 text-lg">Measure impact across disciplines</h3>
+                <p class="text-gray-700">Track velocity, quality, consistency, and team satisfaction</p>
+                <p class="text-gray-600 mt-2"><span class="text-green-700 font-medium">Engineering metrics:</span> Code quality, build times, integration efficiency</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 13: Industry Forecast -->
+  <div class="slide bg-gradient-to-br from-green-50 to-emerald-100" data-slide="13">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-7xl mx-auto w-full">
+        <h2 class="text-4xl font-bold text-green-900 mb-12 text-center slide-up">Industry Forecast</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div class="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg slide-up delay-100">
+            <h3 class="text-2xl font-semibold text-green-800 mb-6">For Designers</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-gray-700">Shift from pixel-perfectionism to design systems architecture</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-gray-700">Component libraries grow 10x with no additional maintenance cost</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-gray-700">AI-generated design variations based on usage contexts</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg slide-up delay-200">
+            <h3 class="text-2xl font-semibold text-green-800 mb-6">For Developers</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-gray-700">Design-to-code gap narrows with AI-generated components</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-gray-700">Self-optimizing code with automated accessibility and performance</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="text-gray-700">More focus on architecture and logic, less on implementation details</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-md transform transition-all duration-300 hover:shadow-lg col-span-1 md:col-span-2 slide-up delay-300">
+            <h3 class="text-2xl font-semibold text-green-800 mb-6">The Future is Collaborative</h3>
+            <div class="flex flex-col md:flex-row gap-8 justify-center">
+              <div class="flex-1">
+                <ul class="space-y-4">
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="text-gray-700">AI becomes a team member, not just a tool</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="text-gray-700">Cross-functional teams share AI knowledge and resources</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="flex-1">
+                <ul class="space-y-4">
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="text-gray-700">Continuous learning and adaptation become the norm</span>
+                  </li>
+                  <li class="flex items-start">
+                    <svg class="w-5 h-5 mr-3 text-green-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                    <span class="text-gray-700">Human creativity amplified by AI capabilities</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Slide 14: Thank You -->
+  <div class="slide bg-white" data-slide="14">
+    <div class="flex flex-col h-full w-full px-8 py-16">
+      <div class="slide-content max-w-7xl mx-auto w-full flex flex-col items-center justify-center h-full w-full text-center">
+        <h2 class="text-5xl font-bold text-green-900 mb-8 slide-up">Thank You</h2>
+        <div class="w-20 h-1 bg-green-600 mb-8 slide-up delay-300"></div>
+        <!-- <div class="w-20 h-1 bg-green-600 mb-12 slide-up delay-100"></div>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto slide-up delay-200">Ready to transform your design system with AI?</p>
+        <div class="mt-12 space-x-4 slide-up delay-300">
+          <a href="#" class="inline-block px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300">Get Started</a>
+          <a href="#" class="inline-block px-8 py-3 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition-colors duration-300">Learn More</a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

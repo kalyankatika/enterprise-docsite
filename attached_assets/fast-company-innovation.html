@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fast Company Innovation Festival: AI Adoption Takeaways</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById("progressBar");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        let currentSlide = 1;
+
+        // Create slide indicators
+        const slideIndicatorsContainer = document.createElement("div");
+        slideIndicatorsContainer.className = "slide-indicators";
+
+        for (let i = 1; i <= totalSlides; i++) {
+          const indicator = document.createElement("div");
+          indicator.className = i === 1 ? "indicator active" : "indicator";
+          indicator.addEventListener("click", () => goToSlide(i));
+          slideIndicatorsContainer.appendChild(indicator);
+        }
+
+        document.body.appendChild(slideIndicatorsContainer);
+
+        // Update progress bar
+        function updateProgressBar() {
+          const progress = (currentSlide / totalSlides) * 100;
+          progressBar.style.width = `${progress}%`;
+        }
+
+        // Update slide indicators
+        function updateIndicators() {
+          document
+            .querySelectorAll(".indicator")
+            .forEach((indicator, index) => {
+              if (index + 1 === currentSlide) {
+                indicator.classList.add("active");
+              } else {
+                indicator.classList.remove("active");
+              }
+            });
+        }
+
+        // Show a specific slide
+        function goToSlide(slideNumber) {
+          slides.forEach((slide) => {
+            slide.classList.remove("active");
+          });
+
+          document
+            .querySelector(`[data-slide="${slideNumber}"]`)
+            .classList.add("active");
+          currentSlide = slideNumber;
+          updateProgressBar();
+          updateIndicators();
+        }
+
+        // Navigate to next slide
+        function nextSlide() {
+          if (currentSlide < totalSlides) {
+            goToSlide(currentSlide + 1);
+          }
+        }
+
+        // Navigate to previous slide
+        function prevSlide() {
+          if (currentSlide > 1) {
+            goToSlide(currentSlide - 1);
+          }
+        }
+
+        prevBtn.addEventListener("click", prevSlide);
+        nextBtn.addEventListener("click", nextSlide);
+
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight" || e.key === " ") {
+            e.preventDefault();
+            nextSlide();
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            prevSlide();
+          }
+        });
+
+        updateProgressBar();
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+      });
+    </script>
+    <style>
+      /* Fast Company Brand Colors - Accessibility Enhanced */
+      :root {
+        --fc-blue: #2563eb;
+        --fc-blue-light: #60a5fa;
+        --fc-orange: #ea580c;
+        --fc-orange-light: #fb923c;
+        --fc-yellow: #ca8a04;
+        --fc-yellow-light: #eab308;
+        --fc-pink: #db2777;
+        --fc-pink-light: #ec4899;
+        --fc-dark: #0f172a;
+        --fc-gray: #475569;
+      }
+
+      body {
+        overflow: hidden;
+        background-color: #ffffff;
+        color: var(--fc-dark);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+          sans-serif;
+      }
+
+      .slide {
+        display: none;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .slide.active {
+        display: flex;
+      }
+
+      .progress-bar {
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--fc-blue) 0%,
+          var(--fc-orange) 50%,
+          var(--fc-yellow) 100%
+        );
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s ease;
+        z-index: 100;
+      }
+
+      .slide-content {
+        max-width: 85%;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* Navigation controls */
+      .nav-button {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+        background-color: rgba(255, 87, 51, 0.15);
+        border: 2px solid var(--fc-orange);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: var(--fc-orange);
+      }
+
+      .nav-button:hover {
+        background-color: var(--fc-orange);
+        color: white;
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .prev-button {
+        left: 30px;
+      }
+
+      .next-button {
+        right: 30px;
+      }
+
+      /* Animation classes */
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .slide-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideUp 0.6s forwards;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Staggered animation delays */
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      .delay-400 {
+        animation-delay: 400ms;
+      }
+      .delay-500 {
+        animation-delay: 500ms;
+      }
+
+      /* Slide indicators */
+      .slide-indicators {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+      }
+
+      .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .indicator.active {
+        background-color: var(--fc-orange);
+        transform: scale(1.3);
+      }
+
+      /* Key navigation hint */
+      .nav-hint {
+        position: fixed;
+        bottom: 15px;
+        right: 30px;
+        font-size: 0.75rem;
+        color: var(--fc-gray);
+        z-index: 100;
+      }
+
+      /* Custom geometric accents */
+      .geometric-accent {
+        position: absolute;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .blue-square {
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(
+          135deg,
+          var(--fc-blue) 0%,
+          rgba(91, 155, 213, 0.5) 100%
+        );
+        top: 10%;
+        left: 5%;
+        transform: rotate(15deg);
+      }
+
+      .orange-triangle {
+        width: 0;
+        height: 0;
+        border-left: 150px solid transparent;
+        border-right: 150px solid transparent;
+        border-bottom: 260px solid var(--fc-orange);
+        top: 5%;
+        right: 8%;
+        transform: rotate(25deg);
+      }
+
+      .yellow-circle {
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(
+          circle,
+          var(--fc-yellow) 0%,
+          rgba(255, 195, 0, 0.5) 100%
+        );
+        border-radius: 50%;
+        bottom: 15%;
+        right: 10%;
+      }
+
+      .pink-rect {
+        width: 150px;
+        height: 220px;
+        background: linear-gradient(
+          45deg,
+          var(--fc-pink) 0%,
+          rgba(255, 133, 179, 0.5) 100%
+        );
+        bottom: 10%;
+        left: 8%;
+        transform: rotate(-12deg);
+      }
+
+      /* Brand-specific styles */
+      .fc-gradient-text {
+        background: linear-gradient(
+          90deg,
+          var(--fc-orange) 0%,
+          var(--fc-yellow) 100%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        /* Fallback for accessibility */
+        color: var(--fc-orange);
+      }
+
+      .quote-accent {
+        border-left: 5px solid var(--fc-orange);
+        background: linear-gradient(
+          90deg,
+          rgba(234, 88, 12, 0.08) 0%,
+          transparent 100%
+        );
+      }
+
+      .stat-box {
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.08) 0%,
+          rgba(234, 88, 12, 0.08) 100%
+        );
+        border: 2px solid var(--fc-blue);
+        transition: all 0.3s ease;
+      }
+
+      .stat-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(234, 88, 12, 0.2);
+        border-color: var(--fc-orange);
+      }
+
+      .company-highlight {
+        background: linear-gradient(
+          135deg,
+          rgba(202, 138, 4, 0.1) 0%,
+          rgba(219, 39, 119, 0.1) 100%
+        );
+        border-left: 4px solid var(--fc-yellow);
+      }
+
+      /* Ensure text contrast on light backgrounds */
+      .text-emphasis {
+        color: var(--fc-dark);
+        font-weight: 600;
+      }
+
+      /* Improved link/interactive element contrast */
+      a,
+      button {
+        outline-offset: 2px;
+      }
+
+      a:focus,
+      button:focus {
+        outline: 3px solid var(--fc-blue);
+      }
+
+      /* Override Tailwind gray with accessible colors */
+      .text-gray-600 {
+        color: var(--fc-gray) !important;
+      }
+
+      .text-gray-700 {
+        color: var(--fc-dark) !important;
+      }
+
+      /* Ensure sufficient contrast for small text */
+      .text-sm {
+        color: var(--fc-dark);
+      }
+
+      .text-sm.text-gray-600 {
+        color: var(--fc-gray) !important;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation buttons -->
+    <button class="nav-button prev-button" id="prevBtn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="nav-button next-button" id="nextBtn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation hint -->
+    <div class="nav-hint">Use ← → keys to navigate</div>
+
+    <!-- Slide 1: Title -->
+    <div class="slide active bg-white" data-slide="1">
+      <div class="geometric-accent blue-square"></div>
+      <div class="geometric-accent orange-triangle"></div>
+      <div class="geometric-accent yellow-circle"></div>
+      <div class="geometric-accent pink-rect"></div>
+      <div
+        class="flex flex-col items-center justify-center h-full w-full px-8 text-center relative z-10"
+      >
+        <div class="slide-content">
+          <div class="mb-6 slide-up">
+            <p
+              class="text-2xl font-bold tracking-wider"
+              style="color: var(--fc-dark)"
+            >
+              FAST COMPANY
+            </p>
+          </div>
+          <h1
+            class="text-7xl font-black mb-6 slide-up delay-100"
+            style="color: var(--fc-dark); letter-spacing: -2px"
+          >
+            INNOVATION<br />FESTIVAL
+          </h1>
+          <div
+            class="w-24 h-2 mb-8 slide-up delay-200"
+            style="
+              background: linear-gradient(
+                90deg,
+                var(--fc-orange) 0%,
+                var(--fc-yellow) 100%
+              );
+            "
+          ></div>
+          <h2
+            class="text-3xl font-bold mb-4 slide-up delay-300"
+            style="color: var(--fc-blue)"
+          >
+            AI Adoption Takeaways
+          </h2>
+          <p class="text-xl slide-up delay-400" style="color: var(--fc-gray)">
+            for UX Practitioners
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2: The Behavioral Bottleneck -->
+    <div class="slide bg-white" data-slide="2">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black text-center mb-10 slide-up"
+            style="color: var(--fc-dark)"
+          >
+            The Real Challenge
+          </h2>
+
+          <div class="quote-accent p-10 rounded-2xl mb-10 slide-up delay-100">
+            <blockquote
+              class="text-3xl font-semibold italic mb-6"
+              style="color: var(--fc-orange)"
+            >
+              "The biggest bottleneck of leveraging AI capabilities is
+              behavioral change."
+            </blockquote>
+            <p class="text-xl text-gray-700">
+              Organizations are in an
+              <span class="fc-gradient-text text-2xl"
+                >"awkward superhero stage"</span
+              >
+              — trying to figure out how to wield their new powers.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6">
+            <div class="stat-box p-6 rounded-xl slide-up delay-200">
+              <p
+                class="text-lg font-semibold mb-2"
+                style="color: var(--fc-blue)"
+              >
+                Not Tech
+              </p>
+              <p class="text-gray-600">How we work</p>
+            </div>
+            <div class="stat-box p-6 rounded-xl slide-up delay-300">
+              <p
+                class="text-lg font-semibold mb-2"
+                style="color: var(--fc-orange)"
+              >
+                Not Tools
+              </p>
+              <p class="text-gray-600">How we think</p>
+            </div>
+            <div class="stat-box p-6 rounded-xl slide-up delay-400">
+              <p
+                class="text-lg font-semibold mb-2"
+                style="color: var(--fc-yellow)"
+              >
+                Not Speed
+              </p>
+              <p class="text-gray-600">How we adapt</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3: Building AI Literacy & Culture -->
+    <div
+      class="slide"
+      data-slide="3"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(91, 155, 213, 0.05) 0%,
+          rgba(255, 195, 0, 0.05) 100%
+        );
+      "
+    >
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            Building AI Literacy & Culture
+          </h2>
+
+          <div class="grid grid-cols-2 gap-8 mb-8">
+            <div
+              class="company-highlight p-8 rounded-2xl bg-white shadow-lg slide-up delay-100"
+            >
+              <h3
+                class="text-2xl font-bold mb-4"
+                style="color: var(--fc-orange)"
+              >
+                Duolingo's "Fri-AI Days"
+              </h3>
+              <ul class="space-y-3 text-lg">
+                <li class="flex items-start">
+                  <span class="mr-3 font-bold" style="color: var(--fc-blue)"
+                    >→</span
+                  >
+                  <span>Every Friday: 2 hours for AI experimentation</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 font-bold" style="color: var(--fc-blue)"
+                    >→</span
+                  >
+                  <span>Teams gather and share learnings</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 font-bold" style="color: var(--fc-blue)"
+                    >→</span
+                  >
+                  <span>100% of team "vibe codes" internal tools</span>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="company-highlight p-8 rounded-2xl bg-white shadow-lg slide-up delay-200"
+              style="border-left-color: var(--fc-pink)"
+            >
+              <h3
+                class="text-2xl font-bold mb-4"
+                style="color: var(--fc-orange)"
+              >
+                Friday AI Sessions
+              </h3>
+              <ul class="space-y-3 text-lg">
+                <li class="flex items-start">
+                  <span class="mr-3 font-bold" style="color: var(--fc-blue)"
+                    >→</span
+                  >
+                  <span>Noon-1pm: Stop work completely</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 font-bold" style="color: var(--fc-blue)"
+                    >→</span
+                  >
+                  <span>Reflect on week's AI usage</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 font-bold" style="color: var(--fc-blue)"
+                    >→</span
+                  >
+                  <span>Explore new tools & celebrate wins</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg slide-up delay-300">
+            <h3
+              class="text-2xl font-bold mb-4 text-center"
+              style="color: var(--fc-blue)"
+            >
+              Building AI Literacy
+            </h3>
+            <div class="grid grid-cols-2 gap-6">
+              <div>
+                <ul class="space-y-2 text-base">
+                  <li class="flex items-start">
+                    <span class="mr-3" style="color: var(--fc-orange)">→</span>
+                    <span>Basic training programs</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-3" style="color: var(--fc-orange)">→</span>
+                    <span>AI communities for pilot use cases</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-3" style="color: var(--fc-orange)">→</span>
+                    <span>ChatGPT as accessible entry point</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <ul class="space-y-2 text-base">
+                  <li class="flex items-start">
+                    <span class="mr-3" style="color: var(--fc-orange)">→</span>
+                    <span>Safe "sandbox" environments</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-3" style="color: var(--fc-orange)">→</span>
+                    <span>External voices for literacy</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-3" style="color: var(--fc-orange)">→</span>
+                    <span><strong>Strict governance required</strong></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4: Top-Down + Bottom-Up -->
+    <div class="slide bg-white" data-slide="4">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            Dual Approach Required
+          </h2>
+
+          <div
+            class="bg-purple-50 p-8 rounded-2xl shadow-lg mb-8 slide-up delay-100"
+          >
+            <p class="text-2xl text-center mb-4">
+              Success needs
+              <span class="font-bold" style="color: var(--fc-blue)"
+                >clear mission from leadership</span
+              >
+              AND
+              <span class="font-bold" style="color: var(--fc-orange)"
+                >support for citizen developers</span
+              >
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-200">
+              <i
+                data-lucide="lightbulb"
+                class="mb-3"
+                style="color: var(--fc-yellow); width: 40px; height: 40px"
+              ></i>
+              <h4
+                class="text-xl font-bold mb-2"
+                style="color: var(--fc-yellow)"
+              >
+                Hackathon Days
+              </h4>
+              <p class="text-sm text-gray-600">
+                Surface ideas management wouldn't normally see
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-300">
+              <i
+                data-lucide="users-round"
+                class="mb-3"
+                style="color: var(--fc-blue); width: 40px; height: 40px"
+              ></i>
+              <h4 class="text-xl font-bold mb-2" style="color: var(--fc-blue)">
+                Executive Examples
+              </h4>
+              <p class="text-sm text-gray-600">
+                Leadership shows how they're using AI
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-400">
+              <i
+                data-lucide="shield-check"
+                class="mb-3"
+                style="color: var(--fc-pink); width: 40px; height: 40px"
+              ></i>
+              <h4 class="text-xl font-bold mb-2" style="color: var(--fc-pink)">
+                AI Task Forces
+              </h4>
+              <p class="text-sm text-gray-600">
+                Chipotle: executive team pushes adoption, removes barriers
+              </p>
+            </div>
+          </div>
+
+          <div class="quote-accent p-6 rounded-2xl bg-white slide-up delay-500">
+            <p
+              class="text-xl font-semibold text-center"
+              style="color: var(--fc-orange)"
+            >
+              "If you want to be world-class talent, you have to embrace AI."
+            </p>
+            <p class="text-base text-center text-gray-600 mt-2">
+              This must be an ongoing process, not a one-time initiative
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5: The Agent Paradigm Shift -->
+    <div class="slide bg-white" data-slide="5">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            The Agent Shift
+          </h2>
+
+          <div class="quote-accent p-8 rounded-2xl mb-8 slide-up delay-100">
+            <p class="text-2xl mb-6">
+              Moving from
+              <span class="font-bold" style="color: var(--fc-blue)"
+                >"Grandparent AI"</span
+              >
+              (Q&A) to agents that:
+            </p>
+            <ul class="space-y-4 text-xl">
+              <li class="flex items-start">
+                <span class="mr-4 text-3xl" style="color: var(--fc-orange)"
+                  >•</span
+                >
+                <span>Complete end-to-end tasks</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-4 text-3xl" style="color: var(--fc-yellow)"
+                  >•</span
+                >
+                <span>Take initiative autonomously</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-4 text-3xl" style="color: var(--fc-pink)"
+                  >•</span
+                >
+                <span>Work 24/7 as "junior team members"</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6">
+            <div
+              class="text-center p-8 rounded-xl slide-up delay-200"
+              style="background: rgba(91, 155, 213, 0.1)"
+            >
+              <div
+                class="text-5xl font-black mb-3"
+                style="color: var(--fc-blue)"
+              >
+                ~60%
+              </div>
+              <p class="text-lg font-semibold">Generalist Agents</p>
+              <p class="text-sm text-gray-600 mt-2">Current accuracy</p>
+            </div>
+            <div
+              class="text-center p-8 rounded-xl slide-up delay-300"
+              style="background: rgba(255, 87, 51, 0.1)"
+            >
+              <div
+                class="text-5xl font-black mb-3"
+                style="color: var(--fc-orange)"
+              >
+                ~90%
+              </div>
+              <p class="text-lg font-semibold">Specialist Agents</p>
+              <p class="text-sm text-gray-600 mt-2">Domain-specific</p>
+            </div>
+            <div
+              class="text-center p-8 rounded-xl slide-up delay-400"
+              style="background: rgba(255, 195, 0, 0.1)"
+            >
+              <div
+                class="text-4xl font-black mb-3"
+                style="color: var(--fc-yellow)"
+              >
+                AI 101 =<br />Mgmt 101
+              </div>
+              <p class="text-sm text-gray-600 mt-2">
+                Managing agents = managing people
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6 text-center slide-up delay-500">
+            <p
+              class="text-xl font-semibold italic mb-4"
+              style="color: var(--fc-orange)"
+            >
+              "Everyone in the company can now be a manager"
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-4">
+              <div class="bg-white p-4 rounded-lg">
+                <p
+                  class="text-sm font-semibold mb-1"
+                  style="color: var(--fc-blue)"
+                >
+                  What's Next
+                </p>
+                <p class="text-xs text-gray-600">
+                  Computer use for legacy systems • No-prompt agents • Thinking
+                  models evolved
+                </p>
+              </div>
+              <div class="bg-white p-4 rounded-lg">
+                <p
+                  class="text-sm font-semibold mb-1"
+                  style="color: var(--fc-pink)"
+                >
+                  Reality Check
+                </p>
+                <p class="text-xs text-gray-600">
+                  "Expecting an expert, getting an intern" • Future remains
+                  unclear
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6: Human Skills & Impact -->
+    <div
+      class="slide"
+      data-slide="6"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(255, 133, 179, 0.05) 0%,
+          rgba(91, 155, 213, 0.05) 100%
+        );
+      "
+    >
+      <div
+        class="flex flex-col items-center justify-center h-full w-full px-8 py-12"
+      >
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            What Remains Human
+          </h2>
+
+          <div class="grid grid-cols-2 gap-6 mb-6">
+            <div
+              class="bg-white p-6 rounded-2xl shadow-xl text-center slide-up delay-100"
+            >
+              <i
+                data-lucide="sparkles"
+                class="mb-3 mx-auto"
+                style="color: var(--fc-orange); width: 48px; height: 48px"
+              ></i>
+              <h3
+                class="text-2xl font-bold mb-2"
+                style="color: var(--fc-orange)"
+              >
+                Creativity
+              </h3>
+              <p class="text-gray-600 text-sm">Originality & imagination</p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-2xl shadow-xl text-center slide-up delay-200"
+            >
+              <i
+                data-lucide="scale"
+                class="mb-3 mx-auto"
+                style="color: var(--fc-blue); width: 48px; height: 48px"
+              ></i>
+              <h3 class="text-2xl font-bold mb-2" style="color: var(--fc-blue)">
+                Judgment
+              </h3>
+              <p class="text-gray-600 text-sm">Strategic decisions</p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-2xl shadow-xl text-center slide-up delay-300"
+            >
+              <i
+                data-lucide="heart"
+                class="mb-3 mx-auto"
+                style="color: var(--fc-pink); width: 48px; height: 48px"
+              ></i>
+              <h3 class="text-2xl font-bold mb-2" style="color: var(--fc-pink)">
+                Empathy
+              </h3>
+              <p class="text-gray-600 text-sm">Understanding users deeply</p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-2xl shadow-xl text-center slide-up delay-400"
+            >
+              <i
+                data-lucide="target"
+                class="mb-3 mx-auto"
+                style="color: var(--fc-yellow); width: 48px; height: 48px"
+              ></i>
+              <h3
+                class="text-2xl font-bold mb-2"
+                style="color: var(--fc-yellow)"
+              >
+                Vision
+              </h3>
+              <p class="text-gray-600 text-sm">Setting direction</p>
+            </div>
+          </div>
+
+          <div
+            class="quote-accent p-6 rounded-2xl bg-white mb-6 slide-up delay-500"
+          >
+            <p
+              class="text-xl font-semibold text-center"
+              style="color: var(--fc-orange)"
+            >
+              "AI is increasing the value of human judgment"
+            </p>
+            <p class="text-base text-center text-gray-600 mt-3">
+              Not replacing decisions—making them more impactful
+            </p>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-blue-50 to-pink-50 p-6 rounded-2xl slide-up delay-600"
+          >
+            <h3
+              class="text-xl font-bold mb-3 text-center"
+              style="color: var(--fc-dark)"
+            >
+              From Headcount to Impact
+            </h3>
+            <p class="text-base text-center text-gray-700">
+              First time we're
+              <strong style="color: var(--fc-orange)"
+                >divorcing headcount from impact</strong
+              >. Small teams now have tremendous leverage—you don't need
+              hundreds of people to get something significant off the ground.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 7: Real-World Impact -->
+    <div class="slide bg-white" data-slide="7">
+      <div
+        class="flex flex-col items-center justify-center h-full w-full px-8 py-12"
+      >
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            Real-World Impact
+          </h2>
+
+          <div
+            class="company-highlight p-6 rounded-2xl bg-white shadow-2xl mb-4 slide-up delay-100"
+          >
+            <div class="flex items-center gap-3 mb-3">
+              <i
+                data-lucide="book-open"
+                style="color: var(--fc-orange); width: 32px; height: 32px"
+              ></i>
+              <h3 class="text-xl font-bold" style="color: var(--fc-orange)">
+                Duolingo
+              </h3>
+            </div>
+            <div class="text-center mb-4">
+              <p class="text-lg mb-2">
+                With the <span class="font-bold">same number of employees</span>
+              </p>
+              <div class="text-5xl font-black mb-2 fc-gradient-text">5x</div>
+              <p class="text-lg">the amount of content created</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="p-4 rounded-xl"
+                style="background: rgba(91, 155, 213, 0.1)"
+              >
+                <p
+                  class="font-semibold mb-1 text-sm"
+                  style="color: var(--fc-blue)"
+                >
+                  Chess Product
+                </p>
+                <p class="text-xs text-gray-600">
+                  Designer + PM → "vibe coding" → engineers → launched in ~6
+                  months
+                </p>
+              </div>
+              <div
+                class="p-4 rounded-xl"
+                style="background: rgba(255, 87, 51, 0.1)"
+              >
+                <p
+                  class="font-semibold mb-1 text-sm"
+                  style="color: var(--fc-orange)"
+                >
+                  Content Automation
+                </p>
+                <p class="text-xs text-gray-600">
+                  Progressively automated over time with AI tools
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="company-highlight p-6 rounded-2xl bg-white shadow-2xl mb-4 slide-up delay-200"
+            style="border-left-color: var(--fc-pink)"
+          >
+            <div class="flex items-center gap-3 mb-3">
+              <i
+                data-lucide="palette"
+                style="color: var(--fc-pink); width: 32px; height: 32px"
+              ></i>
+              <h3 class="text-xl font-bold" style="color: var(--fc-pink)">
+                Fathom + Hutch (NYC Ad Agency)
+              </h3>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="p-4 rounded-xl"
+                style="background: rgba(255, 195, 0, 0.1)"
+              >
+                <p
+                  class="font-semibold mb-1 text-sm"
+                  style="color: var(--fc-yellow)"
+                >
+                  Gemini-Powered
+                </p>
+                <p class="text-xs text-gray-600">
+                  Rapid prototyping of ad themes and concepts
+                </p>
+              </div>
+              <div
+                class="p-4 rounded-xl"
+                style="background: rgba(255, 133, 179, 0.1)"
+              >
+                <p
+                  class="font-semibold mb-1 text-sm"
+                  style="color: var(--fc-pink)"
+                >
+                  Nimble Delivery
+                </p>
+                <p class="text-xs text-gray-600">
+                  Iterate on creative concepts in real-time with clients
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-4 p-4 rounded-xl text-center slide-up delay-300"
+            style="
+              background: linear-gradient(
+                90deg,
+                var(--fc-blue) 0%,
+                var(--fc-pink) 100%
+              );
+              color: white;
+            "
+          >
+            <p class="text-base font-bold">
+              "The goal is not to just save money but to amplify human potential,
+              to do more and add more value."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 8: Context is King -->
+    <div
+      class="slide"
+      data-slide="8"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(255, 87, 51, 0.05) 0%,
+          rgba(255, 195, 0, 0.05) 100%
+        );
+      "
+    >
+      <div
+        class="flex flex-col items-center justify-center h-full w-full px-8 py-8"
+      >
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            Context is King
+          </h2>
+
+          <div
+            class="quote-accent p-6 rounded-2xl bg-white shadow-lg mb-6 slide-up delay-100"
+          >
+            <p
+              class="text-xl mb-3 font-semibold"
+              style="color: var(--fc-orange)"
+            >
+              Why hasn't AI realized ROI?
+            </p>
+            <p class="text-2xl font-bold" style="color: var(--fc-dark)">
+              Because AI systems don't have business context
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-2xl shadow-lg mb-6 slide-up delay-200"
+          >
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--fc-blue)">
+              Digital Twins Provide Context
+            </h3>
+            <div class="grid grid-cols-2 gap-5">
+              <div>
+                <ul class="space-y-3 text-base">
+                  <li class="flex items-start">
+                    <span class="mr-3 text-xl" style="color: var(--fc-orange)"
+                      >→</span
+                    >
+                    <span>Model of your business with behavior & context</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="mr-3 text-xl" style="color: var(--fc-orange)"
+                      >→</span
+                    >
+                    <span>AI "animates" the digital twin</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="space-y-3">
+                <div
+                  class="p-3 rounded-lg"
+                  style="background: rgba(91, 155, 213, 0.1)"
+                >
+                  <p class="font-bold mb-1" style="color: var(--fc-blue)">
+                    Singapore
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    Full city digital twin for scenario simulations
+                  </p>
+                </div>
+                <div
+                  class="p-3 rounded-lg"
+                  style="background: rgba(255, 195, 0, 0.1)"
+                >
+                  <p class="font-bold mb-1" style="color: var(--fc-yellow)">
+                    SFO Airport
+                  </p>
+                  <p class="text-sm text-gray-600">
+                    Digital twin to improve UX & throughput
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="p-6 rounded-xl text-center slide-up delay-300"
+            style="background: var(--fc-orange); color: white"
+          >
+            <p class="text-xl font-bold">Avoid the Pilot Trap</p>
+            <p class="text-base mt-2">
+              Identify a few big bets. Start with business problems, not
+              technology.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 9: UX Research Insights -->
+    <div class="slide bg-white" data-slide="9">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            UX Research Insights
+          </h2>
+
+          <div
+            class="company-highlight p-10 rounded-2xl bg-white shadow-lg mb-8 slide-up delay-100"
+          >
+            <h3 class="text-3xl font-bold mb-6" style="color: var(--fc-blue)">
+              Stated vs. Revealed Preference
+            </h3>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div
+                class="p-6 rounded-lg text-center"
+                style="background: rgba(91, 155, 213, 0.1)"
+              >
+                <i
+                  data-lucide="message-circle"
+                  class="mb-3 mx-auto"
+                  style="color: var(--fc-blue); width: 40px; height: 40px"
+                ></i>
+                <p class="font-semibold">Users Said</p>
+                <p class="text-sm text-gray-600">
+                  "I want conversation practice"
+                </p>
+              </div>
+              <div
+                class="p-6 rounded-lg text-center"
+                style="background: rgba(255, 195, 0, 0.1)"
+              >
+                <i
+                  data-lucide="coins"
+                  class="mb-3 mx-auto"
+                  style="color: var(--fc-yellow); width: 40px; height: 40px"
+                ></i>
+                <p class="font-semibold">Users Claimed</p>
+                <p class="text-sm text-gray-600">"I'd pay for it"</p>
+              </div>
+              <div
+                class="p-6 rounded-lg text-center"
+                style="background: rgba(255, 87, 51, 0.1)"
+              >
+                <i
+                  data-lucide="x-circle"
+                  class="mb-3 mx-auto"
+                  style="color: var(--fc-orange); width: 40px; height: 40px"
+                ></i>
+                <p class="font-semibold">When Asked</p>
+                <p class="text-sm text-gray-600">"No way!"</p>
+              </div>
+            </div>
+            <div
+              class="p-6 rounded-xl"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(255, 133, 179, 0.1) 0%,
+                  rgba(91, 155, 213, 0.1) 100%
+                );
+              "
+            >
+              <p class="text-lg">
+                <strong>The Insight:</strong> 90% aren't extroverts—AI
+                conversation solves social anxiety - Duolingo's study
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6">
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-200"
+              style="background: rgba(255, 195, 0, 0.1)"
+            >
+              <h4
+                class="text-lg font-bold mb-2"
+                style="color: var(--fc-yellow)"
+              >
+                Data + Intuition
+              </h4>
+              <p class="text-sm text-gray-700">
+                Their <strong>marriage</strong> is powerful. Not either/or.
+              </p>
+              <p class="text-xs text-gray-600 mt-2">
+                "Expertise comes from experience, experience from
+                experimentation"
+              </p>
+            </div>
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-300"
+              style="background: rgba(255, 133, 179, 0.1)"
+            >
+              <h4 class="text-lg font-bold mb-2" style="color: var(--fc-pink)">
+                Continuous Check-ins
+              </h4>
+              <p class="text-sm text-gray-700">
+                At <strong>every stage</strong> of development
+              </p>
+              <p class="text-xs text-gray-600 mt-2">
+                Pure empathy alongside data • Focus on the individual
+              </p>
+            </div>
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-400"
+              style="background: rgba(91, 155, 213, 0.1)"
+            >
+              <h4 class="text-lg font-bold mb-2" style="color: var(--fc-blue)">
+                Signals That Matter
+              </h4>
+              <p class="text-sm text-gray-700">
+                <strong>Pinterest:</strong> Prioritize longer-lasting signals
+              </p>
+              <p class="text-xs text-gray-600 mt-2">Saves > Likes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 10: Measuring Success Differently -->
+    <div
+      class="slide"
+      data-slide="10"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(91, 155, 213, 0.05) 0%,
+          rgba(255, 133, 179, 0.05) 100%
+        );
+      "
+    >
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            New Success Metrics
+          </h2>
+
+          <div class="grid grid-cols-3 gap-6 mb-8">
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg text-center slide-up delay-100"
+            >
+              <i
+                data-lucide="crosshair"
+                class="mb-4 mx-auto"
+                style="color: var(--fc-blue); width: 56px; height: 56px"
+              ></i>
+              <h3 class="text-2xl font-bold mb-3" style="color: var(--fc-blue)">
+                Return on Mission
+              </h3>
+              <p class="text-gray-600">Not just ROI - AARP</p>
+            </div>
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg text-center slide-up delay-200"
+            >
+              <i
+                data-lucide="heart-handshake"
+                class="mb-4 mx-auto"
+                style="color: var(--fc-orange); width: 56px; height: 56px"
+              ></i>
+              <h3
+                class="text-2xl font-bold mb-3"
+                style="color: var(--fc-orange)"
+              >
+                Return on Emotion
+              </h3>
+              <p class="text-gray-600">Drive emotion, engagement follows</p>
+            </div>
+            <div
+              class="bg-white p-8 rounded-2xl shadow-lg text-center slide-up delay-300"
+            >
+              <i
+                data-lucide="users"
+                class="mb-4 mx-auto"
+                style="color: var(--fc-pink); width: 56px; height: 56px"
+              ></i>
+              <h3 class="text-2xl font-bold mb-3" style="color: var(--fc-pink)">
+                Community Depth
+              </h3>
+              <p class="text-gray-600">Deep engagement matters</p>
+            </div>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg slide-up delay-400">
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--fc-dark)">
+              Collective Ownership
+            </h3>
+            <p class="text-xl text-gray-700 mb-4">
+              Move from individual metrics to
+              <span class="font-bold" style="color: var(--fc-orange)"
+                >team outcomes</span
+              >
+            </p>
+            <p class="text-lg text-gray-600 italic">
+              Sports analogy: One team goal, but you can still evaluate
+              contributions
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 11: Human-First Design -->
+    <div class="slide bg-white" data-slide="11">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            Human-First AI Experiences
+          </h2>
+
+          <div class="quote-accent p-10 rounded-2xl mb-8 slide-up delay-100">
+            <h3 class="text-3xl font-bold mb-4" style="color: var(--fc-orange)">
+              Hidden Magic
+            </h3>
+            <p class="text-xl text-gray-700">
+              Make tech work behind the scenes — something happens and you don't
+              know how.
+            </p>
+            <p class="text-lg mt-4 font-semibold" style="color: var(--fc-blue)">
+              Without deep intentionality, it's just a screen.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6">
+            <div
+              class="p-8 rounded-xl shadow-md text-center slide-up delay-200"
+              style="background: rgba(91, 155, 213, 0.1)"
+            >
+              <i
+                data-lucide="user-round"
+                class="mb-4 mx-auto"
+                style="color: var(--fc-blue); width: 48px; height: 48px"
+              ></i>
+              <h4 class="text-lg font-bold mb-2" style="color: var(--fc-blue)">
+                Human First
+              </h4>
+              <p class="text-sm text-gray-600">Not technology first</p>
+            </div>
+            <div
+              class="p-8 rounded-xl shadow-md text-center slide-up delay-300"
+              style="background: rgba(255, 87, 51, 0.1)"
+            >
+              <i
+                data-lucide="zap"
+                class="mb-4 mx-auto"
+                style="color: var(--fc-orange); width: 48px; height: 48px"
+              ></i>
+              <h4
+                class="text-lg font-bold mb-2"
+                style="color: var(--fc-orange)"
+              >
+                Connection
+              </h4>
+              <p class="text-sm text-gray-600">Focus on emotion</p>
+            </div>
+            <div
+              class="p-8 rounded-xl shadow-md text-center slide-up delay-400"
+              style="background: rgba(255, 195, 0, 0.1)"
+            >
+              <i
+                data-lucide="map"
+                class="mb-4 mx-auto"
+                style="color: var(--fc-yellow); width: 48px; height: 48px"
+              ></i>
+              <h4
+                class="text-lg font-bold mb-2"
+                style="color: var(--fc-yellow)"
+              >
+                Journey
+              </h4>
+              <p class="text-sm text-gray-600">
+                Store is invitation, not finish line
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 12: The Story We Tell -->
+    <div
+      class="slide"
+      data-slide="12"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(255, 87, 51, 0.05) 0%,
+          rgba(255, 195, 0, 0.05) 100%
+        );
+      "
+    >
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            The Future We Choose
+          </h2>
+
+          <div
+            class="quote-accent p-10 rounded-2xl bg-white shadow-lg mb-8 slide-up delay-100"
+          >
+            <blockquote
+              class="text-3xl font-semibold italic text-center"
+              style="color: var(--fc-orange)"
+            >
+              "We have to figure out what the story we tell ourselves about AI
+              is going to be."
+            </blockquote>
+          </div>
+
+          <div
+            class="p-10 rounded-2xl text-center mb-8 slide-up delay-200"
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--fc-orange) 0%,
+                var(--fc-yellow) 100%
+              );
+              color: white;
+            "
+          >
+            <p class="text-4xl font-bold mb-4">Boycott Dystopia</p>
+            <p class="text-lg">
+              Dystopian thinking helps us define the future we DON'T want
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-300">
+              <p
+                class="text-lg font-semibold mb-2"
+                style="color: var(--fc-blue)"
+              >
+                AGI Timeline
+              </p>
+              <p class="text-gray-600">
+                Could arrive in next 2 years (one definition: any laptop work)
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-400">
+              <p
+                class="text-lg font-semibold mb-2"
+                style="color: var(--fc-pink)"
+              >
+                This is the decade of agents
+              </p>
+              <p class="text-gray-600">
+                We're still very early. Future remains unclear.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 13: Key Recommendations -->
+    <div class="slide bg-white" data-slide="13">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8 py-8">
+        <div class="slide-content">
+          <h2
+            class="text-5xl font-black mb-10 text-center slide-up"
+            style="color: var(--fc-dark)"
+          >
+            Key Recommendations
+          </h2>
+
+          <div class="grid grid-cols-2 gap-6">
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-100"
+              style="
+                background: rgba(91, 155, 213, 0.1);
+                border-left: 4px solid var(--fc-blue);
+              "
+            >
+              <h4 class="text-lg font-bold mb-2" style="color: var(--fc-blue)">
+                Build AI Muscle Daily
+              </h4>
+              <p class="text-gray-700">Experimentation is non-negotiable</p>
+            </div>
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-200"
+              style="
+                background: rgba(255, 87, 51, 0.1);
+                border-left: 4px solid var(--fc-orange);
+              "
+            >
+              <h4
+                class="text-lg font-bold mb-2"
+                style="color: var(--fc-orange)"
+              >
+                Frame AI as a Management challenge
+              </h4>
+              <p class="text-gray-700">Not just a technical challenge</p>
+            </div>
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-300"
+              style="
+                background: rgba(255, 195, 0, 0.1);
+                border-left: 4px solid var(--fc-yellow);
+              "
+            >
+              <h4
+                class="text-lg font-bold mb-2"
+                style="color: var(--fc-yellow)"
+              >
+                Focus on Specialist agents
+              </h4>
+              <p class="text-gray-700">90% accuracy vs 60% generalist</p>
+            </div>
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-400"
+              style="
+                background: rgba(255, 133, 179, 0.1);
+                border-left: 4px solid var(--fc-pink);
+              "
+            >
+              <h4 class="text-lg font-bold mb-2" style="color: var(--fc-pink)">
+                Prioritize Context
+              </h4>
+              <p class="text-gray-700">Digital twins for enterprise success</p>
+            </div>
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-500"
+              style="
+                background: rgba(91, 155, 213, 0.1);
+                border-left: 4px solid var(--fc-blue);
+              "
+            >
+              <h4 class="text-lg font-bold mb-2" style="color: var(--fc-blue)">
+                Lead by Example
+              </h4>
+              <p class="text-gray-700">Use AI yourself and share learnings</p>
+            </div>
+            <div
+              class="p-6 rounded-xl shadow-md slide-up delay-500"
+              style="
+                background: rgba(255, 87, 51, 0.1);
+                border-left: 4px solid var(--fc-orange);
+              "
+            >
+              <h4
+                class="text-lg font-bold mb-2"
+                style="color: var(--fc-orange)"
+              >
+                Stay Humble
+              </h4>
+              <p class="text-gray-700">
+                We're in the "awkward superhero phase"
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="mt-8 p-8 rounded-2xl text-center slide-up delay-300"
+            style="
+              background: linear-gradient(
+                90deg,
+                var(--fc-blue) 0%,
+                var(--fc-orange) 50%,
+                var(--fc-yellow) 100%
+              );
+              color: white;
+            "
+          >
+            <p class="text-2xl font-bold">
+              Goal: Do more and add value — amplify human potential
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 14: Closing -->
+    <div
+      class="slide"
+      data-slide="14"
+      style="
+        background: linear-gradient(
+          135deg,
+          rgba(91, 155, 213, 0.08) 0%,
+          rgba(255, 87, 51, 0.08) 50%,
+          rgba(255, 195, 0, 0.08) 100%
+        );
+      "
+    >
+      <div class="geometric-accent blue-square"></div>
+      <div class="geometric-accent orange-triangle"></div>
+      <div class="geometric-accent yellow-circle"></div>
+      <div class="geometric-accent pink-rect"></div>
+      <div
+        class="flex flex-col items-center justify-center h-full w-full px-8 text-center relative z-10"
+      >
+        <div class="slide-content">
+          <h1
+            class="text-7xl font-black mb-8 slide-up"
+            style="color: var(--fc-dark)"
+          >
+            Questions?
+          </h1>
+          <div
+            class="w-24 h-2 mb-10 slide-up delay-200"
+            style="
+              background: linear-gradient(
+                90deg,
+                var(--fc-orange) 0%,
+                var(--fc-yellow) 100%
+              );
+            "
+          ></div>
+          <p
+            class="text-3xl mb-8 slide-up delay-300"
+            style="color: var(--fc-blue)"
+          >
+            Let's discuss how we can apply these insights
+          </p>
+          <p class="text-xl slide-up delay-400" style="color: var(--fc-gray)">
+            UX AI Guild Meeting
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

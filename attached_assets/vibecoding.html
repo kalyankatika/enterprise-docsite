@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibe Coding 101 - Refined Edition</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+        const progressBar = document.getElementById("progressBar");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        let currentSlide = 1;
+        // Create slide indicators
+        const slideIndicatorsContainer = document.createElement("div");
+        slideIndicatorsContainer.className = "slide-indicators";
+        for (let i = 1; i <= totalSlides; i++) {
+          const indicator = document.createElement("div");
+          indicator.className = i === 1 ? "indicator active" : "indicator";
+          indicator.addEventListener("click", () => goToSlide(i));
+          slideIndicatorsContainer.appendChild(indicator);
+        }
+        document.body.appendChild(slideIndicatorsContainer);
+        // Update progress bar
+        function updateProgressBar() {
+          const progress = (currentSlide / totalSlides) * 100;
+          progressBar.style.width = `${progress}%`;
+        }
+        // Update slide indicators
+        function updateIndicators() {
+          document
+            .querySelectorAll(".indicator")
+            .forEach((indicator, index) => {
+              if (index + 1 === currentSlide) {
+                indicator.classList.add("active");
+              } else {
+                indicator.classList.remove("active");
+              }
+            });
+        }
+        // Show a specific slide
+        function goToSlide(slideNumber) {
+          slides.forEach((slide) => {
+            slide.classList.remove("active");
+          });
+          document
+            .querySelector(`[data-slide="${slideNumber}"]`)
+            .classList.add("active");
+          currentSlide = slideNumber;
+          updateProgressBar();
+          updateIndicators();
+        }
+        // Navigate to next slide
+        function nextSlide() {
+          if (currentSlide < totalSlides) {
+            goToSlide(currentSlide + 1);
+          }
+        }
+        // Navigate to previous slide
+        function prevSlide() {
+          if (currentSlide > 1) {
+            goToSlide(currentSlide - 1);
+          }
+        }
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener("click", prevSlide);
+        nextBtn.addEventListener("click", nextSlide);
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight" || e.key === " ") {
+            nextSlide();
+          } else if (e.key === "ArrowLeft") {
+            prevSlide();
+          }
+        });
+        // Initial setup
+        updateProgressBar();
+      });
+    </script>
+    <style>
+      /* Presentation styles */
+      body {
+        overflow: hidden;
+        background-color: #f8f9fa;
+        color: #333;
+      }
+      .slide {
+        display: none;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .slide.active {
+        display: flex;
+      }
+      .progress-bar {
+        height: 5px;
+        background: linear-gradient(90deg, #6366f1, #8b5cf6);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: width 0.3s ease;
+      }
+      .slide-content {
+        max-width: 85%;
+        margin: 0 auto;
+      }
+      /* Navigation controls */
+      .nav-button {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+        background-color: rgba(99, 102, 241, 0.2);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .nav-button:hover {
+        background-color: rgba(99, 102, 241, 0.4);
+      }
+      .prev-button {
+        left: 20px;
+      }
+      .next-button {
+        right: 20px;
+      }
+      /* Animation classes */
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .slide-up {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideUp 0.5s forwards;
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      /* Staggered animation delays */
+      .delay-100 {
+        animation-delay: 100ms;
+      }
+      .delay-200 {
+        animation-delay: 200ms;
+      }
+      .delay-300 {
+        animation-delay: 300ms;
+      }
+      .delay-400 {
+        animation-delay: 400ms;
+      }
+      .delay-500 {
+        animation-delay: 500ms;
+      }
+      /* Slide indicators */
+      .slide-indicators {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 100;
+      }
+      .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #d1d5db;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .indicator.active {
+        background-color: #6366f1;
+      }
+      /* Navigation hint */
+      .nav-hint {
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+        font-size: 0.75rem;
+        color: #6b7280;
+        z-index: 100;
+      }
+
+      /* Code blocks */
+      .code-block {
+        background-color: #1f2937;
+        color: #e5e7eb;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-family: "Courier New", monospace;
+        overflow-x: auto;
+      }
+
+      /* Brand colors */
+      .brand-primary {
+        color: #6366f1;
+      }
+      .brand-bg-primary {
+        background-color: #6366f1;
+      }
+      .brand-secondary {
+        color: #8b5cf6;
+      }
+      .brand-bg-secondary {
+        background-color: #8b5cf6;
+      }
+    </style>
+  </head>
+  <body class="font-sans bg-gray-50">
+    <!-- Navigation buttons -->
+    <button class="nav-button prev-button" id="prevBtn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="nav-button next-button" id="nextBtn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <!-- Progress bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    <!-- Navigation hint -->
+    <div class="nav-hint">Use arrow keys or click navigation buttons</div>
+    <!-- Slide 1: Title -->
+    <div
+      class="slide active bg-gradient-to-br from-indigo-50 to-purple-100"
+      data-slide="1"
+    >
+      <div
+        class="flex flex-col items-center justify-center h-full w-full px-8 text-center"
+      >
+        <h1 class="text-6xl font-bold brand-primary mb-4 slide-up">
+          Vibe Coding
+        </h1>
+        <h2 class="text-3xl text-gray-700 mb-12 slide-up delay-200">
+           AI-assisted Software Development
+          <!-- <i>The best code is written when you're in the zone.</i> -->
+        </h2>
+        <div class="w-20 h-1 brand-bg-primary mb-8 slide-up delay-300"></div>
+        <p class="text-xl text-gray-600 max-w-2xl slide-up delay-400">
+         . Code with the power of AI
+          conversation - describe, iterate, ship
+        </p>
+      </div>
+    </div>
+    <!-- Slide 2: What is Vibe Coding? -->
+    <div class="slide bg-white" data-slide="2">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-10 text-center slide-up"
+          >
+            What is Vibe Coding?
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md slide-up delay-100">
+              <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                Traditional Development
+              </h3>
+              <ul class="space-y-2 text-gray-700">
+                <li>• Write code line by line</li>
+                <li>• Master complex syntax</li>
+                <li>• Lengthy debugging cycles</li>
+                <li>• Steep learning curves</li>
+                <li>• Context switching between tools</li>
+              </ul>
+            </div>
+            <div
+              class="bg-gradient-to-br from-indigo-100 to-purple-100 p-6 rounded-xl shadow-md slide-up delay-200"
+            >
+              <h3 class="text-2xl font-semibold brand-primary mb-4">
+                Vibe Coding
+              </h3>
+              <ul class="space-y-2 text-gray-700">
+                <li>• Describe what you want</li>
+                <li>• AI generates working code</li>
+                <li>• Instant iteration & refinement</li>
+                <li>• Natural language interface</li>
+                <li>• Integrated development flow</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="bg-purple-100 p-6 rounded-xl text-center slide-up delay-300"
+          >
+            <p class="text-lg brand-primary font-semibold">
+              "Transform ideas into applications through conversation"
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 3: The Universal Workflow -->
+    <div
+      class="slide bg-gradient-to-br from-indigo-50 to-purple-100"
+      data-slide="3"
+    >
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-10 text-center slide-up"
+          >
+            The Universal Workflow
+          </h2>
+          <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+              <div
+                class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-100"
+              >
+                <div
+                  class="w-12 h-12 brand-bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4"
+                >
+                  1
+                </div>
+                <h3 class="font-semibold brand-primary mb-2">Describe</h3>
+                <p class="text-sm text-gray-600">
+                  Explain your vision in natural language
+                </p>
+              </div>
+              <div
+                class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-200"
+              >
+                <div
+                  class="w-12 h-12 brand-bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4"
+                >
+                  2
+                </div>
+                <h3 class="font-semibold brand-primary mb-2">Generate</h3>
+                <p class="text-sm text-gray-600">
+                  AI creates working code or designs
+                </p>
+              </div>
+              <div
+                class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-300"
+              >
+                <div
+                  class="w-12 h-12 brand-bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4"
+                >
+                  3
+                </div>
+                <h3 class="font-semibold brand-primary mb-2">Preview</h3>
+                <p class="text-sm text-gray-600">See live results instantly</p>
+              </div>
+              <div
+                class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-400"
+              >
+                <div
+                  class="w-12 h-12 brand-bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4"
+                >
+                  4
+                </div>
+                <h3 class="font-semibold brand-primary mb-2">Iterate</h3>
+                <p class="text-sm text-gray-600">Refine through conversation</p>
+              </div>
+              <div
+                class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-500"
+              >
+                <div
+                  class="w-12 h-12 brand-bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4"
+                >
+                  5
+                </div>
+                <h3 class="font-semibold brand-primary mb-2">Deploy</h3>
+                <p class="text-sm text-gray-600">Share with the world</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 4: Quick Example -->
+    <div class="slide bg-white" data-slide="4">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-8 text-center slide-up"
+          >
+            Quick Example
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="slide-up delay-100">
+              <h3 class="text-xl font-semibold mb-4 brand-primary">You say:</h3>
+              <div class="bg-gray-100 p-4 rounded-lg mb-4">
+                <p class="text-gray-700 italic">
+                  "Create a todo app with add, delete, and check off features"
+                </p>
+              </div>
+              <h3 class="text-xl font-semibold mb-4 brand-primary">
+                AI delivers:
+              </h3>
+              <div class="code-block text-sm">
+                <pre>
+function TodoApp() {
+const [todos, setTodos] = useState([]);
+const addTodo = (text) => {
+setTodos([...todos, { 
+id: Date.now(), 
+text, 
+completed: false 
+}]);
+};
+// ... rest of the component
+}</pre
+                >
+              </div>
+            </div>
+            <div class="slide-up delay-200">
+              <h3 class="text-xl font-semibold mb-4 brand-primary">
+                Then you can say:
+              </h3>
+              <div class="space-y-3">
+                <div class="bg-purple-50 p-3 rounded-lg">
+                  <p class="text-sm text-gray-700">
+                    "Make it look prettier with colors"
+                  </p>
+                </div>
+                <div class="bg-purple-50 p-3 rounded-lg">
+                  <p class="text-sm text-gray-700">
+                    "Add due dates to each todo"
+                  </p>
+                </div>
+                <div class="bg-purple-50 p-3 rounded-lg">
+                  <p class="text-sm text-gray-700">
+                    "Save todos to local storage"
+                  </p>
+                </div>
+              </div>
+              <div class="mt-6 p-4 bg-indigo-100 rounded-lg">
+                <p class="text-sm brand-primary font-semibold">
+                  ✨ Each request generates working code instantly
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 5: Key Features -->
+    <div
+      class="slide bg-gradient-to-br from-indigo-50 to-purple-100"
+      data-slide="5"
+    >
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-10 text-center slide-up"
+          >
+            Key Features
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-100">
+              <div class="text-3xl mb-4">🧠</div>
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                Natural Language
+              </h3>
+              <p class="text-gray-700">
+                Describe features in plain English, not code syntax
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-200">
+              <div class="text-3xl mb-4">⚡</div>
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                Instant Results
+              </h3>
+              <p class="text-gray-700">
+                See your ideas come to life in seconds, not hours
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-300">
+              <div class="text-3xl mb-4">🔄</div>
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                Iterative Refinement
+              </h3>
+              <p class="text-gray-700">
+                Keep improving with conversational feedback
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-400">
+              <div class="text-3xl mb-4">🎨</div>
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                Full Stack
+              </h3>
+              <p class="text-gray-700">
+                Frontend, backend, databases - AI handles it all
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-500">
+              <div class="text-3xl mb-4">🚀</div>
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                One-Click Deploy
+              </h3>
+              <p class="text-gray-700">
+                Share your app with the world instantly
+              </p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-500">
+              <div class="text-3xl mb-4">📚</div>
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                Learning by Doing
+              </h3>
+              <p class="text-gray-700">Understand code patterns as you build</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 6: Best Practices -->
+    <div class="slide bg-white" data-slide="6">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-10 text-center slide-up"
+          >
+            Best Practices
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-4 slide-up delay-100">
+              <h3 class="text-2xl font-semibold text-green-600 mb-4">
+                ✅ Do This
+              </h3>
+              <div
+                class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400"
+              >
+                <p class="text-green-800 font-medium">
+                  Be specific about features
+                </p>
+                <p class="text-green-600 text-sm mt-1">
+                  "Add a login form with email validation"
+                </p>
+              </div>
+              <div
+                class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400"
+              >
+                <p class="text-green-800 font-medium">
+                  Start small, then expand
+                </p>
+                <p class="text-green-600 text-sm mt-1">
+                  "Make a simple calculator first"
+                </p>
+              </div>
+              <div
+                class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400"
+              >
+                <p class="text-green-800 font-medium">Ask for explanations</p>
+                <p class="text-green-600 text-sm mt-1">
+                  "Explain how this function works"
+                </p>
+              </div>
+            </div>
+            <div class="space-y-4 slide-up delay-200">
+              <h3 class="text-2xl font-semibold text-red-600 mb-4">
+                ❌ Avoid This
+              </h3>
+              <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                <p class="text-red-800 font-medium">Vague requests</p>
+                <p class="text-red-600 text-sm mt-1">
+                  "Make it better" or "Fix this"
+                </p>
+              </div>
+              <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                <p class="text-red-800 font-medium">
+                  Overly complex first attempts
+                </p>
+                <p class="text-red-600 text-sm mt-1">
+                  "Build the next Facebook"
+                </p>
+              </div>
+              <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                <p class="text-red-800 font-medium">Copying code blindly</p>
+                <p class="text-red-600 text-sm mt-1">
+                  Always understand what AI generates
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 7: Popular Platforms -->
+    <div
+      class="slide bg-gradient-to-br from-indigo-50 to-purple-100"
+      data-slide="7"
+    >
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-10 text-center slide-up"
+          >
+            Popular Platforms
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div
+              class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-100"
+            >
+              <div class="text-3xl mb-3">🔧</div>
+              <h3 class="font-semibold brand-primary mb-2">Development</h3>
+              <p class="text-sm text-gray-600">
+                Replit, Cursor, GitHub Copilot
+              </p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-200"
+            >
+              <div class="text-3xl mb-3">🎨</div>
+              <h3 class="font-semibold brand-primary mb-2">Design</h3>
+              <p class="text-sm text-gray-600">Figma Make, Canva Apps</p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-300"
+            >
+              <div class="text-3xl mb-3">🤖</div>
+              <h3 class="font-semibold brand-primary mb-2">AI Assistants</h3>
+              <p class="text-sm text-gray-600">Claude, ChatGPT, Gemini</p>
+            </div>
+            <div
+              class="bg-white p-6 rounded-xl shadow-md text-center slide-up delay-400"
+            >
+              <div class="text-3xl mb-3">☁️</div>
+              <h3 class="font-semibold brand-primary mb-2">Deployment</h3>
+              <p class="text-sm text-gray-600">Vercel, Netlify, Railway</p>
+            </div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-500">
+            <h3 class="text-xl font-semibold brand-primary mb-4 text-center">
+              The Common Thread
+            </h3>
+            <p class="text-center text-gray-700">
+              Natural language interfaces, instant feedback, and AI-powered code
+              generation
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 8: Advanced Techniques - Prompt Engineering -->
+    <div class="slide bg-white" data-slide="8">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-8 text-center slide-up"
+          >
+            Advanced: Prompt Engineering
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="slide-up delay-100">
+              <h3 class="text-2xl font-semibold brand-primary mb-6">
+                2025 Best Practices
+              </h3>
+              <div class="space-y-4">
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-semibold brand-primary mb-2">
+                    📝 Clear Structure
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Use templates, examples, and step-by-step instructions
+                  </p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-semibold brand-primary mb-2">
+                    🎯 Specific Constraints
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Define output format, style, and limitations clearly
+                  </p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-semibold brand-primary mb-2">
+                    🔄 Chain of Thought
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Ask AI to "think step by step" for complex tasks
+                  </p>
+                </div>
+                <div class="bg-indigo-50 p-4 rounded-lg">
+                  <h4 class="font-semibold brand-primary mb-2">
+                    🧪 Iterative Testing
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Test prompts across different models and scenarios
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="slide-up delay-200">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                Example: Better Prompting
+              </h3>
+              <div class="code-block text-sm">
+                <div class="text-red-400 mb-2">❌ Bad prompt:</div>
+                <div class="text-gray-300 mb-4">"Make a website"</div>
+                <div class="text-green-400 mb-2">✅ Good prompt:</div>
+                <div class="text-gray-300 mb-1">
+                  "Create a responsive landing page for
+                </div>
+                <div class="text-gray-300 mb-1">a coffee shop with:</div>
+                <div class="text-gray-300 mb-1">
+                  - Hero section with menu CTA
+                </div>
+                <div class="text-gray-300 mb-1">- Location & hours section</div>
+                <div class="text-gray-300 mb-1">- Contact form</div>
+                <div class="text-gray-300 mb-1">- Warm, cozy color scheme</div>
+                <div class="text-gray-300 mb-3">- Mobile-first design"</div>
+              </div>
+              <div class="mt-4 p-3 bg-indigo-100 rounded-lg">
+                <p class="text-sm brand-primary font-semibold">
+                  💡 Result: Precise, production-ready output
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 9: Advanced Techniques - Context Engineering -->
+    <div
+      class="slide bg-gradient-to-br from-indigo-50 to-purple-100"
+      data-slide="9"
+    >
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-8 text-center slide-up"
+          >
+            Advanced: Context Engineering
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="slide-up delay-100">
+              <h3 class="text-2xl font-semibold brand-secondary mb-6">
+                Beyond Prompts
+              </h3>
+              <div class="bg-white p-4 rounded-lg shadow mb-4">
+                <p class="text-sm text-gray-700 italic mb-2">
+                  "Context engineering is the art of providing all the context
+                  for the task to be plausibly solvable by the LLM."
+                </p>
+                <p class="text-xs text-gray-500">- Tobi Lutke, Shopify</p>
+              </div>
+              <div class="space-y-4">
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <h4 class="font-semibold brand-secondary mb-2">
+                    🧠 Dynamic Context
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Build systems that gather relevant info on-demand
+                  </p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <h4 class="font-semibold brand-secondary mb-2">
+                    💾 Memory Management
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Maintain conversation history and long-term knowledge
+                  </p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <h4 class="font-semibold brand-secondary mb-2">
+                    🔍 RAG Systems
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Retrieve and inject relevant knowledge automatically
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="slide-up delay-200">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                Context vs Prompt
+              </h3>
+              <div class="code-block text-sm">
+                <div class="text-blue-400 mb-2">// Traditional approach</div>
+                <div class="text-green-400 mb-3">"Build a user dashboard"</div>
+                <div class="text-blue-400 mb-2">// Context engineering</div>
+                <div class="text-yellow-400 mb-1">Context: {</div>
+                <div class="text-yellow-400 mb-1">user: current_user_data,</div>
+                <div class="text-yellow-400 mb-1">design: company_ui_kit,</div>
+                <div class="text-yellow-400 mb-1">data: api_schemas,</div>
+                <div class="text-yellow-400 mb-1">
+                  examples: past_dashboards,
+                </div>
+                <div class="text-yellow-400 mb-3">
+                  requirements: stakeholder_notes
+                </div>
+                <div class="text-yellow-400 mb-1">}</div>
+                <div class="text-green-400">"Build dashboard with context"</div>
+              </div>
+              <div class="mt-4 p-3 bg-purple-100 rounded-lg">
+                <p class="text-sm brand-secondary font-semibold">
+                  🎯 Result: Perfect fit, first try
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 10: Advanced Techniques - AI Agents -->
+    <div class="slide bg-white" data-slide="10">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-8 text-center slide-up"
+          >
+            Advanced: AI Agents
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="slide-up delay-100">
+              <h3 class="text-2xl font-semibold text-emerald-600 mb-6">
+                Autonomous Development
+              </h3>
+              <div class="space-y-4">
+                <div class="bg-emerald-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-emerald-700 mb-2">
+                    🎯 Goal Planning
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Breaks complex tasks into actionable steps
+                  </p>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-emerald-700 mb-2">
+                    🔧 Tool Usage
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Can call APIs, databases, and external services
+                  </p>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-emerald-700 mb-2">
+                    🧠 Memory & Learning
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Remembers context across sessions
+                  </p>
+                </div>
+                <div class="bg-emerald-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-emerald-700 mb-2">
+                    🔄 Self-Correction
+                  </h4>
+                  <p class="text-sm text-gray-600">
+                    Adapts based on feedback and results
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="slide-up delay-200">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                Agent in Action
+              </h3>
+              <div class="code-block text-sm">
+                <div class="text-green-400 mb-1">User: "Build a blog API"</div>
+                <div class="text-blue-400 mb-3">// Agent planning...</div>
+                <div class="text-yellow-400 mb-1">
+                  Agent: Analyzing requirements
+                </div>
+                <div class="text-yellow-400 mb-1">- Checking existing code</div>
+                <div class="text-yellow-400 mb-1">
+                  - Planning database schema
+                </div>
+                <div class="text-yellow-400 mb-3">- Selecting frameworks</div>
+                <div class="text-orange-400 mb-1">Executing:</div>
+                <div class="text-orange-400 mb-1">✅ Models created</div>
+                <div class="text-orange-400 mb-1">✅ API endpoints built</div>
+                <div class="text-orange-400 mb-1">✅ Tests written</div>
+                <div class="text-orange-400 mb-3">
+                  ✅ Documentation generated
+                </div>
+                <div class="text-green-400">🚀 API deployed and live!</div>
+              </div>
+              <div class="mt-4 p-3 bg-emerald-100 rounded-lg">
+                <p class="text-sm text-emerald-700 font-semibold">
+                  ⚡ From idea to production in minutes
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 11: Advanced Techniques - Multi-Agent Systems -->
+    <div
+      class="slide bg-gradient-to-br from-indigo-50 to-purple-100"
+      data-slide="11"
+    >
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-8 text-center slide-up"
+          >
+            Advanced: Multi-Agent Systems
+          </h2>
+          <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-100">
+                <div class="text-3xl mb-3">👩‍💻</div>
+                <h3 class="text-lg font-semibold text-blue-700 mb-3">
+                  Developer Agent
+                </h3>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• Writes and tests code</li>
+                  <li>• Manages repositories</li>
+                  <li>• Handles deployment</li>
+                </ul>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-200">
+                <div class="text-3xl mb-3">🎨</div>
+                <h3 class="text-lg font-semibold text-purple-700 mb-3">
+                  Designer Agent
+                </h3>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• Creates UI/UX designs</li>
+                  <li>• Maintains design systems</li>
+                  <li>• Generates assets</li>
+                </ul>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-300">
+                <div class="text-3xl mb-3">🔍</div>
+                <h3 class="text-lg font-semibold text-green-700 mb-3">
+                  QA Agent
+                </h3>
+                <ul class="text-sm text-gray-700 space-y-1">
+                  <li>• Runs automated tests</li>
+                  <li>• Security audits</li>
+                  <li>• Performance validation</li>
+                </ul>
+              </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md slide-up delay-400">
+              <h3 class="text-xl font-semibold brand-primary mb-4 text-center">
+                Coordinated Workflow
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-5 gap-2 text-center">
+                <div class="bg-gray-50 p-3 rounded">
+                  <p class="text-sm font-semibold">1. Plan</p>
+                  <p class="text-xs text-gray-600">
+                    Agents collaborate on scope
+                  </p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                  <p class="text-sm font-semibold">2. Design</p>
+                  <p class="text-xs text-gray-600">UI/UX creation</p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                  <p class="text-sm font-semibold">3. Develop</p>
+                  <p class="text-xs text-gray-600">Code implementation</p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                  <p class="text-sm font-semibold">4. Test</p>
+                  <p class="text-xs text-gray-600">Quality assurance</p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded">
+                  <p class="text-sm font-semibold">5. Deploy</p>
+                  <p class="text-xs text-gray-600">Production release</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 text-center slide-up delay-500">
+              <p class="text-gray-600 italic">
+                The future: Entire development teams powered by coordinated AI
+                agents
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 12: The Future of Development -->
+    <div class="slide bg-white" data-slide="12">
+      <div class="flex flex-col items-center justify-center h-full w-full px-8">
+        <div class="slide-content">
+          <h2
+            class="text-4xl font-bold brand-primary mb-10 text-center slide-up"
+          >
+            The Future of Development
+          </h2>
+          <div class="max-w-4xl mx-auto space-y-6">
+            <div
+              class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl shadow-md slide-up delay-100"
+            >
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                🎭 For Designers
+              </h3>
+              <p class="text-gray-700">
+                Move from static mockups to functional prototypes in minutes.
+                Test real interactions and gather authentic user feedback.
+              </p>
+            </div>
+            <div
+              class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl shadow-md slide-up delay-200"
+            >
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                👩‍💻 For Developers
+              </h3>
+              <p class="text-gray-700">
+                Focus on architecture and business logic while AI handles
+                boilerplate code and repetitive tasks.
+              </p>
+            </div>
+            <div
+              class="bg-gradient-to-r from-indigo-50 to-purple-50 p-6 rounded-xl shadow-md slide-up delay-300"
+            >
+              <h3 class="text-xl font-semibold brand-primary mb-3">
+                🚀 For Product Teams
+              </h3>
+              <p class="text-gray-700">
+                Rapid prototyping and validation cycles. Turn ideas into
+                testable products in hours, not sprints.
+              </p>
+            </div>
+            <div
+              class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-6 rounded-xl text-center slide-up delay-400"
+            >
+              <p class="text-xl font-semibold">
+                The era of "idea to production" acceleration is here 🚀
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Slide 13: Get Started -->
+    <div
+      class="slide bg-gradient-to-br from-indigo-100 to-purple-100"
+      data-slide="13"
+    >
+      <div
+        class="flex flex-col items-center justify-center h-full w-full px-8 text-center"
+      >
+        <h2 class="text-5xl font-bold brand-primary mb-8 slide-up">
+          Ready to Start Vibe Coding?
+        </h2>
+        <div class="w-20 h-1 brand-bg-primary mb-8 slide-up delay-200"></div>
+        <p
+          class="text-xl text-gray-600 max-w-2xl mx-auto mb-8 slide-up delay-300"
+        >
+          Choose your platform, describe your vision, and watch ideas come to
+          life
+        </p>
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 slide-up delay-400"
+        >
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="font-semibold text-gray-700">Replit</p>
+            <p class="text-sm text-gray-500">Full-stack apps</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="font-semibold text-gray-700">Figma Make</p>
+            <p class="text-sm text-gray-500">Design to prototype</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="font-semibold text-gray-700">Cursor</p>
+            <p class="text-sm text-gray-500">AI-powered IDE</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg shadow">
+            <p class="font-semibold text-gray-700">Claude</p>
+            <p class="text-sm text-gray-500">AI coding assistant</p>
+          </div>
+        </div>
+        <p class="text-gray-500 slide-up delay-500">
+          The future of development is conversational ✨
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
