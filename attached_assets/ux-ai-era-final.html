@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX in the AI Era: Designing and Building Experiences That Truly Matter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            const progressBar = document.getElementById('progressBar');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const currentSlideNum = document.getElementById('current-slide-num');
+            const totalSlidesNum = document.getElementById('total-slides-num');
+
+            let currentSlide = 1;
+
+            // Set total slides text
+            totalSlidesNum.textContent = totalSlides;
+
+            // Create slide indicators
+            const slideIndicatorsContainer = document.createElement('div');
+            slideIndicatorsContainer.className = 'slide-indicators';
+
+            for (let i = 1; i <= totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = i === 1 ? 'indicator active' : 'indicator';
+                indicator.addEventListener('click', () => goToSlide(i));
+                slideIndicatorsContainer.appendChild(indicator);
+            }
+
+            document.body.appendChild(slideIndicatorsContainer);
+
+            // Update progress bar
+            function updateProgressBar() {
+                const progress = (currentSlide / totalSlides) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+
+            // Update slide indicators
+            function updateIndicators() {
+                document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                    if (index + 1 === currentSlide) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+
+            // Show a specific slide
+            function goToSlide(slideNumber) {
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+
+                document.querySelector(`[data-slide="${slideNumber}"]`).classList.add('active');
+                currentSlide = slideNumber;
+                currentSlideNum.textContent = currentSlide;
+                updateProgressBar();
+                updateIndicators();
+            }
+
+            // Navigate to next slide
+            function nextSlide() {
+                if (currentSlide < totalSlides) {
+                    goToSlide(currentSlide + 1);
+                }
+            }
+
+            // Navigate to previous slide
+            function prevSlide() {
+                if (currentSlide > 1) {
+                    goToSlide(currentSlide - 1);
+                }
+            }
+
+            // Event listeners for navigation buttons
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    prevSlide();
+                }
+            });
+
+            // Initial setup
+            updateProgressBar();
+
+            // Initialize Lucide icons
+            lucide.createIcons();
+        });
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        body {
+            background-color: #09090b;
+            color: #fafafa;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.025em;
+        }
+
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Glassmorphism Utility */
+        .glass {
+            background-color: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(to right, #818cf8, #a78bfa, #f472b6);
+        }
+
+        /* Slide Transition Logic */
+        .slide {
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            padding: 2rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            opacity: 0;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ensure smooth content appearance */
+        .slide.active > * {
+            animation: contentFadeIn 0.5s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        @keyframes contentFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+        .bg-grid-pattern {
+             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2327272a' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(to right, #6366f1, #ec4899);
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: width 0.3s ease;
+            z-index: 100;
+        }
+
+        /* Navigation controls */
+        .nav-button {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            background-color: rgba(39, 39, 42, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #fafafa;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(39, 39, 42, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .prev-button { left: 32px; }
+        .next-button { right: 32px; }
+
+        /* Slide indicators */
+        .slide-indicators {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(161, 161, 170, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: #6366f1;
+            width: 32px;
+            border-radius: 5px;
+        }
+
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            bottom: 32px;
+            left: 32px;
+            z-index: 100;
+            color: #71717a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .slide-counter .current {
+            color: #fafafa;
+        }
+
+        .slide-counter .label {
+            margin-left: 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Background Layers -->
+    <div class="absolute inset-0 bg-grid-pattern z-0 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-0 pointer-events-none"></div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navigation buttons -->
+    <button class="nav-button prev-button" id="prevBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </button>
+    <button class="nav-button next-button" id="nextBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+    </button>
+
+    <!-- Slide counter -->
+    <div class="slide-counter">
+        <span class="current" id="current-slide-num">1</span>
+        <span class="mx-1">/</span>
+        <span id="total-slides-num">23</span>
+        <span class="label hidden md:inline">UX in the AI Era</span>
+    </div>
+
+    <!-- Main Slide Container -->
+    <main class="relative z-10">
+
+        <!-- Slide 1: Title -->
+        <section class="slide active text-center" data-slide="1">
+            <div class="mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm text-zinc-300 backdrop-blur-md">
+                Lessons from UX Design-Dev Evolution
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold text-white mb-6">
+                UX in the <br />
+                <span class="text-gradient">AI Era</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-zinc-400 max-w-3xl font-light leading-relaxed mb-12">
+                Designing and Building Experiences That Truly Matter
+            </p>
+            <div class="flex gap-4 text-sm text-zinc-500 font-mono">
+                <span>CONTEXT-AWARE</span> • <span>AGENTIC</span> • <span>SPEC-BASED</span>
+            </div>
+        </section>
+
+        <!-- Slide 2: Inflection Point -->
+        <section class="slide" data-slide="2">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 items-start">
+                    <!-- Left Column: Content (Broader) -->
+                    <div>
+                        <h2 class="text-5xl md:text-6xl font-bold text-white mb-12 leading-tight">
+                            We're at an inflection point.<br/>
+                            This is not about a new tool.
+                        </h2>
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-3">Past Transformation:</h3>
+                                <p class="text-xl text-zinc-300 leading-relaxed">
+                                    Design systems transformed UX from an artisan craft into a scalable engineering discipline.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold text-white mb-3">Current Transformation:</h3>
+                                <p class="text-xl text-zinc-300 leading-relaxed">
+                                    AI is now transforming design intent directly into implementation reality. This is a fundamental rethinking of our discipline.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-12 border-l-4 border-amber-500 bg-amber-500/10 p-6 rounded-r-xl">
+                            <p class="text-xl text-zinc-200 leading-relaxed mb-2">
+                                What once took weeks now happens in hours.
+                            </p>
+                            <p class="text-xl text-zinc-200 leading-relaxed">
+                                But speed without purpose creates noise, not value.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Timeline Visual (Narrower) -->
+                    <div class="flex items-center justify-center">
+                        <div class="relative">
+                            <!-- Vertical Line -->
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-zinc-700"></div>
+
+                            <!-- Design Systems Node -->
+                            <div class="relative mb-32 flex flex-col items-center">
+                                <div class="w-20 h-20 rounded-full bg-zinc-800 border-4 border-zinc-600 flex items-center justify-center mb-4 relative z-10">
+                                    <i data-lucide="layers" class="w-8 h-8 text-zinc-400"></i>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-white mb-1">Design Systems</div>
+                                    <div class="text-xs text-zinc-500">Craft to Engineering</div>
+                                </div>
+                            </div>
+
+                            <!-- AI Node -->
+                            <div class="relative flex flex-col items-center">
+                                <div class="w-28 h-28 rounded-full bg-blue-600 border-4 border-blue-500 flex items-center justify-center mb-4 relative z-10 shadow-lg shadow-blue-500/50">
+                                    <div class="text-4xl font-bold text-white">AI</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-blue-400 mb-1">AI</div>
+                                    <div class="text-xs text-zinc-400">Intent to Reality</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: The Old Way (Traditional Handoff) -->
+        <section class="slide" data-slide="3">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <!-- Title -->
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-12 text-center leading-tight">
+                    The old world was defined by the<br/>friction of the traditional handoff.
+                </h2>
+
+                <!-- Horizontal Flow -->
+                <div class="flex items-center justify-center gap-2 mb-10 flex-wrap">
+                    <!-- Static mockups -->
+                    <div class="glass p-4 rounded-xl text-center w-28">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center">
+                            <i data-lucide="layout" class="w-10 h-10 text-zinc-400"></i>
+                        </div>
+                        <span class="text-xs text-zinc-400">Static<br/>mockups</span>
+                    </div>
+                    <div class="text-zinc-500 text-xl">→</div>
+
+                    <!-- Spec docs -->
+                    <div class="glass p-4 rounded-xl text-center w-28">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center">
+                            <i data-lucide="file-code" class="w-10 h-10 text-zinc-400"></i>
+                        </div>
+                        <span class="text-xs text-zinc-400">Spec<br/>docs</span>
+                    </div>
+                    <div class="text-zinc-500 text-xl">→</div>
+
+                    <!-- Developer interpretation -->
+                    <div class="glass p-4 rounded-xl text-center w-28">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center">
+                            <i data-lucide="help-circle" class="w-10 h-10 text-zinc-400"></i>
+                        </div>
+                        <span class="text-xs text-zinc-400">Developer<br/>interpretation</span>
+                    </div>
+                    <div class="text-zinc-500 text-xl">→</div>
+
+                    <!-- Iterations -->
+                    <div class="glass p-4 rounded-xl text-center w-28">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center">
+                            <i data-lucide="refresh-cw" class="w-10 h-10 text-zinc-400"></i>
+                        </div>
+                        <span class="text-xs text-zinc-400">Iterations</span>
+                    </div>
+                    <div class="text-zinc-500 text-xl">→</div>
+
+                    <!-- Compromised final product -->
+                    <div class="glass p-4 rounded-xl text-center w-28">
+                        <div class="w-12 h-12 mx-auto mb-2 flex items-center justify-center">
+                            <i data-lucide="x-square" class="w-10 h-10 text-zinc-400"></i>
+                        </div>
+                        <span class="text-xs text-zinc-400">Compromised<br/>final product</span>
+                    </div>
+
+                    <!-- Time Box -->
+                    <div class="border-2 border-amber-500 rounded-xl p-4 text-center ml-4 bg-zinc-900/50">
+                        <div class="text-3xl font-bold text-white">3-5</div>
+                        <div class="text-xl font-bold text-white">days</div>
+                        <div class="text-xs text-zinc-400 mt-1">Time Investment<br/>Per Feature</div>
+                    </div>
+                </div>
+
+                <!-- Pain Points -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center shrink-0">
+                            <i data-lucide="puzzle" class="w-6 h-6 text-zinc-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Pain Point</h4>
+                            <p class="text-zinc-400 text-sm">Translation errors between design and code</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center shrink-0">
+                            <i data-lucide="message-square-warning" class="w-6 h-6 text-zinc-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Center Pain Point</h4>
+                            <p class="text-zinc-400 text-sm">Misalignment on vision and details</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center shrink-0">
+                            <i data-lucide="dollar-sign" class="w-6 h-6 text-zinc-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-1">Right Pain Point</h4>
+                            <p class="text-zinc-400 text-sm">Expensive, time-consuming iteration overhead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: The Great Shift -->
+        <div class="slide" data-slide="4">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="mb-16">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">The Great Shift</h2>
+                    <p class="text-xl text-zinc-400">Evolution of the Design-Dev Relationship</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="glass p-8 rounded-2xl border-t-4 border-zinc-700 hover:bg-zinc-800/50 transition-all">
+                        <div class="mb-6 p-4 rounded-full bg-zinc-950/50 w-fit text-zinc-400 ring-1 ring-white/10">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-2">Then</h3>
+                        <div class="text-xl font-medium mb-4 text-zinc-400">Human-Centered</div>
+                        <p class="text-zinc-400 leading-relaxed">Manual design systems, pixel pushing, rigid specs. Designers hand off to developers.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="glass p-8 rounded-2xl border-t-4 border-indigo-500 hover:bg-zinc-800/50 transition-all">
+                        <div class="mb-6 p-4 rounded-full bg-zinc-950/50 w-fit text-indigo-400 ring-1 ring-white/10">
+                            <i data-lucide="zap" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-2">Now</h3>
+                        <div class="text-xl font-medium mb-4 text-indigo-400">AI-Augmented</div>
+                        <p class="text-zinc-400 leading-relaxed">Copilots, generated components, rapid prototyping. AI assists both roles simultaneously.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="glass p-8 rounded-2xl border-t-4 border-emerald-500 hover:bg-zinc-800/50 transition-all">
+                        <div class="mb-6 p-4 rounded-full bg-zinc-950/50 w-fit text-emerald-400 ring-1 ring-white/10">
+                            <i data-lucide="brain" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-2">Next</h3>
+                        <div class="text-xl font-medium mb-4 text-emerald-400">Collaborative Crews</div>
+                        <p class="text-zinc-400 leading-relaxed">Context-aware agents, spec-based builds. Small teams produce massive output.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Three Pillars for AI-Enabled UX -->
+        <section class="slide" data-slide="5">
+            <div class="max-w-6xl w-full mx-auto px-8">
+                <div class="text-center mb-10">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+                        A new foundation is required to<br/>build effectively in the AI era.
+                    </h2>
+                    <p class="text-xl text-zinc-400 font-medium">The Three Pillars for AI-Enabled UX</p>
+                </div>
+
+                <!-- Pillars Visualization -->
+                <div class="relative flex justify-center items-end mb-10" style="height: 220px;">
+                    <!-- Base Platform -->
+                    <div class="absolute bottom-0 w-4/5 h-4 bg-zinc-700 rounded"></div>
+
+                    <!-- Pillar 1 -->
+                    <div class="relative flex flex-col items-center mx-12 z-10">
+                        <div class="w-3 h-3 bg-zinc-500 rounded-sm mb-1"></div>
+                        <div class="w-8 h-3 bg-zinc-500 rounded-sm mb-1"></div>
+                        <div class="w-5 h-32 bg-zinc-600"></div>
+                        <div class="w-8 h-3 bg-zinc-500 rounded-sm mt-1"></div>
+                        <div class="w-3 h-3 bg-zinc-500 rounded-sm mt-1"></div>
+                    </div>
+
+                    <!-- Connector beam 1-2 with glow -->
+                    <div class="absolute" style="left: 35%; top: 45%; width: 60px; height: 6px; background: linear-gradient(90deg, transparent, #6366f1, #6366f1, transparent); filter: blur(3px);"></div>
+                    <div class="absolute" style="left: 35%; top: 45%; width: 60px; height: 2px; background: #818cf8;"></div>
+
+                    <!-- Pillar 2 -->
+                    <div class="relative flex flex-col items-center mx-12 z-10">
+                        <div class="w-3 h-3 bg-zinc-500 rounded-sm mb-1"></div>
+                        <div class="w-8 h-3 bg-zinc-500 rounded-sm mb-1"></div>
+                        <div class="w-5 h-32 bg-zinc-600"></div>
+                        <div class="w-8 h-3 bg-zinc-500 rounded-sm mt-1"></div>
+                        <div class="w-3 h-3 bg-zinc-500 rounded-sm mt-1"></div>
+                    </div>
+
+                    <!-- Connector beam 2-3 with glow -->
+                    <div class="absolute" style="right: 35%; top: 45%; width: 60px; height: 6px; background: linear-gradient(90deg, transparent, #6366f1, #6366f1, transparent); filter: blur(3px);"></div>
+                    <div class="absolute" style="right: 35%; top: 45%; width: 60px; height: 2px; background: #818cf8;"></div>
+
+                    <!-- Pillar 3 -->
+                    <div class="relative flex flex-col items-center mx-12 z-10">
+                        <div class="w-3 h-3 bg-zinc-500 rounded-sm mb-1"></div>
+                        <div class="w-8 h-3 bg-zinc-500 rounded-sm mb-1"></div>
+                        <div class="w-5 h-32 bg-zinc-600"></div>
+                        <div class="w-8 h-3 bg-zinc-500 rounded-sm mt-1"></div>
+                        <div class="w-3 h-3 bg-zinc-500 rounded-sm mt-1"></div>
+                    </div>
+                </div>
+
+                <!-- Pillar Labels -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div class="glass p-6 rounded-xl text-center">
+                        <h3 class="text-lg font-bold text-indigo-400 mb-2">Pillar 1:<br/>Context-Aware Design</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">The AI's deep understanding of <em class="text-zinc-300">your</em> design system, brand, and patterns.</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl text-center">
+                        <h3 class="text-lg font-bold text-purple-400 mb-2">Pillar 2:<br/>Agentic Orchestration</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">The AI's ability to plan, execute multi-step tasks, and self-correct.</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl text-center">
+                        <h3 class="text-lg font-bold text-pink-400 mb-2">Pillar 3:<br/>Spec-Based Building</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">The design system as a living set of rules that agents follow to ensure quality.</p>
+                    </div>
+                </div>
+
+                <!-- Key Insight -->
+                <div class="text-center border-t border-zinc-800 pt-6">
+                    <p class="text-lg text-zinc-300">
+                        <span class="font-bold text-indigo-400">Context</span> feeds <span class="font-bold text-purple-400">agents</span>, <span class="font-bold text-purple-400">agents</span> execute based on <span class="font-bold text-pink-400">specs</span>, and <span class="font-bold text-pink-400">specs</span> maintain system integrity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Pillar 1 - Context -->
+        <div class="slide" data-slide="6">
+            <div class="max-w-6xl w-full mx-auto px-8">
+                <!-- Title -->
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-10 text-center leading-tight">
+                    Pillar 1: Context is your single greatest<br/>competitive advantage.
+                </h2>
+
+                <!-- Bar Chart -->
+                <div class="max-w-4xl mx-auto mb-8">
+                    <!-- Generic AI Bar -->
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-40 text-right text-zinc-400 font-medium">Generic AI</div>
+                        <div class="flex-1 relative h-10 bg-zinc-800/50 rounded">
+                            <div class="absolute inset-y-0 left-0 w-[66%] bg-zinc-600 rounded flex items-center justify-end pr-3">
+                                <div class="w-2.5 h-2.5 rounded-full bg-zinc-400"></div>
+                            </div>
+                            <span class="absolute left-[68%] top-1/2 -translate-y-1/2 text-zinc-300 font-bold">60%</span>
+                        </div>
+                    </div>
+                    <!-- Context-Aware AI Bar -->
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-40 text-right text-zinc-300 font-medium">Context-Aware AI</div>
+                        <div class="flex-1 relative h-10 bg-zinc-800/50 rounded">
+                            <div class="absolute inset-y-0 left-0 w-full bg-indigo-500 rounded flex items-center justify-end pr-3">
+                                <div class="w-2.5 h-2.5 rounded-full bg-indigo-300"></div>
+                            </div>
+                            <span class="absolute right-[-50px] top-1/2 -translate-y-1/2 text-indigo-400 font-bold">90%</span>
+                        </div>
+                    </div>
+                    <!-- X-axis labels -->
+                    <div class="flex items-center gap-4 mt-2">
+                        <div class="w-40"></div>
+                        <div class="flex-1 flex justify-between text-zinc-500 text-sm font-mono">
+                            <span>0%</span>
+                            <span>60%</span>
+                            <span>90%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Insight -->
+                <p class="text-xl text-amber-400 text-center mb-10 font-medium">
+                    That 30% improvement is the difference between a demo and a production-ready product.
+                </p>
+
+                <!-- Two Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Prompt Comparison Card -->
+                    <div class="glass p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-white mb-6">Prompt Comparison</h3>
+
+                        <!-- Generic Example -->
+                        <div class="flex items-center justify-between gap-4 mb-6 pb-6 border-b border-zinc-700">
+                            <div class="flex-1">
+                                <span class="text-zinc-500 text-sm uppercase tracking-wide">Generic:</span>
+                                <span class="text-zinc-300 ml-2">Create a button</span>
+                            </div>
+                            <button class="px-4 py-2 bg-zinc-700 text-zinc-400 rounded text-sm border border-zinc-600">HTML button</button>
+                        </div>
+
+                        <!-- Context-Aware Example -->
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <span class="text-zinc-500 text-sm uppercase tracking-wide">Context-Aware:</span>
+                                <span class="text-zinc-300 text-sm ml-2">Create a button using our primary CTA pattern with 16px padding and success-green-600 background</span>
+                            </div>
+                            <button class="px-4 py-2 bg-emerald-500 text-white rounded text-sm flex items-center gap-2 shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Primary CTA
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- What to Feed Your AI Card -->
+                    <div class="glass p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-white mb-6">What to Feed Your AI</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-zinc-300">
+                                <i data-lucide="file-text" class="w-5 h-5 text-indigo-400"></i>
+                                Design system docs
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300">
+                                <i data-lucide="box" class="w-5 h-5 text-indigo-400"></i>
+                                Component libraries
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300">
+                                <i data-lucide="bookmark" class="w-5 h-5 text-indigo-400"></i>
+                                Brand guidelines
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300">
+                                <i data-lucide="accessibility" class="w-5 h-5 text-indigo-400"></i>
+                                Accessibility standards
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300">
+                                <i data-lucide="code" class="w-5 h-5 text-indigo-400"></i>
+                                Code samples, and anti-patterns
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Pillar 2 - Agentic Orchestration -->
+        <div class="slide" data-slide="7">
+            <div class="max-w-6xl w-full mx-auto px-8">
+                <!-- Title -->
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-12 text-center leading-tight">
+                    Pillar 2: We are shifting from passive<br/>tools to active agents.
+                </h2>
+
+                <!-- Three Column Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- TOOL Column -->
+                    <div class="glass p-6 rounded-xl text-center">
+                        <h3 class="text-sm font-bold text-zinc-500 uppercase tracking-widest mb-6">Tool</h3>
+                        <!-- Gear Icon -->
+                        <div class="flex justify-center mb-6">
+                            <div class="w-24 h-24 flex items-center justify-center">
+                                <i data-lucide="settings" class="w-20 h-20 text-zinc-500"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-bold text-zinc-400 mb-4">TOOL</h4>
+                        <ul class="space-y-3 text-left">
+                            <li class="text-zinc-400 text-sm">Responds to commands</li>
+                            <li class="text-zinc-400 text-sm">Single action per request</li>
+                            <li class="text-zinc-400 text-sm">Needs constant direction</li>
+                        </ul>
+                    </div>
+
+                    <!-- AGENT Column -->
+                    <div class="glass p-6 rounded-xl text-center border border-purple-500/30">
+                        <h3 class="text-sm font-bold text-purple-400 uppercase tracking-widest mb-6">Agent</h3>
+                        <!-- Multiple Gears Icon -->
+                        <div class="flex justify-center mb-6">
+                            <div class="w-24 h-24 relative flex items-center justify-center">
+                                <i data-lucide="cog" class="w-10 h-10 text-purple-400 absolute top-0 left-4"></i>
+                                <i data-lucide="cog" class="w-14 h-14 text-purple-500 absolute bottom-0 right-2"></i>
+                                <i data-lucide="cog" class="w-8 h-8 text-purple-300 absolute top-2 right-4"></i>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i data-lucide="rotate-cw" class="w-6 h-6 text-purple-400 opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-bold text-purple-400 mb-4">AGENT</h4>
+                        <ul class="space-y-3 text-left">
+                            <li class="text-zinc-300 text-sm"><span class="text-purple-400 font-semibold">Autonomous</span> decision-making</li>
+                            <li class="text-zinc-300 text-sm"><span class="text-purple-400 font-semibold">Multi-step</span> planning & strategy</li>
+                            <li class="text-zinc-300 text-sm">Uses <span class="text-purple-400 font-semibold">multiple</span> tools/capabilities</li>
+                            <li class="text-zinc-300 text-sm"><span class="text-purple-400 font-semibold">Self-corrects</span> based on feedback</li>
+                        </ul>
+                    </div>
+
+                    <!-- Example Column -->
+                    <div class="glass p-6 rounded-xl">
+                        <h3 class="text-lg font-bold text-white mb-6">Example: "Build a blog API"</h3>
+                        <!-- Vertical Timeline -->
+                        <div class="relative">
+                            <div class="absolute left-[11px] top-3 bottom-3 w-0.5 bg-zinc-700"></div>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 relative">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center z-10">
+                                        <i data-lucide="check" class="w-3 h-3 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-zinc-300 text-sm">Analyzes requirements</span>
+                                </li>
+                                <li class="flex items-center gap-3 relative">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center z-10">
+                                        <i data-lucide="check" class="w-3 h-3 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-zinc-300 text-sm">Plans database schema</span>
+                                </li>
+                                <li class="flex items-center gap-3 relative">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center z-10">
+                                        <i data-lucide="check" class="w-3 h-3 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-zinc-300 text-sm">Selects frameworks</span>
+                                </li>
+                                <li class="flex items-center gap-3 relative">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center z-10">
+                                        <i data-lucide="check" class="w-3 h-3 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-zinc-300 text-sm">Creates models & endpoints</span>
+                                </li>
+                                <li class="flex items-center gap-3 relative">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center z-10">
+                                        <i data-lucide="check" class="w-3 h-3 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-zinc-300 text-sm">Writes tests</span>
+                                </li>
+                                <li class="flex items-center gap-3 relative">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center z-10">
+                                        <i data-lucide="check" class="w-3 h-3 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-zinc-300 text-sm">Generates documentation</span>
+                                </li>
+                                <li class="flex items-center gap-3 relative">
+                                    <div class="w-6 h-6 rounded-full bg-purple-500/20 border-2 border-purple-500 flex items-center justify-center z-10">
+                                        <i data-lucide="check" class="w-3 h-3 text-purple-400"></i>
+                                    </div>
+                                    <span class="text-zinc-300 text-sm">Deploys</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Pillar 3 - Spec-Based Building -->
+        <div class="slide" data-slide="8">
+            <div class="max-w-6xl w-full mx-auto px-8">
+                <!-- Title -->
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-12 text-center leading-tight">
+                    Pillar 3: Design systems become the<br/>source of truth for AI.
+                </h2>
+
+                <!-- Three Column Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- What Specs Include -->
+                    <div class="glass p-6 rounded-xl">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4">
+                            <i data-lucide="file-text" class="w-6 h-6 text-pink-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">What Specs Include</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                                <div class="w-1.5 h-1.5 rounded-full bg-pink-400"></div>
+                                Design tokens & variables
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                                <div class="w-1.5 h-1.5 rounded-full bg-pink-400"></div>
+                                Component APIs & props
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                                <div class="w-1.5 h-1.5 rounded-full bg-pink-400"></div>
+                                Usage patterns & rules
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                                <div class="w-1.5 h-1.5 rounded-full bg-pink-400"></div>
+                                Accessibility requirements
+                            </li>
+                            <li class="flex items-center gap-3 text-zinc-300 text-sm">
+                                <div class="w-1.5 h-1.5 rounded-full bg-pink-400"></div>
+                                Anti-patterns to avoid
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- How Agents Use Specs -->
+                    <div class="glass p-6 rounded-xl border border-pink-500/30">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-pink-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">How Agents Use Specs</h3>
+                        <ul class="space-y-3">
+                            <li class="text-zinc-300 text-sm">
+                                <span class="text-pink-400 font-semibold">Validate</span> output against rules
+                            </li>
+                            <li class="text-zinc-300 text-sm">
+                                <span class="text-pink-400 font-semibold">Enforce</span> consistency automatically
+                            </li>
+                            <li class="text-zinc-300 text-sm">
+                                <span class="text-pink-400 font-semibold">Self-correct</span> when violations detected
+                            </li>
+                            <li class="text-zinc-300 text-sm">
+                                <span class="text-pink-400 font-semibold">Generate</span> compliant code by default
+                            </li>
+                            <li class="text-zinc-300 text-sm">
+                                <span class="text-pink-400 font-semibold">Flag</span> deviations for human review
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Example: Quality Gate -->
+                    <div class="glass p-6 rounded-xl">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4">
+                            <i data-lucide="check-square" class="w-6 h-6 text-pink-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">Quality Gates</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded bg-emerald-500/20 flex items-center justify-center">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <span class="text-zinc-300 text-sm">Uses approved components</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded bg-emerald-500/20 flex items-center justify-center">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <span class="text-zinc-300 text-sm">Follows token system</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded bg-emerald-500/20 flex items-center justify-center">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <span class="text-zinc-300 text-sm">Meets a11y standards</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded bg-emerald-500/20 flex items-center justify-center">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <span class="text-zinc-300 text-sm">No anti-patterns detected</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded bg-emerald-500/20 flex items-center justify-center">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+                                </div>
+                                <span class="text-zinc-300 text-sm">Responsive behavior correct</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Insight -->
+                <div class="mt-10 text-center">
+                    <p class="text-xl text-amber-400 font-medium">
+                        Specs transform AI from a "code generator" into a "system-aware builder."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Case Study Intro -->
+        <div class="slide text-center" data-slide="9">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-8">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+                <span class="font-mono text-sm font-bold uppercase">AI POC & Case Study</span>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-8">
+                Theory to <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">Reality</span>
+            </h2>
+            <p class="text-2xl text-zinc-400 leading-relaxed max-w-2xl mx-auto mb-12">
+                We put our hypothesis to the test: <br/>
+                <span class="text-white italic">Can we migrate legacy Helios designs to FDS using AI agents?</span>
+            </p>
+            <div class="grid grid-cols-3 gap-8 text-left max-w-4xl mx-auto w-full">
+                <div class="p-4 border-l border-zinc-700">
+                    <div class="text-zinc-500 text-sm mb-1">The Stack</div>
+                    <div class="text-white font-mono">GitHub Copilot<br/>AWS Bedrock (Claude)<br/>VSCode</div>
+                </div>
+                <div class="p-4 border-l border-zinc-700">
+                    <div class="text-zinc-500 text-sm mb-1">The Goal</div>
+                    <div class="text-white">Rapid migration with FDS compliance</div>
+                </div>
+                <div class="p-4 border-l border-zinc-700">
+                    <div class="text-zinc-500 text-sm mb-1">The Human</div>
+                    <div class="text-white">1 UX Developer<br/>(with AI expertise)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Effort Comparison -->
+        <div class="slide" data-slide="10">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-6">
+                        <i data-lucide="cpu" class="w-4 h-4"></i>
+                        <span class="font-mono text-sm font-bold uppercase">AI POC & Case Study</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white">Effort Comparison</h2>
+                </div>
+
+                <!-- Design Effort -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-white mb-6">Design Effort</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="glass p-8 rounded-2xl relative">
+                            <div class="absolute top-4 right-4 text-zinc-600"><i data-lucide="users" class="w-6 h-6"></i></div>
+                            <div class="text-zinc-400 text-sm font-medium mb-2">Squad Effort</div>
+                            <div class="text-4xl font-bold text-white mb-2">1 Hour</div>
+                            <p class="text-zinc-500 text-xs">Standard manual transition from Helios to FDS</p>
+                        </div>
+                        <div class="glass p-8 rounded-2xl relative border-emerald-500/30 bg-emerald-900/10">
+                            <div class="absolute -top-2 -right-2 bg-emerald-500 text-black text-xs font-bold px-2 py-1 rounded-full">50% FASTER</div>
+                            <div class="absolute top-4 right-4 text-emerald-400"><i data-lucide="sparkles" class="w-6 h-6"></i></div>
+                            <div class="text-emerald-200 text-sm font-medium mb-2">Harmony Effort</div>
+                            <div class="text-4xl font-bold text-emerald-400 mb-2">30 Min</div>
+                            <p class="text-emerald-100/60 text-xs">AI-assisted transition</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Development Effort -->
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Development Effort</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-zinc-400 mb-2 font-mono text-xs uppercase">
+                                <span>Squad Effort</span>
+                                <span>~2-3 Sprints</span>
+                            </div>
+                            <div class="h-16 bg-zinc-800 rounded-lg relative overflow-hidden flex items-center px-6 border border-zinc-700 w-full">
+                                <span class="relative z-10 text-white font-bold text-lg">Traditional Quarter Planning</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-emerald-400 mb-2 font-mono text-xs uppercase">
+                                <span>Harmony Effort</span>
+                                <span>2 Days</span>
+                            </div>
+                            <div class="h-20 bg-gradient-to-r from-emerald-900/40 to-emerald-600/20 rounded-lg relative overflow-hidden flex items-center px-6 border border-emerald-500/30 w-[15%] min-w-[250px]">
+                                <div class="relative z-10 flex items-center gap-3">
+                                    <i data-lucide="rocket" class="w-6 h-6 text-emerald-400"></i>
+                                    <div>
+                                        <div class="text-xl font-bold text-white">98% Faster</div>
+                                        <div class="text-xs text-emerald-200">One UX Dev + AI</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Timeline & Process -->
+        <div class="slide" data-slide="11">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-6">
+                        <i data-lucide="cpu" class="w-4 h-4"></i>
+                        <span class="font-mono text-sm font-bold uppercase">AI POC & Case Study</span>
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold text-white">Activity Timeline & Process</h2>
+                </div>
+
+                <!-- Timeline -->
+                <div class="mb-10">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="glass p-5 rounded-xl border-t-4 border-blue-500">
+                            <div class="text-blue-400 font-mono text-xs mb-1">4 Hours</div>
+                            <h3 class="text-lg font-bold text-white mb-3">Setup & Config</h3>
+                            <ul class="space-y-2 text-zinc-400 text-xs">
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-blue-500"></span>FDS + AKFW Libs Install</li>
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-blue-500"></span>Repo Setup</li>
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-blue-500"></span>Build Process</li>
+                            </ul>
+                        </div>
+                        <div class="glass p-5 rounded-xl border-t-4 border-indigo-500">
+                            <div class="text-indigo-400 font-mono text-xs mb-1">6 Hours</div>
+                            <h3 class="text-lg font-bold text-white mb-3">Core Development</h3>
+                            <ul class="space-y-2 text-zinc-400 text-xs">
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-indigo-500"></span>AI-Generated Code</li>
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-indigo-500"></span>FDS/AKFW Mapping</li>
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-indigo-500"></span>Component Assembly</li>
+                            </ul>
+                        </div>
+                        <div class="glass p-5 rounded-xl border-t-4 border-purple-500">
+                            <div class="text-purple-400 font-mono text-xs mb-1">6 Hours</div>
+                            <h3 class="text-lg font-bold text-white mb-3">Refinement</h3>
+                            <ul class="space-y-2 text-zinc-400 text-xs">
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-purple-500"></span>Design Spec Alignment</li>
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-purple-500"></span>Custom Styling</li>
+                                <li class="flex items-start gap-2"><span class="mt-1 w-1 h-1 rounded-full bg-purple-500"></span>Fit & Finish</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Research & Mapping -->
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <i data-lucide="search" class="w-5 h-5 text-indigo-400"></i> Research & Mapping
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="glass p-3 rounded-lg text-zinc-300 text-xs">Analyzed Figma visual references</div>
+                        <div class="glass p-3 rounded-lg text-zinc-300 text-xs">Researched AKFW library components</div>
+                        <div class="glass p-3 rounded-lg text-zinc-300 text-xs">Cataloged components & code samples</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Results Summary -->
+        <div class="slide" data-slide="12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-8">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+                <span class="font-mono text-sm font-bold uppercase">AI POC & Case Study</span>
+            </div>
+            <div class="glass p-12 rounded-[3rem] border border-zinc-700 max-w-5xl w-full">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center text-center divide-y md:divide-y-0 md:divide-x divide-zinc-700">
+                    <div class="p-4">
+                        <div class="text-zinc-400 text-xl mb-4 uppercase tracking-widest">Initial Accuracy</div>
+                        <div class="text-4xl font-bold text-white mb-2">~85%</div>
+                        <div class="text-zinc-500">Raw AI Output</div>
+                    </div>
+                    <div class="p-4">
+                        <div class="text-zinc-400 text-xl mb-4 uppercase tracking-widest">Final Accuracy</div>
+                        <div class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 mb-2">95%</div>
+                        <div class="text-zinc-500">With Human "Fit & Finish"</div>
+                    </div>
+                </div>
+                <div class="mt-12 pt-12 border-t border-zinc-700 text-center">
+                    <h3 class="text-2xl text-white mb-6">Key Observationss</h3>
+                    <div class="glass p-6 rounded-xl border border-yellow-500/20 mb-4">
+                        <h4 class="text-white font-bold mb-2">Fit & Finish</h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed">AI got us to <span class="text-white">85% completion</span> rapidly. Final push required manual custom styling.</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl border border-red-500/20">
+                        <h4 class="text-white font-bold mb-2">Naming Mismatch</h4>
+                        <p class="text-zinc-400 text-sm leading-relaxed">FDS design tokens and AKFW library use different namespaces. Addressed in FDS 2.0.</p>
+                    </div>
+
+                    <h3 class="text-2xl pt-12 text-white mb-6">Ask & Next Steps</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="px-6 py-2 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-sm">Accelerate FDS Adoption</span>
+                        <span class="px-6 py-2 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-sm">Target At-Risk Projects</span>
+                        <span class="px-6 py-2 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-sm">Create Small "AI Crews"</span>
+                        <span class="px-6 py-2 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-sm">Authority to Ship</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Slide 13: Industry Forecast -->
+        <div class="slide" data-slide="13">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="mb-12">
+                    <div class="inline-block px-5 py-2 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 text-sm font-semibold tracking-wide uppercase mb-6">
+                        We're Still Early
+                    </div>
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">Where We're Headed</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="glass p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-6">For Designers</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                <span class="text-zinc-300">Pixel-perfect mockups → Systems architecture thinking</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                <span class="text-zinc-300">Static screens → Functional, interactive prototypes</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                <span class="text-zinc-300">Single design → Comprehensive component libraries</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                <span class="text-zinc-300">Manual variations → AI-generated contextual designs</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="glass p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-purple-400 mb-6">For Developers</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                <span class="text-zinc-300">Writing boilerplate → Architecting systems & logic</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                <span class="text-zinc-300">Pixel-perfect implementation → High-level design</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                <span class="text-zinc-300">Design-to-code handoff → Real-time collaboration</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                <span class="text-zinc-300">Manual optimization → AI-assisted performance tuning</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="glass p-8 rounded-2xl border-2 border-emerald-500/30">
+                    <h3 class="text-2xl font-bold text-emerald-400 mb-4">For Product Teams</h3>
+                    <p class="text-xl text-zinc-300 mb-4">
+                        Sprint-based validation → Hours to fully testable products
+                    </p>
+                    <p class="text-lg text-zinc-400 italic leading-relaxed">
+                        "With nearly infinite build capacity, the critical question becomes: what's truly worth building?"
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: The New Workflow -->
+        <div class="slide" data-slide="14">
+            <div class="max-w-4xl w-full mx-auto px-8">
+                <!-- Title -->
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-12 text-center leading-tight">
+                    The New Workflow
+                </h2>
+
+                <!-- 5-Step Vertical Flow -->
+                <div class="flex flex-col items-center space-y-2">
+                    <!-- Step 1 -->
+                    <div class="flex items-center gap-4 w-full max-w-xl">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-lg shrink-0">1</div>
+                        <span class="text-lg text-zinc-200">Define the Experience That Matters <span class="text-zinc-500">(15 min)</span></span>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="text-indigo-400 text-2xl">↓</div>
+
+                    <!-- Step 2 -->
+                    <div class="flex items-center gap-4 w-full max-w-xl">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-lg shrink-0">2</div>
+                        <span class="text-lg text-zinc-200">Establish Design System Context <span class="text-zinc-500">(30 min)</span></span>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="text-indigo-400 text-2xl">↓</div>
+
+                    <!-- Step 3 -->
+                    <div class="flex items-center gap-4 w-full max-w-xl">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-lg shrink-0">3</div>
+                        <span class="text-lg text-zinc-200">Architect Before You Build <span class="text-zinc-500">(30 min)</span></span>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="text-indigo-400 text-2xl">↓</div>
+
+                    <!-- Step 4 -->
+                    <div class="flex items-center gap-4 w-full max-w-xl">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-lg shrink-0">4</div>
+                        <span class="text-lg text-zinc-200">Iterative Building with Your Agent <span class="text-zinc-500">(2-3 hours)</span></span>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="text-indigo-400 text-2xl">↓</div>
+
+                    <!-- Step 5 -->
+                    <div class="flex items-center gap-4 w-full max-w-xl">
+                        <div class="w-10 h-10 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-lg shrink-0">5</div>
+                        <span class="text-lg text-zinc-200">Quality Gates & Refinement <span class="text-zinc-500">(1 hour)</span></span>
+                    </div>
+                </div>
+
+                <!-- Total Time Box -->
+                <div class="mt-10 max-w-md mx-auto">
+                    <div class="border-2 border-indigo-500 rounded-xl p-6 text-center bg-zinc-900/50">
+                        <div class="text-4xl font-bold text-white mb-1">4-6 hours</div>
+                        <div class="text-zinc-400">(vs. traditional 3-5 days)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: From Sprints to Missions -->
+        <div class="slide" data-slide="15">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="mb-12 text-center">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">From Sprints to Missions</h2>
+                    <p class="text-xl text-zinc-400 max-w-2xl mx-auto">
+                        Moving from rigid 2-week sprints to hyper-focused, AI-accelerated missions
+                    </p>
+                </div>
+                <div class="bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 backdrop-blur-sm max-w-5xl mx-auto w-full">
+                    <div class="grid grid-cols-3 gap-4 mb-6 text-sm font-mono uppercase tracking-widest text-zinc-500 border-b border-zinc-800 pb-4">
+                        <div class="pl-4">Dimension</div>
+                        <div>Traditional Sprints</div>
+                        <div class="text-emerald-400">AI Design Missions</div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="grid grid-cols-3 gap-4 p-4 rounded-xl hover:bg-zinc-800/50 transition-all">
+                            <div class="flex items-center gap-3 font-semibold text-zinc-200">
+                                <div class="p-2 rounded-lg bg-zinc-800 text-zinc-400">
+                                    <i data-lucide="timer" class="w-4 h-4"></i>
+                                </div>
+                                Duration
+                            </div>
+                            <div class="flex items-center text-zinc-400">2 weeks</div>
+                            <div class="flex items-center font-bold text-emerald-500">1-3 days</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 p-4 rounded-xl hover:bg-zinc-800/50 transition-all">
+                            <div class="flex items-center gap-3 font-semibold text-zinc-200">
+                                <div class="p-2 rounded-lg bg-zinc-800 text-zinc-400">
+                                    <i data-lucide="target" class="w-4 h-4"></i>
+                                </div>
+                                Focus
+                            </div>
+                            <div class="flex items-center text-zinc-400">Multiple components</div>
+                            <div class="flex items-center font-bold text-emerald-500">Single problem</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 p-4 rounded-xl hover:bg-zinc-800/50 transition-all">
+                            <div class="flex items-center gap-3 font-semibold text-zinc-200">
+                                <div class="p-2 rounded-lg bg-zinc-800 text-zinc-400">
+                                    <i data-lucide="users" class="w-4 h-4"></i>
+                                </div>
+                                Team Size
+                            </div>
+                            <div class="flex items-center text-zinc-400">5-10 people</div>
+                            <div class="flex items-center font-bold text-emerald-500">3-5 people</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 p-4 rounded-xl hover:bg-zinc-800/50 transition-all">
+                            <div class="flex items-center gap-3 font-semibold text-zinc-200">
+                                <div class="p-2 rounded-lg bg-zinc-800 text-zinc-400">
+                                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                                </div>
+                                Process
+                            </div>
+                            <div class="flex items-center text-zinc-400">Linear (Waterfall)</div>
+                            <div class="flex items-center font-bold text-emerald-500">Fluid (Iterative)</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 p-4 rounded-xl hover:bg-zinc-800/50 transition-all">
+                            <div class="flex items-center gap-3 font-semibold text-zinc-200">
+                                <div class="p-2 rounded-lg bg-zinc-800 text-zinc-400">
+                                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                                </div>
+                                Feedback
+                            </div>
+                            <div class="flex items-center text-zinc-400">At completion</div>
+                            <div class="flex items-center font-bold text-emerald-500">Continuous</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: UI on Demand -->
+        <div class="slide" data-slide="16">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="inline-block px-5 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm font-semibold tracking-wide uppercase mb-6">
+                            Just-in-Time Delivery
+                        </div>
+                        <h2 class="text-4xl md:text-6xl font-bold mb-8 text-white">UI on Demand</h2>
+                        <div class="space-y-6 relative">
+                            <div class="absolute left-[19px] top-4 bottom-4 w-0.5 bg-zinc-800 z-0"></div>
+                            <div class="flex items-center gap-6 relative z-10">
+                                <div class="w-10 h-10 rounded-full bg-zinc-900 border border-emerald-500/50 text-emerald-400 flex items-center justify-center font-bold shadow-lg shadow-emerald-900/20">1</div>
+                                <div class="text-xl text-zinc-300 font-light">Request emerges from user need</div>
+                            </div>
+                            <div class="flex items-center gap-6 relative z-10">
+                                <div class="w-10 h-10 rounded-full bg-zinc-900 border border-emerald-500/50 text-emerald-400 flex items-center justify-center font-bold shadow-lg shadow-emerald-900/20">2</div>
+                                <div class="text-xl text-zinc-300 font-light">AI generates multiple variants</div>
+                            </div>
+                            <div class="flex items-center gap-6 relative z-10">
+                                <div class="w-10 h-10 rounded-full bg-zinc-900 border border-emerald-500/50 text-emerald-400 flex items-center justify-center font-bold shadow-lg shadow-emerald-900/20">3</div>
+                                <div class="text-xl text-zinc-300 font-light">Designer curates & refines best option</div>
+                            </div>
+                            <div class="flex items-center gap-6 relative z-10">
+                                <div class="w-10 h-10 rounded-full bg-zinc-900 border border-emerald-500/50 text-emerald-400 flex items-center justify-center font-bold shadow-lg shadow-emerald-900/20">4</div>
+                                <div class="text-xl text-zinc-300 font-light">Developer integrates & ships</div>
+                            </div>
+                            <div class="flex items-center gap-6 relative z-10">
+                                <div class="w-10 h-10 rounded-full bg-zinc-900 border border-emerald-500/50 text-emerald-400 flex items-center justify-center font-bold shadow-lg shadow-emerald-900/20">5</div>
+                                <div class="text-xl text-zinc-300 font-light">User feedback informs next iteration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-emerald-500/20 to-teal-500/10 border border-emerald-500/30 p-12 rounded-[2rem] text-center backdrop-blur-md">
+                            <div class="text-7xl font-bold text-white mb-2">48h</div>
+                            <div class="text-2xl text-emerald-400 uppercase tracking-widest font-medium">Request to Production</div>
+                            <div class="mt-8 text-zinc-400">Drastic reduction from traditional 2-week sprint cycles</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Vibe Coding -->
+        <div class="slide" data-slide="17">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">Vibe Coding</h2>
+                        <p class="text-2xl text-zinc-400 mb-8">From <span class="text-indigo-400">Syntax</span> to <span class="text-purple-400">Semantics</span></p>
+                        <div class="space-y-6 text-left">
+                            <div class="glass p-6 rounded-xl border-l-4 border-indigo-500">
+                                <h3 class="text-white font-bold mb-2">1. Describe</h3>
+                                <p class="text-zinc-400 text-sm">Explain vision in natural language. Focus on "what" & "why".</p>
+                            </div>
+                            <div class="glass p-6 rounded-xl border-l-4 border-purple-500">
+                                <h3 class="text-white font-bold mb-2">2. Generate</h3>
+                                <p class="text-zinc-400 text-sm">AI acts as junior dev, creating code based on specs.</p>
+                            </div>
+                            <div class="glass p-6 rounded-xl border-l-4 border-pink-500">
+                                <h3 class="text-white font-bold mb-2">3. Preview</h3>
+                                <p class="text-zinc-400 text-sm">Instant feedback loop. See result, refine prompt, iterate immediately.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-[300px] glass rounded-2xl flex items-center justify-center border border-zinc-700 bg-black/50 text-center p-8">
+                         <div>
+                            <i data-lucide="sparkles" class="w-12 h-12 text-yellow-400 mx-auto mb-4"></i>
+                            <p class="text-xl text-white font-mono italic">"Make it pop, but accessible."</p>
+                            <p class="text-zinc-500 text-sm mt-2">(The AI knows what this means now)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: The AI Pirate Crew -->
+        <div class="slide" data-slide="18">
+            <div class="max-w-7xl w-full mx-auto px-8 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-white">The AI Pirate Crew</h2>
+                <p class="text-zinc-400 max-w-2xl mx-auto text-xl mb-16">
+                    Small, cross-functional, autonomous—the new unit of delivery
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl text-left">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-blue-500/20 text-blue-400 ring-1 ring-white/5">
+                            <i data-lucide="box" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">AI Wrangler</h3>
+                        <p class="text-zinc-400 text-base mb-8">Masters tools & prompts. Ensures quality outputs.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">Prompt Engineering</span>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">Tool Selection</span>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">QA</span>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl text-left">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-purple-500/20 text-purple-400 ring-1 ring-white/5">
+                            <i data-lucide="brain" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">AI Strategist</h3>
+                        <p class="text-zinc-400 text-base mb-8">Sets vision & aligns with business needs.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">Product Vision</span>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">Prioritization</span>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">User Research</span>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl text-left">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-green-500/20 text-green-400 ring-1 ring-white/5">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">AI Shipper</h3>
+                        <p class="text-zinc-400 text-base mb-8">Integrates, polishes, and deploys.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">Integration</span>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">Refinement</span>
+                            <span class="text-xs font-medium px-2.5 py-1 rounded-md bg-zinc-800 text-zinc-300 border border-zinc-700">Deployment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: Conversational UX -->
+        <div class="slide" data-slide="19">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <div class="mb-12">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">Conversational UX</h2>
+                    <p class="text-2xl text-zinc-400 font-light">Designing for AI-Native Experiences</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass p-6 rounded-xl">
+                        <div class="w-12 h-12 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Progressive Disclosure</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Start simple, add complexity as needed. Provide escape hatches to traditional UI.</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl">
+                        <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
+                            <i data-lucide="refresh-cw" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Context Persistence</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Users shouldn't repeat themselves. Remember preferences and history across sessions.</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl">
+                        <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400 mb-4">
+                            <i data-lucide="message-square" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Handle Ambiguity</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Clarification is a feature. Show AI's understanding and design for repair.</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4">
+                            <i data-lucide="settings" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Maintain Control</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Users always in control. Make suggestions, not decisions. Transparent about limits.</p>
+                    </div>
+                </div>
+                <div class="mt-12 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 border-l-4 border-indigo-500 p-6 rounded-r-2xl">
+                    <p class="text-xl text-white italic">
+                        "The conversation is an invitation, not a finish line—design for ongoing relationships"
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Your Toolkit -->
+        <div class="slide" data-slide="20">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-12 text-center">Your Toolkit</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-indigo-400 mb-6">Rapid Prototyping</h3>
+                        <div class="space-y-3">
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Claude/ChatGPT</div>
+                                <div class="text-zinc-500">Conversational dev</div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Replit</div>
+                                <div class="text-zinc-500">Full-stack apps</div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Cursor</div>
+                                <div class="text-zinc-500">AI-powered IDE</div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Copilot</div>
+                                <div class="text-zinc-500">Code completion</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-purple-400 mb-6">Design-to-Code</h3>
+                        <div class="space-y-3">
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Figma Make</div>
+                                <div class="text-zinc-500">Design to prototype</div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">v0.dev</div>
+                                <div class="text-zinc-500">Generative UI</div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Framer</div>
+                                <div class="text-zinc-500">Design + code</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-xl">
+                        <h3 class="text-xl font-bold text-pink-400 mb-6">Design Systems</h3>
+                        <div class="space-y-3">
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Storybook</div>
+                                <div class="text-zinc-500">Component dev</div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Chromatic</div>
+                                <div class="text-zinc-500">Visual testing</div>
+                            </div>
+                            <div class="text-sm">
+                                <div class="font-semibold text-white">Zeroheight</div>
+                                <div class="text-zinc-500">Documentation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 text-center text-zinc-400">
+                    <p class="text-lg">Pick 2-3 tools your team can get productive with quickly—avoid tool overwhelm</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 21: Keys to Success -->
+        <div class="slide" data-slide="21">
+            <div class="max-w-7xl w-full mx-auto px-8">
+                <h2 class="text-4xl md:text-6xl font-bold text-white mb-12 text-center">Keys to Success</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass p-6 rounded-xl border-l-4 border-blue-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 flex-shrink-0">
+                                <i data-lucide="trending-up" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Build AI Muscle Daily</h3>
+                                <p class="text-sm text-zinc-400">Daily experimentation is non-negotiable</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-xl border-l-4 border-purple-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 flex-shrink-0">
+                                <i data-lucide="users" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Organizational Readiness</h3>
+                                <p class="text-sm text-zinc-400">Not just technical—cultural transformation required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-xl border-l-4 border-emerald-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                                <i data-lucide="target" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Focus on Specialist Agents</h3>
+                                <p class="text-sm text-zinc-400">90% accuracy vs 60% generalist</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-xl border-l-4 border-indigo-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400 flex-shrink-0">
+                                <i data-lucide="brain" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Prioritize Context</h3>
+                                <p class="text-sm text-zinc-400">Digital twins drive enterprise success</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-xl border-l-4 border-yellow-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center text-yellow-400 flex-shrink-0">
+                                <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Stay Humble</h3>
+                                <p class="text-sm text-zinc-400">We're still early—the future remains uncertain</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="glass p-6 rounded-xl border-l-4 border-pink-500">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400 flex-shrink-0">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-2">Choose Your Story</h3>
+                                <p class="text-sm text-zinc-400">Reject dystopia—design to amplify human potential</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 22: The Story -->
+        <div class="slide text-center" data-slide="22">
+            <div class="max-w-5xl mx-auto px-8">
+                <div class="mb-8">
+                    <i data-lucide="sparkles" class="w-16 h-16 text-yellow-400 mx-auto pulse"></i>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold mb-8 leading-tight text-white">
+                    "We must choose the story <br/>we tell ourselves <br/>about AI"
+                </h2>
+                <div class="bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border-l-4 border-orange-500 p-8 rounded-r-2xl mb-12">
+                    <p class="text-3xl font-bold mb-3 text-orange-300">Boycott Dystopia</p>
+                    <p class="text-xl text-zinc-300 leading-relaxed">
+                        Dystopian thinking helps us define the future we DON'T want—now build the one we do
+                    </p>
+                </div>
+                <p class="text-2xl md:text-3xl text-zinc-300 max-w-3xl mx-auto font-light leading-relaxed">
+                    Build a future that <span class="text-white font-semibold">amplifies human potential</span>, not one that replaces it
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 23: Questions -->
+        <div class="slide text-center" data-slide="23">
+            <h2 class="text-5xl md:text-7xl font-bold mb-12 text-white">Questions?</h2>
+            <div class="h-2 w-32 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full mx-auto mb-12"></div>
+            <p class="text-2xl md:text-3xl text-zinc-400 mb-16 font-light leading-relaxed">
+                Let's discuss how to apply these concepts to your hackathon projects
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="glass p-4 rounded-xl">
+                    <p class="text-zinc-300">Context-aware design</p>
+                </div>
+                <div class="glass p-4 rounded-xl">
+                    <p class="text-zinc-300">Agentic orchestration</p>
+                </div>
+                <div class="glass p-4 rounded-xl">
+                    <p class="text-zinc-300">Rapid prototyping</p>
+                </div>
+                <div class="glass p-4 rounded-xl">
+                    <p class="text-zinc-300">Quality gates</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
